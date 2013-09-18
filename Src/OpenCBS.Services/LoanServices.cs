@@ -915,6 +915,15 @@ namespace OpenCBS.Services
                 .Finish()
                 .GetConfiguration();
             var schedule = Mapper.Map<IEnumerable<Installment>, IEnumerable<IInstallment>>(copyOfLoan.InstallmentList);
+            var currentOlb = loan.Amount;
+            foreach (Installment installment in loan.InstallmentList)
+            {
+                if (!installment.IsRepaid)
+                {
+                    currentOlb = installment.OLB - installment.PaidCapital;
+                    break;
+                }
+            }
             var scheduleBuilder = new ScheduleBuilder();
             var rescheduleAssembler = new RescheduleAssembler();
             var copyOfRescheduleConfiguration = (IScheduleConfiguration)rescheduleConfiguration.Clone();
@@ -926,7 +935,8 @@ namespace OpenCBS.Services
                 schedule,
                 scheduleConfiguration,
                 copyOfRescheduleConfiguration,
-                scheduleBuilder);
+                scheduleBuilder,
+                currentOlb.Value);
 
             var newSchedule = Mapper.Map<IEnumerable<IInstallment>, List<Installment>>(schedule);
 
