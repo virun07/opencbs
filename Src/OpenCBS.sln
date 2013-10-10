@@ -52,6 +52,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{85D5D9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.Controls", "OpenCBS.Controls\OpenCBS.Controls.csproj", "{0DFCB871-734C-434D-AE9E-35C378B36F9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.Interfaces", "OpenCBS.Interfaces\OpenCBS.Interfaces.csproj", "{79103586-7180-42F1-AC2E-FAC41ADE5970}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.Views", "OpenCBS.Views\OpenCBS.Views.csproj", "{E1211776-CE3B-4613-AA19-2D99E24EF982}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.Presenters", "OpenCBS.Presenters\OpenCBS.Presenters.csproj", "{34011EF0-F9B5-4DE5-8BA7-08946C9C80EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -132,12 +138,24 @@ Global
 		{0DFCB871-734C-434D-AE9E-35C378B36F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DFCB871-734C-434D-AE9E-35C378B36F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DFCB871-734C-434D-AE9E-35C378B36F9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79103586-7180-42F1-AC2E-FAC41ADE5970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79103586-7180-42F1-AC2E-FAC41ADE5970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79103586-7180-42F1-AC2E-FAC41ADE5970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79103586-7180-42F1-AC2E-FAC41ADE5970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1211776-CE3B-4613-AA19-2D99E24EF982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1211776-CE3B-4613-AA19-2D99E24EF982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1211776-CE3B-4613-AA19-2D99E24EF982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1211776-CE3B-4613-AA19-2D99E24EF982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34011EF0-F9B5-4DE5-8BA7-08946C9C80EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34011EF0-F9B5-4DE5-8BA7-08946C9C80EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34011EF0-F9B5-4DE5-8BA7-08946C9C80EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34011EF0-F9B5-4DE5-8BA7-08946C9C80EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		GreenPepperConfigServerUrl = http://wiki.octopusnetwork.org
 		GreenPepperConfigXmlRpcHandler = greenpepper1
+		GreenPepperConfigServerUrl = http://wiki.octopusnetwork.org
 	EndGlobalSection
 EndGlobal
