@@ -526,5 +526,10 @@ namespace OpenCBS.Shared.Settings
                 return "1" == GetSpecificParameter(OGeneralSettings.CONSOLIDATION_MODE).ToString();
             }
         }
+
+        public bool NewArchitecture
+        {
+            get { return true; }
+        }
     }
 }
