@@ -48,6 +48,7 @@ using OpenCBS.GUI.Report_Browser;
 using OpenCBS.GUI.TellerManagement;
 using OpenCBS.GUI.Tools;
 using OpenCBS.GUI.UserControl;
+using OpenCBS.Interfaces.Presenters;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Reports;
 using OpenCBS.Reports.Forms;
@@ -443,7 +444,16 @@ namespace OpenCBS.GUI
 
         private void menuItemPackages_Click(object sender, EventArgs e)
         {
-            InitializePackagesForm();
+            if (ApplicationSettings.GetInstance(string.Empty).NewArchitecture)
+            {
+                var presenter = MefContainer.Current.GetInstance<ILoanProductsPresenter>();
+                presenter.Initialize();
+                ((Form) presenter.Ui).Show();
+            }
+            else
+            {
+                InitializePackagesForm();
+            }
         }
 
         private void savingProductsToolStripMenuItem_Click(object sender, EventArgs e)

@@ -148,6 +148,10 @@
     <OutputPath>bin\Test\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OpenCBS.Views\OpenCBS.Views.csproj">
+      <Project>{e1211776-ce3b-4613-aa19-2d99e24ef982}</Project>
+      <Name>OpenCBS.Views</Name>
+    </ProjectReference>
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.1.1.0.118\lib\AutoMapper.dll</HintPath>
     </Reference>
@@ -255,9 +259,17 @@
       <Project>{90B5218E-10F0-4123-80E3-C4E65D6CF209}</Project>
       <Name>OpenCBS.GUI.Restarter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Interfaces\OpenCBS.Interfaces.csproj">
+      <Project>{79103586-7180-42f1-ac2e-fac41ade5970}</Project>
+      <Name>OpenCBS.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCBS.MultiLanguage\OpenCBS.MultiLanguageRessources.csproj">
       <Project>{1644EDA1-7196-4197-B752-A4D14F384E31}</Project>
       <Name>OpenCBS.MultiLanguageRessources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Presenters\OpenCBS.Presenters.csproj">
+      <Project>{34011ef0-f9b5-4de5-8ba7-08946c9c80ee}</Project>
+      <Name>OpenCBS.Presenters</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Reports\OpenCBS.Reports.csproj">
       <Project>{A2E4E382-5796-446C-85B1-8EF306AD50DE}</Project>

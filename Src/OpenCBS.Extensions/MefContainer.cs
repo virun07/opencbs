@@ -41,7 +41,9 @@ namespace OpenCBS.Extensions
             extensionsFolder = Path.Combine(extensionsFolder, "Extensions");
             var catalog = new AggregateCatalog(
                     new AssemblyCatalog(Assembly.GetExecutingAssembly()),
-                    new AssemblyCatalog(Assembly.GetAssembly(typeof(DatabaseConnection)))
+                    new AssemblyCatalog(Assembly.GetAssembly(typeof(DatabaseConnection))),
+                    new AssemblyCatalog("OpenCBS.Presenters.dll"),
+                    new AssemblyCatalog("OpenCBS.Views.dll")
                 );
 
             if (Directory.Exists(extensionsFolder))
@@ -60,6 +62,11 @@ namespace OpenCBS.Extensions
         public void Bind(object host)
         {
             _container.SatisfyImportsOnce(host);
+        }
+
+        public T GetInstance<T>()
+        {
+            return _container.GetExportedValue<T>();
         }
     }
 }
