@@ -2433,8 +2433,8 @@ namespace OpenCBS.Services
 	                                FROM dbo.ActiveLoans(@date, 0) AS al
 	                                LEFT JOIN dbo.Credit AS cr ON cr.id=al.id
 	                                WHERE al.late_days > 0";
-            var user = ServicesProvider.GetInstance().GetUserServices().Find(1);
-            var em = new EventManager(user);
+
+            var em = new EventManager(User.CurrentUser);
             var date = LastPenaltyAccrualEventDate();
 
             while (date.Date < DateTime.Now.Date)
@@ -2459,7 +2459,7 @@ namespace OpenCBS.Services
                                         var penaltyEvent = new LoanPenaltyAccrualEvent
                                             {
                                                 Date = date,
-                                                User = user,
+                                                User = User.CurrentUser,
                                                 Penalty = Convert.ToDecimal(penalty),
                                                 ContracId = loanId
                                             };
@@ -2488,8 +2488,7 @@ namespace OpenCBS.Services
             using (var connection = _loanManager.GetConnection())
             using (var r = new OpenCbsCommand(q, connection).ExecuteReader())
             {
-                r.Read();
-                return r.GetDateTime("event_date");
+                return !r.Read() ? DateTime.Today.AddDays(-1) : r.GetDateTime("event_date");
             }
         }
 
@@ -2516,8 +2515,8 @@ namespace OpenCBS.Services
                                             SELECT start_date
 	                                            FROM Contracts
 	                                            WHERE id=@contractId) t ORDER by date desc";
-            var user = ServicesProvider.GetInstance().GetUserServices().Find(1);
-            var em = new EventManager(user);
+
+            var em = new EventManager(User.CurrentUser);
             var date = LastInterestAccrualEventDate();
             while (date.Date < DateTime.Now.Date)
             {
@@ -2542,7 +2541,7 @@ namespace OpenCBS.Services
                                     var interestEvent = new LoanInterestAccrualEvent
                                         {
                                             Date = date,
-                                            User = user,
+                                            User = User.CurrentUser,
                                             Interest = interest,
                                             InstallmentExpectedDate = expectedDate,
                                             ContracId = loanId
@@ -2553,7 +2552,7 @@ namespace OpenCBS.Services
                         }
                         foreach (var interestEvent in interestEventList)
                         {
-                            var previousInstallmentDate = new DateTime();
+                            DateTime previousInstallmentDate;
                             using (var c = new OpenCbsCommand(q1, connection, transaction))
                             {
                                 c.AddParam("@date", date);
@@ -2597,8 +2596,7 @@ namespace OpenCBS.Services
             using (var connection = _loanManager.GetConnection())
             using (var r = new OpenCbsCommand(q, connection).ExecuteReader())
             {
-                r.Read();
-                return r.GetDateTime("event_date");
+                return !r.Read() ? DateTime.Today.AddDays(-1) : r.GetDateTime("event_date");
             }
         }
 
@@ -2633,8 +2631,8 @@ namespace OpenCBS.Services
                             FROM dbo.ActiveLoans(@date, 0) a1
                             INNER JOIN dbo.ActiveLoans(DATEADD(dd,-1,@date), 0) a2 ON a2.id = a1.id
                             WHERE a1.late_days = 0 and a2.late_days>0";
-            var user = ServicesProvider.GetInstance().GetUserServices().Find(1);
-            var em = new EventManager(user);
+
+            var em = new EventManager(User.CurrentUser);
             var date = LastLoanTransitionEventDate();
 
             while (date.Date < DateTime.Now.Date)
@@ -2660,7 +2658,7 @@ namespace OpenCBS.Services
                                     {
                                         Code = "GLLL",
                                         Date = date,
-                                        User = user,
+                                        User = User.CurrentUser,
                                         Amount = amount,
                                         ContracId = loanId
                                     };
@@ -2683,7 +2681,7 @@ namespace OpenCBS.Services
                                     {
                                         Code = "LLGL",
                                         Date = date,
-                                        User = user,
+                                        User = User.CurrentUser,
                                         Amount = amount,
                                         ContracId = loanId
                                     };
@@ -2713,7 +2711,7 @@ namespace OpenCBS.Services
             using (var connection = _loanManager.GetConnection())
             using (var r = new OpenCbsCommand(q, connection).ExecuteReader())
             {
-                return !r.Read() ? DateTime.Today : r.GetDateTime("event_date");
+                return !r.Read() ? DateTime.Today.AddDays(-1) : r.GetDateTime("event_date");
             }
         }
     }
