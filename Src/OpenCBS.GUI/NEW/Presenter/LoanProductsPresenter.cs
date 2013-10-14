@@ -18,23 +18,42 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.GUI.NEW.AppController;
-using OpenCBS.GUI.NEW.CommandData;
-using OpenCBS.GUI.NEW.Presenter;
+using OpenCBS.GUI.NEW.View;
 
-namespace OpenCBS.GUI.NEW.Command
+namespace OpenCBS.GUI.NEW.Presenter
 {
-    public class ShowLoanProductsCommand : ICommand<ShowLoanProductsData>
+    public class LoanProductsPresenter : ILoanProductsPresenter, ILoanProductsPresenterCallbacks
     {
-        private readonly ILoanProductsPresenter _presenter;
+        private readonly ILoanProductsView _view;
+        private readonly IApplicationController _appController;
 
-        public ShowLoanProductsCommand(ILoanProductsPresenter presenter)
+        public LoanProductsPresenter(ILoanProductsView view, IApplicationController appController)
         {
-            _presenter = presenter;
+            _view = view;
+            _appController = appController;
         }
 
-        public void Execute(ShowLoanProductsData commandData)
+        public void OnAdd()
         {
-            _presenter.Run();
+        }
+
+        public void OnEdit()
+        {
+        }
+
+        public void OnDelete()
+        {
+        }
+
+        public void Run()
+        {
+            _view.Attach(this);
+            _view.Run();
+        }
+
+        public object View
+        {
+            get { return _view; }
         }
     }
 }

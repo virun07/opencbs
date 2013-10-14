@@ -21,6 +21,8 @@ using System.Windows.Forms;
 using OpenCBS.GUI.NEW.AppController;
 using OpenCBS.GUI.NEW.Command;
 using OpenCBS.GUI.NEW.CommandData;
+using OpenCBS.GUI.NEW.Presenter;
+using OpenCBS.GUI.NEW.View;
 using StructureMap.Configuration.DSL;
 
 namespace OpenCBS.GUI.NEW
@@ -32,6 +34,11 @@ namespace OpenCBS.GUI.NEW
             For<ApplicationContext>().Use<AppContext>();
             For<IApplicationController>().Singleton().Use<ApplicationController>();
 
+            // Views / presenters
+            For<ILoanProductsView>().Use<LoanProductsView>();
+            For<ILoanProductsPresenter>().Use<LoanProductsPresenter>();
+
+            // Commands
             For<ICommand<ShowLoanProductsData>>().Use<ShowLoanProductsCommand>();
         }
     }

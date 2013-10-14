@@ -17,24 +17,29 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.NEW.AppController;
-using OpenCBS.GUI.NEW.CommandData;
+using System.Windows.Forms;
 using OpenCBS.GUI.NEW.Presenter;
 
-namespace OpenCBS.GUI.NEW.Command
+namespace OpenCBS.GUI.NEW.View
 {
-    public class ShowLoanProductsCommand : ICommand<ShowLoanProductsData>
+    public partial class LoanProductsView : Form, ILoanProductsView
     {
-        private readonly ILoanProductsPresenter _presenter;
-
-        public ShowLoanProductsCommand(ILoanProductsPresenter presenter)
+        public LoanProductsView()
         {
-            _presenter = presenter;
+            InitializeComponent();
+            MdiParent = Application.OpenForms[0];
         }
 
-        public void Execute(ShowLoanProductsData commandData)
+        public void Attach(ILoanProductsPresenterCallbacks presenter)
         {
-            _presenter.Run();
+            _addButton.Click += (sender, e) => presenter.OnAdd();
+            _editButton.Click += (sender, e) => presenter.OnEdit();
+            _deleteButton.Click += (sender, e) => presenter.OnDelete();
+        }
+
+        public void Run()
+        {
+            Show();
         }
     }
 }

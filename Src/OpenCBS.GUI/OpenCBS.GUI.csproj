@@ -713,9 +713,19 @@
     <Compile Include="NEW\Presenter\IMainPresenter.cs" />
     <Compile Include="NEW\Presenter\IPresenter.cs" />
     <Compile Include="NEW\Presenter\IMainPresenterCallbacks.cs" />
+    <Compile Include="NEW\Presenter\ILoanProductsPresenter.cs" />
+    <Compile Include="NEW\Presenter\ILoanProductsPresenterCallbacks.cs" />
+    <Compile Include="NEW\Presenter\LoanProductsPresenter.cs" />
     <Compile Include="NEW\Presenter\MainPresenter.cs" />
+    <Compile Include="NEW\View\ILoanProductsView.cs" />
     <Compile Include="NEW\View\IMainView.cs" />
     <Compile Include="NEW\View\IView.cs" />
+    <Compile Include="NEW\View\LoanProductsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NEW\View\LoanProductsView.Designer.cs">
+      <DependentUpon>LoanProductsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2315,6 +2325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MultiLanguageForm.resx">
       <DependentUpon>MultiLanguageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NEW\View\LoanProductsView.resx">
+      <DependentUpon>LoanProductsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\FrmAddCollateralProduct.fr.resx">
       <DependentUpon>FrmAddCollateralProduct.cs</DependentUpon>

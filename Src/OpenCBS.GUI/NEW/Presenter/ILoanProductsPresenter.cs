@@ -17,24 +17,9 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.NEW.AppController;
-using OpenCBS.GUI.NEW.CommandData;
-using OpenCBS.GUI.NEW.Presenter;
-
-namespace OpenCBS.GUI.NEW.Command
+namespace OpenCBS.GUI.NEW.Presenter
 {
-    public class ShowLoanProductsCommand : ICommand<ShowLoanProductsData>
+    public interface ILoanProductsPresenter : IPresenter
     {
-        private readonly ILoanProductsPresenter _presenter;
-
-        public ShowLoanProductsCommand(ILoanProductsPresenter presenter)
-        {
-            _presenter = presenter;
-        }
-
-        public void Execute(ShowLoanProductsData commandData)
-        {
-            _presenter.Run();
-        }
     }
 }
