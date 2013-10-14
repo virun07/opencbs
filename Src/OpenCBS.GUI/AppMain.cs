@@ -27,6 +27,7 @@ using OpenCBS.CoreDomain;
 using OpenCBS.ExceptionsHandler;
 using OpenCBS.GUI.Configuration;
 using OpenCBS.GUI.Database;
+using OpenCBS.GUI.NEW;
 using OpenCBS.Services;
 using OpenCBS.Shared;
 using System.Threading;
@@ -80,7 +81,8 @@ namespace OpenCBS.GUI
                         break;
                     default:
                         ConfigureAutoMapper();
-                        Application.Run(new LotrasmicMainWindowForm());
+                        var appContext = new AppContext();
+                        Application.Run(appContext);
                         break;
                 }
 
