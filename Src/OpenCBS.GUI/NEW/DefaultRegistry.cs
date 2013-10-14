@@ -18,6 +18,9 @@
 // Contact: contact@opencbs.com
 
 using System.Windows.Forms;
+using OpenCBS.GUI.NEW.AppController;
+using OpenCBS.GUI.NEW.Command;
+using OpenCBS.GUI.NEW.CommandData;
 using StructureMap.Configuration.DSL;
 
 namespace OpenCBS.GUI.NEW
@@ -27,6 +30,9 @@ namespace OpenCBS.GUI.NEW
         public DefaultRegistry()
         {
             For<ApplicationContext>().Use<AppContext>();
+            For<IApplicationController>().Singleton().Use<ApplicationController>();
+
+            For<ICommand<ShowLoanProductsData>>().Use<ShowLoanProductsCommand>();
         }
     }
 }

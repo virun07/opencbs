@@ -18,31 +18,16 @@
 // Contact: contact@opencbs.com
 
 using System.Windows.Forms;
-using OpenCBS.GUI.NEW.Presenter;
-using OpenCBS.GUI.NEW.View;
-using StructureMap;
+using OpenCBS.GUI.NEW.AppController;
+using OpenCBS.GUI.NEW.CommandData;
 
-namespace OpenCBS.GUI.NEW
+namespace OpenCBS.GUI.NEW.Command
 {
-    public class AppContext : ApplicationContext
+    public class ShowLoanProductsCommand : ICommand<ShowLoanProductsData>
     {
-        private readonly IContainer _container;
-
-        public AppContext(IContainer container)
+        public void Execute(ShowLoanProductsData commandData)
         {
-            _container = container;
-            MainForm = GetMainForm();
-        }
-
-        private Form GetMainForm()
-        {
-            var mainForm = new LotrasmicMainWindowForm();
-            _container.Inject<IMainView>(mainForm);
-
-            var presenter = _container.GetInstance<MainPresenter>();
-            presenter.Run();
-
-            return (Form)presenter.View;
+            MessageBox.Show("Show loan products", "Info");
         }
     }
 }

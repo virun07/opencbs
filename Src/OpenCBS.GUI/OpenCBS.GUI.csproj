@@ -707,7 +707,15 @@
     <Compile Include="NEW\AppController\IApplicationController.cs" />
     <Compile Include="NEW\AppController\ICommand.cs" />
     <Compile Include="NEW\BootStrapper.cs" />
+    <Compile Include="NEW\CommandData\ShowLoanProductsData.cs" />
+    <Compile Include="NEW\Command\ShowLoanProductsCommand.cs" />
     <Compile Include="NEW\DefaultRegistry.cs" />
+    <Compile Include="NEW\Presenter\IMainPresenter.cs" />
+    <Compile Include="NEW\Presenter\IPresenter.cs" />
+    <Compile Include="NEW\Presenter\IMainPresenterCallbacks.cs" />
+    <Compile Include="NEW\Presenter\MainPresenter.cs" />
+    <Compile Include="NEW\View\IMainView.cs" />
+    <Compile Include="NEW\View\IView.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -3769,6 +3777,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

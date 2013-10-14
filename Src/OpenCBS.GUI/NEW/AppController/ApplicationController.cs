@@ -28,7 +28,7 @@ namespace OpenCBS.GUI.NEW.AppController
         public ApplicationController(IContainer container)
         {
             _container = container;
-            _container.Inject<IApplicationController>(this);
+            //_container.Inject<IApplicationController>(this);
         }
 
         public void Execute<T>(T commandData)

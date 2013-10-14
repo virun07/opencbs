@@ -17,32 +17,11 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Windows.Forms;
 using OpenCBS.GUI.NEW.Presenter;
-using OpenCBS.GUI.NEW.View;
-using StructureMap;
 
-namespace OpenCBS.GUI.NEW
+namespace OpenCBS.GUI.NEW.View
 {
-    public class AppContext : ApplicationContext
+    public interface IMainView : IView<IMainPresenterCallbacks>
     {
-        private readonly IContainer _container;
-
-        public AppContext(IContainer container)
-        {
-            _container = container;
-            MainForm = GetMainForm();
-        }
-
-        private Form GetMainForm()
-        {
-            var mainForm = new LotrasmicMainWindowForm();
-            _container.Inject<IMainView>(mainForm);
-
-            var presenter = _container.GetInstance<MainPresenter>();
-            presenter.Run();
-
-            return (Form)presenter.View;
-        }
     }
 }

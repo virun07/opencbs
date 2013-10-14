@@ -42,13 +42,14 @@ using OpenCBS.GUI.Clients;
 using OpenCBS.GUI.Configuration;
 using OpenCBS.GUI.Contracts;
 using OpenCBS.GUI.Database;
+using OpenCBS.GUI.NEW.Presenter;
+using OpenCBS.GUI.NEW.View;
 using OpenCBS.GUI.Products;
 using OpenCBS.GUI.Projets;
 using OpenCBS.GUI.Report_Browser;
 using OpenCBS.GUI.TellerManagement;
 using OpenCBS.GUI.Tools;
 using OpenCBS.GUI.UserControl;
-using OpenCBS.Interfaces.Presenters;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Reports;
 using OpenCBS.Reports.Forms;
@@ -58,7 +59,7 @@ using OpenCBS.Shared.Settings;
 
 namespace OpenCBS.GUI
 {
-    public partial class LotrasmicMainWindowForm : SweetBaseForm
+    public partial class LotrasmicMainWindowForm : SweetBaseForm, IMainView
     {
         [ImportMany(typeof(IMenu), RequiredCreationPolicy = CreationPolicy.Shared)]
         public List<IMenu> ExtensionMenuItems { get; set; }
@@ -444,7 +445,7 @@ namespace OpenCBS.GUI
 
         private void menuItemPackages_Click(object sender, EventArgs e)
         {
-            if (ApplicationSettings.GetInstance(string.Empty).NewArchitecture)
+            /*if (ApplicationSettings.GetInstance(string.Empty).NewArchitecture)
             {
                 //var presenter = MefContainer.Current.GetInstance<ILoanProductsPresenter>();
                 //presenter.Initialize();
@@ -453,7 +454,7 @@ namespace OpenCBS.GUI
             else
             {
                 InitializePackagesForm();
-            }
+            }*/
         }
 
         private void savingProductsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1166,6 +1167,9 @@ namespace OpenCBS.GUI
             }
         }
 
-
+        public void Attach(IMainPresenterCallbacks presenter)
+        {
+            mnuPackages.Click += (sender, e) => presenter.OnShowLoanProducts();
+        }
     }
 }
