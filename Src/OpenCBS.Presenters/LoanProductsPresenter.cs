@@ -23,14 +23,14 @@ using OpenCBS.Interfaces.Views;
 
 namespace OpenCBS.Presenters
 {
-    [Export(typeof(ILoanProductsPresenter))]
-    [PartCreationPolicy(CreationPolicy.NonShared)]
+    //[Export(typeof(ILoanProductsPresenter))]
+    //[PartCreationPolicy(CreationPolicy.NonShared)]
     public class LoanProductsPresenter : ILoanProductsPresenter, ILoanProductsPresenterCallbacks
     {
         private readonly ILoanProductsView _view;
 
-        [ImportingConstructor]
-        public LoanProductsPresenter([Import(typeof(ILoanProductsView))] ILoanProductsView view)
+        //[ImportingConstructor]
+        public LoanProductsPresenter(/*[Import(typeof(ILoanProductsView))]*/ ILoanProductsView view)
         {
             _view = view;
         }

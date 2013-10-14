@@ -446,9 +446,9 @@ namespace OpenCBS.GUI
         {
             if (ApplicationSettings.GetInstance(string.Empty).NewArchitecture)
             {
-                var presenter = MefContainer.Current.GetInstance<ILoanProductsPresenter>();
-                presenter.Initialize();
-                ((Form) presenter.Ui).Show();
+                //var presenter = MefContainer.Current.GetInstance<ILoanProductsPresenter>();
+                //presenter.Initialize();
+                //((Form) presenter.Ui).Show();
             }
             else
             {
