@@ -703,6 +703,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NEW\AppContext.cs" />
+    <Compile Include="NEW\AppController\ApplicationController.cs" />
+    <Compile Include="NEW\AppController\IApplicationController.cs" />
+    <Compile Include="NEW\AppController\ICommand.cs" />
     <Compile Include="NEW\BootStrapper.cs" />
     <Compile Include="NEW\DefaultRegistry.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
