@@ -33,6 +33,7 @@ using OpenCBS.Shared;
 using System.Threading;
 using System.Windows.Forms;
 using OpenCBS.Shared.Settings;
+using StructureMap;
 
 namespace OpenCBS.GUI
 {
@@ -81,7 +82,9 @@ namespace OpenCBS.GUI
                         break;
                     default:
                         ConfigureAutoMapper();
-                        var appContext = new AppContext();
+                        var container = new Container();
+                        var bootStrapper = new BootStrapper(container);
+                        var appContext = bootStrapper.GetAppContext();
                         Application.Run(appContext);
                         break;
                 }
