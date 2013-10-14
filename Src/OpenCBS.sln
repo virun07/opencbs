@@ -27,9 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.ExceptionsHandler",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.GUI", "OpenCBS.GUI\OpenCBS.GUI.csproj", "{098C8842-6538-4B87-8851-BB1B1FA379FE}"
 	ProjectSection(ProjectDependencies) = postProject
-		{E1211776-CE3B-4613-AA19-2D99E24EF982} = {E1211776-CE3B-4613-AA19-2D99E24EF982}
 		{1F60C682-0DD0-481D-905F-B94CB9A60CC5} = {1F60C682-0DD0-481D-905F-B94CB9A60CC5}
-		{34011EF0-F9B5-4DE5-8BA7-08946C9C80EE} = {34011EF0-F9B5-4DE5-8BA7-08946C9C80EE}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.GUI.Restarter", "OpenCBS.GUI.Restarter\OpenCBS.GUI.Restarter.csproj", "{90B5218E-10F0-4123-80E3-C4E65D6CF209}"
@@ -53,12 +51,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{85D5D9
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.Controls", "OpenCBS.Controls\OpenCBS.Controls.csproj", "{0DFCB871-734C-434D-AE9E-35C378B36F9E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.Interfaces", "OpenCBS.Interfaces\OpenCBS.Interfaces.csproj", "{79103586-7180-42F1-AC2E-FAC41ADE5970}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.Views", "OpenCBS.Views\OpenCBS.Views.csproj", "{E1211776-CE3B-4613-AA19-2D99E24EF982}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.Presenters", "OpenCBS.Presenters\OpenCBS.Presenters.csproj", "{34011EF0-F9B5-4DE5-8BA7-08946C9C80EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -140,18 +132,6 @@ Global
 		{0DFCB871-734C-434D-AE9E-35C378B36F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DFCB871-734C-434D-AE9E-35C378B36F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DFCB871-734C-434D-AE9E-35C378B36F9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{79103586-7180-42F1-AC2E-FAC41ADE5970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79103586-7180-42F1-AC2E-FAC41ADE5970}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79103586-7180-42F1-AC2E-FAC41ADE5970}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79103586-7180-42F1-AC2E-FAC41ADE5970}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E1211776-CE3B-4613-AA19-2D99E24EF982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E1211776-CE3B-4613-AA19-2D99E24EF982}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E1211776-CE3B-4613-AA19-2D99E24EF982}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E1211776-CE3B-4613-AA19-2D99E24EF982}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34011EF0-F9B5-4DE5-8BA7-08946C9C80EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34011EF0-F9B5-4DE5-8BA7-08946C9C80EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34011EF0-F9B5-4DE5-8BA7-08946C9C80EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34011EF0-F9B5-4DE5-8BA7-08946C9C80EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
