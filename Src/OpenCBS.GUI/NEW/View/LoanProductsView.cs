@@ -17,7 +17,9 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
 using System.Windows.Forms;
+using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Presenter;
 
 namespace OpenCBS.GUI.NEW.View
@@ -40,6 +42,11 @@ namespace OpenCBS.GUI.NEW.View
         public void Run()
         {
             Show();
+        }
+
+        public void ShowLoanProducts(IEnumerable<LoanProduct> loanProducts)
+        {
+            _loanProductsListView.SetObjects(loanProducts);
         }
     }
 }

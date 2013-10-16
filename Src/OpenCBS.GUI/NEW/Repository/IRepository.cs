@@ -18,14 +18,11 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
-using OpenCBS.GUI.NEW.Model;
-using OpenCBS.GUI.NEW.Presenter;
 
-namespace OpenCBS.GUI.NEW.View
+namespace OpenCBS.GUI.NEW.Repository
 {
-    public interface ILoanProductsView : IView<ILoanProductsPresenterCallbacks>
+    public interface IRepository<T>
     {
-        void Run();
-        void ShowLoanProducts(IEnumerable<LoanProduct> loanProducts);
+        IEnumerable<T> FindAll();
     }
 }

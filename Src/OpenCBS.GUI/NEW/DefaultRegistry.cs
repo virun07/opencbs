@@ -22,6 +22,7 @@ using OpenCBS.GUI.NEW.AppController;
 using OpenCBS.GUI.NEW.Command;
 using OpenCBS.GUI.NEW.CommandData;
 using OpenCBS.GUI.NEW.Presenter;
+using OpenCBS.GUI.NEW.Repository;
 using OpenCBS.GUI.NEW.View;
 using StructureMap.Configuration.DSL;
 
@@ -40,6 +41,10 @@ namespace OpenCBS.GUI.NEW
 
             // Commands
             For<ICommand<ShowLoanProductsData>>().Use<ShowLoanProductsCommand>();
+
+            // Repositories
+            For<IConnectionProvider>().Use<SqlConnectionProvider>();
+            For<ILoanProductRepository>().Use<LoanProductRepository>();
         }
     }
 }

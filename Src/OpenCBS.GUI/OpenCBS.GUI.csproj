@@ -175,6 +175,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\CrystalDecisions.Windows.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper, Version=1.12.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dapper.1.13\lib\net35\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="ObjectListView, Version=2.4.0.22388, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\ObjectListView.dll</HintPath>
@@ -698,6 +702,7 @@
     <Compile Include="NEW\CommandData\ShowLoanProductsData.cs" />
     <Compile Include="NEW\Command\ShowLoanProductsCommand.cs" />
     <Compile Include="NEW\DefaultRegistry.cs" />
+    <Compile Include="NEW\Model\LoanProduct.cs" />
     <Compile Include="NEW\Presenter\IMainPresenter.cs" />
     <Compile Include="NEW\Presenter\IPresenter.cs" />
     <Compile Include="NEW\Presenter\IMainPresenterCallbacks.cs" />
@@ -705,6 +710,12 @@
     <Compile Include="NEW\Presenter\ILoanProductsPresenterCallbacks.cs" />
     <Compile Include="NEW\Presenter\LoanProductsPresenter.cs" />
     <Compile Include="NEW\Presenter\MainPresenter.cs" />
+    <Compile Include="NEW\Repository\IConnectionProvider.cs" />
+    <Compile Include="NEW\Repository\ILoanProductRepository.cs" />
+    <Compile Include="NEW\Repository\IRepository.cs" />
+    <Compile Include="NEW\Repository\LoanProductRepository.cs" />
+    <Compile Include="NEW\Repository\Repository.cs" />
+    <Compile Include="NEW\Repository\SqlConnectionProvider.cs" />
     <Compile Include="NEW\View\ILoanProductsView.cs" />
     <Compile Include="NEW\View\IMainView.cs" />
     <Compile Include="NEW\View\IView.cs" />

@@ -17,15 +17,29 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-using OpenCBS.GUI.NEW.Model;
-using OpenCBS.GUI.NEW.Presenter;
+using System.Data;
+using System.Data.SqlClient;
+using OpenCBS.Shared.Settings;
 
-namespace OpenCBS.GUI.NEW.View
+namespace OpenCBS.GUI.NEW.Repository
 {
-    public interface ILoanProductsView : IView<ILoanProductsPresenterCallbacks>
+    public class SqlConnectionProvider : IConnectionProvider
     {
-        void Run();
-        void ShowLoanProducts(IEnumerable<LoanProduct> loanProducts);
+        public IDbConnection GetConnection()
+        {
+            var connectionBuilder = new SqlConnectionStringBuilder
+            {
+                UserID = TechnicalSettings.DatabaseLoginName,
+                Password = TechnicalSettings.DatabasePassword,
+                DataSource = TechnicalSettings.DatabaseServerName,
+                PersistSecurityInfo = false,
+                InitialCatalog = TechnicalSettings.DatabaseName,
+                ConnectTimeout = TechnicalSettings.DatabaseTimeout
+            };
+
+            var conn = new SqlConnection(connectionBuilder.ConnectionString);
+            conn.Open();
+            return conn;
+        }
     }
 }

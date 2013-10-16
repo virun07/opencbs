@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.GUI.NEW.AppController;
+using OpenCBS.GUI.NEW.Repository;
 using OpenCBS.GUI.NEW.View;
 
 namespace OpenCBS.GUI.NEW.Presenter
@@ -26,11 +27,13 @@ namespace OpenCBS.GUI.NEW.Presenter
     {
         private readonly ILoanProductsView _view;
         private readonly IApplicationController _appController;
+        private readonly ILoanProductRepository _loanProductRepository;
 
-        public LoanProductsPresenter(ILoanProductsView view, IApplicationController appController)
+        public LoanProductsPresenter(ILoanProductsView view, IApplicationController appController, ILoanProductRepository loanProductRepository)
         {
             _view = view;
             _appController = appController;
+            _loanProductRepository = loanProductRepository;
         }
 
         public void OnAdd()
@@ -49,11 +52,18 @@ namespace OpenCBS.GUI.NEW.Presenter
         {
             _view.Attach(this);
             _view.Run();
+            ShowLoanProducts();
         }
 
         public object View
         {
             get { return _view; }
+        }
+
+        private void ShowLoanProducts()
+        {
+            var loanProducts = _loanProductRepository.FindAll();
+            _view.ShowLoanProducts(loanProducts);
         }
     }
 }

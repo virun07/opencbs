@@ -18,14 +18,27 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
-using OpenCBS.GUI.NEW.Model;
-using OpenCBS.GUI.NEW.Presenter;
+using Dapper;
 
-namespace OpenCBS.GUI.NEW.View
+namespace OpenCBS.GUI.NEW.Repository
 {
-    public interface ILoanProductsView : IView<ILoanProductsPresenterCallbacks>
+    public abstract class Repository<T> : IRepository<T>
     {
-        void Run();
-        void ShowLoanProducts(IEnumerable<LoanProduct> loanProducts);
+        private readonly string _tableName;
+        private readonly IConnectionProvider _connectionProvider;
+
+        protected Repository(string tableName, IConnectionProvider connectionProvider)
+        {
+            _tableName = tableName;
+            _connectionProvider = connectionProvider;
+        }
+
+        public virtual IEnumerable<T> FindAll()
+        {
+            using (var connection = _connectionProvider.GetConnection())
+            {
+                return connection.Query<T>("SELECT * FROM " + _tableName, null);
+            }
+        }
     }
 }

@@ -17,15 +17,11 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-using OpenCBS.GUI.NEW.Model;
-using OpenCBS.GUI.NEW.Presenter;
-
-namespace OpenCBS.GUI.NEW.View
+namespace OpenCBS.GUI.NEW.Model
 {
-    public interface ILoanProductsView : IView<ILoanProductsPresenterCallbacks>
+    public class LoanProduct
     {
-        void Run();
-        void ShowLoanProducts(IEnumerable<LoanProduct> loanProducts);
+        public string Name { get; set; }
+        public string Code { get; set; }
     }
 }
