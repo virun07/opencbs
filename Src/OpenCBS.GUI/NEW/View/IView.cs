@@ -21,6 +21,6 @@ namespace OpenCBS.GUI.NEW.View
 {
     public interface IView<TCallbacks>
     {
-        void Attach(TCallbacks presenter);
+        void Attach(TCallbacks presenterCallbacks);
     }
 }

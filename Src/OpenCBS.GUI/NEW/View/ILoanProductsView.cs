@@ -27,5 +27,8 @@ namespace OpenCBS.GUI.NEW.View
     {
         void Run();
         void ShowLoanProducts(IEnumerable<LoanProduct> loanProducts);
+        bool EditEnabled { get; set; }
+        bool DeleteEnabled { get; set; }
+        LoanProduct SelectedLoanProduct { get; }
     }
 }

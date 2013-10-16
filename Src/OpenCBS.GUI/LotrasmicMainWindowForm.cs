@@ -1167,9 +1167,9 @@ namespace OpenCBS.GUI
             }
         }
 
-        public void Attach(IMainPresenterCallbacks presenter)
+        public void Attach(IMainPresenterCallbacks presenterCallbacks)
         {
-            mnuPackages.Click += (sender, e) => presenter.OnShowLoanProducts();
+            mnuPackages.Click += (sender, e) => presenterCallbacks.OnShowLoanProducts();
         }
     }
 }

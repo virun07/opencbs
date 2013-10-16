@@ -48,6 +48,12 @@ namespace OpenCBS.GUI.NEW.Presenter
         {
         }
 
+        public void OnSelectionChanged()
+        {
+            var loanProduct = _view.SelectedLoanProduct;
+            _view.EditEnabled = _view.DeleteEnabled = loanProduct != null;
+        }
+
         public void Run()
         {
             _view.Attach(this);

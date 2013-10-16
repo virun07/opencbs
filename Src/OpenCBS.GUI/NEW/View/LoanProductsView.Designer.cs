@@ -93,6 +93,7 @@
             this._loanProductsListView.FullRowSelect = true;
             this._loanProductsListView.GridLines = true;
             this._loanProductsListView.HeaderWordWrap = true;
+            this._loanProductsListView.HideSelection = false;
             this._loanProductsListView.Location = new System.Drawing.Point(0, 0);
             this._loanProductsListView.MultiSelect = false;
             this._loanProductsListView.Name = "_loanProductsListView";

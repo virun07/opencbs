@@ -26,17 +26,21 @@ namespace OpenCBS.GUI.NEW.View
 {
     public partial class LoanProductsView : Form, ILoanProductsView
     {
+        private ILoanProductsPresenterCallbacks _presenterCallbacks;
+
         public LoanProductsView()
         {
             InitializeComponent();
             MdiParent = Application.OpenForms[0];
         }
 
-        public void Attach(ILoanProductsPresenterCallbacks presenter)
+        public void Attach(ILoanProductsPresenterCallbacks presenterCallbacks)
         {
-            _addButton.Click += (sender, e) => presenter.OnAdd();
-            _editButton.Click += (sender, e) => presenter.OnEdit();
-            _deleteButton.Click += (sender, e) => presenter.OnDelete();
+            _addButton.Click += (sender, e) => presenterCallbacks.OnAdd();
+            _editButton.Click += (sender, e) => presenterCallbacks.OnEdit();
+            _deleteButton.Click += (sender, e) => presenterCallbacks.OnDelete();
+            _loanProductsListView.SelectionChanged += (sender, e) => presenterCallbacks.OnSelectionChanged();
+            _presenterCallbacks = presenterCallbacks;
         }
 
         public void Run()
@@ -47,6 +51,24 @@ namespace OpenCBS.GUI.NEW.View
         public void ShowLoanProducts(IEnumerable<LoanProduct> loanProducts)
         {
             _loanProductsListView.SetObjects(loanProducts);
+            _presenterCallbacks.OnSelectionChanged();
+        }
+
+        public bool EditEnabled
+        {
+            get { return _editButton.Enabled; }
+            set { _editButton.Enabled = value; }
+        }
+
+        public bool DeleteEnabled
+        {
+            get { return _deleteButton.Enabled; }
+            set { _deleteButton.Enabled = value; }
+        }
+
+        public LoanProduct SelectedLoanProduct
+        {
+            get { return (LoanProduct)_loanProductsListView.SelectedObject; }
         }
     }
 }
