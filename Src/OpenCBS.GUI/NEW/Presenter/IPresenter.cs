@@ -21,7 +21,6 @@ namespace OpenCBS.GUI.NEW.Presenter
 {
     public interface IPresenter
     {
-        void Run();
         object View { get; }
     }
 }

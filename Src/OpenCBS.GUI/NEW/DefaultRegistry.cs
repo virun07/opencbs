@@ -45,6 +45,7 @@ namespace OpenCBS.GUI.NEW
             // Commands
             For<ICommand<ShowLoanProductsData>>().Use<ShowLoanProductsCommand>();
             For<ICommand<AddLoanProductData>>().Use<AddLoanProductCommand>();
+            For<ICommand<EditLoanProductData>>().Use<EditLoanProductCommand>();
 
             // Repositories
             For<IConnectionProvider>().Use<SqlConnectionProvider>();

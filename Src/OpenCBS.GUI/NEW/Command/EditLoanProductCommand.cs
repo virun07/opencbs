@@ -17,40 +17,24 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-using System.Data;
-using DapperExtensions;
+using OpenCBS.GUI.NEW.AppController;
+using OpenCBS.GUI.NEW.CommandData;
+using OpenCBS.GUI.NEW.Presenter;
 
-namespace OpenCBS.GUI.NEW.Repository
+namespace OpenCBS.GUI.NEW.Command
 {
-    public abstract class Repository<T> : IRepository<T> where T : class
+    public class EditLoanProductCommand : ICommand<EditLoanProductData>
     {
-        private readonly IConnectionProvider _connectionProvider;
+        private readonly ILoanProductPresenter _presenter;
 
-        protected Repository(IConnectionProvider connectionProvider)
+        public EditLoanProductCommand(ILoanProductPresenter presenter)
         {
-            _connectionProvider = connectionProvider;
+            _presenter = presenter;
         }
 
-        protected IDbConnection GetConnection()
+        public void Execute(EditLoanProductData commandData)
         {
-            return _connectionProvider.GetConnection();
-        }
-
-        public virtual IEnumerable<T> FindAll()
-        {
-            using (var connection = GetConnection())
-            {
-                return connection.GetList<T>();
-            }
-        }
-
-        public virtual T FindById(int id)
-        {
-            using (var connection = GetConnection())
-            {
-                return connection.Get<T>(id);
-            }
+            _presenter.Run(commandData.LoanProduct);
         }
     }
 }

@@ -17,6 +17,8 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using OpenCBS.GUI.NEW.Model;
+using OpenCBS.GUI.NEW.Repository;
 using OpenCBS.GUI.NEW.View;
 
 namespace OpenCBS.GUI.NEW.Presenter
@@ -24,21 +26,43 @@ namespace OpenCBS.GUI.NEW.Presenter
     public class LoanProductPresenter : ILoanProductPresenter, ILoanProductPresenterCallbacks
     {
         private readonly ILoanProductView _view;
+        private readonly IPaymentFrequencyRepository _paymentFrequencyRepository;
 
-        public LoanProductPresenter(ILoanProductView view)
+        public LoanProductPresenter(ILoanProductView view, IPaymentFrequencyRepository paymentFrequencyRepository)
         {
             _view = view;
+            _paymentFrequencyRepository = paymentFrequencyRepository;
         }
 
-        public void Run()
+        public void Run(LoanProduct loanProduct)
         {
             _view.Attach(this);
+            _view.ShowPaymentFrequencies(_paymentFrequencyRepository.FindAll());
+            ShowLoanProduct(loanProduct);
             _view.Run();
         }
 
         public object View
         {
             get { return _view; }
+        }
+
+        public void Ok()
+        {
+            _view.Stop();
+        }
+
+        public void Cancel()
+        {
+            _view.Stop();
+        }
+
+        private void ShowLoanProduct(LoanProduct loanProduct)
+        {
+            if (loanProduct == null) return;
+            _view.LoanProductName = loanProduct.Name;
+            _view.Code = loanProduct.Code;
+            _view.PaymentFrequency = loanProduct.PaymentFrequency;
         }
     }
 }

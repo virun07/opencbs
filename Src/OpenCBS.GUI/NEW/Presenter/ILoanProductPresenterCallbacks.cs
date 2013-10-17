@@ -21,5 +21,7 @@ namespace OpenCBS.GUI.NEW.Presenter
 {
     public interface ILoanProductPresenterCallbacks
     {
+        void Ok();
+        void Cancel();
     }
 }

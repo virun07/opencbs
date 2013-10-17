@@ -17,7 +17,9 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
 using System.Windows.Forms;
+using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Presenter;
 
 namespace OpenCBS.GUI.NEW.View
@@ -36,6 +38,37 @@ namespace OpenCBS.GUI.NEW.View
 
         public void Attach(ILoanProductPresenterCallbacks presenterCallbacks)
         {
+            _okButton.Click += (sender, e) => presenterCallbacks.Ok();
+            _cancelButton.Click += (sender, e) => presenterCallbacks.Cancel();
+        }
+
+        public void Stop()
+        {
+            Close();
+        }
+
+        public void ShowPaymentFrequencies(IEnumerable<PaymentFrequency> paymentFrequencies)
+        {
+            foreach (var frequency in paymentFrequencies)
+                _paymentFrequencyComboBox.Items.Add(frequency);
+        }
+
+        public string LoanProductName
+        {
+            get { return _nameTextBox.Text; }
+            set { _nameTextBox.Text = value; }
+        }
+
+        public string Code
+        {
+            get { return _codeTextBox.Text; }
+            set { _codeTextBox.Text = value; }
+        }
+
+        public PaymentFrequency PaymentFrequency
+        {
+            get { return (PaymentFrequency)_paymentFrequencyComboBox.SelectedItem; }
+            set { _paymentFrequencyComboBox.SelectedItem = value; }
         }
     }
 }

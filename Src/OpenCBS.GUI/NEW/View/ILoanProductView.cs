@@ -17,6 +17,8 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
+using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Presenter;
 
 namespace OpenCBS.GUI.NEW.View
@@ -24,5 +26,11 @@ namespace OpenCBS.GUI.NEW.View
     public interface ILoanProductView : IView<ILoanProductPresenterCallbacks>
     {
         void Run();
+        void Stop();
+        void ShowPaymentFrequencies(IEnumerable<PaymentFrequency> paymentFrequencies);
+
+        string LoanProductName { get; set; }
+        string Code { get; set; }
+        PaymentFrequency PaymentFrequency { get; set; }
     }
 }

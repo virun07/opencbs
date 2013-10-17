@@ -44,6 +44,9 @@ namespace OpenCBS.GUI.NEW.Presenter
 
         public void OnEdit()
         {
+            var loanProduct = _view.SelectedLoanProduct;
+            if (loanProduct == null) return;
+            _appController.Execute(new EditLoanProductData { LoanProduct = loanProduct });
         }
 
         public void OnDelete()

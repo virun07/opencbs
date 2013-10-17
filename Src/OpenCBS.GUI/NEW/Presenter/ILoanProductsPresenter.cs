@@ -21,5 +21,6 @@ namespace OpenCBS.GUI.NEW.Presenter
 {
     public interface ILoanProductsPresenter : IPresenter
     {
+        void Run();
     }
 }

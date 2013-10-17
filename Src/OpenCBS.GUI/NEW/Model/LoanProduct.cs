@@ -19,9 +19,8 @@
 
 namespace OpenCBS.GUI.NEW.Model
 {
-    public class LoanProduct
+    public class LoanProduct : EntityBase
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
         public PaymentFrequency PaymentFrequency { get; set; }

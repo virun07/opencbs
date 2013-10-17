@@ -19,9 +19,8 @@
 
 namespace OpenCBS.GUI.NEW.Model
 {
-    public class PaymentFrequency
+    public class PaymentFrequency : EntityBase
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public int NumberOfDays { get; set; }
         public int NumberOfMonths { get; set; }

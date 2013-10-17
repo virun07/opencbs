@@ -33,13 +33,14 @@
     </ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetZone>Custom</TargetZone>
     <ExcludedPermissions>
     </ExcludedPermissions>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
     <PublishUrl>http://localhost/Octopus/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
@@ -175,10 +176,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\CrystalDecisions.Windows.Forms.dll</HintPath>
     </Reference>
-    <Reference Include="Dapper, Version=1.12.1.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Dapper.1.13\lib\net35\Dapper.dll</HintPath>
+    <Reference Include="Dapper">
+      <HintPath>..\packages\Dapper.1.13\lib\net40\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="DapperExtensions">
+      <HintPath>..\packages\DapperExtensions.1.4.3\lib\net40\DapperExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="ObjectListView, Version=2.4.0.22388, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\ObjectListView.dll</HintPath>
@@ -700,14 +704,17 @@
     <Compile Include="NEW\AppController\ICommand.cs" />
     <Compile Include="NEW\BootStrapper.cs" />
     <Compile Include="NEW\CommandData\AddLoanProductData.cs" />
+    <Compile Include="NEW\CommandData\EditLoanProductData.cs" />
     <Compile Include="NEW\CommandData\ShowLoanProductsData.cs" />
     <Compile Include="NEW\Command\AddLoanProductCommand.cs" />
+    <Compile Include="NEW\Command\EditLoanProductCommand.cs" />
     <Compile Include="NEW\Command\ShowLoanProductsCommand.cs" />
     <Compile Include="NEW\DefaultRegistry.cs" />
     <Compile Include="NEW\Dto\LoanProductDto.cs" />
     <Compile Include="NEW\Mapper\ILoanProductMapper.cs" />
     <Compile Include="NEW\Mapper\IMapper.cs" />
     <Compile Include="NEW\Mapper\LoanProductMapper.cs" />
+    <Compile Include="NEW\Model\EntityBase.cs" />
     <Compile Include="NEW\Model\LoanProduct.cs" />
     <Compile Include="NEW\Model\PaymentFrequency.cs" />
     <Compile Include="NEW\Presenter\ILoanProductPresenter.cs" />
@@ -720,6 +727,7 @@
     <Compile Include="NEW\Presenter\LoanProductPresenter.cs" />
     <Compile Include="NEW\Presenter\LoanProductsPresenter.cs" />
     <Compile Include="NEW\Presenter\MainPresenter.cs" />
+    <Compile Include="NEW\Repository\CustomTableNameMapper.cs" />
     <Compile Include="NEW\Repository\IConnectionProvider.cs" />
     <Compile Include="NEW\Repository\ILoanProductRepository.cs" />
     <Compile Include="NEW\Repository\IPaymentFrequencyRepository.cs" />

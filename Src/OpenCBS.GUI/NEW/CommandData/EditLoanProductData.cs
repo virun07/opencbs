@@ -19,13 +19,10 @@
 
 using OpenCBS.GUI.NEW.Model;
 
-namespace OpenCBS.GUI.NEW.Repository
+namespace OpenCBS.GUI.NEW.CommandData
 {
-    public class PaymentFrequencyRepository : Repository<PaymentFrequency>, IPaymentFrequencyRepository
+    public class EditLoanProductData
     {
-        public PaymentFrequencyRepository(IConnectionProvider connectionProvider)
-            : base(connectionProvider)
-        {
-        }
+        public LoanProduct LoanProduct { get; set; }
     }
 }

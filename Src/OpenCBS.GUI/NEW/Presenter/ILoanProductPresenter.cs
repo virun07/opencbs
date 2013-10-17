@@ -17,9 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using OpenCBS.GUI.NEW.Model;
+
 namespace OpenCBS.GUI.NEW.Presenter
 {
     public interface ILoanProductPresenter : IPresenter
     {
+        void Run(LoanProduct laonProduct);
     }
 }

@@ -17,40 +17,16 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-using System.Data;
-using DapperExtensions;
-
-namespace OpenCBS.GUI.NEW.Repository
+namespace OpenCBS.GUI.NEW.Model
 {
-    public abstract class Repository<T> : IRepository<T> where T : class
+    public abstract class EntityBase
     {
-        private readonly IConnectionProvider _connectionProvider;
+        public int Id { get; set; }
 
-        protected Repository(IConnectionProvider connectionProvider)
+        public override bool Equals(object obj)
         {
-            _connectionProvider = connectionProvider;
-        }
-
-        protected IDbConnection GetConnection()
-        {
-            return _connectionProvider.GetConnection();
-        }
-
-        public virtual IEnumerable<T> FindAll()
-        {
-            using (var connection = GetConnection())
-            {
-                return connection.GetList<T>();
-            }
-        }
-
-        public virtual T FindById(int id)
-        {
-            using (var connection = GetConnection())
-            {
-                return connection.Get<T>(id);
-            }
+            if (obj == null) return false;
+            return Id == ((EntityBase) obj).Id;
         }
     }
 }
