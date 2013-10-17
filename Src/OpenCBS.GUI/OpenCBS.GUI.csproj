@@ -699,7 +699,9 @@
     <Compile Include="NEW\AppController\IApplicationController.cs" />
     <Compile Include="NEW\AppController\ICommand.cs" />
     <Compile Include="NEW\BootStrapper.cs" />
+    <Compile Include="NEW\CommandData\AddLoanProductData.cs" />
     <Compile Include="NEW\CommandData\ShowLoanProductsData.cs" />
+    <Compile Include="NEW\Command\AddLoanProductCommand.cs" />
     <Compile Include="NEW\Command\ShowLoanProductsCommand.cs" />
     <Compile Include="NEW\DefaultRegistry.cs" />
     <Compile Include="NEW\Dto\LoanProductDto.cs" />
@@ -708,11 +710,14 @@
     <Compile Include="NEW\Mapper\LoanProductMapper.cs" />
     <Compile Include="NEW\Model\LoanProduct.cs" />
     <Compile Include="NEW\Model\PaymentFrequency.cs" />
+    <Compile Include="NEW\Presenter\ILoanProductPresenter.cs" />
+    <Compile Include="NEW\Presenter\ILoanProductPresenterCallbacks.cs" />
     <Compile Include="NEW\Presenter\IMainPresenter.cs" />
     <Compile Include="NEW\Presenter\IPresenter.cs" />
     <Compile Include="NEW\Presenter\IMainPresenterCallbacks.cs" />
     <Compile Include="NEW\Presenter\ILoanProductsPresenter.cs" />
     <Compile Include="NEW\Presenter\ILoanProductsPresenterCallbacks.cs" />
+    <Compile Include="NEW\Presenter\LoanProductPresenter.cs" />
     <Compile Include="NEW\Presenter\LoanProductsPresenter.cs" />
     <Compile Include="NEW\Presenter\MainPresenter.cs" />
     <Compile Include="NEW\Repository\IConnectionProvider.cs" />
@@ -724,6 +729,7 @@
     <Compile Include="NEW\Repository\Repository.cs" />
     <Compile Include="NEW\Repository\SqlConnectionProvider.cs" />
     <Compile Include="NEW\View\ILoanProductsView.cs" />
+    <Compile Include="NEW\View\ILoanProductView.cs" />
     <Compile Include="NEW\View\IMainView.cs" />
     <Compile Include="NEW\View\IView.cs" />
     <Compile Include="NEW\View\LoanProductsView.cs">
@@ -731,6 +737,12 @@
     </Compile>
     <Compile Include="NEW\View\LoanProductsView.Designer.cs">
       <DependentUpon>LoanProductsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NEW\View\LoanProductView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NEW\View\LoanProductView.Designer.cs">
+      <DependentUpon>LoanProductView.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2334,6 +2346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NEW\View\LoanProductsView.resx">
       <DependentUpon>LoanProductsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NEW\View\LoanProductView.resx">
+      <DependentUpon>LoanProductView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\FrmAddCollateralProduct.fr.resx">
       <DependentUpon>FrmAddCollateralProduct.cs</DependentUpon>

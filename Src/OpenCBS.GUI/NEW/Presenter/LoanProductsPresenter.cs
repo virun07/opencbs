@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.GUI.NEW.AppController;
+using OpenCBS.GUI.NEW.CommandData;
 using OpenCBS.GUI.NEW.Repository;
 using OpenCBS.GUI.NEW.View;
 
@@ -38,6 +39,7 @@ namespace OpenCBS.GUI.NEW.Presenter
 
         public void OnAdd()
         {
+            _appController.Execute(new AddLoanProductData());
         }
 
         public void OnEdit()
