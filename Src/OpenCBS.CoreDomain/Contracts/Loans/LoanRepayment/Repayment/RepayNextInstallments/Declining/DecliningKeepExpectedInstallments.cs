@@ -72,8 +72,8 @@ namespace OpenCBS.CoreDomain.Contracts.Loans.LoanRepayment.Repayment.RepayNextIn
                     if (amountPaid == 0) break;
 
                     //penalty
-                    _methodToRepayFees.RepayFees(installment, ref amountPaid, ref feesEvent);
-                    if (amountPaid == 0) break;
+                    //_methodToRepayFees.RepayFees(installment, ref amountPaid, ref feesEvent);
+                    //if (amountPaid == 0) break;
 
                     //Interests
                     if (amountPaid == 0) return;

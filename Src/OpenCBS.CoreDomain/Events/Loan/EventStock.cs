@@ -166,6 +166,17 @@ namespace OpenCBS.CoreDomain.Events
             return eventList;
         }
 
+        public List<RepaymentEvent> GetNonDeletedRepaymentEvents()
+        {
+            var eventList =
+                _list.Where(e => e is RepaymentEvent && !(e is PendingRepaymentEvent) && !e.Deleted)
+                     .Cast<RepaymentEvent>()
+                     .ToList();
+
+            eventList.Sort((x, y) => x.Date.CompareTo(y.Date));
+            return eventList;
+        }
+
         public List<SavingEvent> GetSavingEvents()
         {
             List<SavingEvent> eventList = new List<SavingEvent>();
@@ -228,6 +239,14 @@ namespace OpenCBS.CoreDomain.Events
                 if (e is AccruedInterestEvent)
                     eventList.Add((AccruedInterestEvent)e);
             }
+            eventList.Sort((x, y) => x.Date.CompareTo(y.Date));
+            return eventList;
+        }
+
+        public List<LoanPenaltyAccrualEvent> GetLoanPenaltyAccrualEvents()
+        {
+            var eventList = _list.OfType<LoanPenaltyAccrualEvent>().ToList();
+
             eventList.Sort((x, y) => x.Date.CompareTo(y.Date));
             return eventList;
         }

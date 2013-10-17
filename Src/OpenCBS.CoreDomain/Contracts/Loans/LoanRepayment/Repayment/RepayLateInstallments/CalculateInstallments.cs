@@ -336,51 +336,98 @@ namespace OpenCBS.CoreDomain.Contracts.Loans.LoanRepayment.Repayment.RepayLateIn
         {
             if (amountPaid == 0) return;
             Installment installment = null;
-            for (int i = 0; i < _contract.NbOfInstallments; i++)
+            bool isfirstUnpaid = false;
+            for (var i = 0; i < _contract.NbOfInstallments; i++)
             {
                 installment = _contract.GetInstallment(i);
-                if (!installment.IsRepaid && installment.ExpectedDate <= pDate)
+                if (!isfirstUnpaid)
                 {
-                    OCurrency interestPrepayment = 0;
-                    OCurrency initiAlamount = amountPaid;
-                    //commission
-                    _methodToRepayCommission.RepayCommission(installment, ref amountPaid, ref commissionsEvent);
-                    if (amountPaid == 0) break;
-
-                    //penalty
-                    _methodToRepayFees.RepayFees(installment, ref amountPaid, ref feesEvent);
-                    if (amountPaid == 0) break;
-
-                    //interest
-                    if (amountPaid == 0) break;
-                    _methodToRepayInterest.RepayInterest(installment, ref amountPaid, ref interestEvent, ref interestPrepayment);
-
-                    //principal
-                    if (amountPaid == 0)
+                    if (installment.IsRepaid || installment.ExpectedDate > pDate) continue;
+                    var penalty = _contract.GetUnpaidPenalties(pDate);
+                    penalty = _contract.UseCents ? Math.Round(penalty.Value, 2) : Math.Round(penalty.Value);
+                    if (penalty < 0) penalty = 0;
+                    if (AmountComparer.Compare(amountPaid, penalty) > 0)
                     {
-                        PaidIstallments.Add(installment);
-                        break;
-                    }
-
-                    if (AmountComparer.Compare(amountPaid, installment.CapitalRepayment - installment.PaidCapital) > 0)
-                    {
-                        OCurrency principalHasToPay = installment.CapitalRepayment - installment.PaidCapital;
-                        installment.PaidCapital = installment.CapitalRepayment;
-                        amountPaid -= principalHasToPay;
-                        principalEvent += principalHasToPay;
+                        feesEvent = penalty;
+                        amountPaid -= penalty;
+                        installment.PaidFees += penalty;
+                        installment.FeesUnpaid = 0;
                     }
                     else
                     {
-                        installment.PaidCapital += amountPaid;
-                        principalEvent += amountPaid;
+                        feesEvent = amountPaid;
+                        installment.PaidFees += amountPaid;
+                        installment.FeesUnpaid = penalty - amountPaid;
                         amountPaid = 0;
                     }
+                    isfirstUnpaid = true;
+                    //break;
+                }
+                else
+                {
+                    installment.FeesUnpaid = 0;
+                    installment.CalculatedPenalty = 0;
+                }
+                //--penalty
+                //_methodToRepayFees.RepayFees(installment, ref amountPaid, ref feesEvent);
+                //--installment.PaidFees = feesEvent;
+                //--installment.FeesUnpaid = 0;
+                //break;
+            }
 
-                    if (initiAlamount != amountPaid)
-                        PaidIstallments.Add(installment);
+            if (amountPaid != 0)
+            {
+                for (int i = 0; i < _contract.NbOfInstallments; i++)
+                {
+                    installment = _contract.GetInstallment(i);
+                    if (!installment.IsRepaid && installment.ExpectedDate <= pDate)
+                    {
+                        OCurrency interestPrepayment = 0;
+                        OCurrency initiAlamount = amountPaid;
+                        //commission
+                        _methodToRepayCommission.RepayCommission(installment, ref amountPaid, ref commissionsEvent);
+                        if (amountPaid == 0) break;
 
-                    if (amountPaid == 0)
-                        break;
+                        //penalty
+                        //_methodToRepayFees.RepayFees(installment, ref amountPaid, ref feesEvent);
+                        //if (amountPaid == 0) break;
+                        
+
+                        //interest
+                        if (amountPaid == 0) break;
+                        _methodToRepayInterest.RepayInterest(installment, ref amountPaid, ref interestEvent,
+                                                             ref interestPrepayment);
+
+                        //principal
+                        if (amountPaid == 0)
+                        {
+                            PaidIstallments.Add(installment);
+                            break;
+                        }
+
+                        if (AmountComparer.Compare(amountPaid, installment.CapitalRepayment - installment.PaidCapital) >
+                            0)
+                        {
+                            OCurrency principalHasToPay = installment.CapitalRepayment - installment.PaidCapital;
+                            installment.PaidCapital = installment.CapitalRepayment;
+                            amountPaid -= principalHasToPay;
+                            principalEvent += principalHasToPay;
+                        }
+                        else
+                        {
+                            installment.PaidCapital += amountPaid;
+                            principalEvent += amountPaid;
+                            amountPaid = 0;
+                        }
+                        installment.PaidCapital = _contract.UseCents
+                                                      ? Math.Round(installment.PaidCapital.Value, 2)
+                                                      : Math.Round(installment.PaidCapital.Value);
+                        if (initiAlamount != amountPaid)
+                            PaidIstallments.Add(installment);
+
+                        if (amountPaid == 0)
+                            break;
+                    }
                 }
             }
 

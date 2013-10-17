@@ -203,7 +203,7 @@ namespace OpenCBS.CoreDomain.Contracts.Loans.LoanRepayment
 
             PaidIstallments.AddRange(AddInstallments(_calculateInstallments.PaidIstallments, PaidIstallments));
             PaidIstallments.AddRange(AddInstallments(_repaymentMethod.PaidIstallments, PaidIstallments));
-
+            
             //old legacy one day we will remove it
             if (paymentType == OPaymentType.StandardPayment)
                 _feesForAnticipatedRepayment.calculateFees(_date, ref amountPaid, ref commissionsEvent);

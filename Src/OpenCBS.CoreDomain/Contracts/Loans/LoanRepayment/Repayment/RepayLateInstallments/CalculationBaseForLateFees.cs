@@ -26,6 +26,7 @@ using OpenCBS.CoreDomain.Events;
 using OpenCBS.Enums;
 using OpenCBS.Shared;
 using OpenCBS.Shared.Settings;
+using OpenCBS.Services;
 
 namespace OpenCBS.CoreDomain.Contracts.Loans.LoanRepayment.Repayment.RepayLateInstallments
 {
@@ -72,69 +73,75 @@ namespace OpenCBS.CoreDomain.Contracts.Loans.LoanRepayment.Repayment.RepayLateIn
         public static OCurrency FeesBasedOnInitialAmount(Loan pContract, DateTime pDate, int pInstallmentNumber, bool pForClosure,
             ApplicationSettings pGeneralSettings, NonWorkingDateSingleton pNonWorkingDate)
         {
-            if (pContract.NonRepaymentPenalties.InitialAmount != 0)
-            {
-                int pastDueDays = pForClosure ? pContract.CalculatePastDueForClosure(pDate) : pContract.CalculatePastDueSinceLastRepayment(pDate);
-                pastDueDays = _CalculatePastDueWithGeneralParameterForRepayment(pastDueDays, pGeneralSettings);
-                if (pContract.GracePeriodOfLateFees >= pastDueDays)
-                {
-                    pastDueDays = 0;
-                }
-                OCurrency fees = pContract.Amount * Convert.ToDecimal(pContract.NonRepaymentPenalties.InitialAmount) * (double)pastDueDays;
+            //if (pContract.NonRepaymentPenalties.InitialAmount != 0)
+            //{
+            //    int pastDueDays = pForClosure ? pContract.CalculatePastDueForClosure(pDate) : pContract.CalculatePastDueSinceLastRepayment(pDate);
+            //    pastDueDays = _CalculatePastDueWithGeneralParameterForRepayment(pastDueDays, pGeneralSettings);
+            //    if (pContract.GracePeriodOfLateFees >= pastDueDays)
+            //    {
+            //        pastDueDays = 0;
+            //    }
+            //    OCurrency fees = pContract.Amount * Convert.ToDecimal(pContract.NonRepaymentPenalties.InitialAmount) * (double)pastDueDays;
 
-                OCurrency amount = pContract.UseCents ? Math.Round(fees.Value, 2, MidpointRounding.AwayFromZero) : Math.Round(fees.Value, 0, MidpointRounding.AwayFromZero);
+            //    OCurrency amount = pContract.UseCents ? Math.Round(fees.Value, 2, MidpointRounding.AwayFromZero) : Math.Round(fees.Value, 0, MidpointRounding.AwayFromZero);
 
-                if (pContract.WrittenOff && pGeneralSettings.IsStopWriteOffPenalty)
-                    amount = 0;
-                return amount;
-            }
+            //    if (pContract.WrittenOff && pGeneralSettings.IsStopWriteOffPenalty)
+            //        amount = 0;
+            //    return amount;
+            //}
             return 0;
         }
 
         public static OCurrency FeesBasedOnOlb(Loan pContract, DateTime pDate, int pInstallmentNumber, bool pForClosure,
             ApplicationSettings pGeneralSettings, NonWorkingDateSingleton pNonWorkingDate)
         {
-            if (pContract.NonRepaymentPenalties.OLB != 0)
-            {
-                OCurrency fees = pForClosure
-                    ? _CalculateNonRepaymentPenaltiesForClosure(pContract, pDate, pInstallmentNumber, OLateRepaymentTypes.Olb,
-                    pGeneralSettings, pNonWorkingDate)
-                    : CalculateNonRepaymentPenalties(pContract, pDate, pInstallmentNumber, OLateRepaymentTypes.Olb,
-                    pGeneralSettings, pNonWorkingDate);
+            //if (pContract.NonRepaymentPenalties.OLB != 0)
+            //{
+            //    OCurrency fees = pForClosure
+            //        ? _CalculateNonRepaymentPenaltiesForClosure(pContract, pDate, pInstallmentNumber, OLateRepaymentTypes.Olb,
+            //        pGeneralSettings, pNonWorkingDate)
+            //        : CalculateNonRepaymentPenalties(pContract, pDate, pInstallmentNumber, OLateRepaymentTypes.Olb,
+            //        pGeneralSettings, pNonWorkingDate);
 
-                return fees;
-            }
+            //    return fees;
+            //}
             return 0;
         }
 
         public static OCurrency FeesBasedOnOverduePrincipal(Loan pContract, DateTime pDate, int pInstallmentNumber, bool pForClosure, 
             ApplicationSettings pGeneralSettings, NonWorkingDateSingleton pNonWorkingDate)
         {
-            if (pContract.NonRepaymentPenalties.OverDuePrincipal != 0)
-            {
-                OCurrency fees = pForClosure
-                    ? _CalculateNonRepaymentPenaltiesForClosure(pContract, pDate, pInstallmentNumber, OLateRepaymentTypes.Principal, 
-                    pGeneralSettings, pNonWorkingDate)
-                    : CalculateNonRepaymentPenalties(pContract, pDate, pInstallmentNumber, OLateRepaymentTypes.Principal, 
-                    pGeneralSettings, pNonWorkingDate);
+            //if (pContract.NonRepaymentPenalties.OverDuePrincipal != 0)
+            //{
+            //    OCurrency fees = pForClosure
+            //        ? _CalculateNonRepaymentPenaltiesForClosure(pContract, pDate, pInstallmentNumber, OLateRepaymentTypes.Principal, 
+            //        pGeneralSettings, pNonWorkingDate)
+            //        : CalculateNonRepaymentPenalties(pContract, pDate, pInstallmentNumber, OLateRepaymentTypes.Principal, 
+            //        pGeneralSettings, pNonWorkingDate);
 
-                return fees;
-            }
-            return 0;
+            //    return fees;
+            //}
+            //return 0;
+            var penalty = pContract.GetUnpaidPenalties(pDate);
+            penalty = pContract.UseCents ? Math.Round(penalty.Value, 2) : Math.Round(penalty.Value);
+            return penalty < 0 ? 0 : penalty;
+            //return ServicesProvider.GetInstance()
+            //              .GetContractServices()
+            //              .GetPenalties(pContract.Id, pDate);
         }
 
         public static OCurrency FeesBasedOnOverdueInterest(Loan pContract, DateTime pDate, int pInstallmentNumber, bool pForClosure, ApplicationSettings pGeneralSettings, NonWorkingDateSingleton pNonWorkingDate)
         {
-            if (pContract.NonRepaymentPenalties.OverDueInterest != 0)
-            {
-                OCurrency fees = pForClosure
-                    ? _CalculateNonRepaymentPenaltiesForClosure(pContract, pDate, pInstallmentNumber, OLateRepaymentTypes.Interest, 
-                    pGeneralSettings, pNonWorkingDate)
-                    : CalculateNonRepaymentPenalties(pContract, pDate, pInstallmentNumber, OLateRepaymentTypes.Interest, 
-                    pGeneralSettings, pNonWorkingDate);
+            //if (pContract.NonRepaymentPenalties.OverDueInterest != 0)
+            //{
+            //    OCurrency fees = pForClosure
+            //        ? _CalculateNonRepaymentPenaltiesForClosure(pContract, pDate, pInstallmentNumber, OLateRepaymentTypes.Interest, 
+            //        pGeneralSettings, pNonWorkingDate)
+            //        : CalculateNonRepaymentPenalties(pContract, pDate, pInstallmentNumber, OLateRepaymentTypes.Interest, 
+            //        pGeneralSettings, pNonWorkingDate);
 
-                return fees;
-            }
+            //    return fees;
+            //}
             return 0;
         }
 

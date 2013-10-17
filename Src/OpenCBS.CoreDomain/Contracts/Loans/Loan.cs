@@ -1564,7 +1564,9 @@ namespace OpenCBS.CoreDomain.Contracts.Loans
 
                 if (principalAmount > Amount)
                 {
-                    principalEvent -= Math.Round(principalAmount.Value, 2) - Amount;
+                    principalEvent -= UseCents
+                                          ? Math.Round(principalAmount.Value, 2) - Amount
+                                          : Math.Round(principalAmount.Value) - Amount;
                 }
             }
 
@@ -2164,7 +2166,25 @@ namespace OpenCBS.CoreDomain.Contracts.Loans
             }
             return balance;
         }
+        
+        private OCurrency GetAccruedPenalties(DateTime date)
+        {
+            return
+                _events.GetLoanPenaltyAccrualEvents()
+                       .Where(e => e.Date <= date)
+                       .Aggregate<LoanPenaltyAccrualEvent, OCurrency>(0, (current, e) => current + e.Penalty);
+        }
 
+        private OCurrency GetPaidPenalties()
+        {
+            return _events.GetNonDeletedRepaymentEvents()
+                          .Aggregate<RepaymentEvent, OCurrency>(0, (current, e) => current + e.Penalties);
+        }
+
+        public OCurrency GetUnpaidPenalties(DateTime date)
+        {
+            return GetAccruedPenalties(date) - GetPaidPenalties();
+        }
         /// <summary>
         /// Sum of paid fees (late penalties + commission) in this loan
         /// It's the result of "GetPaidCommissions" and "GetPaidLatePenaties"
