@@ -34,7 +34,7 @@ namespace OpenCBS.GUI.NEW.Command
 
         public void Execute(AddLoanProductData commandData)
         {
-            _presenter.Run(null);
+            _presenter.Get(null);
         }
     }
 }

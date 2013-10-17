@@ -19,7 +19,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Dapper;
 using DapperExtensions;
 using OpenCBS.GUI.NEW.Dto;
 using OpenCBS.GUI.NEW.Mapper;
@@ -43,8 +42,15 @@ namespace OpenCBS.GUI.NEW.Repository
             {
                 var items = connection.GetList<LoanProductDto>();
                 return items.Select(dto => _mapper.Map(dto));
-//                var items = connection.Query<LoanProductDto>("SELECT * FROM " + TableName, null);
-//                return items.Select(dto => _mapper.Map(dto));
+            }
+        }
+
+        public override void Update(LoanProduct entity)
+        {
+            using (var connection = GetConnection())
+            {
+                var dto = _mapper.Map(entity);
+                connection.Update(dto);
             }
         }
     }

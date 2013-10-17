@@ -17,12 +17,20 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.NEW.Model;
-
-namespace OpenCBS.GUI.NEW.Presenter
+namespace OpenCBS.GUI.NEW
 {
-    public interface ILoanProductPresenter : IPresenter
+    public class Result<T>
     {
-        Result<LoanProduct> Get(LoanProduct loanProduct);
+        public CommandResult CommandResult { get; private set; }
+        public T Data { get; private set; }
+
+        public Result(CommandResult commandResult, T data)
+        {
+            CommandResult = commandResult;
+            Data = data;
+        }
+
+        public Result(CommandResult commandResult) : this(commandResult, default(T))
+        { }
     }
 }

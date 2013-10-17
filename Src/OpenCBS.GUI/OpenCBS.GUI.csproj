@@ -703,6 +703,7 @@
     <Compile Include="NEW\AppController\IApplicationController.cs" />
     <Compile Include="NEW\AppController\ICommand.cs" />
     <Compile Include="NEW\BootStrapper.cs" />
+    <Compile Include="NEW\CommandResult.cs" />
     <Compile Include="NEW\CommandData\AddLoanProductData.cs" />
     <Compile Include="NEW\CommandData\EditLoanProductData.cs" />
     <Compile Include="NEW\CommandData\ShowLoanProductsData.cs" />
@@ -736,6 +737,7 @@
     <Compile Include="NEW\Repository\PaymentFrequencyRepository.cs" />
     <Compile Include="NEW\Repository\Repository.cs" />
     <Compile Include="NEW\Repository\SqlConnectionProvider.cs" />
+    <Compile Include="NEW\Result.cs" />
     <Compile Include="NEW\View\ILoanProductsView.cs" />
     <Compile Include="NEW\View\ILoanProductView.cs" />
     <Compile Include="NEW\View\IMainView.cs" />

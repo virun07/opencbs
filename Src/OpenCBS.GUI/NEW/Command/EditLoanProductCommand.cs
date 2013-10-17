@@ -20,21 +20,28 @@
 using OpenCBS.GUI.NEW.AppController;
 using OpenCBS.GUI.NEW.CommandData;
 using OpenCBS.GUI.NEW.Presenter;
+using OpenCBS.GUI.NEW.Repository;
 
 namespace OpenCBS.GUI.NEW.Command
 {
     public class EditLoanProductCommand : ICommand<EditLoanProductData>
     {
         private readonly ILoanProductPresenter _presenter;
+        private readonly ILoanProductRepository _loanProductRepository;
 
-        public EditLoanProductCommand(ILoanProductPresenter presenter)
+        public EditLoanProductCommand(ILoanProductPresenter presenter, ILoanProductRepository loanProductRepository)
         {
             _presenter = presenter;
+            _loanProductRepository = loanProductRepository;
         }
 
         public void Execute(EditLoanProductData commandData)
         {
-            _presenter.Run(commandData.LoanProduct);
+            var result = _presenter.Get(commandData.LoanProduct);
+            if (result.CommandResult == CommandResult.Ok)
+            {
+                _loanProductRepository.Update(result.Data);
+            }
         }
     }
 }

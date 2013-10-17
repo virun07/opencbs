@@ -52,5 +52,13 @@ namespace OpenCBS.GUI.NEW.Repository
                 return connection.Get<T>(id);
             }
         }
+
+        public virtual void Update(T entity)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Update(entity);
+            }
+        }
     }
 }

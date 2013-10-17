@@ -27,6 +27,7 @@ namespace OpenCBS.GUI.NEW.Presenter
     {
         private readonly ILoanProductView _view;
         private readonly IPaymentFrequencyRepository _paymentFrequencyRepository;
+        private CommandResult _commandResult = CommandResult.Cancel;
 
         public LoanProductPresenter(ILoanProductView view, IPaymentFrequencyRepository paymentFrequencyRepository)
         {
@@ -34,12 +35,22 @@ namespace OpenCBS.GUI.NEW.Presenter
             _paymentFrequencyRepository = paymentFrequencyRepository;
         }
 
-        public void Run(LoanProduct loanProduct)
+        public Result<LoanProduct> Get(LoanProduct loanProduct)
         {
             _view.Attach(this);
             _view.ShowPaymentFrequencies(_paymentFrequencyRepository.FindAll());
             ShowLoanProduct(loanProduct);
             _view.Run();
+            var newLoanProduct = (LoanProduct) null;
+            if (_commandResult == CommandResult.Ok)
+            {
+                newLoanProduct = GetLoanProduct();
+                if (loanProduct != null)
+                {
+                    newLoanProduct.Id = loanProduct.Id;
+                }
+            }
+            return new Result<LoanProduct>(_commandResult, newLoanProduct);
         }
 
         public object View
@@ -49,11 +60,13 @@ namespace OpenCBS.GUI.NEW.Presenter
 
         public void Ok()
         {
+            _commandResult = CommandResult.Ok;
             _view.Stop();
         }
 
         public void Cancel()
         {
+            _commandResult = CommandResult.Cancel;
             _view.Stop();
         }
 
@@ -63,6 +76,16 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.LoanProductName = loanProduct.Name;
             _view.Code = loanProduct.Code;
             _view.PaymentFrequency = loanProduct.PaymentFrequency;
+        }
+
+        private LoanProduct GetLoanProduct()
+        {
+            return new LoanProduct
+            {
+                Name = _view.LoanProductName,
+                Code = _view.Code,
+                PaymentFrequency = _view.PaymentFrequency
+            };
         }
     }
 }

@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
+using System.Data;
 
 namespace OpenCBS.GUI.NEW.Repository
 {
@@ -25,5 +26,6 @@ namespace OpenCBS.GUI.NEW.Repository
     {
         IEnumerable<T> FindAll();
         T FindById(int id);
+        void Update(T entity);
     }
 }
