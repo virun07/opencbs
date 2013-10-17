@@ -1169,7 +1169,14 @@ namespace OpenCBS.GUI
 
         public void Attach(IMainPresenterCallbacks presenterCallbacks)
         {
-            mnuPackages.Click += (sender, e) => presenterCallbacks.OnShowLoanProducts();
+            if (ApplicationSettings.GetInstance(string.Empty).NewArchitecture)
+            {
+                mnuPackages.Click += (sender, e) => presenterCallbacks.OnShowLoanProducts();
+            }
+            else
+            {
+                mnuPackages.Click += (sender, e) => InitializePackagesForm();
+            }
         }
     }
 }

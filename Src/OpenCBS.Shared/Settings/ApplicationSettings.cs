@@ -529,7 +529,7 @@ namespace OpenCBS.Shared.Settings
 
         public bool NewArchitecture
         {
-            get { return true; }
+            get { return false; }
         }
     }
 }
