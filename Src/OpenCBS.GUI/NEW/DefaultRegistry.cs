@@ -21,6 +21,7 @@ using System.Windows.Forms;
 using OpenCBS.GUI.NEW.AppController;
 using OpenCBS.GUI.NEW.Command;
 using OpenCBS.GUI.NEW.CommandData;
+using OpenCBS.GUI.NEW.Mapper;
 using OpenCBS.GUI.NEW.Presenter;
 using OpenCBS.GUI.NEW.Repository;
 using OpenCBS.GUI.NEW.View;
@@ -45,6 +46,10 @@ namespace OpenCBS.GUI.NEW
             // Repositories
             For<IConnectionProvider>().Use<SqlConnectionProvider>();
             For<ILoanProductRepository>().Use<LoanProductRepository>();
+            For<IPaymentFrequencyRepository>().Use<PaymentFrequencyRepository>();
+
+            // Mappers
+            For<ILoanProductMapper>().Use<LoanProductMapper>();
         }
     }
 }

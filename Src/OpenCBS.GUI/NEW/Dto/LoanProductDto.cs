@@ -17,13 +17,13 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.GUI.NEW.Model
+namespace OpenCBS.GUI.NEW.Dto
 {
-    public class LoanProduct
+    public class LoanProductDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
-        public PaymentFrequency PaymentFrequency { get; set; }
+        public int PaymentFrequencyId { get; set; }
     }
 }

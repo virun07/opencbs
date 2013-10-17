@@ -35,6 +35,7 @@
             this._loanProductsListView = new BrightIdeasSoftware.ObjectListView();
             this._nameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._codeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._repaymentFrequencyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._buttonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._loanProductsListView)).BeginInit();
             this.SuspendLayout();
@@ -85,9 +86,11 @@
             // 
             this._loanProductsListView.AllColumns.Add(this._nameColumn);
             this._loanProductsListView.AllColumns.Add(this._codeColumn);
+            this._loanProductsListView.AllColumns.Add(this._repaymentFrequencyColumn);
             this._loanProductsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this._nameColumn,
-            this._codeColumn});
+            this._codeColumn,
+            this._repaymentFrequencyColumn});
             this._loanProductsListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._loanProductsListView.Font = new System.Drawing.Font("Arial", 8.25F);
             this._loanProductsListView.FullRowSelect = true;
@@ -114,6 +117,14 @@
             this._codeColumn.AspectName = "Code";
             this._codeColumn.Text = "Code";
             this._codeColumn.Width = 80;
+            // 
+            // _repaymentFrequencyColumn
+            // 
+            this._repaymentFrequencyColumn.AspectName = "PaymentFrequency";
+            this._repaymentFrequencyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._repaymentFrequencyColumn.Text = "Payment frequency";
+            this._repaymentFrequencyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._repaymentFrequencyColumn.Width = 150;
             // 
             // LoanProductsView
             // 
@@ -142,6 +153,7 @@
         private BrightIdeasSoftware.ObjectListView _loanProductsListView;
         private BrightIdeasSoftware.OLVColumn _nameColumn;
         private BrightIdeasSoftware.OLVColumn _codeColumn;
+        private BrightIdeasSoftware.OLVColumn _repaymentFrequencyColumn;
 
     }
 }

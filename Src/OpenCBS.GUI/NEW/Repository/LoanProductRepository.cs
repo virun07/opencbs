@@ -17,14 +17,32 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
+using OpenCBS.GUI.NEW.Dto;
+using OpenCBS.GUI.NEW.Mapper;
 using OpenCBS.GUI.NEW.Model;
+using Dapper;
+using System.Linq;
 
 namespace OpenCBS.GUI.NEW.Repository
 {
     public class LoanProductRepository : Repository<LoanProduct>, ILoanProductRepository
     {
-        public LoanProductRepository(IConnectionProvider connectionProvider) : base("LoanProducts", connectionProvider)
+        private readonly ILoanProductMapper _mapper;
+
+        public LoanProductRepository(IConnectionProvider connectionProvider, ILoanProductMapper mapper)
+            : base("LoanProducts", connectionProvider)
         {
+            _mapper = mapper;
+        }
+
+        public override IEnumerable<LoanProduct> FindAll()
+        {
+            using (var connection = GetConnection())
+            {
+                var items = connection.Query<LoanProductDto>("SELECT * FROM " + TableName, null);
+                return items.Select(dto => _mapper.Map(dto));
+            }
         }
     }
 }

@@ -18,26 +18,41 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using Dapper;
 
 namespace OpenCBS.GUI.NEW.Repository
 {
     public abstract class Repository<T> : IRepository<T>
     {
-        private readonly string _tableName;
+        protected readonly string TableName;
         private readonly IConnectionProvider _connectionProvider;
 
         protected Repository(string tableName, IConnectionProvider connectionProvider)
         {
-            _tableName = tableName;
+            TableName = tableName;
             _connectionProvider = connectionProvider;
+        }
+
+        protected IDbConnection GetConnection()
+        {
+            return _connectionProvider.GetConnection();
         }
 
         public virtual IEnumerable<T> FindAll()
         {
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
-                return connection.Query<T>("SELECT * FROM " + _tableName, null);
+                return connection.Query<T>("SELECT * FROM " + TableName, null);
+            }
+        }
+
+        public virtual T FindById(int id)
+        {
+            using (var connection = GetConnection())
+            {
+                return connection.Query<T>("SELECT * FROM " + TableName + " WHERE Id = @Id", new { Id = id }).SingleOrDefault();
             }
         }
     }

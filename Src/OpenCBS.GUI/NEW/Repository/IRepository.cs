@@ -24,5 +24,6 @@ namespace OpenCBS.GUI.NEW.Repository
     public interface IRepository<T>
     {
         IEnumerable<T> FindAll();
+        T FindById(int id);
     }
 }

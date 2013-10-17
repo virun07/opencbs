@@ -17,13 +17,11 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.GUI.NEW.Model
+namespace OpenCBS.GUI.NEW.Mapper
 {
-    public class LoanProduct
+    public interface IMapper<T1, T2>
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public PaymentFrequency PaymentFrequency { get; set; }
+        T1 Map(T2 value);
+        T2 Map(T1 value);
     }
 }

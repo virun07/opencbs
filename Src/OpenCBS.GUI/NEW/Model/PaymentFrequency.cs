@@ -19,11 +19,16 @@
 
 namespace OpenCBS.GUI.NEW.Model
 {
-    public class LoanProduct
+    public class PaymentFrequency
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Code { get; set; }
-        public PaymentFrequency PaymentFrequency { get; set; }
+        public int NumberOfDays { get; set; }
+        public int NumberOfMonths { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

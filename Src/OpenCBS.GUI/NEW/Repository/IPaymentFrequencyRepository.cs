@@ -17,13 +17,11 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.GUI.NEW.Model
+using OpenCBS.GUI.NEW.Model;
+
+namespace OpenCBS.GUI.NEW.Repository
 {
-    public class LoanProduct
+    public interface IPaymentFrequencyRepository : IRepository<PaymentFrequency>
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public PaymentFrequency PaymentFrequency { get; set; }
     }
 }
