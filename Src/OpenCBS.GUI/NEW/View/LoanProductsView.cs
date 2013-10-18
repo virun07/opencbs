@@ -40,6 +40,7 @@ namespace OpenCBS.GUI.NEW.View
             _editButton.Click += (sender, e) => presenterCallbacks.Edit();
             _deleteButton.Click += (sender, e) => presenterCallbacks.Delete();
             _loanProductsListView.SelectionChanged += (sender, e) => presenterCallbacks.ChangeSelection();
+            _showDeletedCheckBox.CheckedChanged += (sender, e) => presenterCallbacks.Refresh();
             FormClosed += (sender, e) => presenterCallbacks.Close();
             _presenterCallbacks = presenterCallbacks;
         }
@@ -72,6 +73,11 @@ namespace OpenCBS.GUI.NEW.View
         public LoanProduct SelectedLoanProduct
         {
             get { return (LoanProduct)_loanProductsListView.SelectedObject; }
+        }
+
+        public bool ShowDeleted
+        {
+            get { return _showDeletedCheckBox.Checked; }
         }
     }
 }

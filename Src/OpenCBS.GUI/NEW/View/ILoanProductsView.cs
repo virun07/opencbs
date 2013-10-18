@@ -30,5 +30,6 @@ namespace OpenCBS.GUI.NEW.View
         bool EditEnabled { get; set; }
         bool DeleteEnabled { get; set; }
         LoanProduct SelectedLoanProduct { get; }
+        bool ShowDeleted { get; }
     }
 }

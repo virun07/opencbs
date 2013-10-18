@@ -26,7 +26,10 @@ using OpenCBS.GUI.NEW.View;
 
 namespace OpenCBS.GUI.NEW.Presenter
 {
-    public class LoanProductsPresenter : ILoanProductsPresenter, ILoanProductsPresenterCallbacks, IEventHandler<LoanProductUpdatedEvent>, IEventHandler<LoanProductAddedEvent>
+    public class LoanProductsPresenter : ILoanProductsPresenter, ILoanProductsPresenterCallbacks,
+        IEventHandler<LoanProductUpdatedEvent>,
+        IEventHandler<LoanProductAddedEvent>,
+        IEventHandler<LoanProductDeletedEvent>
     {
         private readonly ILoanProductsView _view;
         private readonly IApplicationController _appController;
@@ -53,6 +56,14 @@ namespace OpenCBS.GUI.NEW.Presenter
 
         public void Delete()
         {
+            var loanProduct = _view.SelectedLoanProduct;
+            if (loanProduct == null) return;
+            _appController.Execute(new DeleteLoanProductData { LoanProduct = loanProduct });
+        }
+
+        public void Refresh()
+        {
+            ShowLoanProducts();
         }
 
         public void ChangeSelection()
@@ -80,7 +91,9 @@ namespace OpenCBS.GUI.NEW.Presenter
 
         private void ShowLoanProducts()
         {
-            var loanProducts = _loanProductRepository.FindAll();
+            var loanProducts = _view.ShowDeleted
+                                   ? _loanProductRepository.FindAll()
+                                   : _loanProductRepository.FindNonDeleted();
             _view.ShowLoanProducts(loanProducts);
         }
 
@@ -90,6 +103,11 @@ namespace OpenCBS.GUI.NEW.Presenter
         }
 
         public void Handle(LoanProductAddedEvent eventData)
+        {
+            ShowLoanProducts();
+        }
+
+        public void Handle(LoanProductDeletedEvent eventData)
         {
             ShowLoanProducts();
         }

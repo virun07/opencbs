@@ -45,6 +45,16 @@ namespace OpenCBS.GUI.NEW.Repository
             }
         }
 
+        public override IEnumerable<LoanProduct> FindNonDeleted()
+        {
+            using (var connection = GetConnection())
+            {
+                var predicate = Predicates.Field<LoanProductDto>(t => t.Deleted, Operator.Eq, false);
+                var items = connection.GetList<LoanProductDto>(predicate);
+                return items.Select(dto => _mapper.Map(dto));
+            }
+        }
+
         public override void Update(LoanProduct entity)
         {
             using (var connection = GetConnection())

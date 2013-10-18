@@ -17,17 +17,28 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.GUI.NEW.Model
-{
-    public abstract class EntityBase
-    {
-        public int Id { get; set; }
-        public bool Deleted { get; set; }
+using OpenCBS.GUI.NEW.AppController;
+using OpenCBS.GUI.NEW.CommandData;
+using OpenCBS.GUI.NEW.Event;
+using OpenCBS.GUI.NEW.Repository;
 
-        public override bool Equals(object obj)
+namespace OpenCBS.GUI.NEW.Command
+{
+    public class DeleteLoanProductCommand : ICommand<DeleteLoanProductData>
+    {
+        private readonly ILoanProductRepository _loanProductRepository;
+        private readonly IApplicationController _appController;
+
+        public DeleteLoanProductCommand(ILoanProductRepository loanProductRepository, IApplicationController appController)
         {
-            if (obj == null) return false;
-            return Id == ((EntityBase) obj).Id;
+            _loanProductRepository = loanProductRepository;
+            _appController = appController;
+        }
+
+        public void Execute(DeleteLoanProductData commandData)
+        {
+            _loanProductRepository.Remove(commandData.LoanProduct);
+            _appController.Raise(new LoanProductDeletedEvent { LoanProduct = commandData.LoanProduct });
         }
     }
 }

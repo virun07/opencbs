@@ -24,8 +24,10 @@ namespace OpenCBS.GUI.NEW.Repository
     public interface IRepository<T>
     {
         IEnumerable<T> FindAll();
+        IEnumerable<T> FindNonDeleted();
         T FindById(int id);
         void Update(T entity);
         void Add(T entity);
+        void Remove(T entity);
     }
 }

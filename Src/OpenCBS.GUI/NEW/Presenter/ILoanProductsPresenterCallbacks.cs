@@ -24,6 +24,7 @@ namespace OpenCBS.GUI.NEW.Presenter
         void Add();
         void Edit();
         void Delete();
+        void Refresh();
         void ChangeSelection();
         void Close();
     }

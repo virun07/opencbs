@@ -36,6 +36,7 @@
             this._nameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._codeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._repaymentFrequencyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._showDeletedCheckBox = new System.Windows.Forms.CheckBox();
             this._buttonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._loanProductsListView)).BeginInit();
             this.SuspendLayout();
@@ -45,6 +46,7 @@
             this._buttonsPanel.Controls.Add(this._addButton);
             this._buttonsPanel.Controls.Add(this._editButton);
             this._buttonsPanel.Controls.Add(this._deleteButton);
+            this._buttonsPanel.Controls.Add(this._showDeletedCheckBox);
             this._buttonsPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this._buttonsPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this._buttonsPanel.Location = new System.Drawing.Point(701, 0);
@@ -126,6 +128,16 @@
             this._repaymentFrequencyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._repaymentFrequencyColumn.Width = 150;
             // 
+            // _showDeletedCheckBox
+            // 
+            this._showDeletedCheckBox.AutoSize = true;
+            this._showDeletedCheckBox.Location = new System.Drawing.Point(3, 99);
+            this._showDeletedCheckBox.Name = "_showDeletedCheckBox";
+            this._showDeletedCheckBox.Size = new System.Drawing.Size(105, 20);
+            this._showDeletedCheckBox.TabIndex = 3;
+            this._showDeletedCheckBox.Text = "Show deleted";
+            this._showDeletedCheckBox.UseVisualStyleBackColor = true;
+            // 
             // LoanProductsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -154,6 +166,7 @@
         private BrightIdeasSoftware.OLVColumn _nameColumn;
         private BrightIdeasSoftware.OLVColumn _codeColumn;
         private BrightIdeasSoftware.OLVColumn _repaymentFrequencyColumn;
+        private System.Windows.Forms.CheckBox _showDeletedCheckBox;
 
     }
 }

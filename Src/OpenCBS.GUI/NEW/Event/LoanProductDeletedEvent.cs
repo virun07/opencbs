@@ -17,17 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.GUI.NEW.Model
-{
-    public abstract class EntityBase
-    {
-        public int Id { get; set; }
-        public bool Deleted { get; set; }
+using OpenCBS.GUI.NEW.Model;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return Id == ((EntityBase) obj).Id;
-        }
+namespace OpenCBS.GUI.NEW.Event
+{
+    public class LoanProductDeletedEvent
+    {
+        public LoanProduct LoanProduct { get; set; }
     }
 }
