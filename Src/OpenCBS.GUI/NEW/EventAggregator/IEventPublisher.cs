@@ -17,12 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.GUI.NEW.AppController
+namespace OpenCBS.GUI.NEW.EventAggregator
 {
-    public interface IApplicationController
+    public interface IEventPublisher
     {
-        void Execute<T>(T commandData);
-        void Raise<T>(T eventData);
+        void Subscribe(object eventHandlers);
         void Unsubscribe(object eventHandlers);
+        void Publish<T>(T eventData);
     }
 }

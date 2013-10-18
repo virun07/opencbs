@@ -17,12 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.GUI.NEW.AppController
+using OpenCBS.GUI.NEW.Model;
+
+namespace OpenCBS.GUI.NEW.Event
 {
-    public interface IApplicationController
+    public class LoanProductUpdatedEvent
     {
-        void Execute<T>(T commandData);
-        void Raise<T>(T eventData);
-        void Unsubscribe(object eventHandlers);
+        public LoanProduct LoanProduct { get; set; }
     }
 }

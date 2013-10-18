@@ -36,10 +36,11 @@ namespace OpenCBS.GUI.NEW.View
 
         public void Attach(ILoanProductsPresenterCallbacks presenterCallbacks)
         {
-            _addButton.Click += (sender, e) => presenterCallbacks.OnAdd();
-            _editButton.Click += (sender, e) => presenterCallbacks.OnEdit();
-            _deleteButton.Click += (sender, e) => presenterCallbacks.OnDelete();
-            _loanProductsListView.SelectionChanged += (sender, e) => presenterCallbacks.OnSelectionChanged();
+            _addButton.Click += (sender, e) => presenterCallbacks.Add();
+            _editButton.Click += (sender, e) => presenterCallbacks.Edit();
+            _deleteButton.Click += (sender, e) => presenterCallbacks.Delete();
+            _loanProductsListView.SelectionChanged += (sender, e) => presenterCallbacks.ChangeSelection();
+            FormClosed += (sender, e) => presenterCallbacks.Close();
             _presenterCallbacks = presenterCallbacks;
         }
 
@@ -50,8 +51,10 @@ namespace OpenCBS.GUI.NEW.View
 
         public void ShowLoanProducts(IEnumerable<LoanProduct> loanProducts)
         {
+            var selectedObject = _loanProductsListView.SelectedObject;
             _loanProductsListView.SetObjects(loanProducts);
-            _presenterCallbacks.OnSelectionChanged();
+            _presenterCallbacks.ChangeSelection();
+            _loanProductsListView.SelectedObject = selectedObject;
         }
 
         public bool EditEnabled

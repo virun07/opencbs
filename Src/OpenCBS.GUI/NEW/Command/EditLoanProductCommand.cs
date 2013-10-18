@@ -19,6 +19,7 @@
 
 using OpenCBS.GUI.NEW.AppController;
 using OpenCBS.GUI.NEW.CommandData;
+using OpenCBS.GUI.NEW.Event;
 using OpenCBS.GUI.NEW.Presenter;
 using OpenCBS.GUI.NEW.Repository;
 
@@ -28,11 +29,13 @@ namespace OpenCBS.GUI.NEW.Command
     {
         private readonly ILoanProductPresenter _presenter;
         private readonly ILoanProductRepository _loanProductRepository;
+        private readonly IApplicationController _appController;
 
-        public EditLoanProductCommand(ILoanProductPresenter presenter, ILoanProductRepository loanProductRepository)
+        public EditLoanProductCommand(ILoanProductPresenter presenter, ILoanProductRepository loanProductRepository, IApplicationController appController)
         {
             _presenter = presenter;
             _loanProductRepository = loanProductRepository;
+            _appController = appController;
         }
 
         public void Execute(EditLoanProductData commandData)
@@ -41,6 +44,7 @@ namespace OpenCBS.GUI.NEW.Command
             if (result.CommandResult == CommandResult.Ok)
             {
                 _loanProductRepository.Update(result.Data);
+                _appController.Raise(new LoanProductUpdatedEvent { LoanProduct = result.Data });
             }
         }
     }

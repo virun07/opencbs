@@ -21,6 +21,7 @@ using System.Windows.Forms;
 using OpenCBS.GUI.NEW.AppController;
 using OpenCBS.GUI.NEW.Command;
 using OpenCBS.GUI.NEW.CommandData;
+using OpenCBS.GUI.NEW.EventAggregator;
 using OpenCBS.GUI.NEW.Mapper;
 using OpenCBS.GUI.NEW.Presenter;
 using OpenCBS.GUI.NEW.Repository;
@@ -35,6 +36,7 @@ namespace OpenCBS.GUI.NEW
         {
             For<ApplicationContext>().Use<AppContext>();
             For<IApplicationController>().Singleton().Use<ApplicationController>();
+            For<IEventPublisher>().Singleton().Use<EventPublisher>();
 
             // Views / presenters
             For<ILoanProductsView>().Use<LoanProductsView>();
@@ -54,6 +56,8 @@ namespace OpenCBS.GUI.NEW
 
             // Mappers
             For<ILoanProductMapper>().Use<LoanProductMapper>();
+
+            RegisterInterceptor(new EventAggregatorInterceptor());
         }
     }
 }

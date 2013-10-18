@@ -19,12 +19,14 @@
 
 using OpenCBS.GUI.NEW.AppController;
 using OpenCBS.GUI.NEW.CommandData;
+using OpenCBS.GUI.NEW.Event;
+using OpenCBS.GUI.NEW.EventAggregator;
 using OpenCBS.GUI.NEW.Repository;
 using OpenCBS.GUI.NEW.View;
 
 namespace OpenCBS.GUI.NEW.Presenter
 {
-    public class LoanProductsPresenter : ILoanProductsPresenter, ILoanProductsPresenterCallbacks
+    public class LoanProductsPresenter : ILoanProductsPresenter, ILoanProductsPresenterCallbacks, IEventHandler<LoanProductUpdatedEvent>
     {
         private readonly ILoanProductsView _view;
         private readonly IApplicationController _appController;
@@ -37,26 +39,31 @@ namespace OpenCBS.GUI.NEW.Presenter
             _loanProductRepository = loanProductRepository;
         }
 
-        public void OnAdd()
+        public void Add()
         {
             _appController.Execute(new AddLoanProductData());
         }
 
-        public void OnEdit()
+        public void Edit()
         {
             var loanProduct = _view.SelectedLoanProduct;
             if (loanProduct == null) return;
             _appController.Execute(new EditLoanProductData { LoanProduct = loanProduct });
         }
 
-        public void OnDelete()
+        public void Delete()
         {
         }
 
-        public void OnSelectionChanged()
+        public void ChangeSelection()
         {
             var loanProduct = _view.SelectedLoanProduct;
             _view.EditEnabled = _view.DeleteEnabled = loanProduct != null;
+        }
+
+        public void Close()
+        {
+            _appController.Unsubscribe(this);
         }
 
         public void Run()
@@ -75,6 +82,11 @@ namespace OpenCBS.GUI.NEW.Presenter
         {
             var loanProducts = _loanProductRepository.FindAll();
             _view.ShowLoanProducts(loanProducts);
+        }
+
+        public void Handle(LoanProductUpdatedEvent eventData)
+        {
+            ShowLoanProducts();
         }
     }
 }

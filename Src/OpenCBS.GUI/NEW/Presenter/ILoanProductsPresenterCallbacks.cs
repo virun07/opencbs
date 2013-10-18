@@ -21,9 +21,10 @@ namespace OpenCBS.GUI.NEW.Presenter
 {
     public interface ILoanProductsPresenterCallbacks
     {
-        void OnAdd();
-        void OnEdit();
-        void OnDelete();
-        void OnSelectionChanged();
+        void Add();
+        void Edit();
+        void Delete();
+        void ChangeSelection();
+        void Close();
     }
 }

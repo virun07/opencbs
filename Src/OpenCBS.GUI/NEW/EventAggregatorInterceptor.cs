@@ -17,37 +17,29 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
+using System.Linq;
 using OpenCBS.GUI.NEW.EventAggregator;
 using StructureMap;
+using StructureMap.Interceptors;
 
-namespace OpenCBS.GUI.NEW.AppController
+namespace OpenCBS.GUI.NEW
 {
-    public class ApplicationController : IApplicationController
+    public class EventAggregatorInterceptor : TypeInterceptor
     {
-        private readonly IContainer _container;
-        private readonly IEventPublisher _eventPublisher;
-
-        public ApplicationController(IContainer container, IEventPublisher eventPublisher)
+        public bool MatchesType(Type type)
         {
-            _container = container;
-            _eventPublisher = eventPublisher;
+            if (type.IsGenericType) return false;
+
+            var templateType = typeof(IEventHandler<>);
+            return type.GetInterfaces().Any(interfaceType => interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == templateType);
         }
 
-        public void Execute<T>(T commandData)
+        public object Process(object target, IContext context)
         {
-            var command = _container.TryGetInstance<ICommand<T>>();
-            if (command != null)
-                command.Execute(commandData);
-        }
-
-        public void Raise<T>(T eventData)
-        {
-            _eventPublisher.Publish(eventData);
-        }
-
-        public void Unsubscribe(object eventHandlers)
-        {
-            _eventPublisher.Unsubscribe(eventHandlers);
+            var eventPublisher = context.GetInstance<IEventPublisher>();
+            eventPublisher.Subscribe(target);
+            return target;
         }
     }
 }
