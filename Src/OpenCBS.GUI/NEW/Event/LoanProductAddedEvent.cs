@@ -17,15 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
+using OpenCBS.GUI.NEW.Model;
 
-namespace OpenCBS.GUI.NEW.Repository
+namespace OpenCBS.GUI.NEW.Event
 {
-    public interface IRepository<T>
+    public class LoanProductAddedEvent
     {
-        IEnumerable<T> FindAll();
-        T FindById(int id);
-        void Update(T entity);
-        void Add(T entity);
+        public LoanProduct LoanProduct { get; set; }
     }
 }

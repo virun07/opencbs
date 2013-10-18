@@ -717,6 +717,7 @@
     <Compile Include="NEW\EventAggregator\EventPublisher.cs" />
     <Compile Include="NEW\EventAggregator\IEventHandler.cs" />
     <Compile Include="NEW\EventAggregator\IEventPublisher.cs" />
+    <Compile Include="NEW\Event\LoanProductAddedEvent.cs" />
     <Compile Include="NEW\Event\LoanProductUpdatedEvent.cs" />
     <Compile Include="NEW\Mapper\ILoanProductMapper.cs" />
     <Compile Include="NEW\Mapper\IMapper.cs" />

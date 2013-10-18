@@ -26,7 +26,7 @@ using OpenCBS.GUI.NEW.View;
 
 namespace OpenCBS.GUI.NEW.Presenter
 {
-    public class LoanProductsPresenter : ILoanProductsPresenter, ILoanProductsPresenterCallbacks, IEventHandler<LoanProductUpdatedEvent>
+    public class LoanProductsPresenter : ILoanProductsPresenter, ILoanProductsPresenterCallbacks, IEventHandler<LoanProductUpdatedEvent>, IEventHandler<LoanProductAddedEvent>
     {
         private readonly ILoanProductsView _view;
         private readonly IApplicationController _appController;
@@ -85,6 +85,11 @@ namespace OpenCBS.GUI.NEW.Presenter
         }
 
         public void Handle(LoanProductUpdatedEvent eventData)
+        {
+            ShowLoanProducts();
+        }
+
+        public void Handle(LoanProductAddedEvent eventData)
         {
             ShowLoanProducts();
         }

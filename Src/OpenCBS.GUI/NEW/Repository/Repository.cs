@@ -60,5 +60,13 @@ namespace OpenCBS.GUI.NEW.Repository
                 connection.Update(entity);
             }
         }
+
+        public virtual void Add(T entity)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Insert(entity);
+            }
+        }
     }
 }

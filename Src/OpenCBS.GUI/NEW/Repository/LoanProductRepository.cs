@@ -53,5 +53,14 @@ namespace OpenCBS.GUI.NEW.Repository
                 connection.Update(dto);
             }
         }
+
+        public override void Add(LoanProduct entity)
+        {
+            using (var connection = GetConnection())
+            {
+                var dto = _mapper.Map(entity);
+                connection.Insert(dto);
+            }
+        }
     }
 }
