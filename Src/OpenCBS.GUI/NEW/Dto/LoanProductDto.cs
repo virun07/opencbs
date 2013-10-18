@@ -25,6 +25,7 @@ namespace OpenCBS.GUI.NEW.Dto
         public string Name { get; set; }
         public string Code { get; set; }
         public int PaymentFrequencyId { get; set; }
+        public int AvailableFor { get; set; }
         public bool Deleted { get; set; }
     }
 }

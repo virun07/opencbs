@@ -16,22 +16,17 @@
 // 
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
+using System;
 
-using System.Collections.Generic;
-using OpenCBS.GUI.NEW.Model;
-using OpenCBS.GUI.NEW.Presenter;
-
-namespace OpenCBS.GUI.NEW.View
+namespace OpenCBS.GUI.NEW.Model
 {
-    public interface ILoanProductView : IView<ILoanProductPresenterCallbacks>
+    [Flags]
+    public enum AvailableFor
     {
-        void Run();
-        void Stop();
-        void ShowPaymentFrequencies(IEnumerable<PaymentFrequency> paymentFrequencies);
-
-        string LoanProductName { get; set; }
-        string Code { get; set; }
-        PaymentFrequency PaymentFrequency { get; set; }
-        AvailableFor AvailableFor { get; set; }
+        None = 0,
+        Individual = 1 << 0,
+        SolidarityGroup = 1 << 1,
+        NonSolidarityGroup = 1 << 2,
+        Company = 1 << 3
     }
 }

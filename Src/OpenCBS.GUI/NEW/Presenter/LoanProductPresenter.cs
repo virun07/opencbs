@@ -72,10 +72,16 @@ namespace OpenCBS.GUI.NEW.Presenter
 
         private void ShowLoanProduct(LoanProduct loanProduct)
         {
-            if (loanProduct == null) return;
+            if (loanProduct == null)
+            {
+                _view.AvailableFor = AvailableFor.Individual | AvailableFor.SolidarityGroup |
+                                     AvailableFor.NonSolidarityGroup | AvailableFor.Company;
+                return;
+            }
             _view.LoanProductName = loanProduct.Name;
             _view.Code = loanProduct.Code;
             _view.PaymentFrequency = loanProduct.PaymentFrequency;
+            _view.AvailableFor = loanProduct.AvailableFor;
         }
 
         private LoanProduct GetLoanProduct()
@@ -84,7 +90,8 @@ namespace OpenCBS.GUI.NEW.Presenter
             {
                 Name = _view.LoanProductName,
                 Code = _view.Code,
-                PaymentFrequency = _view.PaymentFrequency
+                PaymentFrequency = _view.PaymentFrequency,
+                AvailableFor = _view.AvailableFor
             };
         }
     }

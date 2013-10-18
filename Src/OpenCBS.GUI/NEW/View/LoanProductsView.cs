@@ -50,6 +50,8 @@ namespace OpenCBS.GUI.NEW.View
                 var loanProduct = (LoanProduct) e.Model;
                 e.Item.BackColor = loanProduct.Deleted ? Color.FromArgb(255, 92, 92) : Color.Transparent;
             };
+
+            _availableForColumn.AspectToStringConverter += AvailabilityToString;
         }
 
         public void Run()
@@ -85,6 +87,21 @@ namespace OpenCBS.GUI.NEW.View
         public bool ShowDeleted
         {
             get { return _showDeletedCheckBox.Checked; }
+        }
+
+        public string AvailabilityToString(object obj)
+        {
+            var availableFor = (AvailableFor) obj;
+            var items = new List<string>();
+            if ((availableFor & AvailableFor.Individual) == AvailableFor.Individual)
+                items.Add("Ind");
+            if ((availableFor & AvailableFor.SolidarityGroup) == AvailableFor.SolidarityGroup)
+                items.Add("SG");
+            if ((availableFor & AvailableFor.NonSolidarityGroup) == AvailableFor.NonSolidarityGroup)
+                items.Add("NSG");
+            if ((availableFor & AvailableFor.Company) == AvailableFor.Company)
+                items.Add("Company");
+            return string.Join(", ", items.ToArray());
         }
     }
 }

@@ -24,5 +24,6 @@ namespace OpenCBS.GUI.NEW.Model
         public string Name { get; set; }
         public string Code { get; set; }
         public PaymentFrequency PaymentFrequency { get; set; }
+        public AvailableFor AvailableFor { get; set; }
     }
 }

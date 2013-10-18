@@ -32,11 +32,12 @@
             this._addButton = new System.Windows.Forms.Button();
             this._editButton = new System.Windows.Forms.Button();
             this._deleteButton = new System.Windows.Forms.Button();
+            this._showDeletedCheckBox = new System.Windows.Forms.CheckBox();
             this._loanProductsListView = new BrightIdeasSoftware.ObjectListView();
             this._nameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._codeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._repaymentFrequencyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this._showDeletedCheckBox = new System.Windows.Forms.CheckBox();
+            this._availableForColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._buttonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._loanProductsListView)).BeginInit();
             this.SuspendLayout();
@@ -84,15 +85,27 @@
             this._deleteButton.Text = "Delete";
             this._deleteButton.UseVisualStyleBackColor = true;
             // 
+            // _showDeletedCheckBox
+            // 
+            this._showDeletedCheckBox.AutoSize = true;
+            this._showDeletedCheckBox.Location = new System.Drawing.Point(3, 99);
+            this._showDeletedCheckBox.Name = "_showDeletedCheckBox";
+            this._showDeletedCheckBox.Size = new System.Drawing.Size(105, 20);
+            this._showDeletedCheckBox.TabIndex = 3;
+            this._showDeletedCheckBox.Text = "Show deleted";
+            this._showDeletedCheckBox.UseVisualStyleBackColor = true;
+            // 
             // _loanProductsListView
             // 
             this._loanProductsListView.AllColumns.Add(this._nameColumn);
             this._loanProductsListView.AllColumns.Add(this._codeColumn);
             this._loanProductsListView.AllColumns.Add(this._repaymentFrequencyColumn);
+            this._loanProductsListView.AllColumns.Add(this._availableForColumn);
             this._loanProductsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this._nameColumn,
             this._codeColumn,
-            this._repaymentFrequencyColumn});
+            this._repaymentFrequencyColumn,
+            this._availableForColumn});
             this._loanProductsListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._loanProductsListView.Font = new System.Drawing.Font("Arial", 8.25F);
             this._loanProductsListView.FullRowSelect = true;
@@ -117,7 +130,9 @@
             // _codeColumn
             // 
             this._codeColumn.AspectName = "Code";
+            this._codeColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._codeColumn.Text = "Code";
+            this._codeColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._codeColumn.Width = 80;
             // 
             // _repaymentFrequencyColumn
@@ -128,15 +143,13 @@
             this._repaymentFrequencyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._repaymentFrequencyColumn.Width = 150;
             // 
-            // _showDeletedCheckBox
+            // _availableForColumn
             // 
-            this._showDeletedCheckBox.AutoSize = true;
-            this._showDeletedCheckBox.Location = new System.Drawing.Point(3, 99);
-            this._showDeletedCheckBox.Name = "_showDeletedCheckBox";
-            this._showDeletedCheckBox.Size = new System.Drawing.Size(105, 20);
-            this._showDeletedCheckBox.TabIndex = 3;
-            this._showDeletedCheckBox.Text = "Show deleted";
-            this._showDeletedCheckBox.UseVisualStyleBackColor = true;
+            this._availableForColumn.AspectName = "AvailableFor";
+            this._availableForColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._availableForColumn.Text = "Available for";
+            this._availableForColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._availableForColumn.Width = 150;
             // 
             // LoanProductsView
             // 
@@ -167,6 +180,7 @@
         private BrightIdeasSoftware.OLVColumn _codeColumn;
         private BrightIdeasSoftware.OLVColumn _repaymentFrequencyColumn;
         private System.Windows.Forms.CheckBox _showDeletedCheckBox;
+        private BrightIdeasSoftware.OLVColumn _availableForColumn;
 
     }
 }

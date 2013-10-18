@@ -30,14 +30,19 @@
         {
             this._tabControl = new System.Windows.Forms.TabControl();
             this._generalTabPage = new System.Windows.Forms.TabPage();
+            this._paymentFrequencyComboBox = new System.Windows.Forms.ComboBox();
+            this._codeTextBox = new System.Windows.Forms.TextBox();
+            this._nameTextBox = new System.Windows.Forms.TextBox();
+            this._paymentFrequencyLabel = new System.Windows.Forms.Label();
+            this._codeLabel = new System.Windows.Forms.Label();
+            this._nameLabel = new System.Windows.Forms.Label();
             this._okButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
-            this._nameLabel = new System.Windows.Forms.Label();
-            this._codeLabel = new System.Windows.Forms.Label();
-            this._paymentFrequencyLabel = new System.Windows.Forms.Label();
-            this._nameTextBox = new System.Windows.Forms.TextBox();
-            this._codeTextBox = new System.Windows.Forms.TextBox();
-            this._paymentFrequencyComboBox = new System.Windows.Forms.ComboBox();
+            this._availableForLabel = new System.Windows.Forms.Label();
+            this._availableForIndividualCheckBox = new System.Windows.Forms.CheckBox();
+            this._availableForSgCheckBox = new System.Windows.Forms.CheckBox();
+            this._availableForNsgCheckBox = new System.Windows.Forms.CheckBox();
+            this._availableForCompanyCheckBox = new System.Windows.Forms.CheckBox();
             this._tabControl.SuspendLayout();
             this._generalTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +60,11 @@
             // 
             // _generalTabPage
             // 
+            this._generalTabPage.Controls.Add(this._availableForCompanyCheckBox);
+            this._generalTabPage.Controls.Add(this._availableForNsgCheckBox);
+            this._generalTabPage.Controls.Add(this._availableForSgCheckBox);
+            this._generalTabPage.Controls.Add(this._availableForIndividualCheckBox);
+            this._generalTabPage.Controls.Add(this._availableForLabel);
             this._generalTabPage.Controls.Add(this._paymentFrequencyComboBox);
             this._generalTabPage.Controls.Add(this._codeTextBox);
             this._generalTabPage.Controls.Add(this._nameTextBox);
@@ -69,6 +79,56 @@
             this._generalTabPage.TabIndex = 0;
             this._generalTabPage.Text = "General";
             this._generalTabPage.UseVisualStyleBackColor = true;
+            // 
+            // _paymentFrequencyComboBox
+            // 
+            this._paymentFrequencyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._paymentFrequencyComboBox.FormattingEnabled = true;
+            this._paymentFrequencyComboBox.Location = new System.Drawing.Point(147, 81);
+            this._paymentFrequencyComboBox.Name = "_paymentFrequencyComboBox";
+            this._paymentFrequencyComboBox.Size = new System.Drawing.Size(209, 24);
+            this._paymentFrequencyComboBox.TabIndex = 5;
+            // 
+            // _codeTextBox
+            // 
+            this._codeTextBox.Location = new System.Drawing.Point(147, 48);
+            this._codeTextBox.Name = "_codeTextBox";
+            this._codeTextBox.Size = new System.Drawing.Size(209, 22);
+            this._codeTextBox.TabIndex = 3;
+            // 
+            // _nameTextBox
+            // 
+            this._nameTextBox.Location = new System.Drawing.Point(147, 15);
+            this._nameTextBox.Name = "_nameTextBox";
+            this._nameTextBox.Size = new System.Drawing.Size(209, 22);
+            this._nameTextBox.TabIndex = 1;
+            // 
+            // _paymentFrequencyLabel
+            // 
+            this._paymentFrequencyLabel.AutoSize = true;
+            this._paymentFrequencyLabel.Location = new System.Drawing.Point(12, 84);
+            this._paymentFrequencyLabel.Name = "_paymentFrequencyLabel";
+            this._paymentFrequencyLabel.Size = new System.Drawing.Size(120, 16);
+            this._paymentFrequencyLabel.TabIndex = 4;
+            this._paymentFrequencyLabel.Text = "Payment frequency";
+            // 
+            // _codeLabel
+            // 
+            this._codeLabel.AutoSize = true;
+            this._codeLabel.Location = new System.Drawing.Point(12, 51);
+            this._codeLabel.Name = "_codeLabel";
+            this._codeLabel.Size = new System.Drawing.Size(38, 16);
+            this._codeLabel.TabIndex = 2;
+            this._codeLabel.Text = "Code";
+            // 
+            // _nameLabel
+            // 
+            this._nameLabel.AutoSize = true;
+            this._nameLabel.Location = new System.Drawing.Point(12, 18);
+            this._nameLabel.Name = "_nameLabel";
+            this._nameLabel.Size = new System.Drawing.Size(42, 16);
+            this._nameLabel.TabIndex = 0;
+            this._nameLabel.Text = "Name";
             // 
             // _okButton
             // 
@@ -88,55 +148,54 @@
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
             // 
-            // _nameLabel
+            // _availableForLabel
             // 
-            this._nameLabel.AutoSize = true;
-            this._nameLabel.Location = new System.Drawing.Point(12, 18);
-            this._nameLabel.Name = "_nameLabel";
-            this._nameLabel.Size = new System.Drawing.Size(42, 16);
-            this._nameLabel.TabIndex = 0;
-            this._nameLabel.Text = "Name";
+            this._availableForLabel.AutoSize = true;
+            this._availableForLabel.Location = new System.Drawing.Point(12, 119);
+            this._availableForLabel.Name = "_availableForLabel";
+            this._availableForLabel.Size = new System.Drawing.Size(77, 16);
+            this._availableForLabel.TabIndex = 6;
+            this._availableForLabel.Text = "Available for";
             // 
-            // _codeLabel
+            // _availableForIndividualCheckBox
             // 
-            this._codeLabel.AutoSize = true;
-            this._codeLabel.Location = new System.Drawing.Point(12, 51);
-            this._codeLabel.Name = "_codeLabel";
-            this._codeLabel.Size = new System.Drawing.Size(38, 16);
-            this._codeLabel.TabIndex = 2;
-            this._codeLabel.Text = "Code";
+            this._availableForIndividualCheckBox.AutoSize = true;
+            this._availableForIndividualCheckBox.Location = new System.Drawing.Point(147, 119);
+            this._availableForIndividualCheckBox.Name = "_availableForIndividualCheckBox";
+            this._availableForIndividualCheckBox.Size = new System.Drawing.Size(79, 20);
+            this._availableForIndividualCheckBox.TabIndex = 7;
+            this._availableForIndividualCheckBox.Text = "Individual";
+            this._availableForIndividualCheckBox.UseVisualStyleBackColor = true;
             // 
-            // _paymentFrequencyLabel
+            // _availableForSgCheckBox
             // 
-            this._paymentFrequencyLabel.AutoSize = true;
-            this._paymentFrequencyLabel.Location = new System.Drawing.Point(12, 84);
-            this._paymentFrequencyLabel.Name = "_paymentFrequencyLabel";
-            this._paymentFrequencyLabel.Size = new System.Drawing.Size(120, 16);
-            this._paymentFrequencyLabel.TabIndex = 4;
-            this._paymentFrequencyLabel.Text = "Payment frequency";
+            this._availableForSgCheckBox.AutoSize = true;
+            this._availableForSgCheckBox.Location = new System.Drawing.Point(147, 145);
+            this._availableForSgCheckBox.Name = "_availableForSgCheckBox";
+            this._availableForSgCheckBox.Size = new System.Drawing.Size(117, 20);
+            this._availableForSgCheckBox.TabIndex = 8;
+            this._availableForSgCheckBox.Text = "Solidarity group";
+            this._availableForSgCheckBox.UseVisualStyleBackColor = true;
             // 
-            // _nameTextBox
+            // _availableForNsgCheckBox
             // 
-            this._nameTextBox.Location = new System.Drawing.Point(147, 15);
-            this._nameTextBox.Name = "_nameTextBox";
-            this._nameTextBox.Size = new System.Drawing.Size(209, 22);
-            this._nameTextBox.TabIndex = 1;
+            this._availableForNsgCheckBox.AutoSize = true;
+            this._availableForNsgCheckBox.Location = new System.Drawing.Point(147, 171);
+            this._availableForNsgCheckBox.Name = "_availableForNsgCheckBox";
+            this._availableForNsgCheckBox.Size = new System.Drawing.Size(142, 20);
+            this._availableForNsgCheckBox.TabIndex = 9;
+            this._availableForNsgCheckBox.Text = "Non-solidarity group";
+            this._availableForNsgCheckBox.UseVisualStyleBackColor = true;
             // 
-            // _codeTextBox
+            // _availableForCompanyCheckBox
             // 
-            this._codeTextBox.Location = new System.Drawing.Point(147, 48);
-            this._codeTextBox.Name = "_codeTextBox";
-            this._codeTextBox.Size = new System.Drawing.Size(209, 22);
-            this._codeTextBox.TabIndex = 3;
-            // 
-            // _paymentFrequencyComboBox
-            // 
-            this._paymentFrequencyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._paymentFrequencyComboBox.FormattingEnabled = true;
-            this._paymentFrequencyComboBox.Location = new System.Drawing.Point(147, 81);
-            this._paymentFrequencyComboBox.Name = "_paymentFrequencyComboBox";
-            this._paymentFrequencyComboBox.Size = new System.Drawing.Size(209, 24);
-            this._paymentFrequencyComboBox.TabIndex = 5;
+            this._availableForCompanyCheckBox.AutoSize = true;
+            this._availableForCompanyCheckBox.Location = new System.Drawing.Point(147, 197);
+            this._availableForCompanyCheckBox.Name = "_availableForCompanyCheckBox";
+            this._availableForCompanyCheckBox.Size = new System.Drawing.Size(82, 20);
+            this._availableForCompanyCheckBox.TabIndex = 10;
+            this._availableForCompanyCheckBox.Text = "Company";
+            this._availableForCompanyCheckBox.UseVisualStyleBackColor = true;
             // 
             // LoanProductView
             // 
@@ -173,5 +232,10 @@
         private System.Windows.Forms.TextBox _codeTextBox;
         private System.Windows.Forms.TextBox _nameTextBox;
         private System.Windows.Forms.ComboBox _paymentFrequencyComboBox;
+        private System.Windows.Forms.CheckBox _availableForCompanyCheckBox;
+        private System.Windows.Forms.CheckBox _availableForNsgCheckBox;
+        private System.Windows.Forms.CheckBox _availableForSgCheckBox;
+        private System.Windows.Forms.CheckBox _availableForIndividualCheckBox;
+        private System.Windows.Forms.Label _availableForLabel;
     }
 }

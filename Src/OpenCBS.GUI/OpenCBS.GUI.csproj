@@ -725,6 +725,7 @@
     <Compile Include="NEW\Mapper\ILoanProductMapper.cs" />
     <Compile Include="NEW\Mapper\IMapper.cs" />
     <Compile Include="NEW\Mapper\LoanProductMapper.cs" />
+    <Compile Include="NEW\Model\AvailableFor.cs" />
     <Compile Include="NEW\Model\EntityBase.cs" />
     <Compile Include="NEW\Model\LoanProduct.cs" />
     <Compile Include="NEW\Model\PaymentFrequency.cs" />
