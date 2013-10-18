@@ -40,7 +40,8 @@ namespace OpenCBS.GUI.NEW.Mapper
                 Id = dto.Id,
                 Name = dto.Name,
                 Code = dto.Code,
-                PaymentFrequency = _paymentFrequencyRepository.FindById(dto.PaymentFrequencyId)
+                PaymentFrequency = _paymentFrequencyRepository.FindById(dto.PaymentFrequencyId),
+                Deleted = dto.Deleted
             };
         }
 
@@ -56,7 +57,8 @@ namespace OpenCBS.GUI.NEW.Mapper
                 Id = loanProduct.Id,
                 Name = loanProduct.Name,
                 Code = loanProduct.Code,
-                PaymentFrequencyId = loanProduct.PaymentFrequency.Id
+                PaymentFrequencyId = loanProduct.PaymentFrequency.Id,
+                Deleted = loanProduct.Deleted
             };
         }
     }

@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Presenter;
@@ -43,6 +44,12 @@ namespace OpenCBS.GUI.NEW.View
             _showDeletedCheckBox.CheckedChanged += (sender, e) => presenterCallbacks.Refresh();
             FormClosed += (sender, e) => presenterCallbacks.Close();
             _presenterCallbacks = presenterCallbacks;
+
+            _loanProductsListView.FormatRow += (sender, e) =>
+            {
+                var loanProduct = (LoanProduct) e.Model;
+                e.Item.BackColor = loanProduct.Deleted ? Color.FromArgb(255, 92, 92) : Color.Transparent;
+            };
         }
 
         public void Run()
