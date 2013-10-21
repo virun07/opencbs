@@ -101,16 +101,16 @@
             // 
             this._loanProductsListView.AllColumns.Add(this._nameColumn);
             this._loanProductsListView.AllColumns.Add(this._codeColumn);
-            this._loanProductsListView.AllColumns.Add(this._repaymentFrequencyColumn);
             this._loanProductsListView.AllColumns.Add(this._availableForColumn);
             this._loanProductsListView.AllColumns.Add(this._schedulePolicyColumn);
+            this._loanProductsListView.AllColumns.Add(this._repaymentFrequencyColumn);
             this._loanProductsListView.AllColumns.Add(this._yearPolicyColumn);
             this._loanProductsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this._nameColumn,
             this._codeColumn,
-            this._repaymentFrequencyColumn,
             this._availableForColumn,
             this._schedulePolicyColumn,
+            this._repaymentFrequencyColumn,
             this._yearPolicyColumn});
             this._loanProductsListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._loanProductsListView.Font = new System.Drawing.Font("Arial", 8.25F);
