@@ -27,18 +27,21 @@ namespace OpenCBS.GUI.NEW.Presenter
     {
         private readonly ILoanProductView _view;
         private readonly IPaymentFrequencyRepository _paymentFrequencyRepository;
+        private readonly ISchedulePolicyRepository _schedulePolicyRepository;
         private CommandResult _commandResult = CommandResult.Cancel;
 
-        public LoanProductPresenter(ILoanProductView view, IPaymentFrequencyRepository paymentFrequencyRepository)
+        public LoanProductPresenter(ILoanProductView view, IPaymentFrequencyRepository paymentFrequencyRepository, ISchedulePolicyRepository schedulePolicyRepository)
         {
             _view = view;
             _paymentFrequencyRepository = paymentFrequencyRepository;
+            _schedulePolicyRepository = schedulePolicyRepository;
         }
 
         public Result<LoanProduct> Get(LoanProduct loanProduct)
         {
             _view.Attach(this);
             _view.ShowPaymentFrequencies(_paymentFrequencyRepository.FindAll());
+            _view.ShowSchedulePolicies(_schedulePolicyRepository.FindAll());
             ShowLoanProduct(loanProduct);
             _view.Run();
             var newLoanProduct = (LoanProduct) null;
@@ -82,6 +85,7 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.Code = loanProduct.Code;
             _view.PaymentFrequency = loanProduct.PaymentFrequency;
             _view.AvailableFor = loanProduct.AvailableFor;
+            _view.SchedulePolicy = loanProduct.SchedulePolicy;
         }
 
         private LoanProduct GetLoanProduct()
@@ -91,7 +95,8 @@ namespace OpenCBS.GUI.NEW.Presenter
                 Name = _view.LoanProductName,
                 Code = _view.Code,
                 PaymentFrequency = _view.PaymentFrequency,
-                AvailableFor = _view.AvailableFor
+                AvailableFor = _view.AvailableFor,
+                SchedulePolicy = _view.SchedulePolicy
             };
         }
     }

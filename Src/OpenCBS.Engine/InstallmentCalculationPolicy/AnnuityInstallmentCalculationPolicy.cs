@@ -5,9 +5,16 @@ using OpenCBS.Engine.Interfaces;
 namespace OpenCBS.Engine.InstallmentCalculationPolicy
 {
     [Export(typeof(IPolicy))]
+    [Export(typeof(IInstallmentCalculationPolicy))]
+    [ExportMetadata("Order", 30)]
     [PolicyAttribute(Implementation = "Annuity")]
     public class AnnuityInstallmentCalculationPolicy : BaseInstallmentCalculationPolicy, IInstallmentCalculationPolicy
     {
+        public override string Name
+        {
+            get { return "Annuity"; }
+        }
+
         public void Calculate(IInstallment installment, IScheduleConfiguration configuration)
         {
             var number = configuration.NumberOfInstallments - configuration.GracePeriod;

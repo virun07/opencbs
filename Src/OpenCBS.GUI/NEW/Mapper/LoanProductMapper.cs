@@ -27,10 +27,12 @@ namespace OpenCBS.GUI.NEW.Mapper
     public class LoanProductMapper : ILoanProductMapper
     {
         private readonly IPaymentFrequencyRepository _paymentFrequencyRepository;
+        private readonly ISchedulePolicyRepository _schedulePolicyRepository;
 
-        public LoanProductMapper(IPaymentFrequencyRepository paymentFrequencyRepository)
+        public LoanProductMapper(IPaymentFrequencyRepository paymentFrequencyRepository, ISchedulePolicyRepository schedulePolicyRepository)
         {
             _paymentFrequencyRepository = paymentFrequencyRepository;
+            _schedulePolicyRepository = schedulePolicyRepository;
         }
 
         public LoanProduct Map(LoanProductDto dto)
@@ -42,6 +44,7 @@ namespace OpenCBS.GUI.NEW.Mapper
                 Code = dto.Code,
                 PaymentFrequency = _paymentFrequencyRepository.FindById(dto.PaymentFrequencyId),
                 AvailableFor = (AvailableFor)dto.AvailableFor,
+                SchedulePolicy = _schedulePolicyRepository.FindByName(dto.SchedulePolicy),
                 Deleted = dto.Deleted
             };
         }
@@ -52,6 +55,8 @@ namespace OpenCBS.GUI.NEW.Mapper
                 throw new ArgumentNullException("loanProduct");
             if (loanProduct.PaymentFrequency == null)
                 throw new NullReferenceException("loanProduct.PaymentFrequency");
+            if (loanProduct.SchedulePolicy == null)
+                throw new NullReferenceException("loanProduct.SchedulePolicy");
 
             return new LoanProductDto
             {
@@ -60,6 +65,7 @@ namespace OpenCBS.GUI.NEW.Mapper
                 Code = loanProduct.Code,
                 PaymentFrequencyId = loanProduct.PaymentFrequency.Id,
                 AvailableFor = (int)loanProduct.AvailableFor,
+                SchedulePolicy = loanProduct.SchedulePolicy.Name,
                 Deleted = loanProduct.Deleted
             };
         }

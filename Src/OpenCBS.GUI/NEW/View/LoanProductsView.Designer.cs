@@ -38,6 +38,7 @@
             this._codeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._repaymentFrequencyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._availableForColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._schedulePolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._buttonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._loanProductsListView)).BeginInit();
             this.SuspendLayout();
@@ -101,11 +102,13 @@
             this._loanProductsListView.AllColumns.Add(this._codeColumn);
             this._loanProductsListView.AllColumns.Add(this._repaymentFrequencyColumn);
             this._loanProductsListView.AllColumns.Add(this._availableForColumn);
+            this._loanProductsListView.AllColumns.Add(this._schedulePolicyColumn);
             this._loanProductsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this._nameColumn,
             this._codeColumn,
             this._repaymentFrequencyColumn,
-            this._availableForColumn});
+            this._availableForColumn,
+            this._schedulePolicyColumn});
             this._loanProductsListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._loanProductsListView.Font = new System.Drawing.Font("Arial", 8.25F);
             this._loanProductsListView.FullRowSelect = true;
@@ -151,6 +154,14 @@
             this._availableForColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._availableForColumn.Width = 150;
             // 
+            // _schedulePolicyColumn
+            // 
+            this._schedulePolicyColumn.AspectName = "SchedulePolicy.Name";
+            this._schedulePolicyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._schedulePolicyColumn.Text = "Schedule";
+            this._schedulePolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._schedulePolicyColumn.Width = 150;
+            // 
             // LoanProductsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -181,6 +192,7 @@
         private BrightIdeasSoftware.OLVColumn _repaymentFrequencyColumn;
         private System.Windows.Forms.CheckBox _showDeletedCheckBox;
         private BrightIdeasSoftware.OLVColumn _availableForColumn;
+        private BrightIdeasSoftware.OLVColumn _schedulePolicyColumn;
 
     }
 }

@@ -30,6 +30,11 @@
         {
             this._tabControl = new System.Windows.Forms.TabControl();
             this._generalTabPage = new System.Windows.Forms.TabPage();
+            this._availableForCompanyCheckBox = new System.Windows.Forms.CheckBox();
+            this._availableForNsgCheckBox = new System.Windows.Forms.CheckBox();
+            this._availableForSgCheckBox = new System.Windows.Forms.CheckBox();
+            this._availableForIndividualCheckBox = new System.Windows.Forms.CheckBox();
+            this._availableForLabel = new System.Windows.Forms.Label();
             this._paymentFrequencyComboBox = new System.Windows.Forms.ComboBox();
             this._codeTextBox = new System.Windows.Forms.TextBox();
             this._nameTextBox = new System.Windows.Forms.TextBox();
@@ -38,11 +43,8 @@
             this._nameLabel = new System.Windows.Forms.Label();
             this._okButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
-            this._availableForLabel = new System.Windows.Forms.Label();
-            this._availableForIndividualCheckBox = new System.Windows.Forms.CheckBox();
-            this._availableForSgCheckBox = new System.Windows.Forms.CheckBox();
-            this._availableForNsgCheckBox = new System.Windows.Forms.CheckBox();
-            this._availableForCompanyCheckBox = new System.Windows.Forms.CheckBox();
+            this._scheduleComboBox = new System.Windows.Forms.ComboBox();
+            this._scheduleLabel = new System.Windows.Forms.Label();
             this._tabControl.SuspendLayout();
             this._generalTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +62,8 @@
             // 
             // _generalTabPage
             // 
+            this._generalTabPage.Controls.Add(this._scheduleComboBox);
+            this._generalTabPage.Controls.Add(this._scheduleLabel);
             this._generalTabPage.Controls.Add(this._availableForCompanyCheckBox);
             this._generalTabPage.Controls.Add(this._availableForNsgCheckBox);
             this._generalTabPage.Controls.Add(this._availableForSgCheckBox);
@@ -79,6 +83,55 @@
             this._generalTabPage.TabIndex = 0;
             this._generalTabPage.Text = "General";
             this._generalTabPage.UseVisualStyleBackColor = true;
+            // 
+            // _availableForCompanyCheckBox
+            // 
+            this._availableForCompanyCheckBox.AutoSize = true;
+            this._availableForCompanyCheckBox.Location = new System.Drawing.Point(147, 197);
+            this._availableForCompanyCheckBox.Name = "_availableForCompanyCheckBox";
+            this._availableForCompanyCheckBox.Size = new System.Drawing.Size(82, 20);
+            this._availableForCompanyCheckBox.TabIndex = 10;
+            this._availableForCompanyCheckBox.Text = "Company";
+            this._availableForCompanyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // _availableForNsgCheckBox
+            // 
+            this._availableForNsgCheckBox.AutoSize = true;
+            this._availableForNsgCheckBox.Location = new System.Drawing.Point(147, 171);
+            this._availableForNsgCheckBox.Name = "_availableForNsgCheckBox";
+            this._availableForNsgCheckBox.Size = new System.Drawing.Size(142, 20);
+            this._availableForNsgCheckBox.TabIndex = 9;
+            this._availableForNsgCheckBox.Text = "Non-solidarity group";
+            this._availableForNsgCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // _availableForSgCheckBox
+            // 
+            this._availableForSgCheckBox.AutoSize = true;
+            this._availableForSgCheckBox.Location = new System.Drawing.Point(147, 145);
+            this._availableForSgCheckBox.Name = "_availableForSgCheckBox";
+            this._availableForSgCheckBox.Size = new System.Drawing.Size(117, 20);
+            this._availableForSgCheckBox.TabIndex = 8;
+            this._availableForSgCheckBox.Text = "Solidarity group";
+            this._availableForSgCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // _availableForIndividualCheckBox
+            // 
+            this._availableForIndividualCheckBox.AutoSize = true;
+            this._availableForIndividualCheckBox.Location = new System.Drawing.Point(147, 119);
+            this._availableForIndividualCheckBox.Name = "_availableForIndividualCheckBox";
+            this._availableForIndividualCheckBox.Size = new System.Drawing.Size(79, 20);
+            this._availableForIndividualCheckBox.TabIndex = 7;
+            this._availableForIndividualCheckBox.Text = "Individual";
+            this._availableForIndividualCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // _availableForLabel
+            // 
+            this._availableForLabel.AutoSize = true;
+            this._availableForLabel.Location = new System.Drawing.Point(12, 119);
+            this._availableForLabel.Name = "_availableForLabel";
+            this._availableForLabel.Size = new System.Drawing.Size(77, 16);
+            this._availableForLabel.TabIndex = 6;
+            this._availableForLabel.Text = "Available for";
             // 
             // _paymentFrequencyComboBox
             // 
@@ -148,54 +201,23 @@
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
             // 
-            // _availableForLabel
+            // _scheduleComboBox
             // 
-            this._availableForLabel.AutoSize = true;
-            this._availableForLabel.Location = new System.Drawing.Point(12, 119);
-            this._availableForLabel.Name = "_availableForLabel";
-            this._availableForLabel.Size = new System.Drawing.Size(77, 16);
-            this._availableForLabel.TabIndex = 6;
-            this._availableForLabel.Text = "Available for";
+            this._scheduleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._scheduleComboBox.FormattingEnabled = true;
+            this._scheduleComboBox.Location = new System.Drawing.Point(147, 223);
+            this._scheduleComboBox.Name = "_scheduleComboBox";
+            this._scheduleComboBox.Size = new System.Drawing.Size(209, 24);
+            this._scheduleComboBox.TabIndex = 12;
             // 
-            // _availableForIndividualCheckBox
+            // _scheduleLabel
             // 
-            this._availableForIndividualCheckBox.AutoSize = true;
-            this._availableForIndividualCheckBox.Location = new System.Drawing.Point(147, 119);
-            this._availableForIndividualCheckBox.Name = "_availableForIndividualCheckBox";
-            this._availableForIndividualCheckBox.Size = new System.Drawing.Size(79, 20);
-            this._availableForIndividualCheckBox.TabIndex = 7;
-            this._availableForIndividualCheckBox.Text = "Individual";
-            this._availableForIndividualCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // _availableForSgCheckBox
-            // 
-            this._availableForSgCheckBox.AutoSize = true;
-            this._availableForSgCheckBox.Location = new System.Drawing.Point(147, 145);
-            this._availableForSgCheckBox.Name = "_availableForSgCheckBox";
-            this._availableForSgCheckBox.Size = new System.Drawing.Size(117, 20);
-            this._availableForSgCheckBox.TabIndex = 8;
-            this._availableForSgCheckBox.Text = "Solidarity group";
-            this._availableForSgCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // _availableForNsgCheckBox
-            // 
-            this._availableForNsgCheckBox.AutoSize = true;
-            this._availableForNsgCheckBox.Location = new System.Drawing.Point(147, 171);
-            this._availableForNsgCheckBox.Name = "_availableForNsgCheckBox";
-            this._availableForNsgCheckBox.Size = new System.Drawing.Size(142, 20);
-            this._availableForNsgCheckBox.TabIndex = 9;
-            this._availableForNsgCheckBox.Text = "Non-solidarity group";
-            this._availableForNsgCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // _availableForCompanyCheckBox
-            // 
-            this._availableForCompanyCheckBox.AutoSize = true;
-            this._availableForCompanyCheckBox.Location = new System.Drawing.Point(147, 197);
-            this._availableForCompanyCheckBox.Name = "_availableForCompanyCheckBox";
-            this._availableForCompanyCheckBox.Size = new System.Drawing.Size(82, 20);
-            this._availableForCompanyCheckBox.TabIndex = 10;
-            this._availableForCompanyCheckBox.Text = "Company";
-            this._availableForCompanyCheckBox.UseVisualStyleBackColor = true;
+            this._scheduleLabel.AutoSize = true;
+            this._scheduleLabel.Location = new System.Drawing.Point(12, 226);
+            this._scheduleLabel.Name = "_scheduleLabel";
+            this._scheduleLabel.Size = new System.Drawing.Size(62, 16);
+            this._scheduleLabel.TabIndex = 11;
+            this._scheduleLabel.Text = "Schedule";
             // 
             // LoanProductView
             // 
@@ -237,5 +259,7 @@
         private System.Windows.Forms.CheckBox _availableForSgCheckBox;
         private System.Windows.Forms.CheckBox _availableForIndividualCheckBox;
         private System.Windows.Forms.Label _availableForLabel;
+        private System.Windows.Forms.ComboBox _scheduleComboBox;
+        private System.Windows.Forms.Label _scheduleLabel;
     }
 }

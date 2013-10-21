@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
+using OpenCBS.Engine.Interfaces;
 using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Presenter;
 
@@ -28,10 +29,12 @@ namespace OpenCBS.GUI.NEW.View
         void Run();
         void Stop();
         void ShowPaymentFrequencies(IEnumerable<PaymentFrequency> paymentFrequencies);
+        void ShowSchedulePolicies(IEnumerable<IInstallmentCalculationPolicy> schedulePolicies);
 
         string LoanProductName { get; set; }
         string Code { get; set; }
         PaymentFrequency PaymentFrequency { get; set; }
         AvailableFor AvailableFor { get; set; }
+        IInstallmentCalculationPolicy SchedulePolicy { get; set; }
     }
 }

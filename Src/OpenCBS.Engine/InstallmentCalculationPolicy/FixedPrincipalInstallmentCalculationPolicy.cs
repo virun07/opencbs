@@ -4,9 +4,16 @@ using OpenCBS.Engine.Interfaces;
 namespace OpenCBS.Engine.InstallmentCalculationPolicy
 {
     [Export(typeof(IPolicy))]
+    [Export(typeof(IInstallmentCalculationPolicy))]
+    [ExportMetadata("Order", 20)]
     [PolicyAttribute(Implementation = "Fixed principal")]
     public class FixedPrincipalInstallmentCalculationPolicy : BaseInstallmentCalculationPolicy, IInstallmentCalculationPolicy
     {
+        public override string Name
+        {
+            get { return "Declining balance"; }
+        }
+
         public void Calculate(IInstallment installment, IScheduleConfiguration configuration)
         {
             var number = configuration.NumberOfInstallments - configuration.GracePeriod;

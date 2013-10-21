@@ -19,6 +19,7 @@
 
 using System.Collections.Generic;
 using System.Windows.Forms;
+using OpenCBS.Engine.Interfaces;
 using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Presenter;
 
@@ -51,6 +52,12 @@ namespace OpenCBS.GUI.NEW.View
         {
             foreach (var frequency in paymentFrequencies)
                 _paymentFrequencyComboBox.Items.Add(frequency);
+        }
+
+        public void ShowSchedulePolicies(IEnumerable<IInstallmentCalculationPolicy> schedulePolicies)
+        {
+            foreach (var policy in schedulePolicies)
+                _scheduleComboBox.Items.Add(policy);
         }
 
         public string LoanProductName
@@ -90,6 +97,12 @@ namespace OpenCBS.GUI.NEW.View
                 _availableForNsgCheckBox.Checked = (value & AvailableFor.NonSolidarityGroup) == AvailableFor.NonSolidarityGroup;
                 _availableForCompanyCheckBox.Checked = (value & AvailableFor.Company) == AvailableFor.Company;
             }
+        }
+
+        public IInstallmentCalculationPolicy SchedulePolicy
+        {
+            get { return (IInstallmentCalculationPolicy) _scheduleComboBox.SelectedItem; }
+            set { _scheduleComboBox.SelectedItem = value; }
         }
     }
 }

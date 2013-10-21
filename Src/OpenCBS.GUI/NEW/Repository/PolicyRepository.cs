@@ -17,16 +17,23 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.Engine.Interfaces;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.IO;
+using System.Reflection;
 
-namespace OpenCBS.GUI.NEW.Model
+namespace OpenCBS.GUI.NEW.Repository
 {
-    public class LoanProduct : EntityBase
+    public class PolicyRepository
     {
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public PaymentFrequency PaymentFrequency { get; set; }
-        public AvailableFor AvailableFor { get; set; }
-        public IInstallmentCalculationPolicy SchedulePolicy { get; set; }
+        public PolicyRepository()
+        {
+            var fileName = Assembly.GetExecutingAssembly().Location;
+            fileName = Path.GetDirectoryName(fileName);
+            fileName = Path.Combine(fileName, "OpenCBS.Engine.dll");
+            var catalog = new AssemblyCatalog(fileName);
+            var container = new CompositionContainer(catalog);
+            container.SatisfyImportsOnce(this);
+        }
     }
 }
