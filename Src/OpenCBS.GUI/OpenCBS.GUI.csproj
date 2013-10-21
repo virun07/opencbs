@@ -740,6 +740,7 @@
     <Compile Include="NEW\Repository\IConnectionProvider.cs" />
     <Compile Include="NEW\Repository\ILoanProductRepository.cs" />
     <Compile Include="NEW\Repository\IPaymentFrequencyRepository.cs" />
+    <Compile Include="NEW\Repository\IPolicyRepository.cs" />
     <Compile Include="NEW\Repository\IRepository.cs" />
     <Compile Include="NEW\Repository\ISchedulePolicyRepository.cs" />
     <Compile Include="NEW\Repository\LoanProductRepository.cs" />

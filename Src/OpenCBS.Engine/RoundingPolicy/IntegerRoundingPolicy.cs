@@ -12,5 +12,10 @@ namespace OpenCBS.Engine.RoundingPolicy
         {
             return Math.Round(amount, 0, MidpointRounding.AwayFromZero);
         }
+
+        public string Name
+        {
+            get { return "Whole"; }
+        }
     }
 }

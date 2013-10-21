@@ -21,7 +21,8 @@ using OpenCBS.Engine.Interfaces;
 
 namespace OpenCBS.GUI.NEW.Repository
 {
-    public interface ISchedulePolicyRepository : IPolicyRepository<IInstallmentCalculationPolicy>
+    public interface IPolicyRepository<T> : IRepository<T> where T : IPolicy
     {
+        T FindByName(string name);
     }
 }

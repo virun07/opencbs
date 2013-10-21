@@ -16,5 +16,10 @@ namespace OpenCBS.Engine.AdjustmentPolicy
                 schedule[i].Olb = schedule[i - 1].Olb - schedule[i - 1].Principal;
             }
         }
+
+        public string Name
+        {
+            get { return "First installment"; }
+        }
     }
 }

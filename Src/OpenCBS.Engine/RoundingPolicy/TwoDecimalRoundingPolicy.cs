@@ -12,5 +12,10 @@ namespace OpenCBS.Engine.RoundingPolicy
         {
             return Math.Round(amount, 2, MidpointRounding.AwayFromZero);
         }
+
+        public string Name
+        {
+            get { return "Two decimal"; }
+        }
     }
 }

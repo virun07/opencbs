@@ -12,5 +12,10 @@ namespace OpenCBS.Engine.YearPolicy
         {
             return 360;
         }
+
+        public string Name
+        {
+            get { return "360 days"; }
+        }
     }
 }

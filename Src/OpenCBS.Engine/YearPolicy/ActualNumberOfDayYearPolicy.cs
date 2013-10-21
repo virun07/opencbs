@@ -12,5 +12,10 @@ namespace OpenCBS.Engine.YearPolicy
         {
             return DateTime.IsLeapYear(date.Year) ? 366 : 365;
         }
+
+        public string Name
+        {
+            get { return "Actual"; }
+        }
     }
 }

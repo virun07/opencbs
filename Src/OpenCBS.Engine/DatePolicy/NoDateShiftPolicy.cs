@@ -12,5 +12,10 @@ namespace OpenCBS.Engine.DatePolicy
         {
             return date;
         }
+
+        public string Name
+        {
+            get { return "No shift"; }
+        }
     }
 }

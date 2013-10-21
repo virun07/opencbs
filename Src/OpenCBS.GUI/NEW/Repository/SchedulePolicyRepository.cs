@@ -25,48 +25,19 @@ using OpenCBS.Engine.Interfaces;
 
 namespace OpenCBS.GUI.NEW.Repository
 {
-    public class SchedulePolicyRepository : PolicyRepository, ISchedulePolicyRepository
+    public class SchedulePolicyRepository : PolicyRepository<IInstallmentCalculationPolicy>, ISchedulePolicyRepository
     {
         [ImportMany(typeof(IInstallmentCalculationPolicy))]
-        private Lazy<IInstallmentCalculationPolicy, IDictionary<string, object>>[] Policies { get; set; }
+        private Lazy<IInstallmentCalculationPolicy, IDictionary<string, object>>[] SchedulePolicies { get; set; }
 
-        public IEnumerable<IInstallmentCalculationPolicy> FindAll()
+        protected override IEnumerable<IInstallmentCalculationPolicy> Policies
         {
-            return from policy in Policies
-                   orderby policy.Metadata.ContainsKey("Order") ? policy.Metadata["Order"] : 0
-                   select policy.Value;
-        }
-
-        public IInstallmentCalculationPolicy FindByName(string name)
-        {
-            return (from policy in Policies
-                    where policy.Value.Name == name
-                    select policy.Value).FirstOrDefault();
-        }
-
-        public IEnumerable<IInstallmentCalculationPolicy> FindNonDeleted()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IInstallmentCalculationPolicy FindById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(IInstallmentCalculationPolicy entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Add(IInstallmentCalculationPolicy entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(IInstallmentCalculationPolicy entity)
-        {
-            throw new NotImplementedException();
+            get
+            {
+                return from policy in SchedulePolicies
+                       orderby policy.Metadata.ContainsKey("Order") ? policy.Metadata["Order"] : 0
+                       select policy.Value;
+            }
         }
     }
 }

@@ -44,5 +44,10 @@ namespace OpenCBS.Engine.PeriodPolicy
         {
             return (double) yearPolicy.GetNumberOfDays(date) / _numberOfDays;
         }
+
+        public string Name
+        {
+            get { return "Custom period"; }
+        }
     }
 }

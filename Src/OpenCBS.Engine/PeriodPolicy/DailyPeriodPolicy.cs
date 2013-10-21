@@ -27,5 +27,10 @@ namespace OpenCBS.Engine.PeriodPolicy
         {
             return yearPolicy.GetNumberOfDays(date);
         }
+
+        public string Name
+        {
+            get { return "Daily"; }
+        }
     }
 }

@@ -17,15 +17,21 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using OpenCBS.Engine.Interfaces;
 
 namespace OpenCBS.GUI.NEW.Repository
 {
-    public class PolicyRepository
+    public abstract class PolicyRepository<T> : IPolicyRepository<T> where T : IPolicy
     {
+        protected abstract IEnumerable<T> Policies { get; }
+
         public PolicyRepository()
         {
             var fileName = Assembly.GetExecutingAssembly().Location;
@@ -34,6 +40,43 @@ namespace OpenCBS.GUI.NEW.Repository
             var catalog = new AssemblyCatalog(fileName);
             var container = new CompositionContainer(catalog);
             container.SatisfyImportsOnce(this);
+        }
+
+        public T FindByName(string name)
+        {
+            return (from policy in Policies
+                   where policy.Name == name
+                   select policy).FirstOrDefault();
+        }
+
+        public IEnumerable<T> FindAll()
+        {
+            return Policies;
+        }
+
+        public IEnumerable<T> FindNonDeleted()
+        {
+            throw new NotImplementedException();
+        }
+
+        public T FindById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(T entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }
