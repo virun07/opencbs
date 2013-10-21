@@ -27,8 +27,11 @@ namespace OpenCBS.GUI.NEW.Repository
 {
     public class SchedulePolicyRepository : PolicyRepository<IInstallmentCalculationPolicy>, ISchedulePolicyRepository
     {
+        // ReSharper disable UnusedAutoPropertyAccessor.Local
+        // The mutator is used by MEF
         [ImportMany(typeof(IInstallmentCalculationPolicy))]
         private Lazy<IInstallmentCalculationPolicy, IDictionary<string, object>>[] SchedulePolicies { get; set; }
+        // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         protected override IEnumerable<IInstallmentCalculationPolicy> Policies
         {

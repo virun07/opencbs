@@ -32,7 +32,7 @@ namespace OpenCBS.GUI.NEW.Repository
     {
         protected abstract IEnumerable<T> Policies { get; }
 
-        public PolicyRepository()
+        protected PolicyRepository()
         {
             var fileName = Assembly.GetExecutingAssembly().Location;
             fileName = Path.GetDirectoryName(fileName);
