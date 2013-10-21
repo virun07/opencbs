@@ -30,5 +30,6 @@ namespace OpenCBS.GUI.NEW.Model
         public IInstallmentCalculationPolicy SchedulePolicy { get; set; }
         public IYearPolicy YearPolicy { get; set; }
         public IDateShiftPolicy DateShiftPolicy { get; set; }
+        public IRoundingPolicy RoundingPolicy { get; set; }
     }
 }

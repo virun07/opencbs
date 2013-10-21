@@ -41,6 +41,7 @@
             this._repaymentFrequencyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._yearPolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._dateShiftPolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._roundingPolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._buttonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._loanProductsListView)).BeginInit();
             this.SuspendLayout();
@@ -107,6 +108,7 @@
             this._loanProductsListView.AllColumns.Add(this._repaymentFrequencyColumn);
             this._loanProductsListView.AllColumns.Add(this._yearPolicyColumn);
             this._loanProductsListView.AllColumns.Add(this._dateShiftPolicyColumn);
+            this._loanProductsListView.AllColumns.Add(this._roundingPolicyColumn);
             this._loanProductsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this._nameColumn,
             this._codeColumn,
@@ -114,7 +116,8 @@
             this._schedulePolicyColumn,
             this._repaymentFrequencyColumn,
             this._yearPolicyColumn,
-            this._dateShiftPolicyColumn});
+            this._dateShiftPolicyColumn,
+            this._roundingPolicyColumn});
             this._loanProductsListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._loanProductsListView.Font = new System.Drawing.Font("Arial", 8.25F);
             this._loanProductsListView.FullRowSelect = true;
@@ -184,6 +187,14 @@
             this._dateShiftPolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._dateShiftPolicyColumn.Width = 100;
             // 
+            // _roundingPolicyColumn
+            // 
+            this._roundingPolicyColumn.AspectName = "RoundingPolicy.Name";
+            this._roundingPolicyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._roundingPolicyColumn.Text = "Rounding";
+            this._roundingPolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._roundingPolicyColumn.Width = 100;
+            // 
             // LoanProductsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -217,6 +228,7 @@
         private BrightIdeasSoftware.OLVColumn _schedulePolicyColumn;
         private BrightIdeasSoftware.OLVColumn _yearPolicyColumn;
         private BrightIdeasSoftware.OLVColumn _dateShiftPolicyColumn;
+        private BrightIdeasSoftware.OLVColumn _roundingPolicyColumn;
 
     }
 }

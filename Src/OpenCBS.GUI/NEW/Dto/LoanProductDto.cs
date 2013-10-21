@@ -29,6 +29,7 @@ namespace OpenCBS.GUI.NEW.Dto
         public string SchedulePolicy { get; set; }
         public string YearPolicy { get; set; }
         public string DateShiftPolicy { get; set; }
+        public string RoundingPolicy { get; set; }
         public bool Deleted { get; set; }
     }
 }

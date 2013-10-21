@@ -744,12 +744,14 @@
     <Compile Include="NEW\Repository\IPaymentFrequencyRepository.cs" />
     <Compile Include="NEW\Repository\IPolicyRepository.cs" />
     <Compile Include="NEW\Repository\IRepository.cs" />
+    <Compile Include="NEW\Repository\IRoundingPolicyRepository.cs" />
     <Compile Include="NEW\Repository\ISchedulePolicyRepository.cs" />
     <Compile Include="NEW\Repository\IYearPolicyRepository.cs" />
     <Compile Include="NEW\Repository\LoanProductRepository.cs" />
     <Compile Include="NEW\Repository\PaymentFrequencyRepository.cs" />
     <Compile Include="NEW\Repository\PolicyRepository.cs" />
     <Compile Include="NEW\Repository\Repository.cs" />
+    <Compile Include="NEW\Repository\RoundingPolicyRepository.cs" />
     <Compile Include="NEW\Repository\SchedulePolicyRepository.cs" />
     <Compile Include="NEW\Repository\SqlConnectionProvider.cs" />
     <Compile Include="NEW\Repository\YearPolicyRepository.cs" />

@@ -30,6 +30,8 @@
         {
             this._tabControl = new System.Windows.Forms.TabControl();
             this._generalTabPage = new System.Windows.Forms.TabPage();
+            this._dateShiftPolicyComboBox = new System.Windows.Forms.ComboBox();
+            this._dateShiftPolicyLabel = new System.Windows.Forms.Label();
             this._yearPolicyComboBox = new System.Windows.Forms.ComboBox();
             this._yearPolicyLabel = new System.Windows.Forms.Label();
             this._schedulePolicyComboBox = new System.Windows.Forms.ComboBox();
@@ -47,8 +49,8 @@
             this._nameLabel = new System.Windows.Forms.Label();
             this._okButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
-            this._dateShiftPolicyComboBox = new System.Windows.Forms.ComboBox();
-            this._dateShiftPolicyLabel = new System.Windows.Forms.Label();
+            this._roundingPolicyComboBox = new System.Windows.Forms.ComboBox();
+            this._roundingPolicyLabel = new System.Windows.Forms.Label();
             this._tabControl.SuspendLayout();
             this._generalTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +68,8 @@
             // 
             // _generalTabPage
             // 
+            this._generalTabPage.Controls.Add(this._roundingPolicyComboBox);
+            this._generalTabPage.Controls.Add(this._roundingPolicyLabel);
             this._generalTabPage.Controls.Add(this._dateShiftPolicyComboBox);
             this._generalTabPage.Controls.Add(this._dateShiftPolicyLabel);
             this._generalTabPage.Controls.Add(this._yearPolicyComboBox);
@@ -91,6 +95,24 @@
             this._generalTabPage.TabIndex = 0;
             this._generalTabPage.Text = "General";
             this._generalTabPage.UseVisualStyleBackColor = true;
+            // 
+            // _dateShiftPolicyComboBox
+            // 
+            this._dateShiftPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._dateShiftPolicyComboBox.FormattingEnabled = true;
+            this._dateShiftPolicyComboBox.Location = new System.Drawing.Point(147, 270);
+            this._dateShiftPolicyComboBox.Name = "_dateShiftPolicyComboBox";
+            this._dateShiftPolicyComboBox.Size = new System.Drawing.Size(209, 24);
+            this._dateShiftPolicyComboBox.TabIndex = 16;
+            // 
+            // _dateShiftPolicyLabel
+            // 
+            this._dateShiftPolicyLabel.AutoSize = true;
+            this._dateShiftPolicyLabel.Location = new System.Drawing.Point(12, 273);
+            this._dateShiftPolicyLabel.Name = "_dateShiftPolicyLabel";
+            this._dateShiftPolicyLabel.Size = new System.Drawing.Size(63, 16);
+            this._dateShiftPolicyLabel.TabIndex = 15;
+            this._dateShiftPolicyLabel.Text = "Date shift";
             // 
             // _yearPolicyComboBox
             // 
@@ -245,23 +267,23 @@
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
             // 
-            // _dateShiftPolicyComboBox
+            // _roundingPolicyComboBox
             // 
-            this._dateShiftPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._dateShiftPolicyComboBox.FormattingEnabled = true;
-            this._dateShiftPolicyComboBox.Location = new System.Drawing.Point(147, 270);
-            this._dateShiftPolicyComboBox.Name = "_dateShiftPolicyComboBox";
-            this._dateShiftPolicyComboBox.Size = new System.Drawing.Size(209, 24);
-            this._dateShiftPolicyComboBox.TabIndex = 16;
+            this._roundingPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._roundingPolicyComboBox.FormattingEnabled = true;
+            this._roundingPolicyComboBox.Location = new System.Drawing.Point(147, 300);
+            this._roundingPolicyComboBox.Name = "_roundingPolicyComboBox";
+            this._roundingPolicyComboBox.Size = new System.Drawing.Size(209, 24);
+            this._roundingPolicyComboBox.TabIndex = 18;
             // 
-            // _dateShiftPolicyLabel
+            // _roundingPolicyLabel
             // 
-            this._dateShiftPolicyLabel.AutoSize = true;
-            this._dateShiftPolicyLabel.Location = new System.Drawing.Point(12, 273);
-            this._dateShiftPolicyLabel.Name = "_dateShiftPolicyLabel";
-            this._dateShiftPolicyLabel.Size = new System.Drawing.Size(63, 16);
-            this._dateShiftPolicyLabel.TabIndex = 15;
-            this._dateShiftPolicyLabel.Text = "Date shift";
+            this._roundingPolicyLabel.AutoSize = true;
+            this._roundingPolicyLabel.Location = new System.Drawing.Point(12, 303);
+            this._roundingPolicyLabel.Name = "_roundingPolicyLabel";
+            this._roundingPolicyLabel.Size = new System.Drawing.Size(62, 16);
+            this._roundingPolicyLabel.TabIndex = 17;
+            this._roundingPolicyLabel.Text = "Rounding";
             // 
             // LoanProductView
             // 
@@ -309,5 +331,7 @@
         private System.Windows.Forms.Label _yearPolicyLabel;
         private System.Windows.Forms.ComboBox _dateShiftPolicyComboBox;
         private System.Windows.Forms.Label _dateShiftPolicyLabel;
+        private System.Windows.Forms.ComboBox _roundingPolicyComboBox;
+        private System.Windows.Forms.Label _roundingPolicyLabel;
     }
 }

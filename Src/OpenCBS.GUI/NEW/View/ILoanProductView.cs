@@ -32,6 +32,7 @@ namespace OpenCBS.GUI.NEW.View
         void ShowSchedulePolicies(IEnumerable<IInstallmentCalculationPolicy> schedulePolicies);
         void ShowYearPolicies(IEnumerable<IYearPolicy> yearPolicies);
         void ShowDateShiftPolicies(IEnumerable<IDateShiftPolicy> dateShiftPolicies);
+        void ShowRoundingPolicies(IEnumerable<IRoundingPolicy> roundingPolicies);
 
         string LoanProductName { get; set; }
         string Code { get; set; }
@@ -40,5 +41,6 @@ namespace OpenCBS.GUI.NEW.View
         IInstallmentCalculationPolicy SchedulePolicy { get; set; }
         IYearPolicy YearPolicy { get; set; }
         IDateShiftPolicy DateShiftPolicy { get; set; }
+        IRoundingPolicy RoundingPolicy { get; set; }
     }
 }

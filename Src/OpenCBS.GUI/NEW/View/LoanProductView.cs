@@ -72,6 +72,12 @@ namespace OpenCBS.GUI.NEW.View
                 _dateShiftPolicyComboBox.Items.Add(policy);
         }
 
+        public void ShowRoundingPolicies(IEnumerable<IRoundingPolicy> roundingPolicies)
+        {
+            foreach (var policy in roundingPolicies)
+                _roundingPolicyComboBox.Items.Add(policy);
+        }
+
         public string LoanProductName
         {
             get { return _nameTextBox.Text; }
@@ -127,6 +133,12 @@ namespace OpenCBS.GUI.NEW.View
         {
             get { return (IDateShiftPolicy) _dateShiftPolicyComboBox.SelectedItem; }
             set { _dateShiftPolicyComboBox.SelectedItem = value; }
+        }
+
+        public IRoundingPolicy RoundingPolicy
+        {
+            get { return (IRoundingPolicy) _roundingPolicyComboBox.SelectedItem; }
+            set { _roundingPolicyComboBox.SelectedItem = value; }
         }
     }
 }

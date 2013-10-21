@@ -30,19 +30,22 @@ namespace OpenCBS.GUI.NEW.Presenter
         private readonly ISchedulePolicyRepository _schedulePolicyRepository;
         private readonly IYearPolicyRepository _yearPolicyRepository;
         private readonly IDateShiftPolicyRepository _dateShiftPolicyRepository;
+        private readonly IRoundingPolicyRepository _roundingPolicyRepository;
         private CommandResult _commandResult = CommandResult.Cancel;
 
         public LoanProductPresenter(ILoanProductView view, 
             IPaymentFrequencyRepository paymentFrequencyRepository, 
             ISchedulePolicyRepository schedulePolicyRepository,
             IYearPolicyRepository yearPolicyRepository,
-            IDateShiftPolicyRepository dateShiftPolicyRepository)
+            IDateShiftPolicyRepository dateShiftPolicyRepository,
+            IRoundingPolicyRepository roundingPolicyRepository)
         {
             _view = view;
             _paymentFrequencyRepository = paymentFrequencyRepository;
             _schedulePolicyRepository = schedulePolicyRepository;
             _yearPolicyRepository = yearPolicyRepository;
             _dateShiftPolicyRepository = dateShiftPolicyRepository;
+            _roundingPolicyRepository = roundingPolicyRepository;
         }
 
         public Result<LoanProduct> Get(LoanProduct loanProduct)
@@ -52,6 +55,7 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.ShowSchedulePolicies(_schedulePolicyRepository.FindAll());
             _view.ShowYearPolicies(_yearPolicyRepository.FindAll());
             _view.ShowDateShiftPolicies(_dateShiftPolicyRepository.FindAll());
+            _view.ShowRoundingPolicies(_roundingPolicyRepository.FindAll());
             ShowLoanProduct(loanProduct);
             _view.Run();
             var newLoanProduct = (LoanProduct) null;
@@ -98,6 +102,7 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.SchedulePolicy = loanProduct.SchedulePolicy;
             _view.YearPolicy = loanProduct.YearPolicy;
             _view.DateShiftPolicy = loanProduct.DateShiftPolicy;
+            _view.RoundingPolicy = loanProduct.RoundingPolicy;
         }
 
         private LoanProduct GetLoanProduct()
@@ -110,7 +115,8 @@ namespace OpenCBS.GUI.NEW.Presenter
                 AvailableFor = _view.AvailableFor,
                 SchedulePolicy = _view.SchedulePolicy,
                 YearPolicy = _view.YearPolicy,
-                DateShiftPolicy = _view.DateShiftPolicy
+                DateShiftPolicy = _view.DateShiftPolicy,
+                RoundingPolicy = _view.RoundingPolicy
             };
         }
     }
