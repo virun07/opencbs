@@ -17,18 +17,18 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.GUI.NEW.Dto
+using System;
+using System.ComponentModel.Composition;
+using OpenCBS.Engine.Interfaces;
+
+namespace OpenCBS.Engine.DatePolicy
 {
-    public class LoanProductDto
+    [Export(typeof(INonWorkingDayPolicy))]
+    public class DummyNonWorkingDayPolicy : INonWorkingDayPolicy
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public int PaymentFrequencyId { get; set; }
-        public int AvailableFor { get; set; }
-        public string SchedulePolicy { get; set; }
-        public string YearPolicy { get; set; }
-        public string DateShiftPolicy { get; set; }
-        public bool Deleted { get; set; }
+        public bool IsNonWorkingDay(DateTime date)
+        {
+            return false;
+        }
     }
 }

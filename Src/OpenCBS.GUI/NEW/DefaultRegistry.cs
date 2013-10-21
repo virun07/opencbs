@@ -18,6 +18,8 @@
 // Contact: contact@opencbs.com
 
 using System.Windows.Forms;
+using OpenCBS.Engine.DatePolicy;
+using OpenCBS.Engine.Interfaces;
 using OpenCBS.GUI.NEW.AppController;
 using OpenCBS.GUI.NEW.Command;
 using OpenCBS.GUI.NEW.CommandData;
@@ -56,6 +58,7 @@ namespace OpenCBS.GUI.NEW
             For<IPaymentFrequencyRepository>().Use<PaymentFrequencyRepository>();
             For<ISchedulePolicyRepository>().Use<SchedulePolicyRepository>();
             For<IYearPolicyRepository>().Use<YearPolicyRepository>();
+            For<IDateShiftPolicyRepository>().Use<DateShiftPolicyRepository>();
 
             // Mappers
             For<ILoanProductMapper>().Use<LoanProductMapper>();

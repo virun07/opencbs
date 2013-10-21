@@ -66,6 +66,12 @@ namespace OpenCBS.GUI.NEW.View
                 _yearPolicyComboBox.Items.Add(policy);
         }
 
+        public void ShowDateShiftPolicies(IEnumerable<IDateShiftPolicy> dateShiftPolicies)
+        {
+            foreach (var policy in dateShiftPolicies)
+                _dateShiftPolicyComboBox.Items.Add(policy);
+        }
+
         public string LoanProductName
         {
             get { return _nameTextBox.Text; }
@@ -115,6 +121,12 @@ namespace OpenCBS.GUI.NEW.View
         {
             get { return (IYearPolicy) _yearPolicyComboBox.SelectedItem; }
             set { _yearPolicyComboBox.SelectedItem = value; }
+        }
+
+        public IDateShiftPolicy DateShiftPolicy
+        {
+            get { return (IDateShiftPolicy) _dateShiftPolicyComboBox.SelectedItem; }
+            set { _dateShiftPolicyComboBox.SelectedItem = value; }
         }
     }
 }

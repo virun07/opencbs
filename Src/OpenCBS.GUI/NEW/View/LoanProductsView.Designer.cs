@@ -36,10 +36,11 @@
             this._loanProductsListView = new BrightIdeasSoftware.ObjectListView();
             this._nameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._codeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this._repaymentFrequencyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._availableForColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._schedulePolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._repaymentFrequencyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._yearPolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._dateShiftPolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._buttonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._loanProductsListView)).BeginInit();
             this.SuspendLayout();
@@ -105,13 +106,15 @@
             this._loanProductsListView.AllColumns.Add(this._schedulePolicyColumn);
             this._loanProductsListView.AllColumns.Add(this._repaymentFrequencyColumn);
             this._loanProductsListView.AllColumns.Add(this._yearPolicyColumn);
+            this._loanProductsListView.AllColumns.Add(this._dateShiftPolicyColumn);
             this._loanProductsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this._nameColumn,
             this._codeColumn,
             this._availableForColumn,
             this._schedulePolicyColumn,
             this._repaymentFrequencyColumn,
-            this._yearPolicyColumn});
+            this._yearPolicyColumn,
+            this._dateShiftPolicyColumn});
             this._loanProductsListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._loanProductsListView.Font = new System.Drawing.Font("Arial", 8.25F);
             this._loanProductsListView.FullRowSelect = true;
@@ -141,14 +144,6 @@
             this._codeColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._codeColumn.Width = 80;
             // 
-            // _repaymentFrequencyColumn
-            // 
-            this._repaymentFrequencyColumn.AspectName = "PaymentFrequency";
-            this._repaymentFrequencyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this._repaymentFrequencyColumn.Text = "Payment frequency";
-            this._repaymentFrequencyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this._repaymentFrequencyColumn.Width = 150;
-            // 
             // _availableForColumn
             // 
             this._availableForColumn.AspectName = "AvailableFor";
@@ -165,6 +160,14 @@
             this._schedulePolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._schedulePolicyColumn.Width = 150;
             // 
+            // _repaymentFrequencyColumn
+            // 
+            this._repaymentFrequencyColumn.AspectName = "PaymentFrequency";
+            this._repaymentFrequencyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._repaymentFrequencyColumn.Text = "Payment frequency";
+            this._repaymentFrequencyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._repaymentFrequencyColumn.Width = 150;
+            // 
             // _yearPolicyColumn
             // 
             this._yearPolicyColumn.AspectName = "YearPolicy.Name";
@@ -172,6 +175,14 @@
             this._yearPolicyColumn.Text = "Year";
             this._yearPolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._yearPolicyColumn.Width = 100;
+            // 
+            // _dateShiftPolicyColumn
+            // 
+            this._dateShiftPolicyColumn.AspectName = "DateShiftPolicy.Name";
+            this._dateShiftPolicyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._dateShiftPolicyColumn.Text = "Date shift";
+            this._dateShiftPolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._dateShiftPolicyColumn.Width = 100;
             // 
             // LoanProductsView
             // 
@@ -205,6 +216,7 @@
         private BrightIdeasSoftware.OLVColumn _availableForColumn;
         private BrightIdeasSoftware.OLVColumn _schedulePolicyColumn;
         private BrightIdeasSoftware.OLVColumn _yearPolicyColumn;
+        private BrightIdeasSoftware.OLVColumn _dateShiftPolicyColumn;
 
     }
 }

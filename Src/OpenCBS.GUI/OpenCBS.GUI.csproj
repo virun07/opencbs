@@ -737,7 +737,9 @@
     <Compile Include="NEW\Presenter\LoanProductsPresenter.cs" />
     <Compile Include="NEW\Presenter\MainPresenter.cs" />
     <Compile Include="NEW\Repository\CustomTableNameMapper.cs" />
+    <Compile Include="NEW\Repository\DateShiftPolicyRepository.cs" />
     <Compile Include="NEW\Repository\IConnectionProvider.cs" />
+    <Compile Include="NEW\Repository\IDateShiftPolicyRepository.cs" />
     <Compile Include="NEW\Repository\ILoanProductRepository.cs" />
     <Compile Include="NEW\Repository\IPaymentFrequencyRepository.cs" />
     <Compile Include="NEW\Repository\IPolicyRepository.cs" />

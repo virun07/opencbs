@@ -5,8 +5,10 @@ using OpenCBS.Engine.Interfaces;
 namespace OpenCBS.Engine.DatePolicy
 {
     [Export(typeof(IPolicy))]
+    [Export(typeof(IDateShiftPolicy))]
+    [ExportMetadata("Order", 30)]
     [PolicyAttribute(Implementation = "Forward")]
-    public class ForwardDateShiftPolicy : IDateShiftPolicy
+    public class ForwardDateShiftPolicy : BasePolicy, IDateShiftPolicy
     {
         private readonly INonWorkingDayPolicy _nonWorkingDayPolicy;
 
@@ -27,7 +29,7 @@ namespace OpenCBS.Engine.DatePolicy
             return date;
         }
 
-        public string Name
+        public override string Name
         {
             get { return "Forward"; }
         }

@@ -17,18 +17,30 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Linq;
 using OpenCBS.Engine.Interfaces;
 
-namespace OpenCBS.GUI.NEW.Model
+namespace OpenCBS.GUI.NEW.Repository
 {
-    public class LoanProduct : EntityBase
+    public class DateShiftPolicyRepository : PolicyRepository<IDateShiftPolicy>, IDateShiftPolicyRepository
     {
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public PaymentFrequency PaymentFrequency { get; set; }
-        public AvailableFor AvailableFor { get; set; }
-        public IInstallmentCalculationPolicy SchedulePolicy { get; set; }
-        public IYearPolicy YearPolicy { get; set; }
-        public IDateShiftPolicy DateShiftPolicy { get; set; }
+        // ReSharper disable UnusedAutoPropertyAccessor.Local
+        // The mutator is used by MEF
+        [ImportMany(typeof(IDateShiftPolicy))]
+        private Lazy<IDateShiftPolicy, IDictionary<string, object>>[] DateShiftPolicies { get; set; }
+        // ReSharper restore UnusedAutoPropertyAccessor.Local
+
+        protected override IEnumerable<IDateShiftPolicy> Policies
+        {
+            get
+            {
+                return from policy in DateShiftPolicies
+                       orderby policy.Metadata.ContainsKey("Order") ? policy.Metadata["Order"] : 0
+                       select policy.Value;
+            }
+        }
     }
 }

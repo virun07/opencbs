@@ -47,6 +47,8 @@
             this._nameLabel = new System.Windows.Forms.Label();
             this._okButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
+            this._dateShiftPolicyComboBox = new System.Windows.Forms.ComboBox();
+            this._dateShiftPolicyLabel = new System.Windows.Forms.Label();
             this._tabControl.SuspendLayout();
             this._generalTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -64,6 +66,8 @@
             // 
             // _generalTabPage
             // 
+            this._generalTabPage.Controls.Add(this._dateShiftPolicyComboBox);
+            this._generalTabPage.Controls.Add(this._dateShiftPolicyLabel);
             this._generalTabPage.Controls.Add(this._yearPolicyComboBox);
             this._generalTabPage.Controls.Add(this._yearPolicyLabel);
             this._generalTabPage.Controls.Add(this._schedulePolicyComboBox);
@@ -241,6 +245,24 @@
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
             // 
+            // _dateShiftPolicyComboBox
+            // 
+            this._dateShiftPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._dateShiftPolicyComboBox.FormattingEnabled = true;
+            this._dateShiftPolicyComboBox.Location = new System.Drawing.Point(147, 270);
+            this._dateShiftPolicyComboBox.Name = "_dateShiftPolicyComboBox";
+            this._dateShiftPolicyComboBox.Size = new System.Drawing.Size(209, 24);
+            this._dateShiftPolicyComboBox.TabIndex = 16;
+            // 
+            // _dateShiftPolicyLabel
+            // 
+            this._dateShiftPolicyLabel.AutoSize = true;
+            this._dateShiftPolicyLabel.Location = new System.Drawing.Point(12, 273);
+            this._dateShiftPolicyLabel.Name = "_dateShiftPolicyLabel";
+            this._dateShiftPolicyLabel.Size = new System.Drawing.Size(63, 16);
+            this._dateShiftPolicyLabel.TabIndex = 15;
+            this._dateShiftPolicyLabel.Text = "Date shift";
+            // 
             // LoanProductView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -285,5 +307,7 @@
         private System.Windows.Forms.Label _schedulePolicyLabel;
         private System.Windows.Forms.ComboBox _yearPolicyComboBox;
         private System.Windows.Forms.Label _yearPolicyLabel;
+        private System.Windows.Forms.ComboBox _dateShiftPolicyComboBox;
+        private System.Windows.Forms.Label _dateShiftPolicyLabel;
     }
 }

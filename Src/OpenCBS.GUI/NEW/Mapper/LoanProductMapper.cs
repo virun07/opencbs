@@ -29,14 +29,17 @@ namespace OpenCBS.GUI.NEW.Mapper
         private readonly IPaymentFrequencyRepository _paymentFrequencyRepository;
         private readonly ISchedulePolicyRepository _schedulePolicyRepository;
         private readonly IYearPolicyRepository _yearPolicyRepository;
+        private readonly IDateShiftPolicyRepository _dateShiftPolicyRepository;
 
         public LoanProductMapper(IPaymentFrequencyRepository paymentFrequencyRepository, 
             ISchedulePolicyRepository schedulePolicyRepository,
-            IYearPolicyRepository yearPolicyRepository)
+            IYearPolicyRepository yearPolicyRepository,
+            IDateShiftPolicyRepository dateShiftPolicyRepository)
         {
             _paymentFrequencyRepository = paymentFrequencyRepository;
             _schedulePolicyRepository = schedulePolicyRepository;
             _yearPolicyRepository = yearPolicyRepository;
+            _dateShiftPolicyRepository = dateShiftPolicyRepository;
         }
 
         public LoanProduct Map(LoanProductDto dto)
@@ -50,6 +53,7 @@ namespace OpenCBS.GUI.NEW.Mapper
                 AvailableFor = (AvailableFor)dto.AvailableFor,
                 SchedulePolicy = _schedulePolicyRepository.FindByName(dto.SchedulePolicy),
                 YearPolicy = _yearPolicyRepository.FindByName(dto.YearPolicy),
+                DateShiftPolicy = _dateShiftPolicyRepository.FindByName(dto.DateShiftPolicy),
                 Deleted = dto.Deleted
             };
         }
@@ -64,6 +68,8 @@ namespace OpenCBS.GUI.NEW.Mapper
                 throw new NullReferenceException("loanProduct.SchedulePolicy");
             if (loanProduct.YearPolicy == null)
                 throw new NullReferenceException("loanProduct.YearPolicy");
+            if (loanProduct.DateShiftPolicy == null)
+                throw new NullReferenceException("loanProduct.DateShiftPolicy");
 
             return new LoanProductDto
             {
@@ -74,6 +80,7 @@ namespace OpenCBS.GUI.NEW.Mapper
                 AvailableFor = (int)loanProduct.AvailableFor,
                 SchedulePolicy = loanProduct.SchedulePolicy.Name,
                 YearPolicy = loanProduct.YearPolicy.Name,
+                DateShiftPolicy = loanProduct.DateShiftPolicy.Name,
                 Deleted = loanProduct.Deleted
             };
         }

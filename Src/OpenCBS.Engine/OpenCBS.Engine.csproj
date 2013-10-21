@@ -46,6 +46,7 @@
     <Compile Include="AdjustmentPolicy\FirstInstallmentAdjustmentPolicy.cs" />
     <Compile Include="AdjustmentPolicy\LastInstallmentAdjustmentPolicy.cs" />
     <Compile Include="BasePolicy.cs" />
+    <Compile Include="DatePolicy\DummyNonWorkingDayPolicy.cs" />
     <Compile Include="RescheduleAssembler.cs" />
     <Compile Include="DefaultScheduleConfigurationFactory.cs" />
     <Compile Include="DatePolicy\BackwardDateShiftPolicy.cs" />

@@ -17,18 +17,11 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.GUI.NEW.Dto
+using OpenCBS.Engine.Interfaces;
+
+namespace OpenCBS.GUI.NEW.Repository
 {
-    public class LoanProductDto
+    public interface IDateShiftPolicyRepository : IPolicyRepository<IDateShiftPolicy>
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public int PaymentFrequencyId { get; set; }
-        public int AvailableFor { get; set; }
-        public string SchedulePolicy { get; set; }
-        public string YearPolicy { get; set; }
-        public string DateShiftPolicy { get; set; }
-        public bool Deleted { get; set; }
     }
 }
