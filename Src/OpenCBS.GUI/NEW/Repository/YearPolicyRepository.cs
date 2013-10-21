@@ -17,17 +17,30 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Linq;
 using OpenCBS.Engine.Interfaces;
 
-namespace OpenCBS.GUI.NEW.Model
+namespace OpenCBS.GUI.NEW.Repository
 {
-    public class LoanProduct : EntityBase
+    public class YearPolicyRepository : PolicyRepository<IYearPolicy>, IYearPolicyRepository
     {
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public PaymentFrequency PaymentFrequency { get; set; }
-        public AvailableFor AvailableFor { get; set; }
-        public IInstallmentCalculationPolicy SchedulePolicy { get; set; }
-        public IYearPolicy YearPolicy { get; set; }
+        // ReSharper disable UnusedAutoPropertyAccessor.Local
+        // The mutator is used by MEF
+        [ImportMany(typeof(IYearPolicy))]
+        private Lazy<IYearPolicy, IDictionary<string, object>>[] YearPolicies { get; set; }
+        // ReSharper restore UnusedAutoPropertyAccessor.Local
+
+        protected override IEnumerable<IYearPolicy> Policies
+        {
+            get
+            {
+                return from policy in YearPolicies
+                       orderby policy.Metadata.ContainsKey("Order") ? policy.Metadata["Order"] : 0
+                       select policy.Value;
+            }
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace OpenCBS.GUI.NEW.Dto
         public int PaymentFrequencyId { get; set; }
         public int AvailableFor { get; set; }
         public string SchedulePolicy { get; set; }
+        public string YearPolicy { get; set; }
         public bool Deleted { get; set; }
     }
 }

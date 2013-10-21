@@ -16,18 +16,11 @@
 // 
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
-
 using OpenCBS.Engine.Interfaces;
 
-namespace OpenCBS.GUI.NEW.Model
+namespace OpenCBS.GUI.NEW.Repository
 {
-    public class LoanProduct : EntityBase
+    public interface IYearPolicyRepository : IPolicyRepository<IYearPolicy>
     {
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public PaymentFrequency PaymentFrequency { get; set; }
-        public AvailableFor AvailableFor { get; set; }
-        public IInstallmentCalculationPolicy SchedulePolicy { get; set; }
-        public IYearPolicy YearPolicy { get; set; }
     }
 }

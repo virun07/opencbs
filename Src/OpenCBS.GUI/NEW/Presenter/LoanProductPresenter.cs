@@ -28,13 +28,18 @@ namespace OpenCBS.GUI.NEW.Presenter
         private readonly ILoanProductView _view;
         private readonly IPaymentFrequencyRepository _paymentFrequencyRepository;
         private readonly ISchedulePolicyRepository _schedulePolicyRepository;
+        private readonly IYearPolicyRepository _yearPolicyRepository;
         private CommandResult _commandResult = CommandResult.Cancel;
 
-        public LoanProductPresenter(ILoanProductView view, IPaymentFrequencyRepository paymentFrequencyRepository, ISchedulePolicyRepository schedulePolicyRepository)
+        public LoanProductPresenter(ILoanProductView view, 
+            IPaymentFrequencyRepository paymentFrequencyRepository, 
+            ISchedulePolicyRepository schedulePolicyRepository,
+            IYearPolicyRepository yearPolicyRepository)
         {
             _view = view;
             _paymentFrequencyRepository = paymentFrequencyRepository;
             _schedulePolicyRepository = schedulePolicyRepository;
+            _yearPolicyRepository = yearPolicyRepository;
         }
 
         public Result<LoanProduct> Get(LoanProduct loanProduct)
@@ -42,6 +47,7 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.Attach(this);
             _view.ShowPaymentFrequencies(_paymentFrequencyRepository.FindAll());
             _view.ShowSchedulePolicies(_schedulePolicyRepository.FindAll());
+            _view.ShowYearPolicies(_yearPolicyRepository.FindAll());
             ShowLoanProduct(loanProduct);
             _view.Run();
             var newLoanProduct = (LoanProduct) null;
@@ -86,6 +92,7 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.PaymentFrequency = loanProduct.PaymentFrequency;
             _view.AvailableFor = loanProduct.AvailableFor;
             _view.SchedulePolicy = loanProduct.SchedulePolicy;
+            _view.YearPolicy = loanProduct.YearPolicy;
         }
 
         private LoanProduct GetLoanProduct()
@@ -96,7 +103,8 @@ namespace OpenCBS.GUI.NEW.Presenter
                 Code = _view.Code,
                 PaymentFrequency = _view.PaymentFrequency,
                 AvailableFor = _view.AvailableFor,
-                SchedulePolicy = _view.SchedulePolicy
+                SchedulePolicy = _view.SchedulePolicy,
+                YearPolicy = _view.YearPolicy
             };
         }
     }

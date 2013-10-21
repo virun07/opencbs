@@ -60,6 +60,12 @@ namespace OpenCBS.GUI.NEW.View
                 _scheduleComboBox.Items.Add(policy);
         }
 
+        public void ShowYearPolicies(IEnumerable<IYearPolicy> yearPolicies)
+        {
+            foreach (var policy in yearPolicies)
+                _yearComboBox.Items.Add(policy);
+        }
+
         public string LoanProductName
         {
             get { return _nameTextBox.Text; }
@@ -103,6 +109,12 @@ namespace OpenCBS.GUI.NEW.View
         {
             get { return (IInstallmentCalculationPolicy) _scheduleComboBox.SelectedItem; }
             set { _scheduleComboBox.SelectedItem = value; }
+        }
+
+        public IYearPolicy YearPolicy
+        {
+            get { return (IYearPolicy) _yearComboBox.SelectedItem; }
+            set { _yearComboBox.SelectedItem = value; }
         }
     }
 }

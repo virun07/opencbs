@@ -30,6 +30,8 @@
         {
             this._tabControl = new System.Windows.Forms.TabControl();
             this._generalTabPage = new System.Windows.Forms.TabPage();
+            this._scheduleComboBox = new System.Windows.Forms.ComboBox();
+            this._scheduleLabel = new System.Windows.Forms.Label();
             this._availableForCompanyCheckBox = new System.Windows.Forms.CheckBox();
             this._availableForNsgCheckBox = new System.Windows.Forms.CheckBox();
             this._availableForSgCheckBox = new System.Windows.Forms.CheckBox();
@@ -43,8 +45,8 @@
             this._nameLabel = new System.Windows.Forms.Label();
             this._okButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
-            this._scheduleComboBox = new System.Windows.Forms.ComboBox();
-            this._scheduleLabel = new System.Windows.Forms.Label();
+            this._yearComboBox = new System.Windows.Forms.ComboBox();
+            this._yearLabel = new System.Windows.Forms.Label();
             this._tabControl.SuspendLayout();
             this._generalTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +64,8 @@
             // 
             // _generalTabPage
             // 
+            this._generalTabPage.Controls.Add(this._yearComboBox);
+            this._generalTabPage.Controls.Add(this._yearLabel);
             this._generalTabPage.Controls.Add(this._scheduleComboBox);
             this._generalTabPage.Controls.Add(this._scheduleLabel);
             this._generalTabPage.Controls.Add(this._availableForCompanyCheckBox);
@@ -83,6 +87,24 @@
             this._generalTabPage.TabIndex = 0;
             this._generalTabPage.Text = "General";
             this._generalTabPage.UseVisualStyleBackColor = true;
+            // 
+            // _scheduleComboBox
+            // 
+            this._scheduleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._scheduleComboBox.FormattingEnabled = true;
+            this._scheduleComboBox.Location = new System.Drawing.Point(147, 223);
+            this._scheduleComboBox.Name = "_scheduleComboBox";
+            this._scheduleComboBox.Size = new System.Drawing.Size(209, 24);
+            this._scheduleComboBox.TabIndex = 12;
+            // 
+            // _scheduleLabel
+            // 
+            this._scheduleLabel.AutoSize = true;
+            this._scheduleLabel.Location = new System.Drawing.Point(12, 226);
+            this._scheduleLabel.Name = "_scheduleLabel";
+            this._scheduleLabel.Size = new System.Drawing.Size(62, 16);
+            this._scheduleLabel.TabIndex = 11;
+            this._scheduleLabel.Text = "Schedule";
             // 
             // _availableForCompanyCheckBox
             // 
@@ -201,23 +223,23 @@
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
             // 
-            // _scheduleComboBox
+            // _yearComboBox
             // 
-            this._scheduleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._scheduleComboBox.FormattingEnabled = true;
-            this._scheduleComboBox.Location = new System.Drawing.Point(147, 223);
-            this._scheduleComboBox.Name = "_scheduleComboBox";
-            this._scheduleComboBox.Size = new System.Drawing.Size(209, 24);
-            this._scheduleComboBox.TabIndex = 12;
+            this._yearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._yearComboBox.FormattingEnabled = true;
+            this._yearComboBox.Location = new System.Drawing.Point(147, 253);
+            this._yearComboBox.Name = "_yearComboBox";
+            this._yearComboBox.Size = new System.Drawing.Size(209, 24);
+            this._yearComboBox.TabIndex = 14;
             // 
-            // _scheduleLabel
+            // _yearLabel
             // 
-            this._scheduleLabel.AutoSize = true;
-            this._scheduleLabel.Location = new System.Drawing.Point(12, 226);
-            this._scheduleLabel.Name = "_scheduleLabel";
-            this._scheduleLabel.Size = new System.Drawing.Size(62, 16);
-            this._scheduleLabel.TabIndex = 11;
-            this._scheduleLabel.Text = "Schedule";
+            this._yearLabel.AutoSize = true;
+            this._yearLabel.Location = new System.Drawing.Point(12, 256);
+            this._yearLabel.Name = "_yearLabel";
+            this._yearLabel.Size = new System.Drawing.Size(34, 16);
+            this._yearLabel.TabIndex = 13;
+            this._yearLabel.Text = "Year";
             // 
             // LoanProductView
             // 
@@ -261,5 +283,7 @@
         private System.Windows.Forms.Label _availableForLabel;
         private System.Windows.Forms.ComboBox _scheduleComboBox;
         private System.Windows.Forms.Label _scheduleLabel;
+        private System.Windows.Forms.ComboBox _yearComboBox;
+        private System.Windows.Forms.Label _yearLabel;
     }
 }

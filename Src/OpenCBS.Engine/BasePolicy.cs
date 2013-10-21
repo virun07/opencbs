@@ -19,15 +19,21 @@
 
 using OpenCBS.Engine.Interfaces;
 
-namespace OpenCBS.GUI.NEW.Model
+namespace OpenCBS.Engine
 {
-    public class LoanProduct : EntityBase
+    public abstract class BasePolicy
     {
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public PaymentFrequency PaymentFrequency { get; set; }
-        public AvailableFor AvailableFor { get; set; }
-        public IInstallmentCalculationPolicy SchedulePolicy { get; set; }
-        public IYearPolicy YearPolicy { get; set; }
+        public abstract string Name { get; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            return Name == ((IPolicy) obj).Name;
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

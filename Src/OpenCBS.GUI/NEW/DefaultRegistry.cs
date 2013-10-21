@@ -55,6 +55,7 @@ namespace OpenCBS.GUI.NEW
             For<ILoanProductRepository>().Use<LoanProductRepository>();
             For<IPaymentFrequencyRepository>().Use<PaymentFrequencyRepository>();
             For<ISchedulePolicyRepository>().Use<SchedulePolicyRepository>();
+            For<IYearPolicyRepository>().Use<YearPolicyRepository>();
 
             // Mappers
             For<ILoanProductMapper>().Use<LoanProductMapper>();

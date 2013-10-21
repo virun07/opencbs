@@ -30,11 +30,13 @@ namespace OpenCBS.GUI.NEW.View
         void Stop();
         void ShowPaymentFrequencies(IEnumerable<PaymentFrequency> paymentFrequencies);
         void ShowSchedulePolicies(IEnumerable<IInstallmentCalculationPolicy> schedulePolicies);
+        void ShowYearPolicies(IEnumerable<IYearPolicy> yearPolicies);
 
         string LoanProductName { get; set; }
         string Code { get; set; }
         PaymentFrequency PaymentFrequency { get; set; }
         AvailableFor AvailableFor { get; set; }
         IInstallmentCalculationPolicy SchedulePolicy { get; set; }
+        IYearPolicy YearPolicy { get; set; }
     }
 }
