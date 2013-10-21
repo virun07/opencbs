@@ -57,13 +57,13 @@ namespace OpenCBS.GUI.NEW.View
         public void ShowSchedulePolicies(IEnumerable<IInstallmentCalculationPolicy> schedulePolicies)
         {
             foreach (var policy in schedulePolicies)
-                _scheduleComboBox.Items.Add(policy);
+                _schedulePolicyComboBox.Items.Add(policy);
         }
 
         public void ShowYearPolicies(IEnumerable<IYearPolicy> yearPolicies)
         {
             foreach (var policy in yearPolicies)
-                _yearComboBox.Items.Add(policy);
+                _yearPolicyComboBox.Items.Add(policy);
         }
 
         public string LoanProductName
@@ -107,14 +107,14 @@ namespace OpenCBS.GUI.NEW.View
 
         public IInstallmentCalculationPolicy SchedulePolicy
         {
-            get { return (IInstallmentCalculationPolicy) _scheduleComboBox.SelectedItem; }
-            set { _scheduleComboBox.SelectedItem = value; }
+            get { return (IInstallmentCalculationPolicy) _schedulePolicyComboBox.SelectedItem; }
+            set { _schedulePolicyComboBox.SelectedItem = value; }
         }
 
         public IYearPolicy YearPolicy
         {
-            get { return (IYearPolicy) _yearComboBox.SelectedItem; }
-            set { _yearComboBox.SelectedItem = value; }
+            get { return (IYearPolicy) _yearPolicyComboBox.SelectedItem; }
+            set { _yearPolicyComboBox.SelectedItem = value; }
         }
     }
 }

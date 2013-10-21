@@ -30,8 +30,10 @@
         {
             this._tabControl = new System.Windows.Forms.TabControl();
             this._generalTabPage = new System.Windows.Forms.TabPage();
-            this._scheduleComboBox = new System.Windows.Forms.ComboBox();
-            this._scheduleLabel = new System.Windows.Forms.Label();
+            this._yearPolicyComboBox = new System.Windows.Forms.ComboBox();
+            this._yearPolicyLabel = new System.Windows.Forms.Label();
+            this._schedulePolicyComboBox = new System.Windows.Forms.ComboBox();
+            this._schedulePolicyLabel = new System.Windows.Forms.Label();
             this._availableForCompanyCheckBox = new System.Windows.Forms.CheckBox();
             this._availableForNsgCheckBox = new System.Windows.Forms.CheckBox();
             this._availableForSgCheckBox = new System.Windows.Forms.CheckBox();
@@ -45,8 +47,6 @@
             this._nameLabel = new System.Windows.Forms.Label();
             this._okButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
-            this._yearComboBox = new System.Windows.Forms.ComboBox();
-            this._yearLabel = new System.Windows.Forms.Label();
             this._tabControl.SuspendLayout();
             this._generalTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -64,10 +64,10 @@
             // 
             // _generalTabPage
             // 
-            this._generalTabPage.Controls.Add(this._yearComboBox);
-            this._generalTabPage.Controls.Add(this._yearLabel);
-            this._generalTabPage.Controls.Add(this._scheduleComboBox);
-            this._generalTabPage.Controls.Add(this._scheduleLabel);
+            this._generalTabPage.Controls.Add(this._yearPolicyComboBox);
+            this._generalTabPage.Controls.Add(this._yearPolicyLabel);
+            this._generalTabPage.Controls.Add(this._schedulePolicyComboBox);
+            this._generalTabPage.Controls.Add(this._schedulePolicyLabel);
             this._generalTabPage.Controls.Add(this._availableForCompanyCheckBox);
             this._generalTabPage.Controls.Add(this._availableForNsgCheckBox);
             this._generalTabPage.Controls.Add(this._availableForSgCheckBox);
@@ -88,81 +88,99 @@
             this._generalTabPage.Text = "General";
             this._generalTabPage.UseVisualStyleBackColor = true;
             // 
-            // _scheduleComboBox
+            // _yearPolicyComboBox
             // 
-            this._scheduleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._scheduleComboBox.FormattingEnabled = true;
-            this._scheduleComboBox.Location = new System.Drawing.Point(147, 223);
-            this._scheduleComboBox.Name = "_scheduleComboBox";
-            this._scheduleComboBox.Size = new System.Drawing.Size(209, 24);
-            this._scheduleComboBox.TabIndex = 12;
+            this._yearPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._yearPolicyComboBox.FormattingEnabled = true;
+            this._yearPolicyComboBox.Location = new System.Drawing.Point(147, 240);
+            this._yearPolicyComboBox.Name = "_yearPolicyComboBox";
+            this._yearPolicyComboBox.Size = new System.Drawing.Size(209, 24);
+            this._yearPolicyComboBox.TabIndex = 14;
             // 
-            // _scheduleLabel
+            // _yearPolicyLabel
             // 
-            this._scheduleLabel.AutoSize = true;
-            this._scheduleLabel.Location = new System.Drawing.Point(12, 226);
-            this._scheduleLabel.Name = "_scheduleLabel";
-            this._scheduleLabel.Size = new System.Drawing.Size(62, 16);
-            this._scheduleLabel.TabIndex = 11;
-            this._scheduleLabel.Text = "Schedule";
+            this._yearPolicyLabel.AutoSize = true;
+            this._yearPolicyLabel.Location = new System.Drawing.Point(12, 243);
+            this._yearPolicyLabel.Name = "_yearPolicyLabel";
+            this._yearPolicyLabel.Size = new System.Drawing.Size(34, 16);
+            this._yearPolicyLabel.TabIndex = 13;
+            this._yearPolicyLabel.Text = "Year";
+            // 
+            // _schedulePolicyComboBox
+            // 
+            this._schedulePolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._schedulePolicyComboBox.FormattingEnabled = true;
+            this._schedulePolicyComboBox.Location = new System.Drawing.Point(147, 180);
+            this._schedulePolicyComboBox.Name = "_schedulePolicyComboBox";
+            this._schedulePolicyComboBox.Size = new System.Drawing.Size(209, 24);
+            this._schedulePolicyComboBox.TabIndex = 10;
+            // 
+            // _schedulePolicyLabel
+            // 
+            this._schedulePolicyLabel.AutoSize = true;
+            this._schedulePolicyLabel.Location = new System.Drawing.Point(12, 183);
+            this._schedulePolicyLabel.Name = "_schedulePolicyLabel";
+            this._schedulePolicyLabel.Size = new System.Drawing.Size(62, 16);
+            this._schedulePolicyLabel.TabIndex = 9;
+            this._schedulePolicyLabel.Text = "Schedule";
             // 
             // _availableForCompanyCheckBox
             // 
             this._availableForCompanyCheckBox.AutoSize = true;
-            this._availableForCompanyCheckBox.Location = new System.Drawing.Point(147, 197);
+            this._availableForCompanyCheckBox.Location = new System.Drawing.Point(147, 154);
             this._availableForCompanyCheckBox.Name = "_availableForCompanyCheckBox";
             this._availableForCompanyCheckBox.Size = new System.Drawing.Size(82, 20);
-            this._availableForCompanyCheckBox.TabIndex = 10;
+            this._availableForCompanyCheckBox.TabIndex = 8;
             this._availableForCompanyCheckBox.Text = "Company";
             this._availableForCompanyCheckBox.UseVisualStyleBackColor = true;
             // 
             // _availableForNsgCheckBox
             // 
             this._availableForNsgCheckBox.AutoSize = true;
-            this._availableForNsgCheckBox.Location = new System.Drawing.Point(147, 171);
+            this._availableForNsgCheckBox.Location = new System.Drawing.Point(147, 128);
             this._availableForNsgCheckBox.Name = "_availableForNsgCheckBox";
             this._availableForNsgCheckBox.Size = new System.Drawing.Size(142, 20);
-            this._availableForNsgCheckBox.TabIndex = 9;
+            this._availableForNsgCheckBox.TabIndex = 7;
             this._availableForNsgCheckBox.Text = "Non-solidarity group";
             this._availableForNsgCheckBox.UseVisualStyleBackColor = true;
             // 
             // _availableForSgCheckBox
             // 
             this._availableForSgCheckBox.AutoSize = true;
-            this._availableForSgCheckBox.Location = new System.Drawing.Point(147, 145);
+            this._availableForSgCheckBox.Location = new System.Drawing.Point(147, 102);
             this._availableForSgCheckBox.Name = "_availableForSgCheckBox";
             this._availableForSgCheckBox.Size = new System.Drawing.Size(117, 20);
-            this._availableForSgCheckBox.TabIndex = 8;
+            this._availableForSgCheckBox.TabIndex = 6;
             this._availableForSgCheckBox.Text = "Solidarity group";
             this._availableForSgCheckBox.UseVisualStyleBackColor = true;
             // 
             // _availableForIndividualCheckBox
             // 
             this._availableForIndividualCheckBox.AutoSize = true;
-            this._availableForIndividualCheckBox.Location = new System.Drawing.Point(147, 119);
+            this._availableForIndividualCheckBox.Location = new System.Drawing.Point(147, 76);
             this._availableForIndividualCheckBox.Name = "_availableForIndividualCheckBox";
             this._availableForIndividualCheckBox.Size = new System.Drawing.Size(79, 20);
-            this._availableForIndividualCheckBox.TabIndex = 7;
+            this._availableForIndividualCheckBox.TabIndex = 5;
             this._availableForIndividualCheckBox.Text = "Individual";
             this._availableForIndividualCheckBox.UseVisualStyleBackColor = true;
             // 
             // _availableForLabel
             // 
             this._availableForLabel.AutoSize = true;
-            this._availableForLabel.Location = new System.Drawing.Point(12, 119);
+            this._availableForLabel.Location = new System.Drawing.Point(12, 76);
             this._availableForLabel.Name = "_availableForLabel";
             this._availableForLabel.Size = new System.Drawing.Size(77, 16);
-            this._availableForLabel.TabIndex = 6;
+            this._availableForLabel.TabIndex = 4;
             this._availableForLabel.Text = "Available for";
             // 
             // _paymentFrequencyComboBox
             // 
             this._paymentFrequencyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._paymentFrequencyComboBox.FormattingEnabled = true;
-            this._paymentFrequencyComboBox.Location = new System.Drawing.Point(147, 81);
+            this._paymentFrequencyComboBox.Location = new System.Drawing.Point(147, 210);
             this._paymentFrequencyComboBox.Name = "_paymentFrequencyComboBox";
             this._paymentFrequencyComboBox.Size = new System.Drawing.Size(209, 24);
-            this._paymentFrequencyComboBox.TabIndex = 5;
+            this._paymentFrequencyComboBox.TabIndex = 12;
             // 
             // _codeTextBox
             // 
@@ -181,10 +199,10 @@
             // _paymentFrequencyLabel
             // 
             this._paymentFrequencyLabel.AutoSize = true;
-            this._paymentFrequencyLabel.Location = new System.Drawing.Point(12, 84);
+            this._paymentFrequencyLabel.Location = new System.Drawing.Point(12, 213);
             this._paymentFrequencyLabel.Name = "_paymentFrequencyLabel";
             this._paymentFrequencyLabel.Size = new System.Drawing.Size(120, 16);
-            this._paymentFrequencyLabel.TabIndex = 4;
+            this._paymentFrequencyLabel.TabIndex = 11;
             this._paymentFrequencyLabel.Text = "Payment frequency";
             // 
             // _codeLabel
@@ -222,24 +240,6 @@
             this._cancelButton.TabIndex = 2;
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
-            // 
-            // _yearComboBox
-            // 
-            this._yearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._yearComboBox.FormattingEnabled = true;
-            this._yearComboBox.Location = new System.Drawing.Point(147, 253);
-            this._yearComboBox.Name = "_yearComboBox";
-            this._yearComboBox.Size = new System.Drawing.Size(209, 24);
-            this._yearComboBox.TabIndex = 14;
-            // 
-            // _yearLabel
-            // 
-            this._yearLabel.AutoSize = true;
-            this._yearLabel.Location = new System.Drawing.Point(12, 256);
-            this._yearLabel.Name = "_yearLabel";
-            this._yearLabel.Size = new System.Drawing.Size(34, 16);
-            this._yearLabel.TabIndex = 13;
-            this._yearLabel.Text = "Year";
             // 
             // LoanProductView
             // 
@@ -281,9 +281,9 @@
         private System.Windows.Forms.CheckBox _availableForSgCheckBox;
         private System.Windows.Forms.CheckBox _availableForIndividualCheckBox;
         private System.Windows.Forms.Label _availableForLabel;
-        private System.Windows.Forms.ComboBox _scheduleComboBox;
-        private System.Windows.Forms.Label _scheduleLabel;
-        private System.Windows.Forms.ComboBox _yearComboBox;
-        private System.Windows.Forms.Label _yearLabel;
+        private System.Windows.Forms.ComboBox _schedulePolicyComboBox;
+        private System.Windows.Forms.Label _schedulePolicyLabel;
+        private System.Windows.Forms.ComboBox _yearPolicyComboBox;
+        private System.Windows.Forms.Label _yearPolicyLabel;
     }
 }
