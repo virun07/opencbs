@@ -2492,63 +2492,7 @@ namespace OpenCBS.Services
             var launchDate = DateTime.Today;
             var listOfLoans = _loanManager.GetListOfLoansToAccruePenalty(launchDate);
             var em = new EventManager(User.CurrentUser);
-//<<<<<<< HEAD
-//            var date = LastPenaltyAccrualEventDate();
 
-//            while (date.Date < DateTime.Now.Date)
-//            {
-//                date = date.AddDays(1);
-//                using (var connection = _loanManager.GetConnection())
-//                using (var transaction = connection.BeginTransaction())
-//                    try
-//                    {
-//                        var penaltyEventList = new List<LoanPenaltyAccrualEvent>();
-//                        using (var c = new OpenCbsCommand(q, connection, transaction))
-//                        {
-//                            c.AddParam("@date", date);
-
-//                            using (var r = c.ExecuteReader())
-//                            {
-//                                while (r.Read())
-//                                {
-//                                    var loanId = r.GetInt("id");
-//                                    var penalty = r.GetDouble("penalty");
-
-//                                    var penaltyEvent = new LoanPenaltyAccrualEvent
-//                                        {
-//                                            Date = date,
-//                                            User = User.CurrentUser,
-//                                            Penalty = Convert.ToDecimal(penalty),
-//                                            ContracId = loanId
-//                                        };
-//                                    penaltyEventList.Add(penaltyEvent);
-//                                }
-//                            }
-//                            foreach (var penaltyEvent in penaltyEventList)
-//                                em.AddLoanEvent(penaltyEvent, penaltyEvent.ContracId, transaction);
-//                        }
-//                        transaction.Commit();
-//                    }
-//                    catch (Exception)
-//                    {
-//                        transaction.Rollback();
-//                        throw;
-//                    }
-//            }
-//        }
-
-//        private DateTime LastPenaltyAccrualEventDate()
-//        {
-//            const string q = @"SELECT TOP 1 ce.event_date 
-//                                FROM dbo.LoanPenaltyAccrualEvents AS pe
-//                                LEFT JOIN dbo.ContractEvents AS ce ON ce.id=pe.id
-//                                ORDER BY ce.id DESC";
-//            using (var connection = _loanManager.GetConnection())
-//            using (var r = new OpenCbsCommand(q, connection).ExecuteReader())
-//            {
-//                return !r.Read() ? DateTime.Today.AddDays(-1) : r.GetDateTime("event_date");
-//            }
-//=======
             using (var connection=_loanManager.GetConnection())
                 foreach (var item in listOfLoans)
                 {
@@ -2681,48 +2625,6 @@ namespace OpenCBS.Services
                         var glll = _loanManager.GetListOfTransitionToLateLoan(date);
                         var transitionEventList = glll.Select(item => new LoanTransitionEvent
                             {
-//<<<<<<< HEAD
-//                                while (r.Read())
-//                                {
-//                                    var loanId = r.GetInt("id");
-//                                    var amount = r.GetDecimal("olb");
-
-//                                    var transitionEvent = new LoanTransitionEvent
-//                                        {
-//                                            Code = "GLLL",
-//                                            Date = date,
-//                                            User = User.CurrentUser,
-//                                            Amount = amount,
-//                                            ContracId = loanId
-//                                        };
-//                                    transitionEventList.Add(transitionEvent);
-//                                }
-//                            }
-//                        }
-//                        using (var c = new OpenCbsCommand(llgl, connection, transaction))
-//                        {
-//                            c.AddParam("@date", date);
-
-//                            using (var r = c.ExecuteReader())
-//                            {
-//                                while (r.Read())
-//                                {
-//                                    var loanId = r.GetInt("id");
-//                                    var amount = r.GetDecimal("olb");
-
-//                                    var transitionEvent = new LoanTransitionEvent
-//                                        {
-//                                            Code = "LLGL",
-//                                            Date = date,
-//                                            User = User.CurrentUser,
-//                                            Amount = amount,
-//                                            ContracId = loanId
-//                                        };
-//                                    transitionEventList.Add(transitionEvent);
-//                                }
-//                            }
-//                        }
-//=======
                                 Code = "GLLL",
                                 Date = date,
                                 User = User.CurrentUser,
@@ -2752,23 +2654,5 @@ namespace OpenCBS.Services
                     }
             }
         }
-
-//        private DateTime LastLoanTransitionEventDate()
-//        {
-//            const string q = @"SELECT TOP 1 ce.event_date 
-//                            FROM dbo.LoanTransitionEvents AS tr
-//                            LEFT JOIN dbo.ContractEvents AS ce ON ce.id=tr.id
-//                            ORDER BY ce.id DESC";
-//            using (var connection = _loanManager.GetConnection())
-//            using (var r = new OpenCbsCommand(q, connection).ExecuteReader())
-//            {
-//                return !r.Read() ? DateTime.Today.AddDays(-1) : r.GetDateTime("event_date");
-//            }
-//        }
-
-//        public decimal GetPenalties(int contractId, DateTime date)
-//        {
-//            return _loanManager.CalculatePenaltiesForDate(contractId, date);
-//        }
     }
 }
