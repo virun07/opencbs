@@ -30,6 +30,8 @@
         {
             this._tabControl = new System.Windows.Forms.TabControl();
             this._generalTabPage = new System.Windows.Forms.TabPage();
+            this._roundingPolicyComboBox = new System.Windows.Forms.ComboBox();
+            this._roundingPolicyLabel = new System.Windows.Forms.Label();
             this._dateShiftPolicyComboBox = new System.Windows.Forms.ComboBox();
             this._dateShiftPolicyLabel = new System.Windows.Forms.Label();
             this._yearPolicyComboBox = new System.Windows.Forms.ComboBox();
@@ -49,8 +51,8 @@
             this._nameLabel = new System.Windows.Forms.Label();
             this._okButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
-            this._roundingPolicyComboBox = new System.Windows.Forms.ComboBox();
-            this._roundingPolicyLabel = new System.Windows.Forms.Label();
+            this._amountRange = new OpenCBS.Controls.RangeControl();
+            this._amountLabel = new System.Windows.Forms.Label();
             this._tabControl.SuspendLayout();
             this._generalTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -63,11 +65,13 @@
             this._tabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._tabControl.Name = "_tabControl";
             this._tabControl.SelectedIndex = 0;
-            this._tabControl.Size = new System.Drawing.Size(757, 371);
+            this._tabControl.Size = new System.Drawing.Size(834, 371);
             this._tabControl.TabIndex = 0;
             // 
             // _generalTabPage
             // 
+            this._generalTabPage.Controls.Add(this._amountLabel);
+            this._generalTabPage.Controls.Add(this._amountRange);
             this._generalTabPage.Controls.Add(this._roundingPolicyComboBox);
             this._generalTabPage.Controls.Add(this._roundingPolicyLabel);
             this._generalTabPage.Controls.Add(this._dateShiftPolicyComboBox);
@@ -91,10 +95,28 @@
             this._generalTabPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._generalTabPage.Name = "_generalTabPage";
             this._generalTabPage.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this._generalTabPage.Size = new System.Drawing.Size(749, 342);
+            this._generalTabPage.Size = new System.Drawing.Size(826, 342);
             this._generalTabPage.TabIndex = 0;
             this._generalTabPage.Text = "General";
             this._generalTabPage.UseVisualStyleBackColor = true;
+            // 
+            // _roundingPolicyComboBox
+            // 
+            this._roundingPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._roundingPolicyComboBox.FormattingEnabled = true;
+            this._roundingPolicyComboBox.Location = new System.Drawing.Point(147, 300);
+            this._roundingPolicyComboBox.Name = "_roundingPolicyComboBox";
+            this._roundingPolicyComboBox.Size = new System.Drawing.Size(209, 24);
+            this._roundingPolicyComboBox.TabIndex = 18;
+            // 
+            // _roundingPolicyLabel
+            // 
+            this._roundingPolicyLabel.AutoSize = true;
+            this._roundingPolicyLabel.Location = new System.Drawing.Point(12, 303);
+            this._roundingPolicyLabel.Name = "_roundingPolicyLabel";
+            this._roundingPolicyLabel.Size = new System.Drawing.Size(62, 16);
+            this._roundingPolicyLabel.TabIndex = 17;
+            this._roundingPolicyLabel.Text = "Rounding";
             // 
             // _dateShiftPolicyComboBox
             // 
@@ -251,7 +273,7 @@
             // 
             // _okButton
             // 
-            this._okButton.Location = new System.Drawing.Point(539, 384);
+            this._okButton.Location = new System.Drawing.Point(616, 384);
             this._okButton.Name = "_okButton";
             this._okButton.Size = new System.Drawing.Size(100, 26);
             this._okButton.TabIndex = 1;
@@ -260,36 +282,37 @@
             // 
             // _cancelButton
             // 
-            this._cancelButton.Location = new System.Drawing.Point(645, 384);
+            this._cancelButton.Location = new System.Drawing.Point(722, 384);
             this._cancelButton.Name = "_cancelButton";
             this._cancelButton.Size = new System.Drawing.Size(100, 26);
             this._cancelButton.TabIndex = 2;
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
             // 
-            // _roundingPolicyComboBox
+            // _amountRange
             // 
-            this._roundingPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._roundingPolicyComboBox.FormattingEnabled = true;
-            this._roundingPolicyComboBox.Location = new System.Drawing.Point(147, 300);
-            this._roundingPolicyComboBox.Name = "_roundingPolicyComboBox";
-            this._roundingPolicyComboBox.Size = new System.Drawing.Size(209, 24);
-            this._roundingPolicyComboBox.TabIndex = 18;
+            this._amountRange.AutoSize = true;
+            this._amountRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._amountRange.Location = new System.Drawing.Point(572, 15);
+            this._amountRange.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._amountRange.Name = "_amountRange";
+            this._amountRange.Size = new System.Drawing.Size(246, 26);
+            this._amountRange.TabIndex = 19;
             // 
-            // _roundingPolicyLabel
+            // _amountLabel
             // 
-            this._roundingPolicyLabel.AutoSize = true;
-            this._roundingPolicyLabel.Location = new System.Drawing.Point(12, 303);
-            this._roundingPolicyLabel.Name = "_roundingPolicyLabel";
-            this._roundingPolicyLabel.Size = new System.Drawing.Size(62, 16);
-            this._roundingPolicyLabel.TabIndex = 17;
-            this._roundingPolicyLabel.Text = "Rounding";
+            this._amountLabel.AutoSize = true;
+            this._amountLabel.Location = new System.Drawing.Point(414, 18);
+            this._amountLabel.Name = "_amountLabel";
+            this._amountLabel.Size = new System.Drawing.Size(53, 16);
+            this._amountLabel.TabIndex = 20;
+            this._amountLabel.Text = "Amount";
             // 
             // LoanProductView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(757, 422);
+            this.ClientSize = new System.Drawing.Size(834, 422);
             this.Controls.Add(this._cancelButton);
             this.Controls.Add(this._okButton);
             this.Controls.Add(this._tabControl);
@@ -333,5 +356,7 @@
         private System.Windows.Forms.Label _dateShiftPolicyLabel;
         private System.Windows.Forms.ComboBox _roundingPolicyComboBox;
         private System.Windows.Forms.Label _roundingPolicyLabel;
+        private System.Windows.Forms.Label _amountLabel;
+        private Controls.RangeControl _amountRange;
     }
 }

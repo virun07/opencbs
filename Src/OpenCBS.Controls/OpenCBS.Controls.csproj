@@ -47,6 +47,13 @@
     <Compile Include="AmountTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ControlExtensionMethods.cs" />
+    <Compile Include="RangeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RangeControl.Designer.cs">
+      <DependentUpon>RangeControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoaderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,6 +77,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="RangeControl.resx">
+      <DependentUpon>RangeControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoaderControl.resx">
       <DependentUpon>LoaderControl.cs</DependentUpon>
     </EmbeddedResource>
