@@ -17,18 +17,23 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
 using OpenCBS.GUI.NEW.Dto;
 
-namespace OpenCBS.GUI.NEW.Service
+namespace OpenCBS.GUI.NEW.Validator
 {
-    public interface ILoanProductService
+    public class LoanProductValidator : Validator<LoanProductDto>, ILoanProductValidator
     {
-        IEnumerable<LoanProductDto> FindAll();
-        IEnumerable<LoanProductDto> FindNonDeleted();
-        void Validate(LoanProductDto loanProductDto);
-        void Add(LoanProductDto loanProductDto);
-        void Update(LoanProductDto loanProductDto);
-        void Remove(LoanProductDto loanProductDto);
+        public override void Validate(LoanProductDto entity)
+        {
+            base.Validate(entity);
+
+            FailIfNullOrEmpty("Name", "Name cannot be empty.");
+            FailIfNullOrEmpty("Code", "Code cannot be empty.");
+            FailIfNullOrEmpty("SchedulePolicy", "Schedule type cannot be empty.");
+            FailIfNullOrEmpty("PaymentFrequencyPolicy", "Payment frequency cannot be empty.");
+            FailIfNullOrEmpty("YearPolicy", "Year cannot be empty.");
+            FailIfNullOrEmpty("DateShiftPolicy", "Date shift cannot be empty.");
+            FailIfNullOrEmpty("RoundingPolicy", "Rounding cannot be empty.");
+        }
     }
 }

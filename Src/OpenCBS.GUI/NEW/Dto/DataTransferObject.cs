@@ -17,18 +17,10 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-using OpenCBS.GUI.NEW.Dto;
-
-namespace OpenCBS.GUI.NEW.Service
+namespace OpenCBS.GUI.NEW.Dto
 {
-    public interface ILoanProductService
+    public abstract class DataTransferObject
     {
-        IEnumerable<LoanProductDto> FindAll();
-        IEnumerable<LoanProductDto> FindNonDeleted();
-        void Validate(LoanProductDto loanProductDto);
-        void Add(LoanProductDto loanProductDto);
-        void Update(LoanProductDto loanProductDto);
-        void Remove(LoanProductDto loanProductDto);
+        public Notification Notification { get; set; }
     }
 }

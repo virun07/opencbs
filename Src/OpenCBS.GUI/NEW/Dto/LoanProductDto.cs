@@ -21,7 +21,7 @@ using OpenCBS.GUI.NEW.Model;
 
 namespace OpenCBS.GUI.NEW.Dto
 {
-    public class LoanProductDto
+    public class LoanProductDto : DataTransferObject
     {
         public int Id { get; set; }
         public string Name { get; set; }

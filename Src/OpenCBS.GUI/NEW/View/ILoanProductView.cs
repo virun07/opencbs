@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
+using OpenCBS.GUI.NEW.Dto;
 using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Presenter;
 
@@ -32,6 +33,7 @@ namespace OpenCBS.GUI.NEW.View
         void ShowYearPolicies(IEnumerable<string> yearPolicies);
         void ShowDateShiftPolicies(IEnumerable<string> dateShiftPolicies);
         void ShowRoundingPolicies(IEnumerable<string> roundingPolicies);
+        void ShowNotification(Notification notification);
 
         string LoanProductName { get; set; }
         string Code { get; set; }

@@ -18,17 +18,30 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 using OpenCBS.GUI.NEW.Dto;
 
-namespace OpenCBS.GUI.NEW.Service
+namespace OpenCBS.GUI.NEW.View
 {
-    public interface ILoanProductService
+    public static class ViewExtensions
     {
-        IEnumerable<LoanProductDto> FindAll();
-        IEnumerable<LoanProductDto> FindNonDeleted();
-        void Validate(LoanProductDto loanProductDto);
-        void Add(LoanProductDto loanProductDto);
-        void Update(LoanProductDto loanProductDto);
-        void Remove(LoanProductDto loanProductDto);
+        public static IEnumerable<Control> GetControls(this Control control)
+        {
+            var controls = control.Controls.Cast<Control>();
+            return controls.Concat(controls.SelectMany(x => x.GetControls()));
+        }
+
+        public static void ShowNotification(this Form form, Notification notification, ErrorProvider errorProvider)
+        {
+            foreach (var error in notification.Errors)
+            {
+                var errorControl = (from c in form.GetControls()
+                                   where c.Tag != null && c.Tag.ToString() == error.PropertyName
+                                   select c).FirstOrDefault();
+                if (errorControl == null) continue;
+                errorProvider.SetError(errorControl, error.Message);
+            }
+        }
     }
 }

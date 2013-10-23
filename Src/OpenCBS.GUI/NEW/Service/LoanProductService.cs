@@ -22,6 +22,7 @@ using System.Linq;
 using OpenCBS.GUI.NEW.Dto;
 using OpenCBS.GUI.NEW.Mapper;
 using OpenCBS.GUI.NEW.Repository;
+using OpenCBS.GUI.NEW.Validator;
 
 namespace OpenCBS.GUI.NEW.Service
 {
@@ -29,11 +30,13 @@ namespace OpenCBS.GUI.NEW.Service
     {
         private readonly ILoanProductRepository _repository;
         private readonly ILoanProductMapper _mapper;
+        private readonly ILoanProductValidator _validator;
 
-        public LoanProductService(ILoanProductRepository repository, ILoanProductMapper mapper)
+        public LoanProductService(ILoanProductRepository repository, ILoanProductMapper mapper, ILoanProductValidator validator)
         {
             _repository = repository;
             _mapper = mapper;
+            _validator = validator;
         }
 
         public IEnumerable<LoanProductDto> FindAll()
@@ -62,6 +65,11 @@ namespace OpenCBS.GUI.NEW.Service
         {
             var loanProduct = _mapper.Map(loanProductDto);
             _repository.Remove(loanProduct);
+        }
+
+        public void Validate(LoanProductDto loanProductDto)
+        {
+            _validator.Validate(loanProductDto);
         }
     }
 }

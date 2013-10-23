@@ -26,6 +26,7 @@ using OpenCBS.GUI.NEW.Mapper;
 using OpenCBS.GUI.NEW.Presenter;
 using OpenCBS.GUI.NEW.Repository;
 using OpenCBS.GUI.NEW.Service;
+using OpenCBS.GUI.NEW.Validator;
 using OpenCBS.GUI.NEW.View;
 using StructureMap.Configuration.DSL;
 
@@ -58,6 +59,9 @@ namespace OpenCBS.GUI.NEW
 
             // Services
             For<ILoanProductService>().Use<LoanProductService>();
+
+            // Validators
+            For<ILoanProductValidator>().Use<LoanProductValidator>();
 
             // Mappers
             For<ILoanProductMapper>().Use<LoanProductMapper>();

@@ -17,18 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
 using OpenCBS.GUI.NEW.Dto;
 
-namespace OpenCBS.GUI.NEW.Service
+namespace OpenCBS.GUI.NEW.Validator
 {
-    public interface ILoanProductService
+    public interface IValidator<T> where T : DataTransferObject
     {
-        IEnumerable<LoanProductDto> FindAll();
-        IEnumerable<LoanProductDto> FindNonDeleted();
-        void Validate(LoanProductDto loanProductDto);
-        void Add(LoanProductDto loanProductDto);
-        void Update(LoanProductDto loanProductDto);
-        void Remove(LoanProductDto loanProductDto);
+        void Validate(T entity);
     }
 }

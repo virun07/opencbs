@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this._tabControl = new System.Windows.Forms.TabControl();
             this._generalTabPage = new System.Windows.Forms.TabPage();
+            this._amountLabel = new System.Windows.Forms.Label();
+            this._amountRange = new OpenCBS.Controls.RangeControl();
             this._roundingPolicyComboBox = new System.Windows.Forms.ComboBox();
             this._roundingPolicyLabel = new System.Windows.Forms.Label();
             this._dateShiftPolicyComboBox = new System.Windows.Forms.ComboBox();
@@ -51,10 +54,10 @@
             this._nameLabel = new System.Windows.Forms.Label();
             this._okButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
-            this._amountRange = new OpenCBS.Controls.RangeControl();
-            this._amountLabel = new System.Windows.Forms.Label();
+            this._errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this._tabControl.SuspendLayout();
             this._generalTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // _tabControl
@@ -100,6 +103,25 @@
             this._generalTabPage.Text = "General";
             this._generalTabPage.UseVisualStyleBackColor = true;
             // 
+            // _amountLabel
+            // 
+            this._amountLabel.AutoSize = true;
+            this._amountLabel.Location = new System.Drawing.Point(414, 18);
+            this._amountLabel.Name = "_amountLabel";
+            this._amountLabel.Size = new System.Drawing.Size(53, 16);
+            this._amountLabel.TabIndex = 20;
+            this._amountLabel.Text = "Amount";
+            // 
+            // _amountRange
+            // 
+            this._amountRange.AutoSize = true;
+            this._amountRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._amountRange.Location = new System.Drawing.Point(572, 15);
+            this._amountRange.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._amountRange.Name = "_amountRange";
+            this._amountRange.Size = new System.Drawing.Size(246, 26);
+            this._amountRange.TabIndex = 19;
+            // 
             // _roundingPolicyComboBox
             // 
             this._roundingPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -108,6 +130,7 @@
             this._roundingPolicyComboBox.Name = "_roundingPolicyComboBox";
             this._roundingPolicyComboBox.Size = new System.Drawing.Size(209, 24);
             this._roundingPolicyComboBox.TabIndex = 18;
+            this._roundingPolicyComboBox.Tag = "RoundingPolicy";
             // 
             // _roundingPolicyLabel
             // 
@@ -126,6 +149,7 @@
             this._dateShiftPolicyComboBox.Name = "_dateShiftPolicyComboBox";
             this._dateShiftPolicyComboBox.Size = new System.Drawing.Size(209, 24);
             this._dateShiftPolicyComboBox.TabIndex = 16;
+            this._dateShiftPolicyComboBox.Tag = "DateShiftPolicy";
             // 
             // _dateShiftPolicyLabel
             // 
@@ -144,6 +168,7 @@
             this._yearPolicyComboBox.Name = "_yearPolicyComboBox";
             this._yearPolicyComboBox.Size = new System.Drawing.Size(209, 24);
             this._yearPolicyComboBox.TabIndex = 14;
+            this._yearPolicyComboBox.Tag = "YearPolicy";
             // 
             // _yearPolicyLabel
             // 
@@ -162,15 +187,16 @@
             this._schedulePolicyComboBox.Name = "_schedulePolicyComboBox";
             this._schedulePolicyComboBox.Size = new System.Drawing.Size(209, 24);
             this._schedulePolicyComboBox.TabIndex = 10;
+            this._schedulePolicyComboBox.Tag = "SchedulePolicy";
             // 
             // _schedulePolicyLabel
             // 
             this._schedulePolicyLabel.AutoSize = true;
             this._schedulePolicyLabel.Location = new System.Drawing.Point(12, 183);
             this._schedulePolicyLabel.Name = "_schedulePolicyLabel";
-            this._schedulePolicyLabel.Size = new System.Drawing.Size(62, 16);
+            this._schedulePolicyLabel.Size = new System.Drawing.Size(91, 16);
             this._schedulePolicyLabel.TabIndex = 9;
-            this._schedulePolicyLabel.Text = "Schedule";
+            this._schedulePolicyLabel.Text = "Schedule type";
             // 
             // _availableForCompanyCheckBox
             // 
@@ -229,6 +255,7 @@
             this._paymentFrequencyComboBox.Name = "_paymentFrequencyComboBox";
             this._paymentFrequencyComboBox.Size = new System.Drawing.Size(209, 24);
             this._paymentFrequencyComboBox.TabIndex = 12;
+            this._paymentFrequencyComboBox.Tag = "PaymentFrequencyPolicy";
             // 
             // _codeTextBox
             // 
@@ -236,6 +263,7 @@
             this._codeTextBox.Name = "_codeTextBox";
             this._codeTextBox.Size = new System.Drawing.Size(209, 22);
             this._codeTextBox.TabIndex = 3;
+            this._codeTextBox.Tag = "Code";
             // 
             // _nameTextBox
             // 
@@ -243,6 +271,7 @@
             this._nameTextBox.Name = "_nameTextBox";
             this._nameTextBox.Size = new System.Drawing.Size(209, 22);
             this._nameTextBox.TabIndex = 1;
+            this._nameTextBox.Tag = "Name";
             // 
             // _paymentFrequencyLabel
             // 
@@ -289,24 +318,10 @@
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
             // 
-            // _amountRange
+            // _errorProvider
             // 
-            this._amountRange.AutoSize = true;
-            this._amountRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._amountRange.Location = new System.Drawing.Point(572, 15);
-            this._amountRange.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this._amountRange.Name = "_amountRange";
-            this._amountRange.Size = new System.Drawing.Size(246, 26);
-            this._amountRange.TabIndex = 19;
-            // 
-            // _amountLabel
-            // 
-            this._amountLabel.AutoSize = true;
-            this._amountLabel.Location = new System.Drawing.Point(414, 18);
-            this._amountLabel.Name = "_amountLabel";
-            this._amountLabel.Size = new System.Drawing.Size(53, 16);
-            this._amountLabel.TabIndex = 20;
-            this._amountLabel.Text = "Amount";
+            this._errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this._errorProvider.ContainerControl = this;
             // 
             // LoanProductView
             // 
@@ -327,6 +342,7 @@
             this._tabControl.ResumeLayout(false);
             this._generalTabPage.ResumeLayout(false);
             this._generalTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -358,5 +374,6 @@
         private System.Windows.Forms.Label _roundingPolicyLabel;
         private System.Windows.Forms.Label _amountLabel;
         private Controls.RangeControl _amountRange;
+        private System.Windows.Forms.ErrorProvider _errorProvider;
     }
 }

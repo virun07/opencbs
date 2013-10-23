@@ -17,9 +17,11 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using OpenCBS.GUI.NEW.Dto;
 using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Presenter;
 
@@ -34,7 +36,21 @@ namespace OpenCBS.GUI.NEW.View
 
         public void Run()
         {
+            _nameTextBox.TextChanged += ClearError;
+            _codeTextBox.TextChanged += ClearError;
+            _schedulePolicyComboBox.SelectedIndexChanged += ClearError;
+            _paymentFrequencyComboBox.SelectedIndexChanged += ClearError;
+            _yearPolicyComboBox.SelectedIndexChanged += ClearError;
+            _dateShiftPolicyComboBox.SelectedIndexChanged += ClearError;
+            _roundingPolicyComboBox.SelectedIndexChanged += ClearError;
             ShowDialog();
+        }
+
+        private void ClearError(object sender, EventArgs e)
+        {
+            var control = sender as Control;
+            if (control == null) return;
+            _errorProvider.SetError(control, null);
         }
 
         public void Attach(ILoanProductPresenterCallbacks presenterCallbacks)
@@ -80,6 +96,11 @@ namespace OpenCBS.GUI.NEW.View
         public void ShowRoundingPolicies(IEnumerable<string> roundingPolicies)
         {
             ShowPolicies(_roundingPolicyComboBox, roundingPolicies);
+        }
+
+        public void ShowNotification(Notification notification)
+        {
+            this.ShowNotification(notification, _errorProvider);
         }
 
         public string LoanProductName

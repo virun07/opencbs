@@ -711,7 +711,10 @@
     <Compile Include="NEW\Command\EditLoanProductCommand.cs" />
     <Compile Include="NEW\Command\ShowLoanProductsCommand.cs" />
     <Compile Include="NEW\DefaultRegistry.cs" />
+    <Compile Include="NEW\Dto\DataTransferObject.cs" />
+    <Compile Include="NEW\Dto\Error.cs" />
     <Compile Include="NEW\Dto\LoanProductDto.cs" />
+    <Compile Include="NEW\Dto\Notification.cs" />
     <Compile Include="NEW\EventAggregatorInterceptor.cs" />
     <Compile Include="NEW\EventAggregator\EventPublisher.cs" />
     <Compile Include="NEW\EventAggregator\IEventHandler.cs" />
@@ -748,6 +751,10 @@
     <Compile Include="NEW\Repository\SqlConnectionProvider.cs" />
     <Compile Include="NEW\Result.cs" />
     <Compile Include="NEW\Service\LoanProductService.cs" />
+    <Compile Include="NEW\Validator\ILoanProductValidator.cs" />
+    <Compile Include="NEW\Validator\IValidator.cs" />
+    <Compile Include="NEW\Validator\LoanProductValidator.cs" />
+    <Compile Include="NEW\Validator\Validator.cs" />
     <Compile Include="NEW\View\ILoanProductsView.cs" />
     <Compile Include="NEW\View\ILoanProductView.cs" />
     <Compile Include="NEW\View\IMainView.cs" />
@@ -764,6 +771,7 @@
     <Compile Include="NEW\View\LoanProductView.Designer.cs">
       <DependentUpon>LoanProductView.cs</DependentUpon>
     </Compile>
+    <Compile Include="NEW\View\ViewExtensions.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

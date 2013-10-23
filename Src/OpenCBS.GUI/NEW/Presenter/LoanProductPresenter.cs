@@ -20,6 +20,7 @@
 using OpenCBS.GUI.NEW.Dto;
 using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Repository;
+using OpenCBS.GUI.NEW.Service;
 using OpenCBS.GUI.NEW.View;
 
 namespace OpenCBS.GUI.NEW.Presenter
@@ -28,13 +29,16 @@ namespace OpenCBS.GUI.NEW.Presenter
     {
         private readonly ILoanProductView _view;
         private readonly IPolicyRepository _policyRepository;
+        private readonly ILoanProductService _loanProductService;
         private CommandResult _commandResult = CommandResult.Cancel;
 
         public LoanProductPresenter(ILoanProductView view, 
-            IPolicyRepository policyRepository)
+            IPolicyRepository policyRepository,
+            ILoanProductService loanProductService)
         {
             _view = view;
             _policyRepository = policyRepository;
+            _loanProductService = loanProductService;
         }
 
         public Result<LoanProductDto> Get(LoanProductDto loanProduct)
@@ -66,8 +70,17 @@ namespace OpenCBS.GUI.NEW.Presenter
 
         public void Ok()
         {
-            _commandResult = CommandResult.Ok;
-            _view.Stop();
+            var loanProduct = GetLoanProduct();
+            _loanProductService.Validate(loanProduct);
+            if (loanProduct.Notification.HasErrors)
+            {
+                _view.ShowNotification(loanProduct.Notification);
+            }
+            else
+            {
+                _commandResult = CommandResult.Ok;
+                _view.Stop();
+            }
         }
 
         public void Cancel()
