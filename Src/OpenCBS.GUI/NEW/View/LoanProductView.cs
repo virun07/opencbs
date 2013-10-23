@@ -60,6 +60,7 @@ namespace OpenCBS.GUI.NEW.View
             comboBox.DisplayMember = "Value";
             comboBox.ValueMember = "Key";
             comboBox.DataSource = new BindingSource(dict, null);
+            comboBox.SelectedIndex = -1;
         }
 
         public void ShowSchedulePolicies(IEnumerable<string> schedulePolicies)
@@ -123,25 +124,41 @@ namespace OpenCBS.GUI.NEW.View
 
         public string SchedulePolicy
         {
-            get { return _schedulePolicyComboBox.SelectedValue.ToString(); }
+            get
+            {
+                if (_schedulePolicyComboBox.SelectedValue == null) return null;
+                return _schedulePolicyComboBox.SelectedValue.ToString();
+            }
             set { _schedulePolicyComboBox.SelectedValue = value; }
         }
 
         public string YearPolicy
         {
-            get { return _yearPolicyComboBox.SelectedValue.ToString(); }
+            get
+            {
+                if (_yearPolicyComboBox.SelectedValue == null) return null;
+                return _yearPolicyComboBox.SelectedValue.ToString();
+            }
             set { _yearPolicyComboBox.SelectedValue = value; }
         }
 
         public string DateShiftPolicy
         {
-            get { return _dateShiftPolicyComboBox.SelectedValue.ToString(); }
+            get
+            {
+                if (_dateShiftPolicyComboBox.SelectedValue == null) return null;
+                return _dateShiftPolicyComboBox.SelectedValue.ToString();
+            }
             set { _dateShiftPolicyComboBox.SelectedValue = value; }
         }
 
         public string RoundingPolicy
         {
-            get { return _roundingPolicyComboBox.SelectedValue.ToString(); }
+            get
+            {
+                if (_roundingPolicyComboBox.SelectedValue == null) return null;
+                return _roundingPolicyComboBox.SelectedValue.ToString();
+            }
             set { _roundingPolicyComboBox.SelectedValue = value; }
         }
     }
