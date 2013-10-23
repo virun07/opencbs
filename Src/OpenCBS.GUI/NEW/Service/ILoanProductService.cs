@@ -17,28 +17,17 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.NEW.AppController;
-using OpenCBS.GUI.NEW.CommandData;
-using OpenCBS.GUI.NEW.Event;
-using OpenCBS.GUI.NEW.Service;
+using System.Collections.Generic;
+using OpenCBS.GUI.NEW.Dto;
 
-namespace OpenCBS.GUI.NEW.Command
+namespace OpenCBS.GUI.NEW.Service
 {
-    public class DeleteLoanProductCommand : ICommand<DeleteLoanProductData>
+    public interface ILoanProductService
     {
-        private readonly ILoanProductService _loanProductService;
-        private readonly IApplicationController _appController;
-
-        public DeleteLoanProductCommand(ILoanProductService loanProductService, IApplicationController appController)
-        {
-            _loanProductService = loanProductService;
-            _appController = appController;
-        }
-
-        public void Execute(DeleteLoanProductData commandData)
-        {
-            _loanProductService.Remove(commandData.LoanProduct);
-            _appController.Raise(new LoanProductDeletedEvent { LoanProduct = commandData.LoanProduct });
-        }
+        IEnumerable<LoanProductDto> FindAll();
+        IEnumerable<LoanProductDto> FindNonDeleted();
+        void Add(LoanProductDto loanProductDto);
+        void Update(LoanProductDto loanProductDto);
+        void Remove(LoanProductDto loanProductDto);
     }
 }

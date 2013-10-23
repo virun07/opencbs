@@ -18,7 +18,7 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
-using OpenCBS.GUI.NEW.Model;
+using OpenCBS.GUI.NEW.Dto;
 using OpenCBS.GUI.NEW.Presenter;
 
 namespace OpenCBS.GUI.NEW.View
@@ -26,10 +26,10 @@ namespace OpenCBS.GUI.NEW.View
     public interface ILoanProductsView : IView<ILoanProductsPresenterCallbacks>
     {
         void Run();
-        void ShowLoanProducts(IEnumerable<LoanProduct> loanProducts);
+        void ShowLoanProducts(IEnumerable<LoanProductDto> loanProducts);
         bool EditEnabled { get; set; }
         bool DeleteEnabled { get; set; }
-        LoanProduct SelectedLoanProduct { get; }
+        LoanProductDto SelectedLoanProduct { get; }
         bool ShowDeleted { get; }
     }
 }

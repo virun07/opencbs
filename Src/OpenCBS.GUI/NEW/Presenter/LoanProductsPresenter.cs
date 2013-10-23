@@ -21,7 +21,7 @@ using OpenCBS.GUI.NEW.AppController;
 using OpenCBS.GUI.NEW.CommandData;
 using OpenCBS.GUI.NEW.Event;
 using OpenCBS.GUI.NEW.EventAggregator;
-using OpenCBS.GUI.NEW.Repository;
+using OpenCBS.GUI.NEW.Service;
 using OpenCBS.GUI.NEW.View;
 
 namespace OpenCBS.GUI.NEW.Presenter
@@ -33,13 +33,13 @@ namespace OpenCBS.GUI.NEW.Presenter
     {
         private readonly ILoanProductsView _view;
         private readonly IApplicationController _appController;
-        private readonly ILoanProductRepository _loanProductRepository;
+        private readonly ILoanProductService _loanProductService;
 
-        public LoanProductsPresenter(ILoanProductsView view, IApplicationController appController, ILoanProductRepository loanProductRepository)
+        public LoanProductsPresenter(ILoanProductsView view, IApplicationController appController, ILoanProductService loanProductService)
         {
             _view = view;
             _appController = appController;
-            _loanProductRepository = loanProductRepository;
+            _loanProductService = loanProductService;
         }
 
         public void Add()
@@ -92,8 +92,8 @@ namespace OpenCBS.GUI.NEW.Presenter
         private void ShowLoanProducts()
         {
             var loanProducts = _view.ShowDeleted
-                                   ? _loanProductRepository.FindAll()
-                                   : _loanProductRepository.FindNonDeleted();
+                                   ? _loanProductService.FindAll()
+                                   : _loanProductService.FindNonDeleted();
             _view.ShowLoanProducts(loanProducts);
         }
 

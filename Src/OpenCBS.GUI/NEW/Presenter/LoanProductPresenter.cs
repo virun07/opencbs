@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using OpenCBS.GUI.NEW.Dto;
 using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Repository;
 using OpenCBS.GUI.NEW.View;
@@ -36,7 +37,7 @@ namespace OpenCBS.GUI.NEW.Presenter
             _policyRepository = policyRepository;
         }
 
-        public Result<LoanProduct> Get(LoanProduct loanProduct)
+        public Result<LoanProductDto> Get(LoanProductDto loanProduct)
         {
             _view.Attach(this);
             _view.ShowPaymentFrequencyPolicies(_policyRepository.FindPaymentFrequencyPolicyNames());
@@ -46,7 +47,7 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.ShowRoundingPolicies(_policyRepository.FindRoundingPolicyNames());
             ShowLoanProduct(loanProduct);
             _view.Run();
-            var newLoanProduct = (LoanProduct) null;
+            var newLoanProduct = (LoanProductDto) null;
             if (_commandResult == CommandResult.Ok)
             {
                 newLoanProduct = GetLoanProduct();
@@ -55,7 +56,7 @@ namespace OpenCBS.GUI.NEW.Presenter
                     newLoanProduct.Id = loanProduct.Id;
                 }
             }
-            return new Result<LoanProduct>(_commandResult, newLoanProduct);
+            return new Result<LoanProductDto>(_commandResult, newLoanProduct);
         }
 
         public object View
@@ -75,7 +76,7 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.Stop();
         }
 
-        private void ShowLoanProduct(LoanProduct loanProduct)
+        private void ShowLoanProduct(LoanProductDto loanProduct)
         {
             if (loanProduct == null)
             {
@@ -93,9 +94,9 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.RoundingPolicy = loanProduct.RoundingPolicy;
         }
 
-        private LoanProduct GetLoanProduct()
+        private LoanProductDto GetLoanProduct()
         {
-            return new LoanProduct
+            return new LoanProductDto
             {
                 Name = _view.LoanProductName,
                 Code = _view.Code,

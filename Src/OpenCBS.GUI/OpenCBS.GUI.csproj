@@ -719,6 +719,7 @@
     <Compile Include="NEW\Event\LoanProductAddedEvent.cs" />
     <Compile Include="NEW\Event\LoanProductDeletedEvent.cs" />
     <Compile Include="NEW\Event\LoanProductUpdatedEvent.cs" />
+    <Compile Include="NEW\Service\ILoanProductService.cs" />
     <Compile Include="NEW\Mapper\ILoanProductMapper.cs" />
     <Compile Include="NEW\Mapper\IMapper.cs" />
     <Compile Include="NEW\Mapper\LoanProductMapper.cs" />
@@ -746,6 +747,7 @@
     <Compile Include="NEW\Repository\Repository.cs" />
     <Compile Include="NEW\Repository\SqlConnectionProvider.cs" />
     <Compile Include="NEW\Result.cs" />
+    <Compile Include="NEW\Service\LoanProductService.cs" />
     <Compile Include="NEW\View\ILoanProductsView.cs" />
     <Compile Include="NEW\View\ILoanProductView.cs" />
     <Compile Include="NEW\View\IMainView.cs" />

@@ -17,6 +17,8 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using OpenCBS.GUI.NEW.Model;
+
 namespace OpenCBS.GUI.NEW.Dto
 {
     public class LoanProductDto
@@ -24,7 +26,7 @@ namespace OpenCBS.GUI.NEW.Dto
         public int Id { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
-        public int AvailableFor { get; set; }
+        public AvailableFor AvailableFor { get; set; }
         public string PaymentFrequencyPolicy { get; set; }
         public string SchedulePolicy { get; set; }
         public string YearPolicy { get; set; }

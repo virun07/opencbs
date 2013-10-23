@@ -17,60 +17,14 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-using System.Linq;
-using DapperExtensions;
-using OpenCBS.GUI.NEW.Dto;
-using OpenCBS.GUI.NEW.Mapper;
 using OpenCBS.GUI.NEW.Model;
 
 namespace OpenCBS.GUI.NEW.Repository
 {
     public class LoanProductRepository : Repository<LoanProduct>, ILoanProductRepository
     {
-        private readonly ILoanProductMapper _mapper;
-
-        public LoanProductRepository(IConnectionProvider connectionProvider, ILoanProductMapper mapper)
-            : base(connectionProvider)
+        public LoanProductRepository(IConnectionProvider connectionProvider) : base(connectionProvider)
         {
-            _mapper = mapper;
-        }
-
-        public override IEnumerable<LoanProduct> FindAll()
-        {
-            using (var connection = GetConnection())
-            {
-                var items = connection.GetList<LoanProductDto>();
-                return items.Select(dto => _mapper.Map(dto));
-            }
-        }
-
-        public override IEnumerable<LoanProduct> FindNonDeleted()
-        {
-            using (var connection = GetConnection())
-            {
-                var predicate = Predicates.Field<LoanProductDto>(t => t.Deleted, Operator.Eq, false);
-                var items = connection.GetList<LoanProductDto>(predicate);
-                return items.Select(dto => _mapper.Map(dto));
-            }
-        }
-
-        public override void Update(LoanProduct entity)
-        {
-            using (var connection = GetConnection())
-            {
-                var dto = _mapper.Map(entity);
-                connection.Update(dto);
-            }
-        }
-
-        public override void Add(LoanProduct entity)
-        {
-            using (var connection = GetConnection())
-            {
-                var dto = _mapper.Map(entity);
-                connection.Insert(dto);
-            }
         }
     }
 }

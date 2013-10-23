@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using OpenCBS.GUI.NEW.Model;
+using OpenCBS.GUI.NEW.Dto;
 using OpenCBS.GUI.NEW.Presenter;
 
 namespace OpenCBS.GUI.NEW.View
@@ -47,7 +48,7 @@ namespace OpenCBS.GUI.NEW.View
 
             _loanProductsListView.FormatRow += (sender, e) =>
             {
-                var loanProduct = (LoanProduct) e.Model;
+                var loanProduct = (LoanProductDto) e.Model;
                 e.Item.BackColor = loanProduct.Deleted ? Color.FromArgb(255, 92, 92) : Color.Transparent;
             };
 
@@ -59,7 +60,7 @@ namespace OpenCBS.GUI.NEW.View
             Show();
         }
 
-        public void ShowLoanProducts(IEnumerable<LoanProduct> loanProducts)
+        public void ShowLoanProducts(IEnumerable<LoanProductDto> loanProducts)
         {
             var selectedObject = _loanProductsListView.SelectedObject;
             _loanProductsListView.SetObjects(loanProducts);
@@ -79,9 +80,9 @@ namespace OpenCBS.GUI.NEW.View
             set { _deleteButton.Enabled = value; }
         }
 
-        public LoanProduct SelectedLoanProduct
+        public LoanProductDto SelectedLoanProduct
         {
-            get { return (LoanProduct)_loanProductsListView.SelectedObject; }
+            get { return (LoanProductDto)_loanProductsListView.SelectedObject; }
         }
 
         public bool ShowDeleted

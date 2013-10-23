@@ -17,12 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.NEW.Model;
+using OpenCBS.GUI.NEW.Dto;
 
 namespace OpenCBS.GUI.NEW.Presenter
 {
     public interface ILoanProductPresenter : IPresenter
     {
-        Result<LoanProduct> Get(LoanProduct loanProduct);
+        Result<LoanProductDto> Get(LoanProductDto loanProduct);
     }
 }

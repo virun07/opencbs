@@ -18,8 +18,6 @@
 // Contact: contact@opencbs.com
 
 using System.Windows.Forms;
-using OpenCBS.Engine.DatePolicy;
-using OpenCBS.Engine.Interfaces;
 using OpenCBS.GUI.NEW.AppController;
 using OpenCBS.GUI.NEW.Command;
 using OpenCBS.GUI.NEW.CommandData;
@@ -27,6 +25,7 @@ using OpenCBS.GUI.NEW.EventAggregator;
 using OpenCBS.GUI.NEW.Mapper;
 using OpenCBS.GUI.NEW.Presenter;
 using OpenCBS.GUI.NEW.Repository;
+using OpenCBS.GUI.NEW.Service;
 using OpenCBS.GUI.NEW.View;
 using StructureMap.Configuration.DSL;
 
@@ -56,6 +55,9 @@ namespace OpenCBS.GUI.NEW
             For<IConnectionProvider>().Use<SqlConnectionProvider>();
             For<ILoanProductRepository>().Use<LoanProductRepository>();
             For<IPolicyRepository>().Use<PolicyRepository>();
+
+            // Services
+            For<ILoanProductService>().Use<LoanProductService>();
 
             // Mappers
             For<ILoanProductMapper>().Use<LoanProductMapper>();
