@@ -7,17 +7,12 @@ namespace OpenCBS.Engine.YearPolicy
     [Export(typeof(IPolicy))]
     [Export(typeof(IYearPolicy))]
     [ExportMetadata("Order", 30)]
-    [PolicyAttribute(PolicyType = "YearPolicy", Implementation = "365")]
-    public class ThreeHundredSixtyFiveDayYearPolicy : BasePolicy, IYearPolicy
+    [PolicyAttribute(Implementation = "365 days")]
+    public class ThreeHundredSixtyFiveDayYearPolicy : IYearPolicy
     {
         public int GetNumberOfDays(System.DateTime date)
         {
             return 365;
-        }
-
-        public override string Name
-        {
-            get { return "365 days"; }
         }
     }
 }

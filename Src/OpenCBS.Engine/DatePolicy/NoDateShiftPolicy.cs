@@ -7,17 +7,12 @@ namespace OpenCBS.Engine.DatePolicy
     [Export(typeof(IPolicy))]
     [Export(typeof(IDateShiftPolicy))]
     [ExportMetadata("Order", 10)]
-    [PolicyAttribute(Implementation = "No")]
-    public class NoDateShiftPolicy : BasePolicy, IDateShiftPolicy
+    [PolicyAttribute(Implementation = "No shift")]
+    public class NoDateShiftPolicy : IDateShiftPolicy
     {
         public DateTime ShiftDate(DateTime date)
         {
             return date;
-        }
-
-        public override string Name
-        {
-            get { return "No shift"; }
         }
     }
 }

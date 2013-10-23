@@ -8,7 +8,7 @@ namespace OpenCBS.Engine.DatePolicy
     [Export(typeof(IDateShiftPolicy))]
     [ExportMetadata("Order", 30)]
     [PolicyAttribute(Implementation = "Forward")]
-    public class ForwardDateShiftPolicy : BasePolicy, IDateShiftPolicy
+    public class ForwardDateShiftPolicy : IDateShiftPolicy
     {
         private readonly INonWorkingDayPolicy _nonWorkingDayPolicy;
 
@@ -27,11 +27,6 @@ namespace OpenCBS.Engine.DatePolicy
                 date = date.AddDays(1);
             }
             return date;
-        }
-
-        public override string Name
-        {
-            get { return "Forward"; }
         }
     }
 }

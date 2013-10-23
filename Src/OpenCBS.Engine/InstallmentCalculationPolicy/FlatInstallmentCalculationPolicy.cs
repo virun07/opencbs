@@ -9,11 +9,6 @@ namespace OpenCBS.Engine.InstallmentCalculationPolicy
     [PolicyAttribute(Implementation = "Flat")]
     public class FlatInstallmentCalculationPolicy : BaseInstallmentCalculationPolicy, IInstallmentCalculationPolicy
     {
-        public override string Name
-        {
-            get { return "Flat"; }
-        }
-
         public void Calculate(IInstallment installment, IScheduleConfiguration configuration)
         {
             var number = configuration.NumberOfInstallments - configuration.GracePeriod;

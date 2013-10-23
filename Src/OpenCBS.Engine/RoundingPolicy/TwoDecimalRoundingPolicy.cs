@@ -8,16 +8,11 @@ namespace OpenCBS.Engine.RoundingPolicy
     [Export(typeof(IRoundingPolicy))]
     [ExportMetadata("Order", 10)]
     [PolicyAttribute(Implementation = "Two decimal")]
-    public class TwoDecimalRoundingPolicy : BasePolicy, IRoundingPolicy
+    public class TwoDecimalRoundingPolicy : IRoundingPolicy
     {
         public decimal Round(decimal amount)
         {
             return Math.Round(amount, 2, MidpointRounding.AwayFromZero);
-        }
-
-        public override string Name
-        {
-            get { return "Two decimal"; }
         }
     }
 }

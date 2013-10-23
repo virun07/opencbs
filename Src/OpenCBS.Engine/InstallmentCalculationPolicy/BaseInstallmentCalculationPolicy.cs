@@ -2,7 +2,7 @@
 
 namespace OpenCBS.Engine.InstallmentCalculationPolicy
 {
-    public abstract class BaseInstallmentCalculationPolicy : BasePolicy
+    public abstract class BaseInstallmentCalculationPolicy
     {
         protected decimal CalculateInterest(IInstallment installment, IScheduleConfiguration configuration, decimal amount)
         {

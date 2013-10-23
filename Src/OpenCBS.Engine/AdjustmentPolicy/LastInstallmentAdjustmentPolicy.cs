@@ -12,10 +12,5 @@ namespace OpenCBS.Engine.AdjustmentPolicy
         {
             schedule[schedule.Count - 1].Principal += GetAdjustment(schedule, configuration);
         }
-
-        public string Name
-        {
-            get { return "Last installment"; }
-        }
     }
 }

@@ -27,10 +27,5 @@ namespace OpenCBS.Engine.PeriodPolicy
         {
             return 12;
         }
-
-        public string Name
-        {
-            get { return "Monthly"; }
-        }
     }
 }

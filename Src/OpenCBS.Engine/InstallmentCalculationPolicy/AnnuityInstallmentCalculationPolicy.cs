@@ -10,11 +10,6 @@ namespace OpenCBS.Engine.InstallmentCalculationPolicy
     [PolicyAttribute(Implementation = "Annuity")]
     public class AnnuityInstallmentCalculationPolicy : BaseInstallmentCalculationPolicy, IInstallmentCalculationPolicy
     {
-        public override string Name
-        {
-            get { return "Annuity"; }
-        }
-
         public void Calculate(IInstallment installment, IScheduleConfiguration configuration)
         {
             var number = configuration.NumberOfInstallments - configuration.GracePeriod;
