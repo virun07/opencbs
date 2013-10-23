@@ -18,8 +18,8 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
-using OpenCBS.Engine.Interfaces;
 using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Presenter;
 
@@ -54,28 +54,32 @@ namespace OpenCBS.GUI.NEW.View
                 _paymentFrequencyComboBox.Items.Add(frequency);
         }
 
-        public void ShowSchedulePolicies(IEnumerable<IInstallmentCalculationPolicy> schedulePolicies)
+        private static void ShowPolicies(ComboBox comboBox, IEnumerable<string> policies)
         {
-            foreach (var policy in schedulePolicies)
-                _schedulePolicyComboBox.Items.Add(policy);
+            var dict = policies.ToDictionary(policy => policy);
+            comboBox.DisplayMember = "Value";
+            comboBox.ValueMember = "Key";
+            comboBox.DataSource = new BindingSource(dict, null);
         }
 
-        public void ShowYearPolicies(IEnumerable<IYearPolicy> yearPolicies)
+        public void ShowSchedulePolicies(IEnumerable<string> schedulePolicies)
         {
-            foreach (var policy in yearPolicies)
-                _yearPolicyComboBox.Items.Add(policy);
+            ShowPolicies(_schedulePolicyComboBox, schedulePolicies);
         }
 
-        public void ShowDateShiftPolicies(IEnumerable<IDateShiftPolicy> dateShiftPolicies)
+        public void ShowYearPolicies(IEnumerable<string> yearPolicies)
         {
-            foreach (var policy in dateShiftPolicies)
-                _dateShiftPolicyComboBox.Items.Add(policy);
+            ShowPolicies(_yearPolicyComboBox, yearPolicies);
         }
 
-        public void ShowRoundingPolicies(IEnumerable<IRoundingPolicy> roundingPolicies)
+        public void ShowDateShiftPolicies(IEnumerable<string> dateShiftPolicies)
         {
-            foreach (var policy in roundingPolicies)
-                _roundingPolicyComboBox.Items.Add(policy);
+            ShowPolicies(_dateShiftPolicyComboBox, dateShiftPolicies);
+        }
+
+        public void ShowRoundingPolicies(IEnumerable<string> roundingPolicies)
+        {
+            ShowPolicies(_roundingPolicyComboBox, roundingPolicies);
         }
 
         public string LoanProductName
@@ -117,28 +121,28 @@ namespace OpenCBS.GUI.NEW.View
             }
         }
 
-        public IInstallmentCalculationPolicy SchedulePolicy
+        public string SchedulePolicy
         {
-            get { return (IInstallmentCalculationPolicy) _schedulePolicyComboBox.SelectedItem; }
-            set { _schedulePolicyComboBox.SelectedItem = value; }
+            get { return _schedulePolicyComboBox.SelectedValue.ToString(); }
+            set { _schedulePolicyComboBox.SelectedValue = value; }
         }
 
-        public IYearPolicy YearPolicy
+        public string YearPolicy
         {
-            get { return (IYearPolicy) _yearPolicyComboBox.SelectedItem; }
-            set { _yearPolicyComboBox.SelectedItem = value; }
+            get { return _yearPolicyComboBox.SelectedValue.ToString(); }
+            set { _yearPolicyComboBox.SelectedValue = value; }
         }
 
-        public IDateShiftPolicy DateShiftPolicy
+        public string DateShiftPolicy
         {
-            get { return (IDateShiftPolicy) _dateShiftPolicyComboBox.SelectedItem; }
-            set { _dateShiftPolicyComboBox.SelectedItem = value; }
+            get { return _dateShiftPolicyComboBox.SelectedValue.ToString(); }
+            set { _dateShiftPolicyComboBox.SelectedValue = value; }
         }
 
-        public IRoundingPolicy RoundingPolicy
+        public string RoundingPolicy
         {
-            get { return (IRoundingPolicy) _roundingPolicyComboBox.SelectedItem; }
-            set { _roundingPolicyComboBox.SelectedItem = value; }
+            get { return _roundingPolicyComboBox.SelectedValue.ToString(); }
+            set { _roundingPolicyComboBox.SelectedValue = value; }
         }
     }
 }

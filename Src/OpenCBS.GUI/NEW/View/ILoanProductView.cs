@@ -29,18 +29,18 @@ namespace OpenCBS.GUI.NEW.View
         void Run();
         void Stop();
         void ShowPaymentFrequencies(IEnumerable<PaymentFrequency> paymentFrequencies);
-        void ShowSchedulePolicies(IEnumerable<IInstallmentCalculationPolicy> schedulePolicies);
-        void ShowYearPolicies(IEnumerable<IYearPolicy> yearPolicies);
-        void ShowDateShiftPolicies(IEnumerable<IDateShiftPolicy> dateShiftPolicies);
-        void ShowRoundingPolicies(IEnumerable<IRoundingPolicy> roundingPolicies);
+        void ShowSchedulePolicies(IEnumerable<string> schedulePolicies);
+        void ShowYearPolicies(IEnumerable<string> yearPolicies);
+        void ShowDateShiftPolicies(IEnumerable<string> dateShiftPolicies);
+        void ShowRoundingPolicies(IEnumerable<string> roundingPolicies);
 
         string LoanProductName { get; set; }
         string Code { get; set; }
         PaymentFrequency PaymentFrequency { get; set; }
         AvailableFor AvailableFor { get; set; }
-        IInstallmentCalculationPolicy SchedulePolicy { get; set; }
-        IYearPolicy YearPolicy { get; set; }
-        IDateShiftPolicy DateShiftPolicy { get; set; }
-        IRoundingPolicy RoundingPolicy { get; set; }
+        string SchedulePolicy { get; set; }
+        string YearPolicy { get; set; }
+        string DateShiftPolicy { get; set; }
+        string RoundingPolicy { get; set; }
     }
 }

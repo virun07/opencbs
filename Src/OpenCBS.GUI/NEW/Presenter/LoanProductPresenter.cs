@@ -27,35 +27,26 @@ namespace OpenCBS.GUI.NEW.Presenter
     {
         private readonly ILoanProductView _view;
         private readonly IPaymentFrequencyRepository _paymentFrequencyRepository;
-        private readonly ISchedulePolicyRepository _schedulePolicyRepository;
-        private readonly IYearPolicyRepository _yearPolicyRepository;
-        private readonly IDateShiftPolicyRepository _dateShiftPolicyRepository;
-        private readonly IRoundingPolicyRepository _roundingPolicyRepository;
+        private readonly IPolicyRepository _policyRepository;
         private CommandResult _commandResult = CommandResult.Cancel;
 
         public LoanProductPresenter(ILoanProductView view, 
-            IPaymentFrequencyRepository paymentFrequencyRepository, 
-            ISchedulePolicyRepository schedulePolicyRepository,
-            IYearPolicyRepository yearPolicyRepository,
-            IDateShiftPolicyRepository dateShiftPolicyRepository,
-            IRoundingPolicyRepository roundingPolicyRepository)
+            IPaymentFrequencyRepository paymentFrequencyRepository,
+            IPolicyRepository policyRepository)
         {
             _view = view;
             _paymentFrequencyRepository = paymentFrequencyRepository;
-            _schedulePolicyRepository = schedulePolicyRepository;
-            _yearPolicyRepository = yearPolicyRepository;
-            _dateShiftPolicyRepository = dateShiftPolicyRepository;
-            _roundingPolicyRepository = roundingPolicyRepository;
+            _policyRepository = policyRepository;
         }
 
         public Result<LoanProduct> Get(LoanProduct loanProduct)
         {
             _view.Attach(this);
             _view.ShowPaymentFrequencies(_paymentFrequencyRepository.FindAll());
-            _view.ShowSchedulePolicies(_schedulePolicyRepository.FindAll());
-            _view.ShowYearPolicies(_yearPolicyRepository.FindAll());
-            _view.ShowDateShiftPolicies(_dateShiftPolicyRepository.FindAll());
-            _view.ShowRoundingPolicies(_roundingPolicyRepository.FindAll());
+            _view.ShowSchedulePolicies(_policyRepository.FindSchedulePolicyNames());
+            _view.ShowYearPolicies(_policyRepository.FindYearPolicyNames());
+            _view.ShowDateShiftPolicies(_policyRepository.FindDateShiftPolicyNames());
+            _view.ShowRoundingPolicies(_policyRepository.FindRoundingPolicyNames());
             ShowLoanProduct(loanProduct);
             _view.Run();
             var newLoanProduct = (LoanProduct) null;

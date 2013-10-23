@@ -17,12 +17,15 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.Engine.Interfaces;
+using System.Collections.Generic;
 
 namespace OpenCBS.GUI.NEW.Repository
 {
-    public interface IPolicyRepository<T> : IRepository<T> where T : IPolicy
+    public interface IPolicyRepository
     {
-        T FindByName(string name);
+        IEnumerable<string> FindSchedulePolicyNames();
+        IEnumerable<string> FindYearPolicyNames();
+        IEnumerable<string> FindDateShiftPolicyNames();
+        IEnumerable<string> FindRoundingPolicyNames();
     }
 }

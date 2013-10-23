@@ -28,11 +28,12 @@ using OpenCBS.Engine.Interfaces;
 
 namespace OpenCBS.GUI.NEW.Repository
 {
-    public abstract class PolicyRepository<T> : IPolicyRepository<T> where T : IPolicy
+    public class PolicyRepository : IPolicyRepository
     {
-        protected abstract IEnumerable<T> Policies { get; }
+        [ImportMany(typeof(IPolicy))]
+        private Lazy<IPolicy, IPolicyAttribute>[] Policies { get; set; }
 
-        protected PolicyRepository()
+        public PolicyRepository()
         {
             var fileName = Assembly.GetExecutingAssembly().Location;
             fileName = Path.GetDirectoryName(fileName);
@@ -42,41 +43,39 @@ namespace OpenCBS.GUI.NEW.Repository
             container.SatisfyImportsOnce(this);
         }
 
-        public T FindByName(string name)
+        private T FindByName<T>(string policyName)
         {
-            return (from policy in Policies
-                   where policy.Name == name
-                   select policy).FirstOrDefault();
+            return (T) (from policy in Policies
+                        where policy.Metadata.Implementation == policyName
+                              && policy.Value.GetType().GetInterfaces().Contains(typeof (T))
+                        select policy.Value).FirstOrDefault();
         }
 
-        public IEnumerable<T> FindAll()
+        private IEnumerable<string> FindNames(Type t)
         {
-            return Policies;
+            return from policy in Policies
+                   where policy.Value.GetType().GetInterfaces().Contains(t)
+                   select policy.Metadata.Implementation;
         }
 
-        public IEnumerable<T> FindNonDeleted()
+        public IEnumerable<string> FindSchedulePolicyNames()
         {
-            throw new NotImplementedException();
+            return FindNames(typeof (IInstallmentCalculationPolicy));
         }
 
-        public T FindById(int id)
+        public IEnumerable<string> FindYearPolicyNames()
         {
-            throw new NotImplementedException();
+            return FindNames(typeof (IYearPolicy));
         }
 
-        public void Update(T entity)
+        public IEnumerable<string> FindDateShiftPolicyNames()
         {
-            throw new NotImplementedException();
+            return FindNames(typeof (IDateShiftPolicy));
         }
 
-        public void Add(T entity)
+        public IEnumerable<string> FindRoundingPolicyNames()
         {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(T entity)
-        {
-            throw new NotImplementedException();
+            return FindNames(typeof (IRoundingPolicy));
         }
     }
 }

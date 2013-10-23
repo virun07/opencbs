@@ -17,8 +17,6 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.Engine.Interfaces;
-
 namespace OpenCBS.GUI.NEW.Model
 {
     public class LoanProduct : EntityBase
@@ -27,9 +25,9 @@ namespace OpenCBS.GUI.NEW.Model
         public string Code { get; set; }
         public PaymentFrequency PaymentFrequency { get; set; }
         public AvailableFor AvailableFor { get; set; }
-        public IInstallmentCalculationPolicy SchedulePolicy { get; set; }
-        public IYearPolicy YearPolicy { get; set; }
-        public IDateShiftPolicy DateShiftPolicy { get; set; }
-        public IRoundingPolicy RoundingPolicy { get; set; }
+        public string SchedulePolicy { get; set; }
+        public string YearPolicy { get; set; }
+        public string DateShiftPolicy { get; set; }
+        public string RoundingPolicy { get; set; }
     }
 }

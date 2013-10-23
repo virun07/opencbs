@@ -157,7 +157,7 @@
             // 
             // _schedulePolicyColumn
             // 
-            this._schedulePolicyColumn.AspectName = "SchedulePolicy.Name";
+            this._schedulePolicyColumn.AspectName = "SchedulePolicy";
             this._schedulePolicyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._schedulePolicyColumn.Text = "Schedule";
             this._schedulePolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -173,7 +173,7 @@
             // 
             // _yearPolicyColumn
             // 
-            this._yearPolicyColumn.AspectName = "YearPolicy.Name";
+            this._yearPolicyColumn.AspectName = "YearPolicy";
             this._yearPolicyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._yearPolicyColumn.Text = "Year";
             this._yearPolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -181,7 +181,7 @@
             // 
             // _dateShiftPolicyColumn
             // 
-            this._dateShiftPolicyColumn.AspectName = "DateShiftPolicy.Name";
+            this._dateShiftPolicyColumn.AspectName = "DateShiftPolicy";
             this._dateShiftPolicyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._dateShiftPolicyColumn.Text = "Date shift";
             this._dateShiftPolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -189,7 +189,7 @@
             // 
             // _roundingPolicyColumn
             // 
-            this._roundingPolicyColumn.AspectName = "RoundingPolicy.Name";
+            this._roundingPolicyColumn.AspectName = "RoundingPolicy";
             this._roundingPolicyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._roundingPolicyColumn.Text = "Rounding";
             this._roundingPolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

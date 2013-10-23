@@ -27,22 +27,10 @@ namespace OpenCBS.GUI.NEW.Mapper
     public class LoanProductMapper : ILoanProductMapper
     {
         private readonly IPaymentFrequencyRepository _paymentFrequencyRepository;
-        private readonly ISchedulePolicyRepository _schedulePolicyRepository;
-        private readonly IYearPolicyRepository _yearPolicyRepository;
-        private readonly IDateShiftPolicyRepository _dateShiftPolicyRepository;
-        private readonly IRoundingPolicyRepository _roundingPolicyRepository;
-
-        public LoanProductMapper(IPaymentFrequencyRepository paymentFrequencyRepository, 
-            ISchedulePolicyRepository schedulePolicyRepository,
-            IYearPolicyRepository yearPolicyRepository,
-            IDateShiftPolicyRepository dateShiftPolicyRepository,
-            IRoundingPolicyRepository roundingPolicyRepository)
+        
+        public LoanProductMapper(IPaymentFrequencyRepository paymentFrequencyRepository)
         {
             _paymentFrequencyRepository = paymentFrequencyRepository;
-            _schedulePolicyRepository = schedulePolicyRepository;
-            _yearPolicyRepository = yearPolicyRepository;
-            _dateShiftPolicyRepository = dateShiftPolicyRepository;
-            _roundingPolicyRepository = roundingPolicyRepository;
         }
 
         public LoanProduct Map(LoanProductDto dto)
@@ -54,10 +42,10 @@ namespace OpenCBS.GUI.NEW.Mapper
                 Code = dto.Code,
                 PaymentFrequency = _paymentFrequencyRepository.FindById(dto.PaymentFrequencyId),
                 AvailableFor = (AvailableFor)dto.AvailableFor,
-                SchedulePolicy = _schedulePolicyRepository.FindByName(dto.SchedulePolicy),
-                YearPolicy = _yearPolicyRepository.FindByName(dto.YearPolicy),
-                DateShiftPolicy = _dateShiftPolicyRepository.FindByName(dto.DateShiftPolicy),
-                RoundingPolicy = _roundingPolicyRepository.FindByName(dto.RoundingPolicy),
+                SchedulePolicy = dto.SchedulePolicy,
+                YearPolicy = dto.YearPolicy,
+                DateShiftPolicy = dto.DateShiftPolicy,
+                RoundingPolicy = dto.RoundingPolicy,
                 Deleted = dto.Deleted
             };
         }
@@ -68,14 +56,6 @@ namespace OpenCBS.GUI.NEW.Mapper
                 throw new ArgumentNullException("loanProduct");
             if (loanProduct.PaymentFrequency == null)
                 throw new NullReferenceException("loanProduct.PaymentFrequency");
-            if (loanProduct.SchedulePolicy == null)
-                throw new NullReferenceException("loanProduct.SchedulePolicy");
-            if (loanProduct.YearPolicy == null)
-                throw new NullReferenceException("loanProduct.YearPolicy");
-            if (loanProduct.DateShiftPolicy == null)
-                throw new NullReferenceException("loanProduct.DateShiftPolicy");
-            if (loanProduct.RoundingPolicy == null)
-                throw new NullReferenceException("loanProduct.RoundingPolicy");
 
             return new LoanProductDto
             {
@@ -84,10 +64,10 @@ namespace OpenCBS.GUI.NEW.Mapper
                 Code = loanProduct.Code,
                 PaymentFrequencyId = loanProduct.PaymentFrequency.Id,
                 AvailableFor = (int)loanProduct.AvailableFor,
-                SchedulePolicy = loanProduct.SchedulePolicy.Name,
-                YearPolicy = loanProduct.YearPolicy.Name,
-                DateShiftPolicy = loanProduct.DateShiftPolicy.Name,
-                RoundingPolicy = loanProduct.RoundingPolicy.Name,
+                SchedulePolicy = loanProduct.SchedulePolicy,
+                YearPolicy = loanProduct.YearPolicy,
+                DateShiftPolicy = loanProduct.DateShiftPolicy,
+                RoundingPolicy = loanProduct.RoundingPolicy,
                 Deleted = loanProduct.Deleted
             };
         }
