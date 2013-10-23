@@ -107,6 +107,10 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.RoundingPolicy = loanProduct.RoundingPolicy;
             _view.AmountMin = loanProduct.AmountMin;
             _view.AmountMax = loanProduct.AmountMax;
+            _view.InterestRateMin = loanProduct.InterestRateMin;
+            _view.InterestRateMax = loanProduct.InterestRateMax;
+            _view.MaturityMin = loanProduct.MaturityMin;
+            _view.MaturityMax = loanProduct.MaturityMax;
         }
 
         private LoanProductDto GetLoanProduct()
@@ -122,7 +126,11 @@ namespace OpenCBS.GUI.NEW.Presenter
                 DateShiftPolicy = _view.DateShiftPolicy,
                 RoundingPolicy = _view.RoundingPolicy,
                 AmountMin = _view.AmountMin,
-                AmountMax = _view.AmountMax
+                AmountMax = _view.AmountMax,
+                InterestRateMin = _view.InterestRateMin,
+                InterestRateMax = _view.InterestRateMax,
+                MaturityMin = _view.MaturityMin,
+                MaturityMax = _view.MaturityMax
             };
         }
     }

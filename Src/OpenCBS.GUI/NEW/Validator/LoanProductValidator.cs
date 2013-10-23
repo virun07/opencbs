@@ -36,6 +36,10 @@ namespace OpenCBS.GUI.NEW.Validator
             FailIfNullOrEmpty("RoundingPolicy", "Rounding cannot be empty.");
             FailIfNullOrEmpty(entity.AmountMax, "Amount", "Max value cannot be empty.");
             FailIfNullOrEmpty(entity.AmountMin, "Amount", "Min value cannot be empty.");
+            FailIfNullOrEmpty(entity.InterestRateMax, "InterestRate", "Max value cannot be empty.");
+            FailIfNullOrEmpty(entity.InterestRateMin, "InterestRate", "Min value cannot be empty.");
+            FailIfNullOrEmpty(entity.MaturityMax, "Maturity", "Max value cannot be empty.");
+            FailIfNullOrEmpty(entity.MaturityMin, "Maturity", "Min value cannot be empty.");
         }
     }
 }

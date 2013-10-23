@@ -40,6 +40,10 @@ namespace OpenCBS.GUI.NEW.Mapper
                 RoundingPolicy = dto.RoundingPolicy,
                 AmountMin = dto.AmountMin.HasValue ? dto.AmountMin.Value : 0,
                 AmountMax = dto.AmountMax.HasValue ? dto.AmountMax.Value : 0,
+                InterestRateMin = dto.InterestRateMin.HasValue ? dto.InterestRateMin.Value : 0,
+                InterestRateMax = dto.InterestRateMax.HasValue ? dto.InterestRateMax.Value : 0,
+                MaturityMin = dto.MaturityMin.HasValue ? dto.MaturityMin.Value : 0,
+                MaturityMax = dto.MaturityMax.HasValue ? dto.MaturityMax.Value : 0,
                 Deleted = dto.Deleted
             };
         }
@@ -62,6 +66,10 @@ namespace OpenCBS.GUI.NEW.Mapper
                 RoundingPolicy = loanProduct.RoundingPolicy,
                 AmountMin = loanProduct.AmountMin,
                 AmountMax = loanProduct.AmountMax,
+                InterestRateMin = loanProduct.InterestRateMin,
+                InterestRateMax = loanProduct.InterestRateMax,
+                MaturityMin = loanProduct.MaturityMin,
+                MaturityMax = loanProduct.MaturityMax,
                 Deleted = loanProduct.Deleted
             };
         }

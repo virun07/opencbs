@@ -31,5 +31,9 @@ namespace OpenCBS.GUI.NEW.Model
         public string RoundingPolicy { get; set; }
         public decimal AmountMin { get; set; }
         public decimal AmountMax { get; set; }
+        public decimal InterestRateMin { get; set; }
+        public decimal InterestRateMax { get; set; }
+        public int MaturityMin { get; set; }
+        public int MaturityMax { get; set; }
     }
 }

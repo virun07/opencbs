@@ -51,7 +51,7 @@ namespace OpenCBS.Controls
             }
             set
             {
-                _minTextBox.Text = value.HasValue ? Convert.ToString(value.Value) : string.Empty;
+                _minTextBox.Text = value.HasValue ? value.Value.ToString(AllowDecimalSeparator ? "N2" : "N0") : string.Empty;
             }
         }
 
@@ -64,7 +64,17 @@ namespace OpenCBS.Controls
             }
             set
             {
-                _maxTextBox.Text = value.HasValue ? Convert.ToString(value.Value) : string.Empty;
+                _maxTextBox.Text = value.HasValue ? value.Value.ToString(AllowDecimalSeparator ? "N2" : "N0") : string.Empty;
+            }
+        }
+
+        public bool AllowDecimalSeparator
+        {
+            get { return _minTextBox.AllowDecimalSeparator; }
+            set 
+            { 
+                _minTextBox.AllowDecimalSeparator = value;
+                _maxTextBox.AllowDecimalSeparator = value;
             }
         }
     }

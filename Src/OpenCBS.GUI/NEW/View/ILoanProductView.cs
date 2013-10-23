@@ -46,5 +46,9 @@ namespace OpenCBS.GUI.NEW.View
 
         decimal? AmountMin { get; set; }
         decimal? AmountMax { get; set; }
+        decimal? InterestRateMin { get; set; }
+        decimal? InterestRateMax { get; set; }
+        int? MaturityMin { get; set; }
+        int? MaturityMax { get; set; }
     }
 }

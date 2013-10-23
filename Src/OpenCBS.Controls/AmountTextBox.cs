@@ -27,7 +27,7 @@ namespace OpenCBS.Controls
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
             var separator = CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0];
-            if (char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar) || (e.KeyChar == separator && Text.IndexOf(separator) == -1))
+            if (char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar) || (e.KeyChar == separator && Text.IndexOf(separator) == -1) && AllowDecimalSeparator)
             {
                 e.Handled = false;
             }
@@ -36,5 +36,7 @@ namespace OpenCBS.Controls
                 e.Handled = true;
             }
         }
+
+        public bool AllowDecimalSeparator { get; set; }
     }
 }

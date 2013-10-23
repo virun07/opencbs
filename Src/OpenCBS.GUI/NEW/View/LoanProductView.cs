@@ -139,7 +139,8 @@ namespace OpenCBS.GUI.NEW.View
 
         public string PaymentFrequencyPolicy
         {
-            get { 
+            get
+            {
                 if (_paymentFrequencyComboBox.SelectedValue == null) return null;
                 return _paymentFrequencyComboBox.SelectedValue.ToString();
             }
@@ -195,6 +196,30 @@ namespace OpenCBS.GUI.NEW.View
         {
             get { return _amountRange.Max; }
             set { _amountRange.Max = value; }
+        }
+
+        public decimal? InterestRateMin
+        {
+            get { return _interestRateRange.Min; }
+            set { _interestRateRange.Min = value; }
+        }
+
+        public decimal? InterestRateMax
+        {
+            get { return _interestRateRange.Max; }
+            set { _interestRateRange.Max = value; }
+        }
+
+        public int? MaturityMin
+        {
+            get { return (int?)_maturityRange.Min; }
+            set { _maturityRange.Min = value; }
+        }
+
+        public int? MaturityMax
+        {
+            get { return (int?)_maturityRange.Max; }
+            set { _maturityRange.Max = value; }
         }
     }
 }

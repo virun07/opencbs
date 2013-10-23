@@ -55,6 +55,10 @@
             this._okButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
             this._errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this._maturityLabel = new System.Windows.Forms.Label();
+            this._maturityRange = new OpenCBS.Controls.RangeControl();
+            this._interestRateLabel = new System.Windows.Forms.Label();
+            this._interestRateRange = new OpenCBS.Controls.RangeControl();
             this._tabControl.SuspendLayout();
             this._generalTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
@@ -73,6 +77,10 @@
             // 
             // _generalTabPage
             // 
+            this._generalTabPage.Controls.Add(this._interestRateLabel);
+            this._generalTabPage.Controls.Add(this._interestRateRange);
+            this._generalTabPage.Controls.Add(this._maturityLabel);
+            this._generalTabPage.Controls.Add(this._maturityRange);
             this._generalTabPage.Controls.Add(this._amountLabel);
             this._generalTabPage.Controls.Add(this._amountRange);
             this._generalTabPage.Controls.Add(this._roundingPolicyComboBox);
@@ -114,10 +122,12 @@
             // 
             // _amountRange
             // 
+            this._amountRange.AllowDecimalSeparator = true;
             this._amountRange.AutoSize = true;
             this._amountRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this._amountRange.Location = new System.Drawing.Point(572, 15);
             this._amountRange.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._amountRange.Max = null;
             this._amountRange.Min = null;
             this._amountRange.Name = "_amountRange";
             this._amountRange.Size = new System.Drawing.Size(246, 26);
@@ -325,6 +335,52 @@
             this._errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this._errorProvider.ContainerControl = this;
             // 
+            // _maturityLabel
+            // 
+            this._maturityLabel.AutoSize = true;
+            this._maturityLabel.Location = new System.Drawing.Point(414, 80);
+            this._maturityLabel.Name = "_maturityLabel";
+            this._maturityLabel.Size = new System.Drawing.Size(55, 16);
+            this._maturityLabel.TabIndex = 23;
+            this._maturityLabel.Text = "Maturity";
+            // 
+            // _maturityRange
+            // 
+            this._maturityRange.AllowDecimalSeparator = false;
+            this._maturityRange.AutoSize = true;
+            this._maturityRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._maturityRange.Location = new System.Drawing.Point(572, 79);
+            this._maturityRange.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this._maturityRange.Max = null;
+            this._maturityRange.Min = null;
+            this._maturityRange.Name = "_maturityRange";
+            this._maturityRange.Size = new System.Drawing.Size(246, 26);
+            this._maturityRange.TabIndex = 24;
+            this._maturityRange.Tag = "Maturity";
+            // 
+            // _interestRateLabel
+            // 
+            this._interestRateLabel.AutoSize = true;
+            this._interestRateLabel.Location = new System.Drawing.Point(414, 51);
+            this._interestRateLabel.Name = "_interestRateLabel";
+            this._interestRateLabel.Size = new System.Drawing.Size(77, 16);
+            this._interestRateLabel.TabIndex = 21;
+            this._interestRateLabel.Text = "Interest rate";
+            // 
+            // _interestRateRange
+            // 
+            this._interestRateRange.AllowDecimalSeparator = true;
+            this._interestRateRange.AutoSize = true;
+            this._interestRateRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._interestRateRange.Location = new System.Drawing.Point(572, 47);
+            this._interestRateRange.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this._interestRateRange.Max = null;
+            this._interestRateRange.Min = null;
+            this._interestRateRange.Name = "_interestRateRange";
+            this._interestRateRange.Size = new System.Drawing.Size(246, 26);
+            this._interestRateRange.TabIndex = 22;
+            this._interestRateRange.Tag = "InterestRate";
+            // 
             // LoanProductView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -377,5 +433,9 @@
         private System.Windows.Forms.Label _amountLabel;
         private Controls.RangeControl _amountRange;
         private System.Windows.Forms.ErrorProvider _errorProvider;
+        private System.Windows.Forms.Label _maturityLabel;
+        private Controls.RangeControl _maturityRange;
+        private System.Windows.Forms.Label _interestRateLabel;
+        private Controls.RangeControl _interestRateRange;
     }
 }
