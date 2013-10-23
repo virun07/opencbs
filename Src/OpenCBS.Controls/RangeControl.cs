@@ -29,11 +29,43 @@ namespace OpenCBS.Controls
             InitializeComponent();
         }
 
+        public event EventHandler MinMaxChanged;
+
         protected override void OnLoad(EventArgs e)
         {
             _minTextBox.SetWatermark("min");
             _maxTextBox.SetWatermark("max");
+
+            _minTextBox.TextChanged += (sender, args) => MinMaxChanged(this, null);
+            _maxTextBox.TextChanged += (sender, args) => MinMaxChanged(this, null);
+
             base.OnLoad(e);
+        }
+
+        public decimal? Min
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_minTextBox.Text)) return null;
+                return Convert.ToDecimal(_minTextBox.Text);
+            }
+            set
+            {
+                _minTextBox.Text = value.HasValue ? Convert.ToString(value.Value) : string.Empty;
+            }
+        }
+
+        public decimal? Max
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_maxTextBox.Text)) return null;
+                return Convert.ToDecimal(_maxTextBox.Text);
+            }
+            set
+            {
+                _maxTextBox.Text = value.HasValue ? Convert.ToString(value.Value) : string.Empty;
+            }
         }
     }
 }

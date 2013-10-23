@@ -17,25 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.NEW.Model;
+using OpenCBS.GUI.NEW.Dto;
 
-namespace OpenCBS.GUI.NEW.Dto
+namespace OpenCBS.GUI.NEW.Event
 {
-    public class LoanProductDto : DataTransferObject
+    public class LoanProductValidatedEvent
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public AvailableFor AvailableFor { get; set; }
-        public string PaymentFrequencyPolicy { get; set; }
-        public string SchedulePolicy { get; set; }
-        public string YearPolicy { get; set; }
-        public string DateShiftPolicy { get; set; }
-        public string RoundingPolicy { get; set; }
-
-        public decimal? AmountMin { get; set; }
-        public decimal? AmountMax { get; set; }
-
-        public bool Deleted { get; set; }
+        public LoanProductDto LoanProduct { get; set; }
     }
 }

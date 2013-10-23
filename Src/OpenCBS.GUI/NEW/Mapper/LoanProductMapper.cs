@@ -38,6 +38,8 @@ namespace OpenCBS.GUI.NEW.Mapper
                 YearPolicy = dto.YearPolicy,
                 DateShiftPolicy = dto.DateShiftPolicy,
                 RoundingPolicy = dto.RoundingPolicy,
+                AmountMin = dto.AmountMin.HasValue ? dto.AmountMin.Value : 0,
+                AmountMax = dto.AmountMax.HasValue ? dto.AmountMax.Value : 0,
                 Deleted = dto.Deleted
             };
         }
@@ -58,6 +60,8 @@ namespace OpenCBS.GUI.NEW.Mapper
                 YearPolicy = loanProduct.YearPolicy,
                 DateShiftPolicy = loanProduct.DateShiftPolicy,
                 RoundingPolicy = loanProduct.RoundingPolicy,
+                AmountMin = loanProduct.AmountMin,
+                AmountMax = loanProduct.AmountMax,
                 Deleted = loanProduct.Deleted
             };
         }

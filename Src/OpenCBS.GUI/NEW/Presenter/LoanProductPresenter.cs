@@ -105,6 +105,8 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.YearPolicy = loanProduct.YearPolicy;
             _view.DateShiftPolicy = loanProduct.DateShiftPolicy;
             _view.RoundingPolicy = loanProduct.RoundingPolicy;
+            _view.AmountMin = loanProduct.AmountMin;
+            _view.AmountMax = loanProduct.AmountMax;
         }
 
         private LoanProductDto GetLoanProduct()
@@ -118,7 +120,9 @@ namespace OpenCBS.GUI.NEW.Presenter
                 SchedulePolicy = _view.SchedulePolicy,
                 YearPolicy = _view.YearPolicy,
                 DateShiftPolicy = _view.DateShiftPolicy,
-                RoundingPolicy = _view.RoundingPolicy
+                RoundingPolicy = _view.RoundingPolicy,
+                AmountMin = _view.AmountMin,
+                AmountMax = _view.AmountMax
             };
         }
     }

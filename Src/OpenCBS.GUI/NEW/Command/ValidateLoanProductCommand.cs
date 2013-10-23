@@ -17,25 +17,28 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.NEW.Model;
+using OpenCBS.GUI.NEW.AppController;
+using OpenCBS.GUI.NEW.CommandData;
+using OpenCBS.GUI.NEW.Event;
+using OpenCBS.GUI.NEW.Service;
 
-namespace OpenCBS.GUI.NEW.Dto
+namespace OpenCBS.GUI.NEW.Command
 {
-    public class LoanProductDto : DataTransferObject
+    public class ValidateLoanProductCommand : ICommand<ValidateLoanProductData>
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public AvailableFor AvailableFor { get; set; }
-        public string PaymentFrequencyPolicy { get; set; }
-        public string SchedulePolicy { get; set; }
-        public string YearPolicy { get; set; }
-        public string DateShiftPolicy { get; set; }
-        public string RoundingPolicy { get; set; }
+        private readonly ILoanProductService _loanProductService;
+        private readonly IApplicationController _appController;
 
-        public decimal? AmountMin { get; set; }
-        public decimal? AmountMax { get; set; }
+        public ValidateLoanProductCommand(ILoanProductService loanProductService, IApplicationController appController)
+        {
+            _loanProductService = loanProductService;
+            _appController = appController;
+        }
 
-        public bool Deleted { get; set; }
+        public void Execute(ValidateLoanProductData commandData)
+        {
+            _loanProductService.Validate(commandData.LoanProduct);
+            _appController.Raise(new LoanProductValidatedEvent { LoanProduct = commandData.LoanProduct });
+        }
     }
 }

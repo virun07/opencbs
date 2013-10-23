@@ -68,7 +68,7 @@
             this._tabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._tabControl.Name = "_tabControl";
             this._tabControl.SelectedIndex = 0;
-            this._tabControl.Size = new System.Drawing.Size(834, 371);
+            this._tabControl.Size = new System.Drawing.Size(851, 371);
             this._tabControl.TabIndex = 0;
             // 
             // _generalTabPage
@@ -98,7 +98,7 @@
             this._generalTabPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this._generalTabPage.Name = "_generalTabPage";
             this._generalTabPage.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this._generalTabPage.Size = new System.Drawing.Size(826, 342);
+            this._generalTabPage.Size = new System.Drawing.Size(843, 342);
             this._generalTabPage.TabIndex = 0;
             this._generalTabPage.Text = "General";
             this._generalTabPage.UseVisualStyleBackColor = true;
@@ -118,9 +118,11 @@
             this._amountRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this._amountRange.Location = new System.Drawing.Point(572, 15);
             this._amountRange.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this._amountRange.Min = null;
             this._amountRange.Name = "_amountRange";
             this._amountRange.Size = new System.Drawing.Size(246, 26);
             this._amountRange.TabIndex = 19;
+            this._amountRange.Tag = "Amount";
             // 
             // _roundingPolicyComboBox
             // 
@@ -302,7 +304,7 @@
             // 
             // _okButton
             // 
-            this._okButton.Location = new System.Drawing.Point(616, 384);
+            this._okButton.Location = new System.Drawing.Point(633, 384);
             this._okButton.Name = "_okButton";
             this._okButton.Size = new System.Drawing.Size(100, 26);
             this._okButton.TabIndex = 1;
@@ -311,7 +313,7 @@
             // 
             // _cancelButton
             // 
-            this._cancelButton.Location = new System.Drawing.Point(722, 384);
+            this._cancelButton.Location = new System.Drawing.Point(739, 384);
             this._cancelButton.Name = "_cancelButton";
             this._cancelButton.Size = new System.Drawing.Size(100, 26);
             this._cancelButton.TabIndex = 2;
@@ -327,7 +329,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 422);
+            this.ClientSize = new System.Drawing.Size(851, 422);
             this.Controls.Add(this._cancelButton);
             this.Controls.Add(this._okButton);
             this.Controls.Add(this._tabControl);

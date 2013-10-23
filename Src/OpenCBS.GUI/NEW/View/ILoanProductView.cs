@@ -43,5 +43,8 @@ namespace OpenCBS.GUI.NEW.View
         string YearPolicy { get; set; }
         string DateShiftPolicy { get; set; }
         string RoundingPolicy { get; set; }
+
+        decimal? AmountMin { get; set; }
+        decimal? AmountMax { get; set; }
     }
 }

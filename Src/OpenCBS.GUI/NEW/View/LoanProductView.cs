@@ -43,6 +43,7 @@ namespace OpenCBS.GUI.NEW.View
             _yearPolicyComboBox.SelectedIndexChanged += ClearError;
             _dateShiftPolicyComboBox.SelectedIndexChanged += ClearError;
             _roundingPolicyComboBox.SelectedIndexChanged += ClearError;
+            _amountRange.MinMaxChanged += ClearError;
             ShowDialog();
         }
 
@@ -182,6 +183,18 @@ namespace OpenCBS.GUI.NEW.View
                 return _roundingPolicyComboBox.SelectedValue.ToString();
             }
             set { _roundingPolicyComboBox.SelectedValue = value; }
+        }
+
+        public decimal? AmountMin
+        {
+            get { return _amountRange.Min; }
+            set { _amountRange.Min = value; }
+        }
+
+        public decimal? AmountMax
+        {
+            get { return _amountRange.Max; }
+            set { _amountRange.Max = value; }
         }
     }
 }
