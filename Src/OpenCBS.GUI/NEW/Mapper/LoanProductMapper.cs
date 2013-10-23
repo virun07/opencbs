@@ -20,19 +20,11 @@
 using System;
 using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Dto;
-using OpenCBS.GUI.NEW.Repository;
 
 namespace OpenCBS.GUI.NEW.Mapper
 {
     public class LoanProductMapper : ILoanProductMapper
     {
-        private readonly IPaymentFrequencyRepository _paymentFrequencyRepository;
-        
-        public LoanProductMapper(IPaymentFrequencyRepository paymentFrequencyRepository)
-        {
-            _paymentFrequencyRepository = paymentFrequencyRepository;
-        }
-
         public LoanProduct Map(LoanProductDto dto)
         {
             return new LoanProduct
@@ -40,8 +32,8 @@ namespace OpenCBS.GUI.NEW.Mapper
                 Id = dto.Id,
                 Name = dto.Name,
                 Code = dto.Code,
-                PaymentFrequency = _paymentFrequencyRepository.FindById(dto.PaymentFrequencyId),
                 AvailableFor = (AvailableFor)dto.AvailableFor,
+                PaymentFrequencyPolicy = dto.PaymentFrequencyPolicy,
                 SchedulePolicy = dto.SchedulePolicy,
                 YearPolicy = dto.YearPolicy,
                 DateShiftPolicy = dto.DateShiftPolicy,
@@ -54,16 +46,14 @@ namespace OpenCBS.GUI.NEW.Mapper
         {
             if (loanProduct == null)
                 throw new ArgumentNullException("loanProduct");
-            if (loanProduct.PaymentFrequency == null)
-                throw new NullReferenceException("loanProduct.PaymentFrequency");
 
             return new LoanProductDto
             {
                 Id = loanProduct.Id,
                 Name = loanProduct.Name,
                 Code = loanProduct.Code,
-                PaymentFrequencyId = loanProduct.PaymentFrequency.Id,
                 AvailableFor = (int)loanProduct.AvailableFor,
+                PaymentFrequencyPolicy = loanProduct.PaymentFrequencyPolicy,
                 SchedulePolicy = loanProduct.SchedulePolicy,
                 YearPolicy = loanProduct.YearPolicy,
                 DateShiftPolicy = loanProduct.DateShiftPolicy,

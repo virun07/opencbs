@@ -739,11 +739,9 @@
     <Compile Include="NEW\Repository\CustomTableNameMapper.cs" />
     <Compile Include="NEW\Repository\IConnectionProvider.cs" />
     <Compile Include="NEW\Repository\ILoanProductRepository.cs" />
-    <Compile Include="NEW\Repository\IPaymentFrequencyRepository.cs" />
     <Compile Include="NEW\Repository\IPolicyRepository.cs" />
     <Compile Include="NEW\Repository\IRepository.cs" />
     <Compile Include="NEW\Repository\LoanProductRepository.cs" />
-    <Compile Include="NEW\Repository\PaymentFrequencyRepository.cs" />
     <Compile Include="NEW\Repository\PolicyRepository.cs" />
     <Compile Include="NEW\Repository\Repository.cs" />
     <Compile Include="NEW\Repository\SqlConnectionProvider.cs" />

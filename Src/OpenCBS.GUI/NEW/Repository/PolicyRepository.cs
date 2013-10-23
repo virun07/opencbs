@@ -58,6 +58,11 @@ namespace OpenCBS.GUI.NEW.Repository
                    select policy.Metadata.Implementation;
         }
 
+        public IEnumerable<string> FindPaymentFrequencyPolicyNames()
+        {
+            return FindNames(typeof (IPeriodPolicy));
+        }
+
         public IEnumerable<string> FindSchedulePolicyNames()
         {
             return FindNames(typeof (IInstallmentCalculationPolicy));

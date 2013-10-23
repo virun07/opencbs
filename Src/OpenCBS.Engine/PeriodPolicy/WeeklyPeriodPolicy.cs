@@ -17,11 +17,34 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.NEW.Model;
+using System;
+using System.ComponentModel.Composition;
+using OpenCBS.Engine.Interfaces;
 
-namespace OpenCBS.GUI.NEW.Repository
+namespace OpenCBS.Engine.PeriodPolicy
 {
-    public interface IPaymentFrequencyRepository : IRepository<PaymentFrequency>
+    [Export(typeof(IPolicy))]
+    [PolicyAttribute(Implementation = "Weekly")]
+    public class WeeklyPeriodPolicy : IPeriodPolicy
     {
+        public DateTime GetNextDate(DateTime date)
+        {
+            return date.AddDays(7);
+        }
+
+        public DateTime GetPreviousDate(DateTime date)
+        {
+            return date.AddDays(-7);
+        }
+
+        public int GetNumberOfDays(DateTime date)
+        {
+            return 7;
+        }
+
+        public double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy)
+        {
+            return 52;
+        }
     }
 }

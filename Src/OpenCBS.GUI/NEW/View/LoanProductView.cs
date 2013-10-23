@@ -48,12 +48,6 @@ namespace OpenCBS.GUI.NEW.View
             Close();
         }
 
-        public void ShowPaymentFrequencies(IEnumerable<PaymentFrequency> paymentFrequencies)
-        {
-            foreach (var frequency in paymentFrequencies)
-                _paymentFrequencyComboBox.Items.Add(frequency);
-        }
-
         private static void ShowPolicies(ComboBox comboBox, IEnumerable<string> policies)
         {
             var dict = policies.ToDictionary(policy => policy);
@@ -61,6 +55,11 @@ namespace OpenCBS.GUI.NEW.View
             comboBox.ValueMember = "Key";
             comboBox.DataSource = new BindingSource(dict, null);
             comboBox.SelectedIndex = -1;
+        }
+
+        public void ShowPaymentFrequencyPolicies(IEnumerable<string> paymentFrequencyPolicies)
+        {
+            ShowPolicies(_paymentFrequencyComboBox, paymentFrequencyPolicies);
         }
 
         public void ShowSchedulePolicies(IEnumerable<string> schedulePolicies)
@@ -95,12 +94,6 @@ namespace OpenCBS.GUI.NEW.View
             set { _codeTextBox.Text = value; }
         }
 
-        public PaymentFrequency PaymentFrequency
-        {
-            get { return (PaymentFrequency)_paymentFrequencyComboBox.SelectedItem; }
-            set { _paymentFrequencyComboBox.SelectedItem = value; }
-        }
-
         public AvailableFor AvailableFor
         {
             get
@@ -122,6 +115,14 @@ namespace OpenCBS.GUI.NEW.View
             }
         }
 
+        public string PaymentFrequencyPolicy
+        {
+            get { 
+                if (_paymentFrequencyComboBox.SelectedValue == null) return null;
+                return _paymentFrequencyComboBox.SelectedValue.ToString();
+            }
+            set { _paymentFrequencyComboBox.SelectedValue = value; }
+        }
         public string SchedulePolicy
         {
             get

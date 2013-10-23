@@ -55,7 +55,6 @@ namespace OpenCBS.GUI.NEW
             // Repositories
             For<IConnectionProvider>().Use<SqlConnectionProvider>();
             For<ILoanProductRepository>().Use<LoanProductRepository>();
-            For<IPaymentFrequencyRepository>().Use<PaymentFrequencyRepository>();
             For<IPolicyRepository>().Use<PolicyRepository>();
 
             // Mappers

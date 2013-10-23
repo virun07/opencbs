@@ -17,15 +17,34 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.NEW.Model;
+using System;
+using System.ComponentModel.Composition;
+using OpenCBS.Engine.Interfaces;
 
-namespace OpenCBS.GUI.NEW.Repository
+namespace OpenCBS.Engine.PeriodPolicy
 {
-    public class PaymentFrequencyRepository : Repository<PaymentFrequency>, IPaymentFrequencyRepository
+    [Export(typeof(IPolicy))]
+    [PolicyAttribute(Implementation = "Biweekly")]
+    public class BiweeklyPeriodPolicy : IPeriodPolicy
     {
-        public PaymentFrequencyRepository(IConnectionProvider connectionProvider)
-            : base(connectionProvider)
+        public DateTime GetNextDate(DateTime date)
         {
+            return date.AddDays(14);
+        }
+
+        public DateTime GetPreviousDate(DateTime date)
+        {
+            return date.AddDays(-14);
+        }
+
+        public int GetNumberOfDays(DateTime date)
+        {
+            return 14;
+        }
+
+        public double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy)
+        {
+            return 26;
         }
     }
 }

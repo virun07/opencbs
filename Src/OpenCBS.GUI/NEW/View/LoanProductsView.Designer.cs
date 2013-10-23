@@ -38,7 +38,7 @@
             this._codeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._availableForColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._schedulePolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this._repaymentFrequencyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._paymentFrequencyPolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._yearPolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._dateShiftPolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._roundingPolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -105,7 +105,7 @@
             this._loanProductsListView.AllColumns.Add(this._codeColumn);
             this._loanProductsListView.AllColumns.Add(this._availableForColumn);
             this._loanProductsListView.AllColumns.Add(this._schedulePolicyColumn);
-            this._loanProductsListView.AllColumns.Add(this._repaymentFrequencyColumn);
+            this._loanProductsListView.AllColumns.Add(this._paymentFrequencyPolicyColumn);
             this._loanProductsListView.AllColumns.Add(this._yearPolicyColumn);
             this._loanProductsListView.AllColumns.Add(this._dateShiftPolicyColumn);
             this._loanProductsListView.AllColumns.Add(this._roundingPolicyColumn);
@@ -114,7 +114,7 @@
             this._codeColumn,
             this._availableForColumn,
             this._schedulePolicyColumn,
-            this._repaymentFrequencyColumn,
+            this._paymentFrequencyPolicyColumn,
             this._yearPolicyColumn,
             this._dateShiftPolicyColumn,
             this._roundingPolicyColumn});
@@ -163,13 +163,13 @@
             this._schedulePolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._schedulePolicyColumn.Width = 150;
             // 
-            // _repaymentFrequencyColumn
+            // _paymentFrequencyPolicyColumn
             // 
-            this._repaymentFrequencyColumn.AspectName = "PaymentFrequency";
-            this._repaymentFrequencyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this._repaymentFrequencyColumn.Text = "Payment frequency";
-            this._repaymentFrequencyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this._repaymentFrequencyColumn.Width = 150;
+            this._paymentFrequencyPolicyColumn.AspectName = "PaymentFrequencyPolicy";
+            this._paymentFrequencyPolicyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._paymentFrequencyPolicyColumn.Text = "Payment frequency";
+            this._paymentFrequencyPolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._paymentFrequencyPolicyColumn.Width = 150;
             // 
             // _yearPolicyColumn
             // 
@@ -222,7 +222,7 @@
         private BrightIdeasSoftware.ObjectListView _loanProductsListView;
         private BrightIdeasSoftware.OLVColumn _nameColumn;
         private BrightIdeasSoftware.OLVColumn _codeColumn;
-        private BrightIdeasSoftware.OLVColumn _repaymentFrequencyColumn;
+        private BrightIdeasSoftware.OLVColumn _paymentFrequencyPolicyColumn;
         private System.Windows.Forms.CheckBox _showDeletedCheckBox;
         private BrightIdeasSoftware.OLVColumn _availableForColumn;
         private BrightIdeasSoftware.OLVColumn _schedulePolicyColumn;

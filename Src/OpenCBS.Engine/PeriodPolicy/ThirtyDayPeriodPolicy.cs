@@ -17,19 +17,34 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.GUI.NEW.Dto
+using System;
+using System.ComponentModel.Composition;
+using OpenCBS.Engine.Interfaces;
+
+namespace OpenCBS.Engine.PeriodPolicy
 {
-    public class LoanProductDto
+    [Export(typeof(IPolicy))]
+    [PolicyAttribute(Implementation = "30 days")]
+    public class ThirtyDayPeriodPolicy : IPeriodPolicy
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public int AvailableFor { get; set; }
-        public string PaymentFrequencyPolicy { get; set; }
-        public string SchedulePolicy { get; set; }
-        public string YearPolicy { get; set; }
-        public string DateShiftPolicy { get; set; }
-        public string RoundingPolicy { get; set; }
-        public bool Deleted { get; set; }
+        public DateTime GetNextDate(DateTime date)
+        {
+            return date.AddDays(30);
+        }
+
+        public DateTime GetPreviousDate(DateTime date)
+        {
+            return date.AddDays(-30);
+        }
+
+        public int GetNumberOfDays(DateTime date)
+        {
+            return 30;
+        }
+
+        public double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy)
+        {
+            return (double)yearPolicy.GetNumberOfDays(date) / 30;
+        }
     }
 }
