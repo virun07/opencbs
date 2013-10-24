@@ -17,10 +17,13 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.GUI.NEW.Model
+using OpenCBS.GUI.NEW.Model;
+
+namespace OpenCBS.GUI.NEW.Repository.Mapper
 {
-    public class LoanProduct : EntityBase
+    public class LoanProductRow
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
         public AvailableFor AvailableFor { get; set; }
@@ -29,12 +32,14 @@ namespace OpenCBS.GUI.NEW.Model
         public string YearPolicy { get; set; }
         public string DateShiftPolicy { get; set; }
         public string RoundingPolicy { get; set; }
-        public DecimalPair Amount { get; set; }
+        public decimal AmountMin { get; set; }
+        public decimal AmountMax { get; set; }
         public decimal InterestRateMin { get; set; }
         public decimal InterestRateMax { get; set; }
         public int MaturityMin { get; set; }
         public int MaturityMax { get; set; }
         public int GracePeriodMin { get; set; }
         public int GracePeriodMax { get; set; }
+        public bool Deleted { get; set; }
     }
 }

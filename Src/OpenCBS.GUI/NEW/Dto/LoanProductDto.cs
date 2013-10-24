@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
 using OpenCBS.GUI.NEW.Model;
 
 namespace OpenCBS.GUI.NEW.Dto
@@ -33,8 +34,7 @@ namespace OpenCBS.GUI.NEW.Dto
         public string DateShiftPolicy { get; set; }
         public string RoundingPolicy { get; set; }
 
-        public decimal? AmountMin { get; set; }
-        public decimal? AmountMax { get; set; }
+        public Tuple<decimal?, decimal?> Amount { get; set; }
         public decimal? InterestRateMin { get; set; }
         public decimal? InterestRateMax { get; set; }
         public int? MaturityMin { get; set; }

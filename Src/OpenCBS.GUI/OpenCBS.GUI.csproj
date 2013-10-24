@@ -722,6 +722,10 @@
     <Compile Include="NEW\Event\LoanProductAddedEvent.cs" />
     <Compile Include="NEW\Event\LoanProductDeletedEvent.cs" />
     <Compile Include="NEW\Event\LoanProductUpdatedEvent.cs" />
+    <Compile Include="NEW\Model\DecimalPair.cs" />
+    <Compile Include="NEW\Model\IntRange.cs" />
+    <Compile Include="NEW\Repository\Mapper\LoanProductMapper.cs" />
+    <Compile Include="NEW\Repository\Mapper\LoanProductRow.cs" />
     <Compile Include="NEW\Service\ILoanProductService.cs" />
     <Compile Include="NEW\Mapper\ILoanProductMapper.cs" />
     <Compile Include="NEW\Mapper\IMapper.cs" />

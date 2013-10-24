@@ -17,17 +17,30 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using DapperExtensions.Mapper;
+using System;
 
-namespace OpenCBS.GUI.NEW.Repository
+namespace OpenCBS.GUI.NEW.Model
 {
-    public class CustomTableNameMapper<T> : AutoClassMapper<T> where T : class
+    public class DecimalPair
     {
-        public override void Table(string tableName)
+        public DecimalPair(decimal min, decimal max)
         {
-            if (tableName.EndsWith("Row"))
-                tableName = tableName.Substring(0, tableName.Length - 3);
-            base.Table(tableName);
+            Min = min;
+            Max = max;
+        }
+
+        public DecimalPair(Tuple<decimal?, decimal?> pair)
+        {
+            Min = pair.Item1 ?? 0;
+            Max = pair.Item2 ?? 0;
+        }
+
+        public decimal Min { get; set; }
+        public decimal Max { get; set; }
+
+        public static implicit operator Tuple<decimal?, decimal?>(DecimalPair pair)
+        {
+            return new Tuple<decimal?, decimal?>(pair.Min, pair.Max);
         }
     }
 }

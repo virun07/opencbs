@@ -189,18 +189,12 @@ namespace OpenCBS.GUI.NEW.View
             set { _roundingPolicyComboBox.SelectedValue = value; }
         }
 
-        public decimal? AmountMin
+        public Tuple<decimal?, decimal?> Amount
         {
-            get { return _amountRange.Min; }
-            set { _amountRange.Min = value; }
+            get { return _amountRange.MinMax; }
+            set { _amountRange.MinMax = value; }
         }
-
-        public decimal? AmountMax
-        {
-            get { return _amountRange.Max; }
-            set { _amountRange.Max = value; }
-        }
-
+    
         public decimal? InterestRateMin
         {
             get { return _interestRateRange.Min; }
