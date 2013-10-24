@@ -27,13 +27,13 @@ namespace OpenCBS.GUI.NEW.Validator
         {
             base.Validate(entity);
 
-            FailIfNullOrEmpty("Name", "Name cannot be empty.");
-            FailIfNullOrEmpty("Code", "Code cannot be empty.");
-            FailIfNullOrEmpty("SchedulePolicy", "Schedule type cannot be empty.");
-            FailIfNullOrEmpty("PaymentFrequencyPolicy", "Payment frequency cannot be empty.");
-            FailIfNullOrEmpty("YearPolicy", "Year cannot be empty.");
-            FailIfNullOrEmpty("DateShiftPolicy", "Date shift cannot be empty.");
-            FailIfNullOrEmpty("RoundingPolicy", "Rounding cannot be empty.");
+            FailIfNullOrEmpty("Name", "Cannot be empty.");
+            FailIfNullOrEmpty("Code", "Cannot be empty.");
+            FailIfNullOrEmpty("SchedulePolicy", "Cannot be empty.");
+            FailIfNullOrEmpty("PaymentFrequencyPolicy", "Cannot be empty.");
+            FailIfNullOrEmpty("YearPolicy", "Cannot be empty.");
+            FailIfNullOrEmpty("DateShiftPolicy", "Cannot be empty.");
+            FailIfNullOrEmpty("RoundingPolicy", "Cannot be empty.");
             FailIfNullOrEmpty(entity.AmountMax, "Amount", "Max value cannot be empty.");
             FailIfNullOrEmpty(entity.AmountMin, "Amount", "Min value cannot be empty.");
             FailIfNullOrEmpty(entity.InterestRateMax, "InterestRate", "Max value cannot be empty.");
