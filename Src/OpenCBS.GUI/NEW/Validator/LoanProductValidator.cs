@@ -34,8 +34,8 @@ namespace OpenCBS.GUI.NEW.Validator
             FailIfNullOrEmpty("YearPolicy", "Year cannot be empty.");
             FailIfNullOrEmpty("DateShiftPolicy", "Date shift cannot be empty.");
             FailIfNullOrEmpty("RoundingPolicy", "Rounding cannot be empty.");
-            FailIfNullOrEmpty(entity.Amount.Item2, "Amount", "Max value cannot be empty.");
-            FailIfNullOrEmpty(entity.Amount.Item1, "Amount", "Min value cannot be empty.");
+            FailIfNullOrEmpty(entity.AmountMax, "Amount", "Max value cannot be empty.");
+            FailIfNullOrEmpty(entity.AmountMin, "Amount", "Min value cannot be empty.");
             FailIfNullOrEmpty(entity.InterestRateMax, "InterestRate", "Max value cannot be empty.");
             FailIfNullOrEmpty(entity.InterestRateMin, "InterestRate", "Min value cannot be empty.");
             FailIfNullOrEmpty(entity.MaturityMax, "Maturity", "Max value cannot be empty.");

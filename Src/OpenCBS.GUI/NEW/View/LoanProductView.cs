@@ -149,6 +149,7 @@ namespace OpenCBS.GUI.NEW.View
             }
             set { _paymentFrequencyComboBox.SelectedValue = value; }
         }
+
         public string SchedulePolicy
         {
             get
@@ -189,12 +190,18 @@ namespace OpenCBS.GUI.NEW.View
             set { _roundingPolicyComboBox.SelectedValue = value; }
         }
 
-        public Tuple<decimal?, decimal?> Amount
+        public decimal? AmountMin
         {
-            get { return _amountRange.MinMax; }
-            set { _amountRange.MinMax = value; }
+            get { return _amountRange.Min; }
+            set { _amountRange.Min = value; }
         }
-    
+
+        public decimal? AmountMax
+        {
+            get { return _amountRange.Max; }
+            set { _amountRange.Max = value; }
+        }
+
         public decimal? InterestRateMin
         {
             get { return _interestRateRange.Min; }
@@ -227,7 +234,7 @@ namespace OpenCBS.GUI.NEW.View
 
         public int? GracePeriodMax
         {
-            get { return (int?)_gracePeriodRange.Max; }
+            get { return (int?) _gracePeriodRange.Max; }
             set { _gracePeriodRange.Max = value; }
         }
     }

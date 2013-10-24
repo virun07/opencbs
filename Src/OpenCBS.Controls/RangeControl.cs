@@ -50,45 +50,14 @@ namespace OpenCBS.Controls
 
         public decimal? Min
         {
-            get
-            {
-                if (string.IsNullOrEmpty(_minTextBox.Text)) return null;
-                return Convert.ToDecimal(_minTextBox.Text);
-            }
-            set
-            {
-                _minTextBox.Text = value.HasValue ? value.Value.ToString(AllowDecimalSeparator ? "N2" : "N0") : string.Empty;
-            }
+            get { return string.IsNullOrEmpty(_minTextBox.Text) ? (decimal?)null : Convert.ToDecimal(_minTextBox.Text); }
+            set { _minTextBox.Text = value.HasValue ? value.Value.ToString(AllowDecimalSeparator ? "N2" : "N0") : string.Empty; }
         }
 
         public decimal? Max
         {
-            get
-            {
-                if (string.IsNullOrEmpty(_maxTextBox.Text)) return null;
-                return Convert.ToDecimal(_maxTextBox.Text);
-            }
-            set
-            {
-                _maxTextBox.Text = value.HasValue ? value.Value.ToString(AllowDecimalSeparator ? "N2" : "N0") : string.Empty;
-            }
-        }
-
-        public Tuple<decimal?, decimal?> MinMax
-        {
-            get
-            {
-                var min = string.IsNullOrEmpty(_minTextBox.Text) ? (decimal?)null : Convert.ToDecimal(_minTextBox.Text);
-                var max = string.IsNullOrEmpty(_maxTextBox.Text) ? (decimal?) null : Convert.ToDecimal(_maxTextBox.Text);
-                return new Tuple<decimal?, decimal?>(min, max);
-            }
-            set 
-            {
-                var min = value.Item1;
-                var max = value.Item2;
-                _minTextBox.Text = min.HasValue ? min.Value.ToString(AllowDecimalSeparator ? "N2" : "N0") : string.Empty;
-                _maxTextBox.Text = max.HasValue ? max.Value.ToString(AllowDecimalSeparator ? "N2" : "N0") : string.Empty;
-            }
+            get { return string.IsNullOrEmpty(_maxTextBox.Text) ? (decimal?)null : Convert.ToDecimal(_maxTextBox.Text); }
+            set { _maxTextBox.Text = value.HasValue ? value.Value.ToString(AllowDecimalSeparator ? "N2" : "N0") : string.Empty; }
         }
 
         public bool AllowDecimalSeparator

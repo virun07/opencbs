@@ -131,8 +131,6 @@
             this._gracePeriodRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this._gracePeriodRange.Location = new System.Drawing.Point(572, 111);
             this._gracePeriodRange.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this._gracePeriodRange.Max = null;
-            this._gracePeriodRange.Min = null;
             this._gracePeriodRange.Name = "_gracePeriodRange";
             this._gracePeriodRange.Size = new System.Drawing.Size(246, 26);
             this._gracePeriodRange.TabIndex = 26;
@@ -154,8 +152,6 @@
             this._interestRateRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this._interestRateRange.Location = new System.Drawing.Point(572, 47);
             this._interestRateRange.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this._interestRateRange.Max = null;
-            this._interestRateRange.Min = null;
             this._interestRateRange.Name = "_interestRateRange";
             this._interestRateRange.Size = new System.Drawing.Size(246, 26);
             this._interestRateRange.TabIndex = 22;
@@ -177,8 +173,6 @@
             this._maturityRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this._maturityRange.Location = new System.Drawing.Point(572, 79);
             this._maturityRange.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this._maturityRange.Max = null;
-            this._maturityRange.Min = null;
             this._maturityRange.Name = "_maturityRange";
             this._maturityRange.Size = new System.Drawing.Size(246, 26);
             this._maturityRange.TabIndex = 24;
@@ -200,8 +194,6 @@
             this._amountRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this._amountRange.Location = new System.Drawing.Point(572, 15);
             this._amountRange.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this._amountRange.Max = null;
-            this._amountRange.Min = null;
             this._amountRange.Name = "_amountRange";
             this._amountRange.Size = new System.Drawing.Size(246, 26);
             this._amountRange.TabIndex = 19;

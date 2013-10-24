@@ -29,7 +29,8 @@ namespace OpenCBS.GUI.NEW.Model
         public string YearPolicy { get; set; }
         public string DateShiftPolicy { get; set; }
         public string RoundingPolicy { get; set; }
-        public DecimalPair Amount { get; set; }
+        public decimal AmountMin { get; set; }
+        public decimal AmountMax { get; set; }
         public decimal InterestRateMin { get; set; }
         public decimal InterestRateMax { get; set; }
         public int MaturityMin { get; set; }
