@@ -21,6 +21,13 @@ namespace OpenCBS.GUI.NEW.Dto
 {
     public abstract class DataTransferObject
     {
+        public int Id { get; set; }
         public Notification Notification { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            return Id == ((DataTransferObject) obj).Id;
+        }
     }
 }
