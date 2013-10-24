@@ -42,6 +42,10 @@
             this._yearPolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._dateShiftPolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._roundingPolicyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._amountColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._interestRateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._maturityColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._gracePeriodColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._buttonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._loanProductsListView)).BeginInit();
             this.SuspendLayout();
@@ -109,6 +113,10 @@
             this._loanProductsListView.AllColumns.Add(this._yearPolicyColumn);
             this._loanProductsListView.AllColumns.Add(this._dateShiftPolicyColumn);
             this._loanProductsListView.AllColumns.Add(this._roundingPolicyColumn);
+            this._loanProductsListView.AllColumns.Add(this._amountColumn);
+            this._loanProductsListView.AllColumns.Add(this._interestRateColumn);
+            this._loanProductsListView.AllColumns.Add(this._maturityColumn);
+            this._loanProductsListView.AllColumns.Add(this._gracePeriodColumn);
             this._loanProductsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this._nameColumn,
             this._codeColumn,
@@ -117,7 +125,11 @@
             this._paymentFrequencyPolicyColumn,
             this._yearPolicyColumn,
             this._dateShiftPolicyColumn,
-            this._roundingPolicyColumn});
+            this._roundingPolicyColumn,
+            this._amountColumn,
+            this._interestRateColumn,
+            this._maturityColumn,
+            this._gracePeriodColumn});
             this._loanProductsListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._loanProductsListView.Font = new System.Drawing.Font("Arial", 8.25F);
             this._loanProductsListView.FullRowSelect = true;
@@ -195,6 +207,38 @@
             this._roundingPolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._roundingPolicyColumn.Width = 100;
             // 
+            // _amountColumn
+            // 
+            this._amountColumn.AspectName = "Amount";
+            this._amountColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._amountColumn.Text = "Amount";
+            this._amountColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._amountColumn.Width = 150;
+            // 
+            // _interestRateColumn
+            // 
+            this._interestRateColumn.AspectName = "InterestRate";
+            this._interestRateColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._interestRateColumn.Text = "Interest rate (%)";
+            this._interestRateColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._interestRateColumn.Width = 100;
+            // 
+            // _maturityColumn
+            // 
+            this._maturityColumn.AspectName = "Maturity";
+            this._maturityColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._maturityColumn.Text = "Maturity";
+            this._maturityColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._maturityColumn.Width = 100;
+            // 
+            // _gracePeriodColumn
+            // 
+            this._gracePeriodColumn.AspectName = "GracePeriod";
+            this._gracePeriodColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._gracePeriodColumn.Text = "Grace period";
+            this._gracePeriodColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._gracePeriodColumn.Width = 100;
+            // 
             // LoanProductsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -229,6 +273,10 @@
         private BrightIdeasSoftware.OLVColumn _yearPolicyColumn;
         private BrightIdeasSoftware.OLVColumn _dateShiftPolicyColumn;
         private BrightIdeasSoftware.OLVColumn _roundingPolicyColumn;
+        private BrightIdeasSoftware.OLVColumn _amountColumn;
+        private BrightIdeasSoftware.OLVColumn _interestRateColumn;
+        private BrightIdeasSoftware.OLVColumn _maturityColumn;
+        private BrightIdeasSoftware.OLVColumn _gracePeriodColumn;
 
     }
 }

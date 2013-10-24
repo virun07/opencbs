@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -45,18 +46,37 @@ namespace OpenCBS.GUI.NEW.View
             _showDeletedCheckBox.CheckedChanged += (sender, e) => presenterCallbacks.Refresh();
             FormClosed += (sender, e) => presenterCallbacks.Close();
             _presenterCallbacks = presenterCallbacks;
-
-            _loanProductsListView.FormatRow += (sender, e) =>
-            {
-                var loanProduct = (LoanProductDto) e.Model;
-                e.Item.BackColor = loanProduct.Deleted ? Color.FromArgb(255, 92, 92) : Color.Transparent;
-            };
-
-            _availableForColumn.AspectToStringConverter += AvailabilityToString;
         }
 
         public void Run()
         {
+            _loanProductsListView.FormatRow += (sender, e) =>
+            {
+                var loanProduct = (LoanProductDto)e.Model;
+                e.Item.BackColor = loanProduct.Deleted ? Color.FromArgb(255, 92, 92) : Color.Transparent;
+            };
+
+            _amountColumn.AspectToStringConverter =
+            _interestRateColumn.AspectToStringConverter = value =>
+            {
+                var range = (Tuple<decimal?, decimal?>)value;
+                if (!range.Item1.HasValue || !range.Item2.HasValue) return "?";
+                if (range.Item1.Value == range.Item2.Value)
+                    return range.Item1.Value.ToString("N2");
+                return string.Format("{0:N2} - {1:N2}", range.Item1.Value, range.Item2.Value);
+            };
+
+            _maturityColumn.AspectToStringConverter =
+            _gracePeriodColumn.AspectToStringConverter = value =>
+            {
+                var range = (Tuple<int?, int?>)value;
+                if (!range.Item1.HasValue || !range.Item2.HasValue) return "?";
+                if (range.Item1.Value == range.Item2.Value)
+                    return range.Item1.Value.ToString("N0");
+                return string.Format("{0:N0} - {1:N0}", range.Item1.Value, range.Item2.Value);
+            };
+
+            _availableForColumn.AspectToStringConverter += AvailabilityToString;
             Show();
         }
 
@@ -92,7 +112,7 @@ namespace OpenCBS.GUI.NEW.View
 
         public string AvailabilityToString(object obj)
         {
-            var availableFor = (AvailableFor) obj;
+            var availableFor = (AvailableFor)obj;
             var items = new List<string>();
             if ((availableFor & AvailableFor.Individual) == AvailableFor.Individual)
                 items.Add("Ind");

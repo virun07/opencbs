@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
 using OpenCBS.GUI.NEW.Dto;
 using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Repository;
@@ -105,14 +106,14 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.YearPolicy = loanProduct.YearPolicy;
             _view.DateShiftPolicy = loanProduct.DateShiftPolicy;
             _view.RoundingPolicy = loanProduct.RoundingPolicy;
-            _view.AmountMin = loanProduct.AmountMin;
-            _view.AmountMax = loanProduct.AmountMax;
-            _view.InterestRateMin = loanProduct.InterestRateMin;
-            _view.InterestRateMax = loanProduct.InterestRateMax;
-            _view.MaturityMin = loanProduct.MaturityMin;
-            _view.MaturityMax = loanProduct.MaturityMax;
-            _view.GracePeriodMin = loanProduct.GracePeriodMin;
-            _view.GracePeriodMax = loanProduct.GracePeriodMax;
+            _view.AmountMin = loanProduct.Amount.Item1;
+            _view.AmountMax = loanProduct.Amount.Item2;
+            _view.InterestRateMin = loanProduct.InterestRate.Item1;
+            _view.InterestRateMax = loanProduct.InterestRate.Item2;
+            _view.MaturityMin = loanProduct.Maturity.Item1;
+            _view.MaturityMax = loanProduct.Maturity.Item2;
+            _view.GracePeriodMin = loanProduct.GracePeriod.Item1;
+            _view.GracePeriodMax = loanProduct.GracePeriod.Item2;
         }
 
         private LoanProductDto GetLoanProduct()
@@ -127,14 +128,10 @@ namespace OpenCBS.GUI.NEW.Presenter
                 YearPolicy = _view.YearPolicy,
                 DateShiftPolicy = _view.DateShiftPolicy,
                 RoundingPolicy = _view.RoundingPolicy,
-                AmountMin = _view.AmountMin,
-                AmountMax = _view.AmountMax,
-                InterestRateMin = _view.InterestRateMin,
-                InterestRateMax = _view.InterestRateMax,
-                MaturityMin = _view.MaturityMin,
-                MaturityMax = _view.MaturityMax,
-                GracePeriodMin = _view.GracePeriodMin,
-                GracePeriodMax = _view.GracePeriodMax
+                Amount = new Tuple<decimal?, decimal?>(_view.AmountMin, _view.AmountMax),
+                InterestRate = new Tuple<decimal?, decimal?>(_view.InterestRateMin, _view.InterestRateMax),
+                Maturity = new Tuple<int?, int?>(_view.MaturityMin, _view.MaturityMax),
+                GracePeriod = new Tuple<int?, int?>(_view.GracePeriodMin, _view.GracePeriodMax)
             };
         }
     }

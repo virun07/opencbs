@@ -38,14 +38,14 @@ namespace OpenCBS.GUI.NEW.Mapper
                 YearPolicy = dto.YearPolicy,
                 DateShiftPolicy = dto.DateShiftPolicy,
                 RoundingPolicy = dto.RoundingPolicy,
-                AmountMin = dto.AmountMin ?? 0,
-                AmountMax = dto.AmountMax ?? 0,
-                InterestRateMin = dto.InterestRateMin ?? 0,
-                InterestRateMax = dto.InterestRateMax ?? 0,
-                MaturityMin = dto.MaturityMin ?? 0,
-                MaturityMax = dto.MaturityMax ?? 0,
-                GracePeriodMin = dto.GracePeriodMin ?? 0,
-                GracePeriodMax = dto.GracePeriodMax ?? 0,
+                AmountMin = dto.Amount.Item1 ?? 0,
+                AmountMax = dto.Amount.Item2 ?? 0,
+                InterestRateMin = dto.InterestRate.Item1 ?? 0,
+                InterestRateMax = dto.InterestRate.Item2 ?? 0,
+                MaturityMin = dto.Maturity.Item1 ?? 0,
+                MaturityMax = dto.Maturity.Item2 ?? 0,
+                GracePeriodMin = dto.GracePeriod.Item1 ?? 0,
+                GracePeriodMax = dto.GracePeriod.Item2 ?? 0,
                 Deleted = dto.Deleted
             };
         }
@@ -66,14 +66,10 @@ namespace OpenCBS.GUI.NEW.Mapper
                 YearPolicy = loanProduct.YearPolicy,
                 DateShiftPolicy = loanProduct.DateShiftPolicy,
                 RoundingPolicy = loanProduct.RoundingPolicy,
-                AmountMin = loanProduct.AmountMin,
-                AmountMax = loanProduct.AmountMax,
-                InterestRateMin = loanProduct.InterestRateMin,
-                InterestRateMax = loanProduct.InterestRateMax,
-                MaturityMin = loanProduct.MaturityMin,
-                MaturityMax = loanProduct.MaturityMax,
-                GracePeriodMin = loanProduct.GracePeriodMin,
-                GracePeriodMax = loanProduct.GracePeriodMax,
+                Amount = new Tuple<decimal?, decimal?>(loanProduct.AmountMin, loanProduct.AmountMax),
+                InterestRate = new Tuple<decimal?, decimal?>(loanProduct.InterestRateMin, loanProduct.InterestRateMax),
+                Maturity = new Tuple<int?, int?>(loanProduct.MaturityMin, loanProduct.MaturityMax),
+                GracePeriod = new Tuple<int?, int?>(loanProduct.GracePeriodMin, loanProduct.GracePeriodMax),
                 Deleted = loanProduct.Deleted
             };
         }
