@@ -40,6 +40,8 @@ namespace OpenCBS.GUI.NEW.Validator
             FailIfNullOrEmpty(entity.InterestRateMin, "InterestRate", "Min value cannot be empty.");
             FailIfNullOrEmpty(entity.MaturityMax, "Maturity", "Max value cannot be empty.");
             FailIfNullOrEmpty(entity.MaturityMin, "Maturity", "Min value cannot be empty.");
+            FailIfNullOrEmpty(entity.GracePeriodMax, "GracePeriod", "Max value cannot be empty.");
+            FailIfNullOrEmpty(entity.GracePeriodMin, "GracePeriod", "Min value cannot be empty.");
         }
     }
 }

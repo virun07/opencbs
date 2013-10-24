@@ -44,6 +44,8 @@ namespace OpenCBS.GUI.NEW.Mapper
                 InterestRateMax = dto.InterestRateMax.HasValue ? dto.InterestRateMax.Value : 0,
                 MaturityMin = dto.MaturityMin.HasValue ? dto.MaturityMin.Value : 0,
                 MaturityMax = dto.MaturityMax.HasValue ? dto.MaturityMax.Value : 0,
+                GracePeriodMin = dto.GracePeriodMin.HasValue ? dto.GracePeriodMin.Value : 0,
+                GracePeriodMax = dto.GracePeriodMax.HasValue ? dto.GracePeriodMax.Value : 0,
                 Deleted = dto.Deleted
             };
         }
@@ -70,6 +72,8 @@ namespace OpenCBS.GUI.NEW.Mapper
                 InterestRateMax = loanProduct.InterestRateMax,
                 MaturityMin = loanProduct.MaturityMin,
                 MaturityMax = loanProduct.MaturityMax,
+                GracePeriodMin = loanProduct.GracePeriodMin,
+                GracePeriodMax = loanProduct.GracePeriodMax,
                 Deleted = loanProduct.Deleted
             };
         }

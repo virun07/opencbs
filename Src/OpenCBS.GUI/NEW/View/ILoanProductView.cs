@@ -50,5 +50,7 @@ namespace OpenCBS.GUI.NEW.View
         decimal? InterestRateMax { get; set; }
         int? MaturityMin { get; set; }
         int? MaturityMax { get; set; }
+        int? GracePeriodMin { get; set; }
+        int? GracePeriodMax { get; set; }
     }
 }

@@ -36,10 +36,16 @@ namespace OpenCBS.Controls
             _minTextBox.SetWatermark("min");
             _maxTextBox.SetWatermark("max");
 
-            _minTextBox.TextChanged += (sender, args) => MinMaxChanged(this, null);
-            _maxTextBox.TextChanged += (sender, args) => MinMaxChanged(this, null);
+            _minTextBox.TextChanged += (sender, args) => RaiseMinMaxChanged();
+            _maxTextBox.TextChanged += (sender, args) => RaiseMinMaxChanged();
 
             base.OnLoad(e);
+        }
+
+        private void RaiseMinMaxChanged()
+        {
+            if (MinMaxChanged == null) return;
+            MinMaxChanged(this, null);
         }
 
         public decimal? Min

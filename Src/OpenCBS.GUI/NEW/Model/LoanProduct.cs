@@ -35,5 +35,7 @@ namespace OpenCBS.GUI.NEW.Model
         public decimal InterestRateMax { get; set; }
         public int MaturityMin { get; set; }
         public int MaturityMax { get; set; }
+        public int GracePeriodMin { get; set; }
+        public int GracePeriodMax { get; set; }
     }
 }

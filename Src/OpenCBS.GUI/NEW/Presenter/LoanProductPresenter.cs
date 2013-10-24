@@ -111,6 +111,8 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.InterestRateMax = loanProduct.InterestRateMax;
             _view.MaturityMin = loanProduct.MaturityMin;
             _view.MaturityMax = loanProduct.MaturityMax;
+            _view.GracePeriodMin = loanProduct.GracePeriodMin;
+            _view.GracePeriodMax = loanProduct.GracePeriodMax;
         }
 
         private LoanProductDto GetLoanProduct()
@@ -130,7 +132,9 @@ namespace OpenCBS.GUI.NEW.Presenter
                 InterestRateMin = _view.InterestRateMin,
                 InterestRateMax = _view.InterestRateMax,
                 MaturityMin = _view.MaturityMin,
-                MaturityMax = _view.MaturityMax
+                MaturityMax = _view.MaturityMax,
+                GracePeriodMin = _view.GracePeriodMin,
+                GracePeriodMax = _view.GracePeriodMax
             };
         }
     }

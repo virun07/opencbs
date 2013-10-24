@@ -44,6 +44,9 @@ namespace OpenCBS.GUI.NEW.View
             _dateShiftPolicyComboBox.SelectedIndexChanged += ClearError;
             _roundingPolicyComboBox.SelectedIndexChanged += ClearError;
             _amountRange.MinMaxChanged += ClearError;
+            _interestRateRange.MinMaxChanged += ClearError;
+            _maturityRange.MinMaxChanged += ClearError;
+            _gracePeriodRange.MinMaxChanged += ClearError;
             ShowDialog();
         }
 
@@ -220,6 +223,18 @@ namespace OpenCBS.GUI.NEW.View
         {
             get { return (int?)_maturityRange.Max; }
             set { _maturityRange.Max = value; }
+        }
+
+        public int? GracePeriodMin
+        {
+            get { return (int?)_gracePeriodRange.Min; }
+            set { _gracePeriodRange.Min = value; }
+        }
+
+        public int? GracePeriodMax
+        {
+            get { return (int?)_gracePeriodRange.Max; }
+            set { _gracePeriodRange.Max = value; }
         }
     }
 }
