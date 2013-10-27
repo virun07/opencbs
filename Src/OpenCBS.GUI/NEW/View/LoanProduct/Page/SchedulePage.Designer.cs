@@ -41,9 +41,11 @@
             this._amountLabel = new System.Windows.Forms.Label();
             this._interestRateLabel = new System.Windows.Forms.Label();
             this._maturityLabel = new System.Windows.Forms.Label();
-            this._amountRange = new OpenCBS.Controls.RangeControl();
             this._maturityRange = new OpenCBS.Controls.RangeControl();
             this._interestRateRange = new OpenCBS.Controls.RangeControl();
+            this._amountRange = new OpenCBS.Controls.RangeControl();
+            this._gracePeriodRange = new OpenCBS.Controls.RangeControl();
+            this._gracePeriodLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // _schedulePolicyComboBox
@@ -168,20 +170,6 @@
             this._maturityLabel.TabIndex = 26;
             this._maturityLabel.Text = "Maturity";
             // 
-            // _amountRange
-            // 
-            this._amountRange.AllowDecimalSeparator = true;
-            this._amountRange.AutoSize = true;
-            this._amountRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._amountRange.Location = new System.Drawing.Point(210, 21);
-            this._amountRange.Margin = new System.Windows.Forms.Padding(0);
-            this._amountRange.Max = null;
-            this._amountRange.Min = null;
-            this._amountRange.Name = "_amountRange";
-            this._amountRange.Size = new System.Drawing.Size(200, 20);
-            this._amountRange.TabIndex = 21;
-            this._amountRange.Tag = "Amount";
-            // 
             // _maturityRange
             // 
             this._maturityRange.AllowDecimalSeparator = false;
@@ -192,7 +180,7 @@
             this._maturityRange.Max = null;
             this._maturityRange.Min = null;
             this._maturityRange.Name = "_maturityRange";
-            this._maturityRange.Size = new System.Drawing.Size(200, 20);
+            this._maturityRange.Size = new System.Drawing.Size(155, 20);
             this._maturityRange.TabIndex = 25;
             this._maturityRange.Tag = "Maturity";
             // 
@@ -206,13 +194,52 @@
             this._interestRateRange.Max = null;
             this._interestRateRange.Min = null;
             this._interestRateRange.Name = "_interestRateRange";
-            this._interestRateRange.Size = new System.Drawing.Size(200, 20);
+            this._interestRateRange.Size = new System.Drawing.Size(155, 20);
             this._interestRateRange.TabIndex = 23;
             this._interestRateRange.Tag = "InterestRate";
+            // 
+            // _amountRange
+            // 
+            this._amountRange.AllowDecimalSeparator = true;
+            this._amountRange.AutoSize = true;
+            this._amountRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._amountRange.Location = new System.Drawing.Point(210, 21);
+            this._amountRange.Margin = new System.Windows.Forms.Padding(0);
+            this._amountRange.Max = null;
+            this._amountRange.Min = null;
+            this._amountRange.Name = "_amountRange";
+            this._amountRange.Size = new System.Drawing.Size(155, 20);
+            this._amountRange.TabIndex = 21;
+            this._amountRange.Tag = "Amount";
+            // 
+            // _gracePeriodRange
+            // 
+            this._gracePeriodRange.AllowDecimalSeparator = false;
+            this._gracePeriodRange.AutoSize = true;
+            this._gracePeriodRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._gracePeriodRange.Location = new System.Drawing.Point(210, 153);
+            this._gracePeriodRange.Margin = new System.Windows.Forms.Padding(0);
+            this._gracePeriodRange.Max = null;
+            this._gracePeriodRange.Min = null;
+            this._gracePeriodRange.Name = "_gracePeriodRange";
+            this._gracePeriodRange.Size = new System.Drawing.Size(155, 20);
+            this._gracePeriodRange.TabIndex = 27;
+            this._gracePeriodRange.Tag = "GracePeriod";
+            // 
+            // _gracePeriodLabel
+            // 
+            this._gracePeriodLabel.AutoSize = true;
+            this._gracePeriodLabel.Location = new System.Drawing.Point(210, 137);
+            this._gracePeriodLabel.Name = "_gracePeriodLabel";
+            this._gracePeriodLabel.Size = new System.Drawing.Size(68, 13);
+            this._gracePeriodLabel.TabIndex = 28;
+            this._gracePeriodLabel.Text = "Grace period";
             // 
             // SchedulePage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this._gracePeriodRange);
+            this.Controls.Add(this._gracePeriodLabel);
             this.Controls.Add(this._maturityRange);
             this.Controls.Add(this._interestRateRange);
             this.Controls.Add(this._amountRange);
@@ -254,5 +281,7 @@
         private Controls.RangeControl _interestRateRange;
         private System.Windows.Forms.Label _maturityLabel;
         private Controls.RangeControl _maturityRange;
+        private Controls.RangeControl _gracePeriodRange;
+        private System.Windows.Forms.Label _gracePeriodLabel;
     }
 }

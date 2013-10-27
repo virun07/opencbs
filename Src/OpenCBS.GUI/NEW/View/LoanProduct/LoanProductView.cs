@@ -248,18 +248,14 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
 
         public int? GracePeriodMin
         {
-            //            get { return (int?)_gracePeriodRange.Min; }
-            //            set { _gracePeriodRange.Min = value; }
-            get;
-            set;
+            get { return _schedulePage.GracePeriodMin; }
+            set { _schedulePage.GracePeriodMin = value; }
         }
 
         public int? GracePeriodMax
         {
-            //            get { return (int?) _gracePeriodRange.Max; }
-            //            set { _gracePeriodRange.Max = value; }
-            get;
-            set;
+            get { return _schedulePage.GracePeriodMax; }
+            set { _schedulePage.GracePeriodMax = value; }
         }
     }
 }
