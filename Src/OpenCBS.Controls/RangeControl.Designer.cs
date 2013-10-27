@@ -35,10 +35,10 @@
             // _maxTextBox
             // 
             this._maxTextBox.AllowDecimalSeparator = false;
-            this._maxTextBox.Location = new System.Drawing.Point(105, 0);
+            this._maxTextBox.Location = new System.Drawing.Point(80, 0);
             this._maxTextBox.Margin = new System.Windows.Forms.Padding(0);
             this._maxTextBox.Name = "_maxTextBox";
-            this._maxTextBox.Size = new System.Drawing.Size(95, 20);
+            this._maxTextBox.Size = new System.Drawing.Size(75, 20);
             this._maxTextBox.TabIndex = 1;
             this._maxTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -48,7 +48,7 @@
             this._minTextBox.Location = new System.Drawing.Point(0, 0);
             this._minTextBox.Margin = new System.Windows.Forms.Padding(0);
             this._minTextBox.Name = "_minTextBox";
-            this._minTextBox.Size = new System.Drawing.Size(95, 20);
+            this._minTextBox.Size = new System.Drawing.Size(75, 20);
             this._minTextBox.TabIndex = 0;
             this._minTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -61,7 +61,7 @@
             this.Controls.Add(this._minTextBox);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "RangeControl";
-            this.Size = new System.Drawing.Size(200, 20);
+            this.Size = new System.Drawing.Size(155, 20);
             this.ResumeLayout(false);
             this.PerformLayout();
 
