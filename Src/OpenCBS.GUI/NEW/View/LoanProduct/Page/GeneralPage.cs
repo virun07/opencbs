@@ -17,6 +17,8 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using OpenCBS.GUI.NEW.Model;
+
 namespace OpenCBS.GUI.NEW.View.LoanProduct.Page
 {
     public partial class GeneralPage : System.Windows.Forms.UserControl
@@ -24,6 +26,39 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct.Page
         public GeneralPage()
         {
             InitializeComponent();
+        }
+
+        public string LoanProductName
+        {
+            get { return _nameTextBox.Text; }
+            set { _nameTextBox.Text = value; }
+        }
+
+        public string Code
+        {
+            get { return _codeTextBox.Text; }
+            set { _codeTextBox.Text = value; }
+        }
+
+        public AvailableFor AvailableFor
+        {
+            get
+            {
+                var result = AvailableFor.None;
+                if (_availableForIndividualCheckBox.Checked) result |= AvailableFor.Individual;
+                if (_availableForSgCheckBox.Checked) result |= AvailableFor.SolidarityGroup;
+                if (_availableForNsgCheckBox.Checked) result |= AvailableFor.NonSolidarityGroup;
+                if (_availableForCompanyCheckBox.Checked) result |= AvailableFor.Company;
+                return result;
+            }
+
+            set
+            {
+                _availableForIndividualCheckBox.Checked = (value & AvailableFor.Individual) == AvailableFor.Individual;
+                _availableForSgCheckBox.Checked = (value & AvailableFor.SolidarityGroup) == AvailableFor.SolidarityGroup;
+                _availableForNsgCheckBox.Checked = (value & AvailableFor.NonSolidarityGroup) == AvailableFor.NonSolidarityGroup;
+                _availableForCompanyCheckBox.Checked = (value & AvailableFor.Company) == AvailableFor.Company;
+            }
         }
     }
 }

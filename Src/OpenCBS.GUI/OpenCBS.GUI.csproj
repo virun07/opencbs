@@ -808,6 +808,9 @@
     <Compile Include="NEW\View\LoanProduct\Page\SchedulePage.Designer.cs">
       <DependentUpon>SchedulePage.cs</DependentUpon>
     </Compile>
+    <Compile Include="NEW\View\LoanProduct\TopEdgePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="NEW\View\ViewExtensions.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2417,6 +2420,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NEW\View\LoanProduct\Page\GeneralPage.resx">
       <DependentUpon>GeneralPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NEW\View\LoanProduct\Page\SchedulePage.resx">
+      <DependentUpon>SchedulePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\FrmAddCollateralProduct.fr.resx">
       <DependentUpon>FrmAddCollateralProduct.cs</DependentUpon>

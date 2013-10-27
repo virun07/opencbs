@@ -20,7 +20,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using OpenCBS.GUI.NEW.Dto;
 using OpenCBS.GUI.NEW.Model;
@@ -88,6 +87,7 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
             var lineOfCreditNode = new TreeNode("Line of Credit") { Tag = _lineOfCreditPage };
             _pageTreeView.Nodes.Add(lineOfCreditNode);
             _pageTreeView.AfterSelect += (sender, e) => ChangePage();
+            _pageTreeView.SelectedNode = generalNode;
         }
 
         private void ChangePage()
@@ -132,38 +132,29 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
             Close();
         }
 
-        private static void ShowPolicies(ComboBox comboBox, IEnumerable<string> policies)
-        {
-            var dict = policies.ToDictionary(policy => policy);
-            comboBox.DisplayMember = "Value";
-            comboBox.ValueMember = "Key";
-            comboBox.DataSource = new BindingSource(dict, null);
-            comboBox.SelectedIndex = -1;
-        }
-
         public void ShowPaymentFrequencyPolicies(IEnumerable<string> paymentFrequencyPolicies)
         {
-            //            ShowPolicies(_paymentFrequencyComboBox, paymentFrequencyPolicies);
+            _schedulePage.ShowPaymentFrequencyPolicies(paymentFrequencyPolicies);
         }
 
         public void ShowSchedulePolicies(IEnumerable<string> schedulePolicies)
         {
-            //            ShowPolicies(_schedulePolicyComboBox, schedulePolicies);
+            _schedulePage.ShowSchedulePolicies(schedulePolicies);
         }
 
         public void ShowYearPolicies(IEnumerable<string> yearPolicies)
         {
-            //            ShowPolicies(_yearPolicyComboBox, yearPolicies);
+            _schedulePage.ShowYearPolicies(yearPolicies);
         }
 
         public void ShowDateShiftPolicies(IEnumerable<string> dateShiftPolicies)
         {
-            //            ShowPolicies(_dateShiftPolicyComboBox, dateShiftPolicies);
+            _schedulePage.ShowDateShiftPolicies(dateShiftPolicies);
         }
 
         public void ShowRoundingPolicies(IEnumerable<string> roundingPolicies)
         {
-            //            ShowPolicies(_roundingPolicyComboBox, roundingPolicies);
+            _schedulePage.ShowRoundingPolicies(roundingPolicies);
         }
 
         public void ShowNotification(Notification notification)
@@ -173,101 +164,50 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
 
         public string LoanProductName
         {
-            //            get { return _nameTextBox.Text; }
-            //            set { _nameTextBox.Text = value; }
-            get;
-            set;
+            get { return _generalPage.LoanProductName; }
+            set { _generalPage.LoanProductName = value; }
         }
 
         public string Code
         {
-            //            get { return _codeTextBox.Text; }
-            //            set { _codeTextBox.Text = value; }
-            get;
-            set;
+            get { return _generalPage.Code; }
+            set { _generalPage.Code = value; }
         }
 
         public AvailableFor AvailableFor
         {
-            //            get
-            //            {
-            //                var result = AvailableFor.None;
-            //                if (_availableForIndividualCheckBox.Checked) result |= AvailableFor.Individual;
-            //                if (_availableForSgCheckBox.Checked) result |= AvailableFor.SolidarityGroup;
-            //                if (_availableForNsgCheckBox.Checked) result |= AvailableFor.NonSolidarityGroup;
-            //                if (_availableForCompanyCheckBox.Checked) result |= AvailableFor.Company;
-            //                return result;
-            //            }
-            //
-            //            set
-            //            {
-            //                _availableForIndividualCheckBox.Checked = (value & AvailableFor.Individual) == AvailableFor.Individual;
-            //                _availableForSgCheckBox.Checked = (value & AvailableFor.SolidarityGroup) == AvailableFor.SolidarityGroup;
-            //                _availableForNsgCheckBox.Checked = (value & AvailableFor.NonSolidarityGroup) == AvailableFor.NonSolidarityGroup;
-            //                _availableForCompanyCheckBox.Checked = (value & AvailableFor.Company) == AvailableFor.Company;
-            //            }
-            get;
-            set;
+            get { return _generalPage.AvailableFor; }
+            set { _generalPage.AvailableFor = value; }
         }
 
         public string PaymentFrequencyPolicy
         {
-            //            get
-            //            {
-            //                if (_paymentFrequencyComboBox.SelectedValue == null) return null;
-            //                return _paymentFrequencyComboBox.SelectedValue.ToString();
-            //            }
-            //            set { _paymentFrequencyComboBox.SelectedValue = value; }
-            get;
-            set;
+            get { return _schedulePage.PaymentFrequencyPolicy; }
+            set { _schedulePage.PaymentFrequencyPolicy = value; }
         }
 
         public string SchedulePolicy
         {
-            //            get
-            //            {
-            //                if (_schedulePolicyComboBox.SelectedValue == null) return null;
-            //                return _schedulePolicyComboBox.SelectedValue.ToString();
-            //            }
-            //            set { _schedulePolicyComboBox.SelectedValue = value; }
-            get;
-            set;
+            get { return _schedulePage.SchedulePolicy; }
+            set { _schedulePage.SchedulePolicy = value; }
         }
 
         public string YearPolicy
         {
-            //            get
-            //            {
-            //                if (_yearPolicyComboBox.SelectedValue == null) return null;
-            //                return _yearPolicyComboBox.SelectedValue.ToString();
-            //            }
-            //            set { _yearPolicyComboBox.SelectedValue = value; }
-            get;
-            set;
+            get { return _schedulePage.YearPolicy; }
+            set { _schedulePage.YearPolicy = value; }
         }
 
         public string DateShiftPolicy
         {
-            //            get
-            //            {
-            //                if (_dateShiftPolicyComboBox.SelectedValue == null) return null;
-            //                return _dateShiftPolicyComboBox.SelectedValue.ToString();
-            //            }
-            //            set { _dateShiftPolicyComboBox.SelectedValue = value; }
-            get;
-            set;
+            get { return _schedulePage.DateShiftPolicy; }
+            set { _schedulePage.DateShiftPolicy = value; }
         }
 
         public string RoundingPolicy
         {
-            //            get
-            //            {
-            //                if (_roundingPolicyComboBox.SelectedValue == null) return null;
-            //                return _roundingPolicyComboBox.SelectedValue.ToString();
-            //            }
-            //            set { _roundingPolicyComboBox.SelectedValue = value; }
-            get;
-            set;
+            get { return _schedulePage.RoundingPolicy; }
+            set { _schedulePage.RoundingPolicy = value; }
         }
 
         public decimal? AmountMin
