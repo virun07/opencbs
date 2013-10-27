@@ -39,27 +39,27 @@
             this._roundingPolicyComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this._amountLabel = new System.Windows.Forms.Label();
-            this._amountRange = new OpenCBS.Controls.RangeControl();
             this._interestRateLabel = new System.Windows.Forms.Label();
-            this._interestRateRange = new OpenCBS.Controls.RangeControl();
             this._maturityLabel = new System.Windows.Forms.Label();
+            this._amountRange = new OpenCBS.Controls.RangeControl();
             this._maturityRange = new OpenCBS.Controls.RangeControl();
+            this._interestRateRange = new OpenCBS.Controls.RangeControl();
             this.SuspendLayout();
             // 
             // _schedulePolicyComboBox
             // 
             this._schedulePolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._schedulePolicyComboBox.FormattingEnabled = true;
-            this._schedulePolicyComboBox.Location = new System.Drawing.Point(140, 2);
+            this._schedulePolicyComboBox.Location = new System.Drawing.Point(8, 21);
             this._schedulePolicyComboBox.Name = "_schedulePolicyComboBox";
-            this._schedulePolicyComboBox.Size = new System.Drawing.Size(200, 21);
+            this._schedulePolicyComboBox.Size = new System.Drawing.Size(150, 21);
             this._schedulePolicyComboBox.TabIndex = 12;
             this._schedulePolicyComboBox.Tag = "SchedulePolicy";
             // 
             // _schedulePolicyLabel
             // 
             this._schedulePolicyLabel.AutoSize = true;
-            this._schedulePolicyLabel.Location = new System.Drawing.Point(8, 6);
+            this._schedulePolicyLabel.Location = new System.Drawing.Point(8, 5);
             this._schedulePolicyLabel.Name = "_schedulePolicyLabel";
             this._schedulePolicyLabel.Size = new System.Drawing.Size(75, 13);
             this._schedulePolicyLabel.TabIndex = 11;
@@ -69,16 +69,16 @@
             // 
             this._paymentFrequencyPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._paymentFrequencyPolicyComboBox.FormattingEnabled = true;
-            this._paymentFrequencyPolicyComboBox.Location = new System.Drawing.Point(140, 28);
+            this._paymentFrequencyPolicyComboBox.Location = new System.Drawing.Point(8, 65);
             this._paymentFrequencyPolicyComboBox.Name = "_paymentFrequencyPolicyComboBox";
-            this._paymentFrequencyPolicyComboBox.Size = new System.Drawing.Size(200, 21);
+            this._paymentFrequencyPolicyComboBox.Size = new System.Drawing.Size(150, 21);
             this._paymentFrequencyPolicyComboBox.TabIndex = 14;
             this._paymentFrequencyPolicyComboBox.Tag = "PaymentFrequencyPolicy";
             // 
             // _paymentFrequencyLabel
             // 
             this._paymentFrequencyLabel.AutoSize = true;
-            this._paymentFrequencyLabel.Location = new System.Drawing.Point(8, 32);
+            this._paymentFrequencyLabel.Location = new System.Drawing.Point(8, 49);
             this._paymentFrequencyLabel.Name = "_paymentFrequencyLabel";
             this._paymentFrequencyLabel.Size = new System.Drawing.Size(98, 13);
             this._paymentFrequencyLabel.TabIndex = 13;
@@ -88,16 +88,16 @@
             // 
             this._yearPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._yearPolicyComboBox.FormattingEnabled = true;
-            this._yearPolicyComboBox.Location = new System.Drawing.Point(140, 54);
+            this._yearPolicyComboBox.Location = new System.Drawing.Point(8, 109);
             this._yearPolicyComboBox.Name = "_yearPolicyComboBox";
-            this._yearPolicyComboBox.Size = new System.Drawing.Size(200, 21);
+            this._yearPolicyComboBox.Size = new System.Drawing.Size(150, 21);
             this._yearPolicyComboBox.TabIndex = 16;
             this._yearPolicyComboBox.Tag = "YearPolicy";
             // 
             // _yearPolicyLabel
             // 
             this._yearPolicyLabel.AutoSize = true;
-            this._yearPolicyLabel.Location = new System.Drawing.Point(8, 58);
+            this._yearPolicyLabel.Location = new System.Drawing.Point(8, 93);
             this._yearPolicyLabel.Name = "_yearPolicyLabel";
             this._yearPolicyLabel.Size = new System.Drawing.Size(29, 13);
             this._yearPolicyLabel.TabIndex = 15;
@@ -107,16 +107,16 @@
             // 
             this._dateShiftPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._dateShiftPolicyComboBox.FormattingEnabled = true;
-            this._dateShiftPolicyComboBox.Location = new System.Drawing.Point(140, 80);
+            this._dateShiftPolicyComboBox.Location = new System.Drawing.Point(8, 153);
             this._dateShiftPolicyComboBox.Name = "_dateShiftPolicyComboBox";
-            this._dateShiftPolicyComboBox.Size = new System.Drawing.Size(200, 21);
+            this._dateShiftPolicyComboBox.Size = new System.Drawing.Size(150, 21);
             this._dateShiftPolicyComboBox.TabIndex = 18;
             this._dateShiftPolicyComboBox.Tag = "DateShiftPolicy";
             // 
             // _dateShiftPolicyLabel
             // 
             this._dateShiftPolicyLabel.AutoSize = true;
-            this._dateShiftPolicyLabel.Location = new System.Drawing.Point(8, 84);
+            this._dateShiftPolicyLabel.Location = new System.Drawing.Point(8, 137);
             this._dateShiftPolicyLabel.Name = "_dateShiftPolicyLabel";
             this._dateShiftPolicyLabel.Size = new System.Drawing.Size(52, 13);
             this._dateShiftPolicyLabel.TabIndex = 17;
@@ -126,16 +126,16 @@
             // 
             this._roundingPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._roundingPolicyComboBox.FormattingEnabled = true;
-            this._roundingPolicyComboBox.Location = new System.Drawing.Point(140, 106);
+            this._roundingPolicyComboBox.Location = new System.Drawing.Point(8, 197);
             this._roundingPolicyComboBox.Name = "_roundingPolicyComboBox";
-            this._roundingPolicyComboBox.Size = new System.Drawing.Size(200, 21);
+            this._roundingPolicyComboBox.Size = new System.Drawing.Size(150, 21);
             this._roundingPolicyComboBox.TabIndex = 20;
             this._roundingPolicyComboBox.Tag = "RoundingPolicy";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 110);
+            this.label1.Location = new System.Drawing.Point(8, 181);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 19;
@@ -144,18 +144,36 @@
             // _amountLabel
             // 
             this._amountLabel.AutoSize = true;
-            this._amountLabel.Location = new System.Drawing.Point(8, 136);
+            this._amountLabel.Location = new System.Drawing.Point(210, 5);
             this._amountLabel.Name = "_amountLabel";
             this._amountLabel.Size = new System.Drawing.Size(43, 13);
             this._amountLabel.TabIndex = 22;
             this._amountLabel.Text = "Amount";
+            // 
+            // _interestRateLabel
+            // 
+            this._interestRateLabel.AutoSize = true;
+            this._interestRateLabel.Location = new System.Drawing.Point(210, 49);
+            this._interestRateLabel.Name = "_interestRateLabel";
+            this._interestRateLabel.Size = new System.Drawing.Size(63, 13);
+            this._interestRateLabel.TabIndex = 24;
+            this._interestRateLabel.Text = "Interest rate";
+            // 
+            // _maturityLabel
+            // 
+            this._maturityLabel.AutoSize = true;
+            this._maturityLabel.Location = new System.Drawing.Point(210, 93);
+            this._maturityLabel.Name = "_maturityLabel";
+            this._maturityLabel.Size = new System.Drawing.Size(44, 13);
+            this._maturityLabel.TabIndex = 26;
+            this._maturityLabel.Text = "Maturity";
             // 
             // _amountRange
             // 
             this._amountRange.AllowDecimalSeparator = true;
             this._amountRange.AutoSize = true;
             this._amountRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._amountRange.Location = new System.Drawing.Point(140, 132);
+            this._amountRange.Location = new System.Drawing.Point(210, 21);
             this._amountRange.Margin = new System.Windows.Forms.Padding(0);
             this._amountRange.Max = null;
             this._amountRange.Min = null;
@@ -164,44 +182,12 @@
             this._amountRange.TabIndex = 21;
             this._amountRange.Tag = "Amount";
             // 
-            // _interestRateLabel
-            // 
-            this._interestRateLabel.AutoSize = true;
-            this._interestRateLabel.Location = new System.Drawing.Point(8, 162);
-            this._interestRateLabel.Name = "_interestRateLabel";
-            this._interestRateLabel.Size = new System.Drawing.Size(63, 13);
-            this._interestRateLabel.TabIndex = 24;
-            this._interestRateLabel.Text = "Interest rate";
-            // 
-            // _interestRateRange
-            // 
-            this._interestRateRange.AllowDecimalSeparator = true;
-            this._interestRateRange.AutoSize = true;
-            this._interestRateRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._interestRateRange.Location = new System.Drawing.Point(140, 158);
-            this._interestRateRange.Margin = new System.Windows.Forms.Padding(0);
-            this._interestRateRange.Max = null;
-            this._interestRateRange.Min = null;
-            this._interestRateRange.Name = "_interestRateRange";
-            this._interestRateRange.Size = new System.Drawing.Size(200, 20);
-            this._interestRateRange.TabIndex = 23;
-            this._interestRateRange.Tag = "InterestRate";
-            // 
-            // _maturityLabel
-            // 
-            this._maturityLabel.AutoSize = true;
-            this._maturityLabel.Location = new System.Drawing.Point(8, 188);
-            this._maturityLabel.Name = "_maturityLabel";
-            this._maturityLabel.Size = new System.Drawing.Size(44, 13);
-            this._maturityLabel.TabIndex = 26;
-            this._maturityLabel.Text = "Maturity";
-            // 
             // _maturityRange
             // 
             this._maturityRange.AllowDecimalSeparator = false;
             this._maturityRange.AutoSize = true;
             this._maturityRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._maturityRange.Location = new System.Drawing.Point(140, 184);
+            this._maturityRange.Location = new System.Drawing.Point(210, 109);
             this._maturityRange.Margin = new System.Windows.Forms.Padding(0);
             this._maturityRange.Max = null;
             this._maturityRange.Min = null;
@@ -210,16 +196,29 @@
             this._maturityRange.TabIndex = 25;
             this._maturityRange.Tag = "Maturity";
             // 
+            // _interestRateRange
+            // 
+            this._interestRateRange.AllowDecimalSeparator = true;
+            this._interestRateRange.AutoSize = true;
+            this._interestRateRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._interestRateRange.Location = new System.Drawing.Point(210, 65);
+            this._interestRateRange.Margin = new System.Windows.Forms.Padding(0);
+            this._interestRateRange.Max = null;
+            this._interestRateRange.Min = null;
+            this._interestRateRange.Name = "_interestRateRange";
+            this._interestRateRange.Size = new System.Drawing.Size(200, 20);
+            this._interestRateRange.TabIndex = 23;
+            this._interestRateRange.Tag = "InterestRate";
+            // 
             // SchedulePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this._maturityLabel);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this._maturityRange);
-            this.Controls.Add(this._interestRateLabel);
             this.Controls.Add(this._interestRateRange);
-            this.Controls.Add(this._amountLabel);
             this.Controls.Add(this._amountRange);
+            this.Controls.Add(this._maturityLabel);
+            this.Controls.Add(this._interestRateLabel);
+            this.Controls.Add(this._amountLabel);
             this.Controls.Add(this._roundingPolicyComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this._dateShiftPolicyComboBox);
@@ -231,7 +230,7 @@
             this.Controls.Add(this._schedulePolicyComboBox);
             this.Controls.Add(this._schedulePolicyLabel);
             this.Name = "SchedulePage";
-            this.Size = new System.Drawing.Size(366, 260);
+            this.Size = new System.Drawing.Size(449, 234);
             this.ResumeLayout(false);
             this.PerformLayout();
 
