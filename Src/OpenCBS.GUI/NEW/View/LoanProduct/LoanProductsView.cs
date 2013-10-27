@@ -25,7 +25,7 @@ using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Dto;
 using OpenCBS.GUI.NEW.Presenter;
 
-namespace OpenCBS.GUI.NEW.View
+namespace OpenCBS.GUI.NEW.View.LoanProduct
 {
     public partial class LoanProductsView : Form, ILoanProductsView
     {

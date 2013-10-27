@@ -23,6 +23,7 @@ using OpenCBS.GUI.NEW.Event;
 using OpenCBS.GUI.NEW.EventAggregator;
 using OpenCBS.GUI.NEW.Service;
 using OpenCBS.GUI.NEW.View;
+using OpenCBS.GUI.NEW.View.LoanProduct;
 
 namespace OpenCBS.GUI.NEW.Presenter
 {

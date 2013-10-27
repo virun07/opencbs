@@ -28,6 +28,7 @@ using OpenCBS.GUI.NEW.Repository;
 using OpenCBS.GUI.NEW.Service;
 using OpenCBS.GUI.NEW.Validator;
 using OpenCBS.GUI.NEW.View;
+using OpenCBS.GUI.NEW.View.LoanProduct;
 using StructureMap.Configuration.DSL;
 
 namespace OpenCBS.GUI.NEW

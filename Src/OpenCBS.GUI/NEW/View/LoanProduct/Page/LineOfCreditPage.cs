@@ -17,19 +17,13 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-using OpenCBS.GUI.NEW.Dto;
-using OpenCBS.GUI.NEW.Presenter;
-
-namespace OpenCBS.GUI.NEW.View
+namespace OpenCBS.GUI.NEW.View.LoanProduct.Page
 {
-    public interface ILoanProductsView : IView<ILoanProductsPresenterCallbacks>
+    public partial class LineOfCreditPage : System.Windows.Forms.UserControl
     {
-        void Run();
-        void ShowLoanProducts(IEnumerable<LoanProductDto> loanProducts);
-        bool EditEnabled { get; set; }
-        bool DeleteEnabled { get; set; }
-        LoanProductDto SelectedLoanProduct { get; }
-        bool ShowDeleted { get; }
+        public LineOfCreditPage()
+        {
+            InitializeComponent();
+        }
     }
 }
