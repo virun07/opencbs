@@ -38,6 +38,12 @@
             this._dateShiftPolicyLabel = new System.Windows.Forms.Label();
             this._roundingPolicyComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this._amountLabel = new System.Windows.Forms.Label();
+            this._amountRange = new OpenCBS.Controls.RangeControl();
+            this._interestRateLabel = new System.Windows.Forms.Label();
+            this._interestRateRange = new OpenCBS.Controls.RangeControl();
+            this._maturityLabel = new System.Windows.Forms.Label();
+            this._maturityRange = new OpenCBS.Controls.RangeControl();
             this.SuspendLayout();
             // 
             // _schedulePolicyComboBox
@@ -53,7 +59,7 @@
             // _schedulePolicyLabel
             // 
             this._schedulePolicyLabel.AutoSize = true;
-            this._schedulePolicyLabel.Location = new System.Drawing.Point(8, 5);
+            this._schedulePolicyLabel.Location = new System.Drawing.Point(8, 6);
             this._schedulePolicyLabel.Name = "_schedulePolicyLabel";
             this._schedulePolicyLabel.Size = new System.Drawing.Size(75, 13);
             this._schedulePolicyLabel.TabIndex = 11;
@@ -135,10 +141,85 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "Rounding";
             // 
+            // _amountLabel
+            // 
+            this._amountLabel.AutoSize = true;
+            this._amountLabel.Location = new System.Drawing.Point(8, 136);
+            this._amountLabel.Name = "_amountLabel";
+            this._amountLabel.Size = new System.Drawing.Size(43, 13);
+            this._amountLabel.TabIndex = 22;
+            this._amountLabel.Text = "Amount";
+            // 
+            // _amountRange
+            // 
+            this._amountRange.AllowDecimalSeparator = true;
+            this._amountRange.AutoSize = true;
+            this._amountRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._amountRange.Location = new System.Drawing.Point(140, 132);
+            this._amountRange.Margin = new System.Windows.Forms.Padding(0);
+            this._amountRange.Max = null;
+            this._amountRange.Min = null;
+            this._amountRange.Name = "_amountRange";
+            this._amountRange.Size = new System.Drawing.Size(200, 20);
+            this._amountRange.TabIndex = 21;
+            this._amountRange.Tag = "Amount";
+            // 
+            // _interestRateLabel
+            // 
+            this._interestRateLabel.AutoSize = true;
+            this._interestRateLabel.Location = new System.Drawing.Point(8, 162);
+            this._interestRateLabel.Name = "_interestRateLabel";
+            this._interestRateLabel.Size = new System.Drawing.Size(63, 13);
+            this._interestRateLabel.TabIndex = 24;
+            this._interestRateLabel.Text = "Interest rate";
+            // 
+            // _interestRateRange
+            // 
+            this._interestRateRange.AllowDecimalSeparator = true;
+            this._interestRateRange.AutoSize = true;
+            this._interestRateRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._interestRateRange.Location = new System.Drawing.Point(140, 158);
+            this._interestRateRange.Margin = new System.Windows.Forms.Padding(0);
+            this._interestRateRange.Max = null;
+            this._interestRateRange.Min = null;
+            this._interestRateRange.Name = "_interestRateRange";
+            this._interestRateRange.Size = new System.Drawing.Size(200, 20);
+            this._interestRateRange.TabIndex = 23;
+            this._interestRateRange.Tag = "InterestRate";
+            // 
+            // _maturityLabel
+            // 
+            this._maturityLabel.AutoSize = true;
+            this._maturityLabel.Location = new System.Drawing.Point(8, 188);
+            this._maturityLabel.Name = "_maturityLabel";
+            this._maturityLabel.Size = new System.Drawing.Size(44, 13);
+            this._maturityLabel.TabIndex = 26;
+            this._maturityLabel.Text = "Maturity";
+            // 
+            // _maturityRange
+            // 
+            this._maturityRange.AllowDecimalSeparator = false;
+            this._maturityRange.AutoSize = true;
+            this._maturityRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._maturityRange.Location = new System.Drawing.Point(140, 184);
+            this._maturityRange.Margin = new System.Windows.Forms.Padding(0);
+            this._maturityRange.Max = null;
+            this._maturityRange.Min = null;
+            this._maturityRange.Name = "_maturityRange";
+            this._maturityRange.Size = new System.Drawing.Size(200, 20);
+            this._maturityRange.TabIndex = 25;
+            this._maturityRange.Tag = "Maturity";
+            // 
             // SchedulePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this._maturityLabel);
+            this.Controls.Add(this._maturityRange);
+            this.Controls.Add(this._interestRateLabel);
+            this.Controls.Add(this._interestRateRange);
+            this.Controls.Add(this._amountLabel);
+            this.Controls.Add(this._amountRange);
             this.Controls.Add(this._roundingPolicyComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this._dateShiftPolicyComboBox);
@@ -168,5 +249,11 @@
         private System.Windows.Forms.Label _dateShiftPolicyLabel;
         private System.Windows.Forms.ComboBox _roundingPolicyComboBox;
         private System.Windows.Forms.Label label1;
+        private Controls.RangeControl _amountRange;
+        private System.Windows.Forms.Label _amountLabel;
+        private System.Windows.Forms.Label _interestRateLabel;
+        private Controls.RangeControl _interestRateRange;
+        private System.Windows.Forms.Label _maturityLabel;
+        private Controls.RangeControl _maturityRange;
     }
 }

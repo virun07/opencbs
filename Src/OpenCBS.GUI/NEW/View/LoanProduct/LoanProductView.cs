@@ -212,50 +212,38 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
 
         public decimal? AmountMin
         {
-            //            get { return _amountRange.Min; }
-            //            set { _amountRange.Min = value; }
-            get;
-            set;
+            get { return _schedulePage.AmountMin; }
+            set { _schedulePage.AmountMin = value; }
         }
 
         public decimal? AmountMax
         {
-            //            get { return _amountRange.Max; }
-            //            set { _amountRange.Max = value; }
-            get;
-            set;
+            get { return _schedulePage.AmountMax; }
+            set { _schedulePage.AmountMax = value; }
         }
 
         public decimal? InterestRateMin
         {
-            //            get { return _interestRateRange.Min; }
-            //            set { _interestRateRange.Min = value; }
-            get;
-            set;
+            get { return _schedulePage.InterestRateMin; }
+            set { _schedulePage.InterestRateMin = value; }
         }
 
         public decimal? InterestRateMax
         {
-            //            get { return _interestRateRange.Max; }
-            //            set { _interestRateRange.Max = value; }
-            get;
-            set;
+            get { return _schedulePage.InterestRateMax; }
+            set { _schedulePage.InterestRateMax = value; }
         }
 
         public int? MaturityMin
         {
-            //            get { return (int?)_maturityRange.Min; }
-            //            set { _maturityRange.Min = value; }
-            get;
-            set;
+            get { return _schedulePage.MaturityMin; }
+            set { _schedulePage.MaturityMin = value; }
         }
 
         public int? MaturityMax
         {
-            //            get { return (int?)_maturityRange.Max; }
-            //            set { _maturityRange.Max = value; }
-            get;
-            set;
+            get { return _schedulePage.MaturityMax; }
+            set { _schedulePage.MaturityMax = value; }
         }
 
         public int? GracePeriodMin

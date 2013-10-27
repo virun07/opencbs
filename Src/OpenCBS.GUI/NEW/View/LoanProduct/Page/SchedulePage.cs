@@ -113,5 +113,41 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct.Page
             }
             set { _roundingPolicyComboBox.SelectedValue = value; }
         }
+
+        public decimal? AmountMin
+        {
+            get { return _amountRange.Min; }
+            set { _amountRange.Min = value; }
+        }
+
+        public decimal? AmountMax
+        {
+            get { return _amountRange.Max; }
+            set { _amountRange.Max = value; }
+        }
+
+        public decimal? InterestRateMin
+        {
+            get { return _interestRateRange.Min; }
+            set { _interestRateRange.Min = value; }
+        }
+
+        public decimal? InterestRateMax
+        {
+            get { return _interestRateRange.Max; }
+            set { _interestRateRange.Max = value; }
+        }
+
+        public int? MaturityMin
+        {
+            get { return (int?) _maturityRange.Min; }
+            set { _maturityRange.Min = value; }
+        }
+
+        public int? MaturityMax
+        {
+            get { return (int?) _maturityRange.Max; }
+            set { _maturityRange.Max = value; }
+        }
     }
 }
