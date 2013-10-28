@@ -257,5 +257,11 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
             get { return _schedulePage.GracePeriodMax; }
             set { _schedulePage.GracePeriodMax = value; }
         }
+
+        public bool ChargeInterestDuringGracePeriod
+        {
+            get { return _schedulePage.ChargeInterestDuringGracePeriod; }
+            set { _schedulePage.ChargeInterestDuringGracePeriod = value; }
+        }
     }
 }

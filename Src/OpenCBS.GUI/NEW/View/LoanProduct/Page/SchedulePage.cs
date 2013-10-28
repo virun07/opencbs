@@ -161,5 +161,11 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct.Page
             get { return (int?) _gracePeriodRange.Max; }
             set { _gracePeriodRange.Max = value; }
         }
+
+        public bool ChargeInterestDuringGracePeriod
+        {
+            get { return _chargeInterestDuringGracePeriodCheckBox.Checked; }
+            set { _chargeInterestDuringGracePeriodCheckBox.Checked = value; }
+        }
     }
 }
