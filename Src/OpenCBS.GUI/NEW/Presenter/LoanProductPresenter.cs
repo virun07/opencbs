@@ -17,9 +17,8 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
+using Omu.ValueInjecter;
 using OpenCBS.GUI.NEW.Dto;
-using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Service;
 using OpenCBS.GUI.NEW.View.LoanProduct;
 
@@ -47,17 +46,14 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.ShowDateShiftPolicies(data.DateShiftPolicies);
             _view.ShowRoundingPolicies(data.RoundingPolicies);
             _view.ShowCurrencies(data.Currencies);
-            ShowLoanProduct(loanProduct);
+            _view.InjectFrom(loanProduct ?? new LoanProductDto());
             _view.Run();
-            var newLoanProduct = (LoanProductDto) null;
-            if (_commandResult == CommandResult.Ok)
-            {
-                newLoanProduct = GetLoanProduct();
-                if (loanProduct != null)
-                {
-                    newLoanProduct.Id = loanProduct.Id;
-                }
-            }
+
+            if (_commandResult != CommandResult.Ok)
+                return new Result<LoanProductDto>(_commandResult, null);
+
+            var newLoanProduct = GetLoanProduct();
+            newLoanProduct.Id = loanProduct != null ? loanProduct.Id : 0;
             return new Result<LoanProductDto>(_commandResult, newLoanProduct);
         }
 
@@ -87,49 +83,11 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.Stop();
         }
 
-        private void ShowLoanProduct(LoanProductDto loanProduct)
-        {
-            if (loanProduct == null)
-            {
-                _view.AvailableFor = AvailableFor.Individual | AvailableFor.SolidarityGroup |
-                                     AvailableFor.NonSolidarityGroup | AvailableFor.Company;
-                return;
-            }
-            _view.LoanProductName = loanProduct.Name;
-            _view.Code = loanProduct.Code;
-            _view.PaymentFrequencyPolicy = loanProduct.PaymentFrequencyPolicy;
-            _view.AvailableFor = loanProduct.AvailableFor;
-            _view.SchedulePolicy = loanProduct.SchedulePolicy;
-            _view.YearPolicy = loanProduct.YearPolicy;
-            _view.DateShiftPolicy = loanProduct.DateShiftPolicy;
-            _view.RoundingPolicy = loanProduct.RoundingPolicy;
-            _view.AmountMin = loanProduct.Amount.Item1;
-            _view.AmountMax = loanProduct.Amount.Item2;
-            _view.InterestRateMin = loanProduct.InterestRate.Item1;
-            _view.InterestRateMax = loanProduct.InterestRate.Item2;
-            _view.MaturityMin = loanProduct.Maturity.Item1;
-            _view.MaturityMax = loanProduct.Maturity.Item2;
-            _view.GracePeriodMin = loanProduct.GracePeriod.Item1;
-            _view.GracePeriodMax = loanProduct.GracePeriod.Item2;
-        }
-
         private LoanProductDto GetLoanProduct()
         {
-            return new LoanProductDto
-            {
-                Name = _view.LoanProductName,
-                Code = _view.Code,
-                PaymentFrequencyPolicy = _view.PaymentFrequencyPolicy,
-                AvailableFor = _view.AvailableFor,
-                SchedulePolicy = _view.SchedulePolicy,
-                YearPolicy = _view.YearPolicy,
-                DateShiftPolicy = _view.DateShiftPolicy,
-                RoundingPolicy = _view.RoundingPolicy,
-                Amount = new Tuple<decimal?, decimal?>(_view.AmountMin, _view.AmountMax),
-                InterestRate = new Tuple<decimal?, decimal?>(_view.InterestRateMin, _view.InterestRateMax),
-                Maturity = new Tuple<int?, int?>(_view.MaturityMin, _view.MaturityMax),
-                GracePeriod = new Tuple<int?, int?>(_view.GracePeriodMin, _view.GracePeriodMax)
-            };
+            var result = new LoanProductDto { LoanProductName = _view.LoanProductName };
+            result.InjectFrom(_view);
+            return result;
         }
     }
 }

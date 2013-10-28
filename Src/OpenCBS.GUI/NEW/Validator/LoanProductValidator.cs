@@ -34,15 +34,15 @@ namespace OpenCBS.GUI.NEW.Validator
             FailIfNullOrEmpty("YearPolicy", "Cannot be empty.");
             FailIfNullOrEmpty("DateShiftPolicy", "Cannot be empty.");
             FailIfNullOrEmpty("RoundingPolicy", "Cannot be empty.");
-            FailIfNullOrEmpty(entity.Amount.Item2, "Amount", "Max value cannot be empty.");
-            FailIfNullOrEmpty(entity.Amount.Item1, "Amount", "Min value cannot be empty.");
-            FailIfNullOrEmpty(entity.InterestRate.Item2, "InterestRate", "Max value cannot be empty.");
-            FailIfNullOrEmpty(entity.InterestRate.Item1, "InterestRate", "Min value cannot be empty.");
-            FailIfNullOrEmpty(entity.Maturity.Item1, "Maturity", "Max value cannot be empty.");
-            FailIfNullOrEmpty(entity.Maturity.Item2, "Maturity", "Min value cannot be empty.");
-            FailIfNullOrEmpty(entity.GracePeriod.Item1, "GracePeriod", "Max value cannot be empty.");
-            FailIfNullOrEmpty(entity.GracePeriod.Item2, "GracePeriod", "Min value cannot be empty.");
-            FailIfNullOrEmpty(entity.CurrencyId, "CurrencyId", "Cannot be empty");
+            FailIfNullOrEmpty(entity.AmountMax, "Amount", "Max value cannot be empty.");
+            FailIfNullOrEmpty(entity.AmountMin, "Amount", "Min value cannot be empty.");
+            FailIfNullOrEmpty(entity.InterestRateMax, "InterestRate", "Max value cannot be empty.");
+            FailIfNullOrEmpty(entity.InterestRateMin, "InterestRate", "Min value cannot be empty.");
+            FailIfNullOrEmpty(entity.MaturityMax, "Maturity", "Max value cannot be empty.");
+            FailIfNullOrEmpty(entity.MaturityMin, "Maturity", "Min value cannot be empty.");
+            FailIfNullOrEmpty(entity.GracePeriodMax, "GracePeriod", "Max value cannot be empty.");
+            FailIfNullOrEmpty(entity.GracePeriodMin, "GracePeriod", "Min value cannot be empty.");
+            FailIfNullOrEmpty("CurrencyId", "Cannot be empty");
         }
     }
 }

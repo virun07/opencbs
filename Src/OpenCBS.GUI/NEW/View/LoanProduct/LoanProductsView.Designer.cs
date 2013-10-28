@@ -147,7 +147,7 @@
             // 
             // _nameColumn
             // 
-            this._nameColumn.AspectName = "Name";
+            this._nameColumn.AspectName = "LoanProductName";
             this._nameColumn.Text = "Name";
             this._nameColumn.Width = 200;
             // 

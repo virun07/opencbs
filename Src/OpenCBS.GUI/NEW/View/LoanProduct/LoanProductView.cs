@@ -164,7 +164,13 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
                 if (_paymentFrequencyPolicyComboBox.SelectedValue == null) return null;
                 return _paymentFrequencyPolicyComboBox.SelectedValue.ToString();
             }
-            set { _paymentFrequencyPolicyComboBox.SelectedValue = value; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    _paymentFrequencyPolicyComboBox.SelectedIndex = -1;
+                else
+                    _paymentFrequencyPolicyComboBox.SelectedValue = value;
+            }
         }
 
         public string SchedulePolicy
@@ -174,7 +180,13 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
                 if (_schedulePolicyComboBox.SelectedValue == null) return null;
                 return _schedulePolicyComboBox.SelectedValue.ToString();
             }
-            set { _schedulePolicyComboBox.SelectedValue = value; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    _schedulePolicyComboBox.SelectedIndex = -1;
+                else
+                    _schedulePolicyComboBox.SelectedValue = value;
+            }
         }
 
         public string YearPolicy
@@ -184,7 +196,13 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
                 if (_yearPolicyComboBox.SelectedValue == null) return null;
                 return _yearPolicyComboBox.SelectedValue.ToString();
             }
-            set { _yearPolicyComboBox.SelectedValue = value; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    _yearPolicyComboBox.SelectedIndex = -1;
+                else
+                    _yearPolicyComboBox.SelectedValue = value;
+            }
         }
 
         public string DateShiftPolicy
@@ -194,7 +212,13 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
                 if (_dateShiftPolicyComboBox.SelectedValue == null) return null;
                 return _dateShiftPolicyComboBox.SelectedValue.ToString();
             }
-            set { _dateShiftPolicyComboBox.SelectedValue = value; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    _dateShiftPolicyComboBox.SelectedIndex = -1;
+                else
+                    _dateShiftPolicyComboBox.SelectedValue = value;
+            }
         }
 
         public string RoundingPolicy
@@ -204,7 +228,13 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
                 if (_roundingPolicyComboBox.SelectedValue == null) return null;
                 return _roundingPolicyComboBox.SelectedValue.ToString();
             }
-            set { _roundingPolicyComboBox.SelectedValue = value; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    _roundingPolicyComboBox.SelectedIndex = -1;
+                else
+                    _roundingPolicyComboBox.SelectedValue = value;
+            }
         }
 
         public decimal? AmountMin
@@ -268,7 +298,13 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
                 if (_currencyComboBox.SelectedValue == null) return null;
                 return (int?) _currencyComboBox.SelectedValue;
             }
-            set { _currencyComboBox.SelectedValue = value; }
+            set
+            {
+                if (value == null)
+                    _currencyComboBox.SelectedIndex = -1;
+                else 
+                    _currencyComboBox.SelectedValue = value;
+            }
         }
     }
 }

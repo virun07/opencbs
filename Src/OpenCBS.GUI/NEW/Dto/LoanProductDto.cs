@@ -17,14 +17,13 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
 using OpenCBS.GUI.NEW.Model;
 
 namespace OpenCBS.GUI.NEW.Dto
 {
     public class LoanProductDto : DataTransferObject
     {
-        public string Name { get; set; }
+        public string LoanProductName { get; set; }
         public string Code { get; set; }
         public AvailableFor AvailableFor { get; set; }
         public string PaymentFrequencyPolicy { get; set; }
@@ -34,10 +33,14 @@ namespace OpenCBS.GUI.NEW.Dto
         public string RoundingPolicy { get; set; }
         public int? CurrencyId { get; set; }
 
-        public Tuple<decimal?, decimal?> Amount { get; set; }
-        public Tuple<decimal?, decimal?> InterestRate { get; set; }
-        public Tuple<int?, int?> Maturity { get; set; }
-        public Tuple<int?, int?> GracePeriod { get; set; }
+        public decimal? AmountMin { get; set; }
+        public decimal? AmountMax { get; set; }
+        public decimal? InterestRateMin { get; set; }
+        public decimal? InterestRateMax { get; set; }
+        public int? MaturityMin { get; set; }
+        public int? MaturityMax { get; set; }
+        public int? GracePeriodMin { get; set; }
+        public int? GracePeriodMax { get; set; }
 
         public bool Deleted { get; set; }
     }
