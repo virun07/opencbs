@@ -32,7 +32,6 @@
             this._errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this._tabList = new Cyotek.Windows.Forms.TabList();
             this._generalTabListPage = new Cyotek.Windows.Forms.TabListPage();
-            this._scheduleTabListPage = new Cyotek.Windows.Forms.TabListPage();
             this._currencyComboBox = new System.Windows.Forms.ComboBox();
             this._currencyLabel = new System.Windows.Forms.Label();
             this._availableForCompanyCheckBox = new System.Windows.Forms.CheckBox();
@@ -44,6 +43,7 @@
             this._codeLabel = new System.Windows.Forms.Label();
             this._nameTextBox = new System.Windows.Forms.TextBox();
             this._nameLabel = new System.Windows.Forms.Label();
+            this._scheduleTabListPage = new Cyotek.Windows.Forms.TabListPage();
             this._chargeInterestDuringGracePeriodCheckBox = new System.Windows.Forms.CheckBox();
             this._gracePeriodRange = new OpenCBS.Controls.RangeControl();
             this._gracePeriodLabel = new System.Windows.Forms.Label();
@@ -107,6 +107,107 @@
             this._generalTabListPage.TabIndex = 0;
             this._generalTabListPage.Text = "General";
             // 
+            // _currencyComboBox
+            // 
+            this._currencyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._currencyComboBox.FormattingEnabled = true;
+            this._currencyComboBox.Location = new System.Drawing.Point(12, 114);
+            this._currencyComboBox.Name = "_currencyComboBox";
+            this._currencyComboBox.Size = new System.Drawing.Size(150, 21);
+            this._currencyComboBox.TabIndex = 6;
+            // 
+            // _currencyLabel
+            // 
+            this._currencyLabel.AutoSize = true;
+            this._currencyLabel.Location = new System.Drawing.Point(12, 96);
+            this._currencyLabel.Name = "_currencyLabel";
+            this._currencyLabel.Size = new System.Drawing.Size(49, 13);
+            this._currencyLabel.TabIndex = 5;
+            this._currencyLabel.Text = "Currency";
+            // 
+            // _availableForCompanyCheckBox
+            // 
+            this._availableForCompanyCheckBox.AutoSize = true;
+            this._availableForCompanyCheckBox.Location = new System.Drawing.Point(217, 81);
+            this._availableForCompanyCheckBox.Name = "_availableForCompanyCheckBox";
+            this._availableForCompanyCheckBox.Size = new System.Drawing.Size(70, 17);
+            this._availableForCompanyCheckBox.TabIndex = 11;
+            this._availableForCompanyCheckBox.Text = "Company";
+            this._availableForCompanyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // _availableForNsgCheckBox
+            // 
+            this._availableForNsgCheckBox.AutoSize = true;
+            this._availableForNsgCheckBox.Location = new System.Drawing.Point(217, 62);
+            this._availableForNsgCheckBox.Name = "_availableForNsgCheckBox";
+            this._availableForNsgCheckBox.Size = new System.Drawing.Size(119, 17);
+            this._availableForNsgCheckBox.TabIndex = 10;
+            this._availableForNsgCheckBox.Text = "Non-solidarity group";
+            this._availableForNsgCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // _availableForSgCheckBox
+            // 
+            this._availableForSgCheckBox.AutoSize = true;
+            this._availableForSgCheckBox.Location = new System.Drawing.Point(217, 43);
+            this._availableForSgCheckBox.Name = "_availableForSgCheckBox";
+            this._availableForSgCheckBox.Size = new System.Drawing.Size(98, 17);
+            this._availableForSgCheckBox.TabIndex = 9;
+            this._availableForSgCheckBox.Text = "Solidarity group";
+            this._availableForSgCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // _availableForIndividualCheckBox
+            // 
+            this._availableForIndividualCheckBox.AutoSize = true;
+            this._availableForIndividualCheckBox.Location = new System.Drawing.Point(217, 24);
+            this._availableForIndividualCheckBox.Name = "_availableForIndividualCheckBox";
+            this._availableForIndividualCheckBox.Size = new System.Drawing.Size(65, 17);
+            this._availableForIndividualCheckBox.TabIndex = 8;
+            this._availableForIndividualCheckBox.Text = "Individal";
+            this._availableForIndividualCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // _availableForLabel
+            // 
+            this._availableForLabel.AutoSize = true;
+            this._availableForLabel.Location = new System.Drawing.Point(214, 6);
+            this._availableForLabel.Name = "_availableForLabel";
+            this._availableForLabel.Size = new System.Drawing.Size(65, 13);
+            this._availableForLabel.TabIndex = 7;
+            this._availableForLabel.Text = "Available for";
+            // 
+            // _codeTextBox
+            // 
+            this._codeTextBox.Location = new System.Drawing.Point(12, 68);
+            this._codeTextBox.Name = "_codeTextBox";
+            this._codeTextBox.Size = new System.Drawing.Size(150, 20);
+            this._codeTextBox.TabIndex = 4;
+            this._codeTextBox.Tag = "Code";
+            // 
+            // _codeLabel
+            // 
+            this._codeLabel.AutoSize = true;
+            this._codeLabel.Location = new System.Drawing.Point(12, 52);
+            this._codeLabel.Name = "_codeLabel";
+            this._codeLabel.Size = new System.Drawing.Size(32, 13);
+            this._codeLabel.TabIndex = 3;
+            this._codeLabel.Text = "Code";
+            // 
+            // _nameTextBox
+            // 
+            this._nameTextBox.Location = new System.Drawing.Point(12, 22);
+            this._nameTextBox.Name = "_nameTextBox";
+            this._nameTextBox.Size = new System.Drawing.Size(150, 20);
+            this._nameTextBox.TabIndex = 2;
+            this._nameTextBox.Tag = "Name";
+            // 
+            // _nameLabel
+            // 
+            this._nameLabel.AutoSize = true;
+            this._nameLabel.Location = new System.Drawing.Point(12, 6);
+            this._nameLabel.Name = "_nameLabel";
+            this._nameLabel.Size = new System.Drawing.Size(35, 13);
+            this._nameLabel.TabIndex = 1;
+            this._nameLabel.Text = "Name";
+            // 
             // _scheduleTabListPage
             // 
             this._scheduleTabListPage.Controls.Add(this._chargeInterestDuringGracePeriodCheckBox);
@@ -133,107 +234,6 @@
             this._scheduleTabListPage.Size = new System.Drawing.Size(441, 288);
             this._scheduleTabListPage.TabIndex = 1;
             this._scheduleTabListPage.Text = "Schedule";
-            // 
-            // _currencyComboBox
-            // 
-            this._currencyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._currencyComboBox.FormattingEnabled = true;
-            this._currencyComboBox.Location = new System.Drawing.Point(142, 138);
-            this._currencyComboBox.Name = "_currencyComboBox";
-            this._currencyComboBox.Size = new System.Drawing.Size(202, 21);
-            this._currencyComboBox.TabIndex = 21;
-            // 
-            // _currencyLabel
-            // 
-            this._currencyLabel.AutoSize = true;
-            this._currencyLabel.Location = new System.Drawing.Point(12, 141);
-            this._currencyLabel.Name = "_currencyLabel";
-            this._currencyLabel.Size = new System.Drawing.Size(49, 13);
-            this._currencyLabel.TabIndex = 20;
-            this._currencyLabel.Text = "Currency";
-            // 
-            // _availableForCompanyCheckBox
-            // 
-            this._availableForCompanyCheckBox.AutoSize = true;
-            this._availableForCompanyCheckBox.Location = new System.Drawing.Point(144, 115);
-            this._availableForCompanyCheckBox.Name = "_availableForCompanyCheckBox";
-            this._availableForCompanyCheckBox.Size = new System.Drawing.Size(70, 17);
-            this._availableForCompanyCheckBox.TabIndex = 19;
-            this._availableForCompanyCheckBox.Text = "Company";
-            this._availableForCompanyCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // _availableForNsgCheckBox
-            // 
-            this._availableForNsgCheckBox.AutoSize = true;
-            this._availableForNsgCheckBox.Location = new System.Drawing.Point(144, 96);
-            this._availableForNsgCheckBox.Name = "_availableForNsgCheckBox";
-            this._availableForNsgCheckBox.Size = new System.Drawing.Size(119, 17);
-            this._availableForNsgCheckBox.TabIndex = 18;
-            this._availableForNsgCheckBox.Text = "Non-solidarity group";
-            this._availableForNsgCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // _availableForSgCheckBox
-            // 
-            this._availableForSgCheckBox.AutoSize = true;
-            this._availableForSgCheckBox.Location = new System.Drawing.Point(144, 77);
-            this._availableForSgCheckBox.Name = "_availableForSgCheckBox";
-            this._availableForSgCheckBox.Size = new System.Drawing.Size(98, 17);
-            this._availableForSgCheckBox.TabIndex = 17;
-            this._availableForSgCheckBox.Text = "Solidarity group";
-            this._availableForSgCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // _availableForIndividualCheckBox
-            // 
-            this._availableForIndividualCheckBox.AutoSize = true;
-            this._availableForIndividualCheckBox.Location = new System.Drawing.Point(144, 58);
-            this._availableForIndividualCheckBox.Name = "_availableForIndividualCheckBox";
-            this._availableForIndividualCheckBox.Size = new System.Drawing.Size(65, 17);
-            this._availableForIndividualCheckBox.TabIndex = 16;
-            this._availableForIndividualCheckBox.Text = "Individal";
-            this._availableForIndividualCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // _availableForLabel
-            // 
-            this._availableForLabel.AutoSize = true;
-            this._availableForLabel.Location = new System.Drawing.Point(12, 59);
-            this._availableForLabel.Name = "_availableForLabel";
-            this._availableForLabel.Size = new System.Drawing.Size(65, 13);
-            this._availableForLabel.TabIndex = 15;
-            this._availableForLabel.Text = "Available for";
-            // 
-            // _codeTextBox
-            // 
-            this._codeTextBox.Location = new System.Drawing.Point(144, 29);
-            this._codeTextBox.Name = "_codeTextBox";
-            this._codeTextBox.Size = new System.Drawing.Size(200, 20);
-            this._codeTextBox.TabIndex = 14;
-            this._codeTextBox.Tag = "Code";
-            // 
-            // _codeLabel
-            // 
-            this._codeLabel.AutoSize = true;
-            this._codeLabel.Location = new System.Drawing.Point(12, 32);
-            this._codeLabel.Name = "_codeLabel";
-            this._codeLabel.Size = new System.Drawing.Size(32, 13);
-            this._codeLabel.TabIndex = 13;
-            this._codeLabel.Text = "Code";
-            // 
-            // _nameTextBox
-            // 
-            this._nameTextBox.Location = new System.Drawing.Point(144, 3);
-            this._nameTextBox.Name = "_nameTextBox";
-            this._nameTextBox.Size = new System.Drawing.Size(200, 20);
-            this._nameTextBox.TabIndex = 12;
-            this._nameTextBox.Tag = "Name";
-            // 
-            // _nameLabel
-            // 
-            this._nameLabel.AutoSize = true;
-            this._nameLabel.Location = new System.Drawing.Point(12, 6);
-            this._nameLabel.Name = "_nameLabel";
-            this._nameLabel.Size = new System.Drawing.Size(35, 13);
-            this._nameLabel.TabIndex = 11;
-            this._nameLabel.Text = "Name";
             // 
             // _chargeInterestDuringGracePeriodCheckBox
             // 
