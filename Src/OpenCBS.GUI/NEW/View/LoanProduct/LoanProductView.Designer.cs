@@ -34,7 +34,7 @@
             this._captionLabel = new System.Windows.Forms.Label();
             this._sidebarPanel = new System.Windows.Forms.Panel();
             this._captionPanel = new System.Windows.Forms.Panel();
-            this._buttonsPanel = new OpenCBS.GUI.NEW.View.LoanProduct.TopEdgePanel();
+            this._buttonsPanel = new TopEdgePanel();
             this._cancelButton = new System.Windows.Forms.Button();
             this._okButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();

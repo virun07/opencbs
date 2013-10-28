@@ -17,7 +17,6 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -57,17 +56,6 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
 
         public void Run()
         {
-            //            _nameTextBox.TextChanged += ClearError;
-            //            _codeTextBox.TextChanged += ClearError;
-            //            _schedulePolicyComboBox.SelectedIndexChanged += ClearError;
-            //            _paymentFrequencyComboBox.SelectedIndexChanged += ClearError;
-            //            _yearPolicyComboBox.SelectedIndexChanged += ClearError;
-            //            _dateShiftPolicyComboBox.SelectedIndexChanged += ClearError;
-            //            _roundingPolicyComboBox.SelectedIndexChanged += ClearError;
-            //            _amountRange.MinMaxChanged += ClearError;
-            //            _interestRateRange.MinMaxChanged += ClearError;
-            //            _maturityRange.MinMaxChanged += ClearError;
-            //            _gracePeriodRange.MinMaxChanged += ClearError;
             InitPages();
             ShowDialog();
         }
@@ -85,6 +73,10 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
             var earlyFeeNode = new TreeNode("Early fee") { Tag = _earlyFeePage };
             _pageTreeView.Nodes.Add(earlyFeeNode);
             var lineOfCreditNode = new TreeNode("Line of Credit") { Tag = _lineOfCreditPage };
+
+            _generalPage.ClearErrorCallback =
+            _schedulePage.ClearErrorCallback = control => _errorProvider.SetError(control, null);
+
             _pageTreeView.Nodes.Add(lineOfCreditNode);
             _pageTreeView.AfterSelect += (sender, e) => ChangePage();
             _pageTreeView.SelectedNode = generalNode;
@@ -112,13 +104,6 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
                 return;
             }
             page.Visible = true;
-        }
-
-        private void ClearError(object sender, EventArgs e)
-        {
-            var control = sender as Control;
-            if (control == null) return;
-            _errorProvider.SetError(control, null);
         }
 
         public void Attach(ILoanProductPresenterCallbacks presenterCallbacks)

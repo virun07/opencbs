@@ -20,7 +20,7 @@
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-namespace OpenCBS.GUI.NEW.View.LoanProduct
+namespace OpenCBS.GUI.NEW.View
 {
     public class TopEdgePanel : Panel
     {

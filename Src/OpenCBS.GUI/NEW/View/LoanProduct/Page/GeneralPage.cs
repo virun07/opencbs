@@ -21,11 +21,12 @@ using OpenCBS.GUI.NEW.Model;
 
 namespace OpenCBS.GUI.NEW.View.LoanProduct.Page
 {
-    public partial class GeneralPage : System.Windows.Forms.UserControl
+    public partial class GeneralPage : ErrorProviderAwareControl
     {
         public GeneralPage()
         {
             InitializeComponent();
+            Setup();
         }
 
         public string LoanProductName
@@ -59,6 +60,12 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct.Page
                 _availableForNsgCheckBox.Checked = (value & AvailableFor.NonSolidarityGroup) == AvailableFor.NonSolidarityGroup;
                 _availableForCompanyCheckBox.Checked = (value & AvailableFor.Company) == AvailableFor.Company;
             }
+        }
+
+        private void Setup()
+        {
+            _nameTextBox.TextChanged += (sender, e) => ClearError(_nameTextBox);
+            _codeTextBox.TextChanged += (sender, e) => ClearError(_codeTextBox);
         }
     }
 }

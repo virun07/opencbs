@@ -756,6 +756,9 @@
     <Compile Include="NEW\Validator\IValidator.cs" />
     <Compile Include="NEW\Validator\LoanProductValidator.cs" />
     <Compile Include="NEW\Validator\Validator.cs" />
+    <Compile Include="NEW\View\ErrorProviderAwareControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="NEW\View\LoanProduct\Page\EarlyFeePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -808,7 +811,7 @@
     <Compile Include="NEW\View\LoanProduct\Page\SchedulePage.Designer.cs">
       <DependentUpon>SchedulePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="NEW\View\LoanProduct\TopEdgePanel.cs">
+    <Compile Include="NEW\View\TopEdgePanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="NEW\View\ViewExtensions.cs" />

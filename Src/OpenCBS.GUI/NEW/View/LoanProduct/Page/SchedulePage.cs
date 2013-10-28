@@ -23,11 +23,12 @@ using System.Windows.Forms;
 
 namespace OpenCBS.GUI.NEW.View.LoanProduct.Page
 {
-    public partial class SchedulePage : System.Windows.Forms.UserControl
+    public partial class SchedulePage : ErrorProviderAwareControl
     {
         public SchedulePage()
         {
             InitializeComponent();
+            Setup();
         }
 
         private static void ShowPolicies(ComboBox comboBox, IEnumerable<string> policies)
@@ -166,6 +167,19 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct.Page
         {
             get { return _chargeInterestDuringGracePeriodCheckBox.Checked; }
             set { _chargeInterestDuringGracePeriodCheckBox.Checked = value; }
+        }
+
+        private void Setup()
+        {
+            _schedulePolicyComboBox.SelectedIndexChanged += (sender, e) => ClearError(_schedulePolicyComboBox);
+            _paymentFrequencyPolicyComboBox.SelectedIndexChanged += (sender, e) => ClearError(_paymentFrequencyPolicyComboBox);
+            _yearPolicyComboBox.SelectedIndexChanged += (sender, e) => ClearError(_yearPolicyComboBox);
+            _dateShiftPolicyComboBox.SelectedIndexChanged += (sender, e) => ClearError(_dateShiftPolicyComboBox);
+            _roundingPolicyComboBox.SelectedIndexChanged += (sender, e) => ClearError(_roundingPolicyComboBox);
+            _amountRange.MinMaxChanged += (sender, e) => ClearError(_amountRange);
+            _interestRateRange.MinMaxChanged += (sender, e) => ClearError(_interestRateRange);
+            _maturityRange.MinMaxChanged += (sender, e) => ClearError(_maturityRange);
+            _gracePeriodRange.MinMaxChanged += (sender, e) => ClearError(_gracePeriodRange);
         }
     }
 }
