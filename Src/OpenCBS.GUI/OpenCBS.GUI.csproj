@@ -759,27 +759,6 @@
     <Compile Include="NEW\Validator\IValidator.cs" />
     <Compile Include="NEW\Validator\LoanProductValidator.cs" />
     <Compile Include="NEW\Validator\Validator.cs" />
-    <Compile Include="NEW\View\ErrorProviderAwareControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NEW\View\LoanProduct\Page\EarlyFeePage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NEW\View\LoanProduct\Page\EarlyFeePage.Designer.cs">
-      <DependentUpon>EarlyFeePage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NEW\View\LoanProduct\Page\EntryFeePage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NEW\View\LoanProduct\Page\EntryFeePage.Designer.cs">
-      <DependentUpon>EntryFeePage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NEW\View\LoanProduct\Page\GeneralPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NEW\View\LoanProduct\Page\GeneralPage.Designer.cs">
-      <DependentUpon>GeneralPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="NEW\View\LoanProduct\ILoanProductsView.cs" />
     <Compile Include="NEW\View\LoanProduct\ILoanProductView.cs" />
     <Compile Include="NEW\View\IMainView.cs" />
@@ -795,24 +774,6 @@
     </Compile>
     <Compile Include="NEW\View\LoanProduct\LoanProductView.Designer.cs">
       <DependentUpon>LoanProductView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NEW\View\LoanProduct\Page\LateFeePage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NEW\View\LoanProduct\Page\LateFeePage.Designer.cs">
-      <DependentUpon>LateFeePage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NEW\View\LoanProduct\Page\LineOfCreditPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NEW\View\LoanProduct\Page\LineOfCreditPage.Designer.cs">
-      <DependentUpon>LineOfCreditPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NEW\View\LoanProduct\Page\SchedulePage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NEW\View\LoanProduct\Page\SchedulePage.Designer.cs">
-      <DependentUpon>SchedulePage.cs</DependentUpon>
     </Compile>
     <Compile Include="NEW\View\TopEdgePanel.cs">
       <SubType>Component</SubType>
@@ -2423,12 +2384,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NEW\View\LoanProduct\LoanProductView.resx">
       <DependentUpon>LoanProductView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NEW\View\LoanProduct\Page\GeneralPage.resx">
-      <DependentUpon>GeneralPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NEW\View\LoanProduct\Page\SchedulePage.resx">
-      <DependentUpon>SchedulePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\FrmAddCollateralProduct.fr.resx">
       <DependentUpon>FrmAddCollateralProduct.cs</DependentUpon>
