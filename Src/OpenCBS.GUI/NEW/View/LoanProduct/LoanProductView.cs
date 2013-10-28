@@ -19,91 +19,25 @@
 
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using OpenCBS.GUI.NEW.Dto;
 using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Presenter;
-using OpenCBS.GUI.NEW.View.LoanProduct.Page;
 
 namespace OpenCBS.GUI.NEW.View.LoanProduct
 {
     public partial class LoanProductView : Form, ILoanProductView
     {
-        private readonly GeneralPage _generalPage;
-        private readonly SchedulePage _schedulePage;
-        private readonly EntryFeePage _entryFeePage;
-        private readonly LateFeePage _lateFeePage;
-        private readonly EarlyFeePage _earlyFeePage;
-        private readonly LineOfCreditPage _lineOfCreditPage;
-
         public LoanProductView()
         {
             Font = SystemFonts.MessageBoxFont;
-            _generalPage = new GeneralPage { Dock = DockStyle.Fill, Visible = false };
-            _schedulePage = new SchedulePage { Dock = DockStyle.Fill, Visible = false };
-            _entryFeePage = new EntryFeePage { Dock = DockStyle.Fill, Visible = false };
-            _lateFeePage = new LateFeePage { Dock = DockStyle.Fill, Visible = false };
-            _earlyFeePage = new EarlyFeePage { Dock = DockStyle.Fill, Visible = false };
-            _lineOfCreditPage = new LineOfCreditPage { Dock = DockStyle.Fill, Visible = false };
-            Controls.Add(_generalPage);
-            Controls.Add(_schedulePage);
-            Controls.Add(_entryFeePage);
-            Controls.Add(_lateFeePage);
-            Controls.Add(_earlyFeePage);
-            Controls.Add(_lineOfCreditPage);
             InitializeComponent();
         }
 
         public void Run()
         {
-            InitPages();
             ShowDialog();
-        }
-
-        private void InitPages()
-        {
-            var generalNode = new TreeNode("General") { Tag = _generalPage };
-            _pageTreeView.Nodes.Add(generalNode);
-            var scheduleNode = new TreeNode("Schedule") { Tag = _schedulePage };
-            _pageTreeView.Nodes.Add(scheduleNode);
-            var entryFeeNode = new TreeNode("Entry fee") { Tag = _entryFeePage };
-            _pageTreeView.Nodes.Add(entryFeeNode);
-            var lateFeeNode = new TreeNode("Late fee") { Tag = _lateFeePage };
-            _pageTreeView.Nodes.Add(lateFeeNode);
-            var earlyFeeNode = new TreeNode("Early fee") { Tag = _earlyFeePage };
-            _pageTreeView.Nodes.Add(earlyFeeNode);
-            var lineOfCreditNode = new TreeNode("Line of Credit") { Tag = _lineOfCreditPage };
-
-            _generalPage.ClearErrorCallback =
-            _schedulePage.ClearErrorCallback = control => _errorProvider.SetError(control, null);
-
-            _pageTreeView.Nodes.Add(lineOfCreditNode);
-            _pageTreeView.AfterSelect += (sender, e) => ChangePage();
-            _pageTreeView.SelectedNode = generalNode;
-        }
-
-        private void ChangePage()
-        {
-            _generalPage.Visible = false;
-            _schedulePage.Visible = false;
-            _entryFeePage.Visible = false;
-            _lateFeePage.Visible = false;
-            _earlyFeePage.Visible = false;
-            _lineOfCreditPage.Visible = false;
-            var selectedNode = _pageTreeView.SelectedNode;
-            if (selectedNode == null)
-            {
-                _generalPage.Visible = true;
-                return;
-            }
-            _captionLabel.Text = selectedNode.Text;
-            var page = selectedNode.Tag as System.Windows.Forms.UserControl;
-            if (page == null)
-            {
-                _generalPage.Visible = true;
-                return;
-            }
-            page.Visible = true;
         }
 
         public void Attach(ILoanProductPresenterCallbacks presenterCallbacks)
@@ -117,29 +51,38 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
             Close();
         }
 
+        private static void ShowPolicies(ComboBox comboBox, IEnumerable<string> policies)
+        {
+            var dict = policies.ToDictionary(policy => policy);
+            comboBox.DisplayMember = "Value";
+            comboBox.ValueMember = "Key";
+            comboBox.DataSource = new BindingSource(dict, null);
+            comboBox.SelectedIndex = -1;
+        }
+
         public void ShowPaymentFrequencyPolicies(IEnumerable<string> paymentFrequencyPolicies)
         {
-            _schedulePage.ShowPaymentFrequencyPolicies(paymentFrequencyPolicies);
+            ShowPolicies(_paymentFrequencyPolicyComboBox, paymentFrequencyPolicies);
         }
 
         public void ShowSchedulePolicies(IEnumerable<string> schedulePolicies)
         {
-            _schedulePage.ShowSchedulePolicies(schedulePolicies);
+            ShowPolicies(_schedulePolicyComboBox, schedulePolicies);
         }
 
         public void ShowYearPolicies(IEnumerable<string> yearPolicies)
         {
-            _schedulePage.ShowYearPolicies(yearPolicies);
+            ShowPolicies(_yearPolicyComboBox, yearPolicies);
         }
 
         public void ShowDateShiftPolicies(IEnumerable<string> dateShiftPolicies)
         {
-            _schedulePage.ShowDateShiftPolicies(dateShiftPolicies);
+            ShowPolicies(_dateShiftPolicyComboBox, dateShiftPolicies);
         }
 
         public void ShowRoundingPolicies(IEnumerable<string> roundingPolicies)
         {
-            _schedulePage.ShowRoundingPolicies(roundingPolicies);
+            ShowPolicies(_roundingPolicyComboBox, roundingPolicies);
         }
 
         public void ShowNotification(Notification notification)
@@ -149,104 +92,139 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
 
         public string LoanProductName
         {
-            get { return _generalPage.LoanProductName; }
-            set { _generalPage.LoanProductName = value; }
+            get { return _nameTextBox.Text; }
+            set { _nameTextBox.Text = value; }
         }
 
         public string Code
         {
-            get { return _generalPage.Code; }
-            set { _generalPage.Code = value; }
+            get { return _codeTextBox.Text; }
+            set { _codeTextBox.Text = value; }
         }
 
         public AvailableFor AvailableFor
         {
-            get { return _generalPage.AvailableFor; }
-            set { _generalPage.AvailableFor = value; }
+            get
+            {
+                var result = AvailableFor.None;
+                if (_availableForIndividualCheckBox.Checked) result |= AvailableFor.Individual;
+                if (_availableForSgCheckBox.Checked) result |= AvailableFor.SolidarityGroup;
+                if (_availableForNsgCheckBox.Checked) result |= AvailableFor.NonSolidarityGroup;
+                if (_availableForCompanyCheckBox.Checked) result |= AvailableFor.Company;
+                return result;
+            }
+
+            set
+            {
+                _availableForIndividualCheckBox.Checked = (value & AvailableFor.Individual) == AvailableFor.Individual;
+                _availableForSgCheckBox.Checked = (value & AvailableFor.SolidarityGroup) == AvailableFor.SolidarityGroup;
+                _availableForNsgCheckBox.Checked = (value & AvailableFor.NonSolidarityGroup) == AvailableFor.NonSolidarityGroup;
+                _availableForCompanyCheckBox.Checked = (value & AvailableFor.Company) == AvailableFor.Company;
+            }
         }
 
         public string PaymentFrequencyPolicy
         {
-            get { return _schedulePage.PaymentFrequencyPolicy; }
-            set { _schedulePage.PaymentFrequencyPolicy = value; }
+            get
+            {
+                if (_paymentFrequencyPolicyComboBox.SelectedValue == null) return null;
+                return _paymentFrequencyPolicyComboBox.SelectedValue.ToString();
+            }
+            set { _paymentFrequencyPolicyComboBox.SelectedValue = value; }
         }
 
         public string SchedulePolicy
         {
-            get { return _schedulePage.SchedulePolicy; }
-            set { _schedulePage.SchedulePolicy = value; }
+            get
+            {
+                if (_schedulePolicyComboBox.SelectedValue == null) return null;
+                return _schedulePolicyComboBox.SelectedValue.ToString();
+            }
+            set { _schedulePolicyComboBox.SelectedValue = value; }
         }
 
         public string YearPolicy
         {
-            get { return _schedulePage.YearPolicy; }
-            set { _schedulePage.YearPolicy = value; }
+            get
+            {
+                if (_yearPolicyComboBox.SelectedValue == null) return null;
+                return _yearPolicyComboBox.SelectedValue.ToString();
+            }
+            set { _yearPolicyComboBox.SelectedValue = value; }
         }
 
         public string DateShiftPolicy
         {
-            get { return _schedulePage.DateShiftPolicy; }
-            set { _schedulePage.DateShiftPolicy = value; }
+            get
+            {
+                if (_dateShiftPolicyComboBox.SelectedValue == null) return null;
+                return _dateShiftPolicyComboBox.SelectedValue.ToString();
+            }
+            set { _dateShiftPolicyComboBox.SelectedValue = value; }
         }
 
         public string RoundingPolicy
         {
-            get { return _schedulePage.RoundingPolicy; }
-            set { _schedulePage.RoundingPolicy = value; }
+            get
+            {
+                if (_roundingPolicyComboBox.SelectedValue == null) return null;
+                return _roundingPolicyComboBox.SelectedValue.ToString();
+            }
+            set { _roundingPolicyComboBox.SelectedValue = value; }
         }
 
         public decimal? AmountMin
         {
-            get { return _schedulePage.AmountMin; }
-            set { _schedulePage.AmountMin = value; }
+            get { return _amountRange.Min; }
+            set { _amountRange.Min = value; }
         }
 
         public decimal? AmountMax
         {
-            get { return _schedulePage.AmountMax; }
-            set { _schedulePage.AmountMax = value; }
+            get { return _amountRange.Max; }
+            set { _amountRange.Max = value; }
         }
 
         public decimal? InterestRateMin
         {
-            get { return _schedulePage.InterestRateMin; }
-            set { _schedulePage.InterestRateMin = value; }
+            get { return _interestRateRange.Min; }
+            set { _interestRateRange.Min = value; }
         }
 
         public decimal? InterestRateMax
         {
-            get { return _schedulePage.InterestRateMax; }
-            set { _schedulePage.InterestRateMax = value; }
+            get { return _interestRateRange.Max; }
+            set { _interestRateRange.Max = value; }
         }
 
         public int? MaturityMin
         {
-            get { return _schedulePage.MaturityMin; }
-            set { _schedulePage.MaturityMin = value; }
+            get { return (int?) _maturityRange.Min; }
+            set { _maturityRange.Min = value; }
         }
 
         public int? MaturityMax
         {
-            get { return _schedulePage.MaturityMax; }
-            set { _schedulePage.MaturityMax = value; }
+            get { return (int?) _maturityRange.Max; }
+            set { _maturityRange.Max = value; }
         }
 
         public int? GracePeriodMin
         {
-            get { return _schedulePage.GracePeriodMin; }
-            set { _schedulePage.GracePeriodMin = value; }
+            get { return (int?) _gracePeriodRange.Min; }
+            set { _gracePeriodRange.Min = value; }
         }
 
         public int? GracePeriodMax
         {
-            get { return _schedulePage.GracePeriodMax; }
-            set { _schedulePage.GracePeriodMax = value; }
+            get { return (int?) _gracePeriodRange.Max; }
+            set { _gracePeriodRange.Max = value; }
         }
 
         public bool ChargeInterestDuringGracePeriod
         {
-            get { return _schedulePage.ChargeInterestDuringGracePeriod; }
-            set { _schedulePage.ChargeInterestDuringGracePeriod = value; }
+            get { return _chargeInterestDuringGracePeriodCheckBox.Checked; }
+            set { _chargeInterestDuringGracePeriodCheckBox.Checked = value; }
         }
     }
 }

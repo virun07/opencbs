@@ -176,6 +176,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\CrystalDecisions.Windows.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="Cyotek.Windows.Forms.TabList">
+      <HintPath>..\packages\CyotekTabList.1.0.1.0\lib\net35\Cyotek.Windows.Forms.TabList.dll</HintPath>
+    </Reference>
     <Reference Include="Dapper">
       <HintPath>..\packages\Dapper.1.13\lib\net40\Dapper.dll</HintPath>
     </Reference>
