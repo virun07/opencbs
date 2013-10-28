@@ -46,7 +46,10 @@ namespace OpenCBS.GUI.NEW.Presenter
             _view.ShowDateShiftPolicies(data.DateShiftPolicies);
             _view.ShowRoundingPolicies(data.RoundingPolicies);
             _view.ShowCurrencies(data.Currencies);
+            
             _view.InjectFrom(loanProduct ?? new LoanProductDto());
+            _view.LoanProductName = loanProduct != null ? loanProduct.Name : string.Empty;
+            
             _view.Run();
 
             if (_commandResult != CommandResult.Ok)
@@ -85,7 +88,7 @@ namespace OpenCBS.GUI.NEW.Presenter
 
         private LoanProductDto GetLoanProduct()
         {
-            var result = new LoanProductDto { LoanProductName = _view.LoanProductName };
+            var result = new LoanProductDto { Name = _view.LoanProductName };
             result.InjectFrom(_view);
             return result;
         }

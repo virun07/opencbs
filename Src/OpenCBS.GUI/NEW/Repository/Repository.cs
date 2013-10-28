@@ -19,6 +19,7 @@
 
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using Dapper;
 using DapperExtensions;
 using OpenCBS.GUI.NEW.Model;
@@ -39,20 +40,20 @@ namespace OpenCBS.GUI.NEW.Repository
             return _connectionProvider.GetConnection();
         }
 
-        public virtual IEnumerable<T> FindAll()
+        public virtual IList<T> FindAll()
         {
             using (var connection = GetConnection())
             {
-                return connection.GetList<T>();
+                return connection.GetList<T>().ToList();
             }
         }
 
-        public virtual IEnumerable<T> FindNonDeleted()
+        public virtual IList<T> FindNonDeleted()
         {
             using (var connection = GetConnection())
             {
                 var predicate = Predicates.Field<T>(t => t.Deleted, Operator.Eq, false);
-                return connection.GetList<T>(predicate);
+                return connection.GetList<T>(predicate).ToList();
             }
         }
 
@@ -80,14 +81,14 @@ namespace OpenCBS.GUI.NEW.Repository
             }
         }
 
-        public virtual void Remove(T entity)
+        public virtual void Remove(int id)
         {
             using (var connection = GetConnection())
             {
                 var tableName = typeof(T).Name;
                 if (tableName.EndsWith("Dto"))
                     tableName = tableName.Substring(0, tableName.Length - 3);
-                connection.Execute("UPDATE " + tableName + " SET Deleted = 1 WHERE Id = @Id", new { entity.Id });
+                connection.Execute("UPDATE " + tableName + " SET Deleted = 1 WHERE Id = @Id", new { Id = id });
             }
         }
     }

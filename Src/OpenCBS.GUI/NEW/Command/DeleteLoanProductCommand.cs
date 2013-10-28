@@ -37,8 +37,8 @@ namespace OpenCBS.GUI.NEW.Command
 
         public void Execute(DeleteLoanProductData commandData)
         {
-            _loanProductService.Remove(commandData.LoanProduct);
-            _appController.Raise(new LoanProductDeletedEvent { LoanProduct = commandData.LoanProduct });
+            _loanProductService.Remove(commandData.Id);
+            _appController.Raise(new LoanProductDeletedEvent { Id = commandData.Id });
         }
     }
 }

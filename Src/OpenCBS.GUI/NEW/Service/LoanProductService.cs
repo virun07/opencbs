@@ -19,8 +19,9 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Omu.ValueInjecter;
 using OpenCBS.GUI.NEW.Dto;
-using OpenCBS.GUI.NEW.Mapper;
+using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Repository;
 using OpenCBS.GUI.NEW.Validator;
 
@@ -30,46 +31,54 @@ namespace OpenCBS.GUI.NEW.Service
     {
         private readonly ILoanProductRepository _repository;
         private readonly IPolicyRepository _policyRepository;
-        private readonly ILoanProductMapper _mapper;
         private readonly ILoanProductValidator _validator;
 
         public LoanProductService(ILoanProductRepository repository, 
             IPolicyRepository policyRepository,
-            ILoanProductMapper mapper, 
             ILoanProductValidator validator)
         {
             _repository = repository;
             _policyRepository = policyRepository;
-            _mapper = mapper;
             _validator = validator;
         }
 
-        public IEnumerable<LoanProductDto> FindAll()
+        public IList<LoanProductDto> FindAll()
         {
-            return _repository.FindAll().Select(lp => _mapper.Map(lp));
+            return _repository.FindAll().Select(loanProduct =>
+            {
+                var loanProductDto = new LoanProductDto();
+                loanProductDto.InjectFrom(loanProduct);
+                return loanProductDto;
+            }).ToList();
         }
 
-        public IEnumerable<LoanProductDto> FindNonDeleted()
+        public IList<LoanProductDto> FindNonDeleted()
         {
-            return _repository.FindNonDeleted().Select(lp => _mapper.Map(lp));
+            return _repository.FindNonDeleted().Select(loanProduct =>
+            {
+                var loanProductDto = new LoanProductDto();
+                loanProductDto.InjectFrom(loanProduct);
+                return loanProductDto;
+            }).ToList();
         }
 
         public void Add(LoanProductDto loanProductDto)
         {
-            var loanProduct = _mapper.Map(loanProductDto);
+            var loanProduct = new LoanProduct();
+            loanProduct.InjectFrom(loanProductDto);
             _repository.Add(loanProduct);
         }
 
         public void Update(LoanProductDto loanProductDto)
         {
-            var loanProduct = _mapper.Map(loanProductDto);
+            var loanProduct = _repository.FindById(loanProductDto.Id);
+            loanProduct.InjectFrom(loanProductDto);
             _repository.Update(loanProduct);
         }
 
-        public void Remove(LoanProductDto loanProductDto)
+        public void Remove(int id)
         {
-            var loanProduct = _mapper.Map(loanProductDto);
-            _repository.Remove(loanProduct);
+            _repository.Remove(id);
         }
 
         public void Validate(LoanProductDto loanProductDto)

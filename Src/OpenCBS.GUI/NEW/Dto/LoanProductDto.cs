@@ -23,7 +23,7 @@ namespace OpenCBS.GUI.NEW.Dto
 {
     public class LoanProductDto : DataTransferObject
     {
-        public string LoanProductName { get; set; }
+        public string Name { get; set; }
         public string Code { get; set; }
         public AvailableFor AvailableFor { get; set; }
         public string PaymentFrequencyPolicy { get; set; }

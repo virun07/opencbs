@@ -17,12 +17,10 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.NEW.Dto;
-
 namespace OpenCBS.GUI.NEW.Event
 {
     public class LoanProductDeletedEvent
     {
-        public LoanProductDto LoanProduct { get; set; }
+        public int Id { get; set; }
     }
 }

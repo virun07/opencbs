@@ -24,12 +24,12 @@ namespace OpenCBS.GUI.NEW.Service
 {
     public interface ILoanProductService
     {
-        IEnumerable<LoanProductDto> FindAll();
-        IEnumerable<LoanProductDto> FindNonDeleted();
+        IList<LoanProductDto> FindAll();
+        IList<LoanProductDto> FindNonDeleted();
         void Validate(LoanProductDto loanProductDto);
         void Add(LoanProductDto loanProductDto);
         void Update(LoanProductDto loanProductDto);
-        void Remove(LoanProductDto loanProductDto);
+        void Remove(int id);
         LoanProductReferenceDataDto GetReferenceData();
     }
 }

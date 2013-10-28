@@ -31,24 +31,24 @@ namespace OpenCBS.GUI.NEW.Repository
         {
         }
 
-        public override IEnumerable<LoanProduct> FindAll()
+        public override IList<LoanProduct> FindAll()
         {
             using (var connection = GetConnection())
             {
                 var rows = connection.GetList<LoanProductRow>();
                 var mapper = new LoanProductMapper();
-                return rows.Select(mapper.Map);
+                return rows.Select(mapper.Map).ToList();
             }
         }
 
-        public override IEnumerable<LoanProduct> FindNonDeleted()
+        public override IList<LoanProduct> FindNonDeleted()
         {
             using (var connection = GetConnection())
             {
                 var predicate = Predicates.Field<LoanProductRow>(t => t.Deleted, Operator.Eq, false);
                 var rows = connection.GetList<LoanProductRow>(predicate);
                 var mapper = new LoanProductMapper();
-                return rows.Select(mapper.Map);
+                return rows.Select(mapper.Map).ToList();
             }
         }
     }
