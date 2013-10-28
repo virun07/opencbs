@@ -717,6 +717,7 @@
     <Compile Include="NEW\Dto\DataTransferObject.cs" />
     <Compile Include="NEW\Dto\Error.cs" />
     <Compile Include="NEW\Dto\LoanProductDto.cs" />
+    <Compile Include="NEW\Dto\LoanProductReferenceDataDto.cs" />
     <Compile Include="NEW\Dto\Notification.cs" />
     <Compile Include="NEW\EventAggregatorInterceptor.cs" />
     <Compile Include="NEW\EventAggregator\EventPublisher.cs" />

@@ -76,6 +76,7 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
             _interestRateRange.MinMaxChanged += ClearError;
             _maturityRange.MinMaxChanged += ClearError;
             _gracePeriodRange.MinMaxChanged += ClearError;
+            _currencyComboBox.SelectedIndexChanged += ClearError;
         }
 
         private void ClearError(object sender, EventArgs e)
@@ -85,29 +86,37 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
             _errorProvider.SetError(control, null);
         }
 
-        public void ShowPaymentFrequencyPolicies(IEnumerable<string> paymentFrequencyPolicies)
+        public void ShowPaymentFrequencyPolicies(IList<string> paymentFrequencyPolicies)
         {
             ShowPolicies(_paymentFrequencyPolicyComboBox, paymentFrequencyPolicies);
         }
 
-        public void ShowSchedulePolicies(IEnumerable<string> schedulePolicies)
+        public void ShowSchedulePolicies(IList<string> schedulePolicies)
         {
             ShowPolicies(_schedulePolicyComboBox, schedulePolicies);
         }
 
-        public void ShowYearPolicies(IEnumerable<string> yearPolicies)
+        public void ShowYearPolicies(IList<string> yearPolicies)
         {
             ShowPolicies(_yearPolicyComboBox, yearPolicies);
         }
 
-        public void ShowDateShiftPolicies(IEnumerable<string> dateShiftPolicies)
+        public void ShowDateShiftPolicies(IList<string> dateShiftPolicies)
         {
             ShowPolicies(_dateShiftPolicyComboBox, dateShiftPolicies);
         }
 
-        public void ShowRoundingPolicies(IEnumerable<string> roundingPolicies)
+        public void ShowRoundingPolicies(IList<string> roundingPolicies)
         {
             ShowPolicies(_roundingPolicyComboBox, roundingPolicies);
+        }
+
+        public void ShowCurrencies(Dictionary<int, string> currencies)
+        {
+            _currencyComboBox.DisplayMember = "Value";
+            _currencyComboBox.ValueMember = "Key";
+            _currencyComboBox.DataSource = new BindingSource(currencies, null);
+            _currencyComboBox.SelectedIndex = -1;
         }
 
         public void ShowNotification(Notification notification)
@@ -250,6 +259,16 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
         {
             get { return _chargeInterestDuringGracePeriodCheckBox.Checked; }
             set { _chargeInterestDuringGracePeriodCheckBox.Checked = value; }
+        }
+
+        public int? CurrencyId
+        {
+            get
+            {
+                if (_currencyComboBox.SelectedValue == null) return null;
+                return (int?) _currencyComboBox.SelectedValue;
+            }
+            set { _currencyComboBox.SelectedValue = value; }
         }
     }
 }

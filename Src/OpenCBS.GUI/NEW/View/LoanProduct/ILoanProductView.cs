@@ -28,11 +28,12 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
     {
         void Run();
         void Stop();
-        void ShowPaymentFrequencyPolicies(IEnumerable<string> paymentFrequencyPolicies);
-        void ShowSchedulePolicies(IEnumerable<string> schedulePolicies);
-        void ShowYearPolicies(IEnumerable<string> yearPolicies);
-        void ShowDateShiftPolicies(IEnumerable<string> dateShiftPolicies);
-        void ShowRoundingPolicies(IEnumerable<string> roundingPolicies);
+        void ShowPaymentFrequencyPolicies(IList<string> paymentFrequencyPolicies);
+        void ShowSchedulePolicies(IList<string> schedulePolicies);
+        void ShowYearPolicies(IList<string> yearPolicies);
+        void ShowDateShiftPolicies(IList<string> dateShiftPolicies);
+        void ShowRoundingPolicies(IList<string> roundingPolicies);
+        void ShowCurrencies(Dictionary<int, string> currencies);
         void ShowNotification(Notification notification);
 
         string LoanProductName { get; set; }

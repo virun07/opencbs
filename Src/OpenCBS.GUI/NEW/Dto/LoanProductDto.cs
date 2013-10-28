@@ -32,6 +32,7 @@ namespace OpenCBS.GUI.NEW.Dto
         public string YearPolicy { get; set; }
         public string DateShiftPolicy { get; set; }
         public string RoundingPolicy { get; set; }
+        public int? CurrencyId { get; set; }
 
         public Tuple<decimal?, decimal?> Amount { get; set; }
         public Tuple<decimal?, decimal?> InterestRate { get; set; }

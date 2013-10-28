@@ -51,34 +51,34 @@ namespace OpenCBS.GUI.NEW.Repository
                         select policy.Value).FirstOrDefault();
         }
 
-        private IEnumerable<string> FindNames(Type t)
+        private IList<string> FindNames(Type t)
         {
-            return from policy in Policies
-                   where policy.Value.GetType().GetInterfaces().Contains(t)
-                   select policy.Metadata.Implementation;
+            return (from policy in Policies
+                    where policy.Value.GetType().GetInterfaces().Contains(t)
+                    select policy.Metadata.Implementation).ToList();
         }
 
-        public IEnumerable<string> FindPaymentFrequencyPolicyNames()
+        public IList<string> FindPaymentFrequencyPolicyNames()
         {
             return FindNames(typeof (IPeriodPolicy));
         }
 
-        public IEnumerable<string> FindSchedulePolicyNames()
+        public IList<string> FindSchedulePolicyNames()
         {
             return FindNames(typeof (IInstallmentCalculationPolicy));
         }
 
-        public IEnumerable<string> FindYearPolicyNames()
+        public IList<string> FindYearPolicyNames()
         {
             return FindNames(typeof (IYearPolicy));
         }
 
-        public IEnumerable<string> FindDateShiftPolicyNames()
+        public IList<string> FindDateShiftPolicyNames()
         {
             return FindNames(typeof (IDateShiftPolicy));
         }
 
-        public IEnumerable<string> FindRoundingPolicyNames()
+        public IList<string> FindRoundingPolicyNames()
         {
             return FindNames(typeof (IRoundingPolicy));
         }

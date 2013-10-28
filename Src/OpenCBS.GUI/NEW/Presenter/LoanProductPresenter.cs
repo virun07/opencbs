@@ -20,9 +20,7 @@
 using System;
 using OpenCBS.GUI.NEW.Dto;
 using OpenCBS.GUI.NEW.Model;
-using OpenCBS.GUI.NEW.Repository;
 using OpenCBS.GUI.NEW.Service;
-using OpenCBS.GUI.NEW.View;
 using OpenCBS.GUI.NEW.View.LoanProduct;
 
 namespace OpenCBS.GUI.NEW.Presenter
@@ -30,27 +28,25 @@ namespace OpenCBS.GUI.NEW.Presenter
     public class LoanProductPresenter : ILoanProductPresenter, ILoanProductPresenterCallbacks
     {
         private readonly ILoanProductView _view;
-        private readonly IPolicyRepository _policyRepository;
         private readonly ILoanProductService _loanProductService;
         private CommandResult _commandResult = CommandResult.Cancel;
 
-        public LoanProductPresenter(ILoanProductView view, 
-            IPolicyRepository policyRepository,
-            ILoanProductService loanProductService)
+        public LoanProductPresenter(ILoanProductView view, ILoanProductService loanProductService)
         {
             _view = view;
-            _policyRepository = policyRepository;
             _loanProductService = loanProductService;
         }
 
         public Result<LoanProductDto> Get(LoanProductDto loanProduct)
         {
             _view.Attach(this);
-            _view.ShowPaymentFrequencyPolicies(_policyRepository.FindPaymentFrequencyPolicyNames());
-            _view.ShowSchedulePolicies(_policyRepository.FindSchedulePolicyNames());
-            _view.ShowYearPolicies(_policyRepository.FindYearPolicyNames());
-            _view.ShowDateShiftPolicies(_policyRepository.FindDateShiftPolicyNames());
-            _view.ShowRoundingPolicies(_policyRepository.FindRoundingPolicyNames());
+            var data = _loanProductService.GetReferenceData();
+            _view.ShowSchedulePolicies(data.SchedulePolicies);
+            _view.ShowPaymentFrequencyPolicies(data.PaymentFrequencyPolicies);
+            _view.ShowYearPolicies(data.YearPolicies);
+            _view.ShowDateShiftPolicies(data.DateShiftPolicies);
+            _view.ShowRoundingPolicies(data.RoundingPolicies);
+            _view.ShowCurrencies(data.Currencies);
             ShowLoanProduct(loanProduct);
             _view.Run();
             var newLoanProduct = (LoanProductDto) null;

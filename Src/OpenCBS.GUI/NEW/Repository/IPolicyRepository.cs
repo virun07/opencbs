@@ -23,10 +23,10 @@ namespace OpenCBS.GUI.NEW.Repository
 {
     public interface IPolicyRepository
     {
-        IEnumerable<string> FindPaymentFrequencyPolicyNames();
-        IEnumerable<string> FindSchedulePolicyNames();
-        IEnumerable<string> FindYearPolicyNames();
-        IEnumerable<string> FindDateShiftPolicyNames();
-        IEnumerable<string> FindRoundingPolicyNames();
+        IList<string> FindPaymentFrequencyPolicyNames();
+        IList<string> FindSchedulePolicyNames();
+        IList<string> FindYearPolicyNames();
+        IList<string> FindDateShiftPolicyNames();
+        IList<string> FindRoundingPolicyNames();
     }
 }

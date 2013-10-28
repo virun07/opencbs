@@ -29,12 +29,17 @@ namespace OpenCBS.GUI.NEW.Service
     public class LoanProductService : ILoanProductService
     {
         private readonly ILoanProductRepository _repository;
+        private readonly IPolicyRepository _policyRepository;
         private readonly ILoanProductMapper _mapper;
         private readonly ILoanProductValidator _validator;
 
-        public LoanProductService(ILoanProductRepository repository, ILoanProductMapper mapper, ILoanProductValidator validator)
+        public LoanProductService(ILoanProductRepository repository, 
+            IPolicyRepository policyRepository,
+            ILoanProductMapper mapper, 
+            ILoanProductValidator validator)
         {
             _repository = repository;
+            _policyRepository = policyRepository;
             _mapper = mapper;
             _validator = validator;
         }
@@ -70,6 +75,23 @@ namespace OpenCBS.GUI.NEW.Service
         public void Validate(LoanProductDto loanProductDto)
         {
             _validator.Validate(loanProductDto);
+        }
+
+        public LoanProductReferenceDataDto GetReferenceData()
+        {
+            var result = new LoanProductReferenceDataDto
+            {
+                SchedulePolicies = _policyRepository.FindSchedulePolicyNames(),
+                PaymentFrequencyPolicies = _policyRepository.FindPaymentFrequencyPolicyNames(),
+                YearPolicies = _policyRepository.FindYearPolicyNames(),
+                DateShiftPolicies = _policyRepository.FindDateShiftPolicyNames(),
+                RoundingPolicies = _policyRepository.FindRoundingPolicyNames(),
+                Currencies = new Dictionary<int, string>
+                {
+                    {1, "USD"}
+                }
+            };
+            return result;
         }
     }
 }

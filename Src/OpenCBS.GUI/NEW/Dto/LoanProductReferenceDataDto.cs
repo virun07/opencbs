@@ -18,18 +18,16 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
-using OpenCBS.GUI.NEW.Dto;
 
-namespace OpenCBS.GUI.NEW.Service
+namespace OpenCBS.GUI.NEW.Dto
 {
-    public interface ILoanProductService
+    public class LoanProductReferenceDataDto
     {
-        IEnumerable<LoanProductDto> FindAll();
-        IEnumerable<LoanProductDto> FindNonDeleted();
-        void Validate(LoanProductDto loanProductDto);
-        void Add(LoanProductDto loanProductDto);
-        void Update(LoanProductDto loanProductDto);
-        void Remove(LoanProductDto loanProductDto);
-        LoanProductReferenceDataDto GetReferenceData();
+        public IList<string> SchedulePolicies { get; set; }
+        public IList<string> PaymentFrequencyPolicies { get; set; }
+        public IList<string> YearPolicies { get; set; }
+        public IList<string> DateShiftPolicies { get; set; }
+        public IList<string> RoundingPolicies { get; set; }
+        public Dictionary<int, string> Currencies { get; set; }
     }
 }
