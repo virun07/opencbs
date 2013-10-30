@@ -53,5 +53,6 @@ namespace OpenCBS.GUI.NEW.View.LoanProduct
         int? MaturityMax { get; set; }
         int? GracePeriodMin { get; set; }
         int? GracePeriodMax { get; set; }
+        bool ChargeInterestDuringGracePeriod { get; set; }
     }
 }

@@ -52,6 +52,7 @@ namespace OpenCBS.GUI.NEW.Repository
             public int GracePeriodMin { get; set; }
             public int GracePeriodMax { get; set; }
             public int CurrencyId { get; set; }
+            public bool ChargeInterestDuringGracePeriod { get; set; }
             // ReSharper restore UnusedMember.Local
         }
 

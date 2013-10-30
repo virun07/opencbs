@@ -32,7 +32,6 @@ namespace OpenCBS.GUI.NEW.Dto
         public string DateShiftPolicy { get; set; }
         public string RoundingPolicy { get; set; }
         public int? CurrencyId { get; set; }
-
         public decimal? AmountMin { get; set; }
         public decimal? AmountMax { get; set; }
         public decimal? InterestRateMin { get; set; }
@@ -41,7 +40,7 @@ namespace OpenCBS.GUI.NEW.Dto
         public int? MaturityMax { get; set; }
         public int? GracePeriodMin { get; set; }
         public int? GracePeriodMax { get; set; }
-
+        public bool ChargeInterestDuringGracePeriod { get; set; }
         public bool Deleted { get; set; }
     }
 }
