@@ -17,17 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using DapperExtensions.Mapper;
-
-namespace OpenCBS.GUI.NEW.Repository
+namespace OpenCBS.GUI.NEW.Model
 {
-    public class CustomTableNameMapper<T> : AutoClassMapper<T> where T : class
+    public class Currency : EntityBase
     {
-        public override void Table(string tableName)
-        {
-            if (tableName.EndsWith("Row"))
-                tableName = tableName.Substring(0, tableName.Length - 3);
-            base.Table(tableName);
-        }
+        public string Name { get; set; }
+        public string Code { get; set; }
+        public bool Pivotal { get; set; }
     }
 }

@@ -17,16 +17,18 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
+using System;
+using Omu.ValueInjecter;
 
-namespace OpenCBS.GUI.NEW.Repository
+namespace OpenCBS.GUI.NEW.Injection
 {
-    public interface IRepository<T>
+    public class FlatNullableInjection : FlatLoopValueInjection
     {
-        IList<T> FindAll();
-        T FindById(int id);
-        void Update(T entity);
-        void Add(T entity);
-        void Remove(int id);
+        protected override bool TypesMatch(Type sourceType, Type targetType)
+        {
+            var snt = Nullable.GetUnderlyingType(sourceType);
+            var tnt = Nullable.GetUnderlyingType(targetType);
+            return sourceType == targetType || sourceType == tnt || targetType == snt || tnt == snt;
+        }
     }
 }

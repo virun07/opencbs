@@ -20,76 +20,61 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
+using System.Text;
 using Dapper;
-using DapperExtensions;
-using OpenCBS.GUI.NEW.Model;
 
 namespace OpenCBS.GUI.NEW.Repository
 {
-    public abstract class Repository<T> : IRepository<T> where T : EntityBase
+    public abstract class Repository
     {
-        private readonly IConnectionProvider _connectionProvider;
-
-        protected Repository(IConnectionProvider connectionProvider)
+        protected static void Update(IDbConnection connection, string tableName, dynamic data)
         {
-            _connectionProvider = connectionProvider;
+            var paramNames = GetParamNames((object) data);
+            var builder = new StringBuilder();
+            builder.Append("update ").Append(tableName).Append(" set ");
+            builder.AppendLine(string.Join(",", paramNames.Where(n => n != "Id").Select(p => p + "= @" + p)));
+            builder.Append("where Id = @Id");
+
+            var parameters = new DynamicParameters(data);
+            connection.Execute(builder.ToString(), parameters);
         }
 
-        protected IDbConnection GetConnection()
+        protected static int Insert(IDbConnection connection, string tableName, dynamic data)
         {
-            return _connectionProvider.GetConnection();
+            var o = (object) data;
+            var paramNames = GetParamNames(o);
+            paramNames.Remove("Id");
+
+            var cols = string.Join(",", paramNames);
+            var colsParams = string.Join(",", paramNames.Select(p => "@" + p));
+            var builder = new StringBuilder();
+            builder.Append("set nocount on insert ");
+            builder.Append(tableName);
+            builder.Append("(").Append(cols).Append(")");
+            builder.Append("values(").Append(colsParams).Append(") select cast(scope_identity() as int)");
+            return connection.Query<int>(builder.ToString(), o).Single();
         }
 
-        public virtual IList<T> FindAll()
+        protected static void Delete(IDbConnection connection, string tableName, int id)
         {
-            using (var connection = GetConnection())
+            var sql = "delete from " + tableName + " where Id = @Id";
+            connection.Execute(sql, new { Id = id });
+        }
+
+        private static IList<string> GetParamNames(object o)
+        {
+            if (o is DynamicParameters)
             {
-                return connection.GetList<T>().ToList();
+                return (o as DynamicParameters).ParameterNames.ToList();
             }
-        }
 
-        public virtual IList<T> FindNonDeleted()
-        {
-            using (var connection = GetConnection())
+            var paramNames = new List<string>();
+            foreach (var prop in o.GetType().GetProperties(BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.Public))
             {
-                var predicate = Predicates.Field<T>(t => t.Deleted, Operator.Eq, false);
-                return connection.GetList<T>(predicate).ToList();
+                paramNames.Add(prop.Name);
             }
-        }
-
-        public virtual T FindById(int id)
-        {
-            using (var connection = GetConnection())
-            {
-                return connection.Get<T>(id);
-            }
-        }
-
-        public virtual void Update(T entity)
-        {
-            using (var connection = GetConnection())
-            {
-                connection.Update(entity);
-            }
-        }
-
-        public virtual void Add(T entity)
-        {
-            using (var connection = GetConnection())
-            {
-                connection.Insert(entity);
-            }
-        }
-
-        public virtual void Remove(int id)
-        {
-            using (var connection = GetConnection())
-            {
-                var tableName = typeof(T).Name;
-                if (tableName.EndsWith("Dto"))
-                    tableName = tableName.Substring(0, tableName.Length - 3);
-                connection.Execute("UPDATE " + tableName + " SET Deleted = 1 WHERE Id = @Id", new { Id = id });
-            }
+            return paramNames;
         }
     }
 }

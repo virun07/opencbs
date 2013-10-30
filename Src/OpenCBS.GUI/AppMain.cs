@@ -28,7 +28,6 @@ using OpenCBS.ExceptionsHandler;
 using OpenCBS.GUI.Configuration;
 using OpenCBS.GUI.Database;
 using OpenCBS.GUI.NEW;
-using OpenCBS.GUI.NEW.Repository;
 using OpenCBS.Services;
 using OpenCBS.Shared;
 using System.Threading;
@@ -83,7 +82,6 @@ namespace OpenCBS.GUI
                         break;
                     default:
                         ConfigureAutoMapper();
-                        DapperExtensions.DapperExtensions.DefaultMapper = typeof (CustomTableNameMapper<>);
                         var container = new Container();
                         var bootStrapper = new BootStrapper(container);
                         var appContext = bootStrapper.GetAppContext();

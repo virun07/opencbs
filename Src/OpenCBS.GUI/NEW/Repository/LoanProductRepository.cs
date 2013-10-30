@@ -19,37 +19,105 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using DapperExtensions;
+using Dapper;
+using Omu.ValueInjecter;
+using OpenCBS.GUI.NEW.Injection;
 using OpenCBS.GUI.NEW.Model;
-using OpenCBS.GUI.NEW.Repository.Mapper;
 
 namespace OpenCBS.GUI.NEW.Repository
 {
-    public class LoanProductRepository : Repository<LoanProduct>, ILoanProductRepository
+    public class LoanProductRepository : Repository, ILoanProductRepository
     {
-        public LoanProductRepository(IConnectionProvider connectionProvider) : base(connectionProvider)
+        private readonly IConnectionProvider _connectionProvider;
+
+        private class LoanProductRow
         {
+            // ReSharper disable UnusedMember.Local
+            // Filled in dynamically by ValueInjecter
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string Code { get; set; }
+            public int AvailableFor { get; set; }
+            public string PaymentFrequencyPolicy { get; set; }
+            public string SchedulePolicy { get; set; }
+            public string YearPolicy { get; set; }
+            public string DateShiftPolicy { get; set; }
+            public string RoundingPolicy { get; set; }
+            public decimal AmountMin { get; set; }
+            public decimal AmountMax { get; set; }
+            public decimal InterestRateMin { get; set; }
+            public decimal InterestRateMax { get; set; }
+            public int MaturityMin { get; set; }
+            public int MaturityMax { get; set; }
+            public int GracePeriodMin { get; set; }
+            public int GracePeriodMax { get; set; }
+            public int CurrencyId { get; set; }
+            // ReSharper restore UnusedMember.Local
         }
 
-        public override IList<LoanProduct> FindAll()
+        public LoanProductRepository(IConnectionProvider connectionProvider)
         {
-            using (var connection = GetConnection())
+            _connectionProvider = connectionProvider;
+        }
+
+        public IList<LoanProduct> FindAll()
+        {
+            using (var connection = _connectionProvider.GetConnection())
             {
-                var rows = connection.GetList<LoanProductRow>();
-                var mapper = new LoanProductMapper();
-                return rows.Select(mapper.Map).ToList();
+                const string sql = @"select *
+                from LoanProduct p
+                left join Currency c on c.id = p.CurrencyId";
+                return connection.Query<LoanProduct, Currency, LoanProduct>(sql, (loanProduct, currency) =>
+                {
+                    loanProduct.Currency = currency;
+                    return loanProduct;
+                }).ToList();
             }
         }
 
-        public override IList<LoanProduct> FindNonDeleted()
+        public LoanProduct FindById(int id)
         {
-            using (var connection = GetConnection())
+            using (var connection = _connectionProvider.GetConnection())
             {
-                var predicate = Predicates.Field<LoanProductRow>(t => t.Deleted, Operator.Eq, false);
-                var rows = connection.GetList<LoanProductRow>(predicate);
-                var mapper = new LoanProductMapper();
-                return rows.Select(mapper.Map).ToList();
+                const string sql = @"select *
+                from LoanProduct p
+                left join Currency c on c.id = p.CurrencyId
+                where p.id = @Id";
+                return connection.Query<LoanProduct, Currency, LoanProduct>(sql, (loanProduct, currency) =>
+                {
+                    loanProduct.Currency = currency;
+                    return loanProduct;
+                }, new { Id = id }).FirstOrDefault();
             }
         }
+
+        public void Update(LoanProduct entity)
+        {
+            var row = new LoanProductRow();
+            row.InjectFrom<FlatLoopValueInjection>(entity).InjectFrom<EnumToIntInjection>(entity);
+            using (var connection = _connectionProvider.GetConnection())
+            {
+                Update(connection, "LoanProduct", row);
+            }
+        }
+
+        public void Add(LoanProduct entity)
+        {
+            var row = new LoanProductRow();
+            row.InjectFrom<FlatLoopValueInjection>(entity).InjectFrom<EnumToIntInjection>(entity);
+            using (var connection = _connectionProvider.GetConnection())
+            {
+                entity.Id = Insert(connection, "LoanProduct", row);
+            }
+        }
+
+        public void Remove(int id)
+        {
+            using (var connection = _connectionProvider.GetConnection())
+            {
+                Delete(connection, "LoanProduct", id);
+            }
+        }
+
     }
 }

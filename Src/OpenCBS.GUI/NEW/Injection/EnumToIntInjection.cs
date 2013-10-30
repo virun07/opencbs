@@ -17,16 +17,18 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
+using System;
+using Omu.ValueInjecter;
 
-namespace OpenCBS.GUI.NEW.Repository
+namespace OpenCBS.GUI.NEW.Injection
 {
-    public interface IRepository<T>
+    public class EnumToIntInjection : ConventionInjection
     {
-        IList<T> FindAll();
-        T FindById(int id);
-        void Update(T entity);
-        void Add(T entity);
-        void Remove(int id);
+        protected override bool Match(ConventionInfo c)
+        {
+            return c.SourceProp.Name == c.TargetProp.Name &&
+                   c.SourceProp.Type.IsSubclassOf(typeof (Enum)) &&
+                   c.TargetProp.Type == typeof (int);
+        }
     }
 }

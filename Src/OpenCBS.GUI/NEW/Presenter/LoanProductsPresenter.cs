@@ -92,9 +92,10 @@ namespace OpenCBS.GUI.NEW.Presenter
 
         private void ShowLoanProducts()
         {
-            var loanProducts = _view.ShowDeleted
-                                   ? _loanProductService.FindAll()
-                                   : _loanProductService.FindNonDeleted();
+//            var loanProducts = _view.ShowDeleted
+//                                   ? _loanProductService.FindAll()
+//                                   : _loanProductService.FindAll()
+            var loanProducts = _loanProductService.FindAll();
             _view.ShowLoanProducts(loanProducts);
         }
 

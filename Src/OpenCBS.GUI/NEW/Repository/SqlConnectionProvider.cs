@@ -41,5 +41,11 @@ namespace OpenCBS.GUI.NEW.Repository
             conn.Open();
             return conn;
         }
+
+        public IDbTransaction GetTransaction()
+        {
+            var connection = GetConnection();
+            return connection.BeginTransaction();
+        }
     }
 }

@@ -88,8 +88,9 @@ namespace OpenCBS.GUI.NEW.Presenter
 
         private LoanProductDto GetLoanProduct()
         {
-            var result = new LoanProductDto { Name = _view.LoanProductName };
+            var result = new LoanProductDto();
             result.InjectFrom(_view);
+            result.Name = _view.LoanProductName;
             return result;
         }
     }

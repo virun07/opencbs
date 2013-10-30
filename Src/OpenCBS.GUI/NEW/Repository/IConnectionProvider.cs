@@ -24,5 +24,6 @@ namespace OpenCBS.GUI.NEW.Repository
     public interface IConnectionProvider
     {
         IDbConnection GetConnection();
+        IDbTransaction GetTransaction();
     }
 }

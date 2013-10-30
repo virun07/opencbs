@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Omu.ValueInjecter;
 using OpenCBS.GUI.NEW.Dto;
+using OpenCBS.GUI.NEW.Injection;
 using OpenCBS.GUI.NEW.Model;
 using OpenCBS.GUI.NEW.Repository;
 using OpenCBS.GUI.NEW.Validator;
@@ -29,56 +30,57 @@ namespace OpenCBS.GUI.NEW.Service
 {
     public class LoanProductService : ILoanProductService
     {
-        private readonly ILoanProductRepository _repository;
+        private readonly ILoanProductRepository _loanProductRepository;
+        private readonly ICurrencyRepository _currencyRepository;
         private readonly IPolicyRepository _policyRepository;
         private readonly ILoanProductValidator _validator;
 
-        public LoanProductService(ILoanProductRepository repository, 
+        public LoanProductService(ILoanProductRepository loanProductRepository,
+            ICurrencyRepository currencyRepository,
             IPolicyRepository policyRepository,
             ILoanProductValidator validator)
         {
-            _repository = repository;
+            _loanProductRepository = loanProductRepository;
+            _currencyRepository = currencyRepository;
             _policyRepository = policyRepository;
             _validator = validator;
         }
 
         public IList<LoanProductDto> FindAll()
         {
-            return _repository.FindAll().Select(loanProduct =>
+            return _loanProductRepository.FindAll().Select(loanProduct =>
             {
                 var loanProductDto = new LoanProductDto();
-                loanProductDto.InjectFrom(loanProduct);
-                return loanProductDto;
-            }).ToList();
-        }
-
-        public IList<LoanProductDto> FindNonDeleted()
-        {
-            return _repository.FindNonDeleted().Select(loanProduct =>
-            {
-                var loanProductDto = new LoanProductDto();
-                loanProductDto.InjectFrom(loanProduct);
+                loanProductDto.InjectFrom<FlatNullableInjection>(loanProduct);
                 return loanProductDto;
             }).ToList();
         }
 
         public void Add(LoanProductDto loanProductDto)
         {
+            _validator.Validate(loanProductDto);
+            if (loanProductDto.Notification.HasErrors) return;
+
             var loanProduct = new LoanProduct();
             loanProduct.InjectFrom(loanProductDto);
-            _repository.Add(loanProduct);
+            loanProduct.Currency = _currencyRepository.FindById(loanProductDto.CurrencyId ?? 1);
+            _loanProductRepository.Add(loanProduct);
         }
 
         public void Update(LoanProductDto loanProductDto)
         {
-            var loanProduct = _repository.FindById(loanProductDto.Id);
-            loanProduct.InjectFrom(loanProductDto);
-            _repository.Update(loanProduct);
+            _validator.Validate(loanProductDto);
+            if (loanProductDto.Notification.HasErrors) return;
+
+            var loanProduct = _loanProductRepository.FindById(loanProductDto.Id);
+            loanProduct.InjectFrom<NullableInjection>(loanProductDto);
+            loanProduct.Currency = _currencyRepository.FindById(loanProductDto.CurrencyId ?? 1);
+            _loanProductRepository.Update(loanProduct);
         }
 
         public void Remove(int id)
         {
-            _repository.Remove(id);
+            _loanProductRepository.Remove(id);
         }
 
         public void Validate(LoanProductDto loanProductDto)
@@ -95,10 +97,10 @@ namespace OpenCBS.GUI.NEW.Service
                 YearPolicies = _policyRepository.FindYearPolicyNames(),
                 DateShiftPolicies = _policyRepository.FindDateShiftPolicyNames(),
                 RoundingPolicies = _policyRepository.FindRoundingPolicyNames(),
-                Currencies = new Dictionary<int, string>
-                {
-                    {1, "USD"}
-                }
+                Currencies = _currencyRepository
+                    .FindAll()
+                    .Where(c => !c.Deleted)
+                    .ToDictionary(c => c.Id, c => c.Name)
             };
             return result;
         }

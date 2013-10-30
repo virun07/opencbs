@@ -37,5 +37,6 @@ namespace OpenCBS.GUI.NEW.Model
         public int MaturityMax { get; set; }
         public int GracePeriodMin { get; set; }
         public int GracePeriodMax { get; set; }
+        public Currency Currency { get; set; }
     }
 }

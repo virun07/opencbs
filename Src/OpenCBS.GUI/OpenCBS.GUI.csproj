@@ -223,6 +223,7 @@
     <Reference Include="System.ServiceModel">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
@@ -729,8 +730,13 @@
     <Compile Include="NEW\Event\LoanProductAddedEvent.cs" />
     <Compile Include="NEW\Event\LoanProductDeletedEvent.cs" />
     <Compile Include="NEW\Event\LoanProductUpdatedEvent.cs" />
-    <Compile Include="NEW\Repository\Mapper\LoanProductMapper.cs" />
-    <Compile Include="NEW\Repository\Mapper\LoanProductRow.cs" />
+    <Compile Include="NEW\Injection\EnumToIntInjection.cs" />
+    <Compile Include="NEW\Injection\FlatNullableInjection.cs" />
+    <Compile Include="NEW\Injection\NullableInjection.cs" />
+    <Compile Include="NEW\Model\Currency.cs" />
+    <Compile Include="NEW\Repository\CurrencyRepository.cs" />
+    <Compile Include="NEW\Repository\ICurrencyRepository.cs" />
+    <Compile Include="NEW\Repository\Repository.cs" />
     <Compile Include="NEW\Service\ILoanProductService.cs" />
     <Compile Include="NEW\Model\AvailableFor.cs" />
     <Compile Include="NEW\Model\EntityBase.cs" />
@@ -745,14 +751,12 @@
     <Compile Include="NEW\Presenter\LoanProductPresenter.cs" />
     <Compile Include="NEW\Presenter\LoanProductsPresenter.cs" />
     <Compile Include="NEW\Presenter\MainPresenter.cs" />
-    <Compile Include="NEW\Repository\CustomTableNameMapper.cs" />
     <Compile Include="NEW\Repository\IConnectionProvider.cs" />
     <Compile Include="NEW\Repository\ILoanProductRepository.cs" />
     <Compile Include="NEW\Repository\IPolicyRepository.cs" />
     <Compile Include="NEW\Repository\IRepository.cs" />
     <Compile Include="NEW\Repository\LoanProductRepository.cs" />
     <Compile Include="NEW\Repository\PolicyRepository.cs" />
-    <Compile Include="NEW\Repository\Repository.cs" />
     <Compile Include="NEW\Repository\SqlConnectionProvider.cs" />
     <Compile Include="NEW\Result.cs" />
     <Compile Include="NEW\Service\LoanProductService.cs" />
