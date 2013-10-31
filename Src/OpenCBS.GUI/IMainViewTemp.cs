@@ -17,35 +17,24 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
-using System.Configuration;
-using System.Windows.Forms;
-using OpenCBS.GUI.Presenter;
-using OpenCBS.Interface.View;
-using StructureMap;
+using OpenCBS.CoreDomain;
+using OpenCBS.CoreDomain.Clients;
 
 namespace OpenCBS.GUI
 {
-    public class AppContext : ApplicationContext
+    // This is a temporary interface that is implemented
+    // by both LotrasmicMainWindowForm and MainView to be able to substitute
+    // the new form where the old is expected.
+    public interface ITempMainView
     {
-        private readonly IContainer _container;
-
-        public AppContext(IContainer container)
-        {
-            _container = container;
-            MainForm = GetMainForm();
-        }
-
-        private Form GetMainForm()
-        {
-            var newArchitecture = Convert.ToBoolean(ConfigurationManager.AppSettings["NewArchitecture"]);
-            var mainForm = newArchitecture ? (IMainView) new MainView() : new LotrasmicMainWindowForm();
-            _container.Inject(mainForm);
-
-            var presenter = _container.GetInstance<MainPresenter>();
-            presenter.Run();
-
-            return (Form)presenter.View;
-        }
+        void ReloadAlerts();
+        void ReloadAlertsSync();
+        void SetInfoMessage(string message);
+        void InitializePersonForm(Person person, Project project);
+        void InitializeGroupForm(Group group, Project project);
+        void InitializeCorporateForm(Corporate corporate, Project project);
+        void InitializeVillageForm(Village village);
+        void InitializeCreditContractForm(IClient client, int contractId);
+        void InitializeSavingContractForm(IClient client, int savingId);
     }
 }

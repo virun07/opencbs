@@ -666,7 +666,7 @@ namespace OpenCBS.GUI.Clients
             
             if (DialogResult.OK == frm.ShowDialog())
             {
-                ((LotrasmicMainWindowForm) MdiParent).ReloadAlerts();
+                ((ITempMainView) MdiParent).ReloadAlerts();
             }
             DisplayMembers();
             DisplayLoans();
@@ -680,7 +680,7 @@ namespace OpenCBS.GUI.Clients
                 DisplayMembers();
                 DisplayLoans();
                 LoadMeetingDates();
-                ((LotrasmicMainWindowForm) MdiParent).ReloadAlerts();
+                ((ITempMainView) MdiParent).ReloadAlerts();
             }
         }
 
@@ -691,7 +691,7 @@ namespace OpenCBS.GUI.Clients
             {
                 DisplayMembers();
                 DisplayLoans();
-                ((LotrasmicMainWindowForm) MdiParent).ReloadAlerts();
+                ((ITempMainView) MdiParent).ReloadAlerts();
             }
         }
         private bool CheckDataInOpenFiscalYear()
@@ -836,7 +836,7 @@ namespace OpenCBS.GUI.Clients
                 }
 
                 DisplayLoans();
-                ((LotrasmicMainWindowForm)MdiParent).ReloadAlerts();
+                ((ITempMainView) MdiParent).ReloadAlerts();
             }
         }
 
@@ -929,7 +929,7 @@ namespace OpenCBS.GUI.Clients
             {
                 DisplayLoans();
                 LoadMeetingDates();
-                ((LotrasmicMainWindowForm)MdiParent).ReloadAlerts();
+                ((ITempMainView) MdiParent).ReloadAlerts();
             }
         }
 

@@ -59,7 +59,7 @@ using OpenCBS.Shared.Settings;
 
 namespace OpenCBS.GUI
 {
-    public partial class LotrasmicMainWindowForm : SweetBaseForm, ITempMainView, IMainView
+    public partial class MainView : SweetBaseForm, ITempMainView, IMainView
     {
         [ImportMany(typeof(IMenu), RequiredCreationPolicy = CreationPolicy.Shared)]
         public List<IMenu> ExtensionMenuItems { get; set; }
@@ -69,7 +69,7 @@ namespace OpenCBS.GUI
         private bool _showTellerFormOnClose = true;
         private bool _triggerAlertsUpdate;
 
-        public LotrasmicMainWindowForm()
+        public MainView()
         {
             MefContainer.Current.Bind(this);
             InitializeComponent();
@@ -1169,7 +1169,14 @@ namespace OpenCBS.GUI
 
         public void Attach(IMainPresenterCallbacks presenterCallbacks)
         {
-            mnuPackages.Click += (sender, e) => InitializePackagesForm();
+            if (ApplicationSettings.GetInstance(string.Empty).NewArchitecture)
+            {
+                mnuPackages.Click += (sender, e) => presenterCallbacks.OnShowLoanProducts();
+            }
+            else
+            {
+                mnuPackages.Click += (sender, e) => InitializePackagesForm();
+            }
         }
     }
 }

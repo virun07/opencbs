@@ -198,7 +198,7 @@ namespace OpenCBS.GUI.Products
             FrmAddCollateralProduct addCollateralProductForm = new FrmAddCollateralProduct();
             addCollateralProductForm.ShowDialog();
             InitializePackages();
-            ((LotrasmicMainWindowForm)MdiParent).SetInfoMessage("Collateral product saved");
+            ((ITempMainView) MdiParent).SetInfoMessage("Collateral product saved");
         }
     }
 }
