@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D370E45-0FBB-4230-B408-94FFD7E0E997}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenCBS.Interface</RootNamespace>
+    <AssemblyName>OpenCBS.Interface</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IApplicationController.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="IEventHandler.cs" />
+    <Compile Include="IEventPublisher.cs" />
+    <Compile Include="Presenter\ILoanProductPresenter.cs" />
+    <Compile Include="Presenter\ILoanProductPresenterCallbacks.cs" />
+    <Compile Include="Presenter\ILoanProductsPresenter.cs" />
+    <Compile Include="Presenter\ILoanProductsPresenterCallbacks.cs" />
+    <Compile Include="Presenter\IMainPresenter.cs" />
+    <Compile Include="Presenter\IMainPresenterCallbacks.cs" />
+    <Compile Include="Presenter\IPresenter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IConnectionProvider.cs" />
+    <Compile Include="Repository\ICurrencyRepository.cs" />
+    <Compile Include="Repository\ILoanProductRepository.cs" />
+    <Compile Include="Repository\IPolicyRepository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Service\ILoanProductService.cs" />
+    <Compile Include="Validator\ILoanProductValidator.cs" />
+    <Compile Include="Validator\IValidator.cs" />
+    <Compile Include="View\ILoanProductsView.cs" />
+    <Compile Include="View\ILoanProductView.cs" />
+    <Compile Include="View\IMainView.cs" />
+    <Compile Include="View\IView.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\OpenCBS.Common\OpenCBS.Common.csproj">
+      <Project>{fe9c7054-d939-4617-99cd-8a8f9ae77099}</Project>
+      <Name>OpenCBS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.DataContract\OpenCBS.DataContract.csproj">
+      <Project>{e3b40bd9-946c-4b41-8501-50ac85df3cb0}</Project>
+      <Name>OpenCBS.DataContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Model\OpenCBS.Model.csproj">
+      <Project>{db64ab0c-241b-423c-b5de-2df524386651}</Project>
+      <Name>OpenCBS.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

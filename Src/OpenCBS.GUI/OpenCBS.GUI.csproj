@@ -239,6 +239,14 @@
       <Name>ZedGraph</Name>
       <HintPath>..\..\Lib\ZedGraph.dll</HintPath>
     </Reference>
+    <ProjectReference Include="..\OpenCBS.Common\OpenCBS.Common.csproj">
+      <Project>{fe9c7054-d939-4617-99cd-8a8f9ae77099}</Project>
+      <Name>OpenCBS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.ConnectionManager\OpenCBS.DatabaseConnection.csproj">
+      <Project>{30af40fb-fa8b-4f5e-b41a-ca59e82ba5a0}</Project>
+      <Name>OpenCBS.DatabaseConnection</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Controls\OpenCBS.Controls.csproj">
       <Project>{0DFCB871-734C-434D-AE9E-35C378B36F9E}</Project>
       <Name>OpenCBS.Controls</Name>
@@ -246,6 +254,10 @@
     <ProjectReference Include="..\OpenCBS.CoreDomain\OpenCBS.CoreDomain.csproj">
       <Project>{D539C388-3848-4A3E-AB87-42B8E329755A}</Project>
       <Name>OpenCBS.CoreDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.DataContract\OpenCBS.DataContract.csproj">
+      <Project>{e3b40bd9-946c-4b41-8501-50ac85df3cb0}</Project>
+      <Name>OpenCBS.DataContract</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Engine\OpenCBS.Engine.csproj">
       <Project>{b1595695-b53f-4d94-85e6-45a6f515c650}</Project>
@@ -271,9 +283,17 @@
       <Project>{90B5218E-10F0-4123-80E3-C4E65D6CF209}</Project>
       <Name>OpenCBS.GUI.Restarter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Interfaces\OpenCBS.Interface.csproj">
+      <Project>{4d370e45-0fbb-4230-b408-94ffd7e0e997}</Project>
+      <Name>OpenCBS.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCBS.MultiLanguage\OpenCBS.MultiLanguageRessources.csproj">
       <Project>{1644EDA1-7196-4197-B752-A4D14F384E31}</Project>
       <Name>OpenCBS.MultiLanguageRessources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Persistence\OpenCBS.Persistence.csproj">
+      <Project>{4b943ef5-4293-4e1d-a6f4-9aa0a66b7dc9}</Project>
+      <Name>OpenCBS.Persistence</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Reports\OpenCBS.Reports.csproj">
       <Project>{A2E4E382-5796-446C-85B1-8EF306AD50DE}</Project>
@@ -282,6 +302,10 @@
     <ProjectReference Include="..\OpenCBS.Services\OpenCBS.Services.csproj">
       <Project>{A859D97A-51FB-4961-AF07-5856640511AF}</Project>
       <Name>OpenCBS.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Service\OpenCBS.Service.csproj">
+      <Project>{eb3c633e-d606-476e-aba1-55df197e6bad}</Project>
+      <Name>OpenCBS.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Shared\OpenCBS.Shared.csproj">
       <Project>{B3288E21-E5A9-4620-BEF3-AFB0B207655C}</Project>
@@ -703,87 +727,42 @@
     <Compile Include="MultiLanguageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NEW\AppContext.cs" />
-    <Compile Include="NEW\AppController\ApplicationController.cs" />
-    <Compile Include="NEW\AppController\IApplicationController.cs" />
-    <Compile Include="NEW\AppController\ICommand.cs" />
-    <Compile Include="NEW\BootStrapper.cs" />
-    <Compile Include="NEW\CommandData\DeleteLoanProductData.cs" />
-    <Compile Include="NEW\CommandResult.cs" />
-    <Compile Include="NEW\CommandData\AddLoanProductData.cs" />
-    <Compile Include="NEW\CommandData\EditLoanProductData.cs" />
-    <Compile Include="NEW\CommandData\ShowLoanProductsData.cs" />
-    <Compile Include="NEW\Command\AddLoanProductCommand.cs" />
-    <Compile Include="NEW\Command\DeleteLoanProductCommand.cs" />
-    <Compile Include="NEW\Command\EditLoanProductCommand.cs" />
-    <Compile Include="NEW\Command\ShowLoanProductsCommand.cs" />
-    <Compile Include="NEW\DefaultRegistry.cs" />
-    <Compile Include="NEW\Dto\DataTransferObject.cs" />
-    <Compile Include="NEW\Dto\Error.cs" />
-    <Compile Include="NEW\Dto\LoanProductDto.cs" />
-    <Compile Include="NEW\Dto\LoanProductReferenceDataDto.cs" />
-    <Compile Include="NEW\Dto\Notification.cs" />
-    <Compile Include="NEW\EventAggregatorInterceptor.cs" />
-    <Compile Include="NEW\EventAggregator\EventPublisher.cs" />
-    <Compile Include="NEW\EventAggregator\IEventHandler.cs" />
-    <Compile Include="NEW\EventAggregator\IEventPublisher.cs" />
-    <Compile Include="NEW\Event\LoanProductAddedEvent.cs" />
-    <Compile Include="NEW\Event\LoanProductDeletedEvent.cs" />
-    <Compile Include="NEW\Event\LoanProductUpdatedEvent.cs" />
-    <Compile Include="NEW\Injection\EnumToIntInjection.cs" />
-    <Compile Include="NEW\Injection\FlatNullableInjection.cs" />
-    <Compile Include="NEW\Injection\NullableInjection.cs" />
-    <Compile Include="NEW\Model\Currency.cs" />
-    <Compile Include="NEW\Repository\CurrencyRepository.cs" />
-    <Compile Include="NEW\Repository\ICurrencyRepository.cs" />
-    <Compile Include="NEW\Repository\Repository.cs" />
-    <Compile Include="NEW\Service\ILoanProductService.cs" />
-    <Compile Include="NEW\Model\AvailableFor.cs" />
-    <Compile Include="NEW\Model\EntityBase.cs" />
-    <Compile Include="NEW\Model\LoanProduct.cs" />
-    <Compile Include="NEW\Presenter\ILoanProductPresenter.cs" />
-    <Compile Include="NEW\Presenter\ILoanProductPresenterCallbacks.cs" />
-    <Compile Include="NEW\Presenter\IMainPresenter.cs" />
-    <Compile Include="NEW\Presenter\IPresenter.cs" />
-    <Compile Include="NEW\Presenter\IMainPresenterCallbacks.cs" />
-    <Compile Include="NEW\Presenter\ILoanProductsPresenter.cs" />
-    <Compile Include="NEW\Presenter\ILoanProductsPresenterCallbacks.cs" />
-    <Compile Include="NEW\Presenter\LoanProductPresenter.cs" />
-    <Compile Include="NEW\Presenter\LoanProductsPresenter.cs" />
-    <Compile Include="NEW\Presenter\MainPresenter.cs" />
-    <Compile Include="NEW\Repository\IConnectionProvider.cs" />
-    <Compile Include="NEW\Repository\ILoanProductRepository.cs" />
-    <Compile Include="NEW\Repository\IPolicyRepository.cs" />
-    <Compile Include="NEW\Repository\IRepository.cs" />
-    <Compile Include="NEW\Repository\LoanProductRepository.cs" />
-    <Compile Include="NEW\Repository\PolicyRepository.cs" />
-    <Compile Include="NEW\Repository\SqlConnectionProvider.cs" />
-    <Compile Include="NEW\Result.cs" />
-    <Compile Include="NEW\Service\LoanProductService.cs" />
-    <Compile Include="NEW\Validator\ILoanProductValidator.cs" />
-    <Compile Include="NEW\Validator\IValidator.cs" />
-    <Compile Include="NEW\Validator\LoanProductValidator.cs" />
-    <Compile Include="NEW\Validator\Validator.cs" />
-    <Compile Include="NEW\View\LoanProduct\ILoanProductsView.cs" />
-    <Compile Include="NEW\View\LoanProduct\ILoanProductView.cs" />
-    <Compile Include="NEW\View\IMainView.cs" />
-    <Compile Include="NEW\View\IView.cs" />
-    <Compile Include="NEW\View\LoanProduct\LoanProductsView.cs">
+    <Compile Include="AppContext.cs" />
+    <Compile Include="ApplicationController.cs" />
+    <Compile Include="BootStrapper.cs" />
+    <Compile Include="CommandData\DeleteLoanProductData.cs" />
+    <Compile Include="CommandData\AddLoanProductData.cs" />
+    <Compile Include="CommandData\EditLoanProductData.cs" />
+    <Compile Include="CommandData\ShowLoanProductsData.cs" />
+    <Compile Include="Command\AddLoanProductCommand.cs" />
+    <Compile Include="Command\DeleteLoanProductCommand.cs" />
+    <Compile Include="Command\EditLoanProductCommand.cs" />
+    <Compile Include="Command\ShowLoanProductsCommand.cs" />
+    <Compile Include="DefaultRegistry.cs" />
+    <Compile Include="EventAggregatorInterceptor.cs" />
+    <Compile Include="EventPublisher.cs" />
+    <Compile Include="AppEvent\LoanProductAddedEvent.cs" />
+    <Compile Include="AppEvent\LoanProductDeletedEvent.cs" />
+    <Compile Include="AppEvent\LoanProductUpdatedEvent.cs" />
+    <Compile Include="Presenter\LoanProductPresenter.cs" />
+    <Compile Include="Presenter\LoanProductsPresenter.cs" />
+    <Compile Include="Presenter\MainPresenter.cs" />
+    <Compile Include="View\LoanProductsView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NEW\View\LoanProduct\LoanProductsView.Designer.cs">
+    <Compile Include="View\LoanProductsView.Designer.cs">
       <DependentUpon>LoanProductsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="NEW\View\LoanProduct\LoanProductView.cs">
+    <Compile Include="View\LoanProductView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NEW\View\LoanProduct\LoanProductView.Designer.cs">
+    <Compile Include="View\LoanProductView.Designer.cs">
       <DependentUpon>LoanProductView.cs</DependentUpon>
     </Compile>
-    <Compile Include="NEW\View\TopEdgePanel.cs">
+    <Compile Include="View\TopEdgePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="NEW\View\ViewExtensions.cs" />
+    <Compile Include="View\ViewExtensions.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2384,10 +2363,10 @@
     <EmbeddedResource Include="MultiLanguageForm.resx">
       <DependentUpon>MultiLanguageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NEW\View\LoanProduct\LoanProductsView.resx">
+    <EmbeddedResource Include="View\LoanProductsView.resx">
       <DependentUpon>LoanProductsView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NEW\View\LoanProduct\LoanProductView.resx">
+    <EmbeddedResource Include="View\LoanProductView.resx">
       <DependentUpon>LoanProductView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\FrmAddCollateralProduct.fr.resx">
