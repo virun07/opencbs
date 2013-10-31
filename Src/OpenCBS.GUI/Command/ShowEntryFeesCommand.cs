@@ -19,40 +19,22 @@
 
 using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface.Presenter;
-using OpenCBS.Interface.View;
 using OpenCBS.Interfaces;
 
-namespace OpenCBS.GUI.Presenter
+namespace OpenCBS.GUI.Command
 {
-    public class MainPresenter : IMainPresenter, IMainPresenterCallbacks
+    public class ShowEntryFeesCommand : ICommand<ShowEntryFeesData>
     {
-        private readonly IMainView _view;
-        private readonly IApplicationController _appController;
+        private readonly IEntryFeesPresenter _presenter;
 
-        public MainPresenter(IMainView view, IApplicationController appController)
+        public ShowEntryFeesCommand(IEntryFeesPresenter presenter)
         {
-            _view = view;
-            _appController = appController;
+            _presenter = presenter;
         }
 
-        public void ShowLoanProducts()
+        public void Execute(ShowEntryFeesData commandData)
         {
-            _appController.Execute(new ShowLoanProductsData());
-        }
-
-        public void ShowEntryFees()
-        {
-            _appController.Execute(new ShowEntryFeesData());
-        }
-
-        public void Run()
-        {
-            _view.Attach(this);
-        }
-
-        public object View
-        {
-            get { return _view; }
+            _presenter.Run();
         }
     }
 }

@@ -17,11 +17,9 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.Interface.Presenter
+namespace OpenCBS.GUI.CommandData
 {
-    public interface IMainPresenterCallbacks
+    public class ShowEntryFeesData
     {
-        void ShowLoanProducts();
-        void ShowEntryFees();
     }
 }

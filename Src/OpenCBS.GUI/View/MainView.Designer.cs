@@ -65,7 +65,7 @@ namespace OpenCBS.GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LotrasmicMainWindowForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.imageListAlert = new System.Windows.Forms.ImageList(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolBarLblVersion = new System.Windows.Forms.ToolStripLabel();
@@ -126,6 +126,7 @@ namespace OpenCBS.GUI
             this.menuItemLocations = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemFundingLines = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemInstallmentTypes = new System.Windows.Forms.ToolStripMenuItem();
+            this._entryFeesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorConfig2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemExchangeRate = new System.Windows.Forms.ToolStripMenuItem();
             this.currenciesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -153,7 +154,7 @@ namespace OpenCBS.GUI
             this.miAuditTrail = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProducts = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuPackages = new System.Windows.Forms.ToolStripMenuItem();
+            this._loanProductsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savingProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCollateralProducts = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -574,6 +575,7 @@ namespace OpenCBS.GUI
             this.menuItemLocations,
             this.toolStripMenuItemFundingLines,
             this.toolStripMenuItemInstallmentTypes,
+            this._entryFeesMenuItem,
             this.toolStripSeparatorConfig2,
             this.menuItemExchangeRate,
             this.currenciesToolStripMenuItem,
@@ -628,6 +630,11 @@ namespace OpenCBS.GUI
             this.toolStripMenuItemInstallmentTypes.Name = "toolStripMenuItemInstallmentTypes";
             resources.ApplyResources(this.toolStripMenuItemInstallmentTypes, "toolStripMenuItemInstallmentTypes");
             this.toolStripMenuItemInstallmentTypes.Click += new System.EventHandler(this.toolStripMenuItemInstallmentTypes_Click);
+            // 
+            // _entryFeesMenuItem
+            // 
+            this._entryFeesMenuItem.Name = "_entryFeesMenuItem";
+            resources.ApplyResources(this._entryFeesMenuItem, "_entryFeesMenuItem");
             // 
             // toolStripSeparatorConfig2
             // 
@@ -826,18 +833,17 @@ namespace OpenCBS.GUI
             // mnuProducts
             // 
             this.mnuProducts.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuPackages,
+            this._loanProductsMenuItem,
             this.savingProductsToolStripMenuItem,
             this.menuItemCollateralProducts});
             this.mnuProducts.Name = "mnuProducts";
             resources.ApplyResources(this.mnuProducts, "mnuProducts");
             // 
-            // mnuPackages
+            // _loanProductsMenuItem
             // 
-            this.mnuPackages.Image = global::OpenCBS.GUI.Properties.Resources.package;
-            resources.ApplyResources(this.mnuPackages, "mnuPackages");
-            this.mnuPackages.Name = "mnuPackages";
-            this.mnuPackages.Click += new System.EventHandler(this.menuItemPackages_Click);
+            this._loanProductsMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.package;
+            resources.ApplyResources(this._loanProductsMenuItem, "_loanProductsMenuItem");
+            this._loanProductsMenuItem.Name = "_loanProductsMenuItem";
             // 
             // savingProductsToolStripMenuItem
             // 
@@ -928,7 +934,7 @@ namespace OpenCBS.GUI
             // 
             this.alertBindingSource.DataSource = typeof(OpenCBS.CoreDomain.Alert);
             // 
-            // LotrasmicMainWindowForm
+            // MainView
             // 
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.splitter6);
@@ -937,7 +943,7 @@ namespace OpenCBS.GUI
             this.Controls.Add(this.mainMenu);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mainMenu;
-            this.Name = "LotrasmicMainWindowForm";
+            this.Name = "MainView";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LotrasmicMainWindowForm_FormClosing);
             this.Load += new System.EventHandler(this.LotrasmicMainWindowForm_Load);
@@ -1016,7 +1022,7 @@ namespace OpenCBS.GUI
         private ToolStripMenuItem mnuSearchContract;
         private ToolStripMenuItem reasignToolStripMenuItem;
         private ToolStripMenuItem mnuProducts;
-        private ToolStripMenuItem mnuPackages;
+        private ToolStripMenuItem _loanProductsMenuItem;
         private ToolStripMenuItem savingProductsToolStripMenuItem;
         private ToolStripMenuItem menuItemCollateralProducts;
         private ToolStripMenuItem languagesToolStripMenuItem;
@@ -1026,6 +1032,7 @@ namespace OpenCBS.GUI
         private ToolStripMenuItem spanishToolStripMenuItem;
         private ToolStripMenuItem portugueseToolStripMenuItem;
         private ToolStripMenuItem changePasswordToolStripMenuItem;
+        private ToolStripMenuItem _entryFeesMenuItem;
 
 
     }

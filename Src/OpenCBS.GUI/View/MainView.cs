@@ -443,20 +443,6 @@ namespace OpenCBS.GUI
             InitializeChartOfAccountsForm(ServicesProvider.GetInstance().GetCurrencyServices().GetPivot().Id);
         }
 
-        private void menuItemPackages_Click(object sender, EventArgs e)
-        {
-            /*if (ApplicationSettings.GetInstance(string.Empty).NewArchitecture)
-            {
-                //var presenter = MefContainer.Current.GetInstance<ILoanProductsPresenter>();
-                //presenter.Initialize();
-                //((Form) presenter.Ui).Show();
-            }
-            else
-            {
-                InitializePackagesForm();
-            }*/
-        }
-
         private void savingProductsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InitializeSavingProductsForm();
@@ -1169,14 +1155,8 @@ namespace OpenCBS.GUI
 
         public void Attach(IMainPresenterCallbacks presenterCallbacks)
         {
-            if (ApplicationSettings.GetInstance(string.Empty).NewArchitecture)
-            {
-                mnuPackages.Click += (sender, e) => presenterCallbacks.OnShowLoanProducts();
-            }
-            else
-            {
-                mnuPackages.Click += (sender, e) => InitializePackagesForm();
-            }
+            _loanProductsMenuItem.Click += (sender, e) => presenterCallbacks.ShowLoanProducts();
+            _entryFeesMenuItem.Click += (sender, e) => presenterCallbacks.ShowEntryFees();
         }
     }
 }

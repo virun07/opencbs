@@ -19,9 +19,8 @@
 
 namespace OpenCBS.Interface.Presenter
 {
-    public interface IMainPresenterCallbacks
+    public interface IEntryFeesPresenter
     {
-        void ShowLoanProducts();
-        void ShowEntryFees();
+        void Run();
     }
 }

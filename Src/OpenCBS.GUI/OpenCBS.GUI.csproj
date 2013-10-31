@@ -459,6 +459,8 @@
     <Compile Include="Clients\NonSolidaryGroupForm.Designer.cs">
       <DependentUpon>NonSolidaryGroupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommandData\ShowEntryFeesData.cs" />
+    <Compile Include="Command\ShowEntryFeesCommand.cs" />
     <Compile Include="Configuration\AddBranchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -746,11 +748,18 @@
     <Compile Include="AppEvent\LoanProductAddedEvent.cs" />
     <Compile Include="AppEvent\LoanProductDeletedEvent.cs" />
     <Compile Include="AppEvent\LoanProductUpdatedEvent.cs" />
+    <Compile Include="Presenter\EntryFeesPresenter.cs" />
     <Compile Include="Presenter\LoanProductPresenter.cs" />
     <Compile Include="Presenter\LoanProductsPresenter.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
     <Compile Include="View\BaseView.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EntryFeesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EntryFeesView.Designer.cs">
+      <DependentUpon>EntryFeesView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoanProductsView.cs">
       <SubType>Form</SubType>
@@ -2373,6 +2382,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MultiLanguageForm.resx">
       <DependentUpon>MultiLanguageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EntryFeesView.resx">
+      <DependentUpon>EntryFeesView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoanProductsView.resx">
       <DependentUpon>LoanProductsView.cs</DependentUpon>

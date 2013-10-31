@@ -17,42 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface.Presenter;
-using OpenCBS.Interface.View;
-using OpenCBS.Interfaces;
 
-namespace OpenCBS.GUI.Presenter
+namespace OpenCBS.Interface.View
 {
-    public class MainPresenter : IMainPresenter, IMainPresenterCallbacks
+    public interface IEntryFeesView : IView<IEntryFeesPresenterCallbacks>
     {
-        private readonly IMainView _view;
-        private readonly IApplicationController _appController;
-
-        public MainPresenter(IMainView view, IApplicationController appController)
-        {
-            _view = view;
-            _appController = appController;
-        }
-
-        public void ShowLoanProducts()
-        {
-            _appController.Execute(new ShowLoanProductsData());
-        }
-
-        public void ShowEntryFees()
-        {
-            _appController.Execute(new ShowEntryFeesData());
-        }
-
-        public void Run()
-        {
-            _view.Attach(this);
-        }
-
-        public object View
-        {
-            get { return _view; }
-        }
+        void Run();
     }
 }
