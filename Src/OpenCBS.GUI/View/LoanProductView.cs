@@ -19,7 +19,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using OpenCBS.Common;
@@ -30,11 +29,10 @@ using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.View
 {
-    public partial class LoanProductView : Form, ILoanProductView
+    public partial class LoanProductView : BaseView, ILoanProductView
     {
         public LoanProductView()
         {
-            Font = SystemFonts.MessageBoxFont;
             InitializeComponent();
             Setup();
         }

@@ -27,7 +27,7 @@ using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.View
 {
-    public partial class LoanProductsView : Form, ILoanProductsView
+    public partial class LoanProductsView : BaseView, ILoanProductsView
     {
         private ILoanProductsPresenterCallbacks _presenterCallbacks;
 

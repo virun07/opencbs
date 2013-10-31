@@ -87,7 +87,7 @@ namespace OpenCBS.GUI.View
             this._tabList.Dock = System.Windows.Forms.DockStyle.Fill;
             this._tabList.Location = new System.Drawing.Point(0, 0);
             this._tabList.Name = "_tabList";
-            this._tabList.Size = new System.Drawing.Size(599, 296);
+            this._tabList.Size = new System.Drawing.Size(699, 342);
             this._tabList.TabIndex = 5;
             // 
             // _generalTabListPage
@@ -105,7 +105,7 @@ namespace OpenCBS.GUI.View
             this._generalTabListPage.Controls.Add(this._nameLabel);
             this._generalTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this._generalTabListPage.Name = "_generalTabListPage";
-            this._generalTabListPage.Size = new System.Drawing.Size(441, 288);
+            this._generalTabListPage.Size = new System.Drawing.Size(541, 334);
             this._generalTabListPage.TabIndex = 0;
             this._generalTabListPage.Text = "General";
             // 
@@ -113,27 +113,27 @@ namespace OpenCBS.GUI.View
             // 
             this._currencyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._currencyComboBox.FormattingEnabled = true;
-            this._currencyComboBox.Location = new System.Drawing.Point(12, 114);
+            this._currencyComboBox.Location = new System.Drawing.Point(14, 132);
             this._currencyComboBox.Name = "_currencyComboBox";
-            this._currencyComboBox.Size = new System.Drawing.Size(150, 21);
+            this._currencyComboBox.Size = new System.Drawing.Size(174, 23);
             this._currencyComboBox.TabIndex = 6;
             this._currencyComboBox.Tag = "CurrencyId";
             // 
             // _currencyLabel
             // 
             this._currencyLabel.AutoSize = true;
-            this._currencyLabel.Location = new System.Drawing.Point(12, 96);
+            this._currencyLabel.Location = new System.Drawing.Point(14, 111);
             this._currencyLabel.Name = "_currencyLabel";
-            this._currencyLabel.Size = new System.Drawing.Size(49, 13);
+            this._currencyLabel.Size = new System.Drawing.Size(55, 15);
             this._currencyLabel.TabIndex = 5;
             this._currencyLabel.Text = "Currency";
             // 
             // _availableForCompanyCheckBox
             // 
             this._availableForCompanyCheckBox.AutoSize = true;
-            this._availableForCompanyCheckBox.Location = new System.Drawing.Point(217, 81);
+            this._availableForCompanyCheckBox.Location = new System.Drawing.Point(253, 93);
             this._availableForCompanyCheckBox.Name = "_availableForCompanyCheckBox";
-            this._availableForCompanyCheckBox.Size = new System.Drawing.Size(70, 17);
+            this._availableForCompanyCheckBox.Size = new System.Drawing.Size(78, 19);
             this._availableForCompanyCheckBox.TabIndex = 11;
             this._availableForCompanyCheckBox.Text = "Company";
             this._availableForCompanyCheckBox.UseVisualStyleBackColor = true;
@@ -141,9 +141,9 @@ namespace OpenCBS.GUI.View
             // _availableForNsgCheckBox
             // 
             this._availableForNsgCheckBox.AutoSize = true;
-            this._availableForNsgCheckBox.Location = new System.Drawing.Point(217, 62);
+            this._availableForNsgCheckBox.Location = new System.Drawing.Point(253, 72);
             this._availableForNsgCheckBox.Name = "_availableForNsgCheckBox";
-            this._availableForNsgCheckBox.Size = new System.Drawing.Size(119, 17);
+            this._availableForNsgCheckBox.Size = new System.Drawing.Size(137, 19);
             this._availableForNsgCheckBox.TabIndex = 10;
             this._availableForNsgCheckBox.Text = "Non-solidarity group";
             this._availableForNsgCheckBox.UseVisualStyleBackColor = true;
@@ -151,9 +151,9 @@ namespace OpenCBS.GUI.View
             // _availableForSgCheckBox
             // 
             this._availableForSgCheckBox.AutoSize = true;
-            this._availableForSgCheckBox.Location = new System.Drawing.Point(217, 43);
+            this._availableForSgCheckBox.Location = new System.Drawing.Point(253, 50);
             this._availableForSgCheckBox.Name = "_availableForSgCheckBox";
-            this._availableForSgCheckBox.Size = new System.Drawing.Size(98, 17);
+            this._availableForSgCheckBox.Size = new System.Drawing.Size(110, 19);
             this._availableForSgCheckBox.TabIndex = 9;
             this._availableForSgCheckBox.Text = "Solidarity group";
             this._availableForSgCheckBox.UseVisualStyleBackColor = true;
@@ -161,9 +161,9 @@ namespace OpenCBS.GUI.View
             // _availableForIndividualCheckBox
             // 
             this._availableForIndividualCheckBox.AutoSize = true;
-            this._availableForIndividualCheckBox.Location = new System.Drawing.Point(217, 24);
+            this._availableForIndividualCheckBox.Location = new System.Drawing.Point(253, 28);
             this._availableForIndividualCheckBox.Name = "_availableForIndividualCheckBox";
-            this._availableForIndividualCheckBox.Size = new System.Drawing.Size(65, 17);
+            this._availableForIndividualCheckBox.Size = new System.Drawing.Size(71, 19);
             this._availableForIndividualCheckBox.TabIndex = 8;
             this._availableForIndividualCheckBox.Text = "Individal";
             this._availableForIndividualCheckBox.UseVisualStyleBackColor = true;
@@ -171,43 +171,43 @@ namespace OpenCBS.GUI.View
             // _availableForLabel
             // 
             this._availableForLabel.AutoSize = true;
-            this._availableForLabel.Location = new System.Drawing.Point(214, 6);
+            this._availableForLabel.Location = new System.Drawing.Point(250, 7);
             this._availableForLabel.Name = "_availableForLabel";
-            this._availableForLabel.Size = new System.Drawing.Size(65, 13);
+            this._availableForLabel.Size = new System.Drawing.Size(73, 15);
             this._availableForLabel.TabIndex = 7;
             this._availableForLabel.Text = "Available for";
             // 
             // _codeTextBox
             // 
-            this._codeTextBox.Location = new System.Drawing.Point(12, 68);
+            this._codeTextBox.Location = new System.Drawing.Point(14, 78);
             this._codeTextBox.Name = "_codeTextBox";
-            this._codeTextBox.Size = new System.Drawing.Size(150, 20);
+            this._codeTextBox.Size = new System.Drawing.Size(174, 23);
             this._codeTextBox.TabIndex = 4;
             this._codeTextBox.Tag = "Code";
             // 
             // _codeLabel
             // 
             this._codeLabel.AutoSize = true;
-            this._codeLabel.Location = new System.Drawing.Point(12, 52);
+            this._codeLabel.Location = new System.Drawing.Point(14, 60);
             this._codeLabel.Name = "_codeLabel";
-            this._codeLabel.Size = new System.Drawing.Size(32, 13);
+            this._codeLabel.Size = new System.Drawing.Size(35, 15);
             this._codeLabel.TabIndex = 3;
             this._codeLabel.Text = "Code";
             // 
             // _nameTextBox
             // 
-            this._nameTextBox.Location = new System.Drawing.Point(12, 22);
+            this._nameTextBox.Location = new System.Drawing.Point(14, 25);
             this._nameTextBox.Name = "_nameTextBox";
-            this._nameTextBox.Size = new System.Drawing.Size(150, 20);
+            this._nameTextBox.Size = new System.Drawing.Size(174, 23);
             this._nameTextBox.TabIndex = 2;
             this._nameTextBox.Tag = "Name";
             // 
             // _nameLabel
             // 
             this._nameLabel.AutoSize = true;
-            this._nameLabel.Location = new System.Drawing.Point(12, 6);
+            this._nameLabel.Location = new System.Drawing.Point(14, 7);
             this._nameLabel.Name = "_nameLabel";
-            this._nameLabel.Size = new System.Drawing.Size(35, 13);
+            this._nameLabel.Size = new System.Drawing.Size(39, 15);
             this._nameLabel.TabIndex = 1;
             this._nameLabel.Text = "Name";
             // 
@@ -234,16 +234,16 @@ namespace OpenCBS.GUI.View
             this._scheduleTabListPage.Controls.Add(this._schedulePolicyLabel);
             this._scheduleTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this._scheduleTabListPage.Name = "_scheduleTabListPage";
-            this._scheduleTabListPage.Size = new System.Drawing.Size(42, 192);
+            this._scheduleTabListPage.Size = new System.Drawing.Size(49, 222);
             this._scheduleTabListPage.TabIndex = 1;
             this._scheduleTabListPage.Text = "Schedule";
             // 
             // _chargeInterestDuringGracePeriodCheckBox
             // 
             this._chargeInterestDuringGracePeriodCheckBox.AutoSize = true;
-            this._chargeInterestDuringGracePeriodCheckBox.Location = new System.Drawing.Point(217, 184);
+            this._chargeInterestDuringGracePeriodCheckBox.Location = new System.Drawing.Point(253, 212);
             this._chargeInterestDuringGracePeriodCheckBox.Name = "_chargeInterestDuringGracePeriodCheckBox";
-            this._chargeInterestDuringGracePeriodCheckBox.Size = new System.Drawing.Size(97, 17);
+            this._chargeInterestDuringGracePeriodCheckBox.Size = new System.Drawing.Size(106, 19);
             this._chargeInterestDuringGracePeriodCheckBox.TabIndex = 48;
             this._chargeInterestDuringGracePeriodCheckBox.Text = "Charge interest";
             this._chargeInterestDuringGracePeriodCheckBox.UseVisualStyleBackColor = true;
@@ -253,21 +253,21 @@ namespace OpenCBS.GUI.View
             this._gracePeriodRange.AllowDecimalSeparator = false;
             this._gracePeriodRange.AutoSize = true;
             this._gracePeriodRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._gracePeriodRange.Location = new System.Drawing.Point(214, 160);
+            this._gracePeriodRange.Location = new System.Drawing.Point(250, 185);
             this._gracePeriodRange.Margin = new System.Windows.Forms.Padding(0);
             this._gracePeriodRange.Max = null;
             this._gracePeriodRange.Min = null;
             this._gracePeriodRange.Name = "_gracePeriodRange";
-            this._gracePeriodRange.Size = new System.Drawing.Size(155, 20);
+            this._gracePeriodRange.Size = new System.Drawing.Size(209, 23);
             this._gracePeriodRange.TabIndex = 46;
             this._gracePeriodRange.Tag = "GracePeriod";
             // 
             // _gracePeriodLabel
             // 
             this._gracePeriodLabel.AutoSize = true;
-            this._gracePeriodLabel.Location = new System.Drawing.Point(214, 144);
+            this._gracePeriodLabel.Location = new System.Drawing.Point(250, 166);
             this._gracePeriodLabel.Name = "_gracePeriodLabel";
-            this._gracePeriodLabel.Size = new System.Drawing.Size(68, 13);
+            this._gracePeriodLabel.Size = new System.Drawing.Size(74, 15);
             this._gracePeriodLabel.TabIndex = 47;
             this._gracePeriodLabel.Text = "Grace period";
             // 
@@ -276,12 +276,12 @@ namespace OpenCBS.GUI.View
             this._maturityRange.AllowDecimalSeparator = false;
             this._maturityRange.AutoSize = true;
             this._maturityRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._maturityRange.Location = new System.Drawing.Point(214, 114);
+            this._maturityRange.Location = new System.Drawing.Point(250, 132);
             this._maturityRange.Margin = new System.Windows.Forms.Padding(0);
             this._maturityRange.Max = null;
             this._maturityRange.Min = null;
             this._maturityRange.Name = "_maturityRange";
-            this._maturityRange.Size = new System.Drawing.Size(155, 20);
+            this._maturityRange.Size = new System.Drawing.Size(209, 23);
             this._maturityRange.TabIndex = 44;
             this._maturityRange.Tag = "Maturity";
             // 
@@ -290,12 +290,12 @@ namespace OpenCBS.GUI.View
             this._interestRateRange.AllowDecimalSeparator = true;
             this._interestRateRange.AutoSize = true;
             this._interestRateRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._interestRateRange.Location = new System.Drawing.Point(214, 68);
+            this._interestRateRange.Location = new System.Drawing.Point(250, 78);
             this._interestRateRange.Margin = new System.Windows.Forms.Padding(0);
             this._interestRateRange.Max = null;
             this._interestRateRange.Min = null;
             this._interestRateRange.Name = "_interestRateRange";
-            this._interestRateRange.Size = new System.Drawing.Size(155, 20);
+            this._interestRateRange.Size = new System.Drawing.Size(209, 23);
             this._interestRateRange.TabIndex = 42;
             this._interestRateRange.Tag = "InterestRate";
             // 
@@ -304,39 +304,39 @@ namespace OpenCBS.GUI.View
             this._amountRange.AllowDecimalSeparator = true;
             this._amountRange.AutoSize = true;
             this._amountRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._amountRange.Location = new System.Drawing.Point(214, 22);
+            this._amountRange.Location = new System.Drawing.Point(250, 25);
             this._amountRange.Margin = new System.Windows.Forms.Padding(0);
             this._amountRange.Max = null;
             this._amountRange.Min = null;
             this._amountRange.Name = "_amountRange";
-            this._amountRange.Size = new System.Drawing.Size(155, 20);
+            this._amountRange.Size = new System.Drawing.Size(209, 23);
             this._amountRange.TabIndex = 40;
             this._amountRange.Tag = "Amount";
             // 
             // _maturityLabel
             // 
             this._maturityLabel.AutoSize = true;
-            this._maturityLabel.Location = new System.Drawing.Point(214, 98);
+            this._maturityLabel.Location = new System.Drawing.Point(250, 113);
             this._maturityLabel.Name = "_maturityLabel";
-            this._maturityLabel.Size = new System.Drawing.Size(44, 13);
+            this._maturityLabel.Size = new System.Drawing.Size(52, 15);
             this._maturityLabel.TabIndex = 45;
             this._maturityLabel.Text = "Maturity";
             // 
             // _interestRateLabel
             // 
             this._interestRateLabel.AutoSize = true;
-            this._interestRateLabel.Location = new System.Drawing.Point(214, 52);
+            this._interestRateLabel.Location = new System.Drawing.Point(250, 60);
             this._interestRateLabel.Name = "_interestRateLabel";
-            this._interestRateLabel.Size = new System.Drawing.Size(99, 13);
+            this._interestRateLabel.Size = new System.Drawing.Size(111, 15);
             this._interestRateLabel.TabIndex = 43;
             this._interestRateLabel.Text = "Interest rate (yearly)";
             // 
             // _amountLabel
             // 
             this._amountLabel.AutoSize = true;
-            this._amountLabel.Location = new System.Drawing.Point(214, 6);
+            this._amountLabel.Location = new System.Drawing.Point(250, 7);
             this._amountLabel.Name = "_amountLabel";
-            this._amountLabel.Size = new System.Drawing.Size(43, 13);
+            this._amountLabel.Size = new System.Drawing.Size(51, 15);
             this._amountLabel.TabIndex = 41;
             this._amountLabel.Text = "Amount";
             // 
@@ -344,18 +344,18 @@ namespace OpenCBS.GUI.View
             // 
             this._roundingPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._roundingPolicyComboBox.FormattingEnabled = true;
-            this._roundingPolicyComboBox.Location = new System.Drawing.Point(12, 206);
+            this._roundingPolicyComboBox.Location = new System.Drawing.Point(14, 238);
             this._roundingPolicyComboBox.Name = "_roundingPolicyComboBox";
-            this._roundingPolicyComboBox.Size = new System.Drawing.Size(150, 21);
+            this._roundingPolicyComboBox.Size = new System.Drawing.Size(174, 23);
             this._roundingPolicyComboBox.TabIndex = 39;
             this._roundingPolicyComboBox.Tag = "RoundingPolicy";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 190);
+            this.label1.Location = new System.Drawing.Point(14, 219);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(59, 15);
             this.label1.TabIndex = 38;
             this.label1.Text = "Rounding";
             // 
@@ -363,18 +363,18 @@ namespace OpenCBS.GUI.View
             // 
             this._dateShiftPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._dateShiftPolicyComboBox.FormattingEnabled = true;
-            this._dateShiftPolicyComboBox.Location = new System.Drawing.Point(12, 160);
+            this._dateShiftPolicyComboBox.Location = new System.Drawing.Point(14, 185);
             this._dateShiftPolicyComboBox.Name = "_dateShiftPolicyComboBox";
-            this._dateShiftPolicyComboBox.Size = new System.Drawing.Size(150, 21);
+            this._dateShiftPolicyComboBox.Size = new System.Drawing.Size(174, 23);
             this._dateShiftPolicyComboBox.TabIndex = 37;
             this._dateShiftPolicyComboBox.Tag = "DateShiftPolicy";
             // 
             // _dateShiftPolicyLabel
             // 
             this._dateShiftPolicyLabel.AutoSize = true;
-            this._dateShiftPolicyLabel.Location = new System.Drawing.Point(12, 142);
+            this._dateShiftPolicyLabel.Location = new System.Drawing.Point(14, 164);
             this._dateShiftPolicyLabel.Name = "_dateShiftPolicyLabel";
-            this._dateShiftPolicyLabel.Size = new System.Drawing.Size(52, 13);
+            this._dateShiftPolicyLabel.Size = new System.Drawing.Size(57, 15);
             this._dateShiftPolicyLabel.TabIndex = 36;
             this._dateShiftPolicyLabel.Text = "Date shift";
             // 
@@ -382,18 +382,18 @@ namespace OpenCBS.GUI.View
             // 
             this._yearPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._yearPolicyComboBox.FormattingEnabled = true;
-            this._yearPolicyComboBox.Location = new System.Drawing.Point(12, 114);
+            this._yearPolicyComboBox.Location = new System.Drawing.Point(14, 132);
             this._yearPolicyComboBox.Name = "_yearPolicyComboBox";
-            this._yearPolicyComboBox.Size = new System.Drawing.Size(150, 21);
+            this._yearPolicyComboBox.Size = new System.Drawing.Size(174, 23);
             this._yearPolicyComboBox.TabIndex = 35;
             this._yearPolicyComboBox.Tag = "YearPolicy";
             // 
             // _yearPolicyLabel
             // 
             this._yearPolicyLabel.AutoSize = true;
-            this._yearPolicyLabel.Location = new System.Drawing.Point(12, 96);
+            this._yearPolicyLabel.Location = new System.Drawing.Point(14, 111);
             this._yearPolicyLabel.Name = "_yearPolicyLabel";
-            this._yearPolicyLabel.Size = new System.Drawing.Size(29, 13);
+            this._yearPolicyLabel.Size = new System.Drawing.Size(30, 15);
             this._yearPolicyLabel.TabIndex = 34;
             this._yearPolicyLabel.Text = "Year";
             // 
@@ -401,18 +401,18 @@ namespace OpenCBS.GUI.View
             // 
             this._paymentFrequencyPolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._paymentFrequencyPolicyComboBox.FormattingEnabled = true;
-            this._paymentFrequencyPolicyComboBox.Location = new System.Drawing.Point(12, 68);
+            this._paymentFrequencyPolicyComboBox.Location = new System.Drawing.Point(14, 78);
             this._paymentFrequencyPolicyComboBox.Name = "_paymentFrequencyPolicyComboBox";
-            this._paymentFrequencyPolicyComboBox.Size = new System.Drawing.Size(150, 21);
+            this._paymentFrequencyPolicyComboBox.Size = new System.Drawing.Size(174, 23);
             this._paymentFrequencyPolicyComboBox.TabIndex = 33;
             this._paymentFrequencyPolicyComboBox.Tag = "PaymentFrequencyPolicy";
             // 
             // _paymentFrequencyLabel
             // 
             this._paymentFrequencyLabel.AutoSize = true;
-            this._paymentFrequencyLabel.Location = new System.Drawing.Point(12, 52);
+            this._paymentFrequencyLabel.Location = new System.Drawing.Point(14, 60);
             this._paymentFrequencyLabel.Name = "_paymentFrequencyLabel";
-            this._paymentFrequencyLabel.Size = new System.Drawing.Size(98, 13);
+            this._paymentFrequencyLabel.Size = new System.Drawing.Size(110, 15);
             this._paymentFrequencyLabel.TabIndex = 32;
             this._paymentFrequencyLabel.Text = "Payment frequency";
             // 
@@ -420,18 +420,18 @@ namespace OpenCBS.GUI.View
             // 
             this._schedulePolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._schedulePolicyComboBox.FormattingEnabled = true;
-            this._schedulePolicyComboBox.Location = new System.Drawing.Point(12, 22);
+            this._schedulePolicyComboBox.Location = new System.Drawing.Point(14, 25);
             this._schedulePolicyComboBox.Name = "_schedulePolicyComboBox";
-            this._schedulePolicyComboBox.Size = new System.Drawing.Size(150, 21);
+            this._schedulePolicyComboBox.Size = new System.Drawing.Size(174, 23);
             this._schedulePolicyComboBox.TabIndex = 31;
             this._schedulePolicyComboBox.Tag = "SchedulePolicy";
             // 
             // _schedulePolicyLabel
             // 
             this._schedulePolicyLabel.AutoSize = true;
-            this._schedulePolicyLabel.Location = new System.Drawing.Point(12, 6);
+            this._schedulePolicyLabel.Location = new System.Drawing.Point(14, 7);
             this._schedulePolicyLabel.Name = "_schedulePolicyLabel";
-            this._schedulePolicyLabel.Size = new System.Drawing.Size(75, 13);
+            this._schedulePolicyLabel.Size = new System.Drawing.Size(81, 15);
             this._schedulePolicyLabel.TabIndex = 30;
             this._schedulePolicyLabel.Text = "Schedule type";
             // 
@@ -440,36 +440,36 @@ namespace OpenCBS.GUI.View
             this._buttonsPanel.Controls.Add(this._cancelButton);
             this._buttonsPanel.Controls.Add(this._okButton);
             this._buttonsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._buttonsPanel.Location = new System.Drawing.Point(0, 296);
+            this._buttonsPanel.Location = new System.Drawing.Point(0, 342);
             this._buttonsPanel.Name = "_buttonsPanel";
-            this._buttonsPanel.Size = new System.Drawing.Size(599, 46);
+            this._buttonsPanel.Size = new System.Drawing.Size(699, 53);
             this._buttonsPanel.TabIndex = 4;
             // 
             // _cancelButton
             // 
-            this._cancelButton.Location = new System.Drawing.Point(504, 11);
+            this._cancelButton.Location = new System.Drawing.Point(588, 13);
             this._cancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._cancelButton.Name = "_cancelButton";
-            this._cancelButton.Size = new System.Drawing.Size(86, 24);
+            this._cancelButton.Size = new System.Drawing.Size(100, 28);
             this._cancelButton.TabIndex = 2;
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
             // 
             // _okButton
             // 
-            this._okButton.Location = new System.Drawing.Point(412, 11);
+            this._okButton.Location = new System.Drawing.Point(481, 13);
             this._okButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._okButton.Name = "_okButton";
-            this._okButton.Size = new System.Drawing.Size(86, 24);
+            this._okButton.Size = new System.Drawing.Size(100, 28);
             this._okButton.TabIndex = 1;
             this._okButton.Text = "OK";
             this._okButton.UseVisualStyleBackColor = true;
             // 
             // LoanProductView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(599, 342);
+            this.ClientSize = new System.Drawing.Size(699, 395);
             this.Controls.Add(this._tabList);
             this.Controls.Add(this._buttonsPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

@@ -54,17 +54,19 @@
             this._buttonsPanel.Controls.Add(this._showDeletedCheckBox);
             this._buttonsPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this._buttonsPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this._buttonsPanel.Location = new System.Drawing.Point(701, 0);
+            this._buttonsPanel.Location = new System.Drawing.Point(702, 0);
+            this._buttonsPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._buttonsPanel.Name = "_buttonsPanel";
-            this._buttonsPanel.Size = new System.Drawing.Size(172, 434);
+            this._buttonsPanel.Size = new System.Drawing.Size(171, 407);
             this._buttonsPanel.TabIndex = 0;
             // 
             // _addButton
             // 
             this._addButton.AutoSize = true;
-            this._addButton.Location = new System.Drawing.Point(3, 3);
+            this._addButton.Location = new System.Drawing.Point(3, 2);
+            this._addButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._addButton.Name = "_addButton";
-            this._addButton.Size = new System.Drawing.Size(165, 26);
+            this._addButton.Size = new System.Drawing.Size(164, 27);
             this._addButton.TabIndex = 0;
             this._addButton.Text = "Add";
             this._addButton.UseVisualStyleBackColor = true;
@@ -72,9 +74,10 @@
             // _editButton
             // 
             this._editButton.AutoSize = true;
-            this._editButton.Location = new System.Drawing.Point(3, 35);
+            this._editButton.Location = new System.Drawing.Point(3, 33);
+            this._editButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._editButton.Name = "_editButton";
-            this._editButton.Size = new System.Drawing.Size(165, 26);
+            this._editButton.Size = new System.Drawing.Size(164, 27);
             this._editButton.TabIndex = 1;
             this._editButton.Text = "Edit";
             this._editButton.UseVisualStyleBackColor = true;
@@ -82,9 +85,10 @@
             // _deleteButton
             // 
             this._deleteButton.AutoSize = true;
-            this._deleteButton.Location = new System.Drawing.Point(3, 67);
+            this._deleteButton.Location = new System.Drawing.Point(3, 64);
+            this._deleteButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._deleteButton.Name = "_deleteButton";
-            this._deleteButton.Size = new System.Drawing.Size(165, 26);
+            this._deleteButton.Size = new System.Drawing.Size(164, 27);
             this._deleteButton.TabIndex = 2;
             this._deleteButton.Text = "Delete";
             this._deleteButton.UseVisualStyleBackColor = true;
@@ -92,9 +96,10 @@
             // _showDeletedCheckBox
             // 
             this._showDeletedCheckBox.AutoSize = true;
-            this._showDeletedCheckBox.Location = new System.Drawing.Point(3, 99);
+            this._showDeletedCheckBox.Location = new System.Drawing.Point(3, 95);
+            this._showDeletedCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._showDeletedCheckBox.Name = "_showDeletedCheckBox";
-            this._showDeletedCheckBox.Size = new System.Drawing.Size(105, 20);
+            this._showDeletedCheckBox.Size = new System.Drawing.Size(97, 19);
             this._showDeletedCheckBox.TabIndex = 3;
             this._showDeletedCheckBox.Text = "Show deleted";
             this._showDeletedCheckBox.UseVisualStyleBackColor = true;
@@ -119,16 +124,16 @@
             this._dateShiftPolicyColumn,
             this._roundingPolicyColumn});
             this._loanProductsListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._loanProductsListView.Font = new System.Drawing.Font("Arial", 8.25F);
             this._loanProductsListView.FullRowSelect = true;
             this._loanProductsListView.GridLines = true;
             this._loanProductsListView.HeaderWordWrap = true;
             this._loanProductsListView.HideSelection = false;
             this._loanProductsListView.Location = new System.Drawing.Point(0, 0);
+            this._loanProductsListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._loanProductsListView.MultiSelect = false;
             this._loanProductsListView.Name = "_loanProductsListView";
             this._loanProductsListView.ShowGroups = false;
-            this._loanProductsListView.Size = new System.Drawing.Size(701, 434);
+            this._loanProductsListView.Size = new System.Drawing.Size(702, 407);
             this._loanProductsListView.TabIndex = 1;
             this._loanProductsListView.UseCompatibleStateImageBehavior = false;
             this._loanProductsListView.View = System.Windows.Forms.View.Details;
@@ -197,13 +202,11 @@
             // 
             // LoanProductsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 434);
+            this.ClientSize = new System.Drawing.Size(873, 407);
             this.Controls.Add(this._loanProductsListView);
             this.Controls.Add(this._buttonsPanel);
-            this.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "LoanProductsView";
             this.Text = "LoanProductsView";
             this._buttonsPanel.ResumeLayout(false);
