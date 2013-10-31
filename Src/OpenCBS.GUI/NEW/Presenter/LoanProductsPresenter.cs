@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Linq;
 using OpenCBS.GUI.NEW.AppController;
 using OpenCBS.GUI.NEW.CommandData;
 using OpenCBS.GUI.NEW.Event;
@@ -91,10 +92,9 @@ namespace OpenCBS.GUI.NEW.Presenter
 
         private void ShowLoanProducts()
         {
-//            var loanProducts = _view.ShowDeleted
-//                                   ? _loanProductService.FindAll()
-//                                   : _loanProductService.FindAll()
-            var loanProducts = _loanProductService.FindAll();
+            var loanProducts = _view.ShowDeleted
+                                   ? _loanProductService.FindAll()
+                                   : _loanProductService.FindAll().Where(lp => !lp.Deleted).ToList();
             _view.ShowLoanProducts(loanProducts);
         }
 
