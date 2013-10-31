@@ -61,13 +61,15 @@ namespace OpenCBS.GUI
             For<ICommand<ShowEntryFeesData>>().Use<ShowEntryFeesCommand>();
 
             // Repositories
+            For<IPolicyRepository>().Use<PolicyRepository>();
             For<IConnectionProvider>().Use<SqlConnectionProvider>();
             For<ILoanProductRepository>().Use<LoanProductRepository>();
             For<ICurrencyRepository>().Use<CurrencyRepository>();
-            For<IPolicyRepository>().Use<PolicyRepository>();
+            For<IEntryFeeRepository>().Use<EntryFeeRepository>();
 
             // Services
             For<ILoanProductService>().Use<LoanProductService>();
+            For<IEntryFeeService>().Use<EntryFeeService>();
 
             // Validators
             For<ILoanProductValidator>().Use<LoanProductValidator>();

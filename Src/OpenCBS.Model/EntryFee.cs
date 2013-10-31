@@ -17,29 +17,14 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.Common;
-
-namespace OpenCBS.DataContract
+namespace OpenCBS.Model
 {
-    public class LoanProductDto : DataTransferObject
+    public class EntryFee : EntityBase
     {
         public string Name { get; set; }
         public string Code { get; set; }
-        public AvailableFor AvailableFor { get; set; }
-        public string PaymentFrequencyPolicy { get; set; }
-        public string SchedulePolicy { get; set; }
-        public string YearPolicy { get; set; }
-        public string DateShiftPolicy { get; set; }
-        public string RoundingPolicy { get; set; }
-        public int? CurrencyId { get; set; }
-        public decimal? AmountMin { get; set; }
-        public decimal? AmountMax { get; set; }
-        public decimal? InterestRateMin { get; set; }
-        public decimal? InterestRateMax { get; set; }
-        public int? MaturityMin { get; set; }
-        public int? MaturityMax { get; set; }
-        public int? GracePeriodMin { get; set; }
-        public int? GracePeriodMax { get; set; }
-        public bool ChargeInterestDuringGracePeriod { get; set; }
+        public decimal ValueMin { get; set; }
+        public decimal ValueMax { get; set; }
+        public bool Rate { get; set; }
     }
 }

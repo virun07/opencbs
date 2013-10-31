@@ -27,7 +27,7 @@ using OpenCBS.Model;
 
 namespace OpenCBS.Persistence
 {
-    public class LoanProductRepository : Repository, ILoanProductRepository
+    public class LoanProductRepository : ILoanProductRepository
     {
         private readonly IConnectionProvider _connectionProvider;
 
@@ -99,7 +99,7 @@ namespace OpenCBS.Persistence
             row.InjectFrom<FlatLoopValueInjection>(entity).InjectFrom<EnumToIntInjection>(entity);
             using (var connection = _connectionProvider.GetConnection())
             {
-                Update(connection, "LoanProduct", row);
+                connection.Update(row);
             }
         }
 
@@ -109,7 +109,7 @@ namespace OpenCBS.Persistence
             row.InjectFrom<FlatLoopValueInjection>(entity).InjectFrom<EnumToIntInjection>(entity);
             using (var connection = _connectionProvider.GetConnection())
             {
-                entity.Id = Insert(connection, "LoanProduct", row);
+                entity.Id = connection.Insert(row);
             }
         }
 
@@ -117,7 +117,7 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                Delete(connection, "LoanProduct", id);
+                connection.Delete<LoanProduct>(id);
             }
         }
     }

@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -26,11 +27,13 @@ using Dapper;
 
 namespace OpenCBS.Persistence
 {
-    public abstract class Repository
+    public static class DapperExtensions
     {
-        protected static void Update(IDbConnection connection, string tableName, dynamic data)
+        public static void Update<T>(this IDbConnection connection, T data)
         {
-            var paramNames = GetParamNames((object) data);
+            var tableName = GetTableName(typeof (T));
+
+            var paramNames = GetParamNames(data);
             var builder = new StringBuilder();
             builder.Append("update ").Append(tableName).Append(" set ");
             builder.AppendLine(string.Join(",", paramNames.Where(n => n != "Id").Select(p => p + "= @" + p)));
@@ -40,8 +43,10 @@ namespace OpenCBS.Persistence
             connection.Execute(builder.ToString(), parameters);
         }
 
-        protected static int Insert(IDbConnection connection, string tableName, dynamic data)
+        public static int Insert<T>(this IDbConnection connection, T data)
         {
+            var tableName = GetTableName(typeof(T));
+
             var o = (object) data;
             var paramNames = GetParamNames(o);
             paramNames.Remove("Id");
@@ -56,10 +61,19 @@ namespace OpenCBS.Persistence
             return connection.Query<int>(builder.ToString(), o).Single();
         }
 
-        protected static void Delete(IDbConnection connection, string tableName, int id)
+        public static void Delete<T>(this IDbConnection connection, int id)
         {
+            var tableName = GetTableName(typeof(T));
             var sql = "delete from " + tableName + " where Id = @Id";
             connection.Execute(sql, new { Id = id });
+        }
+
+        private static string GetTableName(Type t)
+        {
+            var tableName = t.Name;
+            if (tableName.EndsWith("Row"))
+                tableName = tableName.Substring(0, tableName.Length - 3);
+            return tableName;
         }
 
         private static IList<string> GetParamNames(object o)

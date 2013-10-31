@@ -17,7 +17,6 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
@@ -26,46 +25,55 @@ using OpenCBS.Model;
 
 namespace OpenCBS.Persistence
 {
-    public class CurrencyRepository : ICurrencyRepository
+    public class EntryFeeRepository : IEntryFeeRepository
     {
         private readonly IConnectionProvider _connectionProvider;
 
-        public CurrencyRepository(IConnectionProvider connectionProvider)
+        public EntryFeeRepository(IConnectionProvider connectionProvider)
         {
             _connectionProvider = connectionProvider;
         }
 
-        public IList<Currency> FindAll()
+        public IList<EntryFee> FindAll()
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                const string sql = "select * from Currency";
-                return connection.Query<Currency>(sql).ToList();
+                const string sql = "select * from EntryFee";
+                return connection.Query<EntryFee>(sql).ToList();
             }
         }
 
-        public Currency FindById(int id)
+        public EntryFee FindById(int id)
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                const string sql = "select * from Currency where Id = @Id";
-                return connection.Query<Currency>(sql, new {Id = id}).FirstOrDefault();
+                const string sql = "select * from EntryFee where Id = @Id";
+                return connection.Query<EntryFee>(sql, new { Id = id }).FirstOrDefault();
             }
         }
 
-        public void Update(Currency entity)
+        public void Update(EntryFee entity)
         {
-            throw new NotImplementedException();
+            using (var connection = _connectionProvider.GetConnection())
+            {
+                connection.Update(entity);
+            }
         }
 
-        public void Add(Currency entity)
+        public void Add(EntryFee entity)
         {
-            throw new NotImplementedException();
+            using (var connection = _connectionProvider.GetConnection())
+            {
+                connection.Insert(entity);
+            }
         }
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            using (var connection = _connectionProvider.GetConnection())
+            {
+                connection.Delete<EntryFee>(id);
+            }
         }
     }
 }

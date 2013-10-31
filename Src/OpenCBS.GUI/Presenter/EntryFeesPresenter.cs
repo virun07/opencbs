@@ -17,7 +17,9 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Linq;
 using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
 using OpenCBS.Interfaces;
 
@@ -25,19 +27,58 @@ namespace OpenCBS.GUI.Presenter
 {
     public class EntryFeesPresenter : IEntryFeesPresenter, IEntryFeesPresenterCallbacks
     {
+        private readonly IEntryFeeService _entryFeeService;
         private readonly IApplicationController _appController;
         private readonly IEntryFeesView _view;
 
-        public EntryFeesPresenter(IEntryFeesView view, IApplicationController appController)
+        public EntryFeesPresenter(IEntryFeesView view, IApplicationController appController, IEntryFeeService entryFeeService)
         {
             _view = view;
             _appController = appController;
+            _entryFeeService = entryFeeService;
         }
 
         public void Run()
         {
             _view.Attach(this);
             _view.Run();
+            ShowEntryFees();
+        }
+
+        public void Add()
+        {
+        }
+
+        public void Edit()
+        {
+        }
+
+        public void Delete()
+        {
+        }
+
+        public void Refresh()
+        {
+            ShowEntryFees();
+        }
+
+        public void ChangeSelection()
+        {
+            var entryFee = _view.SelectedEntryFee;
+            _view.EditEnabled = _view.DeleteEnabled = entryFee != null;
+        }
+
+        public void Close()
+        {
+            _appController.Unsubscribe(this);
+        }
+
+        private void ShowEntryFees()
+        {
+            var entryFees = _view.ShowDeleted
+                                ? _entryFeeService.FindAll()
+                                : _entryFeeService.FindAll().Where(ef => !ef.Deleted).ToList();
+            _view.ShowEntryFees(entryFees);
         }
     }
 }

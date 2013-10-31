@@ -17,18 +17,33 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.DataContract
-{
-    public abstract class DataTransferObject
-    {
-        public int Id { get; set; }
-        public Notification Notification { get; set; }
-        public bool Deleted { get; set; }
+using System.Collections.Generic;
+using System.Linq;
+using Omu.ValueInjecter;
+using OpenCBS.Common.Injection;
+using OpenCBS.DataContract;
+using OpenCBS.Interface.Repository;
+using OpenCBS.Interface.Service;
 
-        public override bool Equals(object obj)
+namespace OpenCBS.Service
+{
+    public class EntryFeeService : IEntryFeeService
+    {
+        private readonly IEntryFeeRepository _entryFeeRepository;
+
+        public EntryFeeService(IEntryFeeRepository entryFeeRepository)
         {
-            if (obj == null) return false;
-            return Id == ((DataTransferObject) obj).Id;
+            _entryFeeRepository = entryFeeRepository;
+        }
+
+        public IList<EntryFeeDto> FindAll()
+        {
+            return _entryFeeRepository.FindAll().Select(ef =>
+            {
+                var entryFeeDto = new EntryFeeDto();
+                entryFeeDto.InjectFrom<FlatNullableInjection>(ef);
+                return entryFeeDto;
+            }).ToList();
         }
     }
 }

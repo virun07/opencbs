@@ -21,5 +21,11 @@ namespace OpenCBS.Interface.Presenter
 {
     public interface IEntryFeesPresenterCallbacks
     {
+        void Add();
+        void Edit();
+        void Delete();
+        void Refresh();
+        void ChangeSelection();
+        void Close();
     }
 }

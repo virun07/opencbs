@@ -17,6 +17,8 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
+using OpenCBS.DataContract;
 using OpenCBS.Interface.Presenter;
 
 namespace OpenCBS.Interface.View
@@ -24,5 +26,10 @@ namespace OpenCBS.Interface.View
     public interface IEntryFeesView : IView<IEntryFeesPresenterCallbacks>
     {
         void Run();
+        void ShowEntryFees(IEnumerable<EntryFeeDto> entryFees);
+        bool EditEnabled { get; set; }
+        bool DeleteEnabled { get; set; }
+        EntryFeeDto SelectedEntryFee { get; }
+        bool ShowDeleted { get; }
     }
 }

@@ -52,7 +52,7 @@ namespace OpenCBS.GUI.View
         {
             _loanProductsListView.FormatRow += (sender, e) =>
             {
-                var loanProduct = (LoanProductDto)e.Model;
+                var loanProduct = (LoanProductDto) e.Model;
                 e.Item.BackColor = loanProduct.Deleted ? Color.FromArgb(255, 92, 92) : Color.Transparent;
             };
 
@@ -82,7 +82,7 @@ namespace OpenCBS.GUI.View
 
         public LoanProductDto SelectedLoanProduct
         {
-            get { return (LoanProductDto)_loanProductsListView.SelectedObject; }
+            get { return (LoanProductDto) _loanProductsListView.SelectedObject; }
         }
 
         public bool ShowDeleted
@@ -92,7 +92,7 @@ namespace OpenCBS.GUI.View
 
         public string AvailabilityToString(object obj)
         {
-            var availableFor = (AvailableFor)obj;
+            var availableFor = (AvailableFor) obj;
             var items = new List<string>();
             if ((availableFor & AvailableFor.Individual) == AvailableFor.Individual)
                 items.Add("Ind");

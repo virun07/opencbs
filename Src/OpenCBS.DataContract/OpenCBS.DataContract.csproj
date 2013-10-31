@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="CommandResult.cs" />
     <Compile Include="DataTransferObject.cs" />
+    <Compile Include="EntryFeeDto.cs" />
     <Compile Include="Error.cs" />
     <Compile Include="LoanProductDto.cs" />
     <Compile Include="LoanProductReferenceDataDto.cs" />

@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Currency.cs" />
     <Compile Include="EntityBase.cs" />
+    <Compile Include="EntryFee.cs" />
     <Compile Include="LoanProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

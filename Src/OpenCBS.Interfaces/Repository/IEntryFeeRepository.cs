@@ -17,18 +17,11 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.DataContract
-{
-    public abstract class DataTransferObject
-    {
-        public int Id { get; set; }
-        public Notification Notification { get; set; }
-        public bool Deleted { get; set; }
+using OpenCBS.Model;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return Id == ((DataTransferObject) obj).Id;
-        }
+namespace OpenCBS.Interface.Repository
+{
+    public interface IEntryFeeRepository : IRepository<EntryFee>
+    {
     }
 }
