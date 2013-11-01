@@ -17,8 +17,10 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using OpenCBS.DataContract;
 using OpenCBS.GUI.AppEvent;
 using OpenCBS.GUI.CommandData;
+using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interfaces;
 
@@ -26,19 +28,25 @@ namespace OpenCBS.GUI.Command
 {
     public class DeleteLoanProductCommand : ICommand<DeleteLoanProductData>
     {
+        private readonly IConfirmationPresenter _presenter;
         private readonly ILoanProductService _loanProductService;
         private readonly IApplicationController _appController;
 
-        public DeleteLoanProductCommand(ILoanProductService loanProductService, IApplicationController appController)
+        public DeleteLoanProductCommand(IConfirmationPresenter presenter, ILoanProductService loanProductService, IApplicationController appController)
         {
+            _presenter = presenter;
             _loanProductService = loanProductService;
             _appController = appController;
         }
 
         public void Execute(DeleteLoanProductData commandData)
         {
-            _loanProductService.Remove(commandData.Id);
-            _appController.Raise(new LoanProductDeletedEvent { Id = commandData.Id });
+            var result = _presenter.Get("Do you confirm the operation?");
+            if (result == CommandResult.Ok)
+            {
+                _loanProductService.Remove(commandData.Id);
+                _appController.Raise(new LoanProductDeletedEvent {Id = commandData.Id});
+            }
         }
     }
 }

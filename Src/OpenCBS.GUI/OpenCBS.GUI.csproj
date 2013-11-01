@@ -757,6 +757,7 @@
     <Compile Include="AppEvent\LoanProductAddedEvent.cs" />
     <Compile Include="AppEvent\LoanProductDeletedEvent.cs" />
     <Compile Include="AppEvent\LoanProductUpdatedEvent.cs" />
+    <Compile Include="Presenter\ConfirmationPresenter.cs" />
     <Compile Include="Presenter\EntryFeePresenter.cs" />
     <Compile Include="Presenter\EntryFeesPresenter.cs" />
     <Compile Include="Presenter\LoanProductPresenter.cs" />
@@ -768,6 +769,7 @@
     <Compile Include="View\BaseView.Designer.cs">
       <DependentUpon>BaseView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ConfirmationView.cs" />
     <Compile Include="View\EntryFeesView.cs">
       <SubType>Form</SubType>
     </Compile>

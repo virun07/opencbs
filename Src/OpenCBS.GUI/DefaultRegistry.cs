@@ -49,10 +49,12 @@ namespace OpenCBS.GUI
             For<ILoanProductView>().Use<LoanProductView>();
             For<IEntryFeesView>().Use<EntryFeesView>();
             For<IEntryFeeView>().Use<EntryFeeView>();
+            For<IConfirmationView>().Use<ConfirmationView>();
             
             For<ILoanProductPresenter>().Use<LoanProductPresenter>();
             For<IEntryFeesPresenter>().Use<EntryFeesPresenter>();
             For<IEntryFeePresenter>().Use<EntryFeePresenter>();
+            For<IConfirmationPresenter>().Use<ConfirmationPresenter>();
 
             // Commands
             For<ICommand<ShowLoanProductsData>>().Use<ShowLoanProductsCommand>();
