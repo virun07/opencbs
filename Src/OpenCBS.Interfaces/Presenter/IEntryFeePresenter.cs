@@ -19,10 +19,10 @@
 
 using OpenCBS.DataContract;
 
-namespace OpenCBS.GUI.AppEvent
+namespace OpenCBS.Interface.Presenter
 {
-    public class LoanProductAddedEvent
+    public interface IEntryFeePresenter
     {
-        public LoanProductDto LoanProductDto { get; set; }
+        Result<EntryFeeDto> Get(EntryFeeDto entryFee);
     }
 }

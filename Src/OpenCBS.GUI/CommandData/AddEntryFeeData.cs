@@ -17,12 +17,9 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.DataContract;
-
-namespace OpenCBS.GUI.AppEvent
+namespace OpenCBS.GUI.CommandData
 {
-    public class LoanProductAddedEvent
+    public class AddEntryFeeData
     {
-        public LoanProductDto LoanProductDto { get; set; }
     }
 }

@@ -18,11 +18,20 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.DataContract;
+using OpenCBS.Interface.Presenter;
 
-namespace OpenCBS.GUI.AppEvent
+namespace OpenCBS.Interface.View
 {
-    public class LoanProductAddedEvent
+    public interface IEntryFeeView : IView<IEntryFeePresenterCallbacks>
     {
-        public LoanProductDto LoanProductDto { get; set; }
+        void Run();
+        void Stop();
+        void ShowNotification(Notification notification);
+
+        string EntryFeeName { get; set; }
+        string Code { get; set; }
+        decimal? ValueMin { get; set; }
+        decimal? ValueMax { get; set; }
+        bool Rate { get; set; }
     }
 }

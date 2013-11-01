@@ -43,6 +43,8 @@
     <Compile Include="ICommand.cs" />
     <Compile Include="IEventHandler.cs" />
     <Compile Include="IEventPublisher.cs" />
+    <Compile Include="Presenter\IEntryFeePresenter.cs" />
+    <Compile Include="Presenter\IEntryFeePresenterCallbacks.cs" />
     <Compile Include="Presenter\IEntryFeesPresenter.cs" />
     <Compile Include="Presenter\IEntryFeesPresenterCallbacks.cs" />
     <Compile Include="Presenter\ILoanProductPresenter.cs" />
@@ -61,9 +63,11 @@
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Service\IEntryFeeService.cs" />
     <Compile Include="Service\ILoanProductService.cs" />
+    <Compile Include="Validator\IEntryFeeValidator.cs" />
     <Compile Include="Validator\ILoanProductValidator.cs" />
     <Compile Include="Validator\IValidator.cs" />
     <Compile Include="View\IEntryFeesView.cs" />
+    <Compile Include="View\IEntryFeeView.cs" />
     <Compile Include="View\ILoanProductsView.cs" />
     <Compile Include="View\ILoanProductView.cs" />
     <Compile Include="View\IMainView.cs" />

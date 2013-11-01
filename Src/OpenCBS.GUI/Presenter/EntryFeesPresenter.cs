@@ -18,6 +18,8 @@
 // Contact: contact@opencbs.com
 
 using System.Linq;
+using OpenCBS.GUI.AppEvent;
+using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
@@ -25,7 +27,10 @@ using OpenCBS.Interfaces;
 
 namespace OpenCBS.GUI.Presenter
 {
-    public class EntryFeesPresenter : IEntryFeesPresenter, IEntryFeesPresenterCallbacks
+    public class EntryFeesPresenter : IEntryFeesPresenter, IEntryFeesPresenterCallbacks,
+        IEventHandler<EntryFeeAddedEvent>,
+        IEventHandler<EntryFeeUpdatedEvent>,
+        IEventHandler<EntryFeeDeletedEvent>
     {
         private readonly IEntryFeeService _entryFeeService;
         private readonly IApplicationController _appController;
@@ -47,14 +52,21 @@ namespace OpenCBS.GUI.Presenter
 
         public void Add()
         {
+            _appController.Execute(new AddEntryFeeData());
         }
 
         public void Edit()
         {
+            var entryFee = _view.SelectedEntryFee;
+            if (entryFee == null) return;
+            _appController.Execute(new EditEntryFeeData { EntryFeeDto = entryFee });
         }
 
         public void Delete()
         {
+            var entryFee = _view.SelectedEntryFee;
+            if (entryFee == null) return;
+            _appController.Execute(new DeleteEntryFeeData { Id = entryFee.Id });
         }
 
         public void Refresh()
@@ -79,6 +91,21 @@ namespace OpenCBS.GUI.Presenter
                                 ? _entryFeeService.FindAll()
                                 : _entryFeeService.FindAll().Where(ef => !ef.Deleted).ToList();
             _view.ShowEntryFees(entryFees);
+        }
+
+        public void Handle(EntryFeeAddedEvent eventData)
+        {
+            ShowEntryFees();
+        }
+
+        public void Handle(EntryFeeUpdatedEvent eventData)
+        {
+            ShowEntryFees();
+        }
+
+        public void Handle(EntryFeeDeletedEvent eventData)
+        {
+            ShowEntryFees();
         }
     }
 }

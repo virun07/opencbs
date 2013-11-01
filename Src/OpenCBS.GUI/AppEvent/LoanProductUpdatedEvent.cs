@@ -23,6 +23,6 @@ namespace OpenCBS.GUI.AppEvent
 {
     public class LoanProductUpdatedEvent
     {
-        public LoanProductDto LoanProduct { get; set; }
+        public LoanProductDto LoanProductDto { get; set; }
     }
 }

@@ -24,26 +24,60 @@ using OpenCBS.Common.Injection;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Repository;
 using OpenCBS.Interface.Service;
+using OpenCBS.Interface.Validator;
+using OpenCBS.Model;
 
 namespace OpenCBS.Service
 {
     public class EntryFeeService : IEntryFeeService
     {
-        private readonly IEntryFeeRepository _entryFeeRepository;
+        private readonly IEntryFeeRepository _repository;
+        private readonly IEntryFeeValidator _validator;
 
-        public EntryFeeService(IEntryFeeRepository entryFeeRepository)
+        public EntryFeeService(IEntryFeeRepository repository, IEntryFeeValidator validator)
         {
-            _entryFeeRepository = entryFeeRepository;
+            _repository = repository;
+            _validator = validator;
         }
 
         public IList<EntryFeeDto> FindAll()
         {
-            return _entryFeeRepository.FindAll().Select(ef =>
+            return _repository.FindAll().Select(ef =>
             {
                 var entryFeeDto = new EntryFeeDto();
                 entryFeeDto.InjectFrom<FlatNullableInjection>(ef);
                 return entryFeeDto;
             }).ToList();
+        }
+
+        public void Add(EntryFeeDto entryFeeDto)
+        {
+            _validator.Validate(entryFeeDto);
+            if (entryFeeDto.Notification.HasErrors) return;
+
+            var entryFee = new EntryFee();
+            entryFee.InjectFrom<NullableInjection>(entryFeeDto);
+            _repository.Add(entryFee);
+        }
+
+        public void Update(EntryFeeDto entryFeeDto)
+        {
+            _validator.Validate(entryFeeDto);
+            if (entryFeeDto.Notification.HasErrors) return;
+
+            var entryFee = _repository.FindById(entryFeeDto.Id);
+            entryFee.InjectFrom<NullableInjection>(entryFeeDto);
+            _repository.Update(entryFee);
+        }
+
+        public void Remove(int id)
+        {
+            _repository.Remove(id);
+        }
+
+        public void Validate(EntryFeeDto entryFeeDto)
+        {
+            _validator.Validate(entryFeeDto);
         }
     }
 }

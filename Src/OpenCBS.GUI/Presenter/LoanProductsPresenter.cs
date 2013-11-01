@@ -52,7 +52,7 @@ namespace OpenCBS.GUI.Presenter
         {
             var loanProduct = _view.SelectedLoanProduct;
             if (loanProduct == null) return;
-            _appController.Execute(new EditLoanProductData { LoanProduct = loanProduct });
+            _appController.Execute(new EditLoanProductData { LoanProductDto = loanProduct });
         }
 
         public void Delete()

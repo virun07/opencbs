@@ -17,12 +17,28 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.DataContract;
+using OpenCBS.GUI.AppEvent;
+using OpenCBS.GUI.CommandData;
+using OpenCBS.Interface.Service;
+using OpenCBS.Interfaces;
 
-namespace OpenCBS.GUI.AppEvent
+namespace OpenCBS.GUI.Command
 {
-    public class LoanProductAddedEvent
+    public class DeleteEntryFeeCommand : ICommand<DeleteEntryFeeData>
     {
-        public LoanProductDto LoanProductDto { get; set; }
+        private readonly IEntryFeeService _entryFeeService;
+        private readonly IApplicationController _appController;
+
+        public DeleteEntryFeeCommand(IEntryFeeService entryFeeService, IApplicationController appController)
+        {
+            _entryFeeService = entryFeeService;
+            _appController = appController;
+        }
+
+        public void Execute(DeleteEntryFeeData commandData)
+        {
+            _entryFeeService.Remove(commandData.Id);
+            _appController.Raise(new EntryFeeDeletedEvent { Id = commandData.Id });
+        }
     }
 }

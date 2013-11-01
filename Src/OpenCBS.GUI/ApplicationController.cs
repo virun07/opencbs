@@ -17,6 +17,8 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
+using System.Windows.Forms;
 using OpenCBS.Interfaces;
 using StructureMap;
 
@@ -35,9 +37,16 @@ namespace OpenCBS.GUI
 
         public void Execute<T>(T commandData)
         {
-            var command = _container.TryGetInstance<ICommand<T>>();
-            if (command != null)
-                command.Execute(commandData);
+            try
+            {
+                var command = _container.TryGetInstance<ICommand<T>>();
+                if (command != null)
+                    command.Execute(commandData);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void Raise<T>(T eventData)

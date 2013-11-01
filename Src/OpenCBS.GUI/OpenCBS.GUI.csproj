@@ -426,6 +426,9 @@
     <Compile Include="Accounting\TrialBalancePreview.Designer.cs">
       <DependentUpon>TrialBalancePreview.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppEvent\EntryFeeAddedEvent.cs" />
+    <Compile Include="AppEvent\EntryFeeDeletedEvent.cs" />
+    <Compile Include="AppEvent\EntryFeeUpdatedEvent.cs" />
     <Compile Include="AuditTrail\AuditTrailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -459,7 +462,13 @@
     <Compile Include="Clients\NonSolidaryGroupForm.Designer.cs">
       <DependentUpon>NonSolidaryGroupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommandData\AddEntryFeeData.cs" />
+    <Compile Include="CommandData\DeleteEntryFeeData.cs" />
+    <Compile Include="CommandData\EditEntryFeeData.cs" />
     <Compile Include="CommandData\ShowEntryFeesData.cs" />
+    <Compile Include="Command\AddEntryFeeCommand.cs" />
+    <Compile Include="Command\DeleteEntryFeeCommand.cs" />
+    <Compile Include="Command\EditEntryFeeCommand.cs" />
     <Compile Include="Command\ShowEntryFeesCommand.cs" />
     <Compile Include="Configuration\AddBranchForm.cs">
       <SubType>Form</SubType>
@@ -748,6 +757,7 @@
     <Compile Include="AppEvent\LoanProductAddedEvent.cs" />
     <Compile Include="AppEvent\LoanProductDeletedEvent.cs" />
     <Compile Include="AppEvent\LoanProductUpdatedEvent.cs" />
+    <Compile Include="Presenter\EntryFeePresenter.cs" />
     <Compile Include="Presenter\EntryFeesPresenter.cs" />
     <Compile Include="Presenter\LoanProductPresenter.cs" />
     <Compile Include="Presenter\LoanProductsPresenter.cs" />
@@ -755,11 +765,20 @@
     <Compile Include="View\BaseView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\BaseView.Designer.cs">
+      <DependentUpon>BaseView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\EntryFeesView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\EntryFeesView.Designer.cs">
       <DependentUpon>EntryFeesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntryFeeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EntryFeeView.Designer.cs">
+      <DependentUpon>EntryFeeView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoanProductsView.cs">
       <SubType>Form</SubType>
@@ -782,7 +801,6 @@
     <Compile Include="View\TopEdgePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\ViewExtensions.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2383,8 +2401,14 @@
     <EmbeddedResource Include="MultiLanguageForm.resx">
       <DependentUpon>MultiLanguageForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\BaseView.resx">
+      <DependentUpon>BaseView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\EntryFeesView.resx">
       <DependentUpon>EntryFeesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EntryFeeView.resx">
+      <DependentUpon>EntryFeeView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoanProductsView.resx">
       <DependentUpon>LoanProductsView.cs</DependentUpon>

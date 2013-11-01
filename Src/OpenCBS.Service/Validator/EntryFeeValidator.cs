@@ -18,11 +18,21 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.DataContract;
+using OpenCBS.Interface.Validator;
 
-namespace OpenCBS.GUI.AppEvent
+namespace OpenCBS.Service.Validator
 {
-    public class LoanProductAddedEvent
+    public class EntryFeeValidator : Validator<EntryFeeDto>, IEntryFeeValidator
     {
-        public LoanProductDto LoanProductDto { get; set; }
+        public override void Validate(EntryFeeDto entity)
+        {
+            base.Validate(entity);
+
+            FailIfNullOrEmpty("Name");
+            FailIfNotAlphanumOrUnderscore("Code");
+            FailIfNullOrEmpty("Code");
+            FailIfNullOrEmpty("ValueMax");
+            FailIfNullOrEmpty("ValueMin");
+        }
     }
 }

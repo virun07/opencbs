@@ -28,22 +28,22 @@ namespace OpenCBS.Service.Validator
         {
             base.Validate(entity);
 
-            FailIfNullOrEmpty("Name", "Cannot be empty.");
-            FailIfNullOrEmpty("Code", "Cannot be empty.");
-            FailIfNullOrEmpty("SchedulePolicy", "Cannot be empty.");
-            FailIfNullOrEmpty("PaymentFrequencyPolicy", "Cannot be empty.");
-            FailIfNullOrEmpty("YearPolicy", "Cannot be empty.");
-            FailIfNullOrEmpty("DateShiftPolicy", "Cannot be empty.");
-            FailIfNullOrEmpty("RoundingPolicy", "Cannot be empty.");
-            FailIfNullOrEmpty(entity.AmountMax, "Amount", "Max value cannot be empty.");
-            FailIfNullOrEmpty(entity.AmountMin, "Amount", "Min value cannot be empty.");
-            FailIfNullOrEmpty(entity.InterestRateMax, "InterestRate", "Max value cannot be empty.");
-            FailIfNullOrEmpty(entity.InterestRateMin, "InterestRate", "Min value cannot be empty.");
-            FailIfNullOrEmpty(entity.MaturityMax, "Maturity", "Max value cannot be empty.");
-            FailIfNullOrEmpty(entity.MaturityMin, "Maturity", "Min value cannot be empty.");
-            FailIfNullOrEmpty(entity.GracePeriodMax, "GracePeriod", "Max value cannot be empty.");
-            FailIfNullOrEmpty(entity.GracePeriodMin, "GracePeriod", "Min value cannot be empty.");
-            FailIfNullOrEmpty("CurrencyId", "Cannot be empty");
+            FailIfNullOrEmpty("Name");
+            FailIfNullOrEmpty("Code");
+            FailIfNullOrEmpty("SchedulePolicy");
+            FailIfNullOrEmpty("PaymentFrequencyPolicy");
+            FailIfNullOrEmpty("YearPolicy");
+            FailIfNullOrEmpty("DateShiftPolicy");
+            FailIfNullOrEmpty("RoundingPolicy");
+            FailIfNullOrEmpty("AmountMax");
+            FailIfNullOrEmpty("AmountMin");
+            FailIfNullOrEmpty("InterestRateMax");
+            FailIfNullOrEmpty("InterestRateMin");
+            FailIfNullOrEmpty("MaturityMax");
+            FailIfNullOrEmpty("MaturityMin");
+            FailIfNullOrEmpty("GracePeriodMax");
+            FailIfNullOrEmpty("GracePeriodMin");
+            FailIfNullOrEmpty("CurrencyId");
         }
     }
 }

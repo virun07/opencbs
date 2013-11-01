@@ -17,13 +17,10 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using OpenCBS.Common;
-using OpenCBS.DataContract;
-using OpenCBS.GUI.NEW.View;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
@@ -34,7 +31,6 @@ namespace OpenCBS.GUI.View
         public LoanProductView()
         {
             InitializeComponent();
-            Setup();
         }
 
         public void Run()
@@ -60,30 +56,6 @@ namespace OpenCBS.GUI.View
             comboBox.ValueMember = "Key";
             comboBox.DataSource = new BindingSource(dict, null);
             comboBox.SelectedIndex = -1;
-        }
-
-        private void Setup()
-        {
-            _nameTextBox.TextChanged += ClearError;
-            _codeTextBox.TextChanged += ClearError;
-            _currencyComboBox.SelectedIndexChanged += ClearError;
-            _schedulePolicyComboBox.SelectedIndexChanged += ClearError;
-            _paymentFrequencyPolicyComboBox.SelectedIndexChanged += ClearError;
-            _yearPolicyComboBox.SelectedIndexChanged += ClearError;
-            _dateShiftPolicyComboBox.SelectedIndexChanged += ClearError;
-            _roundingPolicyComboBox.SelectedIndexChanged += ClearError;
-            _amountRange.MinMaxChanged += ClearError;
-            _interestRateRange.MinMaxChanged += ClearError;
-            _maturityRange.MinMaxChanged += ClearError;
-            _gracePeriodRange.MinMaxChanged += ClearError;
-            _currencyComboBox.SelectedIndexChanged += ClearError;
-        }
-
-        private void ClearError(object sender, EventArgs e)
-        {
-            var control = sender as Control;
-            if (control == null) return;
-            _errorProvider.SetError(control, null);
         }
 
         public void ShowPaymentFrequencyPolicies(IList<string> paymentFrequencyPolicies)
@@ -117,11 +89,6 @@ namespace OpenCBS.GUI.View
             _currencyComboBox.ValueMember = "Key";
             _currencyComboBox.DataSource = new BindingSource(currencies, null);
             _currencyComboBox.SelectedIndex = -1;
-        }
-
-        public void ShowNotification(Notification notification)
-        {
-            this.ShowNotification(notification, _errorProvider);
         }
 
         public string LoanProductName

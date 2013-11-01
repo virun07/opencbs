@@ -19,10 +19,10 @@
 
 using OpenCBS.DataContract;
 
-namespace OpenCBS.GUI.AppEvent
+namespace OpenCBS.GUI.CommandData
 {
-    public class LoanProductAddedEvent
+    public class EditEntryFeeData
     {
-        public LoanProductDto LoanProductDto { get; set; }
+        public EntryFeeDto EntryFeeDto { get; set; }
     }
 }

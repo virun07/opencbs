@@ -23,6 +23,6 @@ namespace OpenCBS.GUI.CommandData
 {
     public class EditLoanProductData
     {
-        public LoanProductDto LoanProduct { get; set; }
+        public LoanProductDto LoanProductDto { get; set; }
     }
 }

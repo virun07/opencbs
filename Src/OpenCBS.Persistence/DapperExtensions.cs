@@ -64,7 +64,7 @@ namespace OpenCBS.Persistence
         public static void Delete<T>(this IDbConnection connection, int id)
         {
             var tableName = GetTableName(typeof(T));
-            var sql = "delete from " + tableName + " where Id = @Id";
+            var sql = "update " + tableName + " set Deleted = 1 where Id = @Id";
             connection.Execute(sql, new { Id = id });
         }
 

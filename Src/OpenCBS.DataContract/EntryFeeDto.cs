@@ -21,6 +21,11 @@ namespace OpenCBS.DataContract
 {
     public class EntryFeeDto : DataTransferObject
     {
+        public EntryFeeDto()
+        {
+            Rate = true;
+        }
+
         public string Name { get; set; }
         public string Code { get; set; }
         public decimal? ValueMin { get; set; }

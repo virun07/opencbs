@@ -19,10 +19,9 @@
 
 using OpenCBS.DataContract;
 
-namespace OpenCBS.GUI.AppEvent
+namespace OpenCBS.Interface.Validator
 {
-    public class LoanProductAddedEvent
+    public interface IEntryFeeValidator : IValidator<EntryFeeDto>
     {
-        public LoanProductDto LoanProductDto { get; set; }
     }
 }

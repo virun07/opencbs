@@ -26,26 +26,26 @@ using OpenCBS.Interfaces;
 
 namespace OpenCBS.GUI.Command
 {
-    public class EditLoanProductCommand : ICommand<EditLoanProductData>
+    public class AddEntryFeeCommand : ICommand<AddEntryFeeData>
     {
-        private readonly ILoanProductPresenter _presenter;
-        private readonly ILoanProductService _loanProductService;
+        private readonly IEntryFeePresenter _presenter;
+        private readonly IEntryFeeService _entryFeeService;
         private readonly IApplicationController _appController;
 
-        public EditLoanProductCommand(ILoanProductPresenter presenter, ILoanProductService loanProductService, IApplicationController appController)
+        public AddEntryFeeCommand(IEntryFeePresenter presenter, IEntryFeeService entryFeeService,
+                                  IApplicationController appController)
         {
             _presenter = presenter;
-            _loanProductService = loanProductService;
+            _entryFeeService = entryFeeService;
             _appController = appController;
         }
-
-        public void Execute(EditLoanProductData commandData)
+        public void Execute(AddEntryFeeData commandData)
         {
-            var result = _presenter.Get(commandData.LoanProductDto);
+            var result = _presenter.Get(null);
             if (result.CommandResult == CommandResult.Ok)
             {
-                _loanProductService.Update(result.Data);
-                _appController.Raise(new LoanProductUpdatedEvent { LoanProductDto = result.Data });
+                _entryFeeService.Add(result.Data);
+                _appController.Raise(new EntryFeeAddedEvent { EntryFeeDto = result.Data });
             }
         }
     }

@@ -48,9 +48,11 @@ namespace OpenCBS.GUI
             For<ILoanProductsPresenter>().Use<LoanProductsPresenter>();
             For<ILoanProductView>().Use<LoanProductView>();
             For<IEntryFeesView>().Use<EntryFeesView>();
+            For<IEntryFeeView>().Use<EntryFeeView>();
             
             For<ILoanProductPresenter>().Use<LoanProductPresenter>();
             For<IEntryFeesPresenter>().Use<EntryFeesPresenter>();
+            For<IEntryFeePresenter>().Use<EntryFeePresenter>();
 
             // Commands
             For<ICommand<ShowLoanProductsData>>().Use<ShowLoanProductsCommand>();
@@ -59,6 +61,9 @@ namespace OpenCBS.GUI
             For<ICommand<DeleteLoanProductData>>().Use<DeleteLoanProductCommand>();
 
             For<ICommand<ShowEntryFeesData>>().Use<ShowEntryFeesCommand>();
+            For<ICommand<AddEntryFeeData>>().Use<AddEntryFeeCommand>();
+            For<ICommand<EditEntryFeeData>>().Use<EditEntryFeeCommand>();
+            For<ICommand<DeleteEntryFeeData>>().Use<DeleteEntryFeeCommand>();
 
             // Repositories
             For<IPolicyRepository>().Use<PolicyRepository>();
@@ -73,6 +78,7 @@ namespace OpenCBS.GUI
 
             // Validators
             For<ILoanProductValidator>().Use<LoanProductValidator>();
+            For<IEntryFeeValidator>().Use<EntryFeeValidator>();
 
             RegisterInterceptor(new EventAggregatorInterceptor());
         }

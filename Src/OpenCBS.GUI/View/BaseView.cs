@@ -17,16 +17,70 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using OpenCBS.Controls;
+using OpenCBS.DataContract;
 
 namespace OpenCBS.GUI.View
 {
-    public class BaseView : Form
+    public partial class BaseView : Form
     {
         public BaseView()
         {
             Font = SystemFonts.MessageBoxFont;
+            InitializeComponent();
+        }
+    
+        protected void ClearError(object sender, EventArgs e)
+        {
+            var control = sender as Control;
+            if (control == null) return;
+            _errorProvider.SetError(control, null);
+        }
+
+        private static IEnumerable<Control> GetControls(Control control)
+        {
+            var controls = control.Controls.Cast<Control>();
+            return controls.Concat(controls.SelectMany(x => GetControls(x)));
+        }
+
+        public void ShowNotification(Notification notification)
+        {
+            foreach (var error in notification.Errors)
+            {
+                var errorControl = (from c in GetControls(this)
+                                    where c.Tag != null && c.Tag.ToString() == error.PropertyName
+                                    select c).FirstOrDefault();
+                if (errorControl == null) continue;
+                _errorProvider.SetError(errorControl, error.Message);
+            }
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            var validTypes = new[]
+            {
+                typeof(TextBox),
+                typeof(RangeControl),
+                typeof(ComboBox)
+            };
+            foreach (var control in GetControls(this))
+            {
+                if (control.Tag == null) continue;
+                if (!validTypes.Contains(control.GetType())) continue;
+
+                if (control is TextBox)
+                    (control as TextBox).TextChanged += ClearError;
+                if (control is RangeControl)
+                    (control as RangeControl).MinMaxChanged += ClearError;
+                if (control is ComboBox)
+                    (control as ComboBox).SelectedIndexChanged += ClearError;
+            }
         }
     }
 }
