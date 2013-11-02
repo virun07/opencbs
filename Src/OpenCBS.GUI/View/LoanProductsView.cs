@@ -37,6 +37,7 @@ namespace OpenCBS.GUI.View
         {
             InitializeComponent();
             MdiParent = Application.OpenForms[0];
+            Setup();
         }
 
         public void Attach(ILoanProductsPresenterCallbacks presenterCallbacks)
@@ -52,13 +53,6 @@ namespace OpenCBS.GUI.View
 
         public void Run()
         {
-            _loanProductsListView.FormatRow += (sender, e) =>
-            {
-                var loanProduct = (LoanProductDto) e.Model;
-                e.Item.BackColor = loanProduct.Deleted ? Color.FromArgb(255, 92, 92) : Color.Transparent;
-            };
-
-            _availableForColumn.AspectToStringConverter += AvailabilityToString;
             Show();
         }
 
@@ -102,14 +96,33 @@ namespace OpenCBS.GUI.View
             var availableFor = (AvailableFor) obj;
             var items = new List<string>();
             if ((availableFor & AvailableFor.Individual) == AvailableFor.Individual)
-                items.Add("Ind");
+                items.Add(TranslateString("Ind"));
             if ((availableFor & AvailableFor.SolidarityGroup) == AvailableFor.SolidarityGroup)
-                items.Add("SG");
+                items.Add(TranslateString("SG"));
             if ((availableFor & AvailableFor.NonSolidarityGroup) == AvailableFor.NonSolidarityGroup)
-                items.Add("NSG");
+                items.Add(TranslateString("NSG"));
             if ((availableFor & AvailableFor.Company) == AvailableFor.Company)
-                items.Add("Company");
+                items.Add(TranslateString("Company"));
             return string.Join(", ", items.ToArray());
+        }
+
+        private void Setup()
+        {
+            _loanProductsListView.FormatRow += (sender, e) =>
+            {
+                var loanProduct = (LoanProductDto) e.Model;
+                e.Item.BackColor = loanProduct.Deleted ? Color.FromArgb(255, 92, 92) : Color.Transparent;
+            };
+            _availableForColumn.AspectToStringConverter += AvailabilityToString;
+            _schedulePolicyColumn.AspectToStringConverter =
+            _paymentFrequencyPolicyColumn.AspectToStringConverter = 
+            _yearPolicyColumn.AspectToStringConverter =
+            _dateShiftPolicyColumn.AspectToStringConverter =
+            _roundingPolicyColumn.AspectToStringConverter = v =>
+            {
+                var key = (string) v;
+                return TranslateString(key);
+            };
         }
     }
 }

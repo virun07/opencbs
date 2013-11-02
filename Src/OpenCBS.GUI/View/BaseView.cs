@@ -68,7 +68,7 @@ namespace OpenCBS.GUI.View
                                     where c.Tag != null && c.Tag.ToString() == error.PropertyName
                                     select c).FirstOrDefault();
                 if (errorControl == null) continue;
-                _errorProvider.SetError(errorControl, error.Message);
+                _errorProvider.SetError(errorControl, TranslateString(error.Message));
             }
         }
 
@@ -142,6 +142,7 @@ namespace OpenCBS.GUI.View
                     _map.Add(control, control.Text);
                 }
             }
+            _map.Add(this, Text);
         }
     }
 }

@@ -147,57 +147,43 @@
             // _codeColumn
             // 
             this._codeColumn.AspectName = "Code";
-            this._codeColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._codeColumn.Text = "Code";
-            this._codeColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this._codeColumn.Width = 80;
+            this._codeColumn.Width = 100;
             // 
             // _availableForColumn
             // 
             this._availableForColumn.AspectName = "AvailableFor";
-            this._availableForColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._availableForColumn.Text = "Available for";
-            this._availableForColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._availableForColumn.Width = 150;
             // 
             // _schedulePolicyColumn
             // 
             this._schedulePolicyColumn.AspectName = "SchedulePolicy";
-            this._schedulePolicyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._schedulePolicyColumn.Text = "Schedule";
-            this._schedulePolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._schedulePolicyColumn.Width = 150;
             // 
             // _paymentFrequencyPolicyColumn
             // 
             this._paymentFrequencyPolicyColumn.AspectName = "PaymentFrequencyPolicy";
-            this._paymentFrequencyPolicyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._paymentFrequencyPolicyColumn.Text = "Payment frequency";
-            this._paymentFrequencyPolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._paymentFrequencyPolicyColumn.Width = 150;
             // 
             // _yearPolicyColumn
             // 
             this._yearPolicyColumn.AspectName = "YearPolicy";
-            this._yearPolicyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._yearPolicyColumn.Text = "Year";
-            this._yearPolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._yearPolicyColumn.Width = 100;
             // 
             // _dateShiftPolicyColumn
             // 
             this._dateShiftPolicyColumn.AspectName = "DateShiftPolicy";
-            this._dateShiftPolicyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._dateShiftPolicyColumn.Text = "Date shift";
-            this._dateShiftPolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._dateShiftPolicyColumn.Width = 100;
             // 
             // _roundingPolicyColumn
             // 
             this._roundingPolicyColumn.AspectName = "RoundingPolicy";
-            this._roundingPolicyColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._roundingPolicyColumn.Text = "Rounding";
-            this._roundingPolicyColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this._roundingPolicyColumn.Width = 100;
             // 
             // LoanProductsView
@@ -208,7 +194,7 @@
             this.Controls.Add(this._loanProductsListView);
             this.Controls.Add(this._buttonsPanel);
             this.Name = "LoanProductsView";
-            this.Text = "LoanProductsView";
+            this.Text = "Loan products";
             this._buttonsPanel.ResumeLayout(false);
             this._buttonsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._loanProductsListView)).EndInit();

@@ -176,9 +176,9 @@ namespace OpenCBS.GUI.View
             this._availableForIndividualCheckBox.AutoSize = true;
             this._availableForIndividualCheckBox.Location = new System.Drawing.Point(253, 28);
             this._availableForIndividualCheckBox.Name = "_availableForIndividualCheckBox";
-            this._availableForIndividualCheckBox.Size = new System.Drawing.Size(71, 19);
+            this._availableForIndividualCheckBox.Size = new System.Drawing.Size(78, 19);
             this._availableForIndividualCheckBox.TabIndex = 8;
-            this._availableForIndividualCheckBox.Text = "Individal";
+            this._availableForIndividualCheckBox.Text = "Individual";
             this._availableForIndividualCheckBox.UseVisualStyleBackColor = true;
             // 
             // _availableForLabel
@@ -247,7 +247,7 @@ namespace OpenCBS.GUI.View
             this._scheduleTabListPage.Controls.Add(this._schedulePolicyLabel);
             this._scheduleTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this._scheduleTabListPage.Name = "_scheduleTabListPage";
-            this._scheduleTabListPage.Size = new System.Drawing.Size(541, 334);
+            this._scheduleTabListPage.Size = new System.Drawing.Size(42, 192);
             this._scheduleTabListPage.TabIndex = 1;
             this._scheduleTabListPage.Text = "Schedule";
             // 
@@ -454,7 +454,7 @@ namespace OpenCBS.GUI.View
             this._entryFeesTabListPage.Controls.Add(this._entryFeesButtonPanel);
             this._entryFeesTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this._entryFeesTabListPage.Name = "_entryFeesTabListPage";
-            this._entryFeesTabListPage.Size = new System.Drawing.Size(541, 334);
+            this._entryFeesTabListPage.Size = new System.Drawing.Size(42, 192);
             this._entryFeesTabListPage.TabIndex = 2;
             this._entryFeesTabListPage.Text = "Entry fees";
             // 
@@ -479,7 +479,7 @@ namespace OpenCBS.GUI.View
             this._entryFeesListView.MultiSelect = false;
             this._entryFeesListView.Name = "_entryFeesListView";
             this._entryFeesListView.ShowGroups = false;
-            this._entryFeesListView.Size = new System.Drawing.Size(541, 287);
+            this._entryFeesListView.Size = new System.Drawing.Size(42, 145);
             this._entryFeesListView.TabIndex = 4;
             this._entryFeesListView.UseCompatibleStateImageBehavior = false;
             this._entryFeesListView.View = System.Windows.Forms.View.Details;
@@ -519,9 +519,9 @@ namespace OpenCBS.GUI.View
             this._entryFeesButtonPanel.Controls.Add(this._removeEntryFeeButton);
             this._entryFeesButtonPanel.Controls.Add(this._addEntryFeeButton);
             this._entryFeesButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._entryFeesButtonPanel.Location = new System.Drawing.Point(0, 287);
+            this._entryFeesButtonPanel.Location = new System.Drawing.Point(0, 145);
             this._entryFeesButtonPanel.Name = "_entryFeesButtonPanel";
-            this._entryFeesButtonPanel.Size = new System.Drawing.Size(541, 47);
+            this._entryFeesButtonPanel.Size = new System.Drawing.Size(42, 47);
             this._entryFeesButtonPanel.TabIndex = 0;
             // 
             // _removeEntryFeeButton

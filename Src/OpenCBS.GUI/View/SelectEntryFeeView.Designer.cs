@@ -31,7 +31,7 @@
             this._buttonsPanel = new OpenCBS.GUI.NEW.View.TopEdgePanel();
             this._cancelButton = new System.Windows.Forms.Button();
             this._okButton = new System.Windows.Forms.Button();
-            this._entryFeeLabel = new System.Windows.Forms.Label();
+            this._nameLabel = new System.Windows.Forms.Label();
             this._entryFeeComboBox = new System.Windows.Forms.ComboBox();
             this._buttonsPanel.SuspendLayout();
             this.SuspendLayout();
@@ -68,22 +68,22 @@
             this._okButton.Text = "OK";
             this._okButton.UseVisualStyleBackColor = true;
             // 
-            // _entryFeeLabel
+            // _nameLabel
             // 
-            this._entryFeeLabel.AutoSize = true;
-            this._entryFeeLabel.Location = new System.Drawing.Point(12, 15);
-            this._entryFeeLabel.Name = "_entryFeeLabel";
-            this._entryFeeLabel.Size = new System.Drawing.Size(53, 15);
-            this._entryFeeLabel.TabIndex = 7;
-            this._entryFeeLabel.Text = "Entry fee";
+            this._nameLabel.AutoSize = true;
+            this._nameLabel.Location = new System.Drawing.Point(12, 15);
+            this._nameLabel.Name = "_nameLabel";
+            this._nameLabel.Size = new System.Drawing.Size(39, 15);
+            this._nameLabel.TabIndex = 7;
+            this._nameLabel.Text = "Name";
             // 
             // _entryFeeComboBox
             // 
             this._entryFeeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._entryFeeComboBox.FormattingEnabled = true;
-            this._entryFeeComboBox.Location = new System.Drawing.Point(122, 12);
+            this._entryFeeComboBox.Location = new System.Drawing.Point(142, 12);
             this._entryFeeComboBox.Name = "_entryFeeComboBox";
-            this._entryFeeComboBox.Size = new System.Drawing.Size(250, 23);
+            this._entryFeeComboBox.Size = new System.Drawing.Size(230, 23);
             this._entryFeeComboBox.TabIndex = 8;
             // 
             // SelectEntryFeeView
@@ -92,7 +92,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 107);
             this.Controls.Add(this._entryFeeComboBox);
-            this.Controls.Add(this._entryFeeLabel);
+            this.Controls.Add(this._nameLabel);
             this.Controls.Add(this._buttonsPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -111,7 +111,7 @@
         private NEW.View.TopEdgePanel _buttonsPanel;
         private System.Windows.Forms.Button _cancelButton;
         private System.Windows.Forms.Button _okButton;
-        private System.Windows.Forms.Label _entryFeeLabel;
+        private System.Windows.Forms.Label _nameLabel;
         private System.Windows.Forms.ComboBox _entryFeeComboBox;
     }
 }
