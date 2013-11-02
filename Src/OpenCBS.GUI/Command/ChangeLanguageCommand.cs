@@ -17,47 +17,31 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Globalization;
+using System.Threading;
+using OpenCBS.GUI.AppEvent;
 using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface;
-using OpenCBS.Interface.Presenter;
-using OpenCBS.Interface.View;
 
-namespace OpenCBS.GUI.Presenter
+namespace OpenCBS.GUI.Command
 {
-    public class MainPresenter : IMainPresenter, IMainPresenterCallbacks
+    public class ChangeLanguageCommand : ICommand<ChangeLanguageData>
     {
-        private readonly IMainView _view;
+        private readonly ITranslator _translator;
         private readonly IApplicationController _appController;
 
-        public MainPresenter(IMainView view, IApplicationController appController)
+        public ChangeLanguageCommand(ITranslator translator, IApplicationController appController)
         {
-            _view = view;
             _appController = appController;
+            _translator = translator;
         }
 
-        public void ShowLoanProducts()
+        public void Execute(ChangeLanguageData commandData)
         {
-            _appController.Execute(new ShowLoanProductsData());
-        }
-
-        public void ShowEntryFees()
-        {
-            _appController.Execute(new ShowEntryFeesData());
-        }
-
-        public void ChangeLanguage(string name)
-        {
-            _appController.Execute(new ChangeLanguageData { Name = name });
-        }
-
-        public void Run()
-        {
-            _view.Attach(this);
-        }
-
-        public object View
-        {
-            get { return _view; }
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(commandData.Name);
+            Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
+            _translator.Reload();
+            _appController.Raise(new LanguageChangedEvent());
         }
     }
 }

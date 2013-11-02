@@ -21,6 +21,7 @@ using System;
 using System.Configuration;
 using System.Windows.Forms;
 using OpenCBS.GUI.Presenter;
+using OpenCBS.GUI.View;
 using OpenCBS.Interface.View;
 using StructureMap;
 

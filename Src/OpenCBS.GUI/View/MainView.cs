@@ -57,7 +57,7 @@ using OpenCBS.Services;
 using OpenCBS.Shared;
 using OpenCBS.Shared.Settings;
 
-namespace OpenCBS.GUI
+namespace OpenCBS.GUI.View
 {
     public partial class MainView : SweetBaseForm, ITempMainView, IMainView
     {
@@ -536,10 +536,10 @@ namespace OpenCBS.GUI
         {
             string currentLanguage = UserSettings.Language;
 
-            frenchToolStripMenuItem.Checked = (currentLanguage == "fr");
-            russianToolStripMenuItem.Checked = (currentLanguage == "ru-RU");
-            englishToolStripMenuItem.Checked = (currentLanguage == "en-US");
-            spanishToolStripMenuItem.Checked = (currentLanguage == "es-ES");
+            _frenchMenuItem.Checked = (currentLanguage == "fr");
+            _russianMenuItem.Checked = (currentLanguage == "ru-RU");
+            _englishMenuItem.Checked = (currentLanguage == "en-US");
+            _spanishMenuItem.Checked = (currentLanguage == "es-ES");
         }
 
         private void _InitializeStandardBookings()
@@ -581,10 +581,10 @@ namespace OpenCBS.GUI
 
         private void LanguageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string language = sender == frenchToolStripMenuItem ? "fr" :
-                    (sender == russianToolStripMenuItem ? "ru-RU" :
-                    (sender == englishToolStripMenuItem ? "en-US" :
-                    (sender == spanishToolStripMenuItem ? "es-ES" : "pt")));
+            string language = sender == _frenchMenuItem ? "fr" :
+                    (sender == _russianMenuItem ? "ru-RU" :
+                    (sender == _englishMenuItem ? "en-US" :
+                    (sender == _spanishMenuItem ? "es-ES" : "pt")));
 
             if (ServicesProvider.GetInstance().GetGeneralSettings().UseTellerManagement)
             {
@@ -1157,6 +1157,11 @@ namespace OpenCBS.GUI
         {
             _loanProductsMenuItem.Click += (sender, e) => presenterCallbacks.ShowLoanProducts();
             _entryFeesMenuItem.Click += (sender, e) => presenterCallbacks.ShowEntryFees();
+            _englishMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("en-US");
+            _russianMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("ru-RU");
+            _frenchMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("fr");
+            _spanishMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("es-ES");
+            _portugueseMenuItem.Click += (sedner, e) => presenterCallbacks.ChangeLanguage("pt");
         }
     }
 }

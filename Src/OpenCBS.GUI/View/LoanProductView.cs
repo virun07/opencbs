@@ -49,7 +49,7 @@ namespace OpenCBS.GUI.View
             _okButton.Click += (sender, e) => presenterCallbacks.Ok();
             _cancelButton.Click += (sender, e) => presenterCallbacks.Cancel();
             _addEntryFeeButton.Click += (sender, e) => presenterCallbacks.AddEntryFee();
-            _removeEntryFeeButton.Click += (sender, e) => presenterCallbacks.RemoveEntryFee();
+            _deleteEntryFeeButton.Click += (sender, e) => presenterCallbacks.RemoveEntryFee();
             _entryFeesListView.SelectedIndexChanged += (sender, e) => presenterCallbacks.ChangeSelectedEntryFee();
             FormClosed += (sender, e) => presenterCallbacks.Close();
             _presenterCallbacks = presenterCallbacks;
@@ -308,8 +308,8 @@ namespace OpenCBS.GUI.View
 
         public bool CanRemoveEntryFee
         {
-            get { return _removeEntryFeeButton.Enabled; }
-            set { _removeEntryFeeButton.Enabled = value; }
+            get { return _deleteEntryFeeButton.Enabled; }
+            set { _deleteEntryFeeButton.Enabled = value; }
         }
 
         public int? SelectedEntryFeeId

@@ -433,6 +433,7 @@
     <Compile Include="AppEvent\EntryFeeDeletedEvent.cs" />
     <Compile Include="AppEvent\EntryFeeSelectedEvent.cs" />
     <Compile Include="AppEvent\EntryFeeUpdatedEvent.cs" />
+    <Compile Include="AppEvent\LanguageChangedEvent.cs" />
     <Compile Include="AuditTrail\AuditTrailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -472,6 +473,8 @@
     <Compile Include="CommandData\SelectEntryFeeData.cs" />
     <Compile Include="CommandData\ShowEntryFeesData.cs" />
     <Compile Include="Command\AddEntryFeeCommand.cs" />
+    <Compile Include="CommandData\ChangeLanguageData.cs" />
+    <Compile Include="Command\ChangeLanguageCommand.cs" />
     <Compile Include="Command\DeleteEntryFeeCommand.cs" />
     <Compile Include="Command\EditEntryFeeCommand.cs" />
     <Compile Include="Command\SelectEntryFeeCommand.cs" />

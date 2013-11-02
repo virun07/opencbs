@@ -1,11 +1,7 @@
-
 using System.Windows.Forms;
 using OpenCBS.GUI.UserControl;
-using OpenCBS.Enums;
-using OpenCBS.Services;
-using OpenCBS.CoreDomain;
 
-namespace OpenCBS.GUI
+namespace OpenCBS.GUI.View
 {
     partial class MainView
     {
@@ -143,11 +139,11 @@ namespace OpenCBS.GUI
             this.menuItemDatabaseMaintenance = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemApplicationDate = new System.Windows.Forms.ToolStripMenuItem();
             this.languagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.frenchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.spanishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.portugueseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._frenchMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._englishMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._russianMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._spanishMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._portugueseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSecurity = new System.Windows.Forms.ToolStripMenuItem();
             this.rolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAddUser = new System.Windows.Forms.ToolStripMenuItem();
@@ -748,52 +744,47 @@ namespace OpenCBS.GUI
             // languagesToolStripMenuItem
             // 
             this.languagesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.frenchToolStripMenuItem,
-            this.englishToolStripMenuItem,
-            this.russianToolStripMenuItem,
-            this.spanishToolStripMenuItem,
-            this.portugueseToolStripMenuItem});
+            this._frenchMenuItem,
+            this._englishMenuItem,
+            this._russianMenuItem,
+            this._spanishMenuItem,
+            this._portugueseMenuItem});
             this.languagesToolStripMenuItem.Name = "languagesToolStripMenuItem";
             resources.ApplyResources(this.languagesToolStripMenuItem, "languagesToolStripMenuItem");
             // 
-            // frenchToolStripMenuItem
+            // _frenchMenuItem
             // 
-            this.frenchToolStripMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.fr;
-            resources.ApplyResources(this.frenchToolStripMenuItem, "frenchToolStripMenuItem");
-            this.frenchToolStripMenuItem.Name = "frenchToolStripMenuItem";
-            this.frenchToolStripMenuItem.Tag = "fr";
-            this.frenchToolStripMenuItem.Click += new System.EventHandler(this.LanguageToolStripMenuItem_Click);
+            this._frenchMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.fr;
+            resources.ApplyResources(this._frenchMenuItem, "_frenchMenuItem");
+            this._frenchMenuItem.Name = "_frenchMenuItem";
+            this._frenchMenuItem.Tag = "fr";
             // 
-            // englishToolStripMenuItem
+            // _englishMenuItem
             // 
-            this.englishToolStripMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.gb;
-            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
-            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Tag = "en-US";
-            this.englishToolStripMenuItem.Click += new System.EventHandler(this.LanguageToolStripMenuItem_Click);
+            this._englishMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.gb;
+            resources.ApplyResources(this._englishMenuItem, "_englishMenuItem");
+            this._englishMenuItem.Name = "_englishMenuItem";
+            this._englishMenuItem.Tag = "en-US";
             // 
-            // russianToolStripMenuItem
+            // _russianMenuItem
             // 
-            this.russianToolStripMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.ru;
-            resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
-            this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
-            this.russianToolStripMenuItem.Tag = "ru-RU";
-            this.russianToolStripMenuItem.Click += new System.EventHandler(this.LanguageToolStripMenuItem_Click);
+            this._russianMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.ru;
+            resources.ApplyResources(this._russianMenuItem, "_russianMenuItem");
+            this._russianMenuItem.Name = "_russianMenuItem";
+            this._russianMenuItem.Tag = "ru-RU";
             // 
-            // spanishToolStripMenuItem
+            // _spanishMenuItem
             // 
-            this.spanishToolStripMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.es;
-            resources.ApplyResources(this.spanishToolStripMenuItem, "spanishToolStripMenuItem");
-            this.spanishToolStripMenuItem.Name = "spanishToolStripMenuItem";
-            this.spanishToolStripMenuItem.Tag = "es-ES";
-            this.spanishToolStripMenuItem.Click += new System.EventHandler(this.LanguageToolStripMenuItem_Click);
+            this._spanishMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.es;
+            resources.ApplyResources(this._spanishMenuItem, "_spanishMenuItem");
+            this._spanishMenuItem.Name = "_spanishMenuItem";
+            this._spanishMenuItem.Tag = "es-ES";
             // 
-            // portugueseToolStripMenuItem
+            // _portugueseMenuItem
             // 
-            this.portugueseToolStripMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.pt;
-            resources.ApplyResources(this.portugueseToolStripMenuItem, "portugueseToolStripMenuItem");
-            this.portugueseToolStripMenuItem.Name = "portugueseToolStripMenuItem";
-            this.portugueseToolStripMenuItem.Click += new System.EventHandler(this.LanguageToolStripMenuItem_Click);
+            this._portugueseMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.pt;
+            resources.ApplyResources(this._portugueseMenuItem, "_portugueseMenuItem");
+            this._portugueseMenuItem.Name = "_portugueseMenuItem";
             // 
             // mnuSecurity
             // 
@@ -1026,11 +1017,11 @@ namespace OpenCBS.GUI
         private ToolStripMenuItem savingProductsToolStripMenuItem;
         private ToolStripMenuItem menuItemCollateralProducts;
         private ToolStripMenuItem languagesToolStripMenuItem;
-        private ToolStripMenuItem frenchToolStripMenuItem;
-        private ToolStripMenuItem englishToolStripMenuItem;
-        private ToolStripMenuItem russianToolStripMenuItem;
-        private ToolStripMenuItem spanishToolStripMenuItem;
-        private ToolStripMenuItem portugueseToolStripMenuItem;
+        private ToolStripMenuItem _frenchMenuItem;
+        private ToolStripMenuItem _englishMenuItem;
+        private ToolStripMenuItem _russianMenuItem;
+        private ToolStripMenuItem _spanishMenuItem;
+        private ToolStripMenuItem _portugueseMenuItem;
         private ToolStripMenuItem changePasswordToolStripMenuItem;
         private ToolStripMenuItem _entryFeesMenuItem;
 

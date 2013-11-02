@@ -72,7 +72,7 @@ namespace OpenCBS.GUI.View
             this._valueMaxColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._rateAmountColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._entryFeesButtonPanel = new System.Windows.Forms.Panel();
-            this._removeEntryFeeButton = new System.Windows.Forms.Button();
+            this._deleteEntryFeeButton = new System.Windows.Forms.Button();
             this._addEntryFeeButton = new System.Windows.Forms.Button();
             this._buttonsPanel = new OpenCBS.GUI.NEW.View.TopEdgePanel();
             this._cancelButton = new System.Windows.Forms.Button();
@@ -454,7 +454,7 @@ namespace OpenCBS.GUI.View
             this._entryFeesTabListPage.Controls.Add(this._entryFeesButtonPanel);
             this._entryFeesTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this._entryFeesTabListPage.Name = "_entryFeesTabListPage";
-            this._entryFeesTabListPage.Size = new System.Drawing.Size(42, 192);
+            this._entryFeesTabListPage.Size = new System.Drawing.Size(541, 334);
             this._entryFeesTabListPage.TabIndex = 2;
             this._entryFeesTabListPage.Text = "Entry fees";
             // 
@@ -479,7 +479,7 @@ namespace OpenCBS.GUI.View
             this._entryFeesListView.MultiSelect = false;
             this._entryFeesListView.Name = "_entryFeesListView";
             this._entryFeesListView.ShowGroups = false;
-            this._entryFeesListView.Size = new System.Drawing.Size(42, 145);
+            this._entryFeesListView.Size = new System.Drawing.Size(541, 287);
             this._entryFeesListView.TabIndex = 4;
             this._entryFeesListView.UseCompatibleStateImageBehavior = false;
             this._entryFeesListView.View = System.Windows.Forms.View.Details;
@@ -516,23 +516,23 @@ namespace OpenCBS.GUI.View
             // 
             // _entryFeesButtonPanel
             // 
-            this._entryFeesButtonPanel.Controls.Add(this._removeEntryFeeButton);
+            this._entryFeesButtonPanel.Controls.Add(this._deleteEntryFeeButton);
             this._entryFeesButtonPanel.Controls.Add(this._addEntryFeeButton);
             this._entryFeesButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._entryFeesButtonPanel.Location = new System.Drawing.Point(0, 145);
+            this._entryFeesButtonPanel.Location = new System.Drawing.Point(0, 287);
             this._entryFeesButtonPanel.Name = "_entryFeesButtonPanel";
-            this._entryFeesButtonPanel.Size = new System.Drawing.Size(42, 47);
+            this._entryFeesButtonPanel.Size = new System.Drawing.Size(541, 47);
             this._entryFeesButtonPanel.TabIndex = 0;
             // 
-            // _removeEntryFeeButton
+            // _deleteEntryFeeButton
             // 
-            this._removeEntryFeeButton.Location = new System.Drawing.Point(106, 12);
-            this._removeEntryFeeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this._removeEntryFeeButton.Name = "_removeEntryFeeButton";
-            this._removeEntryFeeButton.Size = new System.Drawing.Size(100, 28);
-            this._removeEntryFeeButton.TabIndex = 3;
-            this._removeEntryFeeButton.Text = "Remove";
-            this._removeEntryFeeButton.UseVisualStyleBackColor = true;
+            this._deleteEntryFeeButton.Location = new System.Drawing.Point(106, 12);
+            this._deleteEntryFeeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._deleteEntryFeeButton.Name = "_deleteEntryFeeButton";
+            this._deleteEntryFeeButton.Size = new System.Drawing.Size(100, 28);
+            this._deleteEntryFeeButton.TabIndex = 3;
+            this._deleteEntryFeeButton.Text = "Delete";
+            this._deleteEntryFeeButton.UseVisualStyleBackColor = true;
             // 
             // _addEntryFeeButton
             // 
@@ -642,7 +642,7 @@ namespace OpenCBS.GUI.View
         private System.Windows.Forms.Label _schedulePolicyLabel;
         private Cyotek.Windows.Forms.TabListPage _entryFeesTabListPage;
         private System.Windows.Forms.Panel _entryFeesButtonPanel;
-        private System.Windows.Forms.Button _removeEntryFeeButton;
+        private System.Windows.Forms.Button _deleteEntryFeeButton;
         private System.Windows.Forms.Button _addEntryFeeButton;
         private BrightIdeasSoftware.ObjectListView _entryFeesListView;
         private BrightIdeasSoftware.OLVColumn _nameColumn;

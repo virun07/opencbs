@@ -30,7 +30,8 @@ namespace OpenCBS.GUI.Presenter
     public class LoanProductsPresenter : ILoanProductsPresenter, ILoanProductsPresenterCallbacks,
         IEventHandler<LoanProductUpdatedEvent>,
         IEventHandler<LoanProductAddedEvent>,
-        IEventHandler<LoanProductDeletedEvent>
+        IEventHandler<LoanProductDeletedEvent>,
+        IEventHandler<LanguageChangedEvent>
     {
         private readonly ILoanProductsView _view;
         private readonly IApplicationController _appController;
@@ -111,6 +112,11 @@ namespace OpenCBS.GUI.Presenter
         public void Handle(LoanProductDeletedEvent eventData)
         {
             ShowLoanProducts();
+        }
+
+        public void Handle(LanguageChangedEvent eventData)
+        {
+            _view.Translate();
         }
     }
 }

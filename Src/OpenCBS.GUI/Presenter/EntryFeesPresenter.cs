@@ -30,7 +30,8 @@ namespace OpenCBS.GUI.Presenter
     public class EntryFeesPresenter : IEntryFeesPresenter, IEntryFeesPresenterCallbacks,
         IEventHandler<EntryFeeAddedEvent>,
         IEventHandler<EntryFeeUpdatedEvent>,
-        IEventHandler<EntryFeeDeletedEvent>
+        IEventHandler<EntryFeeDeletedEvent>,
+        IEventHandler<LanguageChangedEvent>
     {
         private readonly IEntryFeeService _entryFeeService;
         private readonly IApplicationController _appController;
@@ -106,6 +107,11 @@ namespace OpenCBS.GUI.Presenter
         public void Handle(EntryFeeDeletedEvent eventData)
         {
             ShowEntryFees();
+        }
+
+        public void Handle(LanguageChangedEvent eventData)
+        {
+            _view.Translate();
         }
     }
 }

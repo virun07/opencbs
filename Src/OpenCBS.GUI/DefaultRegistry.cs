@@ -70,6 +70,8 @@ namespace OpenCBS.GUI
             For<ICommand<EditEntryFeeData>>().Use<EditEntryFeeCommand>();
             For<ICommand<DeleteEntryFeeData>>().Use<DeleteEntryFeeCommand>();
 
+            For<ICommand<ChangeLanguageData>>().Use<ChangeLanguageCommand>();
+
             // Repositories
             For<IPolicyRepository>().Use<PolicyRepository>();
             For<IConnectionProvider>().Use<SqlConnectionProvider>();
