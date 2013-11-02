@@ -734,6 +734,7 @@
       <DependentUpon>StringFieldPropertiesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="IMainViewTemp.cs" />
+    <Compile Include="JsonTranslator.cs" />
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

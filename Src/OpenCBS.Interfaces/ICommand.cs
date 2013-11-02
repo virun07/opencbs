@@ -17,7 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.Interfaces
+namespace OpenCBS.Interface
 {
     public interface ICommand
     {

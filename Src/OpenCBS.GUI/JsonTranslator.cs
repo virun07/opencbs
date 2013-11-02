@@ -17,29 +17,20 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
-using System.Linq;
 using OpenCBS.Interface;
-using StructureMap;
-using StructureMap.Interceptors;
 
 namespace OpenCBS.GUI
 {
-    public class EventAggregatorInterceptor : TypeInterceptor
+    public class JsonTranslator : ITranslator
     {
-        public bool MatchesType(Type type)
+        public void Reload()
         {
-            if (type.IsGenericType) return false;
-
-            var templateType = typeof(IEventHandler<>);
-            return type.GetInterfaces().Any(interfaceType => interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == templateType);
+            throw new System.NotImplementedException();
         }
 
-        public object Process(object target, IContext context)
+        public string Translate(string key)
         {
-            var eventPublisher = context.GetInstance<IEventPublisher>();
-            eventPublisher.Subscribe(target);
-            return target;
+            throw new System.NotImplementedException();
         }
     }
 }

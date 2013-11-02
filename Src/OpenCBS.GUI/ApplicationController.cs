@@ -19,7 +19,7 @@
 
 using System;
 using System.Windows.Forms;
-using OpenCBS.Interfaces;
+using OpenCBS.Interface;
 using StructureMap;
 
 namespace OpenCBS.GUI

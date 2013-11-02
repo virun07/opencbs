@@ -22,12 +22,12 @@ using OpenCBS.GUI.Command;
 using OpenCBS.GUI.CommandData;
 using OpenCBS.GUI.Presenter;
 using OpenCBS.GUI.View;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Repository;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.Validator;
 using OpenCBS.Interface.View;
-using OpenCBS.Interfaces;
 using OpenCBS.Persistence;
 using OpenCBS.Service;
 using OpenCBS.Service.Validator;
@@ -84,6 +84,8 @@ namespace OpenCBS.GUI
             // Validators
             For<ILoanProductValidator>().Use<LoanProductValidator>();
             For<IEntryFeeValidator>().Use<EntryFeeValidator>();
+
+            For<ITranslator>().Use<JsonTranslator>();
 
             RegisterInterceptor(new EventAggregatorInterceptor());
         }

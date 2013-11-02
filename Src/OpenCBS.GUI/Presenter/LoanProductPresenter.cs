@@ -23,10 +23,10 @@ using Omu.ValueInjecter;
 using OpenCBS.DataContract;
 using OpenCBS.GUI.AppEvent;
 using OpenCBS.GUI.CommandData;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
-using OpenCBS.Interfaces;
 
 namespace OpenCBS.GUI.Presenter
 {

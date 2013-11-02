@@ -20,8 +20,8 @@
 using OpenCBS.DataContract;
 using OpenCBS.GUI.AppEvent;
 using OpenCBS.GUI.CommandData;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
-using OpenCBS.Interfaces;
 
 namespace OpenCBS.GUI.Command
 {

@@ -43,6 +43,7 @@
     <Compile Include="ICommand.cs" />
     <Compile Include="IEventHandler.cs" />
     <Compile Include="IEventPublisher.cs" />
+    <Compile Include="ITranslator.cs" />
     <Compile Include="Presenter\IConfirmationPresenter.cs" />
     <Compile Include="Presenter\IConfirmationPresenterCallbacks.cs" />
     <Compile Include="Presenter\IEntryFeePresenter.cs" />

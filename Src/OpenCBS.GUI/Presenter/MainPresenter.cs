@@ -18,9 +18,9 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.GUI.CommandData;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
-using OpenCBS.Interfaces;
 
 namespace OpenCBS.GUI.Presenter
 {
