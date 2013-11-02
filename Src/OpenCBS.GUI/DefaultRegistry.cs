@@ -85,7 +85,7 @@ namespace OpenCBS.GUI
             For<ILoanProductValidator>().Use<LoanProductValidator>();
             For<IEntryFeeValidator>().Use<EntryFeeValidator>();
 
-            For<ITranslator>().Use<JsonTranslator>();
+            For<ITranslator>().Singleton().Use<JsonTranslator>();
 
             RegisterInterceptor(new EventAggregatorInterceptor());
         }

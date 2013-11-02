@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using OpenCBS.DataContract;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
@@ -30,7 +31,8 @@ namespace OpenCBS.GUI.View
     {
         private IEntryFeesPresenterCallbacks _presenterCallbacks;
 
-        public EntryFeesView()
+        public EntryFeesView(ITranslator translator)
+            : base(translator)
         {
             InitializeComponent();
             MdiParent = Application.OpenForms[0];

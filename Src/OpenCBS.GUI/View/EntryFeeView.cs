@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
@@ -24,7 +25,8 @@ namespace OpenCBS.GUI.View
 {
     public partial class EntryFeeView : BaseView, IEntryFeeView
     {
-        public EntryFeeView()
+        public EntryFeeView(ITranslator translator)
+            : base(translator)
         {
             InitializeComponent();
         }

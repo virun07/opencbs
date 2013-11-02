@@ -22,6 +22,7 @@ using System.Linq;
 using System.Windows.Forms;
 using OpenCBS.Common;
 using OpenCBS.DataContract;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
@@ -31,7 +32,8 @@ namespace OpenCBS.GUI.View
     {
         private ILoanProductPresenterCallbacks _presenterCallbacks;
 
-        public LoanProductView()
+        public LoanProductView(ITranslator translator)
+            : base(translator)
         {
             InitializeComponent();
             Setup();
@@ -58,9 +60,9 @@ namespace OpenCBS.GUI.View
             Close();
         }
 
-        private static void ShowPolicies(ComboBox comboBox, IEnumerable<string> policies)
+        private void ShowPolicies(ComboBox comboBox, IEnumerable<string> policies)
         {
-            var dict = policies.ToDictionary(policy => policy);
+            var dict = policies.ToDictionary(policy => policy, TranslateString);
             comboBox.DisplayMember = "Value";
             comboBox.ValueMember = "Key";
             comboBox.DataSource = new BindingSource(dict, null);

@@ -247,7 +247,7 @@ namespace OpenCBS.GUI.View
             this._scheduleTabListPage.Controls.Add(this._schedulePolicyLabel);
             this._scheduleTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this._scheduleTabListPage.Name = "_scheduleTabListPage";
-            this._scheduleTabListPage.Size = new System.Drawing.Size(42, 192);
+            this._scheduleTabListPage.Size = new System.Drawing.Size(541, 334);
             this._scheduleTabListPage.TabIndex = 1;
             this._scheduleTabListPage.Text = "Schedule";
             // 

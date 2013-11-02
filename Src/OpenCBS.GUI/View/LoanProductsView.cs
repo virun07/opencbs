@@ -22,6 +22,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using OpenCBS.Common;
 using OpenCBS.DataContract;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
@@ -31,7 +32,8 @@ namespace OpenCBS.GUI.View
     {
         private ILoanProductsPresenterCallbacks _presenterCallbacks;
 
-        public LoanProductsView()
+        public LoanProductsView(ITranslator translator)
+            : base(translator)
         {
             InitializeComponent();
             MdiParent = Application.OpenForms[0];

@@ -19,6 +19,7 @@
 
 using System.Collections.Generic;
 using System.Windows.Forms;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
@@ -26,7 +27,8 @@ namespace OpenCBS.GUI.View
 {
     public partial class SelectEntryFeeView : BaseView, ISelectEntryFeeView
     {
-        public SelectEntryFeeView()
+        public SelectEntryFeeView(ITranslator translator)
+            : base(translator)
         {
             InitializeComponent();
         }

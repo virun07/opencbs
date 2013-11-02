@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using System.Windows.Forms;
+using OpenCBS.Interface;
 using StructureMap;
 
 namespace OpenCBS.GUI
@@ -34,6 +35,8 @@ namespace OpenCBS.GUI
         public ApplicationContext GetAppContext()
         {
             _container.Configure(c => c.AddRegistry<DefaultRegistry>());
+            var translator = _container.TryGetInstance<ITranslator>();
+            if (translator != null) translator.Reload();
             return _container.GetInstance<ApplicationContext>();
         }
     }
