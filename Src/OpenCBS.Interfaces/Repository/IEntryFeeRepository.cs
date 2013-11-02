@@ -17,11 +17,13 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
 using OpenCBS.Model;
 
 namespace OpenCBS.Interface.Repository
 {
     public interface IEntryFeeRepository : IRepository<EntryFee>
     {
+        IList<EntryFee> FindByIds(int[] ids);
     }
 }

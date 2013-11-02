@@ -50,6 +50,15 @@ namespace OpenCBS.Service
             }).ToList();
         }
 
+        public EntryFeeDto FindById(int id)
+        {
+            var entryFee = _repository.FindById(id);
+            if (entryFee == null) return null;
+            var entryFeeDto = new EntryFeeDto();
+            entryFeeDto.InjectFrom(entryFee).InjectFrom<NormalToNullableInjection>(entryFee);
+            return entryFeeDto;
+        }
+
         public void Add(EntryFeeDto entryFeeDto)
         {
             _validator.Validate(entryFeeDto);

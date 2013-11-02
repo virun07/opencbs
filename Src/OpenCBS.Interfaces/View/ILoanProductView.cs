@@ -56,5 +56,7 @@ namespace OpenCBS.Interface.View
         bool ChargeInterestDuringGracePeriod { get; set; }
 
         IList<EntryFeeDto> EntryFees { get; set; }
+        bool CanRemoveEntryFee { get; set; }
+        int? SelectedEntryFeeId { get; }
     }
 }

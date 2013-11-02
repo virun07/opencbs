@@ -25,6 +25,7 @@ namespace OpenCBS.Interface.Service
     public interface IEntryFeeService
     {
         IList<EntryFeeDto> FindAll();
+        EntryFeeDto FindById(int id);
         void Add(EntryFeeDto entryFeeDto);
         void Update(EntryFeeDto entryFeeDto);
         void Remove(int id);

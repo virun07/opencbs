@@ -29,6 +29,8 @@ namespace OpenCBS.GUI.View
 {
     public partial class LoanProductView : BaseView, ILoanProductView
     {
+        private ILoanProductPresenterCallbacks _presenterCallbacks;
+
         public LoanProductView()
         {
             InitializeComponent();
@@ -46,6 +48,9 @@ namespace OpenCBS.GUI.View
             _cancelButton.Click += (sender, e) => presenterCallbacks.Cancel();
             _addEntryFeeButton.Click += (sender, e) => presenterCallbacks.AddEntryFee();
             _removeEntryFeeButton.Click += (sender, e) => presenterCallbacks.RemoveEntryFee();
+            _entryFeesListView.SelectedIndexChanged += (sender, e) => presenterCallbacks.ChangeSelectedEntryFee();
+            FormClosed += (sender, e) => presenterCallbacks.Close();
+            _presenterCallbacks = presenterCallbacks;
         }
 
         public void Stop()
@@ -281,7 +286,13 @@ namespace OpenCBS.GUI.View
         public IList<EntryFeeDto> EntryFees
         {
             get { return (IList<EntryFeeDto>) _entryFeesListView.Objects; }
-            set { _entryFeesListView.SetObjects(value); }
+            set
+            {
+                var selectedObject = _entryFeesListView.SelectedObject;
+                _entryFeesListView.SetObjects(value);
+                _entryFeesListView.SelectedObject = selectedObject;
+                _presenterCallbacks.ChangeSelectedEntryFee();
+            }
         }
 
         private void Setup()
@@ -291,6 +302,21 @@ namespace OpenCBS.GUI.View
                 var rate = (bool) v;
                 return rate ? "Rate" : "Amount";
             };
+        }
+
+        public bool CanRemoveEntryFee
+        {
+            get { return _removeEntryFeeButton.Enabled; }
+            set { _removeEntryFeeButton.Enabled = value; }
+        }
+
+        public int? SelectedEntryFeeId
+        {
+            get
+            {
+                var entryFee = (EntryFeeDto) _entryFeesListView.SelectedObject;
+                return entryFee != null ? entryFee.Id : (int?) null;
+            }
         }
     }
 }

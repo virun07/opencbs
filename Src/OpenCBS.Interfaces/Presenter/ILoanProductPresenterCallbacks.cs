@@ -25,5 +25,7 @@ namespace OpenCBS.Interface.Presenter
         void Cancel();
         void AddEntryFee();
         void RemoveEntryFee();
+        void ChangeSelectedEntryFee();
+        void Close();
     }
 }

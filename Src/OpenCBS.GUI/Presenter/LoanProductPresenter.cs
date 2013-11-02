@@ -18,8 +18,10 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
+using System.Linq;
 using Omu.ValueInjecter;
 using OpenCBS.DataContract;
+using OpenCBS.GUI.AppEvent;
 using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
@@ -28,17 +30,23 @@ using OpenCBS.Interfaces;
 
 namespace OpenCBS.GUI.Presenter
 {
-    public class LoanProductPresenter : ILoanProductPresenter, ILoanProductPresenterCallbacks
+    public class LoanProductPresenter : ILoanProductPresenter, ILoanProductPresenterCallbacks,
+        IEventHandler<EntryFeeSelectedEvent>
     {
         private readonly ILoanProductView _view;
         private readonly ILoanProductService _loanProductService;
+        private readonly IEntryFeeService _entryFeeService;
         private readonly IApplicationController _appController;
         private CommandResult _commandResult = CommandResult.Cancel;
 
-        public LoanProductPresenter(ILoanProductView view, ILoanProductService loanProductService, IApplicationController appController)
+        public LoanProductPresenter(ILoanProductView view, 
+            ILoanProductService loanProductService, 
+            IEntryFeeService entryFeeService,
+            IApplicationController appController)
         {
             _view = view;
             _loanProductService = loanProductService;
+            _entryFeeService = entryFeeService;
             _appController = appController;
         }
 
@@ -99,14 +107,40 @@ namespace OpenCBS.GUI.Presenter
         }
 
         public void RemoveEntryFee()
-        {}
+        {
+            var id = _view.SelectedEntryFeeId;
+            if (id == null) return;
+            var entryFees = _view.EntryFees;
+            var entryFee = entryFees.FirstOrDefault(ef => ef.Id == id.Value);
+            entryFees.Remove(entryFee);
+            _view.EntryFees = entryFees;
+        }
+
+        public void Close()
+        {
+            _appController.Unsubscribe(this);
+        }
+
+        public void ChangeSelectedEntryFee()
+        {
+            _view.CanRemoveEntryFee = _view.SelectedEntryFeeId.HasValue;
+        }
 
         private LoanProductDto GetLoanProduct()
         {
             var result = new LoanProductDto();
             result.InjectFrom(_view);
             result.Name = _view.LoanProductName;
+            result.EntryFees = _view.EntryFees;
             return result;
+        }
+
+        public void Handle(EntryFeeSelectedEvent eventData)
+        {
+            var entryFees = _view.EntryFees;
+            if (entryFees.Count(ef => ef.Id == eventData.Id) > 0) return;
+            entryFees.Add(_entryFeeService.FindById(eventData.Id));
+            _view.EntryFees = entryFees;
         }
     }
 }

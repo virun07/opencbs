@@ -32,16 +32,19 @@ namespace OpenCBS.Service
     public class LoanProductService : ILoanProductService
     {
         private readonly ILoanProductRepository _loanProductRepository;
+        private readonly IEntryFeeRepository _entryFeeRepository;
         private readonly ICurrencyRepository _currencyRepository;
         private readonly IPolicyRepository _policyRepository;
         private readonly ILoanProductValidator _validator;
 
         public LoanProductService(ILoanProductRepository loanProductRepository,
+            IEntryFeeRepository entryFeeRepository,
             ICurrencyRepository currencyRepository,
             IPolicyRepository policyRepository,
             ILoanProductValidator validator)
         {
             _loanProductRepository = loanProductRepository;
+            _entryFeeRepository = entryFeeRepository;
             _currencyRepository = currencyRepository;
             _policyRepository = policyRepository;
             _validator = validator;
@@ -71,6 +74,8 @@ namespace OpenCBS.Service
             var loanProduct = new LoanProduct();
             loanProduct.InjectFrom(loanProductDto).InjectFrom<NullableToNormalInjection>(loanProductDto);
             loanProduct.Currency = _currencyRepository.FindById(loanProductDto.CurrencyId ?? 1);
+            var entryFeeIds = loanProductDto.EntryFees.Select(ef => ef.Id).ToArray();
+            loanProduct.EntryFees = _entryFeeRepository.FindByIds(entryFeeIds);
             _loanProductRepository.Add(loanProduct);
         }
 
@@ -82,6 +87,8 @@ namespace OpenCBS.Service
             var loanProduct = _loanProductRepository.FindById(loanProductDto.Id);
             loanProduct.InjectFrom(loanProductDto).InjectFrom<NullableToNormalInjection>(loanProductDto);
             loanProduct.Currency = _currencyRepository.FindById(loanProductDto.CurrencyId ?? 1);
+            var entryFeeIds = loanProductDto.EntryFees.Select(ef => ef.Id).ToArray();
+            loanProduct.EntryFees = _entryFeeRepository.FindByIds(entryFeeIds);
             _loanProductRepository.Update(loanProduct);
         }
 

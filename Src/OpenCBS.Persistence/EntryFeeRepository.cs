@@ -52,6 +52,15 @@ namespace OpenCBS.Persistence
             }
         }
 
+        public IList<EntryFee> FindByIds(int[] ids)
+        {
+            using (var connection = _connectionProvider.GetConnection())
+            {
+                const string sql = "select * from EntryFee where Id in @Ids";
+                return connection.Query<EntryFee>(sql, new { Ids = ids }).ToList();
+            }
+        }
+
         public void Update(EntryFee entity)
         {
             using (var connection = _connectionProvider.GetConnection())
