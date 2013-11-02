@@ -52,18 +52,13 @@ namespace OpenCBS.Service
 
         public IList<LoanProductDto> FindAll()
         {
-            return _loanProductRepository.FindAll().Select(loanProduct =>
-            {
-                var loanProductDto = new LoanProductDto();
-                loanProductDto
-                    .InjectFrom(loanProduct)
-                    .InjectFrom<NormalToNullableInjection>(loanProduct)
-                    .InjectFrom<FlatNormalToNullableInjection>(loanProduct);
-                loanProductDto.EntryFees = loanProduct.EntryFees
-                    .Select(ef => new EntryFeeDto().InjectFrom(ef).InjectFrom<NormalToNullableInjection>(ef))
-                    .Cast<EntryFeeDto>().ToList();
-                return loanProductDto;
-            }).ToList();
+            return _loanProductRepository.FindAll().Select(Map).ToList();
+        }
+
+        public LoanProductDto FindById(int id)
+        {
+            var loanProduct = _loanProductRepository.FindById(id);
+            return loanProduct == null ? null : Map(loanProduct);
         }
 
         public void Add(LoanProductDto loanProductDto)
@@ -117,6 +112,19 @@ namespace OpenCBS.Service
                     .ToDictionary(c => c.Id, c => c.Name)
             };
             return result;
+        }
+
+        private LoanProductDto Map(LoanProduct loanProduct)
+        {
+            var loanProductDto = new LoanProductDto();
+            loanProductDto
+                .InjectFrom(loanProduct)
+                .InjectFrom<NormalToNullableInjection>(loanProduct)
+                .InjectFrom<FlatNormalToNullableInjection>(loanProduct);
+            loanProductDto.EntryFees = loanProduct.EntryFees
+                .Select(ef => new EntryFeeDto().InjectFrom(ef).InjectFrom<NormalToNullableInjection>(ef))
+                .Cast<EntryFeeDto>().ToList();
+            return loanProductDto;
         }
     }
 }

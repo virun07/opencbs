@@ -41,7 +41,8 @@ namespace OpenCBS.GUI.Command
 
         public void Execute(EditLoanProductData commandData)
         {
-            var result = _presenter.Get(commandData.LoanProductDto);
+            var loanProductDto = _loanProductService.FindById(commandData.Id);
+            var result = _presenter.Get(loanProductDto);
             if (result.CommandResult == CommandResult.Ok)
             {
                 _loanProductService.Update(result.Data);

@@ -50,16 +50,16 @@ namespace OpenCBS.GUI.Presenter
 
         public void Edit()
         {
-            var loanProduct = _view.SelectedLoanProduct;
-            if (loanProduct == null) return;
-            _appController.Execute(new EditLoanProductData { LoanProductDto = loanProduct });
+            var id = _view.SelectedLoanProductId;
+            if (id == null) return;
+            _appController.Execute(new EditLoanProductData { Id = id.Value });
         }
 
         public void Delete()
         {
-            var loanProduct = _view.SelectedLoanProduct;
-            if (loanProduct == null) return;
-            _appController.Execute(new DeleteLoanProductData { Id = loanProduct.Id });
+            var id = _view.SelectedLoanProductId;
+            if (id == null) return;
+            _appController.Execute(new DeleteLoanProductData { Id = id.Value });
         }
 
         public void Refresh()
@@ -69,8 +69,8 @@ namespace OpenCBS.GUI.Presenter
 
         public void ChangeSelection()
         {
-            var loanProduct = _view.SelectedLoanProduct;
-            _view.EditEnabled = _view.DeleteEnabled = loanProduct != null;
+            var id = _view.SelectedLoanProductId;
+            _view.CanEdit = _view.CanDelete = id != null;
         }
 
         public void Close()

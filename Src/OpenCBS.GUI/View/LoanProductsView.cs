@@ -68,21 +68,26 @@ namespace OpenCBS.GUI.View
             _loanProductsListView.SelectedObject = selectedObject;
         }
 
-        public bool EditEnabled
+        public bool CanEdit
         {
             get { return _editButton.Enabled; }
             set { _editButton.Enabled = value; }
         }
 
-        public bool DeleteEnabled
+        public bool CanDelete
         {
             get { return _deleteButton.Enabled; }
             set { _deleteButton.Enabled = value; }
         }
 
-        public LoanProductDto SelectedLoanProduct
+        public int? SelectedLoanProductId
         {
-            get { return (LoanProductDto) _loanProductsListView.SelectedObject; }
+            get
+            {
+                var loanProductDto = (LoanProductDto) _loanProductsListView.SelectedObject;
+                if (loanProductDto == null) return null;
+                return loanProductDto.Id;
+            }
         }
 
         public bool ShowDeleted

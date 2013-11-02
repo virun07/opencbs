@@ -25,6 +25,7 @@ namespace OpenCBS.Interface.Service
     public interface ILoanProductService
     {
         IList<LoanProductDto> FindAll();
+        LoanProductDto FindById(int id);
         void Validate(LoanProductDto loanProductDto);
         void Add(LoanProductDto loanProductDto);
         void Update(LoanProductDto loanProductDto);

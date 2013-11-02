@@ -27,9 +27,9 @@ namespace OpenCBS.Interface.View
     {
         void Run();
         void ShowLoanProducts(IEnumerable<LoanProductDto> loanProducts);
-        bool EditEnabled { get; set; }
-        bool DeleteEnabled { get; set; }
-        LoanProductDto SelectedLoanProduct { get; }
+        bool CanEdit { get; set; }
+        bool CanDelete { get; set; }
+        int? SelectedLoanProductId { get; }
         bool ShowDeleted { get; }
     }
 }
