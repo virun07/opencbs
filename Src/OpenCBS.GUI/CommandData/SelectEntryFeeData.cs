@@ -17,13 +17,9 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.Interface.Presenter
+namespace OpenCBS.GUI.CommandData
 {
-    public interface ILoanProductPresenterCallbacks
+    public class SelectEntryFeeData
     {
-        void Ok();
-        void Cancel();
-        void AddEntryFee();
-        void RemoveEntryFee();
     }
 }

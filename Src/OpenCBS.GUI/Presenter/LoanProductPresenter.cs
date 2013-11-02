@@ -17,11 +17,14 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
 using Omu.ValueInjecter;
 using OpenCBS.DataContract;
+using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
+using OpenCBS.Interfaces;
 
 namespace OpenCBS.GUI.Presenter
 {
@@ -29,12 +32,14 @@ namespace OpenCBS.GUI.Presenter
     {
         private readonly ILoanProductView _view;
         private readonly ILoanProductService _loanProductService;
+        private readonly IApplicationController _appController;
         private CommandResult _commandResult = CommandResult.Cancel;
 
-        public LoanProductPresenter(ILoanProductView view, ILoanProductService loanProductService)
+        public LoanProductPresenter(ILoanProductView view, ILoanProductService loanProductService, IApplicationController appController)
         {
             _view = view;
             _loanProductService = loanProductService;
+            _appController = appController;
         }
 
         public Result<LoanProductDto> Get(LoanProductDto loanProduct)
@@ -50,6 +55,7 @@ namespace OpenCBS.GUI.Presenter
             
             _view.InjectFrom(loanProduct ?? new LoanProductDto());
             _view.LoanProductName = loanProduct != null ? loanProduct.Name : string.Empty;
+            _view.EntryFees = loanProduct != null ? loanProduct.EntryFees : new List<EntryFeeDto>();
             
             _view.Run();
 
@@ -86,6 +92,14 @@ namespace OpenCBS.GUI.Presenter
             _commandResult = CommandResult.Cancel;
             _view.Stop();
         }
+
+        public void AddEntryFee()
+        {
+            _appController.Execute(new SelectEntryFeeData());
+        }
+
+        public void RemoveEntryFee()
+        {}
 
         private LoanProductDto GetLoanProduct()
         {

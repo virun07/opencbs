@@ -42,10 +42,10 @@ namespace OpenCBS.Service
 
         public IList<EntryFeeDto> FindAll()
         {
-            return _repository.FindAll().Select(ef =>
+            return _repository.FindAll().Select(entryFee =>
             {
                 var entryFeeDto = new EntryFeeDto();
-                entryFeeDto.InjectFrom<FlatNullableInjection>(ef);
+                entryFeeDto.InjectFrom(entryFee).InjectFrom<NormalToNullableInjection>(entryFee);
                 return entryFeeDto;
             }).ToList();
         }
@@ -56,7 +56,7 @@ namespace OpenCBS.Service
             if (entryFeeDto.Notification.HasErrors) return;
 
             var entryFee = new EntryFee();
-            entryFee.InjectFrom<NullableInjection>(entryFeeDto);
+            entryFee.InjectFrom(entryFeeDto).InjectFrom<NullableToNormalInjection>(entryFeeDto);
             _repository.Add(entryFee);
         }
 
@@ -66,7 +66,7 @@ namespace OpenCBS.Service
             if (entryFeeDto.Notification.HasErrors) return;
 
             var entryFee = _repository.FindById(entryFeeDto.Id);
-            entryFee.InjectFrom<NullableInjection>(entryFeeDto);
+            entryFee.InjectFrom(entryFeeDto).InjectFrom<NullableToNormalInjection>(entryFeeDto);
             _repository.Update(entryFee);
         }
 

@@ -17,18 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
-using Omu.ValueInjecter;
+using OpenCBS.DataContract;
 
-namespace OpenCBS.Common.Injection
+namespace OpenCBS.Interface.Presenter
 {
-    public class FlatNullableInjection : FlatLoopValueInjection
+    public interface ISelectEntryFeePresenter
     {
-        protected override bool TypesMatch(Type sourceType, Type targetType)
-        {
-            var snt = Nullable.GetUnderlyingType(sourceType);
-            var tnt = Nullable.GetUnderlyingType(targetType);
-            return sourceType == targetType || sourceType == tnt || targetType == snt || tnt == snt;
-        }
+        Result<int> Get();
     }
 }

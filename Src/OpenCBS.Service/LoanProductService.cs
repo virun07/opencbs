@@ -52,7 +52,13 @@ namespace OpenCBS.Service
             return _loanProductRepository.FindAll().Select(loanProduct =>
             {
                 var loanProductDto = new LoanProductDto();
-                loanProductDto.InjectFrom<FlatNullableInjection>(loanProduct);
+                loanProductDto
+                    .InjectFrom(loanProduct)
+                    .InjectFrom<NormalToNullableInjection>(loanProduct)
+                    .InjectFrom<FlatNormalToNullableInjection>(loanProduct);
+                loanProductDto.EntryFees = loanProduct.EntryFees
+                    .Select(ef => new EntryFeeDto().InjectFrom(ef).InjectFrom<NormalToNullableInjection>(ef))
+                    .Cast<EntryFeeDto>().ToList();
                 return loanProductDto;
             }).ToList();
         }
@@ -63,7 +69,7 @@ namespace OpenCBS.Service
             if (loanProductDto.Notification.HasErrors) return;
 
             var loanProduct = new LoanProduct();
-            loanProduct.InjectFrom(loanProductDto);
+            loanProduct.InjectFrom(loanProductDto).InjectFrom<NullableToNormalInjection>(loanProductDto);
             loanProduct.Currency = _currencyRepository.FindById(loanProductDto.CurrencyId ?? 1);
             _loanProductRepository.Add(loanProduct);
         }
@@ -74,7 +80,7 @@ namespace OpenCBS.Service
             if (loanProductDto.Notification.HasErrors) return;
 
             var loanProduct = _loanProductRepository.FindById(loanProductDto.Id);
-            loanProduct.InjectFrom<NullableInjection>(loanProductDto);
+            loanProduct.InjectFrom(loanProductDto).InjectFrom<NullableToNormalInjection>(loanProductDto);
             loanProduct.Currency = _currencyRepository.FindById(loanProductDto.CurrencyId ?? 1);
             _loanProductRepository.Update(loanProduct);
         }

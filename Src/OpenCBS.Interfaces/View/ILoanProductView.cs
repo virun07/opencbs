@@ -54,5 +54,7 @@ namespace OpenCBS.Interface.View
         int? GracePeriodMin { get; set; }
         int? GracePeriodMax { get; set; }
         bool ChargeInterestDuringGracePeriod { get; set; }
+
+        IList<EntryFeeDto> EntryFees { get; set; }
     }
 }

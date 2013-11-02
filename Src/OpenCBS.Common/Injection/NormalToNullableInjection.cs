@@ -17,13 +17,17 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.Interface.Presenter
+using System;
+using Omu.ValueInjecter;
+
+namespace OpenCBS.Common.Injection
 {
-    public interface ILoanProductPresenterCallbacks
+    public class NormalToNullableInjection : ConventionInjection
     {
-        void Ok();
-        void Cancel();
-        void AddEntryFee();
-        void RemoveEntryFee();
+        protected override bool Match(ConventionInfo c)
+        {
+            return c.SourceProp.Name == c.TargetProp.Name &&
+                   c.SourceProp.Type == Nullable.GetUnderlyingType(c.TargetProp.Type);
+        }
     }
 }

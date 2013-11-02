@@ -19,11 +19,10 @@
 
 namespace OpenCBS.Interface.Presenter
 {
-    public interface ILoanProductPresenterCallbacks
+    public interface ISelectEntryFeePresenterCallbacks
     {
         void Ok();
         void Cancel();
-        void AddEntryFee();
-        void RemoveEntryFee();
+        void ChangeSelection();
     }
 }

@@ -17,13 +17,17 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.Interface.Presenter
+using System.Collections.Generic;
+using OpenCBS.Interface.Presenter;
+
+namespace OpenCBS.Interface.View
 {
-    public interface ILoanProductPresenterCallbacks
+    public interface ISelectEntryFeeView : IView<ISelectEntryFeePresenterCallbacks>
     {
-        void Ok();
-        void Cancel();
-        void AddEntryFee();
-        void RemoveEntryFee();
+        void Run();
+        void Stop();
+        void ShowEntryFees(Dictionary<int, string> entryFees);
+        bool CanSelectEntryFee { get; set; }
+        int? SelectedEntryFeeId { get; }
     }
 }

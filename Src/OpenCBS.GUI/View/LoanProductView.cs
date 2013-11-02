@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using OpenCBS.Common;
+using OpenCBS.DataContract;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
@@ -31,6 +32,7 @@ namespace OpenCBS.GUI.View
         public LoanProductView()
         {
             InitializeComponent();
+            Setup();
         }
 
         public void Run()
@@ -42,6 +44,8 @@ namespace OpenCBS.GUI.View
         {
             _okButton.Click += (sender, e) => presenterCallbacks.Ok();
             _cancelButton.Click += (sender, e) => presenterCallbacks.Cancel();
+            _addEntryFeeButton.Click += (sender, e) => presenterCallbacks.AddEntryFee();
+            _removeEntryFeeButton.Click += (sender, e) => presenterCallbacks.RemoveEntryFee();
         }
 
         public void Stop()
@@ -269,9 +273,24 @@ namespace OpenCBS.GUI.View
             {
                 if (value == null)
                     _currencyComboBox.SelectedIndex = -1;
-                else 
+                else
                     _currencyComboBox.SelectedValue = value;
             }
+        }
+
+        public IList<EntryFeeDto> EntryFees
+        {
+            get { return (IList<EntryFeeDto>) _entryFeesListView.Objects; }
+            set { _entryFeesListView.SetObjects(value); }
+        }
+
+        private void Setup()
+        {
+            _rateAmountColumn.AspectToStringConverter = v =>
+            {
+                var rate = (bool) v;
+                return rate ? "Rate" : "Amount";
+            };
         }
     }
 }

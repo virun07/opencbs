@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
 using OpenCBS.Common;
 
 namespace OpenCBS.DataContract
@@ -41,5 +42,7 @@ namespace OpenCBS.DataContract
         public int? GracePeriodMin { get; set; }
         public int? GracePeriodMax { get; set; }
         public bool ChargeInterestDuringGracePeriod { get; set; }
+
+        public IList<EntryFeeDto> EntryFees { get; set; }
     }
 }

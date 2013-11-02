@@ -31,10 +31,17 @@ namespace OpenCBS.Persistence
     {
         private readonly IConnectionProvider _connectionProvider;
 
+        // ReSharper disable UnusedMember.Local
+        // ReSharper disable ClassNeverInstantiated.Local
+        // ReSharper disable UnusedAutoPropertyAccessor.Local
+        private class LoanProductEntryFee
+        {
+            public int LoanProductId { get; set; }
+            public int EntryFeeId { get; set; }
+        }
+
         private class LoanProductRow
         {
-            // ReSharper disable UnusedMember.Local
-            // Filled in dynamically by ValueInjecter
             public int Id { get; set; }
             public string Name { get; set; }
             public string Code { get; set; }
@@ -54,8 +61,10 @@ namespace OpenCBS.Persistence
             public int GracePeriodMax { get; set; }
             public int CurrencyId { get; set; }
             public bool ChargeInterestDuringGracePeriod { get; set; }
-            // ReSharper restore UnusedMember.Local
         }
+        // ReSharper restore UnusedAutoPropertyAccessor.Local
+        // ReSharper restore ClassNeverInstantiated.Local
+        // ReSharper restore UnusedMember.Local
 
         public LoanProductRepository(IConnectionProvider connectionProvider)
         {
@@ -64,32 +73,54 @@ namespace OpenCBS.Persistence
 
         public IList<LoanProduct> FindAll()
         {
+            const string sql = @"
+                select * from LoanProduct p left join Currency c on c.id = p.CurrencyId
+                select * from EntryFee
+                select * from LoanProductEntryFee
+            ";
             using (var connection = _connectionProvider.GetConnection())
+            using (var multi = connection.QueryMultiple(sql))
             {
-                const string sql = @"select *
-                from LoanProduct p
-                left join Currency c on c.id = p.CurrencyId";
-                return connection.Query<LoanProduct, Currency, LoanProduct>(sql, (loanProduct, currency) =>
+                var loanProducts = multi.Read<LoanProduct, Currency, LoanProduct>((loanProduct, currency) =>
                 {
                     loanProduct.Currency = currency;
                     return loanProduct;
                 }).ToList();
+                var entryFees = multi.Read<EntryFee>().ToList();
+                var map = multi.Read<LoanProductEntryFee>().ToList();
+                foreach (var lp in loanProducts)
+                {
+                    lp.EntryFees = new List<EntryFee>();
+                    foreach (var ef in entryFees)
+                    {
+                        if (map.Count(e => e.LoanProductId == lp.Id && e.EntryFeeId == ef.Id) <= 0) continue;
+
+                        var entryFee = new EntryFee();
+                        entryFee.InjectFrom(ef);
+                        lp.EntryFees.Add(entryFee);
+                    }
+                }
+                return loanProducts;
             }
         }
 
         public LoanProduct FindById(int id)
         {
+            const string sql = @"
+                select * from LoanProduct p left join Currency c on c.id = p.CurrencyId where p.id = @Id
+                select * from EntryFee where id in (select EntryFeeId from LoanProductEntryFee where LoanProductId = @Id)
+            ";
             using (var connection = _connectionProvider.GetConnection())
+            using (var multi = connection.QueryMultiple(sql, new { Id = id }))
             {
-                const string sql = @"select *
-                from LoanProduct p
-                left join Currency c on c.id = p.CurrencyId
-                where p.id = @Id";
-                return connection.Query<LoanProduct, Currency, LoanProduct>(sql, (loanProduct, currency) =>
+                var result = multi.Read<LoanProduct, Currency, LoanProduct>((loanProduct, currency) =>
                 {
                     loanProduct.Currency = currency;
                     return loanProduct;
-                }, new { Id = id }).FirstOrDefault();
+                }).FirstOrDefault();
+                if (result == null) return null;
+                result.EntryFees = multi.Read<EntryFee>().ToList();
+                return result;
             }
         }
 

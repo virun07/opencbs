@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
 using OpenCBS.Common;
 
 namespace OpenCBS.Model
@@ -41,5 +42,7 @@ namespace OpenCBS.Model
         public int GracePeriodMax { get; set; }
         public Currency Currency { get; set; }
         public bool ChargeInterestDuringGracePeriod { get; set; }
+
+        public IList<EntryFee> EntryFees { get; set; }
     }
 }

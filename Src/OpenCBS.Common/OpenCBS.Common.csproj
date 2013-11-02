@@ -46,8 +46,9 @@
   <ItemGroup>
     <Compile Include="AvailableFor.cs" />
     <Compile Include="Injection\EnumToIntInjection.cs" />
-    <Compile Include="Injection\FlatNullableInjection.cs" />
-    <Compile Include="Injection\NullableInjection.cs" />
+    <Compile Include="Injection\FlatNormalToNullableInjection.cs" />
+    <Compile Include="Injection\NormalToNullableInjection.cs" />
+    <Compile Include="Injection\NullableToNormalInjection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

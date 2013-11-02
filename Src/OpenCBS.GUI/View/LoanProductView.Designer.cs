@@ -65,6 +65,15 @@ namespace OpenCBS.GUI.View
             this._paymentFrequencyLabel = new System.Windows.Forms.Label();
             this._schedulePolicyComboBox = new System.Windows.Forms.ComboBox();
             this._schedulePolicyLabel = new System.Windows.Forms.Label();
+            this._entryFeesTabListPage = new Cyotek.Windows.Forms.TabListPage();
+            this._entryFeesListView = new BrightIdeasSoftware.ObjectListView();
+            this._nameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._valueMinColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._valueMaxColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._rateAmountColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._entryFeesButtonPanel = new System.Windows.Forms.Panel();
+            this._removeEntryFeeButton = new System.Windows.Forms.Button();
+            this._addEntryFeeButton = new System.Windows.Forms.Button();
             this._buttonsPanel = new OpenCBS.GUI.NEW.View.TopEdgePanel();
             this._cancelButton = new System.Windows.Forms.Button();
             this._okButton = new System.Windows.Forms.Button();
@@ -72,6 +81,9 @@ namespace OpenCBS.GUI.View
             this._tabList.SuspendLayout();
             this._generalTabListPage.SuspendLayout();
             this._scheduleTabListPage.SuspendLayout();
+            this._entryFeesTabListPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._entryFeesListView)).BeginInit();
+            this._entryFeesButtonPanel.SuspendLayout();
             this._buttonsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,6 +96,7 @@ namespace OpenCBS.GUI.View
             // 
             this._tabList.Controls.Add(this._generalTabListPage);
             this._tabList.Controls.Add(this._scheduleTabListPage);
+            this._tabList.Controls.Add(this._entryFeesTabListPage);
             this._tabList.Dock = System.Windows.Forms.DockStyle.Fill;
             this._tabList.Location = new System.Drawing.Point(0, 0);
             this._tabList.Name = "_tabList";
@@ -234,7 +247,7 @@ namespace OpenCBS.GUI.View
             this._scheduleTabListPage.Controls.Add(this._schedulePolicyLabel);
             this._scheduleTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this._scheduleTabListPage.Name = "_scheduleTabListPage";
-            this._scheduleTabListPage.Size = new System.Drawing.Size(49, 222);
+            this._scheduleTabListPage.Size = new System.Drawing.Size(42, 192);
             this._scheduleTabListPage.TabIndex = 1;
             this._scheduleTabListPage.Text = "Schedule";
             // 
@@ -258,7 +271,7 @@ namespace OpenCBS.GUI.View
             this._gracePeriodRange.Max = null;
             this._gracePeriodRange.Min = null;
             this._gracePeriodRange.Name = "_gracePeriodRange";
-            this._gracePeriodRange.Size = new System.Drawing.Size(209, 23);
+            this._gracePeriodRange.Size = new System.Drawing.Size(155, 23);
             this._gracePeriodRange.TabIndex = 46;
             this._gracePeriodRange.Tag = "GracePeriod";
             // 
@@ -281,7 +294,7 @@ namespace OpenCBS.GUI.View
             this._maturityRange.Max = null;
             this._maturityRange.Min = null;
             this._maturityRange.Name = "_maturityRange";
-            this._maturityRange.Size = new System.Drawing.Size(209, 23);
+            this._maturityRange.Size = new System.Drawing.Size(155, 23);
             this._maturityRange.TabIndex = 44;
             this._maturityRange.Tag = "Maturity";
             // 
@@ -295,7 +308,7 @@ namespace OpenCBS.GUI.View
             this._interestRateRange.Max = null;
             this._interestRateRange.Min = null;
             this._interestRateRange.Name = "_interestRateRange";
-            this._interestRateRange.Size = new System.Drawing.Size(209, 23);
+            this._interestRateRange.Size = new System.Drawing.Size(155, 23);
             this._interestRateRange.TabIndex = 42;
             this._interestRateRange.Tag = "InterestRate";
             // 
@@ -309,7 +322,7 @@ namespace OpenCBS.GUI.View
             this._amountRange.Max = null;
             this._amountRange.Min = null;
             this._amountRange.Name = "_amountRange";
-            this._amountRange.Size = new System.Drawing.Size(209, 23);
+            this._amountRange.Size = new System.Drawing.Size(155, 23);
             this._amountRange.TabIndex = 40;
             this._amountRange.Tag = "Amount";
             // 
@@ -435,6 +448,102 @@ namespace OpenCBS.GUI.View
             this._schedulePolicyLabel.TabIndex = 30;
             this._schedulePolicyLabel.Text = "Schedule type";
             // 
+            // _entryFeesTabListPage
+            // 
+            this._entryFeesTabListPage.Controls.Add(this._entryFeesListView);
+            this._entryFeesTabListPage.Controls.Add(this._entryFeesButtonPanel);
+            this._entryFeesTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._entryFeesTabListPage.Name = "_entryFeesTabListPage";
+            this._entryFeesTabListPage.Size = new System.Drawing.Size(541, 334);
+            this._entryFeesTabListPage.TabIndex = 2;
+            this._entryFeesTabListPage.Text = "Entry fees";
+            // 
+            // _entryFeesListView
+            // 
+            this._entryFeesListView.AllColumns.Add(this._nameColumn);
+            this._entryFeesListView.AllColumns.Add(this._valueMinColumn);
+            this._entryFeesListView.AllColumns.Add(this._valueMaxColumn);
+            this._entryFeesListView.AllColumns.Add(this._rateAmountColumn);
+            this._entryFeesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this._nameColumn,
+            this._valueMinColumn,
+            this._valueMaxColumn,
+            this._rateAmountColumn});
+            this._entryFeesListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._entryFeesListView.FullRowSelect = true;
+            this._entryFeesListView.GridLines = true;
+            this._entryFeesListView.HeaderWordWrap = true;
+            this._entryFeesListView.HideSelection = false;
+            this._entryFeesListView.Location = new System.Drawing.Point(0, 0);
+            this._entryFeesListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._entryFeesListView.MultiSelect = false;
+            this._entryFeesListView.Name = "_entryFeesListView";
+            this._entryFeesListView.ShowGroups = false;
+            this._entryFeesListView.Size = new System.Drawing.Size(541, 287);
+            this._entryFeesListView.TabIndex = 4;
+            this._entryFeesListView.UseCompatibleStateImageBehavior = false;
+            this._entryFeesListView.View = System.Windows.Forms.View.Details;
+            // 
+            // _nameColumn
+            // 
+            this._nameColumn.AspectName = "Name";
+            this._nameColumn.Text = "Name";
+            this._nameColumn.Width = 200;
+            // 
+            // _valueMinColumn
+            // 
+            this._valueMinColumn.AspectName = "ValueMin";
+            this._valueMinColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this._valueMinColumn.Text = "Value (min)";
+            this._valueMinColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this._valueMinColumn.Width = 100;
+            // 
+            // _valueMaxColumn
+            // 
+            this._valueMaxColumn.AspectName = "ValueMax";
+            this._valueMaxColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this._valueMaxColumn.Text = "Value (max)";
+            this._valueMaxColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this._valueMaxColumn.Width = 100;
+            // 
+            // _rateAmountColumn
+            // 
+            this._rateAmountColumn.AspectName = "Rate";
+            this._rateAmountColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._rateAmountColumn.Text = "Rate / amount";
+            this._rateAmountColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._rateAmountColumn.Width = 120;
+            // 
+            // _entryFeesButtonPanel
+            // 
+            this._entryFeesButtonPanel.Controls.Add(this._removeEntryFeeButton);
+            this._entryFeesButtonPanel.Controls.Add(this._addEntryFeeButton);
+            this._entryFeesButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._entryFeesButtonPanel.Location = new System.Drawing.Point(0, 287);
+            this._entryFeesButtonPanel.Name = "_entryFeesButtonPanel";
+            this._entryFeesButtonPanel.Size = new System.Drawing.Size(541, 47);
+            this._entryFeesButtonPanel.TabIndex = 0;
+            // 
+            // _removeEntryFeeButton
+            // 
+            this._removeEntryFeeButton.Location = new System.Drawing.Point(106, 12);
+            this._removeEntryFeeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._removeEntryFeeButton.Name = "_removeEntryFeeButton";
+            this._removeEntryFeeButton.Size = new System.Drawing.Size(100, 28);
+            this._removeEntryFeeButton.TabIndex = 3;
+            this._removeEntryFeeButton.Text = "Remove";
+            this._removeEntryFeeButton.UseVisualStyleBackColor = true;
+            // 
+            // _addEntryFeeButton
+            // 
+            this._addEntryFeeButton.Location = new System.Drawing.Point(0, 12);
+            this._addEntryFeeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._addEntryFeeButton.Name = "_addEntryFeeButton";
+            this._addEntryFeeButton.Size = new System.Drawing.Size(100, 28);
+            this._addEntryFeeButton.TabIndex = 2;
+            this._addEntryFeeButton.Text = "Add";
+            this._addEntryFeeButton.UseVisualStyleBackColor = true;
+            // 
             // _buttonsPanel
             // 
             this._buttonsPanel.Controls.Add(this._cancelButton);
@@ -484,6 +593,9 @@ namespace OpenCBS.GUI.View
             this._generalTabListPage.PerformLayout();
             this._scheduleTabListPage.ResumeLayout(false);
             this._scheduleTabListPage.PerformLayout();
+            this._entryFeesTabListPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._entryFeesListView)).EndInit();
+            this._entryFeesButtonPanel.ResumeLayout(false);
             this._buttonsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -528,5 +640,14 @@ namespace OpenCBS.GUI.View
         private System.Windows.Forms.Label _paymentFrequencyLabel;
         private System.Windows.Forms.ComboBox _schedulePolicyComboBox;
         private System.Windows.Forms.Label _schedulePolicyLabel;
+        private Cyotek.Windows.Forms.TabListPage _entryFeesTabListPage;
+        private System.Windows.Forms.Panel _entryFeesButtonPanel;
+        private System.Windows.Forms.Button _removeEntryFeeButton;
+        private System.Windows.Forms.Button _addEntryFeeButton;
+        private BrightIdeasSoftware.ObjectListView _entryFeesListView;
+        private BrightIdeasSoftware.OLVColumn _nameColumn;
+        private BrightIdeasSoftware.OLVColumn _valueMinColumn;
+        private BrightIdeasSoftware.OLVColumn _valueMaxColumn;
+        private BrightIdeasSoftware.OLVColumn _rateAmountColumn;
     }
 }
