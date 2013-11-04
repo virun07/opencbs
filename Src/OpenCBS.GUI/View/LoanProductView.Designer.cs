@@ -74,6 +74,18 @@ namespace OpenCBS.GUI.View
             this._entryFeesButtonPanel = new System.Windows.Forms.Panel();
             this._deleteEntryFeeButton = new System.Windows.Forms.Button();
             this._addEntryFeeButton = new System.Windows.Forms.Button();
+            this._lateFeesTabListPage = new Cyotek.Windows.Forms.TabListPage();
+            this._lateFeeBasedOnGroupBox = new System.Windows.Forms.GroupBox();
+            this._lateFeeLateInterestRateRange = new OpenCBS.Controls.RangeControl();
+            this._lateFeeOlbRateRange = new OpenCBS.Controls.RangeControl();
+            this._lateFeeLatePrincipalRateRange = new OpenCBS.Controls.RangeControl();
+            this._lateFeeAmountRateRange = new OpenCBS.Controls.RangeControl();
+            this._lateFeeAmountRateLabel = new System.Windows.Forms.Label();
+            this._lateFeeOlbRateLabel = new System.Windows.Forms.Label();
+            this._lateFeeLateInterestRateLabel = new System.Windows.Forms.Label();
+            this._lateFeeLatePrincipalRateLabel = new System.Windows.Forms.Label();
+            this._penaltyGracePeriodRange = new OpenCBS.Controls.RangeControl();
+            this._penaltyGracePeriodLabel = new System.Windows.Forms.Label();
             this._buttonsPanel = new OpenCBS.GUI.NEW.View.TopEdgePanel();
             this._cancelButton = new System.Windows.Forms.Button();
             this._okButton = new System.Windows.Forms.Button();
@@ -84,6 +96,8 @@ namespace OpenCBS.GUI.View
             this._entryFeesTabListPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._entryFeesListView)).BeginInit();
             this._entryFeesButtonPanel.SuspendLayout();
+            this._lateFeesTabListPage.SuspendLayout();
+            this._lateFeeBasedOnGroupBox.SuspendLayout();
             this._buttonsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +111,7 @@ namespace OpenCBS.GUI.View
             this._tabList.Controls.Add(this._generalTabListPage);
             this._tabList.Controls.Add(this._scheduleTabListPage);
             this._tabList.Controls.Add(this._entryFeesTabListPage);
+            this._tabList.Controls.Add(this._lateFeesTabListPage);
             this._tabList.Dock = System.Windows.Forms.DockStyle.Fill;
             this._tabList.Location = new System.Drawing.Point(0, 0);
             this._tabList.Name = "_tabList";
@@ -385,7 +400,7 @@ namespace OpenCBS.GUI.View
             // _dateShiftPolicyLabel
             // 
             this._dateShiftPolicyLabel.AutoSize = true;
-            this._dateShiftPolicyLabel.Location = new System.Drawing.Point(14, 164);
+            this._dateShiftPolicyLabel.Location = new System.Drawing.Point(14, 166);
             this._dateShiftPolicyLabel.Name = "_dateShiftPolicyLabel";
             this._dateShiftPolicyLabel.Size = new System.Drawing.Size(57, 15);
             this._dateShiftPolicyLabel.TabIndex = 36;
@@ -404,7 +419,7 @@ namespace OpenCBS.GUI.View
             // _yearPolicyLabel
             // 
             this._yearPolicyLabel.AutoSize = true;
-            this._yearPolicyLabel.Location = new System.Drawing.Point(14, 111);
+            this._yearPolicyLabel.Location = new System.Drawing.Point(14, 113);
             this._yearPolicyLabel.Name = "_yearPolicyLabel";
             this._yearPolicyLabel.Size = new System.Drawing.Size(30, 15);
             this._yearPolicyLabel.TabIndex = 34;
@@ -454,7 +469,7 @@ namespace OpenCBS.GUI.View
             this._entryFeesTabListPage.Controls.Add(this._entryFeesButtonPanel);
             this._entryFeesTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this._entryFeesTabListPage.Name = "_entryFeesTabListPage";
-            this._entryFeesTabListPage.Size = new System.Drawing.Size(541, 334);
+            this._entryFeesTabListPage.Size = new System.Drawing.Size(42, 192);
             this._entryFeesTabListPage.TabIndex = 2;
             this._entryFeesTabListPage.Text = "Entry fees";
             // 
@@ -479,7 +494,7 @@ namespace OpenCBS.GUI.View
             this._entryFeesListView.MultiSelect = false;
             this._entryFeesListView.Name = "_entryFeesListView";
             this._entryFeesListView.ShowGroups = false;
-            this._entryFeesListView.Size = new System.Drawing.Size(541, 287);
+            this._entryFeesListView.Size = new System.Drawing.Size(42, 145);
             this._entryFeesListView.TabIndex = 4;
             this._entryFeesListView.UseCompatibleStateImageBehavior = false;
             this._entryFeesListView.View = System.Windows.Forms.View.Details;
@@ -519,9 +534,9 @@ namespace OpenCBS.GUI.View
             this._entryFeesButtonPanel.Controls.Add(this._deleteEntryFeeButton);
             this._entryFeesButtonPanel.Controls.Add(this._addEntryFeeButton);
             this._entryFeesButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._entryFeesButtonPanel.Location = new System.Drawing.Point(0, 287);
+            this._entryFeesButtonPanel.Location = new System.Drawing.Point(0, 145);
             this._entryFeesButtonPanel.Name = "_entryFeesButtonPanel";
-            this._entryFeesButtonPanel.Size = new System.Drawing.Size(541, 47);
+            this._entryFeesButtonPanel.Size = new System.Drawing.Size(42, 47);
             this._entryFeesButtonPanel.TabIndex = 0;
             // 
             // _deleteEntryFeeButton
@@ -543,6 +558,150 @@ namespace OpenCBS.GUI.View
             this._addEntryFeeButton.TabIndex = 2;
             this._addEntryFeeButton.Text = "Add";
             this._addEntryFeeButton.UseVisualStyleBackColor = true;
+            // 
+            // _lateFeesTabListPage
+            // 
+            this._lateFeesTabListPage.Controls.Add(this._penaltyGracePeriodRange);
+            this._lateFeesTabListPage.Controls.Add(this._lateFeeBasedOnGroupBox);
+            this._lateFeesTabListPage.Controls.Add(this._penaltyGracePeriodLabel);
+            this._lateFeesTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._lateFeesTabListPage.Name = "_lateFeesTabListPage";
+            this._lateFeesTabListPage.Size = new System.Drawing.Size(541, 334);
+            this._lateFeesTabListPage.TabIndex = 3;
+            this._lateFeesTabListPage.Text = "Late fees";
+            // 
+            // _lateFeeBasedOnGroupBox
+            // 
+            this._lateFeeBasedOnGroupBox.Controls.Add(this._lateFeeLateInterestRateRange);
+            this._lateFeeBasedOnGroupBox.Controls.Add(this._lateFeeOlbRateRange);
+            this._lateFeeBasedOnGroupBox.Controls.Add(this._lateFeeLatePrincipalRateRange);
+            this._lateFeeBasedOnGroupBox.Controls.Add(this._lateFeeAmountRateRange);
+            this._lateFeeBasedOnGroupBox.Controls.Add(this._lateFeeAmountRateLabel);
+            this._lateFeeBasedOnGroupBox.Controls.Add(this._lateFeeOlbRateLabel);
+            this._lateFeeBasedOnGroupBox.Controls.Add(this._lateFeeLateInterestRateLabel);
+            this._lateFeeBasedOnGroupBox.Controls.Add(this._lateFeeLatePrincipalRateLabel);
+            this._lateFeeBasedOnGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this._lateFeeBasedOnGroupBox.Location = new System.Drawing.Point(0, 0);
+            this._lateFeeBasedOnGroupBox.Name = "_lateFeeBasedOnGroupBox";
+            this._lateFeeBasedOnGroupBox.Size = new System.Drawing.Size(541, 149);
+            this._lateFeeBasedOnGroupBox.TabIndex = 50;
+            this._lateFeeBasedOnGroupBox.TabStop = false;
+            this._lateFeeBasedOnGroupBox.Text = "Based on (% per day)";
+            // 
+            // _lateFeeLateInterestRateRange
+            // 
+            this._lateFeeLateInterestRateRange.AllowDecimalSeparator = true;
+            this._lateFeeLateInterestRateRange.AutoSize = true;
+            this._lateFeeLateInterestRateRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._lateFeeLateInterestRateRange.Location = new System.Drawing.Point(250, 100);
+            this._lateFeeLateInterestRateRange.Margin = new System.Windows.Forms.Padding(0);
+            this._lateFeeLateInterestRateRange.Max = null;
+            this._lateFeeLateInterestRateRange.Min = null;
+            this._lateFeeLateInterestRateRange.Name = "_lateFeeLateInterestRateRange";
+            this._lateFeeLateInterestRateRange.Size = new System.Drawing.Size(155, 23);
+            this._lateFeeLateInterestRateRange.TabIndex = 48;
+            this._lateFeeLateInterestRateRange.Tag = "Amount";
+            // 
+            // _lateFeeOlbRateRange
+            // 
+            this._lateFeeOlbRateRange.AllowDecimalSeparator = true;
+            this._lateFeeOlbRateRange.AutoSize = true;
+            this._lateFeeOlbRateRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._lateFeeOlbRateRange.Location = new System.Drawing.Point(18, 100);
+            this._lateFeeOlbRateRange.Margin = new System.Windows.Forms.Padding(0);
+            this._lateFeeOlbRateRange.Max = null;
+            this._lateFeeOlbRateRange.Min = null;
+            this._lateFeeOlbRateRange.Name = "_lateFeeOlbRateRange";
+            this._lateFeeOlbRateRange.Size = new System.Drawing.Size(155, 23);
+            this._lateFeeOlbRateRange.TabIndex = 44;
+            this._lateFeeOlbRateRange.Tag = "Amount";
+            // 
+            // _lateFeeLatePrincipalRateRange
+            // 
+            this._lateFeeLatePrincipalRateRange.AllowDecimalSeparator = true;
+            this._lateFeeLatePrincipalRateRange.AutoSize = true;
+            this._lateFeeLatePrincipalRateRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._lateFeeLatePrincipalRateRange.Location = new System.Drawing.Point(250, 47);
+            this._lateFeeLatePrincipalRateRange.Margin = new System.Windows.Forms.Padding(0);
+            this._lateFeeLatePrincipalRateRange.Max = null;
+            this._lateFeeLatePrincipalRateRange.Min = null;
+            this._lateFeeLatePrincipalRateRange.Name = "_lateFeeLatePrincipalRateRange";
+            this._lateFeeLatePrincipalRateRange.Size = new System.Drawing.Size(155, 23);
+            this._lateFeeLatePrincipalRateRange.TabIndex = 46;
+            this._lateFeeLatePrincipalRateRange.Tag = "Amount";
+            // 
+            // _lateFeeAmountRateRange
+            // 
+            this._lateFeeAmountRateRange.AllowDecimalSeparator = true;
+            this._lateFeeAmountRateRange.AutoSize = true;
+            this._lateFeeAmountRateRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._lateFeeAmountRateRange.Location = new System.Drawing.Point(14, 47);
+            this._lateFeeAmountRateRange.Margin = new System.Windows.Forms.Padding(0);
+            this._lateFeeAmountRateRange.Max = null;
+            this._lateFeeAmountRateRange.Min = null;
+            this._lateFeeAmountRateRange.Name = "_lateFeeAmountRateRange";
+            this._lateFeeAmountRateRange.Size = new System.Drawing.Size(155, 23);
+            this._lateFeeAmountRateRange.TabIndex = 42;
+            this._lateFeeAmountRateRange.Tag = "Amount";
+            // 
+            // _lateFeeAmountRateLabel
+            // 
+            this._lateFeeAmountRateLabel.AutoSize = true;
+            this._lateFeeAmountRateLabel.Location = new System.Drawing.Point(14, 29);
+            this._lateFeeAmountRateLabel.Name = "_lateFeeAmountRateLabel";
+            this._lateFeeAmountRateLabel.Size = new System.Drawing.Size(51, 15);
+            this._lateFeeAmountRateLabel.TabIndex = 43;
+            this._lateFeeAmountRateLabel.Text = "Amount";
+            // 
+            // _lateFeeOlbRateLabel
+            // 
+            this._lateFeeOlbRateLabel.AutoSize = true;
+            this._lateFeeOlbRateLabel.Location = new System.Drawing.Point(15, 82);
+            this._lateFeeOlbRateLabel.Name = "_lateFeeOlbRateLabel";
+            this._lateFeeOlbRateLabel.Size = new System.Drawing.Size(29, 15);
+            this._lateFeeOlbRateLabel.TabIndex = 45;
+            this._lateFeeOlbRateLabel.Text = "OLB";
+            // 
+            // _lateFeeLateInterestRateLabel
+            // 
+            this._lateFeeLateInterestRateLabel.AutoSize = true;
+            this._lateFeeLateInterestRateLabel.Location = new System.Drawing.Point(250, 82);
+            this._lateFeeLateInterestRateLabel.Name = "_lateFeeLateInterestRateLabel";
+            this._lateFeeLateInterestRateLabel.Size = new System.Drawing.Size(71, 15);
+            this._lateFeeLateInterestRateLabel.TabIndex = 49;
+            this._lateFeeLateInterestRateLabel.Text = "Late interest";
+            // 
+            // _lateFeeLatePrincipalRateLabel
+            // 
+            this._lateFeeLatePrincipalRateLabel.AutoSize = true;
+            this._lateFeeLatePrincipalRateLabel.Location = new System.Drawing.Point(250, 29);
+            this._lateFeeLatePrincipalRateLabel.Name = "_lateFeeLatePrincipalRateLabel";
+            this._lateFeeLatePrincipalRateLabel.Size = new System.Drawing.Size(78, 15);
+            this._lateFeeLatePrincipalRateLabel.TabIndex = 47;
+            this._lateFeeLatePrincipalRateLabel.Text = "Late principal";
+            // 
+            // _penaltyGracePeriodRange
+            // 
+            this._penaltyGracePeriodRange.AllowDecimalSeparator = false;
+            this._penaltyGracePeriodRange.AutoSize = true;
+            this._penaltyGracePeriodRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._penaltyGracePeriodRange.Location = new System.Drawing.Point(14, 194);
+            this._penaltyGracePeriodRange.Margin = new System.Windows.Forms.Padding(0);
+            this._penaltyGracePeriodRange.Max = null;
+            this._penaltyGracePeriodRange.Min = null;
+            this._penaltyGracePeriodRange.Name = "_penaltyGracePeriodRange";
+            this._penaltyGracePeriodRange.Size = new System.Drawing.Size(155, 23);
+            this._penaltyGracePeriodRange.TabIndex = 52;
+            this._penaltyGracePeriodRange.Tag = "GracePeriod";
+            // 
+            // _penaltyGracePeriodLabel
+            // 
+            this._penaltyGracePeriodLabel.AutoSize = true;
+            this._penaltyGracePeriodLabel.Location = new System.Drawing.Point(14, 176);
+            this._penaltyGracePeriodLabel.Name = "_penaltyGracePeriodLabel";
+            this._penaltyGracePeriodLabel.Size = new System.Drawing.Size(74, 15);
+            this._penaltyGracePeriodLabel.TabIndex = 51;
+            this._penaltyGracePeriodLabel.Text = "Grace period";
             // 
             // _buttonsPanel
             // 
@@ -596,6 +755,10 @@ namespace OpenCBS.GUI.View
             this._entryFeesTabListPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._entryFeesListView)).EndInit();
             this._entryFeesButtonPanel.ResumeLayout(false);
+            this._lateFeesTabListPage.ResumeLayout(false);
+            this._lateFeesTabListPage.PerformLayout();
+            this._lateFeeBasedOnGroupBox.ResumeLayout(false);
+            this._lateFeeBasedOnGroupBox.PerformLayout();
             this._buttonsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -649,5 +812,17 @@ namespace OpenCBS.GUI.View
         private BrightIdeasSoftware.OLVColumn _valueMinColumn;
         private BrightIdeasSoftware.OLVColumn _valueMaxColumn;
         private BrightIdeasSoftware.OLVColumn _rateAmountColumn;
+        private Cyotek.Windows.Forms.TabListPage _lateFeesTabListPage;
+        private Controls.RangeControl _lateFeeAmountRateRange;
+        private System.Windows.Forms.Label _lateFeeAmountRateLabel;
+        private Controls.RangeControl _lateFeeOlbRateRange;
+        private System.Windows.Forms.Label _lateFeeOlbRateLabel;
+        private Controls.RangeControl _lateFeeLatePrincipalRateRange;
+        private System.Windows.Forms.Label _lateFeeLatePrincipalRateLabel;
+        private Controls.RangeControl _lateFeeLateInterestRateRange;
+        private System.Windows.Forms.Label _lateFeeLateInterestRateLabel;
+        private Controls.RangeControl _penaltyGracePeriodRange;
+        private System.Windows.Forms.Label _penaltyGracePeriodLabel;
+        private System.Windows.Forms.GroupBox _lateFeeBasedOnGroupBox;
     }
 }
