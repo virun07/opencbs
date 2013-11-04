@@ -18,18 +18,23 @@
 // Contact: contact@opencbs.com
 
 using System.Windows.Forms;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.View
 {
-    public class ConfirmationView : IConfirmationView
+    public class ConfirmationView : BaseView, IConfirmationView
     {
         private IConfirmationPresenterCallbacks _presenterCallbacks;
 
+        public ConfirmationView(ITranslator translator)
+            : base(translator)
+        { }
+
         public void Run(string message)
         {
-            var result = MessageBox.Show(message, "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var result = MessageBox.Show(_(message), _("Confirmation"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
                 _presenterCallbacks.Ok();
             else

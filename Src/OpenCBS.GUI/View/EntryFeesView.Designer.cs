@@ -33,7 +33,7 @@
             this._codeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._valueMinColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._valueMaxColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this._amountRateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._rateAmountColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._buttonsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this._addButton = new System.Windows.Forms.Button();
             this._editButton = new System.Windows.Forms.Button();
@@ -49,13 +49,13 @@
             this._entryFeesListView.AllColumns.Add(this._codeColumn);
             this._entryFeesListView.AllColumns.Add(this._valueMinColumn);
             this._entryFeesListView.AllColumns.Add(this._valueMaxColumn);
-            this._entryFeesListView.AllColumns.Add(this._amountRateColumn);
+            this._entryFeesListView.AllColumns.Add(this._rateAmountColumn);
             this._entryFeesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this._nameColumn,
             this._codeColumn,
             this._valueMinColumn,
             this._valueMaxColumn,
-            this._amountRateColumn});
+            this._rateAmountColumn});
             this._entryFeesListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._entryFeesListView.FullRowSelect = true;
             this._entryFeesListView.GridLines = true;
@@ -89,7 +89,7 @@
             this._valueMinColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._valueMinColumn.Text = "Value (min)";
             this._valueMinColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this._valueMinColumn.Width = 100;
+            this._valueMinColumn.Width = 120;
             // 
             // _valueMaxColumn
             // 
@@ -97,15 +97,15 @@
             this._valueMaxColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._valueMaxColumn.Text = "Value (max)";
             this._valueMaxColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this._valueMaxColumn.Width = 100;
+            this._valueMaxColumn.Width = 120;
             // 
-            // _amountRateColumn
+            // _rateAmountColumn
             // 
-            this._amountRateColumn.AspectName = "Rate";
-            this._amountRateColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this._amountRateColumn.Text = "Amount / rate";
-            this._amountRateColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this._amountRateColumn.Width = 120;
+            this._rateAmountColumn.AspectName = "Rate";
+            this._rateAmountColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._rateAmountColumn.Text = "Rate / amount";
+            this._rateAmountColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._rateAmountColumn.Width = 120;
             // 
             // _buttonsPanel
             // 
@@ -193,6 +193,6 @@
         private System.Windows.Forms.CheckBox _showDeletedCheckBox;
         private BrightIdeasSoftware.OLVColumn _valueMinColumn;
         private BrightIdeasSoftware.OLVColumn _valueMaxColumn;
-        private BrightIdeasSoftware.OLVColumn _amountRateColumn;
+        private BrightIdeasSoftware.OLVColumn _rateAmountColumn;
     }
 }

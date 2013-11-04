@@ -92,10 +92,10 @@ namespace OpenCBS.GUI.View
                 var value = (decimal) v;
                 return string.Format("{0:N2}", value);
             };
-            _amountRateColumn.AspectToStringConverter = v =>
+            _rateAmountColumn.AspectToStringConverter = v =>
             {
                 var rate = (bool) v;
-                return rate ? "Rate" : "Amount";
+                return rate ? _("Rate") : _("Amount");
             };
             _entryFeesListView.FormatRow += (sender, e) =>
             {

@@ -780,7 +780,9 @@
     <Compile Include="View\BaseView.Designer.cs">
       <DependentUpon>BaseView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ConfirmationView.cs" />
+    <Compile Include="View\ConfirmationView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\EntryFeesView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3143,6 +3145,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Languages\en-US.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\fr-FR.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Languages\ru-RU.json">

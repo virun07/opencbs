@@ -96,13 +96,13 @@ namespace OpenCBS.GUI.View
             var availableFor = (AvailableFor) obj;
             var items = new List<string>();
             if ((availableFor & AvailableFor.Individual) == AvailableFor.Individual)
-                items.Add(TranslateString("Ind"));
+                items.Add(_("Ind"));
             if ((availableFor & AvailableFor.SolidarityGroup) == AvailableFor.SolidarityGroup)
-                items.Add(TranslateString("SG"));
+                items.Add(_("SG"));
             if ((availableFor & AvailableFor.NonSolidarityGroup) == AvailableFor.NonSolidarityGroup)
-                items.Add(TranslateString("NSG"));
+                items.Add(_("NSG"));
             if ((availableFor & AvailableFor.Company) == AvailableFor.Company)
-                items.Add(TranslateString("Company"));
+                items.Add(_("Company"));
             return string.Join(", ", items.ToArray());
         }
 
@@ -121,7 +121,7 @@ namespace OpenCBS.GUI.View
             _roundingPolicyColumn.AspectToStringConverter = v =>
             {
                 var key = (string) v;
-                return TranslateString(key);
+                return _(key);
             };
         }
     }

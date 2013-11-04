@@ -178,13 +178,13 @@
             // 
             this._dateShiftPolicyColumn.AspectName = "DateShiftPolicy";
             this._dateShiftPolicyColumn.Text = "Date shift";
-            this._dateShiftPolicyColumn.Width = 100;
+            this._dateShiftPolicyColumn.Width = 120;
             // 
             // _roundingPolicyColumn
             // 
             this._roundingPolicyColumn.AspectName = "RoundingPolicy";
             this._roundingPolicyColumn.Text = "Rounding";
-            this._roundingPolicyColumn.Width = 100;
+            this._roundingPolicyColumn.Width = 120;
             // 
             // LoanProductsView
             // 

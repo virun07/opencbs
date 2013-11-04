@@ -68,7 +68,7 @@ namespace OpenCBS.GUI.View
                                     where c.Tag != null && c.Tag.ToString() == error.PropertyName
                                     select c).FirstOrDefault();
                 if (errorControl == null) continue;
-                _errorProvider.SetError(errorControl, TranslateString(error.Message));
+                _errorProvider.SetError(errorControl, _(error.Message));
             }
         }
 
@@ -107,9 +107,10 @@ namespace OpenCBS.GUI.View
                 else if (pair.Key is ColumnHeader)
                     (pair.Key as ColumnHeader).Text = _translator.Translate(pair.Value);
             }
+            Invalidate(true);
         }
 
-        public string TranslateString(string key)
+        public string _(string key)
         {
             if (_translator == null) return key;
             return _translator.Translate(key);

@@ -117,6 +117,7 @@ namespace OpenCBS.GUI.Presenter
         public void Handle(LanguageChangedEvent eventData)
         {
             _view.Translate();
+            ShowLoanProducts();
         }
     }
 }

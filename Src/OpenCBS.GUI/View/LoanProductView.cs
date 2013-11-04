@@ -62,7 +62,7 @@ namespace OpenCBS.GUI.View
 
         private void ShowPolicies(ComboBox comboBox, IEnumerable<string> policies)
         {
-            var dict = policies.ToDictionary(policy => policy, TranslateString);
+            var dict = policies.ToDictionary(policy => policy, _);
             comboBox.DisplayMember = "Value";
             comboBox.ValueMember = "Key";
             comboBox.DataSource = new BindingSource(dict, null);
@@ -302,7 +302,7 @@ namespace OpenCBS.GUI.View
             _rateAmountColumn.AspectToStringConverter = v =>
             {
                 var rate = (bool) v;
-                return rate ? "Rate" : "Amount";
+                return rate ? _("Rate") : _("Amount");
             };
         }
 
