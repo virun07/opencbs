@@ -124,6 +124,7 @@ namespace OpenCBS.GUI.View
                 typeof (Button),
                 typeof (CheckBox),
                 typeof (RadioButton),
+                typeof (GroupBox),
                 typeof (ObjectListView),
                 typeof (TabListPage)
             };
