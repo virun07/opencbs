@@ -324,7 +324,7 @@ namespace OpenCBS.GUI.View
         public decimal? LateFeeAmountRateMin
         {
             get { return _lateFeeAmountRateRange.Min; }
-            set { _lateFeeAmountRateRange.Max = value; }
+            set { _lateFeeAmountRateRange.Min = value; }
         }
 
         public decimal? LateFeeAmountRateMax
