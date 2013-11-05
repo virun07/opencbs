@@ -75,6 +75,7 @@ namespace OpenCBS.GUI.View
             this._deleteEntryFeeButton = new System.Windows.Forms.Button();
             this._addEntryFeeButton = new System.Windows.Forms.Button();
             this._lateFeesTabListPage = new Cyotek.Windows.Forms.TabListPage();
+            this._lateFeeGracePeriodTextBox = new OpenCBS.Controls.AmountTextBox();
             this._lateFeeBasedOnGroupBox = new System.Windows.Forms.GroupBox();
             this._lateFeeLateInterestRateRange = new OpenCBS.Controls.RangeControl();
             this._lateFeeOlbRateRange = new OpenCBS.Controls.RangeControl();
@@ -84,7 +85,6 @@ namespace OpenCBS.GUI.View
             this._lateFeeOlbRateLabel = new System.Windows.Forms.Label();
             this._lateFeeLateInterestRateLabel = new System.Windows.Forms.Label();
             this._lateFeeLatePrincipalRateLabel = new System.Windows.Forms.Label();
-            this._penaltyGracePeriodRange = new OpenCBS.Controls.RangeControl();
             this._penaltyGracePeriodLabel = new System.Windows.Forms.Label();
             this._buttonsPanel = new OpenCBS.GUI.NEW.View.TopEdgePanel();
             this._cancelButton = new System.Windows.Forms.Button();
@@ -561,7 +561,7 @@ namespace OpenCBS.GUI.View
             // 
             // _lateFeesTabListPage
             // 
-            this._lateFeesTabListPage.Controls.Add(this._penaltyGracePeriodRange);
+            this._lateFeesTabListPage.Controls.Add(this._lateFeeGracePeriodTextBox);
             this._lateFeesTabListPage.Controls.Add(this._lateFeeBasedOnGroupBox);
             this._lateFeesTabListPage.Controls.Add(this._penaltyGracePeriodLabel);
             this._lateFeesTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -569,6 +569,17 @@ namespace OpenCBS.GUI.View
             this._lateFeesTabListPage.Size = new System.Drawing.Size(541, 334);
             this._lateFeesTabListPage.TabIndex = 3;
             this._lateFeesTabListPage.Text = "Late fees";
+            // 
+            // _lateFeeGracePeriodTextBox
+            // 
+            this._lateFeeGracePeriodTextBox.AllowDecimalSeparator = false;
+            this._lateFeeGracePeriodTextBox.Amount = null;
+            this._lateFeeGracePeriodTextBox.Location = new System.Drawing.Point(14, 194);
+            this._lateFeeGracePeriodTextBox.Name = "_lateFeeGracePeriodTextBox";
+            this._lateFeeGracePeriodTextBox.Size = new System.Drawing.Size(100, 23);
+            this._lateFeeGracePeriodTextBox.TabIndex = 52;
+            this._lateFeeGracePeriodTextBox.Tag = "LateFeeGracePeriod";
+            this._lateFeeGracePeriodTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // _lateFeeBasedOnGroupBox
             // 
@@ -600,7 +611,7 @@ namespace OpenCBS.GUI.View
             this._lateFeeLateInterestRateRange.Name = "_lateFeeLateInterestRateRange";
             this._lateFeeLateInterestRateRange.Size = new System.Drawing.Size(155, 23);
             this._lateFeeLateInterestRateRange.TabIndex = 48;
-            this._lateFeeLateInterestRateRange.Tag = "Amount";
+            this._lateFeeLateInterestRateRange.Tag = "LateFeeLateInterestRate";
             // 
             // _lateFeeOlbRateRange
             // 
@@ -614,7 +625,7 @@ namespace OpenCBS.GUI.View
             this._lateFeeOlbRateRange.Name = "_lateFeeOlbRateRange";
             this._lateFeeOlbRateRange.Size = new System.Drawing.Size(155, 23);
             this._lateFeeOlbRateRange.TabIndex = 44;
-            this._lateFeeOlbRateRange.Tag = "Amount";
+            this._lateFeeOlbRateRange.Tag = "LateFeeOlbRate";
             // 
             // _lateFeeLatePrincipalRateRange
             // 
@@ -628,7 +639,7 @@ namespace OpenCBS.GUI.View
             this._lateFeeLatePrincipalRateRange.Name = "_lateFeeLatePrincipalRateRange";
             this._lateFeeLatePrincipalRateRange.Size = new System.Drawing.Size(155, 23);
             this._lateFeeLatePrincipalRateRange.TabIndex = 46;
-            this._lateFeeLatePrincipalRateRange.Tag = "Amount";
+            this._lateFeeLatePrincipalRateRange.Tag = "LateFeeLatePrincipalRate";
             // 
             // _lateFeeAmountRateRange
             // 
@@ -642,7 +653,7 @@ namespace OpenCBS.GUI.View
             this._lateFeeAmountRateRange.Name = "_lateFeeAmountRateRange";
             this._lateFeeAmountRateRange.Size = new System.Drawing.Size(155, 23);
             this._lateFeeAmountRateRange.TabIndex = 42;
-            this._lateFeeAmountRateRange.Tag = "Amount";
+            this._lateFeeAmountRateRange.Tag = "LateFeeAmountRate";
             // 
             // _lateFeeAmountRateLabel
             // 
@@ -679,20 +690,6 @@ namespace OpenCBS.GUI.View
             this._lateFeeLatePrincipalRateLabel.Size = new System.Drawing.Size(78, 15);
             this._lateFeeLatePrincipalRateLabel.TabIndex = 47;
             this._lateFeeLatePrincipalRateLabel.Text = "Late principal";
-            // 
-            // _penaltyGracePeriodRange
-            // 
-            this._penaltyGracePeriodRange.AllowDecimalSeparator = false;
-            this._penaltyGracePeriodRange.AutoSize = true;
-            this._penaltyGracePeriodRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._penaltyGracePeriodRange.Location = new System.Drawing.Point(14, 194);
-            this._penaltyGracePeriodRange.Margin = new System.Windows.Forms.Padding(0);
-            this._penaltyGracePeriodRange.Max = null;
-            this._penaltyGracePeriodRange.Min = null;
-            this._penaltyGracePeriodRange.Name = "_penaltyGracePeriodRange";
-            this._penaltyGracePeriodRange.Size = new System.Drawing.Size(155, 23);
-            this._penaltyGracePeriodRange.TabIndex = 52;
-            this._penaltyGracePeriodRange.Tag = "GracePeriod";
             // 
             // _penaltyGracePeriodLabel
             // 
@@ -821,8 +818,8 @@ namespace OpenCBS.GUI.View
         private System.Windows.Forms.Label _lateFeeLatePrincipalRateLabel;
         private Controls.RangeControl _lateFeeLateInterestRateRange;
         private System.Windows.Forms.Label _lateFeeLateInterestRateLabel;
-        private Controls.RangeControl _penaltyGracePeriodRange;
         private System.Windows.Forms.Label _penaltyGracePeriodLabel;
         private System.Windows.Forms.GroupBox _lateFeeBasedOnGroupBox;
+        private Controls.AmountTextBox _lateFeeGracePeriodTextBox;
     }
 }

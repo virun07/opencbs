@@ -28,22 +28,18 @@ namespace OpenCBS.Service.Validator
         {
             base.Validate(entity);
 
-            FailIfNullOrEmpty("Name");
-            FailIfNullOrEmpty("Code");
-            FailIfNullOrEmpty("SchedulePolicy");
-            FailIfNullOrEmpty("PaymentFrequencyPolicy");
-            FailIfNullOrEmpty("YearPolicy");
-            FailIfNullOrEmpty("DateShiftPolicy");
-            FailIfNullOrEmpty("RoundingPolicy");
-            FailIfNullOrEmpty("AmountMax");
-            FailIfNullOrEmpty("AmountMin");
-            FailIfNullOrEmpty("InterestRateMax");
-            FailIfNullOrEmpty("InterestRateMin");
-            FailIfNullOrEmpty("MaturityMax");
-            FailIfNullOrEmpty("MaturityMin");
-            FailIfNullOrEmpty("GracePeriodMax");
-            FailIfNullOrEmpty("GracePeriodMin");
-            FailIfNullOrEmpty("CurrencyId");
+            var fields = new[]
+            {
+                "Name", "Code", 
+                "SchedulePolicy", "PaymentFrequencyPolicy", "YearPolicy", "DateShiftPolicy", "RoundingPolicy",
+                "AmountMax", "AmountMin", "InterestRateMax", "InterestRateMin",
+                "MaturityMax", "MaturityMin", "GracePeriodMax", "GracePeriodMin", "CurrencyId",
+                "LateFeeAmountRateMax", "LateFeeAmountRateMin", "LateFeeOlbRateMax", "LateFeeOlbRateMin",
+                "LateFeeLatePrincipalRateMax", "LateFeeLatePrincipalRateMin", 
+                "LateFeeLateInterestRateMax", "LateFeeLateInterestRateMin", "LateFeeGracePeriod"
+            };
+            foreach (var field in fields)
+                FailIfNullOrEmpty(field);
         }
     }
 }

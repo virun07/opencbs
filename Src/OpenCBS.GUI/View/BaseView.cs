@@ -79,7 +79,8 @@ namespace OpenCBS.GUI.View
             {
                 typeof(TextBox),
                 typeof(RangeControl),
-                typeof(ComboBox)
+                typeof(ComboBox),
+                typeof(AmountTextBox)
             };
             foreach (var control in GetControls(this))
             {

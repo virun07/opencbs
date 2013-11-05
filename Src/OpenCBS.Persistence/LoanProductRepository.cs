@@ -61,6 +61,15 @@ namespace OpenCBS.Persistence
             public int GracePeriodMax { get; set; }
             public int CurrencyId { get; set; }
             public bool ChargeInterestDuringGracePeriod { get; set; }
+            public decimal LateFeeAmountRateMin { get; set; }
+            public decimal LateFeeAmountRateMax { get; set; }
+            public decimal LateFeeOlbRateMin { get; set; }
+            public decimal LateFeeOlbRateMax { get; set; }
+            public decimal LateFeeLatePrincipalRateMin { get; set; }
+            public decimal LateFeeLatePrincipalRateMax { get; set; }
+            public decimal LateFeeLateInterestRateMin { get; set; }
+            public decimal LateFeeLateInterestRateMax { get; set; }
+            public int LateFeeGracePeriod { get; set; }
         }
         // ReSharper restore UnusedAutoPropertyAccessor.Local
         // ReSharper restore ClassNeverInstantiated.Local

@@ -55,6 +55,16 @@ namespace OpenCBS.Interface.View
         int? GracePeriodMax { get; set; }
         bool ChargeInterestDuringGracePeriod { get; set; }
 
+        decimal? LateFeeAmountRateMin { get; set; }
+        decimal? LateFeeAmountRateMax { get; set; }
+        decimal? LateFeeOlbRateMin { get; set; }
+        decimal? LateFeeOlbRateMax { get; set; }
+        decimal? LateFeeLatePrincipalRateMin { get; set; }
+        decimal? LateFeeLatePrincipalRateMax { get; set; }
+        decimal? LateFeeLateInterestRateMin { get; set; }
+        decimal? LateFeeLateInterestRateMax { get; set; }
+        int? LateFeeGracePeriod { get; set; }
+
         IList<EntryFeeDto> EntryFees { get; set; }
         bool CanRemoveEntryFee { get; set; }
         int? SelectedEntryFeeId { get; }

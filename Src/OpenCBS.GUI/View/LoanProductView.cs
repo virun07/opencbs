@@ -320,5 +320,59 @@ namespace OpenCBS.GUI.View
                 return entryFee != null ? entryFee.Id : (int?) null;
             }
         }
+
+        public decimal? LateFeeAmountRateMin
+        {
+            get { return _lateFeeAmountRateRange.Min; }
+            set { _lateFeeAmountRateRange.Max = value; }
+        }
+
+        public decimal? LateFeeAmountRateMax
+        {
+            get { return _lateFeeAmountRateRange.Max; }
+            set { _lateFeeAmountRateRange.Max = value; }
+        }
+
+        public decimal? LateFeeOlbRateMin
+        {
+            get { return _lateFeeOlbRateRange.Min; }
+            set { _lateFeeOlbRateRange.Min = value; }
+        }
+
+        public decimal? LateFeeOlbRateMax
+        {
+            get { return _lateFeeOlbRateRange.Max; }
+            set { _lateFeeOlbRateRange.Max = value; }
+        }
+
+        public decimal? LateFeeLatePrincipalRateMin
+        {
+            get { return _lateFeeLatePrincipalRateRange.Min; }
+            set { _lateFeeLatePrincipalRateRange.Min = value; }
+        }
+
+        public decimal? LateFeeLatePrincipalRateMax
+        {
+            get { return _lateFeeLatePrincipalRateRange.Max; }
+            set { _lateFeeLatePrincipalRateRange.Max = value; }
+        }
+
+        public decimal? LateFeeLateInterestRateMin
+        {
+            get { return _lateFeeLateInterestRateRange.Min; }
+            set { _lateFeeLateInterestRateRange.Min = value; }
+        }
+
+        public decimal? LateFeeLateInterestRateMax
+        {
+            get { return _lateFeeLateInterestRateRange.Max; }
+            set { _lateFeeLateInterestRateRange.Max = value; }
+        }
+
+        public int? LateFeeGracePeriod
+        {
+            get { return (int?) _lateFeeGracePeriodTextBox.Amount; }
+            set { _lateFeeGracePeriodTextBox.Amount = value; }
+        }
     }
 }
