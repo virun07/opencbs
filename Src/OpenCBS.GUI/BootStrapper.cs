@@ -36,12 +36,13 @@ namespace OpenCBS.GUI
         {
             _container.Configure(c =>
             {
+                c.AddRegistry<DefaultRegistry>();
                 c.Scan(scanner =>
                 {
                     scanner.Assembly("OpenCBS.Service");
+                    scanner.AssembliesFromPath("Extensions");
                     scanner.LookForRegistries();
                 });
-                c.AddRegistry<DefaultRegistry>();
             });
             var translator = _container.TryGetInstance<ITranslator>();
             if (translator != null) translator.Reload();
