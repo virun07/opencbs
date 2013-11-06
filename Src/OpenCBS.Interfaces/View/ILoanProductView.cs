@@ -28,12 +28,13 @@ namespace OpenCBS.Interface.View
     {
         void Run();
         void Stop();
-        void ShowPaymentFrequencyPolicies(IList<string> paymentFrequencyPolicies);
-        void ShowSchedulePolicies(IList<string> schedulePolicies);
-        void ShowYearPolicies(IList<string> yearPolicies);
-        void ShowDateShiftPolicies(IList<string> dateShiftPolicies);
-        void ShowRoundingPolicies(IList<string> roundingPolicies);
+        void ShowPaymentFrequencyPolicies(IList<string> policies);
+        void ShowSchedulePolicies(IList<string> policies);
+        void ShowYearPolicies(IList<string> policies);
+        void ShowDateShiftPolicies(IList<string> policies);
+        void ShowRoundingPolicies(IList<string> policies);
         void ShowCurrencies(Dictionary<int, string> currencies);
+        void ShowLateFeePolicies(IList<string> policies);
         void ShowNotification(Notification notification);
 
         string LoanProductName { get; set; }
@@ -64,6 +65,7 @@ namespace OpenCBS.Interface.View
         decimal? LateFeeLateInterestRateMin { get; set; }
         decimal? LateFeeLateInterestRateMax { get; set; }
         int? LateFeeGracePeriod { get; set; }
+        string LateFeePolicy { get; set; }
 
         IList<EntryFeeDto> EntryFees { get; set; }
         bool CanRemoveEntryFee { get; set; }

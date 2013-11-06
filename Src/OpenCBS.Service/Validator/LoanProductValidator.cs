@@ -36,7 +36,8 @@ namespace OpenCBS.Service.Validator
                 "MaturityMax", "MaturityMin", "GracePeriodMax", "GracePeriodMin", "CurrencyId",
                 "LateFeeAmountRateMax", "LateFeeAmountRateMin", "LateFeeOlbRateMax", "LateFeeOlbRateMin",
                 "LateFeeLatePrincipalRateMax", "LateFeeLatePrincipalRateMin", 
-                "LateFeeLateInterestRateMax", "LateFeeLateInterestRateMin", "LateFeeGracePeriod"
+                "LateFeeLateInterestRateMax", "LateFeeLateInterestRateMin", "LateFeeGracePeriod",
+                "LateFeePolicy"
             };
             foreach (var field in fields)
                 FailIfNullOrEmpty(field);

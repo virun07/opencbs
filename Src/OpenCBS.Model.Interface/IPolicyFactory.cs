@@ -19,16 +19,11 @@
 
 using System.Collections.Generic;
 
-namespace OpenCBS.DataContract
+namespace OpenCBS.Model.Interface
 {
-    public class LoanProductReferenceDataDto
+    public interface IPolicyFactory
     {
-        public IList<string> SchedulePolicies { get; set; }
-        public IList<string> PaymentFrequencyPolicies { get; set; }
-        public IList<string> YearPolicies { get; set; }
-        public IList<string> DateShiftPolicies { get; set; }
-        public IList<string> RoundingPolicies { get; set; }
-        public Dictionary<int, string> Currencies { get; set; }
-        public IList<string> LateFeePolicies { get; set; }
+        IList<string> GetLateFeePolicyNames();
+        ILateFeePolicy GetLateFeePolicy(string name);
     }
 }

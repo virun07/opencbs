@@ -17,18 +17,15 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
+using OpenCBS.Model.Interface;
 
-namespace OpenCBS.DataContract
+namespace OpenCBS.Model.LoanPolicy.LateFeePolicy
 {
-    public class LoanProductReferenceDataDto
+    public class DefaultLateFeePolicy : ILateFeePolicy
     {
-        public IList<string> SchedulePolicies { get; set; }
-        public IList<string> PaymentFrequencyPolicies { get; set; }
-        public IList<string> YearPolicies { get; set; }
-        public IList<string> DateShiftPolicies { get; set; }
-        public IList<string> RoundingPolicies { get; set; }
-        public Dictionary<int, string> Currencies { get; set; }
-        public IList<string> LateFeePolicies { get; set; }
+        public bool CanAccrue()
+        {
+            return true;
+        }
     }
 }

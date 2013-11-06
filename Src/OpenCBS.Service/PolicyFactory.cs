@@ -17,11 +17,35 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.Model.LoanPolicy
+using System.Collections.Generic;
+using System.Linq;
+using OpenCBS.Model.Interface;
+
+namespace OpenCBS.Service
 {
-    public interface ILateFeeAccrualPolicy
+    public class PolicyFactory : IPolicyFactory
     {
-        bool CanAccrue();
-        string Name { get; }
+        private readonly StructureMap.IContainer _container;
+
+        public PolicyFactory(StructureMap.IContainer container)
+        {
+            _container = container;
+        }
+
+        public IList<string> GetLateFeePolicyNames()
+        {
+            return _container
+                .Model
+                .AllInstances
+                .Where(x => x.PluginType == typeof (ILateFeePolicy))
+                .Select(x => x.Name)
+                .ToList()
+                .AsReadOnly();
+        }
+
+        public ILateFeePolicy GetLateFeePolicy(string name)
+        {
+            return _container.GetInstance<ILateFeePolicy>(name);
+        }
     }
 }

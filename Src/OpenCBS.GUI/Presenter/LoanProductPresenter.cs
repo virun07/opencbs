@@ -54,12 +54,13 @@ namespace OpenCBS.GUI.Presenter
         {
             _view.Attach(this);
             var data = _loanProductService.GetReferenceData();
+            _view.ShowCurrencies(data.Currencies);
             _view.ShowSchedulePolicies(data.SchedulePolicies);
             _view.ShowPaymentFrequencyPolicies(data.PaymentFrequencyPolicies);
             _view.ShowYearPolicies(data.YearPolicies);
             _view.ShowDateShiftPolicies(data.DateShiftPolicies);
             _view.ShowRoundingPolicies(data.RoundingPolicies);
-            _view.ShowCurrencies(data.Currencies);
+            _view.ShowLateFeePolicies(data.LateFeePolicies);
             
             _view.InjectFrom(loanProduct ?? new LoanProductDto());
             _view.LoanProductName = loanProduct != null ? loanProduct.Name : string.Empty;

@@ -69,29 +69,29 @@ namespace OpenCBS.GUI.View
             comboBox.SelectedIndex = -1;
         }
 
-        public void ShowPaymentFrequencyPolicies(IList<string> paymentFrequencyPolicies)
+        public void ShowPaymentFrequencyPolicies(IList<string> policies)
         {
-            ShowPolicies(_paymentFrequencyPolicyComboBox, paymentFrequencyPolicies);
+            ShowPolicies(_paymentFrequencyPolicyComboBox, policies);
         }
 
-        public void ShowSchedulePolicies(IList<string> schedulePolicies)
+        public void ShowSchedulePolicies(IList<string> policies)
         {
-            ShowPolicies(_schedulePolicyComboBox, schedulePolicies);
+            ShowPolicies(_schedulePolicyComboBox, policies);
         }
 
-        public void ShowYearPolicies(IList<string> yearPolicies)
+        public void ShowYearPolicies(IList<string> policies)
         {
-            ShowPolicies(_yearPolicyComboBox, yearPolicies);
+            ShowPolicies(_yearPolicyComboBox, policies);
         }
 
-        public void ShowDateShiftPolicies(IList<string> dateShiftPolicies)
+        public void ShowDateShiftPolicies(IList<string> policies)
         {
-            ShowPolicies(_dateShiftPolicyComboBox, dateShiftPolicies);
+            ShowPolicies(_dateShiftPolicyComboBox, policies);
         }
 
-        public void ShowRoundingPolicies(IList<string> roundingPolicies)
+        public void ShowRoundingPolicies(IList<string> policies)
         {
-            ShowPolicies(_roundingPolicyComboBox, roundingPolicies);
+            ShowPolicies(_roundingPolicyComboBox, policies);
         }
 
         public void ShowCurrencies(Dictionary<int, string> currencies)
@@ -100,6 +100,11 @@ namespace OpenCBS.GUI.View
             _currencyComboBox.ValueMember = "Key";
             _currencyComboBox.DataSource = new BindingSource(currencies, null);
             _currencyComboBox.SelectedIndex = -1;
+        }
+
+        public void ShowLateFeePolicies(IList<string> policies)
+        {
+            ShowPolicies(_lateFeePolicyComboBox, policies);
         }
 
         public string LoanProductName
@@ -373,6 +378,22 @@ namespace OpenCBS.GUI.View
         {
             get { return (int?) _lateFeeGracePeriodTextBox.Amount; }
             set { _lateFeeGracePeriodTextBox.Amount = value; }
+        }
+
+        public string LateFeePolicy
+        {
+            get
+            {
+                if (_lateFeePolicyComboBox.SelectedValue == null) return null;
+                return _lateFeePolicyComboBox.SelectedValue.ToString();
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    _lateFeePolicyComboBox.SelectedIndex = -1;
+                else
+                    _lateFeePolicyComboBox.SelectedValue = value;
+            }
         }
     }
 }

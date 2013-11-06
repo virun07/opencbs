@@ -38,7 +38,7 @@ namespace OpenCBS.GUI
             {
                 c.Scan(scanner =>
                 {
-                    scanner.Assembly("OpenCBS.Model");
+                    scanner.Assembly("OpenCBS.Service");
                     scanner.LookForRegistries();
                 });
                 c.AddRegistry<DefaultRegistry>();

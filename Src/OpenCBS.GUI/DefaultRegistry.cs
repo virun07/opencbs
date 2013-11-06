@@ -28,6 +28,7 @@ using OpenCBS.Interface.Repository;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.Validator;
 using OpenCBS.Interface.View;
+using OpenCBS.Model.Interface;
 using OpenCBS.Persistence;
 using OpenCBS.Service;
 using OpenCBS.Service.Validator;
@@ -42,6 +43,9 @@ namespace OpenCBS.GUI
             For<ApplicationContext>().Use<AppContext>();
             For<IApplicationController>().Singleton().Use<ApplicationController>();
             For<IEventPublisher>().Singleton().Use<EventPublisher>();
+
+            // Factories
+            For<IPolicyFactory>().Use<PolicyFactory>();
 
             // Views / presenters
             For<ILoanProductsView>().Use<LoanProductsView>();

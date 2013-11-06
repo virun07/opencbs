@@ -52,6 +52,7 @@ namespace OpenCBS.Model
         public decimal LateFeeLateInterestRateMin { get; set; }
         public decimal LateFeeLateInterestRateMax { get; set; }
         public int LateFeeGracePeriod { get; set; }
+        public string LateFeePolicy { get; set; }
 
         public IList<EntryFee> EntryFees { get; set; }
     }

@@ -291,6 +291,10 @@
       <Project>{4d370e45-0fbb-4230-b408-94ffd7e0e997}</Project>
       <Name>OpenCBS.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Model.Interface\OpenCBS.Model.Interface.csproj">
+      <Project>{d5db6cd6-5a9e-40ca-bd7f-b4accfdc8f4f}</Project>
+      <Name>OpenCBS.Model.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCBS.MultiLanguage\OpenCBS.MultiLanguageRessources.csproj">
       <Project>{1644EDA1-7196-4197-B752-A4D14F384E31}</Project>
       <Name>OpenCBS.MultiLanguageRessources</Name>

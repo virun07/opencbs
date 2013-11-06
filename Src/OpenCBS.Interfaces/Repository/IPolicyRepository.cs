@@ -28,6 +28,5 @@ namespace OpenCBS.Interface.Repository
         IList<string> FindYearPolicyNames();
         IList<string> FindDateShiftPolicyNames();
         IList<string> FindRoundingPolicyNames();
-        string[] FindLateFeeAccrualPolicyNames();
     }
 }

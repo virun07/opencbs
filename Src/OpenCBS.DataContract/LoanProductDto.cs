@@ -52,6 +52,7 @@ namespace OpenCBS.DataContract
         public decimal? LateFeeLateInterestRateMin { get; set; }
         public decimal? LateFeeLateInterestRateMax { get; set; }
         public int? LateFeeGracePeriod { get; set; }
+        public string LateFeePolicy { get; set; }
 
         public IList<EntryFeeDto> EntryFees { get; set; }
     }

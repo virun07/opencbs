@@ -75,6 +75,8 @@ namespace OpenCBS.GUI.View
             this._deleteEntryFeeButton = new System.Windows.Forms.Button();
             this._addEntryFeeButton = new System.Windows.Forms.Button();
             this._lateFeesTabListPage = new Cyotek.Windows.Forms.TabListPage();
+            this._lateFeePolicyComboBox = new System.Windows.Forms.ComboBox();
+            this._lateFeePolicyLabel = new System.Windows.Forms.Label();
             this._lateFeeGracePeriodTextBox = new OpenCBS.Controls.AmountTextBox();
             this._lateFeeBasedOnGroupBox = new System.Windows.Forms.GroupBox();
             this._lateFeeLateInterestRateRange = new OpenCBS.Controls.RangeControl();
@@ -561,6 +563,8 @@ namespace OpenCBS.GUI.View
             // 
             // _lateFeesTabListPage
             // 
+            this._lateFeesTabListPage.Controls.Add(this._lateFeePolicyComboBox);
+            this._lateFeesTabListPage.Controls.Add(this._lateFeePolicyLabel);
             this._lateFeesTabListPage.Controls.Add(this._lateFeeGracePeriodTextBox);
             this._lateFeesTabListPage.Controls.Add(this._lateFeeBasedOnGroupBox);
             this._lateFeesTabListPage.Controls.Add(this._penaltyGracePeriodLabel);
@@ -569,6 +573,25 @@ namespace OpenCBS.GUI.View
             this._lateFeesTabListPage.Size = new System.Drawing.Size(541, 334);
             this._lateFeesTabListPage.TabIndex = 3;
             this._lateFeesTabListPage.Text = "Late fees";
+            // 
+            // _lateFeePolicyComboBox
+            // 
+            this._lateFeePolicyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._lateFeePolicyComboBox.FormattingEnabled = true;
+            this._lateFeePolicyComboBox.Location = new System.Drawing.Point(14, 247);
+            this._lateFeePolicyComboBox.Name = "_lateFeePolicyComboBox";
+            this._lateFeePolicyComboBox.Size = new System.Drawing.Size(250, 23);
+            this._lateFeePolicyComboBox.TabIndex = 54;
+            this._lateFeePolicyComboBox.Tag = "LateFeePolicy";
+            // 
+            // _lateFeePolicyLabel
+            // 
+            this._lateFeePolicyLabel.AutoSize = true;
+            this._lateFeePolicyLabel.Location = new System.Drawing.Point(15, 229);
+            this._lateFeePolicyLabel.Name = "_lateFeePolicyLabel";
+            this._lateFeePolicyLabel.Size = new System.Drawing.Size(89, 15);
+            this._lateFeePolicyLabel.TabIndex = 53;
+            this._lateFeePolicyLabel.Text = "Late fee accrual";
             // 
             // _lateFeeGracePeriodTextBox
             // 
@@ -821,5 +844,7 @@ namespace OpenCBS.GUI.View
         private System.Windows.Forms.Label _penaltyGracePeriodLabel;
         private System.Windows.Forms.GroupBox _lateFeeBasedOnGroupBox;
         private Controls.AmountTextBox _lateFeeGracePeriodTextBox;
+        private System.Windows.Forms.Label _lateFeePolicyLabel;
+        private System.Windows.Forms.ComboBox _lateFeePolicyComboBox;
     }
 }

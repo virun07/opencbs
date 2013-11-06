@@ -26,6 +26,7 @@ using OpenCBS.Interface.Repository;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.Validator;
 using OpenCBS.Model;
+using OpenCBS.Model.Interface;
 
 namespace OpenCBS.Service
 {
@@ -35,18 +36,21 @@ namespace OpenCBS.Service
         private readonly IEntryFeeRepository _entryFeeRepository;
         private readonly ICurrencyRepository _currencyRepository;
         private readonly IPolicyRepository _policyRepository;
+        private readonly IPolicyFactory _policyFactory;
         private readonly ILoanProductValidator _validator;
 
         public LoanProductService(ILoanProductRepository loanProductRepository,
             IEntryFeeRepository entryFeeRepository,
             ICurrencyRepository currencyRepository,
             IPolicyRepository policyRepository,
+            IPolicyFactory policyFactory,
             ILoanProductValidator validator)
         {
             _loanProductRepository = loanProductRepository;
             _entryFeeRepository = entryFeeRepository;
             _currencyRepository = currencyRepository;
             _policyRepository = policyRepository;
+            _policyFactory = policyFactory;
             _validator = validator;
         }
 
@@ -106,7 +110,7 @@ namespace OpenCBS.Service
                 YearPolicies = _policyRepository.FindYearPolicyNames(),
                 DateShiftPolicies = _policyRepository.FindDateShiftPolicyNames(),
                 RoundingPolicies = _policyRepository.FindRoundingPolicyNames(),
-                LateFeeAccrualPolicies = _policyRepository.FindLateFeeAccrualPolicyNames(),
+                LateFeePolicies = _policyFactory.GetLateFeePolicyNames(),
                 Currencies = _currencyRepository
                     .FindAll()
                     .Where(c => !c.Deleted)

@@ -17,18 +17,17 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.Model.LoanPolicy.LateFeeAccrualPolicy
-{
-    public class DefaultLateFeeAccrualPolicy : ILateFeeAccrualPolicy
-    {
-        public bool CanAccrue()
-        {
-            return true;
-        }
+using OpenCBS.Model.Interface;
+using OpenCBS.Model.LoanPolicy.LateFeePolicy;
+using StructureMap.Configuration.DSL;
 
-        public string Name
+namespace OpenCBS.Service
+{
+    public class PolicyRegistry : Registry
+    {
+        public PolicyRegistry()
         {
-            get { return "Always accrue"; }
+            For<ILateFeePolicy>().Use<DefaultLateFeePolicy>().Named("Always accrue");
         }
     }
 }
