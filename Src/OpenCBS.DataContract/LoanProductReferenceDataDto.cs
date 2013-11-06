@@ -29,5 +29,6 @@ namespace OpenCBS.DataContract
         public IList<string> DateShiftPolicies { get; set; }
         public IList<string> RoundingPolicies { get; set; }
         public Dictionary<int, string> Currencies { get; set; }
+        public string[] LateFeeAccrualPolicies { get; set; }
     }
 }

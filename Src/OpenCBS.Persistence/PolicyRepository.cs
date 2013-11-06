@@ -24,6 +24,8 @@ using System.ComponentModel.Composition.Hosting;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using OpenCBS.Model.LoanPolicy;
+using StructureMap;
 using OpenCBS.Engine.Interfaces;
 using OpenCBS.Interface.Repository;
 
@@ -34,7 +36,9 @@ namespace OpenCBS.Persistence
         [ImportMany(typeof(IPolicy))]
         private Lazy<IPolicy, IPolicyAttribute>[] Policies { get; set; }
 
-        public PolicyRepository()
+        private readonly IContainer _container;
+
+        public PolicyRepository(IContainer smcontainer)
         {
             var fileName = Assembly.GetExecutingAssembly().Location;
             fileName = Path.GetDirectoryName(fileName);
@@ -42,6 +46,7 @@ namespace OpenCBS.Persistence
             var catalog = new AssemblyCatalog(fileName);
             var container = new CompositionContainer(catalog);
             container.SatisfyImportsOnce(this);
+            _container = smcontainer;
         }
 
         private T FindByName<T>(string policyName)
@@ -82,6 +87,11 @@ namespace OpenCBS.Persistence
         public IList<string> FindRoundingPolicyNames()
         {
             return FindNames(typeof (IRoundingPolicy));
+        }
+
+        public string[] FindLateFeeAccrualPolicyNames()
+        {
+            return _container.Model.InstancesOf<ILateFeeAccrualPolicy>().Select(p => p.Name).ToArray();
         }
     }
 }

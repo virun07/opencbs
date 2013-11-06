@@ -17,17 +17,11 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-
-namespace OpenCBS.Interface.Repository
+namespace OpenCBS.Model.LoanPolicy
 {
-    public interface IPolicyRepository
+    public interface ILateFeeAccrualPolicy
     {
-        IList<string> FindPaymentFrequencyPolicyNames();
-        IList<string> FindSchedulePolicyNames();
-        IList<string> FindYearPolicyNames();
-        IList<string> FindDateShiftPolicyNames();
-        IList<string> FindRoundingPolicyNames();
-        string[] FindLateFeeAccrualPolicyNames();
+        bool CanAccrue();
+        string Name { get; }
     }
 }

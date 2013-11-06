@@ -106,6 +106,7 @@ namespace OpenCBS.Service
                 YearPolicies = _policyRepository.FindYearPolicyNames(),
                 DateShiftPolicies = _policyRepository.FindDateShiftPolicyNames(),
                 RoundingPolicies = _policyRepository.FindRoundingPolicyNames(),
+                LateFeeAccrualPolicies = _policyRepository.FindLateFeeAccrualPolicyNames(),
                 Currencies = _currencyRepository
                     .FindAll()
                     .Where(c => !c.Deleted)

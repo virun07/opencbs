@@ -34,7 +34,15 @@ namespace OpenCBS.GUI
 
         public ApplicationContext GetAppContext()
         {
-            _container.Configure(c => c.AddRegistry<DefaultRegistry>());
+            _container.Configure(c =>
+            {
+                c.Scan(scanner =>
+                {
+                    scanner.Assembly("OpenCBS.Model");
+                    scanner.LookForRegistries();
+                });
+                c.AddRegistry<DefaultRegistry>();
+            });
             var translator = _container.TryGetInstance<ITranslator>();
             if (translator != null) translator.Reload();
             return _container.GetInstance<ApplicationContext>();

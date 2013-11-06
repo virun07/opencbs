@@ -17,17 +17,17 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
+using OpenCBS.Model.LoanPolicy;
+using OpenCBS.Model.LoanPolicy.LateFeeAccrualPolicy;
+using StructureMap.Configuration.DSL;
 
-namespace OpenCBS.Interface.Repository
+namespace OpenCBS.Model
 {
-    public interface IPolicyRepository
+    public class ModelRegistry : Registry
     {
-        IList<string> FindPaymentFrequencyPolicyNames();
-        IList<string> FindSchedulePolicyNames();
-        IList<string> FindYearPolicyNames();
-        IList<string> FindDateShiftPolicyNames();
-        IList<string> FindRoundingPolicyNames();
-        string[] FindLateFeeAccrualPolicyNames();
+        public ModelRegistry()
+        {
+            For<ILateFeeAccrualPolicy>().Use<DefaultLateFeeAccrualPolicy>().Named("Always accrue");
+        }
     }
 }
