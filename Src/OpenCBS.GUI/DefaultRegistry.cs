@@ -20,18 +20,9 @@
 using System.Windows.Forms;
 using OpenCBS.GUI.Command;
 using OpenCBS.GUI.CommandData;
-using OpenCBS.GUI.Presenter;
-using OpenCBS.GUI.View;
 using OpenCBS.Interface;
-using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Repository;
-using OpenCBS.Interface.Service;
-using OpenCBS.Interface.Validator;
-using OpenCBS.Interface.View;
-using OpenCBS.Model.Interface;
 using OpenCBS.Persistence;
-using OpenCBS.Service;
-using OpenCBS.Service.Validator;
 using StructureMap.Configuration.DSL;
 
 namespace OpenCBS.GUI
@@ -40,27 +31,34 @@ namespace OpenCBS.GUI
     {
         public DefaultRegistry()
         {
+            Scan(scanner =>
+            {
+                scanner.Assembly("OpenCBS.Service");
+                scanner.Assembly("OpenCBS.Persistence");
+                scanner.TheCallingAssembly();
+                scanner.WithDefaultConventions();
+            });
             For<ApplicationContext>().Use<AppContext>();
             For<IApplicationController>().Singleton().Use<ApplicationController>();
             For<IEventPublisher>().Singleton().Use<EventPublisher>();
 
             // Factories
-            For<IPolicyFactory>().Use<PolicyFactory>();
+//            For<IPolicyFactory>().Use<PolicyFactory>();
 
             // Views / presenters
-            For<ILoanProductsView>().Use<LoanProductsView>();
-            For<ILoanProductsPresenter>().Use<LoanProductsPresenter>();
-            For<ILoanProductView>().Use<LoanProductView>();
-            For<IEntryFeesView>().Use<EntryFeesView>();
-            For<IEntryFeeView>().Use<EntryFeeView>();
-            For<IConfirmationView>().Use<ConfirmationView>();
-            For<ISelectEntryFeeView>().Use<SelectEntryFeeView>();
-            
-            For<ILoanProductPresenter>().Use<LoanProductPresenter>();
-            For<IEntryFeesPresenter>().Use<EntryFeesPresenter>();
-            For<IEntryFeePresenter>().Use<EntryFeePresenter>();
-            For<IConfirmationPresenter>().Use<ConfirmationPresenter>();
-            For<ISelectEntryFeePresenter>().Use<SelectEntryFeePresenter>();
+//            For<ILoanProductsView>().Use<LoanProductsView>();
+//            For<ILoanProductsPresenter>().Use<LoanProductsPresenter>();
+//            For<ILoanProductView>().Use<LoanProductView>();
+//            For<IEntryFeesView>().Use<EntryFeesView>();
+//            For<IEntryFeeView>().Use<EntryFeeView>();
+//            For<IConfirmationView>().Use<ConfirmationView>();
+//            For<ISelectEntryFeeView>().Use<SelectEntryFeeView>();
+//            
+//            For<ILoanProductPresenter>().Use<LoanProductPresenter>();
+//            For<IEntryFeesPresenter>().Use<EntryFeesPresenter>();
+//            For<IEntryFeePresenter>().Use<EntryFeePresenter>();
+//            For<IConfirmationPresenter>().Use<ConfirmationPresenter>();
+//            For<ISelectEntryFeePresenter>().Use<SelectEntryFeePresenter>();
 
             // Commands
             For<ICommand<ShowLoanProductsData>>().Use<ShowLoanProductsCommand>();
@@ -77,19 +75,19 @@ namespace OpenCBS.GUI
             For<ICommand<ChangeLanguageData>>().Use<ChangeLanguageCommand>();
 
             // Repositories
-            For<IPolicyRepository>().Use<PolicyRepository>();
+//            For<IPolicyRepository>().Use<PolicyRepository>();
             For<IConnectionProvider>().Use<SqlConnectionProvider>();
-            For<ILoanProductRepository>().Use<LoanProductRepository>();
-            For<ICurrencyRepository>().Use<CurrencyRepository>();
-            For<IEntryFeeRepository>().Use<EntryFeeRepository>();
+//            For<ILoanProductRepository>().Use<LoanProductRepository>();
+//            For<ICurrencyRepository>().Use<CurrencyRepository>();
+//            For<IEntryFeeRepository>().Use<EntryFeeRepository>();
 
             // Services
-            For<ILoanProductService>().Use<LoanProductService>();
-            For<IEntryFeeService>().Use<EntryFeeService>();
+//            For<ILoanProductService>().Use<LoanProductService>();
+//            For<IEntryFeeService>().Use<EntryFeeService>();
 
             // Validators
-            For<ILoanProductValidator>().Use<LoanProductValidator>();
-            For<IEntryFeeValidator>().Use<EntryFeeValidator>();
+//            For<ILoanProductValidator>().Use<LoanProductValidator>();
+//            For<IEntryFeeValidator>().Use<EntryFeeValidator>();
 
             For<ITranslator>().Singleton().Use<JsonTranslator>();
 
