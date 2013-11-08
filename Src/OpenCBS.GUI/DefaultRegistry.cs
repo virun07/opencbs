@@ -44,9 +44,8 @@ namespace OpenCBS.GUI
             For<IApplicationController>().Singleton().Use<ApplicationController>();
             For<IEventPublisher>().Singleton().Use<EventPublisher>();
 
-            For<IEntryFeeService>()
-                .EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept))
-                .Use<EntryFeeService>();
+            For<IEntryFeeService>().EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept)).Use<EntryFeeService>();
+            For<ILoanProductService>().EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept)).Use<LoanProductService>();
             
             For<IConnectionProvider>().Use<SqlConnectionProvider>();
             For<ITranslator>().Singleton().Use<JsonTranslator>();
