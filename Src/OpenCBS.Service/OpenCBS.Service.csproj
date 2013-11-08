@@ -60,6 +60,7 @@
     <Compile Include="UserService.cs" />
     <Compile Include="Validator\EntryFeeValidator.cs" />
     <Compile Include="Validator\LoanProductValidator.cs" />
+    <Compile Include="Validator\RoleValidator.cs" />
     <Compile Include="Validator\Validator.cs" />
   </ItemGroup>
   <ItemGroup>

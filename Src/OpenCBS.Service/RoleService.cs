@@ -23,6 +23,7 @@ using Omu.ValueInjecter;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Repository;
 using OpenCBS.Interface.Service;
+using OpenCBS.Interface.Validator;
 using OpenCBS.Model;
 
 namespace OpenCBS.Service
@@ -30,10 +31,12 @@ namespace OpenCBS.Service
     public class RoleService : IRoleService
     {
         private readonly IRoleRepository _roleRepository;
+        private readonly IRoleValidator _validator;
 
-        public RoleService(IRoleRepository roleRepository)
+        public RoleService(IRoleRepository roleRepository, IRoleValidator validator)
         {
             _roleRepository = roleRepository;
+            _validator = validator;
         }
 
         public IList<RoleDto> FindAll()
@@ -49,7 +52,7 @@ namespace OpenCBS.Service
 
         public void Validate(RoleDto dto)
         {
-            throw new System.NotImplementedException();
+            _validator.Validate(dto);
         }
 
         public void Add(RoleDto dto)

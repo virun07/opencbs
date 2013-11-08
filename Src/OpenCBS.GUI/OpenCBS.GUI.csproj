@@ -474,6 +474,7 @@
     <Compile Include="CommandData\AddEntryFeeData.cs" />
     <Compile Include="CommandData\DeleteEntryFeeData.cs" />
     <Compile Include="CommandData\EditEntryFeeData.cs" />
+    <Compile Include="CommandData\EditRoleData.cs" />
     <Compile Include="CommandData\SelectEntryFeeData.cs" />
     <Compile Include="CommandData\ShowEntryFeesData.cs" />
     <Compile Include="CommandData\ShowRolesData.cs" />
@@ -482,6 +483,7 @@
     <Compile Include="Command\ChangeLanguageCommand.cs" />
     <Compile Include="Command\DeleteEntryFeeCommand.cs" />
     <Compile Include="Command\EditEntryFeeCommand.cs" />
+    <Compile Include="Command\EditRoleCommand.cs" />
     <Compile Include="Command\SelectEntryFeeCommand.cs" />
     <Compile Include="Command\ShowEntryFeesCommand.cs" />
     <Compile Include="Command\ShowRolesCommand.cs" />
@@ -780,6 +782,7 @@
     <Compile Include="Presenter\LoanProductsPresenter.cs" />
     <Compile Include="Presenter\LoginPresenter.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
+    <Compile Include="Presenter\RolePresenter.cs" />
     <Compile Include="Presenter\RolesPresenter.cs" />
     <Compile Include="Presenter\SelectEntryFeePresenter.cs" />
     <Compile Include="View\BaseView.cs">
@@ -789,6 +792,12 @@
       <DependentUpon>BaseView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ConfirmationView.cs" />
+    <Compile Include="View\RoleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RoleView.Designer.cs">
+      <DependentUpon>RoleView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\EntryFeesView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2442,6 +2451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\BaseView.resx">
       <DependentUpon>BaseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RoleView.resx">
+      <DependentUpon>RoleView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\EntryFeesView.resx">
       <DependentUpon>EntryFeesView.cs</DependentUpon>

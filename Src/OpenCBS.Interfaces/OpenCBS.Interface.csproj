@@ -59,6 +59,8 @@
     <Compile Include="Presenter\IMainPresenter.cs" />
     <Compile Include="Presenter\IMainPresenterCallbacks.cs" />
     <Compile Include="Presenter\IPresenter.cs" />
+    <Compile Include="Presenter\IRolePresenter.cs" />
+    <Compile Include="Presenter\IRolePresenterCallbacks.cs" />
     <Compile Include="Presenter\IRolesPresenter.cs" />
     <Compile Include="Presenter\IRolesPresenterCallbacks.cs" />
     <Compile Include="Presenter\ISelectEntryFeePresenter.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Service\IUserService.cs" />
     <Compile Include="Validator\IEntryFeeValidator.cs" />
     <Compile Include="Validator\ILoanProductValidator.cs" />
+    <Compile Include="Validator\IRoleValidator.cs" />
     <Compile Include="Validator\IValidator.cs" />
     <Compile Include="View\IConfirmationView.cs" />
     <Compile Include="View\IEntryFeesView.cs" />
@@ -90,6 +93,7 @@
     <Compile Include="View\ILoginView.cs" />
     <Compile Include="View\IMainView.cs" />
     <Compile Include="View\IRolesView.cs" />
+    <Compile Include="View\IRoleView.cs" />
     <Compile Include="View\ISelectEntryFeeView.cs" />
     <Compile Include="View\IView.cs" />
   </ItemGroup>

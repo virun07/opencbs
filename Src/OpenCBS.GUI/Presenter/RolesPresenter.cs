@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using System.Linq;
+using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
@@ -56,6 +57,9 @@ namespace OpenCBS.GUI.Presenter
 
         public void Edit()
         {
+            var id = _view.SelectedRoleId;
+            if (id == null) return;
+            _appController.Execute(new EditRoleData { Id = id.Value });
         }
 
         public void Delete()
