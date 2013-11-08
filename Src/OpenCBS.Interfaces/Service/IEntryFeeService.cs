@@ -17,18 +17,11 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
 using OpenCBS.DataContract;
 
 namespace OpenCBS.Interface.Service
 {
-    public interface IEntryFeeService
+    public interface IEntryFeeService : IService<EntryFeeDto>
     {
-        IList<EntryFeeDto> FindAll();
-        EntryFeeDto FindById(int id);
-        void Add(EntryFeeDto entryFeeDto);
-        void Update(EntryFeeDto entryFeeDto);
-        void Remove(int id);
-        void Validate(EntryFeeDto entryFeeDto);
     }
 }

@@ -17,53 +17,72 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.CommandData;
+using System.Linq;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.Presenter
 {
-    public class MainPresenter : IMainPresenter, IMainPresenterCallbacks
+    public class RolesPresenter : IRolesPresenter, IRolesPresenterCallbacks
     {
-        private readonly IMainView _view;
+        private readonly IRolesView _view;
         private readonly IApplicationController _appController;
+        private readonly IRoleService _roleService;
 
-        public MainPresenter(IMainView view, IApplicationController appController)
+        public RolesPresenter(IRolesView view, IApplicationController appController, IRoleService roleService)
         {
             _view = view;
             _appController = appController;
-        }
-
-        public void ShowRoles()
-        {
-            _appController.Execute(new ShowRolesData());
-        }
-
-        public void ShowLoanProducts()
-        {
-            _appController.Execute(new ShowLoanProductsData());
-        }
-
-        public void ShowEntryFees()
-        {
-            _appController.Execute(new ShowEntryFeesData());
-        }
-
-        public void ChangeLanguage(string name)
-        {
-            _appController.Execute(new ChangeLanguageData { Name = name });
+            _roleService = roleService;
         }
 
         public void Run()
         {
             _view.Attach(this);
             _view.Run();
+            ShowRoles();
         }
 
         public object View
         {
             get { return _view; }
+        }
+
+        public void Add()
+        {
+        }
+
+        public void Edit()
+        {
+        }
+
+        public void Delete()
+        {
+        }
+
+        public void Refresh()
+        {
+        }
+
+        public void ChangeSelection()
+        {
+            var id = _view.SelectedRoleId;
+            _view.CanEdit = _view.CanDelete = id != null;
+        }
+
+        public void Close()
+        {
+            _appController.Unsubscribe(this);
+        }
+
+        private void ShowRoles()
+        {
+            var roles = _view.ShowDeleted
+                            ? _roleService.FindAll()
+                            : _roleService.FindAll().Where(r => !r.Deleted).ToList().AsReadOnly();
+            _view.ShowRoles(roles);
         }
     }
 }

@@ -36,7 +36,7 @@ namespace OpenCBS.Service
             if (serviceInterface == null)
                 throw new ArgumentException("SecurityInterceptor: Class does not implement any service interface.");
 
-            System.Diagnostics.Debug.WriteLine(serviceInterface.Name);
+            System.Diagnostics.Debug.WriteLine(serviceInterface.Name + "." + methodName);
             return execute(proxiedObject, parameters);
         }
     }

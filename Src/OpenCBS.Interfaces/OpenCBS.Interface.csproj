@@ -59,6 +59,8 @@
     <Compile Include="Presenter\IMainPresenter.cs" />
     <Compile Include="Presenter\IMainPresenterCallbacks.cs" />
     <Compile Include="Presenter\IPresenter.cs" />
+    <Compile Include="Presenter\IRolesPresenter.cs" />
+    <Compile Include="Presenter\IRolesPresenterCallbacks.cs" />
     <Compile Include="Presenter\ISelectEntryFeePresenter.cs" />
     <Compile Include="Presenter\ISelectEntryFeePresenterCallbacks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,10 +71,13 @@
     <Compile Include="Repository\ILoanProductRepository.cs" />
     <Compile Include="Repository\IPolicyRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\IRoleRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Service\IDatabaseService.cs" />
     <Compile Include="Service\IEntryFeeService.cs" />
     <Compile Include="Service\ILoanProductService.cs" />
+    <Compile Include="Service\IRoleService.cs" />
+    <Compile Include="Service\IService.cs" />
     <Compile Include="Service\IUserService.cs" />
     <Compile Include="Validator\IEntryFeeValidator.cs" />
     <Compile Include="Validator\ILoanProductValidator.cs" />
@@ -84,6 +89,7 @@
     <Compile Include="View\ILoanProductView.cs" />
     <Compile Include="View\ILoginView.cs" />
     <Compile Include="View\IMainView.cs" />
+    <Compile Include="View\IRolesView.cs" />
     <Compile Include="View\ISelectEntryFeeView.cs" />
     <Compile Include="View\IView.cs" />
   </ItemGroup>

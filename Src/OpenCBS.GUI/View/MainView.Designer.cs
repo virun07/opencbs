@@ -145,7 +145,7 @@ namespace OpenCBS.GUI.View
             this._spanishMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._portugueseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSecurity = new System.Windows.Forms.ToolStripMenuItem();
-            this.rolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._rolesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAddUser = new System.Windows.Forms.ToolStripMenuItem();
             this.miAuditTrail = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -789,18 +789,17 @@ namespace OpenCBS.GUI.View
             // mnuSecurity
             // 
             this.mnuSecurity.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rolesToolStripMenuItem,
+            this._rolesMenuItem,
             this.menuItemAddUser,
             this.miAuditTrail,
             this.changePasswordToolStripMenuItem});
             this.mnuSecurity.Name = "mnuSecurity";
             resources.ApplyResources(this.mnuSecurity, "mnuSecurity");
             // 
-            // rolesToolStripMenuItem
+            // _rolesMenuItem
             // 
-            this.rolesToolStripMenuItem.Name = "rolesToolStripMenuItem";
-            resources.ApplyResources(this.rolesToolStripMenuItem, "rolesToolStripMenuItem");
-            this.rolesToolStripMenuItem.Click += new System.EventHandler(this.rolesToolStripMenuItem_Click);
+            this._rolesMenuItem.Name = "_rolesMenuItem";
+            resources.ApplyResources(this._rolesMenuItem, "_rolesMenuItem");
             // 
             // menuItemAddUser
             // 
@@ -1005,7 +1004,7 @@ namespace OpenCBS.GUI.View
         private ToolStripMenuItem menuItemApplicationDate;
         private ToolStripMenuItem menuItemDatabaseMaintenance;
         private ToolStripMenuItem mnuSecurity;
-        private ToolStripMenuItem rolesToolStripMenuItem;
+        private ToolStripMenuItem _rolesMenuItem;
         private ToolStripMenuItem menuItemAddUser;
         private ToolStripMenuItem miAuditTrail;
         private ToolStripMenuItem mnuNewPerson;

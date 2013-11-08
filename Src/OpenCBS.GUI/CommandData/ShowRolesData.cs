@@ -17,12 +17,9 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.DataContract;
-
-namespace OpenCBS.Interface.Service
+namespace OpenCBS.GUI.CommandData
 {
-    public interface ILoanProductService : IService<LoanProductDto>
+    public class ShowRolesData
     {
-        LoanProductReferenceDataDto GetReferenceData();
     }
 }

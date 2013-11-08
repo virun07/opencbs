@@ -21,8 +21,7 @@ using OpenCBS.DataContract;
 
 namespace OpenCBS.Interface.Service
 {
-    public interface ILoanProductService : IService<LoanProductDto>
+    public interface IRoleService : IService<RoleDto>
     {
-        LoanProductReferenceDataDto GetReferenceData();
     }
 }

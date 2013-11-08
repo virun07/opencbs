@@ -1011,12 +1011,6 @@ namespace OpenCBS.GUI.View
             frmAccountingRules.Show();
         }
 
-        private void rolesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmRoles rolesForm = new FrmRoles(this) { MdiParent = this };
-            rolesForm.Show();
-        }
-
         private void menuItemCollateralProducts_Click(object sender, EventArgs e)
         {
             InitializeCollateralProductsForm();
@@ -1160,6 +1154,7 @@ namespace OpenCBS.GUI.View
 
         public void Attach(IMainPresenterCallbacks presenterCallbacks)
         {
+            _rolesMenuItem.Click += (sender, e) => presenterCallbacks.ShowRoles();
             _loanProductsMenuItem.Click += (sender, e) => presenterCallbacks.ShowLoanProducts();
             _entryFeesMenuItem.Click += (sender, e) => presenterCallbacks.ShowEntryFees();
             _englishMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("en-US");

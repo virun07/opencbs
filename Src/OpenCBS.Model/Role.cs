@@ -17,12 +17,10 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.DataContract;
-
-namespace OpenCBS.Interface.Service
+namespace OpenCBS.Model
 {
-    public interface ILoanProductService : IService<LoanProductDto>
+    public class Role : EntityBase
     {
-        LoanProductReferenceDataDto GetReferenceData();
+        public string Name { get; set; }
     }
 }

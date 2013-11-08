@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB0
-        CwAAAk1TRnQBSQFMAgEBBQEAAWABDwFgAQ8BEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBBQEAAWgBDwFoAQ8BEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1027,7 +1027,7 @@
     <value>None</value>
   </data>
   <data name="_frenchMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>134, 22</value>
   </data>
   <data name="_frenchMenuItem.Text" xml:space="preserve">
     <value>French</value>
@@ -1036,7 +1036,7 @@
     <value>None</value>
   </data>
   <data name="_englishMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>134, 22</value>
   </data>
   <data name="_englishMenuItem.Text" xml:space="preserve">
     <value>English</value>
@@ -1045,7 +1045,7 @@
     <value>None</value>
   </data>
   <data name="_russianMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>134, 22</value>
   </data>
   <data name="_russianMenuItem.Text" xml:space="preserve">
     <value>Russian</value>
@@ -1054,7 +1054,7 @@
     <value>None</value>
   </data>
   <data name="_spanishMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>134, 22</value>
   </data>
   <data name="_spanishMenuItem.Text" xml:space="preserve">
     <value>Spanish</value>
@@ -1063,7 +1063,7 @@
     <value>None</value>
   </data>
   <data name="_portugueseMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>134, 22</value>
   </data>
   <data name="_portugueseMenuItem.Text" xml:space="preserve">
     <value>Portuguese</value>
@@ -1080,10 +1080,10 @@
   <data name="mnuSettings.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="rolesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="_rolesMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 22</value>
   </data>
-  <data name="rolesToolStripMenuItem.Text" xml:space="preserve">
+  <data name="_rolesMenuItem.Text" xml:space="preserve">
     <value>Roles</value>
   </data>
   <data name="menuItemAddUser.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
@@ -1987,10 +1987,10 @@
   <data name="&gt;&gt;mnuSecurity.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;rolesToolStripMenuItem.Name" xml:space="preserve">
-    <value>rolesToolStripMenuItem</value>
+  <data name="&gt;&gt;_rolesMenuItem.Name" xml:space="preserve">
+    <value>_rolesMenuItem</value>
   </data>
-  <data name="&gt;&gt;rolesToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;_rolesMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItemAddUser.Name" xml:space="preserve">

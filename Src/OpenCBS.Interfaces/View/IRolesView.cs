@@ -17,12 +17,20 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
 using OpenCBS.DataContract;
+using OpenCBS.Interface.Presenter;
 
-namespace OpenCBS.Interface.Service
+namespace OpenCBS.Interface.View
 {
-    public interface ILoanProductService : IService<LoanProductDto>
+    public interface IRolesView : IView<IRolesPresenterCallbacks>
     {
-        LoanProductReferenceDataDto GetReferenceData();
+        void Run();
+        void Translate();
+        void ShowRoles(IList<RoleDto> roles);
+        bool CanEdit { get; set; }
+        bool CanDelete { get; set; }
+        int? SelectedRoleId { get; }
+        bool ShowDeleted { get; }
     }
 }

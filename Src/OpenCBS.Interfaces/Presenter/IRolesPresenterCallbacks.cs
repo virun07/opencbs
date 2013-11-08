@@ -17,12 +17,15 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.DataContract;
-
-namespace OpenCBS.Interface.Service
+namespace OpenCBS.Interface.Presenter
 {
-    public interface ILoanProductService : IService<LoanProductDto>
+    public interface IRolesPresenterCallbacks
     {
-        LoanProductReferenceDataDto GetReferenceData();
+        void Add();
+        void Edit();
+        void Delete();
+        void Refresh();
+        void ChangeSelection();
+        void Close();
     }
 }
