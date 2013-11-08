@@ -22,7 +22,9 @@ using OpenCBS.GUI.Command;
 using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Repository;
+using OpenCBS.Interface.Service;
 using OpenCBS.Persistence;
+using OpenCBS.Service;
 using StructureMap.Configuration.DSL;
 
 namespace OpenCBS.GUI
@@ -42,6 +44,9 @@ namespace OpenCBS.GUI
             For<IApplicationController>().Singleton().Use<ApplicationController>();
             For<IEventPublisher>().Singleton().Use<EventPublisher>();
 
+            For<IEntryFeeService>()
+                .EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept))
+                .Use<EntryFeeService>();
             // Factories
 //            For<IPolicyFactory>().Use<PolicyFactory>();
 
