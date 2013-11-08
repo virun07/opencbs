@@ -18,8 +18,6 @@
 // Contact: contact@opencbs.com
 
 using System.Windows.Forms;
-using OpenCBS.GUI.Command;
-using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Repository;
 using OpenCBS.Interface.Service;
@@ -39,7 +37,9 @@ namespace OpenCBS.GUI
                 scanner.Assembly("OpenCBS.Persistence");
                 scanner.TheCallingAssembly();
                 scanner.WithDefaultConventions();
+                scanner.ConnectImplementationsToTypesClosing(typeof (ICommand<>));
             });
+
             For<ApplicationContext>().Use<AppContext>();
             For<IApplicationController>().Singleton().Use<ApplicationController>();
             For<IEventPublisher>().Singleton().Use<EventPublisher>();
@@ -47,53 +47,8 @@ namespace OpenCBS.GUI
             For<IEntryFeeService>()
                 .EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept))
                 .Use<EntryFeeService>();
-            // Factories
-//            For<IPolicyFactory>().Use<PolicyFactory>();
-
-            // Views / presenters
-//            For<ILoanProductsView>().Use<LoanProductsView>();
-//            For<ILoanProductsPresenter>().Use<LoanProductsPresenter>();
-//            For<ILoanProductView>().Use<LoanProductView>();
-//            For<IEntryFeesView>().Use<EntryFeesView>();
-//            For<IEntryFeeView>().Use<EntryFeeView>();
-//            For<IConfirmationView>().Use<ConfirmationView>();
-//            For<ISelectEntryFeeView>().Use<SelectEntryFeeView>();
-//            
-//            For<ILoanProductPresenter>().Use<LoanProductPresenter>();
-//            For<IEntryFeesPresenter>().Use<EntryFeesPresenter>();
-//            For<IEntryFeePresenter>().Use<EntryFeePresenter>();
-//            For<IConfirmationPresenter>().Use<ConfirmationPresenter>();
-//            For<ISelectEntryFeePresenter>().Use<SelectEntryFeePresenter>();
-
-            // Commands
-            For<ICommand<ShowLoanProductsData>>().Use<ShowLoanProductsCommand>();
-            For<ICommand<AddLoanProductData>>().Use<AddLoanProductCommand>();
-            For<ICommand<EditLoanProductData>>().Use<EditLoanProductCommand>();
-            For<ICommand<DeleteLoanProductData>>().Use<DeleteLoanProductCommand>();
-            For<ICommand<SelectEntryFeeData>>().Use<SelectEntryFeeCommand>();
-
-            For<ICommand<ShowEntryFeesData>>().Use<ShowEntryFeesCommand>();
-            For<ICommand<AddEntryFeeData>>().Use<AddEntryFeeCommand>();
-            For<ICommand<EditEntryFeeData>>().Use<EditEntryFeeCommand>();
-            For<ICommand<DeleteEntryFeeData>>().Use<DeleteEntryFeeCommand>();
-
-            For<ICommand<ChangeLanguageData>>().Use<ChangeLanguageCommand>();
-
-            // Repositories
-//            For<IPolicyRepository>().Use<PolicyRepository>();
+            
             For<IConnectionProvider>().Use<SqlConnectionProvider>();
-//            For<ILoanProductRepository>().Use<LoanProductRepository>();
-//            For<ICurrencyRepository>().Use<CurrencyRepository>();
-//            For<IEntryFeeRepository>().Use<EntryFeeRepository>();
-
-            // Services
-//            For<ILoanProductService>().Use<LoanProductService>();
-//            For<IEntryFeeService>().Use<EntryFeeService>();
-
-            // Validators
-//            For<ILoanProductValidator>().Use<LoanProductValidator>();
-//            For<IEntryFeeValidator>().Use<EntryFeeValidator>();
-
             For<ITranslator>().Singleton().Use<JsonTranslator>();
 
             RegisterInterceptor(new EventAggregatorInterceptor());
