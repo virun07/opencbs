@@ -28,7 +28,6 @@ using OpenCBS.CoreDomain;
 using OpenCBS.ExceptionsHandler;
 using OpenCBS.GUI.Configuration;
 using OpenCBS.GUI.Database;
-using OpenCBS.GUI.NEW;
 using OpenCBS.Services;
 using OpenCBS.Shared;
 using System.Threading;
@@ -99,24 +98,6 @@ namespace OpenCBS.GUI
                             break;
                     }
                 }
-
-                //                new FrmSplash(_user, _password, _skipSchemaCheck).ShowDialog();
-                //
-                //                switch (User.CurrentUser.Id)
-                //                {
-                //                    case 0:
-                //                        Application.Exit();
-                //                        break;
-                //                    default:
-                //                        ConfigureAutoMapper();
-                //                        var container = new Container();
-                //                        var bootStrapper = new BootStrapper(container);
-                //                        var appContext = bootStrapper.GetAppContext();
-                //                        Application.Run(appContext);
-                //                        break;
-                //                }
-                //
-                //                ServicesProvider.GetInstance().SuppressAllRemotingInfos(Environment.MachineName, Environment.UserName);
             }
             catch (Exception ex)
             {
