@@ -17,12 +17,10 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
-using System.Configuration;
 using System.Windows.Forms;
-using OpenCBS.GUI.Presenter;
-using OpenCBS.GUI.View;
+using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
+using OpenCBS.Interface.Presenter;
 using StructureMap;
 
 namespace OpenCBS.GUI
@@ -34,19 +32,38 @@ namespace OpenCBS.GUI
         public AppContext(IContainer container)
         {
             _container = container;
-            MainForm = GetMainForm();
+            MainForm = GetLoginForm();
+        }
+
+        private Form GetLoginForm()
+        {
+            var presenter = _container.GetInstance<ILoginPresenter>();
+            presenter.Run();
+
+            return (Form) presenter.View;
         }
 
         private Form GetMainForm()
         {
-            var newArchitecture = Convert.ToBoolean(ConfigurationManager.AppSettings["NewArchitecture"]);
-            var mainForm = newArchitecture ? (IMainView) new MainView() : new LotrasmicMainWindowForm();
-            _container.Inject(mainForm);
-
-            var presenter = _container.GetInstance<MainPresenter>();
+            var presenter = _container.GetInstance<IMainPresenter>();
             presenter.Run();
+            return (Form) presenter.View;
+        }
 
-            return (Form)presenter.View;
+        protected override void OnMainFormClosed(object sender, System.EventArgs e)
+        {
+            if (sender is ILoginView)
+            {
+                var userService = _container.GetInstance<IUserService>();
+                if (userService.IsLoggedIn())
+                    MainForm = GetMainForm();
+                else
+                    base.OnMainFormClosed(sender, e);
+            }
+            else if (sender is IMainView)
+            {
+                base.OnMainFormClosed(sender, e);
+            }
         }
     }
 }

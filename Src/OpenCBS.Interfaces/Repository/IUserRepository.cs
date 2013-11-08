@@ -16,11 +16,12 @@
 // 
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
+using OpenCBS.Model;
 
-namespace OpenCBS.Interface.Presenter
+namespace OpenCBS.Interface.Repository
 {
-    public interface IMainPresenter : IPresenter
+    public interface IUserRepository : IRepository<User>
     {
-        void Run();
+        User FindByUsernameAndPassword(string username, string password);
     }
 }

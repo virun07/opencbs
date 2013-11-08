@@ -1167,6 +1167,9 @@ namespace OpenCBS.GUI
             }
         }
 
+        public void Run()
+        {}
+
         public void Attach(IMainPresenterCallbacks presenterCallbacks)
         {
             mnuPackages.Click += (sender, e) => InitializePackagesForm();

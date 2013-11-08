@@ -23,5 +23,6 @@ namespace OpenCBS.Interface.View
 {
     public interface IMainView : IView<IMainPresenterCallbacks>
     {
+        void Run();
     }
 }

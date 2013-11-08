@@ -17,10 +17,13 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.Interface.Presenter
+using OpenCBS.DataContract;
+
+namespace OpenCBS.Interface.Service
 {
-    public interface IMainPresenter : IPresenter
+    public interface IUserService
     {
-        void Run();
+        UserDto Login(string username, string password);
+        bool IsLoggedIn();
     }
 }

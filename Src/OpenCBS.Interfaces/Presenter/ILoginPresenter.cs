@@ -19,7 +19,7 @@
 
 namespace OpenCBS.Interface.Presenter
 {
-    public interface IMainPresenter : IPresenter
+    public interface ILoginPresenter : IPresenter
     {
         void Run();
     }

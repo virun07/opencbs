@@ -17,10 +17,15 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.Interface.Presenter
+namespace OpenCBS.DataContract
 {
-    public interface IMainPresenter : IPresenter
+    public class UserDto : DataTransferObject
     {
-        void Run();
+        public static UserDto Current { get; set; }
+
+        public string Username { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
     }
 }

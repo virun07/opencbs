@@ -24,17 +24,19 @@ using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.View
 {
-    public class ConfirmationView : BaseView, IConfirmationView
+    public class ConfirmationView : IConfirmationView
     {
         private IConfirmationPresenterCallbacks _presenterCallbacks;
+        private readonly ITranslator _translator;
 
         public ConfirmationView(ITranslator translator)
-            : base(translator)
-        { }
+        {
+            _translator = translator;
+        }
 
         public void Run(string message)
         {
-            var result = MessageBox.Show(_(message), _("Confirmation"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var result = MessageBox.Show(_translator.Translate(message), _translator.Translate("Confirmation"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
                 _presenterCallbacks.Ok();
             else

@@ -54,12 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CurrencyRepository.cs" />
+    <Compile Include="DatabaseRepository.cs" />
     <Compile Include="EntryFeeRepository.cs" />
     <Compile Include="LoanProductRepository.cs" />
     <Compile Include="PolicyRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DapperExtensions.cs" />
     <Compile Include="SqlConnectionProvider.cs" />
+    <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenCBS.Common\OpenCBS.Common.csproj">

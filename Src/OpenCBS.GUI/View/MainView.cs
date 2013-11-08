@@ -1153,6 +1153,11 @@ namespace OpenCBS.GUI.View
             }
         }
 
+        public void Run()
+        {
+            Show();
+        }
+
         public void Attach(IMainPresenterCallbacks presenterCallbacks)
         {
             _loanProductsMenuItem.Click += (sender, e) => presenterCallbacks.ShowLoanProducts();

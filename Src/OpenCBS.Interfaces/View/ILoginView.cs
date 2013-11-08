@@ -17,10 +17,21 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.Interface.Presenter
+using System.Collections.Generic;
+using OpenCBS.Interface.Presenter;
+
+namespace OpenCBS.Interface.View
 {
-    public interface IMainPresenter : IPresenter
+    public interface ILoginView : IView<ILoginPresenterCallbacks>
     {
         void Run();
+        void Stop();
+        void StartDatabaseListRefresh();
+        void StopDatabaseListRefresh();
+        void ShowDatabases(IList<string> databases);
+        void ShowError(string message);
+        string Username { get; }
+        string Password { get; }
+        string Database { get; set; }
     }
 }

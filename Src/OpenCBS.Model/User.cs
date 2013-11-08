@@ -17,10 +17,15 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.Interface.Presenter
+namespace OpenCBS.Model
 {
-    public interface IMainPresenter : IPresenter
+    public class User : EntityBase
     {
-        void Run();
+        public static User Current { get; set; }
+
+        public string Username { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
     }
 }
