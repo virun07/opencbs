@@ -65,7 +65,7 @@ namespace OpenCBS.GUI.View
             {
                 var temp = prefix;
 
-                var tabListPage = new TabListPage { Text = prefix };
+                var tabListPage = new TabListPage { Text = _(prefix) };
 
                 // Add checkbox for each permission
                 var tabPermissions = permissions
@@ -80,7 +80,7 @@ namespace OpenCBS.GUI.View
                 {
                     var checkBox = new CheckBox
                     {
-                        Text = tabPermission,
+                        Text = _(tabPermission.Split('.')[1]),
                         AutoSize = true,
                         Tag = tabPermission
                     };
@@ -89,6 +89,24 @@ namespace OpenCBS.GUI.View
                 tabListPage.Controls.Add(flowLayoutPanel);
 
                 _tabList.TabListPages.Add(tabListPage);
+            }
+        }
+
+        public IList<string> Permissions
+        {
+            get
+            {
+                return GetControls(this)
+                    .OfType<CheckBox>().Where(cb => cb.Tag is string && cb.Checked)
+                    .Select(cb => cb.Tag.ToString()).ToList().AsReadOnly();
+            }
+
+            set
+            {
+                var checkBoxes = GetControls(this)
+                    .OfType<CheckBox>().Where(cb => cb.Tag is string && value.Contains(cb.Tag.ToString()));
+                foreach (var checkBox in checkBoxes)
+                    checkBox.Checked = true;
             }
         }
     }

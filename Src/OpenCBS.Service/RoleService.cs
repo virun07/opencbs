@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Omu.ValueInjecter;
@@ -57,17 +58,26 @@ namespace OpenCBS.Service
 
         public void Add(RoleDto dto)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void Update(RoleDto dto)
         {
-            throw new System.NotImplementedException();
+            _validator.Validate(dto);
+            if (dto.Notification.HasErrors)
+                throw new ArgumentException("Invalid role DTO.");
+
+            var role = _roleRepository.FindById(dto.Id);
+            if (role == null)
+                throw new ArgumentException("Role not found in repository.");
+
+            role.InjectFrom(dto);
+            _roleRepository.Update(role);
         }
 
         public void Remove(int id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         private static RoleDto Map(Role role)

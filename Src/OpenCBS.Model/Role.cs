@@ -17,10 +17,13 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
+
 namespace OpenCBS.Model
 {
     public class Role : EntityBase
     {
         public string Name { get; set; }
+        public IList<string> Permissions { get; set; }
     }
 }

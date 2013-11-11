@@ -17,10 +17,13 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
+
 namespace OpenCBS.DataContract
 {
     public class RoleDto : DataTransferObject
     {
         public string Name { get; set; }
+        public IList<string> Permissions { get; set; }
     }
 }

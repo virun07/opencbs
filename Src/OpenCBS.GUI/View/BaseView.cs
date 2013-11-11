@@ -54,10 +54,10 @@ namespace OpenCBS.GUI.View
             _errorProvider.SetError(control, null);
         }
 
-        private static IEnumerable<Control> GetControls(Control control)
+        protected static IEnumerable<Control> GetControls(Control control)
         {
             var controls = control.Controls.Cast<Control>();
-            return controls.SelectMany(x => GetControls(x)).Concat(controls);
+            return controls.SelectMany(GetControls).Concat(controls);
         }
 
         public void ShowNotification(Notification notification)

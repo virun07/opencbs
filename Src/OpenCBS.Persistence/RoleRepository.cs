@@ -20,6 +20,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
+using Omu.ValueInjecter;
 using OpenCBS.Interface.Repository;
 using OpenCBS.Model;
 
@@ -28,6 +29,20 @@ namespace OpenCBS.Persistence
     public class RoleRepository : IRoleRepository
     {
         private readonly IConnectionProvider _connectionProvider;
+
+        // ReSharper disable UnusedAutoPropertyAccessor.Local
+        private class RolePermission
+        {
+            public int RoleId { get; set; }
+            public string Permission { get; set; }
+        }
+
+        private class RoleRow
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+        }
+        // ReSharper restore UnusedAutoPropertyAccessor.Local
 
         public RoleRepository(IConnectionProvider connectionProvider)
         {
@@ -38,7 +53,7 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                const string sql = "select * from Role";
+                const string sql = @"select * from Role";
                 return connection.Query<Role>(sql).ToList().AsReadOnly();
             }
         }
@@ -47,8 +62,14 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                const string sql = "select * from Role where Id = @Id";
-                return connection.Query<Role>(sql, new { Id = id }).FirstOrDefault();
+                var sql = @"select * from Role where Id = @Id";
+                var result = connection.Query<Role>(sql, new { Id = id }).FirstOrDefault();
+                if (result != null)
+                {
+                    sql = @"select Permission from RolePermission where RoleId = @Id";
+                    result.Permissions = connection.Query<string>(sql, new { Id = id }).ToList().AsReadOnly();
+                }
+                return result;
             }
         }
 
@@ -56,7 +77,17 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                connection.Update(entity);
+                var sql = @"delete from RolePermission where RoleId = @Id";
+                connection.Execute(sql, new { entity.Id });
+                var map = entity
+                    .Permissions
+                    .Select(p => new RolePermission { RoleId = entity.Id, Permission = p })
+                    .ToList();
+                sql = @"insert RolePermission values (@RoleId, @Permission)";
+                connection.Execute(sql, map);
+                var row = new RoleRow();
+                row.InjectFrom(entity);
+                connection.Update(row);
             }
         }
 

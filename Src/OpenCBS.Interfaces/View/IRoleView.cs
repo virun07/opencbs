@@ -31,5 +31,6 @@ namespace OpenCBS.Interface.View
         void ShowPermissions(IList<string> permissions);
 
         string RoleName { get; set; }
+        IList<string> Permissions { get; set; }
     }
 }

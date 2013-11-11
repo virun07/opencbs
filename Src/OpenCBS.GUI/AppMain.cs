@@ -61,7 +61,8 @@ namespace OpenCBS.GUI
         {
             try
             {
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(UserSettings.Language);
+//                Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(UserSettings.Language);
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
                 Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
                 Thread.CurrentThread.CurrentCulture.NumberFormat = new NumberFormatInfo
                 {

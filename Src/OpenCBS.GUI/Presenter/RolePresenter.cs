@@ -45,10 +45,10 @@ namespace OpenCBS.GUI.Presenter
         public Result<RoleDto> Get(RoleDto roleDto)
         {
             _view.Attach(this);
+            _view.ShowPermissions(_authService.GetAllPermissions());
 
             _view.InjectFrom(roleDto ?? new RoleDto());
             _view.RoleName = roleDto != null ? roleDto.Name : string.Empty;
-            _view.ShowPermissions(_authService.GetAllPermissions());
             _view.Run();
 
             if (_commandResult != CommandResult.Ok)

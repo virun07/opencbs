@@ -60,7 +60,7 @@ namespace OpenCBS.Service
             {
                 "IRoleService.Add",
                 "IRoleService.Update",
-                "IRoleService.Delete",
+                "IRoleService.Remove",
                 "IEntryFeeService.Add",
                 "IEntryFeeService.Update",
                 "IEntryFeeService.Remove",
