@@ -17,11 +17,15 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
 using OpenCBS.DataContract;
 
 namespace OpenCBS.Interface.Service
 {
-    public interface IUserService
+    public interface IAuthService
     {
+        UserDto Login(string username, string password);
+        bool IsLoggedIn();
+        IList<string> GetAllPermissions();
     }
 }

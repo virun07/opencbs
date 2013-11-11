@@ -30,13 +30,15 @@ namespace OpenCBS.GUI.Presenter
     {
         private readonly IRoleView _view;
         private readonly IRoleService _roleService;
+        private readonly IAuthService _authService;
         private readonly IApplicationController _appContoller;
         private CommandResult _commandResult = CommandResult.Cancel;
 
-        public RolePresenter(IRoleView view, IRoleService roleService, IApplicationController appController)
+        public RolePresenter(IRoleView view, IRoleService roleService, IAuthService authService, IApplicationController appController)
         {
             _view = view;
             _roleService = roleService;
+            _authService = authService;
             _appContoller = appController;
         }
 
@@ -46,16 +48,7 @@ namespace OpenCBS.GUI.Presenter
 
             _view.InjectFrom(roleDto ?? new RoleDto());
             _view.RoleName = roleDto != null ? roleDto.Name : string.Empty;
-            var permissions = new[]
-            {
-                "IEntryFeeService.Add",
-                "IEntryFeeService.Update",
-                "IEntryFeeService.Remove",
-                "ILoanProductService.Add",
-                "ILoanProductService.Update",
-                "ILoanProductService.Remove"
-            };
-            _view.ShowPermissions(permissions);
+            _view.ShowPermissions(_authService.GetAllPermissions());
             _view.Run();
 
             if (_commandResult != CommandResult.Ok)

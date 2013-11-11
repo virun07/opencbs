@@ -75,6 +75,7 @@
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IRoleRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
+    <Compile Include="Service\IAuthService.cs" />
     <Compile Include="Service\IDatabaseService.cs" />
     <Compile Include="Service\IEntryFeeService.cs" />
     <Compile Include="Service\ILoanProductService.cs" />

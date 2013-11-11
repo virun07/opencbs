@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthService.cs" />
     <Compile Include="DatabaseService.cs" />
     <Compile Include="EmitProxy.cs" />
     <Compile Include="EntryFeeService.cs" />

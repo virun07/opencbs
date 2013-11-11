@@ -54,7 +54,7 @@ namespace OpenCBS.GUI
         {
             if (sender is ILoginView)
             {
-                var userService = _container.GetInstance<IUserService>();
+                var userService = _container.GetInstance<IAuthService>();
                 if (userService.IsLoggedIn())
                     MainForm = GetMainForm();
                 else

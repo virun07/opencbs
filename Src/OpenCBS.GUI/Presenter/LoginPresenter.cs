@@ -31,18 +31,18 @@ namespace OpenCBS.GUI.Presenter
     {
         private readonly ILoginView _view;
         private readonly IDatabaseService _databaseService;
-        private readonly IUserService _userService;
+        private readonly IAuthService _authService;
 
-        public LoginPresenter(ILoginView view, IDatabaseService databaseService, IUserService userService)
+        public LoginPresenter(ILoginView view, IDatabaseService databaseService, IAuthService authService)
         {
             _view = view;
             _databaseService = databaseService;
-            _userService = userService;
+            _authService = authService;
         }
 
         public void Ok()
         {
-            var userDto = _userService.Login(_view.Username, _view.Password);
+            var userDto = _authService.Login(_view.Username, _view.Password);
             if (userDto == null)
                 _view.ShowError("User not found.");
             else

@@ -26,11 +26,11 @@ using OpenCBS.Model;
 
 namespace OpenCBS.Service
 {
-    public class UserService : IUserService
+    public class AuthService : IAuthService
     {
         private readonly IUserRepository _userRepository;
 
-        public UserService(IUserRepository userRepository)
+        public AuthService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
@@ -60,7 +60,13 @@ namespace OpenCBS.Service
             {
                 "IRoleService.Add",
                 "IRoleService.Update",
-                "IRoleService.Delete"
+                "IRoleService.Delete",
+                "IEntryFeeService.Add",
+                "IEntryFeeService.Update",
+                "IEntryFeeService.Remove",
+                "ILoanProductService.Add",
+                "ILoanProductService.Update",
+                "ILoanProductService.Remove"
             };
             return result.AsReadOnly();
         }
