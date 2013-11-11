@@ -46,6 +46,16 @@ namespace OpenCBS.GUI.Presenter
 
             _view.InjectFrom(roleDto ?? new RoleDto());
             _view.RoleName = roleDto != null ? roleDto.Name : string.Empty;
+            var permissions = new[]
+            {
+                "IEntryFeeService.Add",
+                "IEntryFeeService.Update",
+                "IEntryFeeService.Remove",
+                "ILoanProductService.Add",
+                "ILoanProductService.Update",
+                "ILoanProductService.Remove"
+            };
+            _view.ShowPermissions(permissions);
             _view.Run();
 
             if (_commandResult != CommandResult.Ok)

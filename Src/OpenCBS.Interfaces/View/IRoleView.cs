@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Presenter;
 
@@ -27,6 +28,7 @@ namespace OpenCBS.Interface.View
         void Run();
         void Stop();
         void ShowNotification(Notification notification);
+        void ShowPermissions(IList<string> permissions);
 
         string RoleName { get; set; }
     }

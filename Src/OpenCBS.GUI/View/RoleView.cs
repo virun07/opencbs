@@ -17,6 +17,10 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+using Cyotek.Windows.Forms;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
@@ -51,6 +55,41 @@ namespace OpenCBS.GUI.View
         {
             _okButton.Click += (sender, e) => presenterCallbacks.Ok();
             _cancelButton.Click += (sender, e) => presenterCallbacks.Cancel();
+        }
+
+        public void ShowPermissions(IList<string> permissions)
+        {
+            var prefixes = permissions.Select(p => p.Split('.')[0]).Distinct();
+
+            foreach (var prefix in prefixes)
+            {
+                var temp = prefix;
+
+                var tabListPage = new TabListPage { Text = prefix };
+
+                // Add checkbox for each permission
+                var tabPermissions = permissions
+                    .Where(p => p.StartsWith(temp));
+
+                var flowLayoutPanel = new FlowLayoutPanel
+                {
+                    Dock = DockStyle.Fill,
+                    FlowDirection = FlowDirection.TopDown
+                };
+                foreach (var tabPermission in tabPermissions)
+                {
+                    var checkBox = new CheckBox
+                    {
+                        Text = tabPermission,
+                        AutoSize = true,
+                        Tag = tabPermission
+                    };
+                    flowLayoutPanel.Controls.Add(checkBox);
+                }
+                tabListPage.Controls.Add(flowLayoutPanel);
+
+                _tabList.TabListPages.Add(tabListPage);
+            }
         }
     }
 }

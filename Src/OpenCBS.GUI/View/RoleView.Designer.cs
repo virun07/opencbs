@@ -35,6 +35,7 @@
             this._nameTextBox = new System.Windows.Forms.TextBox();
             this._nameLabel = new System.Windows.Forms.Label();
             this._errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this._tabList = new Cyotek.Windows.Forms.TabList();
             this._buttonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -93,11 +94,20 @@
             this._errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this._errorProvider.ContainerControl = this;
             // 
+            // _tabList
+            // 
+            this._tabList.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._tabList.Location = new System.Drawing.Point(0, 59);
+            this._tabList.Name = "_tabList";
+            this._tabList.Size = new System.Drawing.Size(668, 269);
+            this._tabList.TabIndex = 9;
+            // 
             // RoleView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(668, 381);
+            this.Controls.Add(this._tabList);
             this.Controls.Add(this._nameTextBox);
             this.Controls.Add(this._nameLabel);
             this.Controls.Add(this._buttonsPanel);
@@ -122,5 +132,6 @@
         private System.Windows.Forms.TextBox _nameTextBox;
         private System.Windows.Forms.Label _nameLabel;
         private System.Windows.Forms.ErrorProvider _errorProvider;
+        private Cyotek.Windows.Forms.TabList _tabList;
     }
 }
