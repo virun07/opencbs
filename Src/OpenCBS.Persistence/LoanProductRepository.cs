@@ -109,7 +109,7 @@ namespace OpenCBS.Persistence
                         lp.EntryFees.Add(entryFee);
                     }
                 }
-                return loanProducts;
+                return loanProducts.AsReadOnly();
             }
         }
 

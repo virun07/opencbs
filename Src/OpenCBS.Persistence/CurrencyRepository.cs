@@ -40,7 +40,7 @@ namespace OpenCBS.Persistence
             using (var connection = _connectionProvider.GetConnection())
             {
                 const string sql = "select * from Currency";
-                return connection.Query<Currency>(sql).ToList();
+                return connection.Query<Currency>(sql).ToList().AsReadOnly();
             }
         }
 

@@ -39,7 +39,7 @@ namespace OpenCBS.Persistence
             using (var connection = _connectionProvider.GetConnection())
             {
                 const string sql = "select * from EntryFee";
-                return connection.Query<EntryFee>(sql).ToList();
+                return connection.Query<EntryFee>(sql).ToList().AsReadOnly();
             }
         }
 
