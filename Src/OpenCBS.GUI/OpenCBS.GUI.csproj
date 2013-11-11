@@ -481,6 +481,7 @@
     <Compile Include="CommandData\SelectEntryFeeData.cs" />
     <Compile Include="CommandData\ShowEntryFeesData.cs" />
     <Compile Include="CommandData\ShowRolesData.cs" />
+    <Compile Include="CommandData\ShowUsersData.cs" />
     <Compile Include="Command\AddEntryFeeCommand.cs" />
     <Compile Include="CommandData\ChangeLanguageData.cs" />
     <Compile Include="Command\AddRoleCommand.cs" />
@@ -493,6 +494,7 @@
     <Compile Include="Command\SelectEntryFeeCommand.cs" />
     <Compile Include="Command\ShowEntryFeesCommand.cs" />
     <Compile Include="Command\ShowRolesCommand.cs" />
+    <Compile Include="Command\ShowUsersCommand.cs" />
     <Compile Include="Configuration\AddBranchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -790,6 +792,7 @@
     <Compile Include="Presenter\RolePresenter.cs" />
     <Compile Include="Presenter\RolesPresenter.cs" />
     <Compile Include="Presenter\SelectEntryFeePresenter.cs" />
+    <Compile Include="Presenter\UsersPresenter.cs" />
     <Compile Include="View\BaseView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1256,6 +1259,12 @@
     </Compile>
     <Compile Include="UserControl\WriteOffOkCancelForm.Designer.cs">
       <DependentUpon>WriteOffOkCancelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsersView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UsersView.Designer.cs">
+      <DependentUpon>UsersView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AboutForm.es-ES.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>

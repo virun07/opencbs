@@ -17,17 +17,27 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.DataContract
-{
-    public class UserDto : DataTransferObject
-    {
-        public static UserDto Current { get; set; }
+using System.Windows.Forms;
+using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.View;
 
-        public string Username { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public int RoleId { get; set; }
-        public string RoleName { get; set; }
+namespace OpenCBS.GUI.View
+{
+    public partial class UsersView : BaseView, IUsersView
+    {
+        public UsersView()
+        {
+            InitializeComponent();
+            MdiParent = Application.OpenForms[0];
+        }
+
+        public void Run()
+        {
+            Show();
+        }
+
+        public void Attach(IUsersPresenterCallbacks presenterCallbacks)
+        {
+        }
     }
 }

@@ -17,58 +17,72 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.CommandData;
+using System;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.Presenter
 {
-    public class MainPresenter : IMainPresenter, IMainPresenterCallbacks
+    public class UsersPresenter : IUsersPresenter, IUsersPresenterCallbacks
     {
-        private readonly IMainView _view;
+        private readonly IUsersView _view;
         private readonly IApplicationController _appController;
+        private readonly IUserService _userService;
 
-        public MainPresenter(IMainView view, IApplicationController appController)
+        public UsersPresenter(IUsersView view, IApplicationController appController, IUserService userService)
         {
             _view = view;
             _appController = appController;
-        }
-
-        public void ShowRoles()
-        {
-            _appController.Execute(new ShowRolesData());
-        }
-
-        public void ShowUsers()
-        {
-            _appController.Execute(new ShowUsersData());
-        }
-
-        public void ShowLoanProducts()
-        {
-            _appController.Execute(new ShowLoanProductsData());
-        }
-
-        public void ShowEntryFees()
-        {
-            _appController.Execute(new ShowEntryFeesData());
-        }
-
-        public void ChangeLanguage(string name)
-        {
-            _appController.Execute(new ChangeLanguageData { Name = name });
+            _userService = userService;
         }
 
         public void Run()
         {
             _view.Attach(this);
             _view.Run();
+            ShowUsers();
         }
 
         public object View
         {
             get { return _view; }
+        }
+
+        public void Add()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Edit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Refresh()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ChangeSelection()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Close()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ShowUsers()
+        {
+            _userService.FindAll();
         }
     }
 }

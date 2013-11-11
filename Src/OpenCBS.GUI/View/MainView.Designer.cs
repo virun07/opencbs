@@ -146,7 +146,7 @@ namespace OpenCBS.GUI.View
             this._portugueseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSecurity = new System.Windows.Forms.ToolStripMenuItem();
             this._rolesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemAddUser = new System.Windows.Forms.ToolStripMenuItem();
+            this._usersMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miAuditTrail = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProducts = new System.Windows.Forms.ToolStripMenuItem();
@@ -790,7 +790,7 @@ namespace OpenCBS.GUI.View
             // 
             this.mnuSecurity.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this._rolesMenuItem,
-            this.menuItemAddUser,
+            this._usersMenuItem,
             this.miAuditTrail,
             this.changePasswordToolStripMenuItem});
             this.mnuSecurity.Name = "mnuSecurity";
@@ -801,12 +801,11 @@ namespace OpenCBS.GUI.View
             this._rolesMenuItem.Name = "_rolesMenuItem";
             resources.ApplyResources(this._rolesMenuItem, "_rolesMenuItem");
             // 
-            // menuItemAddUser
+            // _usersMenuItem
             // 
-            this.menuItemAddUser.Image = global::OpenCBS.GUI.Properties.Resources.group;
-            resources.ApplyResources(this.menuItemAddUser, "menuItemAddUser");
-            this.menuItemAddUser.Name = "menuItemAddUser";
-            this.menuItemAddUser.Click += new System.EventHandler(this.menuItemAddUser_Click);
+            this._usersMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.group;
+            resources.ApplyResources(this._usersMenuItem, "_usersMenuItem");
+            this._usersMenuItem.Name = "_usersMenuItem";
             // 
             // miAuditTrail
             // 
@@ -1005,7 +1004,7 @@ namespace OpenCBS.GUI.View
         private ToolStripMenuItem menuItemDatabaseMaintenance;
         private ToolStripMenuItem mnuSecurity;
         private ToolStripMenuItem _rolesMenuItem;
-        private ToolStripMenuItem menuItemAddUser;
+        private ToolStripMenuItem _usersMenuItem;
         private ToolStripMenuItem miAuditTrail;
         private ToolStripMenuItem mnuNewPerson;
         private ToolStripSeparator toolStripMenuItem1;

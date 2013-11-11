@@ -36,25 +36,58 @@ namespace OpenCBS.Persistence
 
         public User FindByUsernameAndPassword(string username, string password)
         {
+            const string sql = @"
+                    select * from [User] u left join Role r on r.Id = u.RoleId 
+                    where u.Username = @Username and u.Password = @password
+
+                    select Permission from RolePermission rp right join [User] u on rp.RoleId = u.RoleId
+                    where u.Username = @Username and u.Password = @password                    
+                ";
             using (var connection = _connectionProvider.GetConnection())
+            using (var multi = connection.QueryMultiple(sql, new { Username = username, Password = password }))
             {
-                const string sql = "select * from [User] where Username = @Username and Password = @password";
-                return connection.Query<User>(sql, new { Username = username, Password = password }).FirstOrDefault();
+                var result = multi.Read<User, Role, User>((user, role) =>
+                {
+                    user.Role = role;
+                    return user;
+                }).SingleOrDefault();
+                if (result == null) return null;
+                result.Role.Permissions = multi.Read<string>().ToList().AsReadOnly();
+                return result;
             }
         }
 
         public IList<User> FindAll()
         {
+            const string sql = @"select * from [User] u left join Role r on r.id = u.RoleId";
             using (var connection = _connectionProvider.GetConnection())
             {
-                const string sql = "select * from [User]";
-                return connection.Query<User>(sql).ToList().AsReadOnly();
+                return connection.Query<User, Role, User>(sql, (user, role) =>
+                {
+                    user.Role = role;
+                    return user;
+                }).ToList().AsReadOnly();
             }
         }
 
         public User FindById(int id)
         {
-            throw new System.NotImplementedException();
+            const string sql = @"
+                select * from [User] u left join Role r on r.id = u.RoleId where u.Id = @Id
+                select Permission from RolePermission rp right join [User] u on rp.RoleId = u.RoleId
+            ";
+            using (var connection = _connectionProvider.GetConnection())
+            using (var multi = connection.QueryMultiple(sql))
+            {
+                var result = multi.Read<User, Role, User>((user, role) =>
+                {
+                    user.Role = role;
+                    return user;
+                }).SingleOrDefault();
+                if (result == null) return null;
+                result.Role.Permissions = multi.Read<string>().ToList().AsReadOnly();
+                return result;
+            }
         }
 
         public void Update(User entity)
@@ -69,7 +102,10 @@ namespace OpenCBS.Persistence
 
         public void Remove(int id)
         {
-            throw new System.NotImplementedException();
+            using (var connection = _connectionProvider.GetConnection())
+            {
+                connection.Delete<User>(id);
+            }
         }
     }
 }

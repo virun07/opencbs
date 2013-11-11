@@ -470,12 +470,6 @@ namespace OpenCBS.GUI.View
             InitializeSearchCreditContractForm();
         }
 
-        private void menuItemAddUser_Click(object sender, System.EventArgs e)
-        {
-            UserForm userForm = new UserForm { MdiParent = this };
-            userForm.Show();
-        }
-
         private void timer_Tick(object sender, EventArgs e)
         {
             mainStatusBarLblDate.ForeColor = TimeProvider.IsUsingSystemTime ? Color.Black : Color.Red;
@@ -1155,6 +1149,7 @@ namespace OpenCBS.GUI.View
         public void Attach(IMainPresenterCallbacks presenterCallbacks)
         {
             _rolesMenuItem.Click += (sender, e) => presenterCallbacks.ShowRoles();
+            _usersMenuItem.Click += (sender, e) => presenterCallbacks.ShowUsers();
             _loanProductsMenuItem.Click += (sender, e) => presenterCallbacks.ShowLoanProducts();
             _entryFeesMenuItem.Click += (sender, e) => presenterCallbacks.ShowEntryFees();
             _englishMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("en-US");

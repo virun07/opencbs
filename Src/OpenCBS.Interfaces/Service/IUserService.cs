@@ -21,7 +21,7 @@ using OpenCBS.DataContract;
 
 namespace OpenCBS.Interface.Service
 {
-    public interface IUserService
+    public interface IUserService : IService<UserDto>
     {
     }
 }

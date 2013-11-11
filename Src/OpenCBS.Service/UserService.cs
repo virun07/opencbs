@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
+using System.Linq;
 using Omu.ValueInjecter;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Repository;
@@ -26,7 +27,7 @@ using OpenCBS.Model;
 
 namespace OpenCBS.Service
 {
-    public class UserService : IUserService
+    public class UserService : Service, IUserService
     {
         private readonly IUserRepository _userRepository;
 
@@ -35,34 +36,41 @@ namespace OpenCBS.Service
             _userRepository = userRepository;
         }
 
-        public UserDto Login(string username, string password)
+        public IList<UserDto> FindAll()
         {
-            var user = _userRepository.FindByUsernameAndPassword(username, password);
-            if (user == null) return null;
-
-            var userDto = new UserDto();
-            userDto.InjectFrom(user);
-
-            User.Current = user;
-            UserDto.Current = userDto;
-
-            return userDto;
+            return _userRepository.FindAll().Select(Map).ToList().AsReadOnly();
         }
 
-        public bool IsLoggedIn()
+        public UserDto FindById(int id)
         {
-            return User.Current != null;
+            throw new System.NotImplementedException();
         }
 
-        public IList<string> GetAllPermissions()
+        public void Validate(UserDto dto)
         {
-            var result = new List<string>
-            {
-                "IRoleService.Add",
-                "IRoleService.Update",
-                "IRoleService.Delete"
-            };
-            return result.AsReadOnly();
+            throw new System.NotImplementedException();
+        }
+
+        public int Add(UserDto dto)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Update(UserDto dto)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Remove(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private static UserDto Map(User user)
+        {
+            var result = new UserDto();
+            result.InjectFrom<FlatLoopValueInjection>(user);
+            return result;
         }
     }
 }
