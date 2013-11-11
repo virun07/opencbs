@@ -438,6 +438,7 @@
     <Compile Include="AppEvent\EntryFeeSelectedEvent.cs" />
     <Compile Include="AppEvent\EntryFeeUpdatedEvent.cs" />
     <Compile Include="AppEvent\LanguageChangedEvent.cs" />
+    <Compile Include="AppEvent\RoleDeletedEvent.cs" />
     <Compile Include="AppEvent\RoleSavedEvent.cs" />
     <Compile Include="AuditTrail\AuditTrailForm.cs">
       <SubType>Form</SubType>
@@ -475,6 +476,7 @@
     <Compile Include="CommandData\AddEntryFeeData.cs" />
     <Compile Include="CommandData\AddRoleData.cs" />
     <Compile Include="CommandData\DeleteEntryFeeData.cs" />
+    <Compile Include="CommandData\DeleteRoleData.cs" />
     <Compile Include="CommandData\EditEntryFeeData.cs" />
     <Compile Include="CommandData\EditRoleData.cs" />
     <Compile Include="CommandData\SelectEntryFeeData.cs" />
@@ -484,7 +486,9 @@
     <Compile Include="CommandData\ChangeLanguageData.cs" />
     <Compile Include="Command\AddRoleCommand.cs" />
     <Compile Include="Command\ChangeLanguageCommand.cs" />
+    <Compile Include="Command\ConfirmOperationCommand.cs" />
     <Compile Include="Command\DeleteEntryFeeCommand.cs" />
+    <Compile Include="Command\DeleteRoleCommand.cs" />
     <Compile Include="Command\EditEntryFeeCommand.cs" />
     <Compile Include="Command\EditRoleCommand.cs" />
     <Compile Include="Command\SelectEntryFeeCommand.cs" />

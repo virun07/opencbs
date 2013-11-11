@@ -28,7 +28,8 @@ using OpenCBS.Interface.View;
 namespace OpenCBS.GUI.Presenter
 {
     public class RolesPresenter : IRolesPresenter, IRolesPresenterCallbacks,
-        IEventHandler<RoleSavedEvent>
+        IEventHandler<RoleSavedEvent>,
+        IEventHandler<RoleDeletedEvent>
     {
         private readonly IRolesView _view;
         private readonly IApplicationController _appController;
@@ -67,10 +68,14 @@ namespace OpenCBS.GUI.Presenter
 
         public void Delete()
         {
+            var id = _view.SelectedRoleId;
+            if (id == null) return;
+            _appController.Execute(new DeleteRoleData { Id = id.Value });
         }
 
         public void Refresh()
         {
+            ShowRoles();
         }
 
         public void ChangeSelection()
@@ -93,6 +98,11 @@ namespace OpenCBS.GUI.Presenter
         }
 
         public void Handle(RoleSavedEvent eventData)
+        {
+            ShowRoles();
+        }
+
+        public void Handle(RoleDeletedEvent eventData)
         {
             ShowRoles();
         }
