@@ -3188,6 +3188,9 @@
     <EmbeddedResource Include="View\SelectEntryFeeView.resx">
       <DependentUpon>SelectEntryFeeView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\UsersView.resx">
+      <DependentUpon>UsersView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="dump.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

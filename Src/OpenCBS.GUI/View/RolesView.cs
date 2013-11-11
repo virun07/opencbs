@@ -48,7 +48,6 @@ namespace OpenCBS.GUI.View
             _rolesListView.SetObjects(roles);
             _presenterCallbacks.ChangeSelection();
             _rolesListView.SelectedObject = selectedObject;
-
         }
 
         public bool CanEdit

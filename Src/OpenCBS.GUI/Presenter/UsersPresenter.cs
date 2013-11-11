@@ -17,7 +17,6 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
@@ -52,37 +51,36 @@ namespace OpenCBS.GUI.Presenter
 
         public void Add()
         {
-            throw new NotImplementedException();
         }
 
         public void Edit()
         {
-            throw new NotImplementedException();
         }
 
         public void Delete()
         {
-            throw new NotImplementedException();
         }
 
         public void Refresh()
         {
-            throw new NotImplementedException();
+            ShowUsers();
         }
 
         public void ChangeSelection()
         {
-            throw new NotImplementedException();
+            var id = _view.SelectedUserId;
+            _view.CanEdit = _view.CanDelete = id != null;
         }
 
         public void Close()
         {
-            throw new NotImplementedException();
+            _appController.Unsubscribe(this);
         }
 
         private void ShowUsers()
         {
-            _userService.FindAll();
+            var users = _userService.FindAll();
+            _view.ShowUsers(users);
         }
     }
 }

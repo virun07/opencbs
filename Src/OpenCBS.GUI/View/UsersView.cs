@@ -17,7 +17,9 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
 using System.Windows.Forms;
+using OpenCBS.DataContract;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
@@ -25,6 +27,8 @@ namespace OpenCBS.GUI.View
 {
     public partial class UsersView : BaseView, IUsersView
     {
+        private IUsersPresenterCallbacks _presenterCallbacks;
+
         public UsersView()
         {
             InitializeComponent();
@@ -38,6 +42,47 @@ namespace OpenCBS.GUI.View
 
         public void Attach(IUsersPresenterCallbacks presenterCallbacks)
         {
+            _addButton.Click += (sender, e) => presenterCallbacks.Add();
+            _editButton.Click += (sender, e) => presenterCallbacks.Edit();
+            _deleteButton.Click += (sender, e) => presenterCallbacks.Delete();
+            _showDeletedCheckBox.CheckedChanged += (sender, e) => presenterCallbacks.Refresh();
+            _usersListView.SelectedIndexChanged += (sender, e) => presenterCallbacks.ChangeSelection();
+            _presenterCallbacks = presenterCallbacks;
+        }
+
+        public void ShowUsers(IList<UserDto> users)
+        {
+            var selectedObject = _usersListView.SelectedObject;
+            _usersListView.SetObjects(users);
+            _presenterCallbacks.ChangeSelection();
+            _usersListView.SelectedObject = selectedObject;
+        }
+
+        public bool CanEdit
+        {
+            get { return _editButton.Enabled; }
+            set { _editButton.Enabled = value; }
+        }
+
+        public bool CanDelete
+        {
+            get { return _deleteButton.Enabled; }
+            set { _deleteButton.Enabled = value; }
+        }
+
+        public int? SelectedUserId
+        {
+            get
+            {
+                var userDto = (UserDto) _usersListView.SelectedObject;
+                if (userDto == null) return null;
+                return userDto.Id;
+            }
+        }
+
+        public bool ShowDeleted
+        {
+            get { return _showDeletedCheckBox.Checked; }
         }
     }
 }
