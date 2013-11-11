@@ -433,10 +433,9 @@
     <Compile Include="Accounting\TrialBalancePreview.Designer.cs">
       <DependentUpon>TrialBalancePreview.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppEvent\EntryFeeAddedEvent.cs" />
+    <Compile Include="AppEvent\EntryFeeSavedEvent.cs" />
     <Compile Include="AppEvent\EntryFeeDeletedEvent.cs" />
     <Compile Include="AppEvent\EntryFeeSelectedEvent.cs" />
-    <Compile Include="AppEvent\EntryFeeUpdatedEvent.cs" />
     <Compile Include="AppEvent\LanguageChangedEvent.cs" />
     <Compile Include="AppEvent\RoleDeletedEvent.cs" />
     <Compile Include="AppEvent\RoleSavedEvent.cs" />
@@ -779,9 +778,8 @@
     <Compile Include="DefaultRegistry.cs" />
     <Compile Include="EventAggregatorInterceptor.cs" />
     <Compile Include="EventPublisher.cs" />
-    <Compile Include="AppEvent\LoanProductAddedEvent.cs" />
+    <Compile Include="AppEvent\LoanProductSavedEvent.cs" />
     <Compile Include="AppEvent\LoanProductDeletedEvent.cs" />
-    <Compile Include="AppEvent\LoanProductUpdatedEvent.cs" />
     <Compile Include="Presenter\ConfirmationPresenter.cs" />
     <Compile Include="Presenter\EntryFeePresenter.cs" />
     <Compile Include="Presenter\EntryFeesPresenter.cs" />

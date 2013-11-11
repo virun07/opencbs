@@ -44,8 +44,8 @@ namespace OpenCBS.GUI.Command
             var result = _presenter.Get(null);
             if (result.CommandResult == CommandResult.Ok)
             {
-                _loanProductService.Add(result.Data);
-                _appController.Raise(new LoanProductAddedEvent { LoanProductDto = result.Data });
+                var id = _loanProductService.Add(result.Data);
+                _appController.Raise(new LoanProductSavedEvent { Id = id });
             }
         }
     }

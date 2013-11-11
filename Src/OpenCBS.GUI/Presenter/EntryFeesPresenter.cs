@@ -28,8 +28,7 @@ using OpenCBS.Interface.View;
 namespace OpenCBS.GUI.Presenter
 {
     public class EntryFeesPresenter : IEntryFeesPresenter, IEntryFeesPresenterCallbacks,
-        IEventHandler<EntryFeeAddedEvent>,
-        IEventHandler<EntryFeeUpdatedEvent>,
+        IEventHandler<EntryFeeSavedEvent>,
         IEventHandler<EntryFeeDeletedEvent>,
         IEventHandler<LanguageChangedEvent>
     {
@@ -94,12 +93,7 @@ namespace OpenCBS.GUI.Presenter
             _view.ShowEntryFees(entryFees);
         }
 
-        public void Handle(EntryFeeAddedEvent eventData)
-        {
-            ShowEntryFees();
-        }
-
-        public void Handle(EntryFeeUpdatedEvent eventData)
+        public void Handle(EntryFeeSavedEvent eventData)
         {
             ShowEntryFees();
         }

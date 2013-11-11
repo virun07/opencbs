@@ -28,8 +28,7 @@ using OpenCBS.Interface.View;
 namespace OpenCBS.GUI.Presenter
 {
     public class LoanProductsPresenter : ILoanProductsPresenter, ILoanProductsPresenterCallbacks,
-        IEventHandler<LoanProductUpdatedEvent>,
-        IEventHandler<LoanProductAddedEvent>,
+        IEventHandler<LoanProductSavedEvent>,
         IEventHandler<LoanProductDeletedEvent>,
         IEventHandler<LanguageChangedEvent>
     {
@@ -99,12 +98,7 @@ namespace OpenCBS.GUI.Presenter
             _view.ShowLoanProducts(loanProducts);
         }
 
-        public void Handle(LoanProductUpdatedEvent eventData)
-        {
-            ShowLoanProducts();
-        }
-
-        public void Handle(LoanProductAddedEvent eventData)
+        public void Handle(LoanProductSavedEvent eventData)
         {
             ShowLoanProducts();
         }

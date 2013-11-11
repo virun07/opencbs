@@ -44,8 +44,8 @@ namespace OpenCBS.GUI.Command
             var result = _presenter.Get(null);
             if (result.CommandResult == CommandResult.Ok)
             {
-                _entryFeeService.Add(result.Data);
-                _appController.Raise(new EntryFeeAddedEvent { EntryFeeDto = result.Data });
+                var id = _entryFeeService.Add(result.Data);
+                _appController.Raise(new EntryFeeSavedEvent { Id = id });
             }
         }
     }
