@@ -17,17 +17,10 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-
-namespace OpenCBS.Interface.Service
+namespace OpenCBS.GUI.AppEvent
 {
-    public interface IService<T>
+    public class RoleSavedEvent
     {
-        IList<T> FindAll();
-        T FindById(int id);
-        void Validate(T dto);
-        int Add(T dto);
-        void Update(T dto);
-        void Remove(int id);
+        public int Id { get; set; }
     }
 }

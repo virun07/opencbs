@@ -56,20 +56,26 @@ namespace OpenCBS.Service
             _validator.Validate(dto);
         }
 
-        public void Add(RoleDto dto)
+        public int Add(RoleDto dto)
         {
-            throw new NotImplementedException();
+            _validator.Validate(dto);
+            if (dto.Notification.HasErrors)
+                throw new ArgumentException("Validation failed.", "dto");
+
+            var role = new Role();
+            role.InjectFrom(dto);
+            return _roleRepository.Add(role);
         }
 
         public void Update(RoleDto dto)
         {
             _validator.Validate(dto);
             if (dto.Notification.HasErrors)
-                throw new ArgumentException("Invalid role DTO.");
+                throw new ArgumentException("Validation failed.", "dto");
 
             var role = _roleRepository.FindById(dto.Id);
             if (role == null)
-                throw new ArgumentException("Role not found in repository.");
+                throw new ArgumentException("Object not found in repository.", "dto");
 
             role.InjectFrom(dto);
             _roleRepository.Update(role);
@@ -77,7 +83,7 @@ namespace OpenCBS.Service
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            _roleRepository.Remove(id);
         }
 
         private static RoleDto Map(Role role)

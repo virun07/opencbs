@@ -26,25 +26,24 @@ using OpenCBS.Interface.Service;
 
 namespace OpenCBS.GUI.Command
 {
-    public class EditRoleCommand : ICommand<EditRoleData>
+    public class AddRoleCommand : ICommand<AddRoleData>
     {
         private readonly IRolePresenter _presenter;
         private readonly IRoleService _roleService;
         private readonly IApplicationController _appController;
 
-        public EditRoleCommand(IRolePresenter presenter, IRoleService roleService, IApplicationController appController)
+        public AddRoleCommand(IRolePresenter presenter, IRoleService roleService, IApplicationController appController)
         {
             _presenter = presenter;
             _roleService = roleService;
             _appController = appController;
         }
 
-        public void Execute(EditRoleData commandData)
+        public void Execute(AddRoleData commandData)
         {
-            var roleDto = _roleService.FindById(commandData.Id);
-            var result = _presenter.Get(roleDto);
+            var result = _presenter.Get(null);
             if (result.CommandResult != CommandResult.Ok) return;
-            _roleService.Update(result.Data);
+            _roleService.Add(result.Data);
             _appController.Raise(new RoleSavedEvent { Id = result.Data.Id });
         }
     }

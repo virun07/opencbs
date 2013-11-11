@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Omu.ValueInjecter;
@@ -65,28 +66,32 @@ namespace OpenCBS.Service
             return loanProduct == null ? null : Map(loanProduct);
         }
 
-        public void Add(LoanProductDto loanProductDto)
+        public int Add(LoanProductDto dto)
         {
-            _validator.Validate(loanProductDto);
-            if (loanProductDto.Notification.HasErrors) return;
+            _validator.Validate(dto);
+            if (dto.Notification.HasErrors)
+                throw new ArgumentException("Validation failed.", "dto");
 
             var loanProduct = new LoanProduct();
-            loanProduct.InjectFrom(loanProductDto).InjectFrom<NullableToNormalInjection>(loanProductDto);
-            loanProduct.Currency = _currencyRepository.FindById(loanProductDto.CurrencyId ?? 1);
-            var entryFeeIds = loanProductDto.EntryFees.Select(ef => ef.Id).ToArray();
+            loanProduct.InjectFrom(dto).InjectFrom<NullableToNormalInjection>(dto);
+            loanProduct.Currency = _currencyRepository.FindById(dto.CurrencyId ?? 1);
+            var entryFeeIds = dto.EntryFees.Select(ef => ef.Id).ToArray();
             loanProduct.EntryFees = _entryFeeRepository.FindByIds(entryFeeIds);
-            _loanProductRepository.Add(loanProduct);
+            return _loanProductRepository.Add(loanProduct);
         }
 
-        public void Update(LoanProductDto loanProductDto)
+        public void Update(LoanProductDto dto)
         {
-            _validator.Validate(loanProductDto);
-            if (loanProductDto.Notification.HasErrors) return;
+            _validator.Validate(dto);
+            if (dto.Notification.HasErrors)
+                throw new ArgumentException("Validation failed.", "dto");
 
-            var loanProduct = _loanProductRepository.FindById(loanProductDto.Id);
-            loanProduct.InjectFrom(loanProductDto).InjectFrom<NullableToNormalInjection>(loanProductDto);
-            loanProduct.Currency = _currencyRepository.FindById(loanProductDto.CurrencyId ?? 1);
-            var entryFeeIds = loanProductDto.EntryFees.Select(ef => ef.Id).ToArray();
+            var loanProduct = _loanProductRepository.FindById(dto.Id);
+            if (loanProduct == null)
+                throw new ArgumentException("Object not found in repository.", "dto");
+            loanProduct.InjectFrom(dto).InjectFrom<NullableToNormalInjection>(dto);
+            loanProduct.Currency = _currencyRepository.FindById(dto.CurrencyId ?? 1);
+            var entryFeeIds = dto.EntryFees.Select(ef => ef.Id).ToArray();
             loanProduct.EntryFees = _entryFeeRepository.FindByIds(entryFeeIds);
             _loanProductRepository.Update(loanProduct);
         }

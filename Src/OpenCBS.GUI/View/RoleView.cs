@@ -103,6 +103,7 @@ namespace OpenCBS.GUI.View
 
             set
             {
+                if (value == null) return;
                 var checkBoxes = GetControls(this)
                     .OfType<CheckBox>().Where(cb => cb.Tag is string && value.Contains(cb.Tag.ToString()));
                 foreach (var checkBox in checkBoxes)

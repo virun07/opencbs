@@ -58,7 +58,7 @@ namespace OpenCBS.Persistence
             throw new NotImplementedException();
         }
 
-        public void Add(Currency entity)
+        public int Add(Currency entity)
         {
             throw new NotImplementedException();
         }

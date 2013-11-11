@@ -141,24 +141,25 @@ namespace OpenCBS.Persistence
             {
                 connection.Execute("delete from LoanProductEntryFee where LoanProductId = @Id", new { entity.Id });
                 var map = entity.EntryFees
-                                .Select(ef => new LoanProductEntryFee {LoanProductId = entity.Id, EntryFeeId = ef.Id})
+                                .Select(ef => new LoanProductEntryFee { LoanProductId = entity.Id, EntryFeeId = ef.Id })
                                 .ToList();
                 connection.Execute("insert LoanProductEntryFee values (@LoanProductId, @EntryFeeId)", map);
                 connection.Update(row);
             }
         }
 
-        public void Add(LoanProduct entity)
+        public int Add(LoanProduct entity)
         {
             var row = new LoanProductRow();
             row.InjectFrom<FlatLoopValueInjection>(entity).InjectFrom<EnumToIntInjection>(entity);
             using (var connection = _connectionProvider.GetConnection())
             {
-                entity.Id = connection.Insert(row);
+                var id = connection.Insert(row);
                 var map = entity.EntryFees
-                                .Select(ef => new LoanProductEntryFee { LoanProductId = entity.Id, EntryFeeId = ef.Id })
+                                .Select(ef => new LoanProductEntryFee { LoanProductId = id, EntryFeeId = ef.Id })
                                 .ToList();
                 connection.Execute("insert LoanProductEntryFee values (@LoanProductId, @EntryFeeId)", map);
+                return id;
             }
         }
 

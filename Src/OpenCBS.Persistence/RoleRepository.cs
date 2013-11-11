@@ -30,6 +30,7 @@ namespace OpenCBS.Persistence
     {
         private readonly IConnectionProvider _connectionProvider;
 
+        // ReSharper disable UnusedMember.Local
         // ReSharper disable UnusedAutoPropertyAccessor.Local
         private class RolePermission
         {
@@ -43,6 +44,7 @@ namespace OpenCBS.Persistence
             public string Name { get; set; }
         }
         // ReSharper restore UnusedAutoPropertyAccessor.Local
+        // ReSharper restore UnusedMember.Local
 
         public RoleRepository(IConnectionProvider connectionProvider)
         {
@@ -77,6 +79,10 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
+                var row = new RoleRow();
+                row.InjectFrom(entity);
+                connection.Update(row);
+
                 var sql = @"delete from RolePermission where RoleId = @Id";
                 connection.Execute(sql, new { entity.Id });
                 var map = entity
@@ -85,17 +91,23 @@ namespace OpenCBS.Persistence
                     .ToList();
                 sql = @"insert RolePermission values (@RoleId, @Permission)";
                 connection.Execute(sql, map);
-                var row = new RoleRow();
-                row.InjectFrom(entity);
-                connection.Update(row);
             }
         }
 
-        public void Add(Role entity)
+        public int Add(Role entity)
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                connection.Insert(entity);
+                var row = new RoleRow();
+                row.InjectFrom(entity);
+                var id = connection.Insert(row);
+
+                const string sql = @"insert RolePermission values (@RoleId, @Permission)";
+                var map = entity
+                    .Permissions
+                    .Select(p => new RolePermission { RoleId = id, Permission = p });
+                connection.Execute(sql, map);
+                return id;
             }
         }
 

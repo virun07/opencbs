@@ -62,7 +62,7 @@ namespace OpenCBS.Persistence
             throw new System.NotImplementedException();
         }
 
-        public void Add(User entity)
+        public int Add(User entity)
         {
             throw new System.NotImplementedException();
         }

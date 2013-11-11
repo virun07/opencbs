@@ -69,11 +69,11 @@ namespace OpenCBS.Persistence
             }
         }
 
-        public void Add(EntryFee entity)
+        public int Add(EntryFee entity)
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                connection.Insert(entity);
+                return connection.Insert(entity);
             }
         }
 

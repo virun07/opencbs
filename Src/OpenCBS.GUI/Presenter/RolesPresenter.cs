@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using System.Linq;
+using OpenCBS.GUI.AppEvent;
 using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
@@ -26,7 +27,8 @@ using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.Presenter
 {
-    public class RolesPresenter : IRolesPresenter, IRolesPresenterCallbacks
+    public class RolesPresenter : IRolesPresenter, IRolesPresenterCallbacks,
+        IEventHandler<RoleSavedEvent>
     {
         private readonly IRolesView _view;
         private readonly IApplicationController _appController;
@@ -53,6 +55,7 @@ namespace OpenCBS.GUI.Presenter
 
         public void Add()
         {
+            _appController.Execute(new AddRoleData());
         }
 
         public void Edit()
@@ -87,6 +90,11 @@ namespace OpenCBS.GUI.Presenter
                             ? _roleService.FindAll()
                             : _roleService.FindAll().Where(r => !r.Deleted).ToList().AsReadOnly();
             _view.ShowRoles(roles);
+        }
+
+        public void Handle(RoleSavedEvent eventData)
+        {
+            ShowRoles();
         }
     }
 }

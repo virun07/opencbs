@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Omu.ValueInjecter;
@@ -59,23 +60,27 @@ namespace OpenCBS.Service
             return entryFeeDto;
         }
 
-        public void Add(EntryFeeDto entryFeeDto)
+        public int Add(EntryFeeDto dto)
         {
-            _validator.Validate(entryFeeDto);
-            if (entryFeeDto.Notification.HasErrors) return;
+            _validator.Validate(dto);
+            if (dto.Notification.HasErrors)
+                throw new ArgumentException("Validation failed.", "dto");
 
             var entryFee = new EntryFee();
-            entryFee.InjectFrom(entryFeeDto).InjectFrom<NullableToNormalInjection>(entryFeeDto);
-            _repository.Add(entryFee);
+            entryFee.InjectFrom(dto).InjectFrom<NullableToNormalInjection>(dto);
+            return _repository.Add(entryFee);
         }
 
-        public void Update(EntryFeeDto entryFeeDto)
+        public void Update(EntryFeeDto dto)
         {
-            _validator.Validate(entryFeeDto);
-            if (entryFeeDto.Notification.HasErrors) return;
+            _validator.Validate(dto);
+            if (dto.Notification.HasErrors)
+                throw new ArgumentException("Validatoin failed.", "dto");
 
-            var entryFee = _repository.FindById(entryFeeDto.Id);
-            entryFee.InjectFrom(entryFeeDto).InjectFrom<NullableToNormalInjection>(entryFeeDto);
+            var entryFee = _repository.FindById(dto.Id);
+            if (entryFee == null)
+                throw new ArgumentException("Object not found in repository.", "dto");
+            entryFee.InjectFrom(dto).InjectFrom<NullableToNormalInjection>(dto);
             _repository.Update(entryFee);
         }
 
