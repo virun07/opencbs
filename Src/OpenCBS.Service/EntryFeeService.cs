@@ -17,7 +17,6 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Omu.ValueInjecter;
@@ -30,7 +29,7 @@ using OpenCBS.Model;
 
 namespace OpenCBS.Service
 {
-    public class EntryFeeService : IEntryFeeService
+    public class EntryFeeService : Service, IEntryFeeService
     {
         private readonly IEntryFeeRepository _repository;
         private readonly IEntryFeeValidator _validator;
@@ -63,8 +62,7 @@ namespace OpenCBS.Service
         public int Add(EntryFeeDto dto)
         {
             _validator.Validate(dto);
-            if (dto.Notification.HasErrors)
-                throw new ArgumentException("Validation failed.", "dto");
+            ThrowIfInvalid(dto);
 
             var entryFee = new EntryFee();
             entryFee.InjectFrom(dto).InjectFrom<NullableToNormalInjection>(dto);
@@ -74,12 +72,10 @@ namespace OpenCBS.Service
         public void Update(EntryFeeDto dto)
         {
             _validator.Validate(dto);
-            if (dto.Notification.HasErrors)
-                throw new ArgumentException("Validatoin failed.", "dto");
+            ThrowIfInvalid(dto);
 
             var entryFee = _repository.FindById(dto.Id);
-            if (entryFee == null)
-                throw new ArgumentException("Object not found in repository.", "dto");
+            ThrowIfNotFound(entryFee);
             entryFee.InjectFrom(dto).InjectFrom<NullableToNormalInjection>(dto);
             _repository.Update(entryFee);
         }

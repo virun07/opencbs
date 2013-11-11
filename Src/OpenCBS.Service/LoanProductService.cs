@@ -17,7 +17,6 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Omu.ValueInjecter;
@@ -31,7 +30,7 @@ using OpenCBS.Model.Interface;
 
 namespace OpenCBS.Service
 {
-    public class LoanProductService : ILoanProductService
+    public class LoanProductService : Service, ILoanProductService
     {
         private readonly ILoanProductRepository _loanProductRepository;
         private readonly IEntryFeeRepository _entryFeeRepository;
@@ -69,8 +68,7 @@ namespace OpenCBS.Service
         public int Add(LoanProductDto dto)
         {
             _validator.Validate(dto);
-            if (dto.Notification.HasErrors)
-                throw new ArgumentException("Validation failed.", "dto");
+            ThrowIfInvalid(dto);
 
             var loanProduct = new LoanProduct();
             loanProduct.InjectFrom(dto).InjectFrom<NullableToNormalInjection>(dto);
@@ -83,12 +81,11 @@ namespace OpenCBS.Service
         public void Update(LoanProductDto dto)
         {
             _validator.Validate(dto);
-            if (dto.Notification.HasErrors)
-                throw new ArgumentException("Validation failed.", "dto");
+            ThrowIfInvalid(dto);
 
             var loanProduct = _loanProductRepository.FindById(dto.Id);
-            if (loanProduct == null)
-                throw new ArgumentException("Object not found in repository.", "dto");
+            ThrowIfNotFound(loanProduct);
+
             loanProduct.InjectFrom(dto).InjectFrom<NullableToNormalInjection>(dto);
             loanProduct.Currency = _currencyRepository.FindById(dto.CurrencyId ?? 1);
             var entryFeeIds = dto.EntryFees.Select(ef => ef.Id).ToArray();

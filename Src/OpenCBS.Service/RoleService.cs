@@ -17,7 +17,6 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Omu.ValueInjecter;
@@ -29,7 +28,7 @@ using OpenCBS.Model;
 
 namespace OpenCBS.Service
 {
-    public class RoleService : IRoleService
+    public class RoleService : Service, IRoleService
     {
         private readonly IRoleRepository _roleRepository;
         private readonly IRoleValidator _validator;
@@ -59,8 +58,7 @@ namespace OpenCBS.Service
         public int Add(RoleDto dto)
         {
             _validator.Validate(dto);
-            if (dto.Notification.HasErrors)
-                throw new ArgumentException("Validation failed.", "dto");
+            ThrowIfInvalid(dto);
 
             var role = new Role();
             role.InjectFrom(dto);
@@ -70,12 +68,10 @@ namespace OpenCBS.Service
         public void Update(RoleDto dto)
         {
             _validator.Validate(dto);
-            if (dto.Notification.HasErrors)
-                throw new ArgumentException("Validation failed.", "dto");
+            ThrowIfInvalid(dto);
 
             var role = _roleRepository.FindById(dto.Id);
-            if (role == null)
-                throw new ArgumentException("Object not found in repository.", "dto");
+            ThrowIfNotFound(role);
 
             role.InjectFrom(dto);
             _roleRepository.Update(role);
