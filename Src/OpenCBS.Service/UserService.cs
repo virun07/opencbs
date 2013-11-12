@@ -43,7 +43,8 @@ namespace OpenCBS.Service
 
         public UserDto FindById(int id)
         {
-            throw new System.NotImplementedException();
+            var user = _userRepository.FindById(id);
+            return user == null ? null : Map(user);
         }
 
         public void Validate(UserDto dto)

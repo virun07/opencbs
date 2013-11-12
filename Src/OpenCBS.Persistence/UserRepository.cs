@@ -74,10 +74,10 @@ namespace OpenCBS.Persistence
         {
             const string sql = @"
                 select * from [User] u left join Role r on r.id = u.RoleId where u.Id = @Id
-                select Permission from RolePermission rp right join [User] u on rp.RoleId = u.RoleId
+                select Permission from RolePermission rp right join [User] u on rp.RoleId = u.RoleId where u.Id = @Id
             ";
             using (var connection = _connectionProvider.GetConnection())
-            using (var multi = connection.QueryMultiple(sql))
+            using (var multi = connection.QueryMultiple(sql, new { Id = id }))
             {
                 var result = multi.Read<User, Role, User>((user, role) =>
                 {

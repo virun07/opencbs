@@ -17,32 +17,39 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.CommandData;
+using Omu.ValueInjecter;
+using OpenCBS.DataContract;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
-using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.Presenter
 {
-    public class UsersPresenter : IUsersPresenter, IUsersPresenterCallbacks
+    public class UserPresenter : IUserPresenter, IUserPresenterCallbacks
     {
-        private readonly IUsersView _view;
+        private readonly IUserView _view;
         private readonly IApplicationController _appController;
-        private readonly IUserService _userService;
+        private CommandResult _commandResult = CommandResult.Cancel;
 
-        public UsersPresenter(IUsersView view, IApplicationController appController, IUserService userService)
+        public UserPresenter(IUserView view, IApplicationController appController)
         {
             _view = view;
             _appController = appController;
-            _userService = userService;
         }
 
-        public void Run()
+        public Result<UserDto> Get(UserDto userDto)
         {
             _view.Attach(this);
+            _view.InjectFrom(userDto);
+            _view.CanEditPassword = userDto == null;
             _view.Run();
-            ShowUsers();
+
+            if (_commandResult != CommandResult.Ok)
+                return new Result<UserDto>(_commandResult, null);
+
+            var newUserDto = GetUserDto();
+            newUserDto.Id = userDto != null ? userDto.Id : 0;
+            return new Result<UserDto>(_commandResult, newUserDto);
         }
 
         public object View
@@ -50,41 +57,23 @@ namespace OpenCBS.GUI.Presenter
             get { return _view; }
         }
 
-        public void Add()
+        public void Ok()
         {
         }
 
-        public void Edit()
+        public void Cancel()
         {
-            var id = _view.SelectedUserId;
-            if (id == null) return;
-            _appController.Execute(new EditUserData { Id = id.Value });
-        }
-
-        public void Delete()
-        {
-        }
-
-        public void Refresh()
-        {
-            ShowUsers();
-        }
-
-        public void ChangeSelection()
-        {
-            var id = _view.SelectedUserId;
-            _view.CanEdit = _view.CanDelete = id != null;
+            _commandResult = CommandResult.Cancel;
+            _view.Stop();
         }
 
         public void Close()
         {
-            _appController.Unsubscribe(this);
         }
 
-        private void ShowUsers()
+        private UserDto GetUserDto()
         {
-            var users = _userService.FindAll();
-            _view.ShowUsers(users);
+            return null;
         }
     }
 }

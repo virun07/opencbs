@@ -65,6 +65,8 @@
     <Compile Include="Presenter\IRolesPresenterCallbacks.cs" />
     <Compile Include="Presenter\ISelectEntryFeePresenter.cs" />
     <Compile Include="Presenter\ISelectEntryFeePresenterCallbacks.cs" />
+    <Compile Include="Presenter\IUserPresenter.cs" />
+    <Compile Include="Presenter\IUserPresenterCallbacks.cs" />
     <Compile Include="Presenter\IUsersPresenter.cs" />
     <Compile Include="Presenter\IUsersPresenterCallbacks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,6 +101,7 @@
     <Compile Include="View\IRoleView.cs" />
     <Compile Include="View\ISelectEntryFeeView.cs" />
     <Compile Include="View\IUsersView.cs" />
+    <Compile Include="View\IUserView.cs" />
     <Compile Include="View\IView.cs" />
   </ItemGroup>
   <ItemGroup />

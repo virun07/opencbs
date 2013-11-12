@@ -439,6 +439,7 @@
     <Compile Include="AppEvent\LanguageChangedEvent.cs" />
     <Compile Include="AppEvent\RoleDeletedEvent.cs" />
     <Compile Include="AppEvent\RoleSavedEvent.cs" />
+    <Compile Include="AppEvent\UserSavedEvent.cs" />
     <Compile Include="AuditTrail\AuditTrailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -478,6 +479,7 @@
     <Compile Include="CommandData\DeleteRoleData.cs" />
     <Compile Include="CommandData\EditEntryFeeData.cs" />
     <Compile Include="CommandData\EditRoleData.cs" />
+    <Compile Include="CommandData\EditUserData.cs" />
     <Compile Include="CommandData\SelectEntryFeeData.cs" />
     <Compile Include="CommandData\ShowEntryFeesData.cs" />
     <Compile Include="CommandData\ShowRolesData.cs" />
@@ -491,6 +493,7 @@
     <Compile Include="Command\DeleteRoleCommand.cs" />
     <Compile Include="Command\EditEntryFeeCommand.cs" />
     <Compile Include="Command\EditRoleCommand.cs" />
+    <Compile Include="Command\EditUserCommand.cs" />
     <Compile Include="Command\SelectEntryFeeCommand.cs" />
     <Compile Include="Command\ShowEntryFeesCommand.cs" />
     <Compile Include="Command\ShowRolesCommand.cs" />
@@ -792,6 +795,7 @@
     <Compile Include="Presenter\RolePresenter.cs" />
     <Compile Include="Presenter\RolesPresenter.cs" />
     <Compile Include="Presenter\SelectEntryFeePresenter.cs" />
+    <Compile Include="Presenter\UserPresenter.cs" />
     <Compile Include="Presenter\UsersPresenter.cs" />
     <Compile Include="View\BaseView.cs">
       <SubType>Form</SubType>
@@ -1265,6 +1269,12 @@
     </Compile>
     <Compile Include="View\UsersView.Designer.cs">
       <DependentUpon>UsersView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UserView.Designer.cs">
+      <DependentUpon>UserView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AboutForm.es-ES.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
@@ -3190,6 +3200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\UsersView.resx">
       <DependentUpon>UsersView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserView.resx">
+      <DependentUpon>UserView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="dump.bat">
