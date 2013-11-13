@@ -21,7 +21,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
-using Omu.ValueInjecter;
 using OpenCBS.Interface.Repository;
 using OpenCBS.Model;
 
@@ -29,20 +28,6 @@ namespace OpenCBS.Persistence
 {
     public class UserRepository : IUserRepository
     {
-        // ReSharper disable UnusedMember.Local
-        // ReSharper disable UnusedAutoPropertyAccessor.Local
-        private class UserRow
-        {
-            public int Id { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string Email { get; set; }
-            public string Username { get; set; }
-            public string Password { get; set; }
-        }
-        // ReSharper restore UnusedAutoPropertyAccessor.Local
-        // ReSharper restore UnusedMember.Local
-
         private readonly IConnectionProvider _connectionProvider;
 
         public UserRepository(IConnectionProvider connectionProvider)
@@ -53,17 +38,18 @@ namespace OpenCBS.Persistence
         public User FindByUsernameAndPassword(string username, string password)
         {
             const string sql = @"
-                    select * from [User] where Username = @Username and Password = @Password
+                    select id Id, first_name FirstName, last_name LastName, mail Email, user_name Username
+                    from Users where user_name = @Username and user_pass = @Password
 
-                    select r.* from Role r
+                    select r.id Id, r.code Name from Roles r
                     inner join UserRole ur on ur.role_id = r.id
-                    inner join [User] u on u.id = ur.user_id
-                    where u.Username = @Username and u.Password = @Password
+                    inner join Users u on u.id = ur.user_id
+                    where u.user_name = @Username and u.user_pass = @Password
 
                     select rp.RoleId, rp.Permission from RolePermission rp
                     inner join UserRole ur on ur.role_id = rp.RoleId
-                    inner join [User] u on u.id = ur.user_id
-                    where u.Username = @Username and u.Password = @Password
+                    inner join Users u on u.id = ur.user_id
+                    where u.user_name = @Username and u.user_pass = @Password
                 ";
             using (var connection = _connectionProvider.GetConnection())
             using (var multi = connection.QueryMultiple(sql, new { Username = username, Password = password }))
@@ -83,9 +69,9 @@ namespace OpenCBS.Persistence
         public IList<User> FindAll()
         {
             const string sql = @"
-                select * from [User]
+                select id Id, first_name FirstName, last_name LastName, mail Email, user_name Username from Users
                 select user_id, role_id from UserRole
-                select * from Role
+                select id Id, code Name from Roles
             ";
             using (var connection = _connectionProvider.GetConnection())
             using (var multi = connection.QueryMultiple(sql))
@@ -105,17 +91,18 @@ namespace OpenCBS.Persistence
         public User FindById(int id)
         {
             const string sql = @"
-                    select * from [User] where Id = @Id
+                    select id Id, first_name FirstName, last_name LastName, mail Email, user_name Username from Users
+                    where id = @Id
 
-                    select r.* from Role r
+                    select r.id Id, r.code Name from Roles r
                     inner join UserRole ur on ur.role_id = r.id
-                    inner join [User] u on u.id = ur.user_id
-                    where u.Id = @Id
+                    inner join Users u on u.id = ur.user_id
+                    where u.id = @Id
 
                     select rp.RoleId, rp.Permission from RolePermission rp
                     inner join UserRole ur on ur.role_id = rp.RoleId
-                    inner join [User] u on u.id = ur.user_id
-                    where u.Id = @Id
+                    inner join Users u on u.id = ur.user_id
+                    where u.id = @Id
                 ";
             using (var connection = _connectionProvider.GetConnection())
             using (var multi = connection.QueryMultiple(sql, new { Id = id }))
@@ -136,12 +123,14 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                var row = new UserRow();
-                row.InjectFrom(entity);
-                var exclude = new[] { "Password" };
-                connection.Update(row, exclude);
+                var sql = @"
+                    update Users
+                    set first_name = @FirstName, last_name = @LastName, user_name = @Username, mail = @Email
+                    where id = @Id
+                ";
+                connection.Execute(sql, entity);
 
-                var sql = @"delete UserRole where user_id = @Id";
+                sql = @"delete UserRole where user_id = @Id";
                 connection.Execute(sql, new { entity.Id });
                 var map = entity.Roles.Select(r => new { UserId = entity.Id, RoleId = r.Id });
                 sql = @"insert UserRole (user_id, role_id) values (@UserId, @RoleId)";
@@ -153,11 +142,15 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                var row = new UserRow();
-                row.InjectFrom(entity);
-                var id = connection.Insert(row);
+                var sql = @"
+                    insert Users
+                    (first_name, last_name, user_name, mail, user_pass, role_code)
+                    values (@FirstName, @LastName, @Username, @Email, @Password, 'VISIT')
+                    select cast(scope_identity() as int)
+                ";
+                var id = connection.Query<int>(sql, entity).Single();
 
-                const string sql = @"insert UserRole (user_id, role_id) values (@UserId, @RoleId)";
+                sql = @"insert UserRole (user_id, role_id) values (@UserId, @RoleId)";
                 var map = entity.Roles.Select(r => new { UserId = id, RoleId = r.Id });
                 connection.Execute(sql, map);
                 return id;
@@ -168,7 +161,7 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                connection.Delete<User>(id);
+                connection.Execute(@"update Users set deleted = 1 where id = @id", new { Id = id });
             }
         }
     }

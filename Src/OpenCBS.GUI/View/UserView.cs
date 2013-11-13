@@ -64,10 +64,19 @@ namespace OpenCBS.GUI.View
             }
         }
 
-        public bool CanEditPassword
+        public void DisablePassword()
         {
-            get { return _passwordTextBox.Enabled; }
-            set { _passwordTextBox.Enabled = _passwordConfirmationTextBox.Enabled = value; }
+            var controls = new Control[]
+            {
+                _passwordLabel,
+                _passwordTextBox,
+                _passwordConfirmationLabel,
+                _passwordConfirmationTextBox
+            };
+            foreach (var control in controls)
+            {
+                control.Enabled = control.Visible = false;
+            }
         }
 
         public int Id { get; set; }

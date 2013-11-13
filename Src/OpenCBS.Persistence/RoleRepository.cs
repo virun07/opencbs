@@ -20,7 +20,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
-using Omu.ValueInjecter;
 using OpenCBS.Interface.Repository;
 using OpenCBS.Model;
 
@@ -29,22 +28,6 @@ namespace OpenCBS.Persistence
     public class RoleRepository : IRoleRepository
     {
         private readonly IConnectionProvider _connectionProvider;
-
-        // ReSharper disable UnusedMember.Local
-        // ReSharper disable UnusedAutoPropertyAccessor.Local
-        private class RolePermission
-        {
-            public int RoleId { get; set; }
-            public string Permission { get; set; }
-        }
-
-        private class RoleRow
-        {
-            public int Id { get; set; }
-            public string Name { get; set; }
-        }
-        // ReSharper restore UnusedAutoPropertyAccessor.Local
-        // ReSharper restore UnusedMember.Local
 
         public RoleRepository(IConnectionProvider connectionProvider)
         {
@@ -55,14 +38,14 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                const string sql = @"select * from Role";
+                const string sql = @"select id Id, code Name from Roles";
                 return connection.Query<Role>(sql).ToList().AsReadOnly();
             }
         }
 
         public IList<Role> FindByIds(IList<int> ids)
         {
-            const string sql = @"select * from Role where Id in @Ids";
+            const string sql = @"select id Id, code Name from Roles where id in @Ids";
             using (var connection = _connectionProvider.GetConnection())
             {
                 return connection.Query<Role>(sql, new { Ids = ids }).ToList().AsReadOnly();
@@ -73,7 +56,7 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                var sql = @"select * from Role where Id = @Id";
+                var sql = @"select id Id, code Name from Roles where id = @Id";
                 var result = connection.Query<Role>(sql, new { Id = id }).FirstOrDefault();
                 if (result != null)
                 {
@@ -88,15 +71,14 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                var row = new RoleRow();
-                row.InjectFrom(entity);
-                connection.Update(row);
+                var sql = @"update Roles set code = @Name where id = @Id";
+                connection.Execute(sql, entity);
 
-                var sql = @"delete from RolePermission where RoleId = @Id";
+                sql = @"delete from RolePermission where RoleId = @Id";
                 connection.Execute(sql, new { entity.Id });
                 var map = entity
                     .Permissions
-                    .Select(p => new RolePermission { RoleId = entity.Id, Permission = p })
+                    .Select(p => new { RoleId = entity.Id, Permission = p })
                     .ToList();
                 sql = @"insert RolePermission values (@RoleId, @Permission)";
                 connection.Execute(sql, map);
@@ -107,14 +89,11 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                var row = new RoleRow();
-                row.InjectFrom(entity);
-                var id = connection.Insert(row);
+                var sql = @"insert Roles (code) values (@Name) select cast(scope_identity() as int)";
+                var id = connection.Query<int>(sql, entity).Single();
 
-                const string sql = @"insert RolePermission values (@RoleId, @Permission)";
-                var map = entity
-                    .Permissions
-                    .Select(p => new RolePermission { RoleId = id, Permission = p });
+                sql = @"insert RolePermission values (@RoleId, @Permission)";
+                var map = entity.Permissions.Select(p => new { RoleId = id, Permission = p });
                 connection.Execute(sql, map);
                 return id;
             }
@@ -124,7 +103,7 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                connection.Delete<Role>(id);
+                connection.Execute(@"update Roles set deleted = 1 where id = @id", new { Id = id });
             }
         }
     }

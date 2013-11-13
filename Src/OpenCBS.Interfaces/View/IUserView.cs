@@ -29,8 +29,7 @@ namespace OpenCBS.Interface.View
         void Stop();
         void ShowNotification(Notification notification);
         void ShowRoles(Dictionary<int, string> roles);
-
-        bool CanEditPassword { get; set; }
+        void DisablePassword();
 
         int Id { get; set; }
         string Username { get; set; }
