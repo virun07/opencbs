@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
@@ -37,67 +38,93 @@ namespace OpenCBS.Persistence
         public User FindByUsernameAndPassword(string username, string password)
         {
             const string sql = @"
-                    select * from [User] u left join Role r on r.Id = u.RoleId 
-                    where u.Username = @Username and u.Password = @password
+                    select * from [User] where Username = @Username and Password = @Password
 
-                    select Permission from RolePermission rp right join [User] u on rp.RoleId = u.RoleId
-                    where u.Username = @Username and u.Password = @password                    
+                    select r.* from Role r
+                    inner join UserRole ur on ur.role_id = r.id
+                    inner join [User] u on u.id = ur.user_id
+                    where u.Username = @Username and u.Password = @Password
+
+                    select rp.RoleId, rp.Permission from RolePermission rp
+                    inner join UserRole ur on ur.role_id = rp.RoleId
+                    inner join [User] u on u.id = ur.user_id
+                    where u.Username = @Username and u.Password = @Password
                 ";
             using (var connection = _connectionProvider.GetConnection())
             using (var multi = connection.QueryMultiple(sql, new { Username = username, Password = password }))
             {
-                var result = multi.Read<User, Role, User>((user, role) =>
+                var user = multi.Read<User>().SingleOrDefault();
+                if (user == null) return null;
+                user.Roles = multi.Read<Role>().ToList();
+                var permissions = multi.Read<int, string, Tuple<int, string>>(Tuple.Create, "*").ToList();
+                foreach (var role in user.Roles)
                 {
-                    user.Role = role;
-                    return user;
-                }).SingleOrDefault();
-                if (result == null) return null;
-                result.Role.Permissions = multi.Read<string>().ToList().AsReadOnly();
-                return result;
+                    role.Permissions = permissions.Where(p => p.Item1 == role.Id).Select(p => p.Item2).ToList().AsReadOnly();
+                }
+                return user;
             }
         }
 
         public IList<User> FindAll()
         {
-            const string sql = @"select * from [User] u left join Role r on r.id = u.RoleId";
+            const string sql = @"
+                select * from [User]
+                select user_id, role_id from UserRole
+                select * from Role
+            ";
             using (var connection = _connectionProvider.GetConnection())
+            using (var multi = connection.QueryMultiple(sql))
             {
-                return connection.Query<User, Role, User>(sql, (user, role) =>
+                var users = multi.Read<User>().ToList().AsReadOnly();
+                var map = multi.Read<int, int, Tuple<int, int>>(Tuple.Create, "*").ToList();
+                var roles = multi.Read<Role>().ToList().AsReadOnly();
+                foreach (var user in users)
                 {
-                    user.Role = role;
-                    return user;
-                }).ToList().AsReadOnly();
+                    var ids = map.Where(m => m.Item1 == user.Id).Select(m => m.Item2).ToList();
+                    user.Roles = roles.Where(r => ids.Contains(r.Id)).ToList().AsReadOnly();
+                }
+                return users;
             }
         }
 
         public User FindById(int id)
         {
             const string sql = @"
-                select * from [User] u left join Role r on r.id = u.RoleId where u.Id = @Id
-                select Permission from RolePermission rp right join [User] u on rp.RoleId = u.RoleId where u.Id = @Id
-            ";
+                    select * from [User] where Id = @Id
+
+                    select r.* from Role r
+                    inner join UserRole ur on ur.role_id = r.id
+                    inner join [User] u on u.id = ur.user_id
+                    where u.Id = @Id
+
+                    select rp.RoleId, rp.Permission from RolePermission rp
+                    inner join UserRole ur on ur.role_id = rp.RoleId
+                    inner join [User] u on u.id = ur.user_id
+                    where u.Id = @Id
+                ";
             using (var connection = _connectionProvider.GetConnection())
             using (var multi = connection.QueryMultiple(sql, new { Id = id }))
             {
-                var result = multi.Read<User, Role, User>((user, role) =>
+                var user = multi.Read<User>().SingleOrDefault();
+                if (user == null) return null;
+                user.Roles = multi.Read<Role>().ToList();
+                var permissions = multi.Read<int, string, Tuple<int, string>>(Tuple.Create, "*").ToList();
+                foreach (var role in user.Roles)
                 {
-                    user.Role = role;
-                    return user;
-                }).SingleOrDefault();
-                if (result == null) return null;
-                result.Role.Permissions = multi.Read<string>().ToList().AsReadOnly();
-                return result;
+                    role.Permissions = permissions.Where(p => p.Item1 == role.Id).Select(p => p.Item2).ToList().AsReadOnly();
+                }
+                return user;
             }
         }
 
         public void Update(User entity)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public int Add(User entity)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void Remove(int id)

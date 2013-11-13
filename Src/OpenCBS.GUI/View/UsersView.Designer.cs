@@ -32,7 +32,7 @@
             this._lastNameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._firstNameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._usernameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this._roleNameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._rolesColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._buttonsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this._addButton = new System.Windows.Forms.Button();
             this._editButton = new System.Windows.Forms.Button();
@@ -47,12 +47,12 @@
             this._usersListView.AllColumns.Add(this._lastNameColumn);
             this._usersListView.AllColumns.Add(this._firstNameColumn);
             this._usersListView.AllColumns.Add(this._usernameColumn);
-            this._usersListView.AllColumns.Add(this._roleNameColumn);
+            this._usersListView.AllColumns.Add(this._rolesColumn);
             this._usersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this._lastNameColumn,
             this._firstNameColumn,
             this._usernameColumn,
-            this._roleNameColumn});
+            this._rolesColumn});
             this._usersListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._usersListView.FullRowSelect = true;
             this._usersListView.GridLines = true;
@@ -86,11 +86,11 @@
             this._usernameColumn.Text = "Username";
             this._usernameColumn.Width = 150;
             // 
-            // _roleNameColumn
+            // _rolesColumn
             // 
-            this._roleNameColumn.AspectName = "RoleName";
-            this._roleNameColumn.Text = "Role";
-            this._roleNameColumn.Width = 150;
+            this._rolesColumn.AspectName = "Roles";
+            this._rolesColumn.Text = "Roles";
+            this._rolesColumn.Width = 250;
             // 
             // _buttonsPanel
             // 
@@ -176,7 +176,7 @@
         private System.Windows.Forms.Button _deleteButton;
         private System.Windows.Forms.CheckBox _showDeletedCheckBox;
         private BrightIdeasSoftware.OLVColumn _lastNameColumn;
-        private BrightIdeasSoftware.OLVColumn _roleNameColumn;
+        private BrightIdeasSoftware.OLVColumn _rolesColumn;
         private BrightIdeasSoftware.OLVColumn _usernameColumn;
     }
 }

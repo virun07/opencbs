@@ -33,6 +33,7 @@ namespace OpenCBS.GUI.View
         {
             InitializeComponent();
             MdiParent = Application.OpenForms[0];
+            Setup();
         }
 
         public void Run()
@@ -83,6 +84,15 @@ namespace OpenCBS.GUI.View
         public bool ShowDeleted
         {
             get { return _showDeletedCheckBox.Checked; }
+        }
+
+        private void Setup()
+        {
+            _rolesColumn.AspectToStringConverter = value =>
+            {
+                var roles = (IDictionary<int, string>) value;
+                return string.Join(", ", roles.Values);
+            };
         }
     }
 }

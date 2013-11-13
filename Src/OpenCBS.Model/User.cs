@@ -17,6 +17,8 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
+
 namespace OpenCBS.Model
 {
     public class User : EntityBase
@@ -27,6 +29,6 @@ namespace OpenCBS.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public Role Role { get; set; }
+        public IList<Role> Roles { get; set; }
     }
 }

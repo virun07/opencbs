@@ -17,6 +17,8 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
+
 namespace OpenCBS.DataContract
 {
     public class UserDto : DataTransferObject
@@ -27,7 +29,6 @@ namespace OpenCBS.DataContract
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public int RoleId { get; set; }
-        public string RoleName { get; set; }
+        public Dictionary<int, string> Roles { get; set; }
     }
 }

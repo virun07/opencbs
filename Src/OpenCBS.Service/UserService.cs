@@ -71,6 +71,7 @@ namespace OpenCBS.Service
         {
             var result = new UserDto();
             result.InjectFrom<FlatLoopValueInjection>(user);
+            result.Roles = user.Roles.ToDictionary(r => r.Id, r => r.Name);
             return result;
         }
     }
