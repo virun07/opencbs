@@ -40,12 +40,6 @@ namespace OpenCBS.Persistence
             public string Username { get; set; }
             public string Password { get; set; }
         }
-
-        private class UserRole
-        {
-            public int UserId { get; set; }
-            public int RoleId { get; set; }
-        }
         // ReSharper restore UnusedAutoPropertyAccessor.Local
         // ReSharper restore UnusedMember.Local
 
@@ -149,7 +143,7 @@ namespace OpenCBS.Persistence
 
                 var sql = @"delete UserRole where user_id = @Id";
                 connection.Execute(sql, new { entity.Id });
-                var map = entity.Roles.Select(r => new UserRole { UserId = entity.Id, RoleId = r.Id });
+                var map = entity.Roles.Select(r => new { UserId = entity.Id, RoleId = r.Id });
                 sql = @"insert UserRole (user_id, role_id) values (@UserId, @RoleId)";
                 connection.Execute(sql, map);
             }
@@ -157,7 +151,17 @@ namespace OpenCBS.Persistence
 
         public int Add(User entity)
         {
-            throw new NotImplementedException();
+            using (var connection = _connectionProvider.GetConnection())
+            {
+                var row = new UserRow();
+                row.InjectFrom(entity);
+                var id = connection.Insert(row);
+
+                const string sql = @"insert UserRole (user_id, role_id) values (@UserId, @RoleId)";
+                var map = entity.Roles.Select(r => new { UserId = id, RoleId = r.Id });
+                connection.Execute(sql, map);
+                return id;
+            }
         }
 
         public void Remove(int id)

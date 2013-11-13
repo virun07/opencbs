@@ -47,7 +47,7 @@ namespace OpenCBS.GUI.Presenter
         {
             _view.Attach(this);
             _view.ShowRoles(_roleService.FindAll().ToDictionary(r => r.Id, r => r.Name));
-            _view.InjectFrom(userDto);
+            _view.InjectFrom(userDto ?? new UserDto());
             _view.CanEditPassword = userDto == null;
             _view.Run();
 

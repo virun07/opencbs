@@ -59,7 +59,13 @@ namespace OpenCBS.Service
 
         public int Add(UserDto dto)
         {
-            throw new System.NotImplementedException();
+            _userValidator.Validate(dto);
+            ThrowIfInvalid(dto);
+
+            var user = new User();
+            user.InjectFrom(dto);
+            user.Roles = _roleRepository.FindByIds(dto.RoleIds);
+            return _userRepository.Add(user);
         }
 
         public void Update(UserDto dto)

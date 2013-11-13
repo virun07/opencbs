@@ -118,6 +118,7 @@ namespace OpenCBS.GUI.View
             }
             set
             {
+                if (value == null) return;
                 var checkBoxes = GetControls(_rolesTabListPage)
                     .OfType<CheckBox>()
                     .Where(c => c.Tag is int && value.Contains(Convert.ToInt32(c.Tag)));

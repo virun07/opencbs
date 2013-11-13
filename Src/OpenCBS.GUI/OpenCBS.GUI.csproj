@@ -475,6 +475,7 @@
     </Compile>
     <Compile Include="CommandData\AddEntryFeeData.cs" />
     <Compile Include="CommandData\AddRoleData.cs" />
+    <Compile Include="CommandData\AddUserData.cs" />
     <Compile Include="CommandData\DeleteEntryFeeData.cs" />
     <Compile Include="CommandData\DeleteRoleData.cs" />
     <Compile Include="CommandData\EditEntryFeeData.cs" />
@@ -487,6 +488,7 @@
     <Compile Include="Command\AddEntryFeeCommand.cs" />
     <Compile Include="CommandData\ChangeLanguageData.cs" />
     <Compile Include="Command\AddRoleCommand.cs" />
+    <Compile Include="Command\AddUserCommand.cs" />
     <Compile Include="Command\ChangeLanguageCommand.cs" />
     <Compile Include="Command\ConfirmOperationCommand.cs" />
     <Compile Include="Command\DeleteEntryFeeCommand.cs" />

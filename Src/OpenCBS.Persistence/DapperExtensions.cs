@@ -58,9 +58,9 @@ namespace OpenCBS.Persistence
             var cols = string.Join(",", paramNames);
             var colsParams = string.Join(",", paramNames.Select(p => "@" + p));
             var builder = new StringBuilder();
-            builder.Append("set nocount on insert ");
+            builder.Append("set nocount on insert [");
             builder.Append(tableName);
-            builder.Append("(").Append(cols).Append(")");
+            builder.Append("] (").Append(cols).Append(")");
             builder.Append("values(").Append(colsParams).Append(") select cast(scope_identity() as int)");
             return connection.Query<int>(builder.ToString(), o).Single();
         }

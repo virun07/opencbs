@@ -17,7 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Linq;
+using OpenCBS.GUI.AppEvent;
 using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
@@ -26,7 +26,8 @@ using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.Presenter
 {
-    public class UsersPresenter : IUsersPresenter, IUsersPresenterCallbacks
+    public class UsersPresenter : IUsersPresenter, IUsersPresenterCallbacks,
+        IEventHandler<UserSavedEvent>
     {
         private readonly IUsersView _view;
         private readonly IApplicationController _appController;
@@ -56,6 +57,7 @@ namespace OpenCBS.GUI.Presenter
 
         public void Add()
         {
+            _appController.Execute(new AddUserData());
         }
 
         public void Edit()
@@ -89,6 +91,11 @@ namespace OpenCBS.GUI.Presenter
         {
             var users = _userService.FindAll();
             _view.ShowUsers(users);
+        }
+
+        public void Handle(UserSavedEvent eventData)
+        {
+            ShowUsers();
         }
     }
 }
