@@ -588,6 +588,12 @@
     <Compile Include="Contracts\ContractCollateralForm.Designer.cs">
       <DependentUpon>ContractCollateralForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Contracts\LoanEntryFeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contracts\LoanEntryFeesForm.Designer.cs">
+      <DependentUpon>LoanEntryFeesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Contracts\ReschedulingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1950,6 +1956,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Contracts\ContractCollateralForm.pt.resx">
       <DependentUpon>ContractCollateralForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contracts\LoanEntryFeesForm.fr.resx">
+      <DependentUpon>LoanEntryFeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contracts\LoanEntryFeesForm.resx">
+      <DependentUpon>LoanEntryFeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contracts\LoanEntryFeesForm.ru-RU.resx">
+      <DependentUpon>LoanEntryFeesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contracts\ReschedulingForm.es-ES.resx">
       <DependentUpon>ReschedulingForm.cs</DependentUpon>
