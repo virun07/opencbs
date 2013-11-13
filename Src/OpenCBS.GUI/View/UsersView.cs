@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Presenter;
@@ -86,12 +87,14 @@ namespace OpenCBS.GUI.View
             get { return _showDeletedCheckBox.Checked; }
         }
 
+        public IList<RoleDto> Roles { get; set; }
+
         private void Setup()
         {
             _rolesColumn.AspectToStringConverter = value =>
             {
-                var roles = (IDictionary<int, string>) value;
-                return string.Join(", ", roles.Values);
+                var roleIds = (IList<int>) value;
+                return string.Join(", ", Roles.Where(r => roleIds.Contains(r.Id)).Select(r => r.Name));
             };
         }
     }

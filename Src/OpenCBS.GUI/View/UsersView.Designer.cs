@@ -88,7 +88,7 @@
             // 
             // _rolesColumn
             // 
-            this._rolesColumn.AspectName = "Roles";
+            this._rolesColumn.AspectName = "RoleIds";
             this._rolesColumn.Text = "Roles";
             this._rolesColumn.Width = 250;
             // 

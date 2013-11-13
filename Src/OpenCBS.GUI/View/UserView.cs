@@ -17,7 +17,10 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
@@ -42,6 +45,23 @@ namespace OpenCBS.GUI.View
 
         public void ShowRoles(Dictionary<int, string> roles)
         {
+            var panel = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.TopDown
+            };
+            _rolesTabListPage.Controls.Add(panel);
+
+            foreach (var pair in roles)
+            {
+                var checkBox = new CheckBox
+                {
+                    Text = pair.Value,
+                    Tag = pair.Key,
+                    Width = 200
+                };
+                panel.Controls.Add(checkBox);
+            }
         }
 
         public bool CanEditPassword
@@ -49,6 +69,8 @@ namespace OpenCBS.GUI.View
             get { return _passwordTextBox.Enabled; }
             set { _passwordTextBox.Enabled = _passwordConfirmationTextBox.Enabled = value; }
         }
+
+        public int Id { get; set; }
 
         public string Username
         {
@@ -74,7 +96,7 @@ namespace OpenCBS.GUI.View
             set { _emailTextBox.Text = value; }
         }
 
-        public string Password 
+        public string Password
         {
             get { return _passwordTextBox.Text; }
         }
@@ -84,13 +106,31 @@ namespace OpenCBS.GUI.View
             get { return _passwordConfirmationTextBox.Text; }
         }
 
-
-        public int? RoleId { get; set; }
+        public IList<int> RoleIds
+        {
+            get
+            {
+                return GetControls(_rolesTabListPage)
+                    .OfType<CheckBox>()
+                    .Where(c => c.Tag is int && c.Checked)
+                    .Select(c => Convert.ToInt32(c.Tag))
+                    .ToList().AsReadOnly();
+            }
+            set
+            {
+                var checkBoxes = GetControls(_rolesTabListPage)
+                    .OfType<CheckBox>()
+                    .Where(c => c.Tag is int && value.Contains(Convert.ToInt32(c.Tag)));
+                foreach (var checkBox in checkBoxes)
+                    checkBox.Checked = true;
+            }
+        }
 
         public void Attach(IUserPresenterCallbacks presenterCallbacks)
         {
             _okButton.Click += (sender, e) => presenterCallbacks.Ok();
             _cancelButton.Click += (sender, e) => presenterCallbacks.Cancel();
+            FormClosed += (sender, e) => presenterCallbacks.Close();
         }
     }
 }

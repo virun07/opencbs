@@ -17,28 +17,11 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
 using OpenCBS.DataContract;
-using OpenCBS.Interface.Presenter;
 
-namespace OpenCBS.Interface.View
+namespace OpenCBS.Interface.Validator
 {
-    public interface IUserView : IView<IUserPresenterCallbacks>
+    public interface IUserValidator : IValidator<UserDto>
     {
-        void Run();
-        void Stop();
-        void ShowNotification(Notification notification);
-        void ShowRoles(Dictionary<int, string> roles);
-
-        bool CanEditPassword { get; set; }
-
-        int Id { get; set; }
-        string Username { get; set; }
-        string FirstName { get; set; }
-        string LastName { get; set; }
-        string Password { get; }
-        string PasswordConfirmation { get; }
-        string Email { get; set; }
-        IList<int> RoleIds { get; set; }
     }
 }

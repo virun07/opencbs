@@ -60,6 +60,15 @@ namespace OpenCBS.Persistence
             }
         }
 
+        public IList<Role> FindByIds(IList<int> ids)
+        {
+            const string sql = @"select * from Role where Id in @Ids";
+            using (var connection = _connectionProvider.GetConnection())
+            {
+                return connection.Query<Role>(sql, new { Ids = ids }).ToList().AsReadOnly();
+            }
+        }
+
         public Role FindById(int id)
         {
             using (var connection = _connectionProvider.GetConnection())

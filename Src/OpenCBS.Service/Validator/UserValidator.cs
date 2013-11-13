@@ -17,28 +17,26 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
 using OpenCBS.DataContract;
-using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.Validator;
 
-namespace OpenCBS.Interface.View
+namespace OpenCBS.Service.Validator
 {
-    public interface IUserView : IView<IUserPresenterCallbacks>
+    public class UserValidator : Validator<UserDto>, IUserValidator
     {
-        void Run();
-        void Stop();
-        void ShowNotification(Notification notification);
-        void ShowRoles(Dictionary<int, string> roles);
+        public override void Validate(UserDto entity)
+        {
+            base.Validate(entity);
+           
+            FailIfNullOrEmpty("FirstName");
+            FailIfNullOrEmpty("LastName");
+            FailIfNullOrEmpty("Username");
 
-        bool CanEditPassword { get; set; }
-
-        int Id { get; set; }
-        string Username { get; set; }
-        string FirstName { get; set; }
-        string LastName { get; set; }
-        string Password { get; }
-        string PasswordConfirmation { get; }
-        string Email { get; set; }
-        IList<int> RoleIds { get; set; }
+            if (entity.IsNew)
+            {
+                FailIfNullOrEmpty("Password");
+                Fail(entity.Password != entity.PasswordConfirmation, "PasswordConfirmation", "Passwords must match.");
+            }
+        }
     }
 }

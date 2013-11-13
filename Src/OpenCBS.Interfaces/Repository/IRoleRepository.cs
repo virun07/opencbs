@@ -17,11 +17,13 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
 using OpenCBS.Model;
 
 namespace OpenCBS.Interface.Repository
 {
     public interface IRoleRepository : IRepository<Role>
     {
+        IList<Role> FindByIds(IList<int> ids);
     }
 }

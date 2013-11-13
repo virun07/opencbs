@@ -43,7 +43,12 @@
             this._passwordLabel = new System.Windows.Forms.Label();
             this._passwordConfirmationTextBox = new System.Windows.Forms.TextBox();
             this._passwordConfirmationLabel = new System.Windows.Forms.Label();
+            this._userTabList = new Cyotek.Windows.Forms.TabList();
+            this._generalTabListPage = new Cyotek.Windows.Forms.TabListPage();
+            this._rolesTabListPage = new Cyotek.Windows.Forms.TabListPage();
             this._buttonsPanel.SuspendLayout();
+            this._userTabList.SuspendLayout();
+            this._generalTabListPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // _buttonsPanel
@@ -51,15 +56,15 @@
             this._buttonsPanel.Controls.Add(this._cancelButton);
             this._buttonsPanel.Controls.Add(this._okButton);
             this._buttonsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._buttonsPanel.Location = new System.Drawing.Point(0, 219);
+            this._buttonsPanel.Location = new System.Drawing.Point(0, 309);
             this._buttonsPanel.Name = "_buttonsPanel";
-            this._buttonsPanel.Size = new System.Drawing.Size(484, 53);
+            this._buttonsPanel.Size = new System.Drawing.Size(634, 53);
             this._buttonsPanel.TabIndex = 13;
             // 
             // _cancelButton
             // 
             this._cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._cancelButton.Location = new System.Drawing.Point(372, 13);
+            this._cancelButton.Location = new System.Drawing.Point(522, 13);
             this._cancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._cancelButton.Name = "_cancelButton";
             this._cancelButton.Size = new System.Drawing.Size(100, 28);
@@ -70,7 +75,7 @@
             // _okButton
             // 
             this._okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._okButton.Location = new System.Drawing.Point(265, 13);
+            this._okButton.Location = new System.Drawing.Point(415, 13);
             this._okButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._okButton.Name = "_okButton";
             this._okButton.Size = new System.Drawing.Size(100, 28);
@@ -182,23 +187,50 @@
             this._passwordConfirmationLabel.TabIndex = 11;
             this._passwordConfirmationLabel.Text = "Password (confirm)";
             // 
+            // _userTabList
+            // 
+            this._userTabList.Controls.Add(this._generalTabListPage);
+            this._userTabList.Controls.Add(this._rolesTabListPage);
+            this._userTabList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._userTabList.Location = new System.Drawing.Point(0, 0);
+            this._userTabList.Name = "_userTabList";
+            this._userTabList.Size = new System.Drawing.Size(634, 309);
+            this._userTabList.TabIndex = 14;
+            // 
+            // _generalTabListPage
+            // 
+            this._generalTabListPage.Controls.Add(this._passwordConfirmationTextBox);
+            this._generalTabListPage.Controls.Add(this._passwordTextBox);
+            this._generalTabListPage.Controls.Add(this._usernameTextBox);
+            this._generalTabListPage.Controls.Add(this._firstNameTextBox);
+            this._generalTabListPage.Controls.Add(this._emailTextBox);
+            this._generalTabListPage.Controls.Add(this._lastNameTextBox);
+            this._generalTabListPage.Controls.Add(this._firstNameLabel);
+            this._generalTabListPage.Controls.Add(this._passwordConfirmationLabel);
+            this._generalTabListPage.Controls.Add(this._lastNameLabel);
+            this._generalTabListPage.Controls.Add(this._passwordLabel);
+            this._generalTabListPage.Controls.Add(this._emailLabel);
+            this._generalTabListPage.Controls.Add(this._usernameLabel);
+            this._generalTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._generalTabListPage.Name = "_generalTabListPage";
+            this._generalTabListPage.Size = new System.Drawing.Size(476, 301);
+            this._generalTabListPage.TabIndex = 0;
+            this._generalTabListPage.Text = "General";
+            // 
+            // _rolesTabListPage
+            // 
+            this._rolesTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._rolesTabListPage.Name = "_rolesTabListPage";
+            this._rolesTabListPage.Size = new System.Drawing.Size(42, 192);
+            this._rolesTabListPage.TabIndex = 1;
+            this._rolesTabListPage.Text = "Roles";
+            // 
             // UserView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 272);
-            this.Controls.Add(this._passwordConfirmationTextBox);
-            this.Controls.Add(this._passwordConfirmationLabel);
-            this.Controls.Add(this._passwordTextBox);
-            this.Controls.Add(this._passwordLabel);
-            this.Controls.Add(this._usernameTextBox);
-            this.Controls.Add(this._usernameLabel);
-            this.Controls.Add(this._emailTextBox);
-            this.Controls.Add(this._emailLabel);
-            this.Controls.Add(this._lastNameTextBox);
-            this.Controls.Add(this._lastNameLabel);
-            this.Controls.Add(this._firstNameTextBox);
-            this.Controls.Add(this._firstNameLabel);
+            this.ClientSize = new System.Drawing.Size(634, 362);
+            this.Controls.Add(this._userTabList);
             this.Controls.Add(this._buttonsPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -207,8 +239,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User";
             this._buttonsPanel.ResumeLayout(false);
+            this._userTabList.ResumeLayout(false);
+            this._generalTabListPage.ResumeLayout(false);
+            this._generalTabListPage.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -229,5 +263,8 @@
         private System.Windows.Forms.Label _passwordLabel;
         private System.Windows.Forms.TextBox _passwordConfirmationTextBox;
         private System.Windows.Forms.Label _passwordConfirmationLabel;
+        private Cyotek.Windows.Forms.TabList _userTabList;
+        private Cyotek.Windows.Forms.TabListPage _generalTabListPage;
+        private Cyotek.Windows.Forms.TabListPage _rolesTabListPage;
     }
 }

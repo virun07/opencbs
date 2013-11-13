@@ -30,5 +30,10 @@ namespace OpenCBS.DataContract
             if (obj == null) return false;
             return Id == ((DataTransferObject) obj).Id;
         }
+
+        public bool IsNew
+        {
+            get { return Id == 0; }
+        }
     }
 }

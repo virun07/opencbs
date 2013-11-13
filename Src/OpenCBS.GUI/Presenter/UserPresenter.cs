@@ -17,10 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Linq;
 using Omu.ValueInjecter;
 using OpenCBS.DataContract;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.Presenter
@@ -29,17 +31,22 @@ namespace OpenCBS.GUI.Presenter
     {
         private readonly IUserView _view;
         private readonly IApplicationController _appController;
+        private readonly IUserService _userService;
+        private readonly IRoleService _roleService;
         private CommandResult _commandResult = CommandResult.Cancel;
 
-        public UserPresenter(IUserView view, IApplicationController appController)
+        public UserPresenter(IUserView view, IUserService userService, IRoleService roleService, IApplicationController appController)
         {
             _view = view;
+            _userService = userService;
+            _roleService = roleService;
             _appController = appController;
         }
 
         public Result<UserDto> Get(UserDto userDto)
         {
             _view.Attach(this);
+            _view.ShowRoles(_roleService.FindAll().ToDictionary(r => r.Id, r => r.Name));
             _view.InjectFrom(userDto);
             _view.CanEditPassword = userDto == null;
             _view.Run();
@@ -48,7 +55,6 @@ namespace OpenCBS.GUI.Presenter
                 return new Result<UserDto>(_commandResult, null);
 
             var newUserDto = GetUserDto();
-            newUserDto.Id = userDto != null ? userDto.Id : 0;
             return new Result<UserDto>(_commandResult, newUserDto);
         }
 
@@ -59,6 +65,17 @@ namespace OpenCBS.GUI.Presenter
 
         public void Ok()
         {
+            var userDto = GetUserDto();
+            _userService.Validate(userDto);
+            if (userDto.Notification.HasErrors)
+            {
+                _view.ShowNotification(userDto.Notification);
+            }
+            else
+            {
+                _commandResult = CommandResult.Ok;
+                _view.Stop();
+            }
         }
 
         public void Cancel()
@@ -69,11 +86,14 @@ namespace OpenCBS.GUI.Presenter
 
         public void Close()
         {
+            _appController.Unsubscribe(this);
         }
 
         private UserDto GetUserDto()
         {
-            return null;
+            var result = new UserDto();
+            result.InjectFrom(_view);
+            return result;
         }
     }
 }

@@ -89,6 +89,7 @@
     <Compile Include="Validator\IEntryFeeValidator.cs" />
     <Compile Include="Validator\ILoanProductValidator.cs" />
     <Compile Include="Validator\IRoleValidator.cs" />
+    <Compile Include="Validator\IUserValidator.cs" />
     <Compile Include="Validator\IValidator.cs" />
     <Compile Include="View\IConfirmationView.cs" />
     <Compile Include="View\IEntryFeesView.cs" />

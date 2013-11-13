@@ -14,5 +14,6 @@ namespace OpenCBS.Interface.View
         bool CanDelete { get; set; }
         int? SelectedUserId { get; }
         bool ShowDeleted { get; }
+        IList<RoleDto> Roles { get; set; }
     }
 }

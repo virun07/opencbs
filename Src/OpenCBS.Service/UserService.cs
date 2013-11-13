@@ -23,6 +23,7 @@ using Omu.ValueInjecter;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Repository;
 using OpenCBS.Interface.Service;
+using OpenCBS.Interface.Validator;
 using OpenCBS.Model;
 
 namespace OpenCBS.Service
@@ -30,10 +31,14 @@ namespace OpenCBS.Service
     public class UserService : Service, IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IRoleRepository _roleRepository;
+        private readonly IUserValidator _userValidator;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IRoleRepository roleRepository, IUserValidator userValidator)
         {
             _userRepository = userRepository;
+            _roleRepository = roleRepository;
+            _userValidator = userValidator;
         }
 
         public IList<UserDto> FindAll()
@@ -49,7 +54,7 @@ namespace OpenCBS.Service
 
         public void Validate(UserDto dto)
         {
-            throw new System.NotImplementedException();
+            _userValidator.Validate(dto);
         }
 
         public int Add(UserDto dto)
@@ -59,19 +64,25 @@ namespace OpenCBS.Service
 
         public void Update(UserDto dto)
         {
-            throw new System.NotImplementedException();
+            _userValidator.Validate(dto);
+            ThrowIfInvalid(dto);
+
+            var user = new User();
+            user.InjectFrom(dto);
+            user.Roles = _roleRepository.FindByIds(dto.RoleIds);
+            _userRepository.Update(user);
         }
 
         public void Remove(int id)
         {
-            throw new System.NotImplementedException();
+            _userRepository.Remove(id);
         }
 
         private static UserDto Map(User user)
         {
             var result = new UserDto();
             result.InjectFrom<FlatLoopValueInjection>(user);
-            result.Roles = user.Roles.ToDictionary(r => r.Id, r => r.Name);
+            result.RoleIds = user.Roles.Select(r => r.Id).ToList().AsReadOnly();
             return result;
         }
     }

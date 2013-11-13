@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Linq;
 using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
@@ -30,19 +31,22 @@ namespace OpenCBS.GUI.Presenter
         private readonly IUsersView _view;
         private readonly IApplicationController _appController;
         private readonly IUserService _userService;
+        private readonly IRoleService _roleService;
 
-        public UsersPresenter(IUsersView view, IApplicationController appController, IUserService userService)
+        public UsersPresenter(IUsersView view, IApplicationController appController, IUserService userService, IRoleService roleService)
         {
             _view = view;
             _appController = appController;
             _userService = userService;
+            _roleService = roleService;
         }
 
         public void Run()
         {
             _view.Attach(this);
-            _view.Run();
+            _view.Roles = _roleService.FindAll();
             ShowUsers();
+            _view.Run();
         }
 
         public object View

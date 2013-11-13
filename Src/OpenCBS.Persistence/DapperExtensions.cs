@@ -29,13 +29,17 @@ namespace OpenCBS.Persistence
 {
     public static class DapperExtensions
     {
-        public static void Update<T>(this IDbConnection connection, T data)
+        public static void Update<T>(this IDbConnection connection, T data, IList<string> exclude = null)
         {
             var tableName = GetTableName(typeof (T));
 
             var paramNames = GetParamNames(data);
+            if (exclude != null)
+                foreach (var ex in exclude)
+                    paramNames.Remove(ex);
+
             var builder = new StringBuilder();
-            builder.Append("update ").Append(tableName).Append(" set ");
+            builder.Append("update [").Append(tableName).Append("] set ");
             builder.AppendLine(string.Join(",", paramNames.Where(n => n != "Id").Select(p => p + "= @" + p)));
             builder.Append("where Id = @Id");
 

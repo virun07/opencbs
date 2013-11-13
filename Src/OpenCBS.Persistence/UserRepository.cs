@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
+using Omu.ValueInjecter;
 using OpenCBS.Interface.Repository;
 using OpenCBS.Model;
 
@@ -28,6 +29,26 @@ namespace OpenCBS.Persistence
 {
     public class UserRepository : IUserRepository
     {
+        // ReSharper disable UnusedMember.Local
+        // ReSharper disable UnusedAutoPropertyAccessor.Local
+        private class UserRow
+        {
+            public int Id { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string Email { get; set; }
+            public string Username { get; set; }
+            public string Password { get; set; }
+        }
+
+        private class UserRole
+        {
+            public int UserId { get; set; }
+            public int RoleId { get; set; }
+        }
+        // ReSharper restore UnusedAutoPropertyAccessor.Local
+        // ReSharper restore UnusedMember.Local
+
         private readonly IConnectionProvider _connectionProvider;
 
         public UserRepository(IConnectionProvider connectionProvider)
@@ -119,7 +140,19 @@ namespace OpenCBS.Persistence
 
         public void Update(User entity)
         {
-            throw new NotImplementedException();
+            using (var connection = _connectionProvider.GetConnection())
+            {
+                var row = new UserRow();
+                row.InjectFrom(entity);
+                var exclude = new[] { "Password" };
+                connection.Update(row, exclude);
+
+                var sql = @"delete UserRole where user_id = @Id";
+                connection.Execute(sql, new { entity.Id });
+                var map = entity.Roles.Select(r => new UserRole { UserId = entity.Id, RoleId = r.Id });
+                sql = @"insert UserRole (user_id, role_id) values (@UserId, @RoleId)";
+                connection.Execute(sql, map);
+            }
         }
 
         public int Add(User entity)
