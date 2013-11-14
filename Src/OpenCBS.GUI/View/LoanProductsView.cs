@@ -18,7 +18,6 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 using OpenCBS.Common;
 using OpenCBS.DataContract;
@@ -28,7 +27,7 @@ using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.View
 {
-    public partial class LoanProductsView : BaseView, ILoanProductsView
+    public partial class LoanProductsView : CollectionView, ILoanProductsView
     {
         private ILoanProductsPresenterCallbacks _presenterCallbacks;
 
@@ -108,11 +107,6 @@ namespace OpenCBS.GUI.View
 
         private void Setup()
         {
-            _loanProductsListView.FormatRow += (sender, e) =>
-            {
-                var loanProduct = (LoanProductDto) e.Model;
-                e.Item.BackColor = loanProduct.Deleted ? Color.FromArgb(255, 92, 92) : Color.Transparent;
-            };
             _availableForColumn.AspectToStringConverter += AvailabilityToString;
             _schedulePolicyColumn.AspectToStringConverter =
             _paymentFrequencyPolicyColumn.AspectToStringConverter = 

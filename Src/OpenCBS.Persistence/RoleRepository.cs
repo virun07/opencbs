@@ -38,14 +38,14 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                const string sql = @"select id Id, code Name from Roles";
+                const string sql = @"select id Id, code Name, deleted Deleted from Roles";
                 return connection.Query<Role>(sql).ToList().AsReadOnly();
             }
         }
 
         public IList<Role> FindByIds(IList<int> ids)
         {
-            const string sql = @"select id Id, code Name from Roles where id in @Ids";
+            const string sql = @"select id Id, code Name, deleted Deleted from Roles where id in @Ids";
             using (var connection = _connectionProvider.GetConnection())
             {
                 return connection.Query<Role>(sql, new { Ids = ids }).ToList().AsReadOnly();
@@ -56,7 +56,7 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                var sql = @"select id Id, code Name from Roles where id = @Id";
+                var sql = @"select id Id, code Name, deleted Deleted from Roles where id = @Id";
                 var result = connection.Query<Role>(sql, new { Id = id }).FirstOrDefault();
                 if (result != null)
                 {

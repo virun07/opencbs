@@ -38,7 +38,7 @@ namespace OpenCBS.Persistence
         public User FindByUsernameAndPassword(string username, string password)
         {
             const string sql = @"
-                    select id Id, first_name FirstName, last_name LastName, mail Email, user_name Username
+                    select id Id, first_name FirstName, last_name LastName, mail Email, user_name Username, deleted Deleted
                     from Users where user_name = @Username and user_pass = @Password
 
                     select r.id Id, r.code Name from Roles r
@@ -69,7 +69,8 @@ namespace OpenCBS.Persistence
         public IList<User> FindAll()
         {
             const string sql = @"
-                select id Id, first_name FirstName, last_name LastName, mail Email, user_name Username from Users
+                select id Id, first_name FirstName, last_name LastName, mail Email, user_name Username, deleted Deleted
+                from Users
                 select user_id, role_id from UserRole
                 select id Id, code Name from Roles
             ";
@@ -91,7 +92,8 @@ namespace OpenCBS.Persistence
         public User FindById(int id)
         {
             const string sql = @"
-                    select id Id, first_name FirstName, last_name LastName, mail Email, user_name Username from Users
+                    select id Id, first_name FirstName, last_name LastName, mail Email, user_name Username, deleted Deleted
+                    from Users
                     where id = @Id
 
                     select r.id Id, r.code Name from Roles r
@@ -161,7 +163,7 @@ namespace OpenCBS.Persistence
         {
             using (var connection = _connectionProvider.GetConnection())
             {
-                connection.Execute(@"update Users set deleted = 1 where id = @id", new { Id = id });
+                connection.Execute(@"update Users set deleted = 1 where id = @Id", new { Id = id });
             }
         }
     }

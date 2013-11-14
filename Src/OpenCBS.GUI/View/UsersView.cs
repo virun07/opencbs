@@ -21,16 +21,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using OpenCBS.DataContract;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.View
 {
-    public partial class UsersView : BaseView, IUsersView
+    public partial class UsersView : CollectionView, IUsersView
     {
         private IUsersPresenterCallbacks _presenterCallbacks;
 
-        public UsersView()
+        public UsersView(ITranslator translator)
+            : base(translator)
         {
             InitializeComponent();
             MdiParent = Application.OpenForms[0];

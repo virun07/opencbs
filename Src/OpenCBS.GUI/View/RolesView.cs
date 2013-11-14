@@ -26,7 +26,7 @@ using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.View
 {
-    public partial class RolesView : BaseView, IRolesView
+    public partial class RolesView : CollectionView, IRolesView
     {
         private IRolesPresenterCallbacks _presenterCallbacks;
 

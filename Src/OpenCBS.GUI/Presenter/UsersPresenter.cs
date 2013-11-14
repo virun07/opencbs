@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Linq;
 using OpenCBS.GUI.AppEvent;
 using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface;
@@ -69,6 +70,9 @@ namespace OpenCBS.GUI.Presenter
 
         public void Delete()
         {
+            var id = _view.SelectedUserId;
+            if (id == null) return;
+            _appController.Execute(new DeleteUserData { Id = id.Value });
         }
 
         public void Refresh()
@@ -90,7 +94,7 @@ namespace OpenCBS.GUI.Presenter
         private void ShowUsers()
         {
             var users = _userService.FindAll();
-            _view.ShowUsers(users);
+            _view.ShowUsers(_view.ShowDeleted ? users : users.Where(u => !u.Deleted).ToList().AsReadOnly());
         }
 
         public void Handle(UserSavedEvent eventData)

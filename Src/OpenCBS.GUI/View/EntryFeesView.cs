@@ -18,7 +18,6 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 using OpenCBS.DataContract;
 using OpenCBS.Interface;
@@ -27,7 +26,7 @@ using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.View
 {
-    public partial class EntryFeesView : BaseView, IEntryFeesView
+    public partial class EntryFeesView : CollectionView, IEntryFeesView
     {
         private IEntryFeesPresenterCallbacks _presenterCallbacks;
 
@@ -96,11 +95,6 @@ namespace OpenCBS.GUI.View
             {
                 var rate = (bool) v;
                 return rate ? _("Rate") : _("Amount");
-            };
-            _entryFeesListView.FormatRow += (sender, e) =>
-            {
-                var loanProduct = (EntryFeeDto) e.Model;
-                e.Item.BackColor = loanProduct.Deleted ? Color.FromArgb(255, 92, 92) : Color.Transparent;
             };
         }
     }
