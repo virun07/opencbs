@@ -80,7 +80,7 @@ namespace OpenCBS.Service
             _repository.Update(entryFee);
         }
 
-        public void Remove(int id)
+        public void Delete(int id)
         {
             _repository.Remove(id);
         }

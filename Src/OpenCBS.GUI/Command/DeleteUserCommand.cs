@@ -42,7 +42,7 @@ namespace OpenCBS.GUI.Command
         {
             var result = Confirm();
             if (result != CommandResult.Ok) return;
-            _userService.Remove(commandData.Id);
+            _userService.Delete(commandData.Id);
             _appController.Raise(new UserDeletedEvent { Id = commandData.Id });
         }
     }

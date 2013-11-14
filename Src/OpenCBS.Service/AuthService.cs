@@ -58,15 +58,9 @@ namespace OpenCBS.Service
         {
             var result = new List<string>
             {
-                "IRoleService.Add",
-                "IRoleService.Update",
-                "IRoleService.Remove",
-                "IEntryFeeService.Add",
-                "IEntryFeeService.Update",
-                "IEntryFeeService.Remove",
-                "ILoanProductService.Add",
-                "ILoanProductService.Update",
-                "ILoanProductService.Remove"
+                "Role.Add",
+                "Role.Edit",
+                "Role.Delete"
             };
             return result.AsReadOnly();
         }

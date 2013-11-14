@@ -44,7 +44,7 @@ namespace OpenCBS.GUI.Command
             var result = _presenter.Get("Do you confirm the operation?");
             if (result == CommandResult.Ok)
             {
-                _loanProductService.Remove(commandData.Id);
+                _loanProductService.Delete(commandData.Id);
                 _appController.Raise(new LoanProductDeletedEvent {Id = commandData.Id});
             }
         }

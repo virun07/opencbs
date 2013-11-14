@@ -28,6 +28,6 @@ namespace OpenCBS.Interface.Service
         void Validate(T dto);
         int Add(T dto);
         void Update(T dto);
-        void Remove(int id);
+        void Delete(int id);
     }
 }

@@ -79,7 +79,7 @@ namespace OpenCBS.Service
             _userRepository.Update(user);
         }
 
-        public void Remove(int id)
+        public void Delete(int id)
         {
             _userRepository.Remove(id);
         }

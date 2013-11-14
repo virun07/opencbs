@@ -46,6 +46,8 @@ namespace OpenCBS.GUI
 
             For<IEntryFeeService>().EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept)).Use<EntryFeeService>();
             For<ILoanProductService>().EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept)).Use<LoanProductService>();
+            For<IUserService>().EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept)).Use<UserService>();
+            For<IRoleService>().EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept)).Use<RoleService>();
             
             For<IConnectionProvider>().Use<SqlConnectionProvider>();
             For<ITranslator>().Singleton().Use<JsonTranslator>();

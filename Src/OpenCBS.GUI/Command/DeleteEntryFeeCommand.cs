@@ -44,7 +44,7 @@ namespace OpenCBS.GUI.Command
             var result = _presenter.Get("Do you confirm the operation?");
             if (result == CommandResult.Ok)
             {
-                _entryFeeService.Remove(commandData.Id);
+                _entryFeeService.Delete(commandData.Id);
                 _appController.Raise(new EntryFeeDeletedEvent {Id = commandData.Id});
             }
         }

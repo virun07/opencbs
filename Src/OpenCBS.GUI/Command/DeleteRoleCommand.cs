@@ -44,7 +44,7 @@ namespace OpenCBS.GUI.Command
         {
             var result = Confirm();
             if (result != CommandResult.Ok) return;
-            _roleService.Remove(commandData.Id);
+            _roleService.Delete(commandData.Id);
             _appController.Raise(new RoleDeletedEvent { Id = commandData.Id });
         }
     }

@@ -93,7 +93,7 @@ namespace OpenCBS.Service
             _loanProductRepository.Update(loanProduct);
         }
 
-        public void Remove(int id)
+        public void Delete(int id)
         {
             _loanProductRepository.Remove(id);
         }

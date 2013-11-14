@@ -77,7 +77,7 @@ namespace OpenCBS.Service
             _roleRepository.Update(role);
         }
 
-        public void Remove(int id)
+        public void Delete(int id)
         {
             _roleRepository.Remove(id);
         }
