@@ -34,17 +34,25 @@ namespace OpenCBS.GUI.Presenter
         private readonly IRolesView _view;
         private readonly IApplicationController _appController;
         private readonly IRoleService _roleService;
+        private readonly IAuthService _authService;
 
-        public RolesPresenter(IRolesView view, IApplicationController appController, IRoleService roleService)
+        public RolesPresenter(IRolesView view, IApplicationController appController, IRoleService roleService, IAuthService authService)
         {
             _view = view;
             _appController = appController;
             _roleService = roleService;
+            _authService = authService;
         }
 
         public void Run()
         {
             _view.Attach(this);
+            if (!_authService.Can("Role.Add"))
+                _view.ProhibitAdding();
+            if (!_authService.Can("Role.Edit"))
+                _view.ProhibitEditing();
+            if (!_authService.Can("Role.Delete"))
+                _view.ProhibitDeleting();
             _view.Run();
             ShowRoles();
         }

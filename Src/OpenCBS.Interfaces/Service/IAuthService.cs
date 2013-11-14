@@ -27,5 +27,7 @@ namespace OpenCBS.Interface.Service
         UserDto Login(string username, string password);
         bool IsLoggedIn();
         IList<string> GetAllPermissions();
+        bool Can(string permission);
+        bool CanAny(IList<string> permissions);
     }
 }

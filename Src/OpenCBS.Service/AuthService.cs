@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
+using System.Linq;
 using Omu.ValueInjecter;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Repository;
@@ -63,6 +64,16 @@ namespace OpenCBS.Service
                 "Role.Delete"
             };
             return result.AsReadOnly();
+        }
+
+        public bool Can(string permission)
+        {
+            return User.Current != null && User.Current.Can(permission);
+        }
+
+        public bool CanAny(IList<string> permissions)
+        {
+            return permissions.Select(Can).Aggregate((x, y) => x || y);
         }
     }
 }

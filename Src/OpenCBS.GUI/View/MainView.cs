@@ -43,12 +43,12 @@ using OpenCBS.GUI.Configuration;
 using OpenCBS.GUI.Contracts;
 using OpenCBS.GUI.Database;
 using OpenCBS.GUI.Products;
-using OpenCBS.GUI.Projets;
 using OpenCBS.GUI.Report_Browser;
 using OpenCBS.GUI.TellerManagement;
 using OpenCBS.GUI.Tools;
 using OpenCBS.GUI.UserControl;
 using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Reports;
@@ -61,6 +61,8 @@ namespace OpenCBS.GUI.View
 {
     public partial class MainView : SweetBaseForm, ITempMainView, IMainView
     {
+        private readonly IAuthService _authService;
+
         [ImportMany(typeof(IMenu), RequiredCreationPolicy = CreationPolicy.Shared)]
         public List<IMenu> ExtensionMenuItems { get; set; }
 
@@ -69,8 +71,9 @@ namespace OpenCBS.GUI.View
         private bool _showTellerFormOnClose = true;
         private bool _triggerAlertsUpdate;
 
-        public MainView()
+        public MainView(IAuthService authService)
         {
+            _authService = authService;
             MefContainer.Current.Bind(this);
             InitializeComponent();
             _menuItems = new List<MenuObject>();
@@ -313,14 +316,6 @@ namespace OpenCBS.GUI.View
             searchCreditContractForm.Show();
         }
 
-        private void InitializeSearchProject()
-        {
-            SearchProjectForm searchProjectForm = SearchProjectForm.GetInstance(this);
-            searchProjectForm.BringToFront();
-            searchProjectForm.WindowState = FormWindowState.Normal;
-            searchProjectForm.Show();
-        }
-
         public void InitializeCreditContractForm(IClient pClient, int pContractId)
         {
             /*
@@ -392,12 +387,6 @@ namespace OpenCBS.GUI.View
         {
             var collateralProductsForm = new FrmAvalaibleCollateralProducts { MdiParent = this };
             collateralProductsForm.Show();
-        }
-
-        private void InitializePackagesForm()
-        {
-            var packagesForm = new FrmAvalaibleLoanProducts { MdiParent = this };
-            packagesForm.Show();
         }
 
         private void InitializeSavingProductsForm()
@@ -573,48 +562,6 @@ namespace OpenCBS.GUI.View
             Restart.LaunchRestarter();
         }
 
-        private void LanguageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string language = sender == _frenchMenuItem ? "fr" :
-                    (sender == _russianMenuItem ? "ru-RU" :
-                    (sender == _englishMenuItem ? "en-US" :
-                    (sender == _spanishMenuItem ? "es-ES" : "pt")));
-
-            if (ServicesProvider.GetInstance().GetGeneralSettings().UseTellerManagement)
-            {
-                if (User.CurrentUser.UserRole.IsRoleForTeller)
-                {
-                    if (Teller.CurrentTeller != null && Teller.CurrentTeller.Id != 0)
-                    {
-                        FrmOpenCloseTeller frm = new FrmOpenCloseTeller(false);
-                        frm.ShowDialog();
-
-                        if (frm.DialogResult == DialogResult.OK)
-                        {
-                            _showTellerFormOnClose = false;
-                            Teller.CurrentTeller = null;
-                            ServicesProvider.GetInstance().GetEventProcessorServices().FireTellerEvent(
-                                                                                    frm.CloseOfDayAmountEvent);
-                            if (frm.CloseAmountNegativeDifferenceEvent != null)
-                                ServicesProvider.GetInstance().GetEventProcessorServices().FireTellerEvent(
-                                    frm.CloseAmountNegativeDifferenceEvent);
-                            else if (frm.CloseAmountPositiveDifferenceEvent != null)
-                                ServicesProvider.GetInstance().GetEventProcessorServices().FireTellerEvent(
-                                    frm.CloseAmountPositiveDifferenceEvent);
-                            RestartApplication(language);
-                        }
-                    }
-                }
-                else RestartApplication(language);
-            }
-            else RestartApplication(language);
-        }
-
-        private void languagesToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
-        {
-            FillDropDownMenuWithLanguages();
-        }
-
         private void toolStripMenuItemInstallmentTypes_Click(object sender, EventArgs e)
         {
             FrmInstallmentTypes frmInstallmentTypes = new FrmInstallmentTypes();
@@ -629,11 +576,6 @@ namespace OpenCBS.GUI.View
         private void newCorporateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InitializeCorporateForm();
-        }
-
-        public void InitializePersonForm(Person member)
-        {
-            throw new NotImplementedException();
         }
 
         private void mnuNewVillage_Click(object sender, EventArgs e)
@@ -859,7 +801,7 @@ namespace OpenCBS.GUI.View
                 panelLeft.SizeChanged += OnAlertsSizeChanged;
 
                 InitializeMainMenu();
-                _InitializeUserRights();
+                //_InitializeUserRights();
                 DisplayFastChoiceForm();
 
             }
@@ -1037,12 +979,6 @@ namespace OpenCBS.GUI.View
             frm.Show();
         }
 
-        private void closeTellerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!CloseTeller())
-                MessageBox.Show(MultiLanguageStrings.GetString(Ressource.FrmOpenCloseTeller, "noOpenTellersText"));
-        }
-
         private bool CloseTeller()
         {
             if (Teller.CurrentTeller != null)
@@ -1143,6 +1079,7 @@ namespace OpenCBS.GUI.View
 
         public void Run()
         {
+            Authorize();
             Show();
         }
 
@@ -1157,6 +1094,11 @@ namespace OpenCBS.GUI.View
             _frenchMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("fr");
             _spanishMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("es-ES");
             _portugueseMenuItem.Click += (sedner, e) => presenterCallbacks.ChangeLanguage("pt");
+        }
+
+        private void Authorize()
+        {
+            _rolesMenuItem.Visible = _authService.CanAny(new[] { "Role.Add", "Role.Edit", "Role.Delete" });
         }
     }
 }
