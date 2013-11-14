@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Omu.ValueInjecter;
@@ -84,6 +85,12 @@ namespace OpenCBS.Service
 
         public void Delete(int id)
         {
+            var user = _userRepository.FindById(id);
+            ThrowIfNotFound(user);
+
+            if (user.IsSuperuser)
+                throw new ArgumentException("Cannot delete superuser.");
+
             _userRepository.Remove(id);
         }
 
