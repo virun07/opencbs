@@ -852,14 +852,14 @@ namespace OpenCBS.GUI.View
         {
             foreach (var extensionItem in ExtensionMenuItems)
             {
-                var anchor = mainMenu.Items.Find(extensionItem.InsertAfter, true).FirstOrDefault();
+                var anchor = _mainMenuStrip.Items.Find(extensionItem.InsertAfter, true).FirstOrDefault();
                 if (anchor == null) continue;
 
                 var owner = (ToolStripMenuItem)anchor.OwnerItem;
 
                 var temp = extensionItem;
 
-                var items = owner == null ? mainMenu.Items : owner.DropDownItems;
+                var items = owner == null ? _mainMenuStrip.Items : owner.DropDownItems;
                 var index = items.IndexOf(anchor);
                 items.Insert(index + 1, temp.GetItem());
             }
@@ -1096,9 +1096,21 @@ namespace OpenCBS.GUI.View
             _portugueseMenuItem.Click += (sedner, e) => presenterCallbacks.ChangeLanguage("pt");
         }
 
+        private IEnumerable<ToolStripMenuItem> GetMenuItems(ToolStripMenuItem item)
+        {
+            var items = item.DropDownItems.OfType<ToolStripMenuItem>();
+            return items.SelectMany(GetMenuItems).Concat(items);
+        }
+
         private void Authorize()
         {
-            _rolesMenuItem.Visible = _authService.CanAny(new[] { "Role.Add", "Role.Edit", "Role.Delete" });
+            var items = _mainMenuStrip.Items.OfType<ToolStripMenuItem>();
+            items = items.SelectMany(GetMenuItems).Concat(items).Where(i => i.Tag is string);
+            foreach (var item in items)
+            {
+                var permissions = item.Tag.ToString().Split(':');
+                item.Visible = _authService.CanAny(permissions);
+            }
         }
     }
 }

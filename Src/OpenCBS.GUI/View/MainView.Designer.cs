@@ -11,7 +11,7 @@ namespace OpenCBS.GUI.View
         private System.Windows.Forms.ToolStripMenuItem mnuSearchClient;
         private System.Windows.Forms.ToolStripMenuItem mnuChartOfAccounts;
         private System.ComponentModel.IContainer components;
-        private System.Windows.Forms.MenuStrip mainMenu;
+        private System.Windows.Forms.MenuStrip _mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem mnuWindow;
         private System.Windows.Forms.ToolStripMenuItem mnuNewGroup;
         private System.Windows.Forms.ImageList imageListAlert;
@@ -131,7 +131,7 @@ namespace OpenCBS.GUI.View
             this.mnuWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mainMenu = new System.Windows.Forms.MenuStrip();
+            this._mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.mnuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAdvancedSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -165,7 +165,7 @@ namespace OpenCBS.GUI.View
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvAlerts)).BeginInit();
             this.tabFilter.SuspendLayout();
-            this.mainMenu.SuspendLayout();
+            this._mainMenuStrip.SuspendLayout();
             this.mainStatusBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.alertBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -679,10 +679,10 @@ namespace OpenCBS.GUI.View
             resources.ApplyResources(this.aboutMenuItem, "aboutMenuItem");
             this.aboutMenuItem.Click += new System.EventHandler(this.OnAboutMenuItemClick);
             // 
-            // mainMenu
+            // _mainMenuStrip
             // 
-            this.mainMenu.BackColor = System.Drawing.SystemColors.Control;
-            this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._mainMenuStrip.BackColor = System.Drawing.SystemColors.Control;
+            this._mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSettings,
             this.mnuConfiguration,
             this.mnuSecurity,
@@ -692,9 +692,9 @@ namespace OpenCBS.GUI.View
             this.reportsToolStripMenuItem,
             this.mnuWindow,
             this.mnuHelp});
-            resources.ApplyResources(this.mainMenu, "mainMenu");
-            this.mainMenu.MdiWindowListItem = this.mnuWindow;
-            this.mainMenu.Name = "mainMenu";
+            resources.ApplyResources(this._mainMenuStrip, "_mainMenuStrip");
+            this._mainMenuStrip.MdiWindowListItem = this.mnuWindow;
+            this._mainMenuStrip.Name = "_mainMenuStrip";
             // 
             // mnuSettings
             // 
@@ -800,6 +800,7 @@ namespace OpenCBS.GUI.View
             // 
             this._rolesMenuItem.Name = "_rolesMenuItem";
             resources.ApplyResources(this._rolesMenuItem, "_rolesMenuItem");
+            this._rolesMenuItem.Tag = "Role.Add:Role.Edit:Role.Delete";
             // 
             // _usersMenuItem
             // 
@@ -929,9 +930,9 @@ namespace OpenCBS.GUI.View
             this.Controls.Add(this.splitter6);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.mainStatusBar);
-            this.Controls.Add(this.mainMenu);
+            this.Controls.Add(this._mainMenuStrip);
             this.IsMdiContainer = true;
-            this.MainMenuStrip = this.mainMenu;
+            this.MainMenuStrip = this._mainMenuStrip;
             this.Name = "MainView";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LotrasmicMainWindowForm_FormClosing);
@@ -941,8 +942,8 @@ namespace OpenCBS.GUI.View
             ((System.ComponentModel.ISupportInitialize)(this.olvAlerts)).EndInit();
             this.tabFilter.ResumeLayout(false);
             this.tabFilter.PerformLayout();
-            this.mainMenu.ResumeLayout(false);
-            this.mainMenu.PerformLayout();
+            this._mainMenuStrip.ResumeLayout(false);
+            this._mainMenuStrip.PerformLayout();
             this.mainStatusBar.ResumeLayout(false);
             this.mainStatusBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.alertBindingSource)).EndInit();
