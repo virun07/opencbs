@@ -39,6 +39,10 @@ namespace OpenCBS.Model
             // So, along with IUserService.Add you need IRoleService.FindAll
             //
             // The Map below defines all such entries: screen permission -> list of service permissions
+            Map.Add("Role.View", new HashSet<string>
+            {
+                "IRoleService.FindAll"
+            });
             Map.Add("Role.Add", new HashSet<string>
             {
                 "IRoleService.FindAll",
@@ -58,6 +62,10 @@ namespace OpenCBS.Model
                 "IRoleService.Delete"
             });
 
+            Map.Add("User.View", new HashSet<string>
+            {
+                "IUserService.FindAll"
+            });
             Map.Add("User.Add", new HashSet<string>
             {
                 "IRoleService.FindAll",

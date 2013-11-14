@@ -800,14 +800,14 @@ namespace OpenCBS.GUI.View
             // 
             this._rolesMenuItem.Name = "_rolesMenuItem";
             resources.ApplyResources(this._rolesMenuItem, "_rolesMenuItem");
-            this._rolesMenuItem.Tag = "Role.Add:Role.Edit:Role.Delete";
+            this._rolesMenuItem.Tag = "Role.View:Role.Add:Role.Edit:Role.Delete";
             // 
             // _usersMenuItem
             // 
             this._usersMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.group;
             resources.ApplyResources(this._usersMenuItem, "_usersMenuItem");
             this._usersMenuItem.Name = "_usersMenuItem";
-            this._usersMenuItem.Tag = "User.Add:User.Edit:User.Delete";
+            this._usersMenuItem.Tag = "User.View:User.Add:User.Edit:User.Delete";
             // 
             // miAuditTrail
             // 
