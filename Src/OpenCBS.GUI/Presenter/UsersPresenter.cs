@@ -28,27 +28,33 @@ using OpenCBS.Interface.View;
 namespace OpenCBS.GUI.Presenter
 {
     public class UsersPresenter : IUsersPresenter, IUsersPresenterCallbacks,
-        IEventHandler<UserSavedEvent>
+        IEventHandler<UserSavedEvent>,
+        IEventHandler<UserDeletedEvent>
     {
         private readonly IUsersView _view;
         private readonly IApplicationController _appController;
         private readonly IUserService _userService;
         private readonly IRoleService _roleService;
+        private readonly IAuthService _authService;
 
-        public UsersPresenter(IUsersView view, IApplicationController appController, IUserService userService, IRoleService roleService)
+        public UsersPresenter(IUsersView view, IApplicationController appController, IUserService userService, IRoleService roleService, IAuthService authService)
         {
             _view = view;
             _appController = appController;
             _userService = userService;
             _roleService = roleService;
+            _authService = authService;
         }
 
         public void Run()
         {
             _view.Attach(this);
             _view.Roles = _roleService.FindAll();
-            ShowUsers();
             _view.Run();
+            if (!_authService.Can("User.Add")) _view.ProhibitAdding();
+            if (!_authService.Can("User.Edit")) _view.ProhibitEditing();
+            if (!_authService.Can("User.Delete")) _view.ProhibitDeleting();
+            ShowUsers();
         }
 
         public object View
@@ -98,6 +104,11 @@ namespace OpenCBS.GUI.Presenter
         }
 
         public void Handle(UserSavedEvent eventData)
+        {
+            ShowUsers();
+        }
+
+        public void Handle(UserDeletedEvent eventData)
         {
             ShowUsers();
         }

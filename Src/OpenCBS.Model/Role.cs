@@ -57,6 +57,27 @@ namespace OpenCBS.Model
                 "IRoleService.FindAll",
                 "IRoleService.Delete"
             });
+
+            Map.Add("User.Add", new HashSet<string>
+            {
+                "IRoleService.FindAll",
+                "IUserService.FindAll",
+                "IUserService.Validate",
+                "IUserService.Add"
+            });
+            Map.Add("User.Edit", new HashSet<string>
+            {
+                "IRoleService.FindAll",
+                "IUserService.FindById",
+                "IUserService.FindAll",
+                "IUserService.Validate",
+                "IUserService.Update"
+            });
+            Map.Add("User.Delete", new HashSet<string>
+            {
+                "IUserService.FindAll",
+                "IUserService.Delete"
+            });
         }
 
         public string Name { get; set; }

@@ -807,6 +807,7 @@ namespace OpenCBS.GUI.View
             this._usersMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.group;
             resources.ApplyResources(this._usersMenuItem, "_usersMenuItem");
             this._usersMenuItem.Name = "_usersMenuItem";
+            this._usersMenuItem.Tag = "User.Add:User.Edit:User.Delete";
             // 
             // miAuditTrail
             // 

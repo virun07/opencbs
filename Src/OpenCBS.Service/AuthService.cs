@@ -61,7 +61,11 @@ namespace OpenCBS.Service
             {
                 "Role.Add",
                 "Role.Edit",
-                "Role.Delete"
+                "Role.Delete",
+
+                "User.Add",
+                "User.Edit",
+                "User.Delete"
             };
             return result.AsReadOnly();
         }

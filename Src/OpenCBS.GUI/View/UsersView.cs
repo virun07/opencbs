@@ -62,6 +62,21 @@ namespace OpenCBS.GUI.View
             _usersListView.SelectedObject = selectedObject;
         }
 
+        public void ProhibitAdding()
+        {
+            _addButton.Visible = false;
+        }
+
+        public void ProhibitEditing()
+        {
+            _editButton.Visible = false;
+        }
+
+        public void ProhibitDeleting()
+        {
+            _deleteButton.Visible = false;
+        }
+
         public bool CanEdit
         {
             get { return _editButton.Enabled; }

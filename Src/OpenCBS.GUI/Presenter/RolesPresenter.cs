@@ -47,13 +47,10 @@ namespace OpenCBS.GUI.Presenter
         public void Run()
         {
             _view.Attach(this);
-            if (!_authService.Can("Role.Add"))
-                _view.ProhibitAdding();
-            if (!_authService.Can("Role.Edit"))
-                _view.ProhibitEditing();
-            if (!_authService.Can("Role.Delete"))
-                _view.ProhibitDeleting();
             _view.Run();
+            if (!_authService.Can("Role.Add")) _view.ProhibitAdding();
+            if (!_authService.Can("Role.Edit")) _view.ProhibitEditing();
+            if (!_authService.Can("Role.Delete")) _view.ProhibitDeleting();
             ShowRoles();
         }
 
