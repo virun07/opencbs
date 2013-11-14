@@ -26,9 +26,14 @@ using OpenCBS.Interface;
 
 namespace OpenCBS.GUI.View
 {
-    public abstract partial class CollectionView : BaseView
+    public partial class CollectionView : BaseView
     {
-        protected CollectionView(ITranslator translator)
+        public CollectionView()
+            : base(null)
+        {
+        }
+
+        public CollectionView(ITranslator translator)
             : base(translator)
         {
             InitializeComponent();

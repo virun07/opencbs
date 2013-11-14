@@ -73,9 +73,12 @@ namespace OpenCBS.Service
             _userValidator.Validate(dto);
             ThrowIfInvalid(dto);
 
-            var user = new User();
+            var user = _userRepository.FindById(dto.Id);
+            ThrowIfNotFound(user);
+
+            if (!user.IsSuperuser)
+                user.Roles = _roleRepository.FindByIds(dto.RoleIds);
             user.InjectFrom(dto);
-            user.Roles = _roleRepository.FindByIds(dto.RoleIds);
             _userRepository.Update(user);
         }
 

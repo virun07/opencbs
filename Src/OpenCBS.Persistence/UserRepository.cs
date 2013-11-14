@@ -38,7 +38,9 @@ namespace OpenCBS.Persistence
         public User FindByUsernameAndPassword(string username, string password)
         {
             const string sql = @"
-                    select id Id, first_name FirstName, last_name LastName, mail Email, user_name Username, deleted Deleted
+                    select 
+                        id Id, first_name FirstName, last_name LastName, mail Email, user_name Username, 
+                        deleted Deleted, IsSuperuser
                     from Users where user_name = @Username and user_pass = @Password
 
                     select r.id Id, r.code Name from Roles r
@@ -69,8 +71,10 @@ namespace OpenCBS.Persistence
         public IList<User> FindAll()
         {
             const string sql = @"
-                select id Id, first_name FirstName, last_name LastName, mail Email, user_name Username, deleted Deleted
+                select id Id, first_name FirstName, last_name LastName, mail Email, user_name Username, 
+                    deleted Deleted, IsSuperuser
                 from Users
+
                 select user_id, role_id from UserRole
                 select id Id, code Name from Roles
             ";
@@ -92,7 +96,8 @@ namespace OpenCBS.Persistence
         public User FindById(int id)
         {
             const string sql = @"
-                    select id Id, first_name FirstName, last_name LastName, mail Email, user_name Username, deleted Deleted
+                    select id Id, first_name FirstName, last_name LastName, mail Email, user_name Username, 
+                        deleted Deleted, IsSuperuser
                     from Users
                     where id = @Id
 

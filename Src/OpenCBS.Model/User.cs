@@ -32,14 +32,17 @@ namespace OpenCBS.Model
         public string Email { get; set; }
         public string Password { get; set; }
         public IList<Role> Roles { get; set; }
+        public bool IsSuperuser { get; set; }
 
         public bool Can(string permission)
         {
+            if (IsSuperuser) return true;
             return Roles.Select(r => r.Can(permission)).Aggregate((x, y) => x || y);
         }
 
         public bool HasServicePermission(string servicePermission)
         {
+            if (IsSuperuser) return true;
             return Roles.Select(r => r.HasServicePermission(servicePermission)).Aggregate((x, y) => x || y);
         }
     }

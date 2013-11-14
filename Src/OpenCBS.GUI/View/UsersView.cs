@@ -98,6 +98,11 @@ namespace OpenCBS.GUI.View
                 var roleIds = (IList<int>) value;
                 return string.Join(", ", Roles.Where(r => roleIds.Contains(r.Id)).Select(r => r.Name));
             };
+            _isSuperuserColumn.AspectToStringConverter = value =>
+            {
+                var isSuperuser = (bool) value;
+                return isSuperuser ? "*" : string.Empty;
+            };
         }
     }
 }

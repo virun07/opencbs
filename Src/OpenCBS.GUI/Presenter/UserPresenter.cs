@@ -46,8 +46,9 @@ namespace OpenCBS.GUI.Presenter
         public Result<UserDto> Get(UserDto userDto)
         {
             _view.Attach(this);
-            _view.ShowRoles(_roleService.FindAll().ToDictionary(r => r.Id, r => r.Name));
             userDto = userDto ?? new UserDto();
+            if (!userDto.IsSuperuser)
+                _view.ShowRoles(_roleService.FindAll().ToDictionary(r => r.Id, r => r.Name));
             _view.InjectFrom(userDto);
             if (!userDto.IsNew)
                 _view.DisablePassword();
@@ -56,8 +57,7 @@ namespace OpenCBS.GUI.Presenter
             if (_commandResult != CommandResult.Ok)
                 return new Result<UserDto>(_commandResult, null);
 
-            var newUserDto = GetUserDto();
-            return new Result<UserDto>(_commandResult, newUserDto);
+            return new Result<UserDto>(_commandResult, GetUserDto());
         }
 
         public object View

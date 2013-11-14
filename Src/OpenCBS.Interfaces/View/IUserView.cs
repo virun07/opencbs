@@ -39,5 +39,6 @@ namespace OpenCBS.Interface.View
         string PasswordConfirmation { get; }
         string Email { get; set; }
         IList<int> RoleIds { get; set; }
+        bool IsSuperuser { get; set; }
     }
 }

@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Cyotek.Windows.Forms;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
@@ -28,6 +29,8 @@ namespace OpenCBS.GUI.View
 {
     public partial class UserView : BaseView, IUserView
     {
+        private TabListPage _rolesTabListPage;
+
         public UserView()
         {
             InitializeComponent();
@@ -45,6 +48,12 @@ namespace OpenCBS.GUI.View
 
         public void ShowRoles(Dictionary<int, string> roles)
         {
+            _rolesTabListPage = new TabListPage
+            {
+                Name = "_rolesTabListPage",
+                Text = _("Roles")
+            };
+            _userTabList.TabListPages.Add(_rolesTabListPage);
             var panel = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -80,6 +89,8 @@ namespace OpenCBS.GUI.View
         }
 
         public int Id { get; set; }
+
+        public bool IsSuperuser { get; set; }
 
         public string Username
         {
@@ -119,6 +130,8 @@ namespace OpenCBS.GUI.View
         {
             get
             {
+                if (_rolesTabListPage == null)
+                    return new List<int>();
                 return GetControls(_rolesTabListPage)
                     .OfType<CheckBox>()
                     .Where(c => c.Tag is int && c.Checked)
@@ -127,7 +140,7 @@ namespace OpenCBS.GUI.View
             }
             set
             {
-                if (value == null) return;
+                if (value == null || _rolesTabListPage == null) return;
                 var checkBoxes = GetControls(_rolesTabListPage)
                     .OfType<CheckBox>()
                     .Where(c => c.Tag is int && value.Contains(Convert.ToInt32(c.Tag)));

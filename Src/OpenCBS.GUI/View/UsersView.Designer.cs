@@ -38,6 +38,7 @@
             this._editButton = new System.Windows.Forms.Button();
             this._deleteButton = new System.Windows.Forms.Button();
             this._showDeletedCheckBox = new System.Windows.Forms.CheckBox();
+            this._isSuperuserColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this._usersListView)).BeginInit();
             this._buttonsPanel.SuspendLayout();
             this.SuspendLayout();
@@ -48,11 +49,13 @@
             this._usersListView.AllColumns.Add(this._firstNameColumn);
             this._usersListView.AllColumns.Add(this._usernameColumn);
             this._usersListView.AllColumns.Add(this._rolesColumn);
+            this._usersListView.AllColumns.Add(this._isSuperuserColumn);
             this._usersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this._lastNameColumn,
             this._firstNameColumn,
             this._usernameColumn,
-            this._rolesColumn});
+            this._rolesColumn,
+            this._isSuperuserColumn});
             this._usersListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._usersListView.FullRowSelect = true;
             this._usersListView.GridLines = true;
@@ -150,6 +153,14 @@
             this._showDeletedCheckBox.Text = "Show deleted";
             this._showDeletedCheckBox.UseVisualStyleBackColor = true;
             // 
+            // _isSuperuserColumn
+            // 
+            this._isSuperuserColumn.AspectName = "IsSuperuser";
+            this._isSuperuserColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._isSuperuserColumn.Text = "Superuser";
+            this._isSuperuserColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._isSuperuserColumn.Width = 100;
+            // 
             // UsersView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -178,5 +189,6 @@
         private BrightIdeasSoftware.OLVColumn _lastNameColumn;
         private BrightIdeasSoftware.OLVColumn _rolesColumn;
         private BrightIdeasSoftware.OLVColumn _usernameColumn;
+        private BrightIdeasSoftware.OLVColumn _isSuperuserColumn;
     }
 }

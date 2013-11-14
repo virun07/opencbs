@@ -32,5 +32,6 @@ namespace OpenCBS.DataContract
         public string Password { get; set; }
         public string PasswordConfirmation { get; set; }
         public IList<int> RoleIds { get; set; }
+        public bool IsSuperuser { get; set; }
     }
 }
