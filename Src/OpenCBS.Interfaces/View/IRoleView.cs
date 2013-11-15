@@ -30,6 +30,7 @@ namespace OpenCBS.Interface.View
         void ShowNotification(Notification notification);
         void ShowPermissions(IList<string> permissions);
 
+        int Id { get; set; }
         string RoleName { get; set; }
         IList<string> Permissions { get; set; }
     }

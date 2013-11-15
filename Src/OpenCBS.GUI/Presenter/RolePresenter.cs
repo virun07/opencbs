@@ -47,16 +47,15 @@ namespace OpenCBS.GUI.Presenter
             _view.Attach(this);
             _view.ShowPermissions(_authService.GetAllPermissions());
 
-            _view.InjectFrom(roleDto ?? new RoleDto());
-            _view.RoleName = roleDto != null ? roleDto.Name : string.Empty;
+            roleDto = roleDto ?? new RoleDto();
+            _view.InjectFrom(roleDto);
+            _view.RoleName = roleDto.Name;
             _view.Run();
 
             if (_commandResult != CommandResult.Ok)
                 return new Result<RoleDto>(_commandResult, null);
 
-            var newRoleDto = GetRoleDto();
-            newRoleDto.Id = roleDto != null ? roleDto.Id : 0;
-            return new Result<RoleDto>(_commandResult, newRoleDto);
+            return new Result<RoleDto>(_commandResult, GetRoleDto());
         }
 
         public object View

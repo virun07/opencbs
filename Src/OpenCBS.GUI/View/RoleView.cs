@@ -45,6 +45,8 @@ namespace OpenCBS.GUI.View
             Close();
         }
 
+        public int Id { get; set; }
+
         public string RoleName
         {
             get { return _nameTextBox.Text; }
