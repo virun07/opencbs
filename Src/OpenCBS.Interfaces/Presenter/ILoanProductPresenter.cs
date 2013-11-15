@@ -23,6 +23,6 @@ namespace OpenCBS.Interface.Presenter
 {
     public interface ILoanProductPresenter : IPresenter
     {
-        Result<LoanProductDto> Get(LoanProductDto loanProduct);
+        Result<LoanProductDto> Get(LoanProductDto loanProductDto);
     }
 }

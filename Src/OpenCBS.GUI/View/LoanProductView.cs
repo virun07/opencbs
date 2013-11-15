@@ -107,6 +107,8 @@ namespace OpenCBS.GUI.View
             ShowPolicies(_lateFeePolicyComboBox, policies);
         }
 
+        public int Id { get; set; }
+
         public string LoanProductName
         {
             get { return _nameTextBox.Text; }

@@ -50,7 +50,7 @@ namespace OpenCBS.GUI.Presenter
             _appController = appController;
         }
 
-        public Result<LoanProductDto> Get(LoanProductDto loanProduct)
+        public Result<LoanProductDto> Get(LoanProductDto loanProductDto)
         {
             _view.Attach(this);
             var data = _loanProductService.GetReferenceData();
@@ -61,19 +61,18 @@ namespace OpenCBS.GUI.Presenter
             _view.ShowDateShiftPolicies(data.DateShiftPolicies);
             _view.ShowRoundingPolicies(data.RoundingPolicies);
             _view.ShowLateFeePolicies(data.LateFeePolicies);
-            
-            _view.InjectFrom(loanProduct ?? new LoanProductDto());
-            _view.LoanProductName = loanProduct != null ? loanProduct.Name : string.Empty;
-            _view.EntryFees = loanProduct != null ? loanProduct.EntryFees : new List<EntryFeeDto>();
+
+            loanProductDto = loanProductDto ?? new LoanProductDto();
+            _view.InjectFrom(loanProductDto);
+            _view.LoanProductName = loanProductDto.Name;
+            _view.EntryFees = loanProductDto.EntryFees ?? new List<EntryFeeDto>();
             
             _view.Run();
 
             if (_commandResult != CommandResult.Ok)
                 return new Result<LoanProductDto>(_commandResult, null);
 
-            var newLoanProduct = GetLoanProduct();
-            newLoanProduct.Id = loanProduct != null ? loanProduct.Id : 0;
-            return new Result<LoanProductDto>(_commandResult, newLoanProduct);
+            return new Result<LoanProductDto>(_commandResult, GetLoanProductDto());
         }
 
         public object View
@@ -83,7 +82,7 @@ namespace OpenCBS.GUI.Presenter
 
         public void Ok()
         {
-            var loanProduct = GetLoanProduct();
+            var loanProduct = GetLoanProductDto();
             _loanProductService.Validate(loanProduct);
             if (loanProduct.Notification.HasErrors)
             {
@@ -127,7 +126,7 @@ namespace OpenCBS.GUI.Presenter
             _view.CanRemoveEntryFee = _view.SelectedEntryFeeId.HasValue;
         }
 
-        private LoanProductDto GetLoanProduct()
+        private LoanProductDto GetLoanProductDto()
         {
             var result = new LoanProductDto();
             result.InjectFrom(_view);

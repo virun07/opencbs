@@ -37,6 +37,7 @@ namespace OpenCBS.Interface.View
         void ShowLateFeePolicies(IList<string> policies);
         void ShowNotification(Notification notification);
 
+        int Id { get; set; }
         string LoanProductName { get; set; }
         string Code { get; set; }
         AvailableFor AvailableFor { get; set; }
