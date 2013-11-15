@@ -54,6 +54,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OpenCBS.DataContract\OpenCBS.DataContract.csproj">
+      <Project>{e3b40bd9-946c-4b41-8501-50ac85df3cb0}</Project>
+      <Name>OpenCBS.DataContract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Interfaces\OpenCBS.Interface.csproj">
       <Project>{4d370e45-0fbb-4230-b408-94ffd7e0e997}</Project>
       <Name>OpenCBS.Interface</Name>
