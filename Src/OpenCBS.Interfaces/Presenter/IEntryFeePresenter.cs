@@ -23,6 +23,6 @@ namespace OpenCBS.Interface.Presenter
 {
     public interface IEntryFeePresenter
     {
-        Result<EntryFeeDto> Get(EntryFeeDto entryFee);
+        Result<EntryFeeDto> Get(EntryFeeDto entryFeeDto);
     }
 }

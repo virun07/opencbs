@@ -40,7 +40,7 @@ namespace OpenCBS.GUI.Presenter
 
         public void Ok()
         {
-            var entryFee = GetEntryFee();
+            var entryFee = GetEntryFeeDto();
             _entryFeeService.Validate(entryFee);
             if (entryFee.Notification.HasErrors)
             {
@@ -59,24 +59,23 @@ namespace OpenCBS.GUI.Presenter
             _view.Stop();
         }
 
-        public Result<EntryFeeDto> Get(EntryFeeDto entryFee)
+        public Result<EntryFeeDto> Get(EntryFeeDto entryFeeDto)
         {
             _view.Attach(this);
 
-            _view.InjectFrom(entryFee ?? new EntryFeeDto());
-            _view.EntryFeeName = entryFee != null ? entryFee.Name : string.Empty;
+            entryFeeDto = entryFeeDto ?? new EntryFeeDto();
+            _view.InjectFrom(entryFeeDto);
+            _view.EntryFeeName = entryFeeDto.Name;
 
             _view.Run();
 
             if (_commandResult != CommandResult.Ok)
                 return new Result<EntryFeeDto>(_commandResult, null);
 
-            var newEntryFee = GetEntryFee();
-            newEntryFee.Id = entryFee != null ? entryFee.Id : 0;
-            return new Result<EntryFeeDto>(_commandResult, newEntryFee);
+            return new Result<EntryFeeDto>(_commandResult, GetEntryFeeDto());
         }
 
-        private EntryFeeDto GetEntryFee()
+        private EntryFeeDto GetEntryFeeDto()
         {
             var result = new EntryFeeDto();
             result.InjectFrom(_view);

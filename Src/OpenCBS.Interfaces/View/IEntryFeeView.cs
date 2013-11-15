@@ -28,6 +28,7 @@ namespace OpenCBS.Interface.View
         void Stop();
         void ShowNotification(Notification notification);
 
+        int Id { get; set; }
         string EntryFeeName { get; set; }
         string Code { get; set; }
         decimal? ValueMin { get; set; }
