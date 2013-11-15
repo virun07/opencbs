@@ -18,14 +18,15 @@
 // Contact: contact@opencbs.com
 
 using System;
+using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.Interface
+namespace OpenCBS.Model.Schedule.RoundingPolicy
 {
-    public interface IPaymentFrequencyPolicy
+    public class WholeRoundingPolicy : IRoundingPolicy
     {
-        DateTime GetNextDate(DateTime date);
-        DateTime GetPreviousDate(DateTime date);
-        int GetNumberOfDays(DateTime date);
-        double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy);
+        public decimal Round(decimal amount)
+        {
+            return Math.Round(amount, 0, MidpointRounding.AwayFromZero);
+        }
     }
 }

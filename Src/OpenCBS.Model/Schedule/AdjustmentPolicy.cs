@@ -17,15 +17,16 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
+using System.Collections.Generic;
+using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.Interface
+namespace OpenCBS.Model.Schedule
 {
-    public interface IPaymentFrequencyPolicy
+    public class AdjustmentPolicy : IAdjustmentPolicy
     {
-        DateTime GetNextDate(DateTime date);
-        DateTime GetPreviousDate(DateTime date);
-        int GetNumberOfDays(DateTime date);
-        double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy);
+        public IList<IInstallment> Adjust(IList<IInstallment> schedule, decimal amount)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

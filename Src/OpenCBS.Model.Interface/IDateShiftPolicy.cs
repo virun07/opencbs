@@ -18,25 +18,11 @@
 // Contact: contact@opencbs.com
 
 using System;
-using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.LoanPolicy.PaymentFrequencyPolicy
+namespace OpenCBS.Model.Interface
 {
-    public class MonthlyPaymentFrequencyPolicy : IPaymentFrequencyPolicy
+    public interface IDateShiftPolicy
     {
-        public DateTime GetNextDate(DateTime date)
-        {
-            return date.AddMonths(1);
-        }
-
-        public DateTime GetPreviousDate(DateTime date)
-        {
-            return date.AddMonths(-1);
-        }
-
-        public int GetNumberOfDays(DateTime date)
-        {
-            return (date - GetPreviousDate(date)).Days;
-        }
+        DateTime ShiftDate(DateTime date);
     }
 }

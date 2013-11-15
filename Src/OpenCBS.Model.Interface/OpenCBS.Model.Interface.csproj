@@ -38,10 +38,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAdjustmentPolicy.cs" />
+    <Compile Include="IDateShiftPolicy.cs" />
+    <Compile Include="IInstallment.cs" />
     <Compile Include="ILateFeePolicy.cs" />
+    <Compile Include="INonWorkingDayPolicy.cs" />
     <Compile Include="IPaymentFrequencyPolicy.cs" />
     <Compile Include="IPolicyFactory.cs" />
     <Compile Include="IRoundingPolicy.cs" />
+    <Compile Include="IScheduleBuilder.cs" />
+    <Compile Include="IScheduleConfiguration.cs" />
+    <Compile Include="ISchedulePolicy.cs" />
     <Compile Include="IYearPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

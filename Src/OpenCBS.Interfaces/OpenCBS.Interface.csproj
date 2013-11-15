@@ -76,7 +76,6 @@
     <Compile Include="Repository\IDatabaseRepository.cs" />
     <Compile Include="Repository\IEntryFeeRepository.cs" />
     <Compile Include="Repository\ILoanProductRepository.cs" />
-    <Compile Include="Repository\IPolicyRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IRoleRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />

@@ -21,11 +21,8 @@ using System;
 
 namespace OpenCBS.Model.Interface
 {
-    public interface IPaymentFrequencyPolicy
+    public interface INonWorkingDayPolicy
     {
-        DateTime GetNextDate(DateTime date);
-        DateTime GetPreviousDate(DateTime date);
-        int GetNumberOfDays(DateTime date);
-        double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy);
+        bool IsNonWorkingDay(DateTime date);
     }
 }

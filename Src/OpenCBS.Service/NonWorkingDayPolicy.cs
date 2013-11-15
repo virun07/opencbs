@@ -20,23 +20,13 @@
 using System;
 using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.LoanPolicy.PaymentFrequencyPolicy
+namespace OpenCBS.Service
 {
-    public class Monthly30DayPaymentFrequencyPolicy : IPaymentFrequencyPolicy
+    class NonWorkingDayPolicy : INonWorkingDayPolicy
     {
-        public DateTime GetNextDate(DateTime date)
+        public bool IsNonWorkingDay(DateTime date)
         {
-            return date.AddMonths(1);
-        }
-
-        public DateTime GetPreviousDate(DateTime date)
-        {
-            return date.AddMonths(-1);
-        }
-
-        public int GetNumberOfDays(DateTime date)
-        {
-            return 30;
+            return false;
         }
     }
 }

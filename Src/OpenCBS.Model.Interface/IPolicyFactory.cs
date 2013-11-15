@@ -27,10 +27,14 @@ namespace OpenCBS.Model.Interface
         IList<string> GetPaymentFrequencyPolicyNames();
         IList<string> GetYearPolicyNames();
         IList<string> GetRoundingPolicyNames();
+        IList<string> GetDateShiftPolicyNames();
+        IList<string> GetSchedulePolicyNames();
 
         ILateFeePolicy GetLateFeePolicy(string name);
         IPaymentFrequencyPolicy GetPaymentFrequencyPolicy(string name);
         IYearPolicy GetYearPolicy(string name);
         IRoundingPolicy GetRoundingPolicy(string name);
+        IDateShiftPolicy GetDateShiftPolicy(string name);
+        ISchedulePolicy GetSchedulePolicy(string name);
     }
 }

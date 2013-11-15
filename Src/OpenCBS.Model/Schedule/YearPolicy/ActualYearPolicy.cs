@@ -18,14 +18,15 @@
 // Contact: contact@opencbs.com
 
 using System;
+using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.Interface
+namespace OpenCBS.Model.Schedule.YearPolicy
 {
-    public interface IPaymentFrequencyPolicy
+    public class ActualYearPolicy : IYearPolicy
     {
-        DateTime GetNextDate(DateTime date);
-        DateTime GetPreviousDate(DateTime date);
-        int GetNumberOfDays(DateTime date);
-        double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy);
+        public int GetNumberOfDays(DateTime date)
+        {
+            return DateTime.IsLeapYear(date.Year) ? 366 : 365;
+        }
     }
 }

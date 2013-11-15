@@ -20,13 +20,13 @@
 using System;
 using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.LoanPolicy.YearPolicy
+namespace OpenCBS.Model.Schedule.DateShiftPolicy
 {
-    public class ActualYearPolicy : IYearPolicy
+    public class NoDateShiftPolicy : IDateShiftPolicy
     {
-        public int GetNumberOfDays(DateTime date)
+        public DateTime ShiftDate(DateTime date)
         {
-            return DateTime.IsLeapYear(date.Year) ? 366 : 365;
+            return date;
         }
     }
 }

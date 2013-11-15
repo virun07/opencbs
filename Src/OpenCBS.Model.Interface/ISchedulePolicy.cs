@@ -17,15 +17,10 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
-
 namespace OpenCBS.Model.Interface
 {
-    public interface IPaymentFrequencyPolicy
+    public interface ISchedulePolicy
     {
-        DateTime GetNextDate(DateTime date);
-        DateTime GetPreviousDate(DateTime date);
-        int GetNumberOfDays(DateTime date);
-        double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy);
+        void Calculate(IInstallment installment, IScheduleConfiguration configuration);
     }
 }

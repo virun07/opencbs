@@ -17,15 +17,17 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
+using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.Interface
+namespace OpenCBS.Model.Schedule.SchedulePolicy
 {
-    public interface IPaymentFrequencyPolicy
+    public class FlatSchedulePolicy : BaseSchedulePolicy, ISchedulePolicy
     {
-        DateTime GetNextDate(DateTime date);
-        DateTime GetPreviousDate(DateTime date);
-        int GetNumberOfDays(DateTime date);
-        double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy);
+        public void Calculate(IInstallment installment, IScheduleConfiguration configuration)
+        {
+            var number = configuration.Maturity - configuration.GracePeriod;
+            installment.Principal = configuration.RoundingPolicy.Round(configuration.Amount / number);
+            installment.Interest = CalculateInterest(installment, configuration, configuration.Amount);
+        }
     }
 }

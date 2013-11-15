@@ -19,13 +19,16 @@
 
 using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.LoanPolicy.LateFeePolicy
+namespace OpenCBS.Model.Schedule.SchedulePolicy
 {
-    public class DefaultLateFeePolicy : ILateFeePolicy
+    public abstract class BaseSchedulePolicy
     {
-        public bool CanAccrue()
+        protected decimal CalculateInterest(IInstallment installment, IScheduleConfiguration configuration, decimal amount)
         {
-            return true;
+            var daysInPeriod = configuration.PaymentFrequencyPolicy.GetNumberOfDays(installment.EndDate);
+            var daysInYear = configuration.YearPolicy.GetNumberOfDays(installment.EndDate);
+            var interest = amount * configuration.InterestRate / 100 * daysInPeriod / daysInYear;
+            return configuration.RoundingPolicy.Round(interest);
         }
     }
 }

@@ -36,21 +36,18 @@ namespace OpenCBS.Service
         private readonly ILoanProductRepository _loanProductRepository;
         private readonly IEntryFeeRepository _entryFeeRepository;
         private readonly ICurrencyRepository _currencyRepository;
-        private readonly IPolicyRepository _policyRepository;
         private readonly IPolicyFactory _policyFactory;
         private readonly ILoanProductValidator _validator;
 
         public LoanProductService(ILoanProductRepository loanProductRepository,
             IEntryFeeRepository entryFeeRepository,
             ICurrencyRepository currencyRepository,
-            IPolicyRepository policyRepository,
             IPolicyFactory policyFactory,
             ILoanProductValidator validator)
         {
             _loanProductRepository = loanProductRepository;
             _entryFeeRepository = entryFeeRepository;
             _currencyRepository = currencyRepository;
-            _policyRepository = policyRepository;
             _policyFactory = policyFactory;
             _validator = validator;
         }
@@ -119,10 +116,10 @@ namespace OpenCBS.Service
         {
             var result = new LoanProductReferenceDataDto
             {
-                SchedulePolicies = _policyRepository.FindSchedulePolicyNames(),
+                SchedulePolicies = _policyFactory.GetSchedulePolicyNames(),
                 PaymentFrequencyPolicies = _policyFactory.GetPaymentFrequencyPolicyNames(),
                 YearPolicies = _policyFactory.GetYearPolicyNames(),
-                DateShiftPolicies = _policyRepository.FindDateShiftPolicyNames(),
+                DateShiftPolicies = _policyFactory.GetDateShiftPolicyNames(),
                 RoundingPolicies = _policyFactory.GetRoundingPolicyNames(),
                 LateFeePolicies = _policyFactory.GetLateFeePolicyNames(),
                 Currencies = _currencyRepository.FindAll().Where(c => !c.Deleted).ToDictionary(c => c.Id, c => c.Name)

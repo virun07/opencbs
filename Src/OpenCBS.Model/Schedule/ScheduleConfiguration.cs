@@ -18,14 +18,25 @@
 // Contact: contact@opencbs.com
 
 using System;
+using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.Interface
+namespace OpenCBS.Model.Schedule
 {
-    public interface IPaymentFrequencyPolicy
+    public class ScheduleConfiguration : IScheduleConfiguration
     {
-        DateTime GetNextDate(DateTime date);
-        DateTime GetPreviousDate(DateTime date);
-        int GetNumberOfDays(DateTime date);
-        double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy);
+        public decimal Amount { get; set; }
+        public bool ChargeInterestDuringGracePeriod { get; set; }
+        public DateTime FirstRepaymentDate { get; set; }
+        public int GracePeriod { get; set; }
+        public decimal InterestRate { get; set; }
+        public int Maturity { get; set; }
+
+        public IPaymentFrequencyPolicy PaymentFrequencyPolicy { get; set; }
+        public IRoundingPolicy RoundingPolicy { get; set; }
+        public DateTime StartDate { get; set; }
+        public IYearPolicy YearPolicy { get; set; }
+        public IDateShiftPolicy DateShiftPolicy { get; set; }
+        public ISchedulePolicy SchedulePolicy { get; set; }
+        public IAdjustmentPolicy AdjustmentPolicy { get; set; }
     }
 }

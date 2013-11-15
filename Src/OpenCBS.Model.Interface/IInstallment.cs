@@ -21,11 +21,17 @@ using System;
 
 namespace OpenCBS.Model.Interface
 {
-    public interface IPaymentFrequencyPolicy
+    public interface IInstallment
     {
-        DateTime GetNextDate(DateTime date);
-        DateTime GetPreviousDate(DateTime date);
-        int GetNumberOfDays(DateTime date);
-        double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy);
+        int Number { get; set; }
+        DateTime StartDate { get; set; }
+        DateTime EndDate { get; set; }
+        DateTime RepaymentDate { get; set; }
+        decimal Principal { get; set; }
+        decimal Interest { get; set; }
+        decimal Olb { get; set; }
+        decimal PaidPrincipal { get; set; }
+        decimal PaidInterest { get; set; }
+        DateTime? LastPaymentDate { get; set; }
     }
 }

@@ -17,15 +17,15 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
+using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.Interface
+namespace OpenCBS.Model.Schedule.LateFeePolicy
 {
-    public interface IPaymentFrequencyPolicy
+    public class DefaultLateFeePolicy : ILateFeePolicy
     {
-        DateTime GetNextDate(DateTime date);
-        DateTime GetPreviousDate(DateTime date);
-        int GetNumberOfDays(DateTime date);
-        double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy);
+        public bool CanAccrue()
+        {
+            return true;
+        }
     }
 }

@@ -20,13 +20,28 @@
 using System;
 using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.LoanPolicy.RoundingPolicy
+namespace OpenCBS.Model.Schedule.PaymentFrequencyPolicy
 {
-    public class TwoDecimalsRoundingPolicy : IRoundingPolicy
+    public class Monthly30DayPaymentFrequencyPolicy : IPaymentFrequencyPolicy
     {
-        public decimal Round(decimal amount)
+        public DateTime GetNextDate(DateTime date)
         {
-            return Math.Round(amount, 2, MidpointRounding.AwayFromZero);
+            return date.AddMonths(1);
+        }
+
+        public DateTime GetPreviousDate(DateTime date)
+        {
+            return date.AddMonths(-1);
+        }
+
+        public int GetNumberOfDays(DateTime date)
+        {
+            return 30;
+        }
+
+        public double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy)
+        {
+            return 12;
         }
     }
 }

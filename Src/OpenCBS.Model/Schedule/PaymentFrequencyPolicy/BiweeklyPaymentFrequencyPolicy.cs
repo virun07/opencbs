@@ -18,14 +18,30 @@
 // Contact: contact@opencbs.com
 
 using System;
+using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.Interface
+namespace OpenCBS.Model.Schedule.PaymentFrequencyPolicy
 {
-    public interface IPaymentFrequencyPolicy
+    public class BiweeklyPaymentFrequencyPolicy : IPaymentFrequencyPolicy
     {
-        DateTime GetNextDate(DateTime date);
-        DateTime GetPreviousDate(DateTime date);
-        int GetNumberOfDays(DateTime date);
-        double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy);
+        public DateTime GetNextDate(DateTime date)
+        {
+            return date.AddDays(14);
+        }
+
+        public int GetNumberOfDays(DateTime date)
+        {
+            return 14;
+        }
+
+        public double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy)
+        {
+            return 26;
+        }
+
+        public DateTime GetPreviousDate(DateTime date)
+        {
+            return date.AddDays(-14);
+        }
     }
 }

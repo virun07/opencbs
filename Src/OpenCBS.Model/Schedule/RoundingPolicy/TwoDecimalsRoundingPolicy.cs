@@ -20,13 +20,13 @@
 using System;
 using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.LoanPolicy.YearPolicy
+namespace OpenCBS.Model.Schedule.RoundingPolicy
 {
-    public class ThreeSixtyFiveYearPolicy : IYearPolicy
+    public class TwoDecimalsRoundingPolicy : IRoundingPolicy
     {
-        public int GetNumberOfDays(DateTime date)
+        public decimal Round(decimal amount)
         {
-            return 365;
+            return Math.Round(amount, 2, MidpointRounding.AwayFromZero);
         }
     }
 }

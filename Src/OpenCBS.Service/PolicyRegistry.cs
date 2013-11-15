@@ -18,10 +18,12 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.Model.Interface;
-using OpenCBS.Model.LoanPolicy.LateFeePolicy;
-using OpenCBS.Model.LoanPolicy.PaymentFrequencyPolicy;
-using OpenCBS.Model.LoanPolicy.RoundingPolicy;
-using OpenCBS.Model.LoanPolicy.YearPolicy;
+using OpenCBS.Model.Schedule.DateShiftPolicy;
+using OpenCBS.Model.Schedule.LateFeePolicy;
+using OpenCBS.Model.Schedule.PaymentFrequencyPolicy;
+using OpenCBS.Model.Schedule.RoundingPolicy;
+using OpenCBS.Model.Schedule.SchedulePolicy;
+using OpenCBS.Model.Schedule.YearPolicy;
 using StructureMap.Configuration.DSL;
 
 namespace OpenCBS.Service
@@ -32,35 +34,27 @@ namespace OpenCBS.Service
         {
             For<ILateFeePolicy>().Use<DefaultLateFeePolicy>().Named("Always accrue");
 
-            For<IPaymentFrequencyPolicy>()
-                .Add<CustomPaymentFrequencyPolicy>()
-                .Ctor<int>("numberOfDays").Is(1)
-                .Named("Daily");
-            For<IPaymentFrequencyPolicy>()
-                .Add<CustomPaymentFrequencyPolicy>()
-                .Ctor<int>("numberOfDays").Is(7)
-                .Named("Weekly");
-            For<IPaymentFrequencyPolicy>()
-                .Add<CustomPaymentFrequencyPolicy>()
-                .Ctor<int>("numberOfDays").Is(14)
-                .Named("Biweekly");
-            For<IPaymentFrequencyPolicy>()
-                .Add<CustomPaymentFrequencyPolicy>()
-                .Ctor<int>("numberOfDays").Is(30)
-                .Named("30 days");
-            For<IPaymentFrequencyPolicy>()
-                .Add<MonthlyPaymentFrequencyPolicy>()
-                .Named("Monthly");
-            For<IPaymentFrequencyPolicy>()
-                .Add<Monthly30DayPaymentFrequencyPolicy>()
-                .Named("Monthly (30 day)");
-
+            For<IPaymentFrequencyPolicy>().Add<DailyPaymentFrequencyPolicy>().Named("Daily");
+            For<IPaymentFrequencyPolicy>().Add<WeeklyPaymentFrequencyPolicy>().Named("Weekly");
+            For<IPaymentFrequencyPolicy>().Add<BiweeklyPaymentFrequencyPolicy>().Named("Biweekly");
+            For<IPaymentFrequencyPolicy>().Add<ThirtyDaysPaymentFrequencyPolicy>().Named("30 days");
+            For<IPaymentFrequencyPolicy>().Add<MonthlyPaymentFrequencyPolicy>().Named("Monthly");
+            For<IPaymentFrequencyPolicy>().Add<Monthly30DayPaymentFrequencyPolicy>().Named("Monthly (30 day)");
+            
             For<IYearPolicy>().Add<ActualYearPolicy>().Named("Actual");
             For<IYearPolicy>().Add<ThreeSixtyYearPolicy>().Named("360 days");
             For<IYearPolicy>().Add<ThreeSixtyFiveYearPolicy>().Named("365 days");
 
             For<IRoundingPolicy>().Add<WholeRoundingPolicy>().Named("Whole");
             For<IRoundingPolicy>().Add<TwoDecimalsRoundingPolicy>().Named("Two decimals");
+
+            For<IDateShiftPolicy>().Add<NoDateShiftPolicy>().Named("No shift");
+            For<IDateShiftPolicy>().Add<ForwardDateShiftPolicy>().Named("Forward");
+            For<IDateShiftPolicy>().Add<BackwardDateShiftPolicy>().Named("Backward");
+
+            For<ISchedulePolicy>().Add<FlatSchedulePolicy>().Named("Flat");
+            For<ISchedulePolicy>().Add<DecliningBalanceSchedulePolicy>().Named("Declining balance");
+            For<ISchedulePolicy>().Add<DecliningBalanceEqualPaymentsSchedulePolicy>().Named("Declining balance (equal payments)");
         }
     }
 }

@@ -19,14 +19,10 @@
 
 using System.Collections.Generic;
 
-namespace OpenCBS.Interface.Repository
+namespace OpenCBS.Model.Interface
 {
-    public interface IPolicyRepository
+    public interface IAdjustmentPolicy
     {
-        IList<string> FindPaymentFrequencyPolicyNames();
-        IList<string> FindSchedulePolicyNames();
-        IList<string> FindYearPolicyNames();
-        IList<string> FindDateShiftPolicyNames();
-        IList<string> FindRoundingPolicyNames();
+        IList<IInstallment> Adjust(IList<IInstallment> schedule, decimal amount);
     }
 }

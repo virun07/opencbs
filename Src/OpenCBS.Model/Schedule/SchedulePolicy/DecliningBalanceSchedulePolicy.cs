@@ -17,16 +17,17 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
 using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.LoanPolicy.RoundingPolicy
+namespace OpenCBS.Model.Schedule.SchedulePolicy
 {
-    public class WholeRoundingPolicy : IRoundingPolicy
+    public class DecliningBalanceSchedulePolicy : BaseSchedulePolicy, ISchedulePolicy
     {
-        public decimal Round(decimal amount)
+        public void Calculate(IInstallment installment, IScheduleConfiguration configuration)
         {
-            return Math.Round(amount, 0, MidpointRounding.AwayFromZero);
+            var number = configuration.Maturity - configuration.GracePeriod;
+            installment.Principal = configuration.RoundingPolicy.Round(configuration.Amount / number);
+            installment.Interest = CalculateInterest(installment, configuration, installment.Olb);
         }
     }
 }

@@ -264,14 +264,14 @@ namespace OpenCBS.GUI.View
             this._scheduleTabListPage.Controls.Add(this._schedulePolicyLabel);
             this._scheduleTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this._scheduleTabListPage.Name = "_scheduleTabListPage";
-            this._scheduleTabListPage.Size = new System.Drawing.Size(42, 192);
+            this._scheduleTabListPage.Size = new System.Drawing.Size(541, 334);
             this._scheduleTabListPage.TabIndex = 1;
             this._scheduleTabListPage.Text = "Schedule";
             // 
             // _chargeInterestDuringGracePeriodCheckBox
             // 
             this._chargeInterestDuringGracePeriodCheckBox.AutoSize = true;
-            this._chargeInterestDuringGracePeriodCheckBox.Location = new System.Drawing.Point(253, 212);
+            this._chargeInterestDuringGracePeriodCheckBox.Location = new System.Drawing.Point(327, 212);
             this._chargeInterestDuringGracePeriodCheckBox.Name = "_chargeInterestDuringGracePeriodCheckBox";
             this._chargeInterestDuringGracePeriodCheckBox.Size = new System.Drawing.Size(106, 19);
             this._chargeInterestDuringGracePeriodCheckBox.TabIndex = 48;
@@ -283,7 +283,7 @@ namespace OpenCBS.GUI.View
             this._gracePeriodRange.AllowDecimalSeparator = false;
             this._gracePeriodRange.AutoSize = true;
             this._gracePeriodRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._gracePeriodRange.Location = new System.Drawing.Point(250, 185);
+            this._gracePeriodRange.Location = new System.Drawing.Point(324, 185);
             this._gracePeriodRange.Margin = new System.Windows.Forms.Padding(0);
             this._gracePeriodRange.Max = null;
             this._gracePeriodRange.Min = null;
@@ -295,7 +295,7 @@ namespace OpenCBS.GUI.View
             // _gracePeriodLabel
             // 
             this._gracePeriodLabel.AutoSize = true;
-            this._gracePeriodLabel.Location = new System.Drawing.Point(250, 166);
+            this._gracePeriodLabel.Location = new System.Drawing.Point(324, 166);
             this._gracePeriodLabel.Name = "_gracePeriodLabel";
             this._gracePeriodLabel.Size = new System.Drawing.Size(74, 15);
             this._gracePeriodLabel.TabIndex = 47;
@@ -306,7 +306,7 @@ namespace OpenCBS.GUI.View
             this._maturityRange.AllowDecimalSeparator = false;
             this._maturityRange.AutoSize = true;
             this._maturityRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._maturityRange.Location = new System.Drawing.Point(250, 132);
+            this._maturityRange.Location = new System.Drawing.Point(324, 132);
             this._maturityRange.Margin = new System.Windows.Forms.Padding(0);
             this._maturityRange.Max = null;
             this._maturityRange.Min = null;
@@ -320,7 +320,7 @@ namespace OpenCBS.GUI.View
             this._interestRateRange.AllowDecimalSeparator = true;
             this._interestRateRange.AutoSize = true;
             this._interestRateRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._interestRateRange.Location = new System.Drawing.Point(250, 78);
+            this._interestRateRange.Location = new System.Drawing.Point(324, 78);
             this._interestRateRange.Margin = new System.Windows.Forms.Padding(0);
             this._interestRateRange.Max = null;
             this._interestRateRange.Min = null;
@@ -334,7 +334,7 @@ namespace OpenCBS.GUI.View
             this._amountRange.AllowDecimalSeparator = true;
             this._amountRange.AutoSize = true;
             this._amountRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._amountRange.Location = new System.Drawing.Point(250, 25);
+            this._amountRange.Location = new System.Drawing.Point(324, 25);
             this._amountRange.Margin = new System.Windows.Forms.Padding(0);
             this._amountRange.Max = null;
             this._amountRange.Min = null;
@@ -346,7 +346,7 @@ namespace OpenCBS.GUI.View
             // _maturityLabel
             // 
             this._maturityLabel.AutoSize = true;
-            this._maturityLabel.Location = new System.Drawing.Point(250, 113);
+            this._maturityLabel.Location = new System.Drawing.Point(324, 113);
             this._maturityLabel.Name = "_maturityLabel";
             this._maturityLabel.Size = new System.Drawing.Size(52, 15);
             this._maturityLabel.TabIndex = 45;
@@ -355,7 +355,7 @@ namespace OpenCBS.GUI.View
             // _interestRateLabel
             // 
             this._interestRateLabel.AutoSize = true;
-            this._interestRateLabel.Location = new System.Drawing.Point(250, 60);
+            this._interestRateLabel.Location = new System.Drawing.Point(324, 60);
             this._interestRateLabel.Name = "_interestRateLabel";
             this._interestRateLabel.Size = new System.Drawing.Size(111, 15);
             this._interestRateLabel.TabIndex = 43;
@@ -364,7 +364,7 @@ namespace OpenCBS.GUI.View
             // _amountLabel
             // 
             this._amountLabel.AutoSize = true;
-            this._amountLabel.Location = new System.Drawing.Point(250, 7);
+            this._amountLabel.Location = new System.Drawing.Point(324, 7);
             this._amountLabel.Name = "_amountLabel";
             this._amountLabel.Size = new System.Drawing.Size(51, 15);
             this._amountLabel.TabIndex = 41;
@@ -376,7 +376,7 @@ namespace OpenCBS.GUI.View
             this._roundingPolicyComboBox.FormattingEnabled = true;
             this._roundingPolicyComboBox.Location = new System.Drawing.Point(14, 238);
             this._roundingPolicyComboBox.Name = "_roundingPolicyComboBox";
-            this._roundingPolicyComboBox.Size = new System.Drawing.Size(174, 23);
+            this._roundingPolicyComboBox.Size = new System.Drawing.Size(250, 23);
             this._roundingPolicyComboBox.TabIndex = 39;
             this._roundingPolicyComboBox.Tag = "RoundingPolicy";
             // 
@@ -395,7 +395,7 @@ namespace OpenCBS.GUI.View
             this._dateShiftPolicyComboBox.FormattingEnabled = true;
             this._dateShiftPolicyComboBox.Location = new System.Drawing.Point(14, 185);
             this._dateShiftPolicyComboBox.Name = "_dateShiftPolicyComboBox";
-            this._dateShiftPolicyComboBox.Size = new System.Drawing.Size(174, 23);
+            this._dateShiftPolicyComboBox.Size = new System.Drawing.Size(250, 23);
             this._dateShiftPolicyComboBox.TabIndex = 37;
             this._dateShiftPolicyComboBox.Tag = "DateShiftPolicy";
             // 
@@ -414,7 +414,7 @@ namespace OpenCBS.GUI.View
             this._yearPolicyComboBox.FormattingEnabled = true;
             this._yearPolicyComboBox.Location = new System.Drawing.Point(14, 132);
             this._yearPolicyComboBox.Name = "_yearPolicyComboBox";
-            this._yearPolicyComboBox.Size = new System.Drawing.Size(174, 23);
+            this._yearPolicyComboBox.Size = new System.Drawing.Size(250, 23);
             this._yearPolicyComboBox.TabIndex = 35;
             this._yearPolicyComboBox.Tag = "YearPolicy";
             // 
@@ -433,7 +433,7 @@ namespace OpenCBS.GUI.View
             this._paymentFrequencyPolicyComboBox.FormattingEnabled = true;
             this._paymentFrequencyPolicyComboBox.Location = new System.Drawing.Point(14, 78);
             this._paymentFrequencyPolicyComboBox.Name = "_paymentFrequencyPolicyComboBox";
-            this._paymentFrequencyPolicyComboBox.Size = new System.Drawing.Size(174, 23);
+            this._paymentFrequencyPolicyComboBox.Size = new System.Drawing.Size(250, 23);
             this._paymentFrequencyPolicyComboBox.TabIndex = 33;
             this._paymentFrequencyPolicyComboBox.Tag = "PaymentFrequencyPolicy";
             // 
@@ -452,7 +452,7 @@ namespace OpenCBS.GUI.View
             this._schedulePolicyComboBox.FormattingEnabled = true;
             this._schedulePolicyComboBox.Location = new System.Drawing.Point(14, 25);
             this._schedulePolicyComboBox.Name = "_schedulePolicyComboBox";
-            this._schedulePolicyComboBox.Size = new System.Drawing.Size(174, 23);
+            this._schedulePolicyComboBox.Size = new System.Drawing.Size(250, 23);
             this._schedulePolicyComboBox.TabIndex = 31;
             this._schedulePolicyComboBox.Tag = "SchedulePolicy";
             // 

@@ -33,52 +33,76 @@ namespace OpenCBS.Service
             _container = container;
         }
 
-        public IList<string> GetLateFeePolicyNames()
+        private IList<string> GetPolicyNames<T>()
         {
             return _container.Model.AllInstances
-                             .Where(x => x.PluginType == typeof (ILateFeePolicy))
+                             .Where(x => x.PluginType == typeof (T))
                              .Select(x => x.Name).ToList().AsReadOnly();
+        }
+
+        private T GetPolicy<T>(string name)
+        {
+            return _container.GetInstance<T>(name);
+        }
+
+        public IList<string> GetLateFeePolicyNames()
+        {
+            return GetPolicyNames<ILateFeePolicy>();
         }
 
         public IList<string> GetPaymentFrequencyPolicyNames()
         {
-            return _container.Model.AllInstances
-                             .Where(x => x.PluginType == typeof (IPaymentFrequencyPolicy))
-                             .Select(x => x.Name).ToList().AsReadOnly();
+            return GetPolicyNames<IPaymentFrequencyPolicy>();
         }
 
         public IList<string> GetYearPolicyNames()
         {
-            return _container.Model.AllInstances
-                             .Where(x => x.PluginType == typeof (IYearPolicy))
-                             .Select(x => x.Name).ToList().AsReadOnly();
+            return GetPolicyNames<IYearPolicy>();
         }
 
         public IList<string> GetRoundingPolicyNames()
         {
-            return _container.Model.AllInstances
-                             .Where(x => x.PluginType == typeof (IRoundingPolicy))
-                             .Select(x => x.Name).ToList().AsReadOnly();
+            return GetPolicyNames<IRoundingPolicy>();
+        }
+
+        public IList<string> GetDateShiftPolicyNames()
+        {
+            return GetPolicyNames<IDateShiftPolicy>();
+        }
+
+        public IList<string> GetSchedulePolicyNames()
+        {
+            return GetPolicyNames<ISchedulePolicy>();
         }
 
         public ILateFeePolicy GetLateFeePolicy(string name)
         {
-            return _container.GetInstance<ILateFeePolicy>(name);
+            return GetPolicy<ILateFeePolicy>(name);
         }
 
         public IPaymentFrequencyPolicy GetPaymentFrequencyPolicy(string name)
         {
-            return _container.GetInstance<IPaymentFrequencyPolicy>(name);
+            return GetPolicy<IPaymentFrequencyPolicy>(name);
         }
 
         public IYearPolicy GetYearPolicy(string name)
         {
-            return _container.GetInstance<IYearPolicy>(name);
+            return GetPolicy<IYearPolicy>(name);
         }
 
         public IRoundingPolicy GetRoundingPolicy(string name)
         {
-            return _container.GetInstance<IRoundingPolicy>(name);
+            return GetPolicy<IRoundingPolicy>(name);
+        }
+
+        public IDateShiftPolicy GetDateShiftPolicy(string name)
+        {
+            return GetPolicy<IDateShiftPolicy>(name);
+        }
+
+        public ISchedulePolicy GetSchedulePolicy(string name)
+        {
+            return GetPolicy<ISchedulePolicy>(name);
         }
     }
 }

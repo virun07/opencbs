@@ -20,7 +20,7 @@
 using System;
 using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.LoanPolicy.YearPolicy
+namespace OpenCBS.Model.Schedule.YearPolicy
 {
     public class ThreeSixtyYearPolicy : IYearPolicy
     {

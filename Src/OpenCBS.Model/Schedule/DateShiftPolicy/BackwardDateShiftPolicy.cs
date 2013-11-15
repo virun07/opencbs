@@ -18,14 +18,29 @@
 // Contact: contact@opencbs.com
 
 using System;
+using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.Interface
+namespace OpenCBS.Model.Schedule.DateShiftPolicy
 {
-    public interface IPaymentFrequencyPolicy
+    public class BackwardDateShiftPolicy : IDateShiftPolicy
     {
-        DateTime GetNextDate(DateTime date);
-        DateTime GetPreviousDate(DateTime date);
-        int GetNumberOfDays(DateTime date);
-        double GetNumberOfPeriodsInYear(DateTime date, IYearPolicy yearPolicy);
+        private readonly INonWorkingDayPolicy _nonWorkingDayPolicy;
+
+        public BackwardDateShiftPolicy(INonWorkingDayPolicy nonWorkingDayPolicy)
+        {
+            _nonWorkingDayPolicy = nonWorkingDayPolicy;
+        }
+
+        public DateTime ShiftDate(DateTime date)
+        {
+            if (_nonWorkingDayPolicy == null)
+                throw new NullReferenceException("Non-working day policy is null.");
+
+            while (_nonWorkingDayPolicy.IsNonWorkingDay(date))
+            {
+                date = date.AddDays(1);
+            }
+            return date;
+        }
     }
 }

@@ -54,6 +54,7 @@
     <Compile Include="EmitProxy.cs" />
     <Compile Include="EntryFeeService.cs" />
     <Compile Include="LoanProductService.cs" />
+    <Compile Include="NonWorkingDayPolicy.cs" />
     <Compile Include="PolicyRegistry.cs" />
     <Compile Include="PolicyFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="SecurityInterceptor.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="SettingsProvider.cs" />
+    <Compile Include="ThirtyDaysPaymentFrequencyPolicy.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="Validator\EntryFeeValidator.cs" />
     <Compile Include="Validator\LoanProductValidator.cs" />
