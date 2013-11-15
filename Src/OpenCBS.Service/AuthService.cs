@@ -67,7 +67,17 @@ namespace OpenCBS.Service
                 "User.View",
                 "User.Add",
                 "User.Edit",
-                "User.Delete"
+                "User.Delete",
+
+                "EntryFee.View",
+                "EntryFee.Add",
+                "EntryFee.Edit",
+                "EntryFee.Delete",
+
+                "LoanProduct.View",
+                "LoanProduct.Add",
+                "LoanProduct.Edit",
+                "LoanProduct.Delete"
             };
             return result.AsReadOnly();
         }

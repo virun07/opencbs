@@ -17,9 +17,11 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Linq;
 using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.Presenter
@@ -28,11 +30,13 @@ namespace OpenCBS.GUI.Presenter
     {
         private readonly IMainView _view;
         private readonly IApplicationController _appController;
+        private readonly IAuthService _authService;
 
-        public MainPresenter(IMainView view, IApplicationController appController)
+        public MainPresenter(IMainView view, IApplicationController appController, IAuthService authService)
         {
             _view = view;
             _appController = appController;
+            _authService = authService;
         }
 
         public void ShowRoles()
@@ -63,12 +67,34 @@ namespace OpenCBS.GUI.Presenter
         public void Run()
         {
             _view.Attach(this);
+            Authorize();
             _view.Run();
         }
 
         public object View
         {
             get { return _view; }
+        }
+
+        private bool CanAny(string entity, string ops)
+        {
+            var permissions = ops.Split(',').Select(op => entity + "." + op.Trim()).ToList().AsReadOnly();
+            return _authService.CanAny(permissions);
+        }
+
+        private void Authorize()
+        {
+            if (!CanAny("EntryFee", "View, Add, Edit, Delete"))
+                _view.ProhibitEntryFeeManagement();
+
+            if (!CanAny("LoanProduct", "View, Add, Edit, Delete"))
+                _view.ProhibitLoanProductManagement();
+
+            if (!CanAny("Role", "View, Add, Edit, Delete"))
+                _view.ProhibitRoleManagement();
+            
+            if (!CanAny("User", "View, Add, Edit, Delete"))
+                _view.ProhibitUserManagement();
         }
     }
 }

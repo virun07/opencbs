@@ -61,8 +61,6 @@ namespace OpenCBS.GUI.View
 {
     public partial class MainView : SweetBaseForm, ITempMainView, IMainView
     {
-        private readonly IAuthService _authService;
-
         [ImportMany(typeof(IMenu), RequiredCreationPolicy = CreationPolicy.Shared)]
         public List<IMenu> ExtensionMenuItems { get; set; }
 
@@ -71,9 +69,8 @@ namespace OpenCBS.GUI.View
         private bool _showTellerFormOnClose = true;
         private bool _triggerAlertsUpdate;
 
-        public MainView(IAuthService authService)
+        public MainView()
         {
-            _authService = authService;
             MefContainer.Current.Bind(this);
             InitializeComponent();
             _menuItems = new List<MenuObject>();
@@ -1079,7 +1076,6 @@ namespace OpenCBS.GUI.View
 
         public void Run()
         {
-            Authorize();
             Show();
         }
 
@@ -1096,21 +1092,24 @@ namespace OpenCBS.GUI.View
             _portugueseMenuItem.Click += (sedner, e) => presenterCallbacks.ChangeLanguage("pt");
         }
 
-        private IEnumerable<ToolStripMenuItem> GetMenuItems(ToolStripMenuItem item)
+        public void ProhibitRoleManagement()
         {
-            var items = item.DropDownItems.OfType<ToolStripMenuItem>();
-            return items.SelectMany(GetMenuItems).Concat(items);
+            _rolesMenuItem.Visible = false;
         }
 
-        private void Authorize()
+        public void ProhibitUserManagement()
         {
-            var items = _mainMenuStrip.Items.OfType<ToolStripMenuItem>();
-            items = items.SelectMany(GetMenuItems).Concat(items).Where(i => i.Tag is string);
-            foreach (var item in items)
-            {
-                var permissions = item.Tag.ToString().Split(':');
-                item.Visible = _authService.CanAny(permissions);
-            }
+            _usersMenuItem.Visible = false;
+        }
+
+        public void ProhibitEntryFeeManagement()
+        {
+            _entryFeesMenuItem.Visible = false;
+        }
+
+        public void ProhibitLoanProductManagement()
+        {
+            _loanProductsMenuItem.Visible = false;
         }
     }
 }
