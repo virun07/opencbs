@@ -19,8 +19,8 @@
 
 using System.Globalization;
 using System.Threading;
+using OpenCBS.DataContract.AppEvent;
 using OpenCBS.DataContract.CommandData;
-using OpenCBS.GUI.AppEvent;
 using OpenCBS.Interface;
 
 namespace OpenCBS.GUI.Command

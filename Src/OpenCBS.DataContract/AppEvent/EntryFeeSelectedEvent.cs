@@ -17,9 +17,9 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.GUI.AppEvent
+namespace OpenCBS.DataContract.AppEvent
 {
-    public class UserSavedEvent
+    public class EntryFeeSelectedEvent
     {
         public int Id { get; set; }
     }
