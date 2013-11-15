@@ -17,9 +17,30 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.GUI.CommandData
+using NSubstitute;
+using NUnit.Framework;
+using OpenCBS.Interface;
+using OpenCBS.Interface.Service;
+using OpenCBS.Interface.View;
+using OpenCBS.Presenter;
+
+namespace OpenCBS.UnitTest.Presenter
 {
-    public class ShowRolesData
+    [TestFixture]
+    public class MainPresenterTest
     {
+        [Test]
+        public void Run()
+        {
+            var mainView = Substitute.For<IMainView>();
+            var appController = Substitute.For<IApplicationController>();
+            var authService = Substitute.For<IAuthService>();
+
+            var presenter = new MainPresenter(mainView, appController, authService);
+            presenter.Run();
+
+            mainView.Received().Attach(presenter);
+            mainView.Received().Run();
+        }
     }
 }

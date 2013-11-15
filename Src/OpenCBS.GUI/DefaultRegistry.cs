@@ -33,6 +33,7 @@ namespace OpenCBS.GUI
             {
                 scanner.Assembly("OpenCBS.Service");
                 scanner.Assembly("OpenCBS.Persistence");
+                scanner.Assembly("OpenCBS.Presenter");
                 scanner.TheCallingAssembly();
                 scanner.WithDefaultConventions();
                 scanner.ConnectImplementationsToTypesClosing(typeof (ICommand<>));

@@ -17,12 +17,9 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.DataContract;
-
-namespace OpenCBS.GUI.CommandData
+namespace OpenCBS.DataContract.CommandData
 {
-    public class EditEntryFeeData
+    public class AddRoleData
     {
-        public EntryFeeDto EntryFeeDto { get; set; }
     }
 }

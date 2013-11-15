@@ -303,6 +303,10 @@
       <Project>{4b943ef5-4293-4e1d-a6f4-9aa0a66b7dc9}</Project>
       <Name>OpenCBS.Persistence</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Presenter\OpenCBS.Presenter.csproj">
+      <Project>{e8a84301-0b7c-4f40-9213-7c10d64d1cc3}</Project>
+      <Name>OpenCBS.Presenter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Reports\OpenCBS.Reports.csproj">
       <Project>{A2E4E382-5796-446C-85B1-8EF306AD50DE}</Project>
       <Name>OpenCBS.Reports</Name>
@@ -474,21 +478,7 @@
     <Compile Include="Clients\NonSolidaryGroupForm.Designer.cs">
       <DependentUpon>NonSolidaryGroupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CommandData\AddEntryFeeData.cs" />
-    <Compile Include="CommandData\AddRoleData.cs" />
-    <Compile Include="CommandData\AddUserData.cs" />
-    <Compile Include="CommandData\DeleteEntryFeeData.cs" />
-    <Compile Include="CommandData\DeleteRoleData.cs" />
-    <Compile Include="CommandData\DeleteUserData.cs" />
-    <Compile Include="CommandData\EditEntryFeeData.cs" />
-    <Compile Include="CommandData\EditRoleData.cs" />
-    <Compile Include="CommandData\EditUserData.cs" />
-    <Compile Include="CommandData\SelectEntryFeeData.cs" />
-    <Compile Include="CommandData\ShowEntryFeesData.cs" />
-    <Compile Include="CommandData\ShowRolesData.cs" />
-    <Compile Include="CommandData\ShowUsersData.cs" />
     <Compile Include="Command\AddEntryFeeCommand.cs" />
-    <Compile Include="CommandData\ChangeLanguageData.cs" />
     <Compile Include="Command\AddRoleCommand.cs" />
     <Compile Include="Command\AddUserCommand.cs" />
     <Compile Include="Command\ChangeLanguageCommand.cs" />
@@ -783,10 +773,6 @@
     <Compile Include="AppContext.cs" />
     <Compile Include="ApplicationController.cs" />
     <Compile Include="BootStrapper.cs" />
-    <Compile Include="CommandData\DeleteLoanProductData.cs" />
-    <Compile Include="CommandData\AddLoanProductData.cs" />
-    <Compile Include="CommandData\EditLoanProductData.cs" />
-    <Compile Include="CommandData\ShowLoanProductsData.cs" />
     <Compile Include="Command\AddLoanProductCommand.cs" />
     <Compile Include="Command\DeleteLoanProductCommand.cs" />
     <Compile Include="Command\EditLoanProductCommand.cs" />
@@ -802,7 +788,6 @@
     <Compile Include="Presenter\LoanProductPresenter.cs" />
     <Compile Include="Presenter\LoanProductsPresenter.cs" />
     <Compile Include="Presenter\LoginPresenter.cs" />
-    <Compile Include="Presenter\MainPresenter.cs" />
     <Compile Include="Presenter\RolePresenter.cs" />
     <Compile Include="Presenter\RolesPresenter.cs" />
     <Compile Include="Presenter\SelectEntryFeePresenter.cs" />

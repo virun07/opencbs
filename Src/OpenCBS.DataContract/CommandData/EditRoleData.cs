@@ -17,24 +17,10 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.DataContract.CommandData;
-using OpenCBS.Interface;
-using OpenCBS.Interface.Presenter;
-
-namespace OpenCBS.GUI.Command
+namespace OpenCBS.DataContract.CommandData
 {
-    public class ShowUsersCommand : ICommand<ShowUsersData>
+    public class EditRoleData
     {
-        private readonly IUsersPresenter _presenter;
-
-        public ShowUsersCommand(IUsersPresenter presenter)
-        {
-            _presenter = presenter;
-        }
-
-        public void Execute(ShowUsersData commandData)
-        {
-            _presenter.Run();
-        }
+        public int Id { get; set; }
     }
 }

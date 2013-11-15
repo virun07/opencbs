@@ -18,8 +18,8 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.DataContract;
+using OpenCBS.DataContract.CommandData;
 using OpenCBS.GUI.AppEvent;
-using OpenCBS.GUI.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;

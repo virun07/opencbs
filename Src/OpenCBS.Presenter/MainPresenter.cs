@@ -18,13 +18,13 @@
 // Contact: contact@opencbs.com
 
 using System.Linq;
-using OpenCBS.GUI.CommandData;
+using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
 
-namespace OpenCBS.GUI.Presenter
+namespace OpenCBS.Presenter
 {
     public class MainPresenter : IMainPresenter, IMainPresenterCallbacks
     {

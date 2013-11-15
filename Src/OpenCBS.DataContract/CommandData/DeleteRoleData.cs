@@ -17,9 +17,9 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.GUI.CommandData
+namespace OpenCBS.DataContract.CommandData
 {
-    public class EditUserData
+    public class DeleteRoleData
     {
         public int Id { get; set; }
     }

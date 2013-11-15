@@ -17,7 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.GUI.CommandData;
+using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 
