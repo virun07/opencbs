@@ -32,18 +32,18 @@
             this._cancelButton = new System.Windows.Forms.Button();
             this._okButton = new System.Windows.Forms.Button();
             this._generalTabListPage = new Cyotek.Windows.Forms.TabListPage();
-            this._usernameLabel = new System.Windows.Forms.Label();
-            this._emailLabel = new System.Windows.Forms.Label();
-            this._passwordLabel = new System.Windows.Forms.Label();
-            this._lastNameLabel = new System.Windows.Forms.Label();
-            this._passwordConfirmationLabel = new System.Windows.Forms.Label();
-            this._firstNameLabel = new System.Windows.Forms.Label();
-            this._lastNameTextBox = new System.Windows.Forms.TextBox();
-            this._emailTextBox = new System.Windows.Forms.TextBox();
-            this._firstNameTextBox = new System.Windows.Forms.TextBox();
-            this._usernameTextBox = new System.Windows.Forms.TextBox();
-            this._passwordTextBox = new System.Windows.Forms.TextBox();
             this._passwordConfirmationTextBox = new System.Windows.Forms.TextBox();
+            this._passwordTextBox = new System.Windows.Forms.TextBox();
+            this._usernameTextBox = new System.Windows.Forms.TextBox();
+            this._firstNameTextBox = new System.Windows.Forms.TextBox();
+            this._emailTextBox = new System.Windows.Forms.TextBox();
+            this._lastNameTextBox = new System.Windows.Forms.TextBox();
+            this._firstNameLabel = new System.Windows.Forms.Label();
+            this._passwordConfirmationLabel = new System.Windows.Forms.Label();
+            this._lastNameLabel = new System.Windows.Forms.Label();
+            this._passwordLabel = new System.Windows.Forms.Label();
+            this._emailLabel = new System.Windows.Forms.Label();
+            this._usernameLabel = new System.Windows.Forms.Label();
             this._userTabList = new Cyotek.Windows.Forms.TabList();
             this._buttonsPanel.SuspendLayout();
             this._generalTabListPage.SuspendLayout();
@@ -58,7 +58,7 @@
             this._buttonsPanel.Location = new System.Drawing.Point(0, 309);
             this._buttonsPanel.Name = "_buttonsPanel";
             this._buttonsPanel.Size = new System.Drawing.Size(634, 53);
-            this._buttonsPanel.TabIndex = 13;
+            this._buttonsPanel.TabIndex = 100;
             // 
             // _cancelButton
             // 
@@ -67,7 +67,7 @@
             this._cancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._cancelButton.Name = "_cancelButton";
             this._cancelButton.Size = new System.Drawing.Size(100, 28);
-            this._cancelButton.TabIndex = 15;
+            this._cancelButton.TabIndex = 102;
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
             // 
@@ -78,7 +78,7 @@
             this._okButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._okButton.Name = "_okButton";
             this._okButton.Size = new System.Drawing.Size(100, 28);
-            this._okButton.TabIndex = 14;
+            this._okButton.TabIndex = 101;
             this._okButton.Text = "OK";
             this._okButton.UseVisualStyleBackColor = true;
             // 
@@ -102,91 +102,14 @@
             this._generalTabListPage.TabIndex = 0;
             this._generalTabListPage.Text = "General";
             // 
-            // _usernameLabel
+            // _passwordConfirmationTextBox
             // 
-            this._usernameLabel.AutoSize = true;
-            this._usernameLabel.Location = new System.Drawing.Point(250, 7);
-            this._usernameLabel.Name = "_usernameLabel";
-            this._usernameLabel.Size = new System.Drawing.Size(60, 15);
-            this._usernameLabel.TabIndex = 7;
-            this._usernameLabel.Text = "Username";
-            // 
-            // _emailLabel
-            // 
-            this._emailLabel.AutoSize = true;
-            this._emailLabel.Location = new System.Drawing.Point(14, 113);
-            this._emailLabel.Name = "_emailLabel";
-            this._emailLabel.Size = new System.Drawing.Size(36, 15);
-            this._emailLabel.TabIndex = 5;
-            this._emailLabel.Text = "Email";
-            // 
-            // _passwordLabel
-            // 
-            this._passwordLabel.AutoSize = true;
-            this._passwordLabel.Location = new System.Drawing.Point(250, 60);
-            this._passwordLabel.Name = "_passwordLabel";
-            this._passwordLabel.Size = new System.Drawing.Size(57, 15);
-            this._passwordLabel.TabIndex = 9;
-            this._passwordLabel.Text = "Password";
-            // 
-            // _lastNameLabel
-            // 
-            this._lastNameLabel.AutoSize = true;
-            this._lastNameLabel.Location = new System.Drawing.Point(14, 60);
-            this._lastNameLabel.Name = "_lastNameLabel";
-            this._lastNameLabel.Size = new System.Drawing.Size(61, 15);
-            this._lastNameLabel.TabIndex = 3;
-            this._lastNameLabel.Text = "Last name";
-            // 
-            // _passwordConfirmationLabel
-            // 
-            this._passwordConfirmationLabel.AutoSize = true;
-            this._passwordConfirmationLabel.Location = new System.Drawing.Point(250, 113);
-            this._passwordConfirmationLabel.Name = "_passwordConfirmationLabel";
-            this._passwordConfirmationLabel.Size = new System.Drawing.Size(110, 15);
-            this._passwordConfirmationLabel.TabIndex = 11;
-            this._passwordConfirmationLabel.Text = "Password (confirm)";
-            // 
-            // _firstNameLabel
-            // 
-            this._firstNameLabel.AutoSize = true;
-            this._firstNameLabel.Location = new System.Drawing.Point(14, 7);
-            this._firstNameLabel.Name = "_firstNameLabel";
-            this._firstNameLabel.Size = new System.Drawing.Size(62, 15);
-            this._firstNameLabel.TabIndex = 1;
-            this._firstNameLabel.Text = "First name";
-            // 
-            // _lastNameTextBox
-            // 
-            this._lastNameTextBox.Location = new System.Drawing.Point(14, 78);
-            this._lastNameTextBox.Name = "_lastNameTextBox";
-            this._lastNameTextBox.Size = new System.Drawing.Size(174, 23);
-            this._lastNameTextBox.TabIndex = 4;
-            this._lastNameTextBox.Tag = "LastName";
-            // 
-            // _emailTextBox
-            // 
-            this._emailTextBox.Location = new System.Drawing.Point(14, 131);
-            this._emailTextBox.Name = "_emailTextBox";
-            this._emailTextBox.Size = new System.Drawing.Size(174, 23);
-            this._emailTextBox.TabIndex = 6;
-            this._emailTextBox.Tag = "Email";
-            // 
-            // _firstNameTextBox
-            // 
-            this._firstNameTextBox.Location = new System.Drawing.Point(14, 25);
-            this._firstNameTextBox.Name = "_firstNameTextBox";
-            this._firstNameTextBox.Size = new System.Drawing.Size(174, 23);
-            this._firstNameTextBox.TabIndex = 2;
-            this._firstNameTextBox.Tag = "FirstName";
-            // 
-            // _usernameTextBox
-            // 
-            this._usernameTextBox.Location = new System.Drawing.Point(250, 25);
-            this._usernameTextBox.Name = "_usernameTextBox";
-            this._usernameTextBox.Size = new System.Drawing.Size(174, 23);
-            this._usernameTextBox.TabIndex = 8;
-            this._usernameTextBox.Tag = "Username";
+            this._passwordConfirmationTextBox.Location = new System.Drawing.Point(250, 131);
+            this._passwordConfirmationTextBox.Name = "_passwordConfirmationTextBox";
+            this._passwordConfirmationTextBox.PasswordChar = '*';
+            this._passwordConfirmationTextBox.Size = new System.Drawing.Size(174, 23);
+            this._passwordConfirmationTextBox.TabIndex = 12;
+            this._passwordConfirmationTextBox.Tag = "PasswordConfirmation";
             // 
             // _passwordTextBox
             // 
@@ -197,14 +120,91 @@
             this._passwordTextBox.TabIndex = 10;
             this._passwordTextBox.Tag = "Password";
             // 
-            // _passwordConfirmationTextBox
+            // _usernameTextBox
             // 
-            this._passwordConfirmationTextBox.Location = new System.Drawing.Point(250, 131);
-            this._passwordConfirmationTextBox.Name = "_passwordConfirmationTextBox";
-            this._passwordConfirmationTextBox.PasswordChar = '*';
-            this._passwordConfirmationTextBox.Size = new System.Drawing.Size(174, 23);
-            this._passwordConfirmationTextBox.TabIndex = 12;
-            this._passwordConfirmationTextBox.Tag = "PasswordConfirmation";
+            this._usernameTextBox.Location = new System.Drawing.Point(250, 25);
+            this._usernameTextBox.Name = "_usernameTextBox";
+            this._usernameTextBox.Size = new System.Drawing.Size(174, 23);
+            this._usernameTextBox.TabIndex = 8;
+            this._usernameTextBox.Tag = "Username";
+            // 
+            // _firstNameTextBox
+            // 
+            this._firstNameTextBox.Location = new System.Drawing.Point(14, 25);
+            this._firstNameTextBox.Name = "_firstNameTextBox";
+            this._firstNameTextBox.Size = new System.Drawing.Size(174, 23);
+            this._firstNameTextBox.TabIndex = 2;
+            this._firstNameTextBox.Tag = "FirstName";
+            // 
+            // _emailTextBox
+            // 
+            this._emailTextBox.Location = new System.Drawing.Point(14, 131);
+            this._emailTextBox.Name = "_emailTextBox";
+            this._emailTextBox.Size = new System.Drawing.Size(174, 23);
+            this._emailTextBox.TabIndex = 6;
+            this._emailTextBox.Tag = "Email";
+            // 
+            // _lastNameTextBox
+            // 
+            this._lastNameTextBox.Location = new System.Drawing.Point(14, 78);
+            this._lastNameTextBox.Name = "_lastNameTextBox";
+            this._lastNameTextBox.Size = new System.Drawing.Size(174, 23);
+            this._lastNameTextBox.TabIndex = 4;
+            this._lastNameTextBox.Tag = "LastName";
+            // 
+            // _firstNameLabel
+            // 
+            this._firstNameLabel.AutoSize = true;
+            this._firstNameLabel.Location = new System.Drawing.Point(14, 7);
+            this._firstNameLabel.Name = "_firstNameLabel";
+            this._firstNameLabel.Size = new System.Drawing.Size(62, 15);
+            this._firstNameLabel.TabIndex = 1;
+            this._firstNameLabel.Text = "First name";
+            // 
+            // _passwordConfirmationLabel
+            // 
+            this._passwordConfirmationLabel.AutoSize = true;
+            this._passwordConfirmationLabel.Location = new System.Drawing.Point(250, 113);
+            this._passwordConfirmationLabel.Name = "_passwordConfirmationLabel";
+            this._passwordConfirmationLabel.Size = new System.Drawing.Size(110, 15);
+            this._passwordConfirmationLabel.TabIndex = 11;
+            this._passwordConfirmationLabel.Text = "Password (confirm)";
+            // 
+            // _lastNameLabel
+            // 
+            this._lastNameLabel.AutoSize = true;
+            this._lastNameLabel.Location = new System.Drawing.Point(14, 60);
+            this._lastNameLabel.Name = "_lastNameLabel";
+            this._lastNameLabel.Size = new System.Drawing.Size(61, 15);
+            this._lastNameLabel.TabIndex = 3;
+            this._lastNameLabel.Text = "Last name";
+            // 
+            // _passwordLabel
+            // 
+            this._passwordLabel.AutoSize = true;
+            this._passwordLabel.Location = new System.Drawing.Point(250, 60);
+            this._passwordLabel.Name = "_passwordLabel";
+            this._passwordLabel.Size = new System.Drawing.Size(57, 15);
+            this._passwordLabel.TabIndex = 9;
+            this._passwordLabel.Text = "Password";
+            // 
+            // _emailLabel
+            // 
+            this._emailLabel.AutoSize = true;
+            this._emailLabel.Location = new System.Drawing.Point(14, 113);
+            this._emailLabel.Name = "_emailLabel";
+            this._emailLabel.Size = new System.Drawing.Size(36, 15);
+            this._emailLabel.TabIndex = 5;
+            this._emailLabel.Text = "Email";
+            // 
+            // _usernameLabel
+            // 
+            this._usernameLabel.AutoSize = true;
+            this._usernameLabel.Location = new System.Drawing.Point(250, 7);
+            this._usernameLabel.Name = "_usernameLabel";
+            this._usernameLabel.Size = new System.Drawing.Size(60, 15);
+            this._usernameLabel.TabIndex = 7;
+            this._usernameLabel.Text = "Username";
             // 
             // _userTabList
             // 

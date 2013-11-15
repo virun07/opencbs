@@ -53,7 +53,7 @@
             this._buttonsPanel.Location = new System.Drawing.Point(0, 169);
             this._buttonsPanel.Name = "_buttonsPanel";
             this._buttonsPanel.Size = new System.Drawing.Size(366, 53);
-            this._buttonsPanel.TabIndex = 5;
+            this._buttonsPanel.TabIndex = 100;
             // 
             // _cancelButton
             // 
@@ -62,7 +62,7 @@
             this._cancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._cancelButton.Name = "_cancelButton";
             this._cancelButton.Size = new System.Drawing.Size(100, 28);
-            this._cancelButton.TabIndex = 2;
+            this._cancelButton.TabIndex = 102;
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
             // 
@@ -73,7 +73,7 @@
             this._okButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._okButton.Name = "_okButton";
             this._okButton.Size = new System.Drawing.Size(100, 28);
-            this._okButton.TabIndex = 1;
+            this._okButton.TabIndex = 101;
             this._okButton.Text = "OK";
             this._okButton.UseVisualStyleBackColor = true;
             // 

@@ -570,7 +570,7 @@ namespace OpenCBS.GUI.View
             this._lateFeesTabListPage.Controls.Add(this._penaltyGracePeriodLabel);
             this._lateFeesTabListPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this._lateFeesTabListPage.Name = "_lateFeesTabListPage";
-            this._lateFeesTabListPage.Size = new System.Drawing.Size(541, 334);
+            this._lateFeesTabListPage.Size = new System.Drawing.Size(42, 192);
             this._lateFeesTabListPage.TabIndex = 3;
             this._lateFeesTabListPage.Text = "Late fees";
             // 
@@ -617,7 +617,7 @@ namespace OpenCBS.GUI.View
             this._lateFeeBasedOnGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this._lateFeeBasedOnGroupBox.Location = new System.Drawing.Point(0, 0);
             this._lateFeeBasedOnGroupBox.Name = "_lateFeeBasedOnGroupBox";
-            this._lateFeeBasedOnGroupBox.Size = new System.Drawing.Size(541, 149);
+            this._lateFeeBasedOnGroupBox.Size = new System.Drawing.Size(42, 149);
             this._lateFeeBasedOnGroupBox.TabIndex = 50;
             this._lateFeeBasedOnGroupBox.TabStop = false;
             this._lateFeeBasedOnGroupBox.Text = "Based on (% per day)";
@@ -731,7 +731,7 @@ namespace OpenCBS.GUI.View
             this._buttonsPanel.Location = new System.Drawing.Point(0, 342);
             this._buttonsPanel.Name = "_buttonsPanel";
             this._buttonsPanel.Size = new System.Drawing.Size(699, 53);
-            this._buttonsPanel.TabIndex = 4;
+            this._buttonsPanel.TabIndex = 100;
             // 
             // _cancelButton
             // 
@@ -739,7 +739,7 @@ namespace OpenCBS.GUI.View
             this._cancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._cancelButton.Name = "_cancelButton";
             this._cancelButton.Size = new System.Drawing.Size(100, 28);
-            this._cancelButton.TabIndex = 2;
+            this._cancelButton.TabIndex = 102;
             this._cancelButton.Text = "Cancel";
             this._cancelButton.UseVisualStyleBackColor = true;
             // 
@@ -749,7 +749,7 @@ namespace OpenCBS.GUI.View
             this._okButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._okButton.Name = "_okButton";
             this._okButton.Size = new System.Drawing.Size(100, 28);
-            this._okButton.TabIndex = 1;
+            this._okButton.TabIndex = 101;
             this._okButton.Text = "OK";
             this._okButton.UseVisualStyleBackColor = true;
             // 
