@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 using Omu.ValueInjecter;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Repository;
@@ -66,7 +67,13 @@ namespace OpenCBS.Service
             var user = new User();
             user.InjectFrom(dto);
             user.Roles = _roleRepository.FindByIds(dto.RoleIds);
-            return _userRepository.Add(user);
+
+            using (var scope = new TransactionScope())
+            {
+                var id = _userRepository.Add(user);
+                scope.Complete();
+                return id;
+            }
         }
 
         public void Update(UserDto dto)
@@ -80,7 +87,12 @@ namespace OpenCBS.Service
             if (!user.IsSuperuser)
                 user.Roles = _roleRepository.FindByIds(dto.RoleIds);
             user.InjectFrom(dto);
-            _userRepository.Update(user);
+
+            using (var scope = new TransactionScope())
+            {
+                _userRepository.Update(user);
+                scope.Complete();
+            }
         }
 
         public void Delete(int id)

@@ -19,6 +19,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 using Omu.ValueInjecter;
 using OpenCBS.Common.Injection;
 using OpenCBS.DataContract;
@@ -75,7 +76,13 @@ namespace OpenCBS.Service
             loanProduct.Currency = _currencyRepository.FindById(dto.CurrencyId ?? 1);
             var entryFeeIds = dto.EntryFees.Select(ef => ef.Id).ToArray();
             loanProduct.EntryFees = _entryFeeRepository.FindByIds(entryFeeIds);
-            return _loanProductRepository.Add(loanProduct);
+            
+            using (var scope = new TransactionScope())
+            {
+                var id = _loanProductRepository.Add(loanProduct);
+                scope.Complete();
+                return id;
+            }
         }
 
         public void Update(LoanProductDto dto)
@@ -90,7 +97,12 @@ namespace OpenCBS.Service
             loanProduct.Currency = _currencyRepository.FindById(dto.CurrencyId ?? 1);
             var entryFeeIds = dto.EntryFees.Select(ef => ef.Id).ToArray();
             loanProduct.EntryFees = _entryFeeRepository.FindByIds(entryFeeIds);
-            _loanProductRepository.Update(loanProduct);
+
+            using (var scope = new TransactionScope())
+            {
+                _loanProductRepository.Update(loanProduct);
+                scope.Complete();
+            }
         }
 
         public void Delete(int id)
@@ -121,7 +133,7 @@ namespace OpenCBS.Service
             return result;
         }
 
-        private LoanProductDto Map(LoanProduct loanProduct)
+        private static LoanProductDto Map(LoanProduct loanProduct)
         {
             var loanProductDto = new LoanProductDto();
             loanProductDto

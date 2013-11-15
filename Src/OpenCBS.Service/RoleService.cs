@@ -19,6 +19,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 using Omu.ValueInjecter;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Repository;
@@ -62,7 +63,13 @@ namespace OpenCBS.Service
 
             var role = new Role();
             role.InjectFrom(dto);
-            return _roleRepository.Add(role);
+
+            using (var scope = new TransactionScope())
+            {
+                var id = _roleRepository.Add(role);
+                scope.Complete();
+                return id;
+            }
         }
 
         public void Update(RoleDto dto)
@@ -74,7 +81,12 @@ namespace OpenCBS.Service
             ThrowIfNotFound(role);
 
             role.InjectFrom(dto);
-            _roleRepository.Update(role);
+
+            using (var scope = new TransactionScope())
+            {
+                _roleRepository.Update(role);
+                scope.Complete();
+            }
         }
 
         public void Delete(int id)
