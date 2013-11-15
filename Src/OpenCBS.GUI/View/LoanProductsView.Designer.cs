@@ -160,7 +160,7 @@
             // 
             this._schedulePolicyColumn.AspectName = "SchedulePolicy";
             this._schedulePolicyColumn.Text = "Schedule";
-            this._schedulePolicyColumn.Width = 150;
+            this._schedulePolicyColumn.Width = 250;
             // 
             // _paymentFrequencyPolicyColumn
             // 

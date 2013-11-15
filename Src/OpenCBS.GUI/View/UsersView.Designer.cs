@@ -33,12 +33,12 @@
             this._firstNameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._usernameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._rolesColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._isSuperuserColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._buttonsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this._addButton = new System.Windows.Forms.Button();
             this._editButton = new System.Windows.Forms.Button();
             this._deleteButton = new System.Windows.Forms.Button();
             this._showDeletedCheckBox = new System.Windows.Forms.CheckBox();
-            this._isSuperuserColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this._usersListView)).BeginInit();
             this._buttonsPanel.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +74,7 @@
             // _lastNameColumn
             // 
             this._lastNameColumn.AspectName = "LastName";
-            this._lastNameColumn.Text = "LastName";
+            this._lastNameColumn.Text = "Last name";
             this._lastNameColumn.Width = 250;
             // 
             // _firstNameColumn
@@ -94,6 +94,14 @@
             this._rolesColumn.AspectName = "RoleIds";
             this._rolesColumn.Text = "Roles";
             this._rolesColumn.Width = 250;
+            // 
+            // _isSuperuserColumn
+            // 
+            this._isSuperuserColumn.AspectName = "IsSuperuser";
+            this._isSuperuserColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._isSuperuserColumn.Text = "Superuser";
+            this._isSuperuserColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._isSuperuserColumn.Width = 130;
             // 
             // _buttonsPanel
             // 
@@ -152,14 +160,6 @@
             this._showDeletedCheckBox.TabIndex = 3;
             this._showDeletedCheckBox.Text = "Show deleted";
             this._showDeletedCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // _isSuperuserColumn
-            // 
-            this._isSuperuserColumn.AspectName = "IsSuperuser";
-            this._isSuperuserColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this._isSuperuserColumn.Text = "Superuser";
-            this._isSuperuserColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this._isSuperuserColumn.Width = 100;
             // 
             // UsersView
             // 

@@ -29,7 +29,8 @@ namespace OpenCBS.GUI.Presenter
 {
     public class RolesPresenter : IRolesPresenter, IRolesPresenterCallbacks,
         IEventHandler<RoleSavedEvent>,
-        IEventHandler<RoleDeletedEvent>
+        IEventHandler<RoleDeletedEvent>,
+        IEventHandler<LanguageChangedEvent>
     {
         private readonly IRolesView _view;
         private readonly IApplicationController _appController;
@@ -110,6 +111,11 @@ namespace OpenCBS.GUI.Presenter
         public void Handle(RoleDeletedEvent eventData)
         {
             ShowRoles();
+        }
+
+        public void Handle(LanguageChangedEvent eventData)
+        {
+            _view.Translate();
         }
     }
 }

@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Cyotek.Windows.Forms;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
@@ -31,7 +32,8 @@ namespace OpenCBS.GUI.View
     {
         private TabListPage _rolesTabListPage;
 
-        public UserView()
+        public UserView(ITranslator translator)
+            : base(translator)
         {
             InitializeComponent();
         }

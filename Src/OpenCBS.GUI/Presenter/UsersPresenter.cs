@@ -29,7 +29,8 @@ namespace OpenCBS.GUI.Presenter
 {
     public class UsersPresenter : IUsersPresenter, IUsersPresenterCallbacks,
         IEventHandler<UserSavedEvent>,
-        IEventHandler<UserDeletedEvent>
+        IEventHandler<UserDeletedEvent>,
+        IEventHandler<LanguageChangedEvent>
     {
         private readonly IUsersView _view;
         private readonly IApplicationController _appController;
@@ -111,6 +112,11 @@ namespace OpenCBS.GUI.Presenter
         public void Handle(UserDeletedEvent eventData)
         {
             ShowUsers();
+        }
+
+        public void Handle(LanguageChangedEvent eventData)
+        {
+            _view.Translate();
         }
     }
 }
