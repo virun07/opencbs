@@ -25,18 +25,16 @@ using OpenCBS.Model;
 
 namespace OpenCBS.Persistence
 {
-    public class EntryFeeRepository : IEntryFeeRepository
+    public class EntryFeeRepository : Repository, IEntryFeeRepository
     {
-        private readonly IConnectionProvider _connectionProvider;
-
-        public EntryFeeRepository(IConnectionProvider connectionProvider)
+        public EntryFeeRepository(IConnectionStringProvider connectionStringProvider)
+            : base(connectionStringProvider)
         {
-            _connectionProvider = connectionProvider;
         }
 
         public IList<EntryFee> FindAll()
         {
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 const string sql = "select * from EntryFee";
                 return connection.Query<EntryFee>(sql).ToList().AsReadOnly();
@@ -45,7 +43,7 @@ namespace OpenCBS.Persistence
 
         public EntryFee FindById(int id)
         {
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 const string sql = "select * from EntryFee where Id = @Id";
                 return connection.Query<EntryFee>(sql, new { Id = id }).FirstOrDefault();
@@ -54,7 +52,7 @@ namespace OpenCBS.Persistence
 
         public IList<EntryFee> FindByIds(int[] ids)
         {
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 const string sql = "select * from EntryFee where Id in @Ids";
                 return connection.Query<EntryFee>(sql, new { Ids = ids }).ToList();
@@ -63,7 +61,7 @@ namespace OpenCBS.Persistence
 
         public void Update(EntryFee entity)
         {
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 connection.Update(entity);
             }
@@ -71,7 +69,7 @@ namespace OpenCBS.Persistence
 
         public int Add(EntryFee entity)
         {
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 return connection.Insert(entity);
             }
@@ -79,7 +77,7 @@ namespace OpenCBS.Persistence
 
         public void Remove(int id)
         {
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 connection.Delete<EntryFee>(id);
             }

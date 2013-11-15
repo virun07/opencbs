@@ -17,7 +17,6 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
@@ -28,10 +27,8 @@ using OpenCBS.Model;
 
 namespace OpenCBS.Persistence
 {
-    public class LoanProductRepository : ILoanProductRepository
+    public class LoanProductRepository : Repository, ILoanProductRepository
     {
-        private readonly IConnectionProvider _connectionProvider;
-
         // ReSharper disable UnusedMember.Local
         // ReSharper disable ClassNeverInstantiated.Local
         // ReSharper disable UnusedAutoPropertyAccessor.Local
@@ -76,9 +73,9 @@ namespace OpenCBS.Persistence
         // ReSharper restore ClassNeverInstantiated.Local
         // ReSharper restore UnusedMember.Local
 
-        public LoanProductRepository(IConnectionProvider connectionProvider)
+        public LoanProductRepository(IConnectionStringProvider connectionStringProvider)
+            : base(connectionStringProvider)
         {
-            _connectionProvider = connectionProvider;
         }
 
         public IList<LoanProduct> FindAll()
@@ -88,7 +85,7 @@ namespace OpenCBS.Persistence
                 select * from EntryFee
                 select * from LoanProductEntryFee
             ";
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             using (var multi = connection.QueryMultiple(sql))
             {
                 var loanProducts = multi.Read<LoanProduct, Currency, LoanProduct>((loanProduct, currency) =>
@@ -120,7 +117,7 @@ namespace OpenCBS.Persistence
                 select * from LoanProduct p left join Currency c on c.id = p.CurrencyId where p.id = @Id
                 select * from EntryFee where id in (select EntryFeeId from LoanProductEntryFee where LoanProductId = @Id)
             ";
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             using (var multi = connection.QueryMultiple(sql, new { Id = id }))
             {
                 var result = multi.Read<LoanProduct, Currency, LoanProduct>((loanProduct, currency) =>
@@ -138,7 +135,7 @@ namespace OpenCBS.Persistence
         {
             var row = new LoanProductRow();
             row.InjectFrom<FlatLoopValueInjection>(entity).InjectFrom<EnumToIntInjection>(entity);
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 connection.Execute("delete from LoanProductEntryFee where LoanProductId = @Id", new { entity.Id });
                 var map = entity.EntryFees
@@ -153,7 +150,7 @@ namespace OpenCBS.Persistence
         {
             var row = new LoanProductRow();
             row.InjectFrom<FlatLoopValueInjection>(entity).InjectFrom<EnumToIntInjection>(entity);
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 var id = connection.Insert(row);
                 var map = entity.EntryFees
@@ -166,7 +163,7 @@ namespace OpenCBS.Persistence
 
         public void Remove(int id)
         {
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 connection.Delete<LoanProduct>(id);
             }

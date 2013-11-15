@@ -26,18 +26,16 @@ using OpenCBS.Model;
 
 namespace OpenCBS.Persistence
 {
-    public class CurrencyRepository : ICurrencyRepository
+    public class CurrencyRepository : Repository, ICurrencyRepository
     {
-        private readonly IConnectionProvider _connectionProvider;
-
-        public CurrencyRepository(IConnectionProvider connectionProvider)
+        public CurrencyRepository(IConnectionStringProvider connectionStringProvider)
+            : base(connectionStringProvider)
         {
-            _connectionProvider = connectionProvider;
         }
 
         public IList<Currency> FindAll()
         {
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 const string sql = "select * from Currency";
                 return connection.Query<Currency>(sql).ToList().AsReadOnly();
@@ -46,10 +44,10 @@ namespace OpenCBS.Persistence
 
         public Currency FindById(int id)
         {
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 const string sql = "select * from Currency where Id = @Id";
-                return connection.Query<Currency>(sql, new {Id = id}).FirstOrDefault();
+                return connection.Query<Currency>(sql, new { Id = id }).FirstOrDefault();
             }
         }
 

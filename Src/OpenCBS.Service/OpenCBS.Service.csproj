@@ -60,6 +60,7 @@
     <Compile Include="RoleService.cs" />
     <Compile Include="SecurityInterceptor.cs" />
     <Compile Include="Service.cs" />
+    <Compile Include="SettingsProvider.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="Validator\EntryFeeValidator.cs" />
     <Compile Include="Validator\LoanProductValidator.cs" />
@@ -87,6 +88,10 @@
     <ProjectReference Include="..\OpenCBS.Model\OpenCBS.Model.csproj">
       <Project>{db64ab0c-241b-423c-b5de-2df524386651}</Project>
       <Name>OpenCBS.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Shared\OpenCBS.Shared.csproj">
+      <Project>{b3288e21-e5a9-4620-bef3-afb0b207655c}</Project>
+      <Name>OpenCBS.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

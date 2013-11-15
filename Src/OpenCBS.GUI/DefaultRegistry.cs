@@ -19,9 +19,7 @@
 
 using System.Windows.Forms;
 using OpenCBS.Interface;
-using OpenCBS.Interface.Repository;
 using OpenCBS.Interface.Service;
-using OpenCBS.Persistence;
 using OpenCBS.Service;
 using StructureMap.Configuration.DSL;
 
@@ -49,7 +47,6 @@ namespace OpenCBS.GUI
             For<IUserService>().EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept)).Use<UserService>();
             For<IRoleService>().EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept)).Use<RoleService>();
             
-            For<IConnectionProvider>().Use<SqlConnectionProvider>();
             For<ITranslator>().Singleton().Use<JsonTranslator>();
 
             RegisterInterceptor(new EventAggregatorInterceptor());

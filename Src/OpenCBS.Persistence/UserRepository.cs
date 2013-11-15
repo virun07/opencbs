@@ -26,13 +26,10 @@ using OpenCBS.Model;
 
 namespace OpenCBS.Persistence
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : Repository, IUserRepository
     {
-        private readonly IConnectionProvider _connectionProvider;
-
-        public UserRepository(IConnectionProvider connectionProvider)
+        public UserRepository(IConnectionStringProvider connectionStringProvider) : base(connectionStringProvider)
         {
-            _connectionProvider = connectionProvider;
         }
 
         public User FindByUsernameAndPassword(string username, string password)
@@ -53,7 +50,7 @@ namespace OpenCBS.Persistence
                     inner join Users u on u.id = ur.user_id
                     where u.user_name = @Username and u.user_pass = @Password
                 ";
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             using (var multi = connection.QueryMultiple(sql, new { Username = username, Password = password }))
             {
                 var user = multi.Read<User>().SingleOrDefault();
@@ -78,7 +75,7 @@ namespace OpenCBS.Persistence
                 select user_id, role_id from UserRole
                 select id Id, code Name from Roles
             ";
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             using (var multi = connection.QueryMultiple(sql))
             {
                 var users = multi.Read<User>().ToList().AsReadOnly();
@@ -111,7 +108,7 @@ namespace OpenCBS.Persistence
                     inner join Users u on u.id = ur.user_id
                     where u.id = @Id
                 ";
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             using (var multi = connection.QueryMultiple(sql, new { Id = id }))
             {
                 var user = multi.Read<User>().SingleOrDefault();
@@ -128,7 +125,7 @@ namespace OpenCBS.Persistence
 
         public void Update(User entity)
         {
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 var sql = @"
                     update Users
@@ -147,7 +144,7 @@ namespace OpenCBS.Persistence
 
         public int Add(User entity)
         {
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 var sql = @"
                     insert Users
@@ -166,7 +163,7 @@ namespace OpenCBS.Persistence
 
         public void Remove(int id)
         {
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 connection.Execute(@"update Users set deleted = 1 where id = @Id", new { Id = id });
             }

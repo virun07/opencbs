@@ -17,36 +17,33 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Data;
 using System.Data.SqlClient;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Repository;
-using OpenCBS.Shared.Settings;
 
 namespace OpenCBS.Persistence
 {
-    public class SqlConnectionProvider : IConnectionProvider
+    public class ConnectionStringProvider : IConnectionStringProvider
     {
-        public IDbConnection GetConnection()
+        private readonly ISettingsProvider _settingsProvider;
+        
+        public ConnectionStringProvider(ISettingsProvider settingsProvider)
         {
-            var connectionBuilder = new SqlConnectionStringBuilder
-            {
-                UserID = TechnicalSettings.DatabaseLoginName,
-                Password = TechnicalSettings.DatabasePassword,
-                DataSource = TechnicalSettings.DatabaseServerName,
-                PersistSecurityInfo = false,
-                InitialCatalog = TechnicalSettings.DatabaseName,
-                ConnectTimeout = TechnicalSettings.DatabaseTimeout
-            };
-
-            var conn = new SqlConnection(connectionBuilder.ConnectionString);
-            conn.Open();
-            return conn;
+            _settingsProvider = settingsProvider;
         }
 
-        public IDbTransaction GetTransaction()
+        public string GetConnectionString()
         {
-            var connection = GetConnection();
-            return connection.BeginTransaction();
+            var connectionStringBuilder = new SqlConnectionStringBuilder
+            {
+                UserID = _settingsProvider.GetDatabaseUsername(),
+                Password = _settingsProvider.GetDatabasePassword(),
+                DataSource = _settingsProvider.GetDatabaseServerName(),
+                PersistSecurityInfo = false,
+                InitialCatalog = _settingsProvider.GetDatabaseName(),
+                ConnectTimeout = 100
+            };
+            return connectionStringBuilder.ConnectionString;
         }
     }
 }

@@ -18,11 +18,25 @@
 // Contact: contact@opencbs.com
 
 using System.Data;
+using System.Data.SqlClient;
+using OpenCBS.Interface.Repository;
 
-namespace OpenCBS.Interface.Repository
+namespace OpenCBS.Persistence
 {
-    public interface IConnectionProvider
+    public abstract class Repository
     {
-        IDbConnection GetConnection();
+        private readonly IConnectionStringProvider _connectionStringProvider;
+
+        protected Repository(IConnectionStringProvider connectionStringProvider)
+        {
+            _connectionStringProvider = connectionStringProvider;
+        }
+
+        protected IDbConnection GetConnection()
+        {
+            var connection = new SqlConnection(_connectionStringProvider.GetConnectionString());
+            connection.Open();
+            return connection;
+        }
     }
 }

@@ -24,13 +24,11 @@ using OpenCBS.Interface.Repository;
 
 namespace OpenCBS.Persistence
 {
-    public class DatabaseRepository : IDatabaseRepository
+    public class DatabaseRepository : Repository, IDatabaseRepository
     {
-        private readonly IConnectionProvider _connectionProvider;
-
-        public DatabaseRepository(IConnectionProvider connectionProvider)
+        public DatabaseRepository(IConnectionStringProvider connectionStringProvider)
+            : base(connectionStringProvider)
         {
-            _connectionProvider = connectionProvider;
         }
 
         public IList<string> FindAll()
@@ -70,7 +68,7 @@ namespace OpenCBS.Persistence
                 SELECT db.Name Name --, db.Version, db.BranchCode, 0 DataFileSize, 0 LogFileSize
                 FROM @databases db
             ";
-            using (var connection = _connectionProvider.GetConnection())
+            using (var connection = GetConnection())
             {
                 return connection.Query<string>(sql).ToList().AsReadOnly();
             }
