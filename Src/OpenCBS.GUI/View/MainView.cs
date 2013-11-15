@@ -1092,24 +1092,28 @@ namespace OpenCBS.GUI.View
             _portugueseMenuItem.Click += (sedner, e) => presenterCallbacks.ChangeLanguage("pt");
         }
 
-        public void ProhibitRoleManagement()
+        public bool AllowRoleManagement
         {
-            _rolesMenuItem.Visible = false;
+            get { return _rolesMenuItem.Visible; }
+            set { _rolesMenuItem.Visible = value; }
         }
 
-        public void ProhibitUserManagement()
+        public bool AllowUserManagement
         {
-            _usersMenuItem.Visible = false;
+            get { return _usersMenuItem.Visible; }
+            set { _usersMenuItem.Visible = value; }
         }
 
-        public void ProhibitEntryFeeManagement()
+        public bool AllowEntryFeeManagement
         {
-            _entryFeesMenuItem.Visible = false;
+            get { return _entryFeesMenuItem.Visible; }
+            set { _entryFeesMenuItem.Visible = value; }
         }
 
-        public void ProhibitLoanProductManagement()
+        public bool AllowLoanProductManagement
         {
-            _loanProductsMenuItem.Visible = false;
+            get { return _loanProductsMenuItem.Visible; }
+            set { _loanProductsMenuItem.Visible = value; }
         }
     }
 }

@@ -24,9 +24,10 @@ namespace OpenCBS.Interface.View
     public interface IMainView : IView<IMainPresenterCallbacks>
     {
         void Run();
-        void ProhibitRoleManagement();
-        void ProhibitUserManagement();
-        void ProhibitEntryFeeManagement();
-        void ProhibitLoanProductManagement();
+
+        bool AllowUserManagement { get; set; }
+        bool AllowRoleManagement { get; set; }
+        bool AllowEntryFeeManagement { get; set; }
+        bool AllowLoanProductManagement { get; set; }
     }
 }

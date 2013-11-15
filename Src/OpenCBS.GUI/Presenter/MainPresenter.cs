@@ -84,17 +84,10 @@ namespace OpenCBS.GUI.Presenter
 
         private void Authorize()
         {
-            if (!CanAny("EntryFee", "View, Add, Edit, Delete"))
-                _view.ProhibitEntryFeeManagement();
-
-            if (!CanAny("LoanProduct", "View, Add, Edit, Delete"))
-                _view.ProhibitLoanProductManagement();
-
-            if (!CanAny("Role", "View, Add, Edit, Delete"))
-                _view.ProhibitRoleManagement();
-            
-            if (!CanAny("User", "View, Add, Edit, Delete"))
-                _view.ProhibitUserManagement();
+            _view.AllowEntryFeeManagement = CanAny("EntryFee", "View, Add, Edit, Delete");
+            _view.AllowLoanProductManagement = CanAny("LoanProduct", "View, Add, Edit, Delete");
+            _view.AllowRoleManagement = CanAny("Role", "View, Add, Edit, Delete");
+            _view.AllowUserManagement = CanAny("User", "View, Add, Edit, Delete");
         }
     }
 }

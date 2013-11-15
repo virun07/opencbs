@@ -190,7 +190,7 @@ Global
 		{D5DB6CD6-5A9E-40CA-BD7F-B4ACCFDC8F4F} = {326209A2-3FB1-4920-9D2D-186A0559C814}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		GreenPepperConfigXmlRpcHandler = greenpepper1
 		GreenPepperConfigServerUrl = http://wiki.octopusnetwork.org
+		GreenPepperConfigXmlRpcHandler = greenpepper1
 	EndGlobalSection
 EndGlobal
