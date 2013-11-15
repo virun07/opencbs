@@ -39,7 +39,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ILateFeePolicy.cs" />
+    <Compile Include="IPaymentFrequencyPolicy.cs" />
     <Compile Include="IPolicyFactory.cs" />
+    <Compile Include="IRoundingPolicy.cs" />
+    <Compile Include="IYearPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -17,20 +17,26 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
+using System;
+using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.Interface
+namespace OpenCBS.Model.LoanPolicy.PaymentFrequencyPolicy
 {
-    public interface IPolicyFactory
+    public class MonthlyPaymentFrequencyPolicy : IPaymentFrequencyPolicy
     {
-        IList<string> GetLateFeePolicyNames();
-        IList<string> GetPaymentFrequencyPolicyNames();
-        IList<string> GetYearPolicyNames();
-        IList<string> GetRoundingPolicyNames();
+        public DateTime GetNextDate(DateTime date)
+        {
+            return date.AddMonths(1);
+        }
 
-        ILateFeePolicy GetLateFeePolicy(string name);
-        IPaymentFrequencyPolicy GetPaymentFrequencyPolicy(string name);
-        IYearPolicy GetYearPolicy(string name);
-        IRoundingPolicy GetRoundingPolicy(string name);
+        public DateTime GetPreviousDate(DateTime date)
+        {
+            return date.AddMonths(-1);
+        }
+
+        public int GetNumberOfDays(DateTime date)
+        {
+            return (date - GetPreviousDate(date)).Days;
+        }
     }
 }

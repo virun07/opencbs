@@ -17,20 +17,16 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
+using System;
+using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Model.Interface
+namespace OpenCBS.Model.LoanPolicy.YearPolicy
 {
-    public interface IPolicyFactory
+    public class ActualYearPolicy : IYearPolicy
     {
-        IList<string> GetLateFeePolicyNames();
-        IList<string> GetPaymentFrequencyPolicyNames();
-        IList<string> GetYearPolicyNames();
-        IList<string> GetRoundingPolicyNames();
-
-        ILateFeePolicy GetLateFeePolicy(string name);
-        IPaymentFrequencyPolicy GetPaymentFrequencyPolicy(string name);
-        IYearPolicy GetYearPolicy(string name);
-        IRoundingPolicy GetRoundingPolicy(string name);
+        public int GetNumberOfDays(DateTime date)
+        {
+            return DateTime.IsLeapYear(date.Year) ? 366 : 365;
+        }
     }
 }

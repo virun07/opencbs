@@ -120,15 +120,12 @@ namespace OpenCBS.Service
             var result = new LoanProductReferenceDataDto
             {
                 SchedulePolicies = _policyRepository.FindSchedulePolicyNames(),
-                PaymentFrequencyPolicies = _policyRepository.FindPaymentFrequencyPolicyNames(),
-                YearPolicies = _policyRepository.FindYearPolicyNames(),
+                PaymentFrequencyPolicies = _policyFactory.GetPaymentFrequencyPolicyNames(),
+                YearPolicies = _policyFactory.GetYearPolicyNames(),
                 DateShiftPolicies = _policyRepository.FindDateShiftPolicyNames(),
-                RoundingPolicies = _policyRepository.FindRoundingPolicyNames(),
+                RoundingPolicies = _policyFactory.GetRoundingPolicyNames(),
                 LateFeePolicies = _policyFactory.GetLateFeePolicyNames(),
-                Currencies = _currencyRepository
-                    .FindAll()
-                    .Where(c => !c.Deleted)
-                    .ToDictionary(c => c.Id, c => c.Name)
+                Currencies = _currencyRepository.FindAll().Where(c => !c.Deleted).ToDictionary(c => c.Id, c => c.Name)
             };
             return result;
         }

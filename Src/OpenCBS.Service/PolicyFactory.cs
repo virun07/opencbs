@@ -20,32 +20,65 @@
 using System.Collections.Generic;
 using System.Linq;
 using OpenCBS.Model.Interface;
+using StructureMap;
 
 namespace OpenCBS.Service
 {
     public class PolicyFactory : IPolicyFactory
     {
-        private readonly StructureMap.IContainer _container;
+        private readonly IContainer _container;
 
-        public PolicyFactory(StructureMap.IContainer container)
+        public PolicyFactory(IContainer container)
         {
             _container = container;
         }
 
         public IList<string> GetLateFeePolicyNames()
         {
-            return _container
-                .Model
-                .AllInstances
-                .Where(x => x.PluginType == typeof (ILateFeePolicy))
-                .Select(x => x.Name)
-                .ToList()
-                .AsReadOnly();
+            return _container.Model.AllInstances
+                             .Where(x => x.PluginType == typeof (ILateFeePolicy))
+                             .Select(x => x.Name).ToList().AsReadOnly();
+        }
+
+        public IList<string> GetPaymentFrequencyPolicyNames()
+        {
+            return _container.Model.AllInstances
+                             .Where(x => x.PluginType == typeof (IPaymentFrequencyPolicy))
+                             .Select(x => x.Name).ToList().AsReadOnly();
+        }
+
+        public IList<string> GetYearPolicyNames()
+        {
+            return _container.Model.AllInstances
+                             .Where(x => x.PluginType == typeof (IYearPolicy))
+                             .Select(x => x.Name).ToList().AsReadOnly();
+        }
+
+        public IList<string> GetRoundingPolicyNames()
+        {
+            return _container.Model.AllInstances
+                             .Where(x => x.PluginType == typeof (IRoundingPolicy))
+                             .Select(x => x.Name).ToList().AsReadOnly();
         }
 
         public ILateFeePolicy GetLateFeePolicy(string name)
         {
             return _container.GetInstance<ILateFeePolicy>(name);
+        }
+
+        public IPaymentFrequencyPolicy GetPaymentFrequencyPolicy(string name)
+        {
+            return _container.GetInstance<IPaymentFrequencyPolicy>(name);
+        }
+
+        public IYearPolicy GetYearPolicy(string name)
+        {
+            return _container.GetInstance<IYearPolicy>(name);
+        }
+
+        public IRoundingPolicy GetRoundingPolicy(string name)
+        {
+            return _container.GetInstance<IRoundingPolicy>(name);
         }
     }
 }
