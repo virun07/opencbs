@@ -777,7 +777,6 @@
     <Compile Include="Presenter\EntryFeesPresenter.cs" />
     <Compile Include="Presenter\LoanProductPresenter.cs" />
     <Compile Include="Presenter\LoanProductsPresenter.cs" />
-    <Compile Include="Presenter\LoginPresenter.cs" />
     <Compile Include="Presenter\RolePresenter.cs" />
     <Compile Include="Presenter\RolesPresenter.cs" />
     <Compile Include="Presenter\SelectEntryFeePresenter.cs" />

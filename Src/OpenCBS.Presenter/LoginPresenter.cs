@@ -19,13 +19,11 @@
 
 using System.Collections.Generic;
 using System.ComponentModel;
-using OpenCBS.CoreDomain;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
-using OpenCBS.Services;
 
-namespace OpenCBS.GUI.Presenter
+namespace OpenCBS.Presenter
 {
     public class LoginPresenter : ILoginPresenter, ILoginPresenterCallbacks
     {
@@ -47,7 +45,6 @@ namespace OpenCBS.GUI.Presenter
                 _view.ShowError("User not found.");
             else
             {
-                User.CurrentUser = ServicesProvider.GetInstance().GetUserServices().Find(_view.Username, _view.Password);
                 _view.Stop();
             }
         }

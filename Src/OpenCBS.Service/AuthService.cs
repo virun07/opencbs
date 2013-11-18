@@ -24,6 +24,7 @@ using OpenCBS.DataContract;
 using OpenCBS.Interface.Repository;
 using OpenCBS.Interface.Service;
 using OpenCBS.Model;
+using OpenCBS.Services;
 
 namespace OpenCBS.Service
 {
@@ -46,6 +47,9 @@ namespace OpenCBS.Service
 
             User.Current = user;
             UserDto.Current = userDto;
+
+            // TODO: Remove this when the new architecture is put in place
+            CoreDomain.User.CurrentUser = ServicesProvider.GetInstance().GetUserServices().Find(username, password);
 
             return userDto;
         }

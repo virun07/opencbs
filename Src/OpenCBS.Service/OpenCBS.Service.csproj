@@ -75,6 +75,10 @@
       <Project>{fe9c7054-d939-4617-99cd-8a8f9ae77099}</Project>
       <Name>OpenCBS.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.CoreDomain\OpenCBS.CoreDomain.csproj">
+      <Project>{d539c388-3848-4a3e-ab87-42b8e329755a}</Project>
+      <Name>OpenCBS.CoreDomain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCBS.DataContract\OpenCBS.DataContract.csproj">
       <Project>{e3b40bd9-946c-4b41-8501-50ac85df3cb0}</Project>
       <Name>OpenCBS.DataContract</Name>
@@ -90,6 +94,10 @@
     <ProjectReference Include="..\OpenCBS.Model\OpenCBS.Model.csproj">
       <Project>{db64ab0c-241b-423c-b5de-2df524386651}</Project>
       <Name>OpenCBS.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Services\OpenCBS.Services.csproj">
+      <Project>{a859d97a-51fb-4961-af07-5856640511af}</Project>
+      <Name>OpenCBS.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Shared\OpenCBS.Shared.csproj">
       <Project>{b3288e21-e5a9-4620-bef3-afb0b207655c}</Project>
