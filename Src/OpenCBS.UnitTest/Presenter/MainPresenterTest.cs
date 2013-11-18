@@ -122,6 +122,28 @@ namespace OpenCBS.UnitTest.Presenter
             _presenter.ChangeLanguage("en-US");
             _appController.Received().Execute(Arg.Is<ChangeLanguageData>(data => data.Name == "en-US"));
         }
+
+        [Test]
+        public void Run_NoPermission_CannotManageStuff()
+        {
+            _authService.CanAny(Arg.Any<IList<string>>()).Returns(false);
+            _presenter.Run();
+            Assert.IsFalse(_mainView.AllowRoleManagement);
+            Assert.IsFalse(_mainView.AllowUserManagement);
+            Assert.IsFalse(_mainView.AllowEntryFeeManagement);
+            Assert.IsFalse(_mainView.AllowLoanProductManagement);
+        }
+
+        [Test]
+        public void Run_AllPermissions_CanManageStuff()
+        {
+            _authService.CanAny(Arg.Any<IList<string>>()).Returns(true);
+            _presenter.Run();
+            Assert.IsTrue(_mainView.AllowRoleManagement);
+            Assert.IsTrue(_mainView.AllowUserManagement);
+            Assert.IsTrue(_mainView.AllowEntryFeeManagement);
+            Assert.IsTrue(_mainView.AllowLoanProductManagement);
+        }
     }
 }
 // ReSharper restore InconsistentNaming
