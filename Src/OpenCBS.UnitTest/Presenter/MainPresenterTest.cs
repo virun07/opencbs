@@ -94,35 +94,35 @@ namespace OpenCBS.UnitTest.Presenter
         }
 
         [Test]
-        public void ShowRoles_ExecutesProperCommand()
+        public void ShowRoles_ExecutesCommand()
         {
             _presenter.ShowRoles();
             _appController.Received().Execute(Arg.Any<ShowRolesData>());
         }
 
         [Test]
-        public void ShowUsers_ExecutesProperCommand()
+        public void ShowUsers_ExecutesCommand()
         {
             _presenter.ShowUsers();
             _appController.Received().Execute(Arg.Any<ShowUsersData>());
         }
 
         [Test]
-        public void ShowLoanProducts_ExecutesProperCommand()
+        public void ShowLoanProducts_ExecutesCommand()
         {
             _presenter.ShowLoanProducts();
             _appController.Received().Execute(Arg.Any<ShowLoanProductsData>());
         }
 
         [Test]
-        public void ShowEntryFees_ExecutesProperCommand()
+        public void ShowEntryFees_ExecutesCommand()
         {
             _presenter.ShowEntryFees();
             _appController.Received().Execute(Arg.Any<ShowEntryFeesData>());
         }
 
         [Test]
-        public void ChangeLanguage_ExecutesProperCommand()
+        public void ChangeLanguage_ExecutesCommand()
         {
             _presenter.ChangeLanguage("en-US");
             _appController.Received().Execute(Arg.Is<ChangeLanguageData>(data => data.Name == "en-US"));

@@ -28,10 +28,10 @@ namespace OpenCBS.Interface.View
         void Run();
         void Translate();
         void ShowRoles(IList<RoleDto> roles);
-        
-        void ProhibitAdding();
-        void ProhibitEditing();
-        void ProhibitDeleting();
+
+        bool AllowAdding { get; set; }
+        bool AllowEditing { get; set; }
+        bool AllowDeleting { get; set; }
 
         bool CanEdit { get; set; }
         bool CanDelete { get; set; }
