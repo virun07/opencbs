@@ -18,7 +18,6 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
-using System.Threading;
 using NSubstitute;
 using NUnit.Framework;
 using OpenCBS.DataContract;
