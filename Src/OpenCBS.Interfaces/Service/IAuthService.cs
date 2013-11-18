@@ -28,6 +28,5 @@ namespace OpenCBS.Interface.Service
         bool IsLoggedIn();
         IList<string> GetAllPermissions();
         bool Can(string permission);
-        bool CanAny(IList<string> permissions);
     }
 }

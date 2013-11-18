@@ -17,9 +17,6 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
 using OpenCBS.DataContract.CommandData;
@@ -60,32 +57,40 @@ namespace OpenCBS.UnitTest.Presenter
         public void Run_ChecksRolePermissions()
         {
             _presenter.Run();
-            var permissions = new List<string> { "Role.View", "Role.Add", "Role.Edit", "Role.Delete" }.AsReadOnly();
-            _authService.Received().CanAny(Arg.Is<ReadOnlyCollection<string>>(actualPermissions => permissions.SequenceEqual(actualPermissions)));
+            _authService.Received().Can("Role.View");
+            _authService.Received().Can("Role.Add");
+            _authService.Received().Can("Role.Edit");
+            _authService.Received().Can("Role.Delete");
         }
 
         [Test]
         public void Run_ChecksUserPermissions()
         {
             _presenter.Run();
-            var permissions = new List<string> { "User.View", "User.Add", "User.Edit", "User.Delete" }.AsReadOnly();
-            _authService.Received().CanAny(Arg.Is<ReadOnlyCollection<string>>(actualPermissions => permissions.SequenceEqual(actualPermissions)));
+            _authService.Received().Can("User.View");
+            _authService.Received().Can("User.Add");
+            _authService.Received().Can("User.Edit");
+            _authService.Received().Can("User.Delete");
         }
 
         [Test]
         public void Run_ChecksEntryFeePermissions()
         {
             _presenter.Run();
-            var permissions = new List<string> { "EntryFee.View", "EntryFee.Add", "EntryFee.Edit", "EntryFee.Delete" }.AsReadOnly();
-            _authService.Received().CanAny(Arg.Is<ReadOnlyCollection<string>>(actualPermissions => permissions.SequenceEqual(actualPermissions)));
+            _authService.Received().Can("EntryFee.View");
+            _authService.Received().Can("EntryFee.Add");
+            _authService.Received().Can("EntryFee.Edit");
+            _authService.Received().Can("EntryFee.Delete");
         }
 
         [Test]
         public void Run_ChecksLoanProductPermissions()
         {
             _presenter.Run();
-            var permissions = new List<string> { "LoanProduct.View", "LoanProduct.Add", "LoanProduct.Edit", "LoanProduct.Delete" }.AsReadOnly();
-            _authService.Received().CanAny(Arg.Is<ReadOnlyCollection<string>>(actualPermissions => permissions.SequenceEqual(actualPermissions)));
+            _authService.Received().Can("LoanProduct.View");
+            _authService.Received().Can("LoanProduct.Add");
+            _authService.Received().Can("LoanProduct.Edit");
+            _authService.Received().Can("LoanProduct.Delete");
         }
 
         [Test]
@@ -126,23 +131,12 @@ namespace OpenCBS.UnitTest.Presenter
         [Test]
         public void Run_NoPermission_CannotManageStuff()
         {
-            _authService.CanAny(Arg.Any<IList<string>>()).Returns(false);
+            _authService.Can(Arg.Any<string>()).Returns(false);
             _presenter.Run();
             Assert.IsFalse(_mainView.AllowRoleManagement);
             Assert.IsFalse(_mainView.AllowUserManagement);
             Assert.IsFalse(_mainView.AllowEntryFeeManagement);
             Assert.IsFalse(_mainView.AllowLoanProductManagement);
-        }
-
-        [Test]
-        public void Run_AllPermissions_CanManageStuff()
-        {
-            _authService.CanAny(Arg.Any<IList<string>>()).Returns(true);
-            _presenter.Run();
-            Assert.IsTrue(_mainView.AllowRoleManagement);
-            Assert.IsTrue(_mainView.AllowUserManagement);
-            Assert.IsTrue(_mainView.AllowEntryFeeManagement);
-            Assert.IsTrue(_mainView.AllowLoanProductManagement);
         }
     }
 }

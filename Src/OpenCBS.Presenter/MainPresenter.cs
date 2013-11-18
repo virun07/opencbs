@@ -79,7 +79,7 @@ namespace OpenCBS.Presenter
         private bool CanAny(string entity, string ops)
         {
             var permissions = ops.Split(',').Select(op => entity + "." + op.Trim()).ToList().AsReadOnly();
-            return _authService.CanAny(permissions);
+            return permissions.Select(_authService.Can).Aggregate((x, y) => x || y);
         }
 
         private void Authorize()

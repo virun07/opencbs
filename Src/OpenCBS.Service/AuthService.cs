@@ -90,10 +90,5 @@ namespace OpenCBS.Service
         {
             return User.Current != null && User.Current.Can(permission);
         }
-
-        public bool CanAny(IList<string> permissions)
-        {
-            return permissions.Select(Can).Aggregate((x, y) => x || y);
-        }
     }
 }
