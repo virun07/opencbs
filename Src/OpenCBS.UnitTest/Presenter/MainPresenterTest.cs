@@ -129,7 +129,7 @@ namespace OpenCBS.UnitTest.Presenter
         }
 
         [Test]
-        public void Run_NoPermission_CannotManageStuff()
+        public void Run_HasNoPermission_CannotManageStuff()
         {
             _authService.Can(Arg.Any<string>()).Returns(false);
             _presenter.Run();
@@ -137,6 +137,73 @@ namespace OpenCBS.UnitTest.Presenter
             Assert.IsFalse(_mainView.AllowUserManagement);
             Assert.IsFalse(_mainView.AllowEntryFeeManagement);
             Assert.IsFalse(_mainView.AllowLoanProductManagement);
+        }
+
+        [Test]
+        public void Run_HasAllPermissions_CanManageStuff()
+        {
+            _authService.Can(Arg.Any<string>()).Returns(true);
+            _presenter.Run();
+            Assert.IsTrue(_mainView.AllowRoleManagement);
+            Assert.IsTrue(_mainView.AllowUserManagement);
+            Assert.IsTrue(_mainView.AllowEntryFeeManagement);
+            Assert.IsTrue(_mainView.AllowLoanProductManagement);
+        }
+
+        [Test]
+        public void Run_HasViewPermission_CanManageStuff()
+        {
+            _authService.Can("Role.View").Returns(true);
+            _authService.Can("User.View").Returns(true);
+            _authService.Can("EntryFee.View").Returns(true);
+            _authService.Can("LoanProduct.View").Returns(true);
+            _presenter.Run();
+            Assert.IsTrue(_mainView.AllowRoleManagement);
+            Assert.IsTrue(_mainView.AllowUserManagement);
+            Assert.IsTrue(_mainView.AllowEntryFeeManagement);
+            Assert.IsTrue(_mainView.AllowLoanProductManagement);
+        }
+        
+        [Test]
+        public void Run_HasAddPermission_CanManageStuff()
+        {
+            _authService.Can("Role.Add").Returns(true);
+            _authService.Can("User.Add").Returns(true);
+            _authService.Can("EntryFee.View").Returns(true);
+            _authService.Can("LoanProduct.View").Returns(true);
+            _presenter.Run();
+            Assert.IsTrue(_mainView.AllowRoleManagement);
+            Assert.IsTrue(_mainView.AllowUserManagement);
+            Assert.IsTrue(_mainView.AllowEntryFeeManagement);
+            Assert.IsTrue(_mainView.AllowLoanProductManagement);
+        }
+
+        [Test]
+        public void Run_HasEditPermission_CanManageStuff()
+        {
+            _authService.Can("Role.Edit").Returns(true);
+            _authService.Can("User.Edit").Returns(true);
+            _authService.Can("EntryFee.Edit").Returns(true);
+            _authService.Can("LoanProduct.Edit").Returns(true);
+            _presenter.Run();
+            Assert.IsTrue(_mainView.AllowRoleManagement);
+            Assert.IsTrue(_mainView.AllowUserManagement);
+            Assert.IsTrue(_mainView.AllowEntryFeeManagement);
+            Assert.IsTrue(_mainView.AllowLoanProductManagement);
+        }
+
+        [Test]
+        public void Run_HasDeletePermission_CanManageStuff()
+        {
+            _authService.Can("Role.Delete").Returns(true);
+            _authService.Can("User.Delete").Returns(true);
+            _authService.Can("EntryFee.Delete").Returns(true);
+            _authService.Can("LoanProduct.Delete").Returns(true);
+            _presenter.Run();
+            Assert.IsTrue(_mainView.AllowRoleManagement);
+            Assert.IsTrue(_mainView.AllowUserManagement);
+            Assert.IsTrue(_mainView.AllowEntryFeeManagement);
+            Assert.IsTrue(_mainView.AllowLoanProductManagement);
         }
     }
 }
