@@ -50,6 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolePresenter.cs" />
     <Compile Include="RolesPresenter.cs" />
+    <Compile Include="UsersPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenCBS.DataContract\OpenCBS.DataContract.csproj">
