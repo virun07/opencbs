@@ -55,7 +55,6 @@ namespace OpenCBS.UnitTest.Presenter
             _presenter.Run();
             _rolesView.Received().Attach(_presenter);
             _rolesView.Received().Run();
-
         }
 
         [Test]
@@ -71,35 +70,23 @@ namespace OpenCBS.UnitTest.Presenter
         public void Run_HasAddPermission_CanAdd()
         {
             _authService.Can("Role.Add").Returns(true);
-            _authService.Can("Role.Edit").Returns(false);
-            _authService.Can("Role.Delete").Returns(false);
             _presenter.Run();
             Assert.IsTrue(_rolesView.AllowAdding);
-            Assert.IsFalse(_rolesView.AllowEditing);
-            Assert.IsFalse(_rolesView.AllowDeleting);
         }
 
         [Test]
         public void Run_HasEditPermission_CanEdit()
         {
-            _authService.Can("Role.Add").Returns(false);
             _authService.Can("Role.Edit").Returns(true);
-            _authService.Can("Role.Delete").Returns(false);
             _presenter.Run();
-            Assert.IsFalse(_rolesView.AllowAdding);
             Assert.IsTrue(_rolesView.AllowEditing);
-            Assert.IsFalse(_rolesView.AllowDeleting);
         }
 
         [Test]
         public void Run_HasDeletePermission_CanDelete()
         {
-            _authService.Can("Role.Add").Returns(false);
-            _authService.Can("Role.Edit").Returns(false);
             _authService.Can("Role.Delete").Returns(true);
             _presenter.Run();
-            Assert.IsFalse(_rolesView.AllowAdding);
-            Assert.IsFalse(_rolesView.AllowEditing);
             Assert.IsTrue(_rolesView.AllowDeleting);
         }
 
@@ -113,7 +100,7 @@ namespace OpenCBS.UnitTest.Presenter
         }
 
         [Test]
-        public void Refresh_ShowRoles()
+        public void Refresh_ShowsRoles()
         {
             _roleService.FindAll().Returns(new List<RoleDto>());
             _presenter.Refresh();
@@ -195,6 +182,15 @@ namespace OpenCBS.UnitTest.Presenter
             _presenter.ChangeSelection();
             Assert.IsFalse(_rolesView.CanEdit);
             Assert.IsFalse(_rolesView.CanDelete);
+        }
+
+        [Test]
+        public void ChangeSelection_IdIsNotNull_EditingAndDeletingEnabled()
+        {
+            _rolesView.SelectedRoleId.Returns(1);
+            _presenter.ChangeSelection();
+            Assert.IsTrue(_rolesView.CanEdit);
+            Assert.IsTrue(_rolesView.CanDelete);
         }
     }
 }

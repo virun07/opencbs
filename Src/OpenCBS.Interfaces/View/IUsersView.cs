@@ -11,9 +11,9 @@ namespace OpenCBS.Interface.View
         void Translate();
         void ShowUsers(IList<UserDto> users);
 
-        void ProhibitAdding();
-        void ProhibitEditing();
-        void ProhibitDeleting();
+        bool AllowAdding { get; set; }
+        bool AllowEditing { get; set; }
+        bool AllowDeleting { get; set; }
 
         bool CanEdit { get; set; }
         bool CanDelete { get; set; }
