@@ -778,7 +778,6 @@
     <Compile Include="Presenter\LoanProductPresenter.cs" />
     <Compile Include="Presenter\LoanProductsPresenter.cs" />
     <Compile Include="Presenter\SelectEntryFeePresenter.cs" />
-    <Compile Include="Presenter\UserPresenter.cs" />
     <Compile Include="View\BaseView.cs">
       <SubType>Form</SubType>
     </Compile>
