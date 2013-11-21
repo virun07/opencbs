@@ -56,6 +56,7 @@
     <Compile Include="Presenter\MainPresenterTest.cs" />
     <Compile Include="Presenter\RolePresenterTest.cs" />
     <Compile Include="Presenter\RolesPresenterTest.cs" />
+    <Compile Include="Presenter\UserPresenterTest.cs" />
     <Compile Include="Presenter\UsersPresenterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
