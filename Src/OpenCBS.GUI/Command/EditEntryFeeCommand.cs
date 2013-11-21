@@ -42,7 +42,8 @@ namespace OpenCBS.GUI.Command
 
         public void Execute(EditEntryFeeData commandData)
         {
-            var result = _presenter.Get(commandData.EntryFeeDto);
+            var entryFeeDto = _entryFeeService.FindById(commandData.Id);
+            var result = _presenter.Get(entryFeeDto);
             if (result.CommandResult == CommandResult.Ok)
             {
                 _entryFeeService.Update(result.Data);

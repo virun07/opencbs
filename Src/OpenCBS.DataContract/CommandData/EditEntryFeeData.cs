@@ -21,6 +21,6 @@ namespace OpenCBS.DataContract.CommandData
 {
     public class EditEntryFeeData
     {
-        public EntryFeeDto EntryFeeDto { get; set; }
+        public int Id { get; set; }
     }
 }

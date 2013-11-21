@@ -61,6 +61,24 @@ namespace OpenCBS.GUI.View
             _entryFeesListView.SelectedObject = selectedObject;
         }
 
+        public bool AllowAdding
+        {
+            get { return _addButton.Visible; }
+            set { _addButton.Visible = value; }
+        }
+
+        public bool AllowEditing
+        {
+            get { return _addButton.Visible; }
+            set { _addButton.Visible = value; }
+        }
+
+        public bool AllowDeleting
+        {
+            get { return _deleteButton.Visible; }
+            set { _deleteButton.Visible = value; }
+        }
+
         public bool EditEnabled
         {
             get { return _editButton.Enabled; }
@@ -73,9 +91,14 @@ namespace OpenCBS.GUI.View
             set { _deleteButton.Enabled = value; }
         }
 
-        public EntryFeeDto SelectedEntryFee
+        public int? SelectedEntryFeeId
         {
-            get { return (EntryFeeDto) _entryFeesListView.SelectedObject; }
+            get
+            {
+                var entryFeeDto = (EntryFeeDto) _entryFeesListView.SelectedObject;
+                if (entryFeeDto == null) return null;
+                return entryFeeDto.Id;
+            }
         }
 
         public bool ShowDeleted

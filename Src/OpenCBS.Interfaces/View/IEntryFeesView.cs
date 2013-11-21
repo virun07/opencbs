@@ -28,9 +28,14 @@ namespace OpenCBS.Interface.View
         void Run();
         void ShowEntryFees(IEnumerable<EntryFeeDto> entryFees);
         void Translate();
+
+        bool AllowAdding { get; set; }
+        bool AllowEditing { get; set; }
+        bool AllowDeleting { get; set; }
+
         bool EditEnabled { get; set; }
         bool DeleteEnabled { get; set; }
-        EntryFeeDto SelectedEntryFee { get; }
+        int? SelectedEntryFeeId { get; }
         bool ShowDeleted { get; }
     }
 }

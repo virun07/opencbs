@@ -35,19 +35,24 @@ namespace OpenCBS.Presenter
         private readonly IEntryFeeService _entryFeeService;
         private readonly IApplicationController _appController;
         private readonly IEntryFeesView _view;
+        private readonly IAuthService _authService;
 
-        public EntryFeesPresenter(IEntryFeesView view, IApplicationController appController, IEntryFeeService entryFeeService)
+        public EntryFeesPresenter(IEntryFeesView view, IApplicationController appController, IEntryFeeService entryFeeService, IAuthService authService)
         {
             _view = view;
             _appController = appController;
             _entryFeeService = entryFeeService;
+            _authService = authService;
         }
 
         public void Run()
         {
             _view.Attach(this);
-            _view.Run();
+            _view.AllowAdding = _authService.Can("EntryFee.Add");
+            _view.AllowEditing = _authService.Can("EntryFee.Edit");
+            _view.AllowDeleting = _authService.Can("EntryFee.Delete");
             ShowEntryFees();
+            _view.Run();
         }
 
         public void Add()
@@ -57,16 +62,16 @@ namespace OpenCBS.Presenter
 
         public void Edit()
         {
-            var entryFee = _view.SelectedEntryFee;
-            if (entryFee == null) return;
-            _appController.Execute(new EditEntryFeeData { EntryFeeDto = entryFee });
+            var id = _view.SelectedEntryFeeId;
+            if (id == null) return;
+            _appController.Execute(new EditEntryFeeData { Id = id.Value });
         }
 
         public void Delete()
         {
-            var entryFee = _view.SelectedEntryFee;
-            if (entryFee == null) return;
-            _appController.Execute(new DeleteEntryFeeData { Id = entryFee.Id });
+            var id = _view.SelectedEntryFeeId;
+            if (id == null) return;
+            _appController.Execute(new DeleteEntryFeeData { Id = id.Value });
         }
 
         public void Refresh()
@@ -76,8 +81,8 @@ namespace OpenCBS.Presenter
 
         public void ChangeSelection()
         {
-            var entryFee = _view.SelectedEntryFee;
-            _view.EditEnabled = _view.DeleteEnabled = entryFee != null;
+            var id = _view.SelectedEntryFeeId;
+            _view.EditEnabled = _view.DeleteEnabled = id.HasValue;
         }
 
         public void Close()
