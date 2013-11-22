@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presenter\CurrenciesPresenterTest.cs" />
     <Compile Include="Presenter\EntryFeesPresenterTest.cs" />
     <Compile Include="Presenter\LoginPresenterTest.cs" />
     <Compile Include="Presenter\MainPresenterTest.cs" />

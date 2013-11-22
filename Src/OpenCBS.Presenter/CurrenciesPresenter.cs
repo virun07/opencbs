@@ -17,6 +17,8 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using OpenCBS.DataContract.CommandData;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
@@ -27,11 +29,13 @@ namespace OpenCBS.Presenter
     {
         private readonly ICurrenciesView _view;
         private readonly ICurrencyService _currencyService;
+        private readonly IApplicationController _appController;
 
-        public CurrenciesPresenter(ICurrenciesView view, ICurrencyService currencyService)
+        public CurrenciesPresenter(ICurrenciesView view, ICurrencyService currencyService, IApplicationController appController)
         {
             _view = view;
             _currencyService = currencyService;
+            _appController = appController;
         }
 
         public void Run()
@@ -48,6 +52,7 @@ namespace OpenCBS.Presenter
 
         public void Add()
         {
+            _appController.Execute(new AddCurrencyData());
         }
 
         public void Edit()
