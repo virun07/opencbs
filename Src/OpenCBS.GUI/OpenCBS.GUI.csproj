@@ -482,6 +482,7 @@
     <Compile Include="Command\EditRoleCommand.cs" />
     <Compile Include="Command\EditUserCommand.cs" />
     <Compile Include="Command\SelectEntryFeeCommand.cs" />
+    <Compile Include="Command\ShowCurrenciesCommand.cs" />
     <Compile Include="Command\ShowEntryFeesCommand.cs" />
     <Compile Include="Command\ShowRolesCommand.cs" />
     <Compile Include="Command\ShowUsersCommand.cs" />
@@ -790,6 +791,12 @@
       <DependentUpon>CollectionView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ConfirmationView.cs" />
+    <Compile Include="View\CurrenciesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CurrenciesView.Designer.cs">
+      <DependentUpon>CurrenciesView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\RoleView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2470,6 +2477,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\BaseView.resx">
       <DependentUpon>BaseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CurrenciesView.resx">
+      <DependentUpon>CurrenciesView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\RoleView.resx">
       <DependentUpon>RoleView.cs</DependentUpon>

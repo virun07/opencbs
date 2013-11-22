@@ -63,11 +63,13 @@
     <Compile Include="CommandData\EditRoleData.cs" />
     <Compile Include="CommandData\EditUserData.cs" />
     <Compile Include="CommandData\SelectEntryFeeData.cs" />
+    <Compile Include="CommandData\ShowCurrenciesData.cs" />
     <Compile Include="CommandData\ShowEntryFeesData.cs" />
     <Compile Include="CommandData\ShowLoanProductsData.cs" />
     <Compile Include="CommandData\ShowRolesData.cs" />
     <Compile Include="CommandData\ShowUsersData.cs" />
     <Compile Include="CommandResult.cs" />
+    <Compile Include="CurrencyDto.cs" />
     <Compile Include="DataTransferObject.cs" />
     <Compile Include="EntryFeeDto.cs" />
     <Compile Include="Error.cs" />

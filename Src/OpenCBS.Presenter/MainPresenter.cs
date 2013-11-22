@@ -59,6 +59,11 @@ namespace OpenCBS.Presenter
             _appController.Execute(new ShowEntryFeesData());
         }
 
+        public void ShowCurrencies()
+        {
+            _appController.Execute(new ShowCurrenciesData());
+        }
+
         public void ChangeLanguage(string name)
         {
             _appController.Execute(new ChangeLanguageData { Name = name });

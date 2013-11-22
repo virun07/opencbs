@@ -19,13 +19,8 @@
 
 namespace OpenCBS.Interface.Presenter
 {
-    public interface IMainPresenterCallbacks
+    public interface ICurrenciesPresenter : IPresenter
     {
-        void ShowRoles();
-        void ShowUsers();
-        void ShowLoanProducts();
-        void ShowEntryFees();
-        void ShowCurrencies();
-        void ChangeLanguage(string name);
+        void Run();
     }
 }

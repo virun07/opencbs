@@ -900,13 +900,6 @@ namespace OpenCBS.GUI.View
             nIUpdateAvailable.Visible = false;
         }
 
-        private void currenciesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmCurrencyType _frmCurrency = new FrmCurrencyType();
-            _frmCurrency.Show();
-            InitializeContractCurrencies();
-        }
-
         private void eventsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AuditTrailForm trailForm = new AuditTrailForm { MdiParent = this };
@@ -1085,6 +1078,7 @@ namespace OpenCBS.GUI.View
             _usersMenuItem.Click += (sender, e) => presenterCallbacks.ShowUsers();
             _loanProductsMenuItem.Click += (sender, e) => presenterCallbacks.ShowLoanProducts();
             _entryFeesMenuItem.Click += (sender, e) => presenterCallbacks.ShowEntryFees();
+            _currenciesMenuItem.Click += (sender, e) => presenterCallbacks.ShowCurrencies();
             _englishMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("en-US");
             _russianMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("ru-RU");
             _frenchMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("fr");

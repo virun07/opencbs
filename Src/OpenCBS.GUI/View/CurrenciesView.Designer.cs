@@ -1,6 +1,6 @@
 ﻿namespace OpenCBS.GUI.View
 {
-    partial class RolesView
+    partial class CurrenciesView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,36 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._rolesListView = new BrightIdeasSoftware.ObjectListView();
+            this._currenciesListView = new BrightIdeasSoftware.ObjectListView();
             this._nameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._buttonsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this._addButton = new System.Windows.Forms.Button();
             this._editButton = new System.Windows.Forms.Button();
             this._deleteButton = new System.Windows.Forms.Button();
             this._showDeletedCheckBox = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this._rolesListView)).BeginInit();
+            this._codeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            ((System.ComponentModel.ISupportInitialize)(this._currenciesListView)).BeginInit();
             this._buttonsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // _rolesListView
+            // _currenciesListView
             // 
-            this._rolesListView.AllColumns.Add(this._nameColumn);
-            this._rolesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this._currenciesListView.AllColumns.Add(this._codeColumn);
+            this._currenciesListView.AllColumns.Add(this._nameColumn);
+            this._currenciesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this._codeColumn,
             this._nameColumn});
-            this._rolesListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._rolesListView.FullRowSelect = true;
-            this._rolesListView.GridLines = true;
-            this._rolesListView.HeaderWordWrap = true;
-            this._rolesListView.HideSelection = false;
-            this._rolesListView.Location = new System.Drawing.Point(0, 0);
-            this._rolesListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this._rolesListView.MultiSelect = false;
-            this._rolesListView.Name = "_rolesListView";
-            this._rolesListView.ShowGroups = false;
-            this._rolesListView.Size = new System.Drawing.Size(625, 302);
-            this._rolesListView.TabIndex = 4;
-            this._rolesListView.UseCompatibleStateImageBehavior = false;
-            this._rolesListView.View = System.Windows.Forms.View.Details;
+            this._currenciesListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._currenciesListView.FullRowSelect = true;
+            this._currenciesListView.GridLines = true;
+            this._currenciesListView.HeaderWordWrap = true;
+            this._currenciesListView.HideSelection = false;
+            this._currenciesListView.Location = new System.Drawing.Point(0, 0);
+            this._currenciesListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._currenciesListView.MultiSelect = false;
+            this._currenciesListView.Name = "_currenciesListView";
+            this._currenciesListView.ShowGroups = false;
+            this._currenciesListView.Size = new System.Drawing.Size(426, 302);
+            this._currenciesListView.TabIndex = 5;
+            this._currenciesListView.UseCompatibleStateImageBehavior = false;
+            this._currenciesListView.View = System.Windows.Forms.View.Details;
             // 
             // _nameColumn
             // 
@@ -73,11 +76,11 @@
             this._buttonsPanel.Controls.Add(this._showDeletedCheckBox);
             this._buttonsPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this._buttonsPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this._buttonsPanel.Location = new System.Drawing.Point(625, 0);
+            this._buttonsPanel.Location = new System.Drawing.Point(426, 0);
             this._buttonsPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._buttonsPanel.Name = "_buttonsPanel";
             this._buttonsPanel.Size = new System.Drawing.Size(171, 302);
-            this._buttonsPanel.TabIndex = 5;
+            this._buttonsPanel.TabIndex = 6;
             // 
             // _addButton
             // 
@@ -123,16 +126,22 @@
             this._showDeletedCheckBox.Text = "Show deleted";
             this._showDeletedCheckBox.UseVisualStyleBackColor = true;
             // 
-            // RolesView
+            // _codeColumn
+            // 
+            this._codeColumn.AspectName = "Code";
+            this._codeColumn.Text = "Code";
+            this._codeColumn.Width = 100;
+            // 
+            // CurrenciesView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 302);
-            this.Controls.Add(this._rolesListView);
+            this.ClientSize = new System.Drawing.Size(597, 302);
+            this.Controls.Add(this._currenciesListView);
             this.Controls.Add(this._buttonsPanel);
-            this.Name = "RolesView";
-            this.Text = "Roles";
-            ((System.ComponentModel.ISupportInitialize)(this._rolesListView)).EndInit();
+            this.Name = "CurrenciesView";
+            this.Text = "CurrenciesView";
+            ((System.ComponentModel.ISupportInitialize)(this._currenciesListView)).EndInit();
             this._buttonsPanel.ResumeLayout(false);
             this._buttonsPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -141,12 +150,13 @@
 
         #endregion
 
-        private BrightIdeasSoftware.ObjectListView _rolesListView;
+        private BrightIdeasSoftware.ObjectListView _currenciesListView;
         private BrightIdeasSoftware.OLVColumn _nameColumn;
         private System.Windows.Forms.FlowLayoutPanel _buttonsPanel;
         private System.Windows.Forms.Button _addButton;
         private System.Windows.Forms.Button _editButton;
         private System.Windows.Forms.Button _deleteButton;
         private System.Windows.Forms.CheckBox _showDeletedCheckBox;
+        private BrightIdeasSoftware.OLVColumn _codeColumn;
     }
 }

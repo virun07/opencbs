@@ -47,6 +47,8 @@
     <Compile Include="ITranslator.cs" />
     <Compile Include="Presenter\IConfirmationPresenter.cs" />
     <Compile Include="Presenter\IConfirmationPresenterCallbacks.cs" />
+    <Compile Include="Presenter\ICurrenciesPresenter.cs" />
+    <Compile Include="Presenter\ICurrenciesPresenterCallbacks.cs" />
     <Compile Include="Presenter\IEntryFeePresenter.cs" />
     <Compile Include="Presenter\IEntryFeePresenterCallbacks.cs" />
     <Compile Include="Presenter\IEntryFeesPresenter.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="Repository\IRoleRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Service\IAuthService.cs" />
+    <Compile Include="Service\ICurrencyService.cs" />
     <Compile Include="Service\IDatabaseService.cs" />
     <Compile Include="Service\IEntryFeeService.cs" />
     <Compile Include="Service\ILoanProductService.cs" />
@@ -92,6 +95,7 @@
     <Compile Include="Validator\IUserValidator.cs" />
     <Compile Include="Validator\IValidator.cs" />
     <Compile Include="View\IConfirmationView.cs" />
+    <Compile Include="View\ICurrenciesView.cs" />
     <Compile Include="View\IEntryFeesView.cs" />
     <Compile Include="View\IEntryFeeView.cs" />
     <Compile Include="View\ILoanProductsView.cs" />

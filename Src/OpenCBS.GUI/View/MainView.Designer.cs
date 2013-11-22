@@ -125,7 +125,7 @@ namespace OpenCBS.GUI.View
             this._entryFeesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorConfig2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemExchangeRate = new System.Windows.Forms.ToolStripMenuItem();
-            this.currenciesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._currenciesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorConfig3 = new System.Windows.Forms.ToolStripSeparator();
             this.miContractCode = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWindow = new System.Windows.Forms.ToolStripMenuItem();
@@ -574,7 +574,7 @@ namespace OpenCBS.GUI.View
             this._entryFeesMenuItem,
             this.toolStripSeparatorConfig2,
             this.menuItemExchangeRate,
-            this.currenciesToolStripMenuItem,
+            this._currenciesMenuItem,
             this.toolStripSeparatorConfig3,
             this.miContractCode});
             this.mnuConfiguration.Name = "mnuConfiguration";
@@ -644,12 +644,11 @@ namespace OpenCBS.GUI.View
             this.menuItemExchangeRate.Name = "menuItemExchangeRate";
             this.menuItemExchangeRate.Click += new System.EventHandler(this.menuItemExchangeRate_Click);
             // 
-            // currenciesToolStripMenuItem
+            // _currenciesMenuItem
             // 
-            this.currenciesToolStripMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.money;
-            this.currenciesToolStripMenuItem.Name = "currenciesToolStripMenuItem";
-            resources.ApplyResources(this.currenciesToolStripMenuItem, "currenciesToolStripMenuItem");
-            this.currenciesToolStripMenuItem.Click += new System.EventHandler(this.currenciesToolStripMenuItem_Click);
+            resources.ApplyResources(this._currenciesMenuItem, "_currenciesMenuItem");
+            this._currenciesMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.money;
+            this._currenciesMenuItem.Name = "_currenciesMenuItem";
             // 
             // toolStripSeparatorConfig3
             // 
@@ -960,7 +959,7 @@ namespace OpenCBS.GUI.View
         private ToolStripMenuItem miContractCode;
         private System.ComponentModel.BackgroundWorker bwAlerts;
         private ToolStripMenuItem standardToolStripMenuItem;
-        private ToolStripMenuItem currenciesToolStripMenuItem;
+        private ToolStripMenuItem _currenciesMenuItem;
         private Panel panelLeft;
         private Label lblTitle;
         private ToolStripMenuItem accountingRulesToolStripMenuItem;

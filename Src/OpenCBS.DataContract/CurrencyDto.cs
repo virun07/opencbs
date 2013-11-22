@@ -17,15 +17,11 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.Interface.Presenter
+namespace OpenCBS.DataContract
 {
-    public interface IMainPresenterCallbacks
+    public class CurrencyDto : DataTransferObject
     {
-        void ShowRoles();
-        void ShowUsers();
-        void ShowLoanProducts();
-        void ShowEntryFees();
-        void ShowCurrencies();
-        void ChangeLanguage(string name);
+        public string Code { get; set; }
+        public string Name { get; set; }
     }
 }
