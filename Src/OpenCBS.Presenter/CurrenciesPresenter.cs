@@ -30,17 +30,20 @@ namespace OpenCBS.Presenter
         private readonly ICurrenciesView _view;
         private readonly ICurrencyService _currencyService;
         private readonly IApplicationController _appController;
+        private readonly IAuthService _authService;
 
-        public CurrenciesPresenter(ICurrenciesView view, ICurrencyService currencyService, IApplicationController appController)
+        public CurrenciesPresenter(ICurrenciesView view, ICurrencyService currencyService, IApplicationController appController, IAuthService authService)
         {
             _view = view;
             _currencyService = currencyService;
             _appController = appController;
+            _authService = authService;
         }
 
         public void Run()
         {
             _view.Attach(this);
+            Authorize();
             ShowCurrencies();
             _view.Run();
         }
@@ -67,6 +70,13 @@ namespace OpenCBS.Presenter
         {
             var currencies = _currencyService.FindAll();
             _view.ShowCurrencies(currencies);
+        }
+
+        private void Authorize()
+        {
+            _view.AllowAdding = _authService.Can("Currency.Add");
+            _view.AllowEditing = _authService.Can("Currency.Edit");
+            _view.AllowDeleting = _authService.Can("Currency.Delete");
         }
     }
 }

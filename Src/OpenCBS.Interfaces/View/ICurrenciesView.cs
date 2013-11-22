@@ -27,5 +27,9 @@ namespace OpenCBS.Interface.View
     {
         void Run();
         void ShowCurrencies(IList<CurrencyDto> currencies);
+
+        bool AllowAdding { get; set; }
+        bool AllowEditing { get; set; }
+        bool AllowDeleting { get; set; }
     }
 }

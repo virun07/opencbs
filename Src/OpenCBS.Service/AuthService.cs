@@ -18,7 +18,6 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
-using System.Linq;
 using Omu.ValueInjecter;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Repository;
@@ -81,7 +80,12 @@ namespace OpenCBS.Service
                 "LoanProduct.View",
                 "LoanProduct.Add",
                 "LoanProduct.Edit",
-                "LoanProduct.Delete"
+                "LoanProduct.Delete",
+
+                "Currency.View",
+                "Currency.Add",
+                "Currency.Edit",
+                "Currency.Delete"
             };
             return result.AsReadOnly();
         }

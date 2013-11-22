@@ -35,6 +35,7 @@ namespace OpenCBS.UnitTest.Presenter
         private ICurrenciesView _currenciesView;
         private ICurrencyService _currencyService;
         private IApplicationController _appController;
+        private IAuthService _authService;
 
         [SetUp]
         public void SetUp()
@@ -42,7 +43,8 @@ namespace OpenCBS.UnitTest.Presenter
             _currenciesView = Substitute.For<ICurrenciesView>();
             _currencyService = Substitute.For<ICurrencyService>();
             _appController = Substitute.For<IApplicationController>();
-            _presenter = new CurrenciesPresenter(_currenciesView, _currencyService, _appController);
+            _authService = Substitute.For<IAuthService>();
+            _presenter = new CurrenciesPresenter(_currenciesView, _currencyService, _appController, _authService);
         }
 
         [Test]
@@ -58,6 +60,30 @@ namespace OpenCBS.UnitTest.Presenter
         {
             _presenter.Run();
             _currencyService.Received().FindAll();
+        }
+
+        [Test]
+        public void Run_HasAddPermission_CanAdd()
+        {
+            _authService.Can("Currency.Add").Returns(true);
+            _presenter.Run();
+            Assert.IsTrue(_currenciesView.AllowAdding);
+        }
+
+        [Test]
+        public void Run_HasEditPermission_CanEdit()
+        {
+            _authService.Can("Currency.Edit").Returns(true);
+            _presenter.Run();
+            Assert.IsTrue(_currenciesView.AllowEditing);
+        }
+
+        [Test]
+        public void Run_HasDeletePermission_CanDelete()
+        {
+            _authService.Can("Currency.Delete").Returns(true);
+            _presenter.Run();
+            Assert.IsTrue(_currenciesView.AllowDeleting);
         }
 
         [Test]
