@@ -25,6 +25,7 @@ using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
 using OpenCBS.Presenter;
 
+// ReSharper disable InconsistentNaming
 namespace OpenCBS.UnitTest.Presenter
 {
     [TestFixture]
@@ -67,3 +68,4 @@ namespace OpenCBS.UnitTest.Presenter
         }
     }
 }
+// ReSharper restore InconsistentNaming
