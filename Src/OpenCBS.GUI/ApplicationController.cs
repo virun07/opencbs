@@ -43,6 +43,14 @@ namespace OpenCBS.GUI
                 if (command != null)
                     command.Execute(commandData);
             }
+            catch (UnauthorizedAccessException error)
+            {
+                MessageBox.Show(
+                    string.Format("Not authorized: {0}.", error.Message),
+                    "Error", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
+            }
             catch (Exception error)
             {
                 MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

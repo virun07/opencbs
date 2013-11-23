@@ -69,8 +69,8 @@ namespace OpenCBS.GUI.View
 
         public bool AllowEditing
         {
-            get { return _addButton.Visible; }
-            set { _addButton.Visible = value; }
+            get { return _editButton.Visible; }
+            set { _editButton.Visible = value; }
         }
 
         public bool AllowDeleting

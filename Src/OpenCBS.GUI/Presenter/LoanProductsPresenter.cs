@@ -81,8 +81,8 @@ namespace OpenCBS.GUI.Presenter
         public void Run()
         {
             _view.Attach(this);
-            _view.Run();
             ShowLoanProducts();
+            _view.Run();
         }
 
         public object View

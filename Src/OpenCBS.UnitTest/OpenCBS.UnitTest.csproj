@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\RolePermissionTest.cs" />
     <Compile Include="Presenter\CurrenciesPresenterTest.cs" />
     <Compile Include="Presenter\EntryFeesPresenterTest.cs" />
     <Compile Include="Presenter\LoginPresenterTest.cs" />
@@ -74,6 +75,10 @@
     <ProjectReference Include="..\OpenCBS.Interfaces\OpenCBS.Interface.csproj">
       <Project>{4d370e45-0fbb-4230-b408-94ffd7e0e997}</Project>
       <Name>OpenCBS.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Model\OpenCBS.Model.csproj">
+      <Project>{db64ab0c-241b-423c-b5de-2df524386651}</Project>
+      <Name>OpenCBS.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Presenter\OpenCBS.Presenter.csproj">
       <Project>{e8a84301-0b7c-4f40-9213-7c10d64d1cc3}</Project>

@@ -86,6 +86,10 @@ namespace OpenCBS.Model
                 "IUserService.FindAll",
                 "IUserService.Delete"
             });
+            Map.Add("EntryFee.View", new HashSet<string>
+            {
+                "IEntryFeeService.FindAll"
+            });
         }
 
         public string Name { get; set; }
@@ -102,7 +106,7 @@ namespace OpenCBS.Model
         {
             if (Permissions == null)
                 throw new ArgumentException(string.Format("No permissions for role {0}", Name));
-            var list = Permissions.Select(p => Map[p]);
+            var list = Permissions.Where(p => Map.ContainsKey(p)).Select(p => Map[p]);
             var set = new HashSet<string>();
             foreach (var item in list) set.UnionWith(item);
             return set.Contains(servicePermission);
