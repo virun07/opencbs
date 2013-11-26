@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EB3C633E-D606-476E-ABA1-55DF197E6BAD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenCBS.Service</RootNamespace>
+    <AssemblyName>OpenCBS.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Omu.ValueInjecter">
+      <HintPath>..\packages\valueinjecter.2.3.3\lib\net35\Omu.ValueInjecter.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthService.cs" />
+    <Compile Include="CurrencyService.cs" />
+    <Compile Include="DatabaseService.cs" />
+    <Compile Include="EmitProxy.cs" />
+    <Compile Include="EntryFeeService.cs" />
+    <Compile Include="LoanProductService.cs" />
+    <Compile Include="NonWorkingDayPolicy.cs" />
+    <Compile Include="PolicyRegistry.cs" />
+    <Compile Include="PolicyFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleService.cs" />
+    <Compile Include="SecurityInterceptor.cs" />
+    <Compile Include="Service.cs" />
+    <Compile Include="SettingsProvider.cs" />
+    <Compile Include="ThirtyDaysPaymentFrequencyPolicy.cs" />
+    <Compile Include="UserService.cs" />
+    <Compile Include="Validator\EntryFeeValidator.cs" />
+    <Compile Include="Validator\LoanProductValidator.cs" />
+    <Compile Include="Validator\RoleValidator.cs" />
+    <Compile Include="Validator\UserValidator.cs" />
+    <Compile Include="Validator\Validator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenCBS.Common\OpenCBS.Common.csproj">
+      <Project>{fe9c7054-d939-4617-99cd-8a8f9ae77099}</Project>
+      <Name>OpenCBS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.CoreDomain\OpenCBS.CoreDomain.csproj">
+      <Project>{d539c388-3848-4a3e-ab87-42b8e329755a}</Project>
+      <Name>OpenCBS.CoreDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.DataContract\OpenCBS.DataContract.csproj">
+      <Project>{e3b40bd9-946c-4b41-8501-50ac85df3cb0}</Project>
+      <Name>OpenCBS.DataContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Interfaces\OpenCBS.Interface.csproj">
+      <Project>{4d370e45-0fbb-4230-b408-94ffd7e0e997}</Project>
+      <Name>OpenCBS.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Model.Interface\OpenCBS.Model.Interface.csproj">
+      <Project>{d5db6cd6-5a9e-40ca-bd7f-b4accfdc8f4f}</Project>
+      <Name>OpenCBS.Model.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Model\OpenCBS.Model.csproj">
+      <Project>{db64ab0c-241b-423c-b5de-2df524386651}</Project>
+      <Name>OpenCBS.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Services\OpenCBS.Services.csproj">
+      <Project>{a859d97a-51fb-4961-af07-5856640511af}</Project>
+      <Name>OpenCBS.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Shared\OpenCBS.Shared.csproj">
+      <Project>{b3288e21-e5a9-4620-bef3-afb0b207655c}</Project>
+      <Name>OpenCBS.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
