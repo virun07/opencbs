@@ -23,7 +23,6 @@ using System;
 using System.Data;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using OpenCBS.CoreDomain.Accounting.Datasets;
 using OpenCBS.DatabaseConnection;
 using OpenCBS.ExceptionsHandler.Exceptions.AccountExceptions;
 using OpenCBS.Manager.Accounting;

@@ -5,7 +5,9 @@ using OpenCBS.Engine.Interfaces;
 namespace OpenCBS.Engine.YearPolicy
 {
     [Export(typeof(IPolicy))]
-    [PolicyAttribute(PolicyType = "YearPolicy", Implementation = "365")]
+    [Export(typeof(IYearPolicy))]
+    [ExportMetadata("Order", 30)]
+    [PolicyAttribute(Implementation = "365 days")]
     public class ThreeHundredSixtyFiveDayYearPolicy : IYearPolicy
     {
         public int GetNumberOfDays(System.DateTime date)

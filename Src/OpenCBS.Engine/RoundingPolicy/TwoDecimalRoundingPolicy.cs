@@ -5,6 +5,8 @@ using OpenCBS.Engine.Interfaces;
 namespace OpenCBS.Engine.RoundingPolicy
 {
     [Export(typeof(IPolicy))]
+    [Export(typeof(IRoundingPolicy))]
+    [ExportMetadata("Order", 10)]
     [PolicyAttribute(Implementation = "Two decimal")]
     public class TwoDecimalRoundingPolicy : IRoundingPolicy
     {

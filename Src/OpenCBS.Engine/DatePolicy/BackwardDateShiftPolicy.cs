@@ -5,6 +5,8 @@ using OpenCBS.Engine.Interfaces;
 namespace OpenCBS.Engine.DatePolicy
 {
     [Export(typeof(IPolicy))]
+    [Export(typeof(IDateShiftPolicy))]
+    [ExportMetadata("Order", 20)]
     [PolicyAttribute(Implementation = "Backward")]
     public class BackwardDateShiftPolicy : IDateShiftPolicy
     {

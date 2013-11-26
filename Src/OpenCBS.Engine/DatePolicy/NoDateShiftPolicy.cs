@@ -5,7 +5,9 @@ using OpenCBS.Engine.Interfaces;
 namespace OpenCBS.Engine.DatePolicy
 {
     [Export(typeof(IPolicy))]
-    [PolicyAttribute(Implementation = "No")]
+    [Export(typeof(IDateShiftPolicy))]
+    [ExportMetadata("Order", 10)]
+    [PolicyAttribute(Implementation = "No shift")]
     public class NoDateShiftPolicy : IDateShiftPolicy
     {
         public DateTime ShiftDate(DateTime date)

@@ -532,9 +532,7 @@ namespace OpenCBS.Manager
 
         public Dictionary<int, int> SelectUserToRole()
         {
-            const string q = @"SELECT u.id AS user_id, r.id AS role_id
-                               FROM dbo.Users AS u
-                               LEFT JOIN dbo.Roles AS r ON r.code = u.role_code";
+            const string q = @"select user_id, role_id from UserRole";
 
             Dictionary<int, int> userToRole = new Dictionary<int, int>();
             using (SqlConnection conn = GetConnection())
@@ -549,7 +547,7 @@ namespace OpenCBS.Manager
                         {
                             int userId = r.GetInt("user_id");
                             int roleId = r.GetInt("role_id");
-                            userToRole.Add(userId, roleId);
+                            userToRole[userId] = roleId;
                         }
                     }
                 }

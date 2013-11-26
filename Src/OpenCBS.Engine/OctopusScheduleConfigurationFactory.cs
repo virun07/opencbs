@@ -57,7 +57,7 @@ namespace OpenCBS.Engine
         {
             _scheduleConfiguration.CalculationPolicy = GetPolicy<IInstallmentCalculationPolicy>(GetCalculationPolicyKey());
             _scheduleConfiguration.PeriodPolicy = GetPeriodPolicy();
-            _scheduleConfiguration.YearPolicy = GetPolicy<IYearPolicy>("360");
+            _scheduleConfiguration.YearPolicy = GetPolicy<IYearPolicy>("360 days");
             _scheduleConfiguration.RoundingPolicy = GetRoundingPolicy();
             _scheduleConfiguration.DateShiftPolicy = GetDateShiftPolicy();
             _scheduleConfiguration.AdjustmentPolicy = GetAdjustmentPolicy();
@@ -105,7 +105,7 @@ namespace OpenCBS.Engine
             {
                 { OLoanTypes.Flat, "Flat" },
                 { OLoanTypes.DecliningFixedInstallments, "Annuity" },
-                { OLoanTypes.DecliningFixedPrincipal, "Fixed principal" },
+                { OLoanTypes.DecliningFixedPrincipal, "Declining balance" },
             };
             return map.ContainsKey(_loan.Product.LoanType) ? map[_loan.Product.LoanType] : string.Empty;
         }
@@ -133,7 +133,7 @@ namespace OpenCBS.Engine
             string key;
             if (_settings.DoNotSkipNonWorkingDays)
             {
-                key = "No";
+                key = "No shift";
             }
             else
             {

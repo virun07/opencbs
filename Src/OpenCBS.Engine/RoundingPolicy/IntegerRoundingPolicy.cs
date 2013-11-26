@@ -5,6 +5,8 @@ using OpenCBS.Engine.Interfaces;
 namespace OpenCBS.Engine.RoundingPolicy
 {
     [Export(typeof(IPolicy))]
+    [Export(typeof(IRoundingPolicy))]
+    [ExportMetadata("Order", 20)]
     [PolicyAttribute(Implementation = "Whole")]
     public class IntegerRoundingPolicy : IRoundingPolicy
     {

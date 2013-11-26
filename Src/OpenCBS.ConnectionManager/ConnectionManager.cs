@@ -21,7 +21,6 @@
 
 using System;
 using System.Data.SqlClient;
-using OpenCBS.Shared.Settings;
 
 namespace OpenCBS.DatabaseConnection
 {
@@ -33,7 +32,7 @@ namespace OpenCBS.DatabaseConnection
 
         private ConnectionManager()
         {
-            _connectionManager = TechnicalSettings.UseOnlineMode ? Remoting.GetInstance() : Standard.GetInstance();
+            _connectionManager = Standard.GetInstance();
         }
 
         private ConnectionManager(string pTestDb)
@@ -43,9 +42,7 @@ namespace OpenCBS.DatabaseConnection
 
         private ConnectionManager(string pLogin, string pPassword, string pServer, string pDatabase, string pTimeout)
         {
-            _connectionManager = TechnicalSettings.UseOnlineMode 
-                ? Remoting.GetInstance() 
-                : Standard.GetInstance(pLogin, pPassword, pServer, pDatabase, pTimeout);
+            _connectionManager = Standard.GetInstance(pLogin, pPassword, pServer, pDatabase, pTimeout);
         }
 
         public static ConnectionManager GetInstance()
@@ -137,9 +134,7 @@ namespace OpenCBS.DatabaseConnection
 
         public static bool CheckSQLServerConnection()
         {
-            return TechnicalSettings.UseOnlineMode
-                ? Remoting.CheckSQLServerConnection()
-                : Standard.CheckSQLServerConnection();
+            return Standard.CheckSQLServerConnection();
         }
 
         public static bool CheckSQLDatabaseConnection()
@@ -151,11 +146,7 @@ namespace OpenCBS.DatabaseConnection
         {
             get
             {
-                return TechnicalSettings.UseOnlineMode
-                    ? Remoting.GetSqlConnectionOnMaster()
-                    : Standard.MasterConnection();
-                //? Remoting.CheckSQLServerConnection()
-                //: Standard.CheckSQLServerConnection();
+                return Standard.MasterConnection();
             }
         }
     }

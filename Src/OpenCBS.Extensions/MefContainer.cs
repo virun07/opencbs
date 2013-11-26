@@ -61,5 +61,10 @@ namespace OpenCBS.Extensions
         {
             _container.SatisfyImportsOnce(host);
         }
+
+        public T GetInstance<T>()
+        {
+            return _container.GetExportedValue<T>();
+        }
     }
 }

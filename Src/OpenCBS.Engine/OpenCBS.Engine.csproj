@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OpenCBS.Engine</RootNamespace>
     <AssemblyName>OpenCBS.Engine</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -34,10 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Lib\System.ComponentModel.Composition.dll</HintPath>
-    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,6 +45,10 @@
     <Compile Include="AdjustmentPolicy\BaseAdjustmentPolicy.cs" />
     <Compile Include="AdjustmentPolicy\FirstInstallmentAdjustmentPolicy.cs" />
     <Compile Include="AdjustmentPolicy\LastInstallmentAdjustmentPolicy.cs" />
+    <Compile Include="DatePolicy\DummyNonWorkingDayPolicy.cs" />
+    <Compile Include="PeriodPolicy\BiweeklyPeriodPolicy.cs" />
+    <Compile Include="PeriodPolicy\ThirtyDayPeriodPolicy.cs" />
+    <Compile Include="PeriodPolicy\WeeklyPeriodPolicy.cs" />
     <Compile Include="RescheduleAssembler.cs" />
     <Compile Include="DefaultScheduleConfigurationFactory.cs" />
     <Compile Include="DatePolicy\BackwardDateShiftPolicy.cs" />

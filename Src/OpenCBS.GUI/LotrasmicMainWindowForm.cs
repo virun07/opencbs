@@ -48,6 +48,8 @@ using OpenCBS.GUI.Report_Browser;
 using OpenCBS.GUI.TellerManagement;
 using OpenCBS.GUI.Tools;
 using OpenCBS.GUI.UserControl;
+using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.View;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Reports;
 using OpenCBS.Reports.Forms;
@@ -57,7 +59,7 @@ using OpenCBS.Shared.Settings;
 
 namespace OpenCBS.GUI
 {
-    public partial class LotrasmicMainWindowForm : SweetBaseForm
+    public partial class LotrasmicMainWindowForm : SweetBaseForm, ITempMainView
     {
         [ImportMany(typeof(IMenu), RequiredCreationPolicy = CreationPolicy.Shared)]
         public List<IMenu> ExtensionMenuItems { get; set; }
@@ -443,7 +445,16 @@ namespace OpenCBS.GUI
 
         private void menuItemPackages_Click(object sender, EventArgs e)
         {
-            InitializePackagesForm();
+            /*if (ApplicationSettings.GetInstance(string.Empty).NewArchitecture)
+            {
+                //var presenter = MefContainer.Current.GetInstance<ILoanProductsPresenter>();
+                //presenter.Initialize();
+                //((Form) presenter.Ui).Show();
+            }
+            else
+            {
+                InitializePackagesForm();
+            }*/
         }
 
         private void savingProductsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1155,7 +1166,5 @@ namespace OpenCBS.GUI
                 Fail(ex.Message);
             }
         }
-
-
     }
 }

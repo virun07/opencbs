@@ -33,13 +33,14 @@
     </ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetZone>Custom</TargetZone>
     <ExcludedPermissions>
     </ExcludedPermissions>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
     <PublishUrl>http://localhost/Octopus/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
@@ -175,20 +176,38 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\CrystalDecisions.Windows.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="Cyotek.Windows.Forms.TabList">
+      <HintPath>..\packages\CyotekTabList.1.0.1.0\lib\net35\Cyotek.Windows.Forms.TabList.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper">
+      <HintPath>..\packages\Dapper.1.13\lib\net40\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DapperExtensions">
+      <HintPath>..\packages\DapperExtensions.1.4.3\lib\net40\DapperExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="ObjectListView, Version=2.4.0.22388, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\ObjectListView.dll</HintPath>
     </Reference>
+    <Reference Include="Omu.ValueInjecter">
+      <HintPath>..\packages\ValueInjecter.2.3.3\lib\net35\Omu.ValueInjecter.dll</HintPath>
+    </Reference>
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
-    <Reference Include="System.ComponentModel.Composition, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Lib\System.ComponentModel.Composition.dll</HintPath>
-    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -208,6 +227,7 @@
     <Reference Include="System.ServiceModel">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
@@ -223,6 +243,14 @@
       <Name>ZedGraph</Name>
       <HintPath>..\..\Lib\ZedGraph.dll</HintPath>
     </Reference>
+    <ProjectReference Include="..\OpenCBS.Common\OpenCBS.Common.csproj">
+      <Project>{fe9c7054-d939-4617-99cd-8a8f9ae77099}</Project>
+      <Name>OpenCBS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.ConnectionManager\OpenCBS.DatabaseConnection.csproj">
+      <Project>{30af40fb-fa8b-4f5e-b41a-ca59e82ba5a0}</Project>
+      <Name>OpenCBS.DatabaseConnection</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Controls\OpenCBS.Controls.csproj">
       <Project>{0DFCB871-734C-434D-AE9E-35C378B36F9E}</Project>
       <Name>OpenCBS.Controls</Name>
@@ -230,6 +258,10 @@
     <ProjectReference Include="..\OpenCBS.CoreDomain\OpenCBS.CoreDomain.csproj">
       <Project>{D539C388-3848-4A3E-AB87-42B8E329755A}</Project>
       <Name>OpenCBS.CoreDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.DataContract\OpenCBS.DataContract.csproj">
+      <Project>{e3b40bd9-946c-4b41-8501-50ac85df3cb0}</Project>
+      <Name>OpenCBS.DataContract</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Engine\OpenCBS.Engine.csproj">
       <Project>{b1595695-b53f-4d94-85e6-45a6f515c650}</Project>
@@ -255,9 +287,25 @@
       <Project>{90B5218E-10F0-4123-80E3-C4E65D6CF209}</Project>
       <Name>OpenCBS.GUI.Restarter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Interfaces\OpenCBS.Interface.csproj">
+      <Project>{4d370e45-0fbb-4230-b408-94ffd7e0e997}</Project>
+      <Name>OpenCBS.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Model.Interface\OpenCBS.Model.Interface.csproj">
+      <Project>{d5db6cd6-5a9e-40ca-bd7f-b4accfdc8f4f}</Project>
+      <Name>OpenCBS.Model.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCBS.MultiLanguage\OpenCBS.MultiLanguageRessources.csproj">
       <Project>{1644EDA1-7196-4197-B752-A4D14F384E31}</Project>
       <Name>OpenCBS.MultiLanguageRessources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Persistence\OpenCBS.Persistence.csproj">
+      <Project>{4b943ef5-4293-4e1d-a6f4-9aa0a66b7dc9}</Project>
+      <Name>OpenCBS.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Presenter\OpenCBS.Presenter.csproj">
+      <Project>{e8a84301-0b7c-4f40-9213-7c10d64d1cc3}</Project>
+      <Name>OpenCBS.Presenter</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Reports\OpenCBS.Reports.csproj">
       <Project>{A2E4E382-5796-446C-85B1-8EF306AD50DE}</Project>
@@ -266,6 +314,10 @@
     <ProjectReference Include="..\OpenCBS.Services\OpenCBS.Services.csproj">
       <Project>{A859D97A-51FB-4961-AF07-5856640511AF}</Project>
       <Name>OpenCBS.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Service\OpenCBS.Service.csproj">
+      <Project>{eb3c633e-d606-476e-aba1-55df197e6bad}</Project>
+      <Name>OpenCBS.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Shared\OpenCBS.Shared.csproj">
       <Project>{B3288E21-E5A9-4620-BEF3-AFB0B207655C}</Project>
@@ -418,6 +470,22 @@
     <Compile Include="Clients\NonSolidaryGroupForm.Designer.cs">
       <DependentUpon>NonSolidaryGroupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Command\AddEntryFeeCommand.cs" />
+    <Compile Include="Command\AddRoleCommand.cs" />
+    <Compile Include="Command\AddUserCommand.cs" />
+    <Compile Include="Command\ChangeLanguageCommand.cs" />
+    <Compile Include="Command\ConfirmOperationCommand.cs" />
+    <Compile Include="Command\DeleteEntryFeeCommand.cs" />
+    <Compile Include="Command\DeleteRoleCommand.cs" />
+    <Compile Include="Command\DeleteUserCommand.cs" />
+    <Compile Include="Command\EditEntryFeeCommand.cs" />
+    <Compile Include="Command\EditRoleCommand.cs" />
+    <Compile Include="Command\EditUserCommand.cs" />
+    <Compile Include="Command\SelectEntryFeeCommand.cs" />
+    <Compile Include="Command\ShowCurrenciesCommand.cs" />
+    <Compile Include="Command\ShowEntryFeesCommand.cs" />
+    <Compile Include="Command\ShowRolesCommand.cs" />
+    <Compile Include="Command\ShowUsersCommand.cs" />
     <Compile Include="Configuration\AddBranchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -507,6 +575,12 @@
     </Compile>
     <Compile Include="Contracts\ContractCollateralForm.Designer.cs">
       <DependentUpon>ContractCollateralForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contracts\LoanEntryFeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contracts\LoanEntryFeesForm.Designer.cs">
+      <DependentUpon>LoanEntryFeesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Contracts\ReschedulingForm.cs">
       <SubType>Form</SubType>
@@ -678,6 +752,8 @@
     <Compile Include="Export\StringFieldPropertiesForm.Designer.cs">
       <DependentUpon>StringFieldPropertiesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IMainViewTemp.cs" />
+    <Compile Include="JsonTranslator.cs" />
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -686,6 +762,97 @@
     </Compile>
     <Compile Include="MultiLanguageForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppContext.cs" />
+    <Compile Include="ApplicationController.cs" />
+    <Compile Include="BootStrapper.cs" />
+    <Compile Include="Command\AddLoanProductCommand.cs" />
+    <Compile Include="Command\DeleteLoanProductCommand.cs" />
+    <Compile Include="Command\EditLoanProductCommand.cs" />
+    <Compile Include="Command\ShowLoanProductsCommand.cs" />
+    <Compile Include="DefaultRegistry.cs" />
+    <Compile Include="EventAggregatorInterceptor.cs" />
+    <Compile Include="EventPublisher.cs" />
+    <Compile Include="Presenter\ConfirmationPresenter.cs" />
+    <Compile Include="Presenter\EntryFeePresenter.cs" />
+    <Compile Include="Presenter\LoanProductPresenter.cs" />
+    <Compile Include="Presenter\LoanProductsPresenter.cs" />
+    <Compile Include="Presenter\SelectEntryFeePresenter.cs" />
+    <Compile Include="View\BaseView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BaseView.Designer.cs">
+      <DependentUpon>BaseView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CollectionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CollectionView.Designer.cs">
+      <DependentUpon>CollectionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConfirmationView.cs" />
+    <Compile Include="View\CurrenciesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CurrenciesView.Designer.cs">
+      <DependentUpon>CurrenciesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RoleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RoleView.Designer.cs">
+      <DependentUpon>RoleView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntryFeesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EntryFeesView.Designer.cs">
+      <DependentUpon>EntryFeesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntryFeeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EntryFeeView.Designer.cs">
+      <DependentUpon>EntryFeeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoanProductsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LoanProductsView.Designer.cs">
+      <DependentUpon>LoanProductsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoanProductView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LoanProductView.Designer.cs">
+      <DependentUpon>LoanProductView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LoginView.Designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RolesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RolesView.Designer.cs">
+      <DependentUpon>RolesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SelectEntryFeeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SelectEntryFeeView.Designer.cs">
+      <DependentUpon>SelectEntryFeeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TopEdgePanel.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1089,6 +1256,18 @@
     </Compile>
     <Compile Include="UserControl\WriteOffOkCancelForm.Designer.cs">
       <DependentUpon>WriteOffOkCancelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsersView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UsersView.Designer.cs">
+      <DependentUpon>UsersView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UserView.Designer.cs">
+      <DependentUpon>UserView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AboutForm.es-ES.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
@@ -1765,6 +1944,15 @@
     <EmbeddedResource Include="Contracts\ContractCollateralForm.pt.resx">
       <DependentUpon>ContractCollateralForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Contracts\LoanEntryFeesForm.fr.resx">
+      <DependentUpon>LoanEntryFeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contracts\LoanEntryFeesForm.resx">
+      <DependentUpon>LoanEntryFeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contracts\LoanEntryFeesForm.ru-RU.resx">
+      <DependentUpon>LoanEntryFeesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Contracts\ReschedulingForm.es-ES.resx">
       <DependentUpon>ReschedulingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -2286,6 +2474,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MultiLanguageForm.resx">
       <DependentUpon>MultiLanguageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\BaseView.resx">
+      <DependentUpon>BaseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CurrenciesView.resx">
+      <DependentUpon>CurrenciesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RoleView.resx">
+      <DependentUpon>RoleView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EntryFeesView.resx">
+      <DependentUpon>EntryFeesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EntryFeeView.resx">
+      <DependentUpon>EntryFeeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LoanProductsView.resx">
+      <DependentUpon>LoanProductsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LoanProductView.resx">
+      <DependentUpon>LoanProductView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\FrmAddCollateralProduct.fr.resx">
       <DependentUpon>FrmAddCollateralProduct.cs</DependentUpon>
@@ -2959,11 +3168,61 @@
     <EmbeddedResource Include="UserControl\WriteOffOkCancelForm.ru-RU.resx">
       <DependentUpon>WriteOffOkCancelForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\LoginView.resx">
+      <DependentUpon>LoginView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainView.es-ES.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainView.fr-FR.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainView.fr.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainView.pt-PT.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainView.pt.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainView.ru-RU.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RolesView.resx">
+      <DependentUpon>RolesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SelectEntryFeeView.resx">
+      <DependentUpon>SelectEntryFeeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UsersView.resx">
+      <DependentUpon>UsersView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserView.resx">
+      <DependentUpon>UserView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="dump.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="dumpObjects.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\en-US.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\fr-FR.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Languages\ru-RU.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
@@ -3748,6 +4007,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

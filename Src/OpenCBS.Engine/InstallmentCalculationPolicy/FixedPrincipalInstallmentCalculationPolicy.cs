@@ -4,7 +4,9 @@ using OpenCBS.Engine.Interfaces;
 namespace OpenCBS.Engine.InstallmentCalculationPolicy
 {
     [Export(typeof(IPolicy))]
-    [PolicyAttribute(Implementation = "Fixed principal")]
+    [Export(typeof(IInstallmentCalculationPolicy))]
+    [ExportMetadata("Order", 20)]
+    [PolicyAttribute(Implementation = "Declining balance")]
     public class FixedPrincipalInstallmentCalculationPolicy : BaseInstallmentCalculationPolicy, IInstallmentCalculationPolicy
     {
         public void Calculate(IInstallment installment, IScheduleConfiguration configuration)

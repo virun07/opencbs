@@ -91,7 +91,7 @@ namespace OpenCBS.GUI.UserControl
             InitializeComponent();
             menuItemCopy.Click += new System.EventHandler(this.contextMenuStripCopyToClipBoard_Click);
 
-            base.View = View.Details;
+            //base.View = View.Details;
             base.ContextMenuStrip = contextMenuStripCopyToClipBoard;
 
         }
