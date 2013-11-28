@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\ShowUsersCommandTest.cs" />
     <Compile Include="Model\RolePermissionTest.cs" />
     <Compile Include="Presenter\CurrenciesPresenterTest.cs" />
     <Compile Include="Presenter\EntryFeesPresenterTest.cs" />
@@ -80,6 +81,10 @@
     <ProjectReference Include="..\OpenCBS.Presenter\OpenCBS.Presenter.csproj">
       <Project>{e8a84301-0b7c-4f40-9213-7c10d64d1cc3}</Project>
       <Name>OpenCBS.Presenter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Service\OpenCBS.Service.csproj">
+      <Project>{eb3c633e-d606-476e-aba1-55df197e6bad}</Project>
+      <Name>OpenCBS.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
