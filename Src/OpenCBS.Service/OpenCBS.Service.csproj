@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthService.cs" />
+    <Compile Include="Command\ShowLoanProductsCommand.cs" />
     <Compile Include="Command\ShowRolesCommand.cs" />
     <Compile Include="Command\ShowUsersCommand.cs" />
     <Compile Include="CurrencyService.cs" />

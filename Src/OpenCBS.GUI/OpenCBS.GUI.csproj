@@ -767,7 +767,6 @@
     <Compile Include="Command\AddLoanProductCommand.cs" />
     <Compile Include="Command\DeleteLoanProductCommand.cs" />
     <Compile Include="Command\EditLoanProductCommand.cs" />
-    <Compile Include="Command\ShowLoanProductsCommand.cs" />
     <Compile Include="DefaultRegistry.cs" />
     <Compile Include="EventAggregatorInterceptor.cs" />
     <Compile Include="EventPublisher.cs" />
