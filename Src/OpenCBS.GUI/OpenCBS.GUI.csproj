@@ -482,7 +482,6 @@
     <Compile Include="Command\EditRoleCommand.cs" />
     <Compile Include="Command\EditUserCommand.cs" />
     <Compile Include="Command\SelectEntryFeeCommand.cs" />
-    <Compile Include="Command\ShowCurrenciesCommand.cs" />
     <Compile Include="Configuration\AddBranchForm.cs">
       <SubType>Form</SubType>
     </Compile>
