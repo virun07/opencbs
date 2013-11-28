@@ -44,6 +44,8 @@
     <Compile Include="Currency.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="EntryFee.cs" />
+    <Compile Include="Loan.cs" />
+    <Compile Include="LoanEvent.cs" />
     <Compile Include="Schedule\AdjustmentPolicy.cs" />
     <Compile Include="Schedule\DateShiftPolicy\BackwardDateShiftPolicy.cs" />
     <Compile Include="Schedule\DateShiftPolicy\ForwardDateShiftPolicy.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="Schedule\Installment.cs" />
     <Compile Include="Schedule\ScheduleBuilder.cs" />
     <Compile Include="Schedule\ScheduleConfiguration.cs" />
+    <Compile Include="Transaction.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
