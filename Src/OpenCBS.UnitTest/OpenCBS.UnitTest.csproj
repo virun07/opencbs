@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\ShowCurrenciesCommandTest.cs" />
     <Compile Include="Command\ShowEntryFeesCommandTest.cs" />
     <Compile Include="Command\ShowLoanProductsCommandTest.cs" />
     <Compile Include="Command\ShowRolesCommandTest.cs" />
