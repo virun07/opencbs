@@ -31,5 +31,10 @@ namespace OpenCBS.Interface.View
         bool AllowAdding { get; set; }
         bool AllowEditing { get; set; }
         bool AllowDeleting { get; set; }
+
+        bool CanEdit { get; set; }
+        bool CanDelete { get; set; }
+        int? SelectedCurrencyId { get; }
+        bool ShowDeleted { get; }
     }
 }

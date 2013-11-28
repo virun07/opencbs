@@ -20,6 +20,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using OpenCBS.DataContract;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
@@ -27,7 +28,10 @@ namespace OpenCBS.GUI.View
 {
     public partial class CurrenciesView : BaseView, ICurrenciesView
     {
-        public CurrenciesView()
+        private ICurrenciesPresenterCallbacks _presenterCallbacks;
+
+        public CurrenciesView(ITranslator translator)
+            : base(translator)
         {
             InitializeComponent();
             MdiParent = Application.OpenForms[0];
@@ -40,7 +44,10 @@ namespace OpenCBS.GUI.View
 
         public void ShowCurrencies(IList<CurrencyDto> currencies)
         {
+            var selectedObject = _currenciesListView.SelectedObject;
             _currenciesListView.SetObjects(currencies);
+            _presenterCallbacks.ChangeSelection();
+            _currenciesListView.SelectedObject = selectedObject;
         }
 
         public void Attach(ICurrenciesPresenterCallbacks presenterCallbacks)
@@ -48,6 +55,10 @@ namespace OpenCBS.GUI.View
             _addButton.Click += (sender, e) => presenterCallbacks.Add();
             _editButton.Click += (sender, e) => presenterCallbacks.Edit();
             _deleteButton.Click += (sender, e) => presenterCallbacks.Delete();
+            _showDeletedCheckBox.CheckedChanged += (sender, e) => presenterCallbacks.Refresh();
+            _currenciesListView.SelectedIndexChanged += (sender, e) => presenterCallbacks.ChangeSelection();
+            FormClosing += (sender, e) => presenterCallbacks.Close();
+            _presenterCallbacks = presenterCallbacks;
         }
 
         public bool AllowAdding
@@ -66,6 +77,33 @@ namespace OpenCBS.GUI.View
         {
             get { return _deleteButton.Visible; }
             set { _deleteButton.Visible = value; }
+        }
+
+        public bool CanEdit
+        {
+            get { return _editButton.Enabled; }
+            set { _editButton.Enabled = value; }
+        }
+
+        public bool CanDelete
+        {
+            get { return _deleteButton.Enabled; }
+            set { _deleteButton.Enabled = value; }
+        }
+
+        public int? SelectedCurrencyId
+        {
+            get
+            {
+                var currencyDto = (CurrencyDto) _currenciesListView.SelectedObject;
+                if (currencyDto == null) return null;
+                return currencyDto.Id;
+            }
+        }
+
+        public bool ShowDeleted
+        {
+            get { return _showDeletedCheckBox.Checked; }
         }
     }
 }

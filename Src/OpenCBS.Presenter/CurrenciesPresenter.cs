@@ -66,6 +66,22 @@ namespace OpenCBS.Presenter
         {
         }
 
+        public void ChangeSelection()
+        {
+            var id = _view.SelectedCurrencyId;
+            _view.CanEdit = _view.CanDelete = id.HasValue;
+        }
+
+        public void Refresh()
+        {
+            ShowCurrencies();
+        }
+
+        public void Close()
+        {
+            _appController.Unsubscribe(this);
+        }
+
         private void ShowCurrencies()
         {
             var currencies = _currencyService.FindAll();
