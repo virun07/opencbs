@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="AuthService.cs" />
     <Compile Include="Command\AddUserCommand.cs" />
+    <Compile Include="Command\ConfirmOperationCommand.cs" />
+    <Compile Include="Command\DeleteUserCommand.cs" />
     <Compile Include="Command\EditUserCommand.cs" />
     <Compile Include="Command\ShowCurrenciesCommand.cs" />
     <Compile Include="Command\ShowEntryFeesCommand.cs" />

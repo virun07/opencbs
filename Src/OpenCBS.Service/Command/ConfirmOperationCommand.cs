@@ -18,32 +18,22 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.DataContract;
-using OpenCBS.DataContract.AppEvent;
-using OpenCBS.DataContract.CommandData;
-using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
-using OpenCBS.Interface.Service;
 
 namespace OpenCBS.GUI.Command
 {
-    public class DeleteUserCommand : ConfirmOperationCommand, ICommand<DeleteUserData>
+    public abstract class ConfirmOperationCommand
     {
-        private readonly IUserService _userService;
-        private readonly IApplicationController _appController;
+        private readonly IConfirmationPresenter _presenter;
 
-        public DeleteUserCommand(IConfirmationPresenter presenter, IUserService userService, IApplicationController appController)
-            : base(presenter)
+        protected ConfirmOperationCommand(IConfirmationPresenter presenter)
         {
-            _userService = userService;
-            _appController = appController;
+            _presenter = presenter;
         }
 
-        public void Execute(DeleteUserData commandData)
+        public CommandResult Confirm()
         {
-            var result = Confirm();
-            if (result != CommandResult.Ok) return;
-            _userService.Delete(commandData.Id);
-            _appController.Raise(new UserDeletedEvent { Id = commandData.Id });
+            return _presenter.Get("Do you confirm the operation?");
         }
     }
 }
