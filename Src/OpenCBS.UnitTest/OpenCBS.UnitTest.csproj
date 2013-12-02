@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command\AddUserCommandTest.cs" />
+    <Compile Include="Command\DeleteUserCommandTest.cs" />
     <Compile Include="Command\EditUserCommandTest.cs" />
     <Compile Include="Command\ShowCurrenciesCommandTest.cs" />
     <Compile Include="Command\ShowEntryFeesCommandTest.cs" />
