@@ -90,6 +90,24 @@ namespace OpenCBS.Model
             {
                 "IEntryFeeService.FindAll"
             });
+            Map.Add("EntryFee.Add" , new HashSet<string>
+            {
+                "IEntryFeeService.FindAll",
+                "IEntryFeeService.Validate",
+                "IEntryFeeService.Add"
+            });
+            Map.Add("EntryFee.Edit", new HashSet<string>
+            {
+                "IEntryFeeService.FindAll",
+                "IEntryFeeService.Validate",
+                "IEntryFeeService.FindById",
+                "IEntryFeeService.Update"
+            });
+            Map.Add("EntryFee.Delete", new HashSet<string>
+            {
+                "IEntryFeeService.FindAll",
+                "IEntryFeeService.Delete"
+            });
         }
 
         public string Name { get; set; }

@@ -116,6 +116,13 @@ namespace OpenCBS.UnitTest.Model
             var role = GetRoleWithPermission("EntryFee.Edit");
             AssertMapsTo(role, new[] { "IEntryFeeService.FindAll", "IEntryFeeService.FindById", "IEntryFeeService.Validate", "IEntryFeeService.Update" });
         }
+
+        [Test]
+        public void EntryFee_Delete()
+        {
+            var role = GetRoleWithPermission("EntryFee.Delete");
+            AssertMapsTo(role, new[] { "IEntryFeeService.FindAll", "IEntryFeeService.Delete" });
+        }
     }
 }
 // ReSharper restore InconsistentNaming
