@@ -20,6 +20,8 @@
 using NSubstitute;
 using NUnit.Framework;
 using OpenCBS.DataContract;
+using OpenCBS.DataContract.AppEvent;
+using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
@@ -49,6 +51,18 @@ namespace OpenCBS.UnitTest.Command
         public void Execute_CommandResultIsNotOk_DoesNotAddUser()
         {
             _presenter.Get(Arg.Any<UserDto>()).Returns(new Result<UserDto>(CommandResult.Cancel, null));
+            _command.Execute(new AddUserData());
+            _userService.DidNotReceive().Add(Arg.Any<UserDto>());
+            _appController.DidNotReceive().Raise(Arg.Any<UserSavedEvent>());
+        }
+
+        [Test]
+        public void Execute_CommandResultIsOk_AddUser()
+        {
+            _presenter.Get(Arg.Any<UserDto>()).Returns(new Result<UserDto>(CommandResult.Ok, new UserDto()));
+            _command.Execute(new AddUserData());
+            _userService.Received().Add(Arg.Any<UserDto>());
+            _appController.Received().Raise(Arg.Any<UserSavedEvent>());
         }
     }
 }
