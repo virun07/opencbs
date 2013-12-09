@@ -19,6 +19,9 @@
 
 using NSubstitute;
 using NUnit.Framework;
+using OpenCBS.DataContract;
+using OpenCBS.DataContract.AppEvent;
+using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
@@ -46,11 +49,21 @@ namespace OpenCBS.UnitTest.Command
         
         [Test]
         public void Execute_CommandResultIsNotOk_DoesNotAddEntryFee()
-        {}
+        {
+            _presenter.Get(Arg.Any<EntryFeeDto>()).Returns(new Result<EntryFeeDto>(CommandResult.Cancel, null));
+            _command.Execute(new AddEntryFeeData());
+            _entryFeeService.DidNotReceive().Add(Arg.Any<EntryFeeDto>());
+            _appController.DidNotReceive().Raise(Arg.Any<EntryFeeSavedEvent>());
+        }
 
         [Test]
         public void Execute_CommandResultIsOk_AddsEntryFee()
-        {}
+        {
+            _presenter.Get(Arg.Any<EntryFeeDto>()).Returns(new Result<EntryFeeDto>(CommandResult.Ok, new EntryFeeDto()));
+            _command.Execute(new AddEntryFeeData());
+            _entryFeeService.Received().Add(Arg.Any<EntryFeeDto>());
+            _appController.Received().Raise(Arg.Any<EntryFeeSavedEvent>());
+        }
     }
 }
 // ReSharper restore InconsistentNaming
