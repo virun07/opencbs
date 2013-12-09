@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\AddEntryFeeCommandTest.cs" />
     <Compile Include="Command\AddRoleCommandTest.cs" />
     <Compile Include="Command\AddUserCommandTest.cs" />
     <Compile Include="Command\DeleteRoleCommandTest.cs" />
