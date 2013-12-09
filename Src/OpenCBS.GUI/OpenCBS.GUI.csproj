@@ -476,7 +476,6 @@
     <Compile Include="Command\DeleteEntryFeeCommand.cs" />
     <Compile Include="Command\DeleteRoleCommand.cs" />
     <Compile Include="Command\EditEntryFeeCommand.cs" />
-    <Compile Include="Command\EditRoleCommand.cs" />
     <Compile Include="Command\SelectEntryFeeCommand.cs" />
     <Compile Include="Configuration\AddBranchForm.cs">
       <SubType>Form</SubType>
