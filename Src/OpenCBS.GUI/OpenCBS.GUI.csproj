@@ -473,7 +473,6 @@
     <Compile Include="Command\ChangeLanguageCommand.cs" />
     <Compile Include="Command\ConfirmOperationCommand.cs" />
     <Compile Include="Command\DeleteEntryFeeCommand.cs" />
-    <Compile Include="Command\EditEntryFeeCommand.cs" />
     <Compile Include="Command\SelectEntryFeeCommand.cs" />
     <Compile Include="Configuration\AddBranchForm.cs">
       <SubType>Form</SubType>
