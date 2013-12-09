@@ -23,7 +23,7 @@ using OpenCBS.DataContract.AppEvent;
 using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
 
-namespace OpenCBS.GUI.Command
+namespace OpenCBS.Service.Command
 {
     public class ChangeLanguageCommand : ICommand<ChangeLanguageData>
     {

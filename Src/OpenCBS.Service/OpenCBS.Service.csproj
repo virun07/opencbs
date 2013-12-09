@@ -53,6 +53,7 @@
     <Compile Include="Command\AddEntryFeeCommand.cs" />
     <Compile Include="Command\AddRoleCommand.cs" />
     <Compile Include="Command\AddUserCommand.cs" />
+    <Compile Include="Command\ChangeLanguageCommand.cs" />
     <Compile Include="Command\ConfirmOperationCommand.cs" />
     <Compile Include="Command\DeleteEntryFeeCommand.cs" />
     <Compile Include="Command\DeleteRoleCommand.cs" />
