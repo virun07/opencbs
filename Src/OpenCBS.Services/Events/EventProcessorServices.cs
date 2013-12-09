@@ -169,13 +169,10 @@ namespace OpenCBS.Services.Events
             {
                 LoanInterestAccrualOrigination((LoanInterestAccrualEvent)e, contract, sqlTransac);
             }
-<<<<<<< HEAD
-=======
             else if (e is LoanEntryFeeEvent)
             {
                 AddEntryFeeEvent((LoanEntryFeeEvent)e, contract, sqlTransac);
             }
->>>>>>> master
 		}
 
         public void FireSavingBlockEvent(SavingBlockCompulsarySavingsEvent savingBlockEvent, int contracId, SqlTransaction sqlTransac)

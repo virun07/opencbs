@@ -2509,10 +2509,6 @@ namespace OpenCBS.Services
             var launchDate = DateTime.Today;
             var listOfLoans = _loanManager.GetListOfLoansToAccruePenalty(launchDate);
             var em = new EventManager(User.CurrentUser);
-<<<<<<< HEAD
-
-=======
->>>>>>> master
             using (var connection=_loanManager.GetConnection())
                 foreach (var item in listOfLoans)
                 {
@@ -2609,25 +2605,22 @@ namespace OpenCBS.Services
                             }
                     }
                 }
-<<<<<<< HEAD
-
         }
 
 
-        private decimal GetDailyInterestForLoan(Loan loan, DateTime date)
-        {
-            if (date > loan.LastInstallment.ExpectedDate) return 0;
-            var nextInstallment = loan.InstallmentList.First(installment => date <= installment.ExpectedDate);
-            var nextDate = nextInstallment.ExpectedDate;
-            var previousDate = nextInstallment.Number > 1
-                                   ? loan.GetInstallment(nextInstallment.Number - 1).ExpectedDate
-                                   : loan.StartDate;
-            if ((date - previousDate).Days > 30) return 0;
-            var interest = nextInstallment.InterestsRepayment;
-            if (nextDate == date)
-                interest -= _loanManager.GetSumOfAccruedInterests(loan.Id, previousDate, date);
-=======
-        }
+        //private decimal GetDailyInterestForLoan(Loan loan, DateTime date)
+        //{
+        //    if (date > loan.LastInstallment.ExpectedDate) return 0;
+        //    var nextInstallment = loan.InstallmentList.First(installment => date <= installment.ExpectedDate);
+        //    var nextDate = nextInstallment.ExpectedDate;
+        //    var previousDate = nextInstallment.Number > 1
+        //                           ? loan.GetInstallment(nextInstallment.Number - 1).ExpectedDate
+        //                           : loan.StartDate;
+        //    if ((date - previousDate).Days > 30) return 0;
+        //    var interest = nextInstallment.InterestsRepayment;
+        //    if (nextDate == date)
+        //        interest -= _loanManager.GetSumOfAccruedInterests(loan.Id, previousDate, date);
+        //}
 
         public void LoanInterestAccrual(DateTime launchDate)
         {
@@ -2679,7 +2672,6 @@ namespace OpenCBS.Services
                                : _loanManager.GetInstallmentInterest(loan.Id, nextInstallment.Number, date);
             if (nextDate == date)
                 interest = interest - _loanManager.GetSumOfAccruedInterests(loan.Id, previousDate, date);
->>>>>>> master
             else
                 interest = interest/30;
             return interest.Value;
@@ -2707,17 +2699,6 @@ namespace OpenCBS.Services
                                 ContracId = item.Key
                             }).ToList();
 
-<<<<<<< HEAD
-                        var llgl = _loanManager.GetListOfTransitionToGoodLoan(date);
-                        transitionEventList.AddRange(llgl.Select(item => new LoanTransitionEvent
-                            {
-                                Code = "LLGL",
-                                Date = date,
-                                User = User.CurrentUser,
-                                Amount = item.Value,
-                                ContracId = item.Key
-                            }));
-=======
                         //var llgl = _loanManager.GetListOfTransitionToGoodLoan(date);
                         //transitionEventList.AddRange(llgl.Select(item => new LoanTransitionEvent
                         //    {
@@ -2727,7 +2708,6 @@ namespace OpenCBS.Services
                         //        Amount = item.Value,
                         //        ContracId = item.Key
                         //    }));
->>>>>>> master
 
                         foreach (var transitionEvent in transitionEventList)
                             em.AddLoanEvent(transitionEvent, transitionEvent.ContracId, transaction);
