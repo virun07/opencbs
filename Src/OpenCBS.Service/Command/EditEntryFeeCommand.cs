@@ -24,7 +24,7 @@ using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
 
-namespace OpenCBS.GUI.Command
+namespace OpenCBS.Service.Command
 {
     public class EditEntryFeeCommand : ICommand<EditEntryFeeData>
     {
@@ -32,8 +32,7 @@ namespace OpenCBS.GUI.Command
         private readonly IEntryFeeService _entryFeeService;
         private readonly IApplicationController _appController;
 
-        public EditEntryFeeCommand(IEntryFeePresenter presenter, IEntryFeeService entryFeeService,
-                                   IApplicationController appController)
+        public EditEntryFeeCommand(IEntryFeePresenter presenter, IEntryFeeService entryFeeService, IApplicationController appController)
         {
             _presenter = presenter;
             _entryFeeService = entryFeeService;
