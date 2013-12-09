@@ -20,11 +20,12 @@
 using OpenCBS.DataContract;
 using OpenCBS.DataContract.AppEvent;
 using OpenCBS.DataContract.CommandData;
+using OpenCBS.GUI.Command;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
 
-namespace OpenCBS.GUI.Command
+namespace OpenCBS.Service.Command
 {
     public class DeleteRoleCommand : ConfirmOperationCommand, ICommand<DeleteRoleData>
     {
