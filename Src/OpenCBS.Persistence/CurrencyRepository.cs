@@ -37,7 +37,7 @@ namespace OpenCBS.Persistence
         {
             using (var connection = GetConnection())
             {
-                const string sql = "select * from Currency";
+                const string sql = "select id Id, name Name, code Code, is_pivot Pivotal from Currencies";
                 return connection.Query<Currency>(sql).ToList().AsReadOnly();
             }
         }
@@ -46,7 +46,7 @@ namespace OpenCBS.Persistence
         {
             using (var connection = GetConnection())
             {
-                const string sql = "select * from Currency where Id = @Id";
+                const string sql = "select id Id, name Name, code Code, is_pivot Pivotal from Currencies where Id = @Id";
                 return connection.Query<Currency>(sql, new { Id = id }).FirstOrDefault();
             }
         }

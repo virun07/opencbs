@@ -81,7 +81,9 @@ namespace OpenCBS.Persistence
         public IList<LoanProduct> FindAll()
         {
             const string sql = @"
-                select * from LoanProduct p left join Currency c on c.id = p.CurrencyId
+                select p.*, c.id, c.code Code, c.name Name, c.is_pivot Pivotal
+                from LoanProduct p left join Currencies c on c.id = p.CurrencyId
+
                 select * from EntryFee
                 select * from LoanProductEntryFee
             ";
@@ -114,7 +116,8 @@ namespace OpenCBS.Persistence
         public LoanProduct FindById(int id)
         {
             const string sql = @"
-                select * from LoanProduct p left join Currency c on c.id = p.CurrencyId where p.id = @Id
+                select p.*, c.id, c.code Code, c.name Name, c.is_pivot Pivotal 
+                from LoanProduct p left join Currencies c on c.id = p.CurrencyId where p.id = @Id
                 select * from EntryFee where id in (select EntryFeeId from LoanProductEntryFee where LoanProductId = @Id)
             ";
             using (var connection = GetConnection())
