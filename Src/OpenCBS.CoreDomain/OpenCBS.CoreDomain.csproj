@@ -126,7 +126,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="OpenCBS.Services">
-      <HintPath>..\..\..\..\OpenCbsLibs\OpenCBS.Services.dll</HintPath>
+      <HintPath>..\OpenCBS.GUI\bin\Debug\OpenCBS.Services.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
