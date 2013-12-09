@@ -1829,7 +1829,7 @@ namespace OpenCBS.GUI.Clients
 
         private void SetAddTrancheButton(Loan pCredit)
         {
-            bool enableButton = pCredit.Product.ActivatedLOC;
+            bool enableButton = pCredit.Product.ActivatedLOC && pCredit.ContractStatus == OContractStatus.Active;
 
             if (pCredit.ClientType == OClientTypes.Group)
                 enableButton = false;
@@ -4220,6 +4220,7 @@ namespace OpenCBS.GUI.Clients
                         buttonLoanReschedule.Enabled = false;
                         buttonReschedule.Enabled = false;
                         btnWriteOff.Enabled = false;
+                        buttonManualSchedule.Enabled = false;
                     }
 
                     if (MdiParent != null)
@@ -4700,6 +4701,8 @@ namespace OpenCBS.GUI.Clients
                     if (reschedulingForm.DialogResult != DialogResult.Cancel)
                     {
                         _credit = reschedulingForm.Contract;
+                        nudLoanNbOfInstallments.Value = _credit.NbOfInstallments;
+                        SaveContract();
                         InitializeContractStatus(_credit);
                         InitializeTabPageLoansDetails(_credit);
                         DisplayListViewLoanRepayments(_credit);
@@ -7083,25 +7086,23 @@ namespace OpenCBS.GUI.Clients
             try
             {
                 ServiceProvider.GetContractServices().ManualScheduleAfterDisbursement();
-                ManualScheduleForm manualScheduleForm = new ManualScheduleForm(_credit.Copy());
+                var manualScheduleForm = new ManualScheduleForm(_credit.Copy());
 
-                if (manualScheduleForm.ShowDialog() == DialogResult.OK)
+                if (manualScheduleForm.ShowDialog() != DialogResult.OK) return;
+                var manualScheduleChangeEvent = new ManualScheduleChangeEvent
                 {
+                    User = User.CurrentUser,
+                    Date = TimeProvider.Now
+                };
+                ServiceProvider.GetContractServices()
+                               .AddManualScheduleChangeEvent(_credit, manualScheduleChangeEvent);
 
+                _credit = manualScheduleForm.Loan;
 
-                    var manualScheduleChangeEvent = new ManualScheduleChangeEvent();
-                    manualScheduleChangeEvent.User = User.CurrentUser;
-                    manualScheduleChangeEvent.Date = DateTime.Today;
-                    ServiceProvider.GetContractServices()
-                                   .AddManualScheduleChangeEvent(_credit, manualScheduleChangeEvent);
-
-                    _credit = manualScheduleForm.Loan;
-
-                    SaveContract();
-                    _credit = ServiceProvider.GetContractServices().SelectLoan(_credit.Id, true, true, true);
-                    DisplayListViewLoanRepayments(_credit);
-                    DisplayLoanEvents(_credit);
-                }
+                SaveContract();
+                _credit = ServiceProvider.GetContractServices().SelectLoan(_credit.Id, true, true, true);
+                DisplayListViewLoanRepayments(_credit);
+                DisplayLoanEvents(_credit);
             }
             catch (Exception ex)
             {

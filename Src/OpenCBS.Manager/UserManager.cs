@@ -463,14 +463,18 @@ namespace OpenCBS.Manager
             SaveBranches(user);
         }
 
-        public Dashboard GetDashboard()
+        public Dashboard GetDashboard(int branchId, int subordinateId, int loanProductId)
         {
             var dashboard = new Dashboard();
             using (var connection = GetConnection())
-            using (var command = new OpenCbsCommand("GetDashboard", connection).
-                AsStoredProcedure().
-                With("@date", TimeProvider.Today).
-                With("@userId", User.CurrentUser.Id))
+            using (var command = new OpenCbsCommand("GetDashboard", connection)
+                .AsStoredProcedure()
+                .With("@date", TimeProvider.Today)
+                .With("@userId", User.CurrentUser.Id)
+                .With("@subordinateId", subordinateId)
+                .With("@branchId", branchId)
+                .With("@loanProductId", loanProductId)
+                .WithTimeout(200))
             using (var reader = command.ExecuteReader())
             {
                 while (reader.Read())

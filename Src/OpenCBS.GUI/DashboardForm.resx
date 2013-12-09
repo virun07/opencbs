@@ -133,7 +133,7 @@
     <value>3, 3</value>
   </data>
   <data name="disbursementsPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 168</value>
+    <value>291, 168</value>
   </data>
   <data name="disbursementsPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -154,10 +154,10 @@
     <value>Fill</value>
   </data>
   <data name="olbTrendPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>223, 3</value>
+    <value>300, 3</value>
   </data>
   <data name="olbTrendPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 168</value>
+    <value>292, 168</value>
   </data>
   <data name="olbTrendPanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -184,7 +184,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 174</value>
+    <value>595, 174</value>
   </data>
   <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -208,13 +208,13 @@
     <value>Top</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 387</value>
+    <value>0, 437</value>
   </data>
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 180</value>
+    <value>1003, 180</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>49</value>
@@ -244,13 +244,13 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 347</value>
+    <value>0, 397</value>
   </data>
   <data name="label2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 20, 0, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 40</value>
+    <value>1003, 40</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -301,13 +301,13 @@
     <value>Arial, 8.25pt</value>
   </data>
   <data name="parListView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>449, 5</value>
+    <value>604, 5</value>
   </data>
   <data name="parListView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>
   </data>
   <data name="parListView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>292, 170</value>
+    <value>396, 170</value>
   </data>
   <data name="parListView.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
@@ -334,7 +334,7 @@
     <value>3, 3</value>
   </data>
   <data name="portfolioPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 168</value>
+    <value>291, 168</value>
   </data>
   <data name="portfolioPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -355,10 +355,10 @@
     <value>Fill</value>
   </data>
   <data name="parPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>223, 3</value>
+    <value>300, 3</value>
   </data>
   <data name="parPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 168</value>
+    <value>292, 168</value>
   </data>
   <data name="parPanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -385,7 +385,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 174</value>
+    <value>595, 174</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -409,13 +409,13 @@
     <value>Top</value>
   </data>
   <data name="riskTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 167</value>
+    <value>0, 217</value>
   </data>
   <data name="riskTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="riskTableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 180</value>
+    <value>1003, 180</value>
   </data>
   <data name="riskTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
@@ -445,13 +445,13 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 127</value>
+    <value>0, 177</value>
   </data>
   <data name="label1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 20, 0, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 40</value>
+    <value>1003, 40</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -471,50 +471,209 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="_refreshButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>663, 19</value>
+  </data>
+  <data name="_refreshButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 24</value>
+  </data>
+  <data name="_refreshButton.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="_refreshButton.Text" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="&gt;&gt;_refreshButton.Name" xml:space="preserve">
+    <value>_refreshButton</value>
+  </data>
+  <data name="&gt;&gt;_refreshButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_refreshButton.Parent" xml:space="preserve">
+    <value>_filterPanel</value>
+  </data>
+  <data name="&gt;&gt;_refreshButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="_loanProductFilterComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>445, 19</value>
+  </data>
+  <data name="_loanProductFilterComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 24</value>
+  </data>
+  <data name="_loanProductFilterComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;_loanProductFilterComboBox.Name" xml:space="preserve">
+    <value>_loanProductFilterComboBox</value>
+  </data>
+  <data name="&gt;&gt;_loanProductFilterComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_loanProductFilterComboBox.Parent" xml:space="preserve">
+    <value>_filterPanel</value>
+  </data>
+  <data name="&gt;&gt;_loanProductFilterComboBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="_loanProductFilterLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="_loanProductFilterLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="_loanProductFilterLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>445, 2</value>
+  </data>
+  <data name="_loanProductFilterLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 16</value>
+  </data>
+  <data name="_loanProductFilterLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="_loanProductFilterLabel.Text" xml:space="preserve">
+    <value>Loan product</value>
+  </data>
+  <data name="&gt;&gt;_loanProductFilterLabel.Name" xml:space="preserve">
+    <value>_loanProductFilterLabel</value>
+  </data>
+  <data name="&gt;&gt;_loanProductFilterLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_loanProductFilterLabel.Parent" xml:space="preserve">
+    <value>_filterPanel</value>
+  </data>
+  <data name="&gt;&gt;_loanProductFilterLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="_userFilterComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 19</value>
+  </data>
+  <data name="_userFilterComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 24</value>
+  </data>
+  <data name="_userFilterComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;_userFilterComboBox.Name" xml:space="preserve">
+    <value>_userFilterComboBox</value>
+  </data>
+  <data name="&gt;&gt;_userFilterComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_userFilterComboBox.Parent" xml:space="preserve">
+    <value>_filterPanel</value>
+  </data>
+  <data name="&gt;&gt;_userFilterComboBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="_userFilterLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="_userFilterLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="_userFilterLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 2</value>
+  </data>
+  <data name="_userFilterLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 16</value>
+  </data>
+  <data name="_userFilterLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="_userFilterLabel.Text" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="&gt;&gt;_userFilterLabel.Name" xml:space="preserve">
+    <value>_userFilterLabel</value>
+  </data>
+  <data name="&gt;&gt;_userFilterLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_userFilterLabel.Parent" xml:space="preserve">
+    <value>_filterPanel</value>
+  </data>
+  <data name="&gt;&gt;_userFilterLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="_branchFilterComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 19</value>
+  </data>
+  <data name="_branchFilterComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 24</value>
+  </data>
+  <data name="_branchFilterComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;_branchFilterComboBox.Name" xml:space="preserve">
+    <value>_branchFilterComboBox</value>
+  </data>
+  <data name="&gt;&gt;_branchFilterComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_branchFilterComboBox.Parent" xml:space="preserve">
+    <value>_filterPanel</value>
+  </data>
+  <data name="&gt;&gt;_branchFilterComboBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="_branchFilterLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="_branchFilterLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 2</value>
+  </data>
+  <data name="_branchFilterLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 16</value>
+  </data>
+  <data name="_branchFilterLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="_branchFilterLabel.Text" xml:space="preserve">
+    <value>Branch</value>
+  </data>
+  <data name="&gt;&gt;_branchFilterLabel.Name" xml:space="preserve">
+    <value>_branchFilterLabel</value>
+  </data>
+  <data name="&gt;&gt;_branchFilterLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_branchFilterLabel.Parent" xml:space="preserve">
+    <value>_filterPanel</value>
+  </data>
+  <data name="&gt;&gt;_branchFilterLabel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="_filterPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="_filterPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 127</value>
+  </data>
+  <data name="_filterPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1003, 50</value>
+  </data>
+  <data name="_filterPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="&gt;&gt;_filterPanel.Name" xml:space="preserve">
+    <value>_filterPanel</value>
+  </data>
+  <data name="&gt;&gt;_filterPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_filterPanel.Parent" xml:space="preserve">
+    <value>infoPanel</value>
+  </data>
+  <data name="&gt;&gt;_filterPanel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="topBarPanel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="topBarPanel.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="refreshLinkLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="refreshLinkLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 8.25pt, style=Bold</value>
-  </data>
-  <data name="refreshLinkLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="refreshLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>690, 5</value>
-  </data>
-  <data name="refreshLinkLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="refreshLinkLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
-  <data name="refreshLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 19</value>
-  </data>
-  <data name="refreshLinkLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="refreshLinkLabel.Text" xml:space="preserve">
-    <value>Refresh</value>
-  </data>
-  <data name="&gt;&gt;refreshLinkLabel.Name" xml:space="preserve">
-    <value>refreshLinkLabel</value>
-  </data>
-  <data name="&gt;&gt;refreshLinkLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;refreshLinkLabel.Parent" xml:space="preserve">
-    <value>topBarPanel</value>
-  </data>
-  <data name="&gt;&gt;refreshLinkLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="smallLogoPictureBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -538,43 +697,193 @@
     <value>topBarPanel</value>
   </data>
   <data name="&gt;&gt;smallLogoPictureBox.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
-  <data name="aboutLabel.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="aboutLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
   </data>
-  <data name="aboutLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>465, 8</value>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>418, 16</value>
   </data>
-  <data name="aboutLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="aboutLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 106</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>You want to access full functionality and support services of OpenCBS.</value>
   </data>
-  <data name="aboutLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
   </data>
-  <data name="aboutLabel.Text" xml:space="preserve">
-    <value>Welcome. Use the dashboard below to consult your portfolio performance. Or use the sidebar on the left to start your operations.</value>
-  </data>
-  <data name="aboutLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;aboutLabel.Name" xml:space="preserve">
-    <value>aboutLabel</value>
-  </data>
-  <data name="&gt;&gt;aboutLabel.Type" xml:space="preserve">
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;aboutLabel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>_infoFlowLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="_servicesLinkLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="_servicesLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
+  </data>
+  <data name="_servicesLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 16</value>
+  </data>
+  <data name="_servicesLinkLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="_servicesLinkLabel.Text" xml:space="preserve">
+    <value>Consult our services offer.</value>
+  </data>
+  <data name="&gt;&gt;_servicesLinkLabel.Name" xml:space="preserve">
+    <value>_servicesLinkLabel</value>
+  </data>
+  <data name="&gt;&gt;_servicesLinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_servicesLinkLabel.Parent" xml:space="preserve">
+    <value>_infoFlowLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;_servicesLinkLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 32</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>396, 16</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>You want more info about the structure and how to use the system.</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>_infoFlowLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="_userGuideLinkLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="_userGuideLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>405, 32</value>
+  </data>
+  <data name="_userGuideLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 16</value>
+  </data>
+  <data name="_userGuideLinkLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="_userGuideLinkLabel.Text" xml:space="preserve">
+    <value>Access user guide.</value>
+  </data>
+  <data name="&gt;&gt;_userGuideLinkLabel.Name" xml:space="preserve">
+    <value>_userGuideLinkLabel</value>
+  </data>
+  <data name="&gt;&gt;_userGuideLinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_userGuideLinkLabel.Parent" xml:space="preserve">
+    <value>_infoFlowLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;_userGuideLinkLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 48</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 16</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>You have a specific query or question about the system.</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>_infoFlowLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="_contactLinkLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="_contactLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>341, 48</value>
+  </data>
+  <data name="_contactLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 16</value>
+  </data>
+  <data name="_contactLinkLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="_contactLinkLabel.Text" xml:space="preserve">
+    <value>Contact us for info.</value>
+  </data>
+  <data name="&gt;&gt;_contactLinkLabel.Name" xml:space="preserve">
+    <value>_contactLinkLabel</value>
+  </data>
+  <data name="&gt;&gt;_contactLinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_contactLinkLabel.Parent" xml:space="preserve">
+    <value>_infoFlowLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;_contactLinkLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="_infoFlowLayoutPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="_infoFlowLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>465, 8</value>
+  </data>
+  <data name="_infoFlowLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>535, 106</value>
+  </data>
+  <data name="_infoFlowLayoutPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;_infoFlowLayoutPanel.Name" xml:space="preserve">
+    <value>_infoFlowLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;_infoFlowLayoutPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_infoFlowLayoutPanel.Parent" xml:space="preserve">
     <value>topBarPanel</value>
   </data>
-  <data name="&gt;&gt;aboutLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;_infoFlowLayoutPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="topBarPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -592,7 +901,7 @@
     <value>1</value>
   </data>
   <data name="topBarPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 127</value>
+    <value>1003, 127</value>
   </data>
   <data name="topBarPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -607,10 +916,10 @@
     <value>infoPanel</value>
   </data>
   <data name="&gt;&gt;topBarPanel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="topBarPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="refreshLinkLabel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="smallLogoPictureBox" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="aboutLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="smallLogoPictureBox" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="_infoFlowLayoutPanel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="infoPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -619,7 +928,7 @@
     <value>220, 0</value>
   </data>
   <data name="infoPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 519</value>
+    <value>1003, 519</value>
   </data>
   <data name="infoPanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1279,7 +1588,7 @@
     <value>0, 0</value>
   </data>
   <data name="generalInfoPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>964, 519</value>
+    <value>1223, 519</value>
   </data>
   <data name="generalInfoPanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1306,7 +1615,7 @@
     <value>6, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>964, 519</value>
+    <value>1223, 519</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -1339,6 +1648,6 @@
     <value>DashboardForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>OpenCBS.GUI.UserControl.SweetBaseForm, OpenCBS.GUI, Version=13.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>OpenCBS.GUI.UserControl.SweetBaseForm, OpenCBS.GUI, Version=13.13.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

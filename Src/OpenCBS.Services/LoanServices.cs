@@ -1149,7 +1149,7 @@ namespace OpenCBS.Services
             }
         }
 
-        public Loan AddTranche(Loan loan, IClient client, ITrancheConfiguration trancheConfiguration)
+        public Loan AddTranche(Loan loan, IClient client, ITrancheConfiguration trancheConfiguration, IList<LoanEntryFee> entryFees)
         {
             using (var connection = _loanManager.GetConnection())
             using (var transaction = connection.BeginTransaction())
@@ -1182,6 +1182,24 @@ namespace OpenCBS.Services
 
                     //insert into table TrancheEvent
                     _ePs.FireEvent(trancheEvent, copyOfLoan, transaction);
+                    copyOfLoan.Events.Add(trancheEvent);
+
+                    // Add entry fee events
+                    foreach (var entryFee in entryFees)
+                    {
+                        if (entryFee.FeeValue == 0) continue;
+                        var entryFeeEvent = new LoanEntryFeeEvent
+                        {
+                            Fee = entryFee.FeeValue,
+                            Code = "LEE" + entryFee.ProductEntryFee.Index,
+                            DisbursementEventId = trancheEvent.Id,
+                            Cancelable = true,
+                            User = User.CurrentUser,
+                            Date = trancheEvent.Date
+                        };
+                        _ePs.FireEvent(entryFeeEvent, copyOfLoan, transaction);
+                        copyOfLoan.Events.Add(entryFeeEvent);
+                    }
 
                     ArchiveInstallments(loan, trancheEvent, transaction);
 
@@ -1204,7 +1222,6 @@ namespace OpenCBS.Services
                         copyOfLoan.NbOfInstallments,
                         copyOfLoan,
                         transaction);
-                    copyOfLoan.Events.Add(trancheEvent);
                     copyOfLoan.GivenTranches.Add(trancheEvent);
                     transaction.Commit();
 
@@ -2492,7 +2509,10 @@ namespace OpenCBS.Services
             var launchDate = DateTime.Today;
             var listOfLoans = _loanManager.GetListOfLoansToAccruePenalty(launchDate);
             var em = new EventManager(User.CurrentUser);
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             using (var connection=_loanManager.GetConnection())
                 foreach (var item in listOfLoans)
                 {
@@ -2589,6 +2609,7 @@ namespace OpenCBS.Services
                             }
                     }
                 }
+<<<<<<< HEAD
 
         }
 
@@ -2605,6 +2626,60 @@ namespace OpenCBS.Services
             var interest = nextInstallment.InterestsRepayment;
             if (nextDate == date)
                 interest -= _loanManager.GetSumOfAccruedInterests(loan.Id, previousDate, date);
+=======
+        }
+
+        public void LoanInterestAccrual(DateTime launchDate)
+        {
+            var listOfLoans = _loanManager.GetListOfLoansToAccrueInterest(launchDate);
+            var em = new EventManager(User.CurrentUser);
+            using (var connection = _loanManager.GetConnection())
+                foreach (var item in listOfLoans)
+                {
+                    var date = item.Value;
+                    var loan = SelectLoan(item.Key, true, false, false);
+                    while (date < launchDate)
+                    {
+                        date = date.AddDays(1);
+                        var interest = GetDailyInterestForLoan(loan, date);
+                        if (interest <= 0) continue;
+                        var interestEvent = new LoanInterestAccrualEvent
+                        {
+                            Interest = interest,
+                            Date = date,
+                            User = User.CurrentUser,
+                            ContracId = item.Key
+                        };
+                        using (var transaction = connection.BeginTransaction())
+                            try
+                            {
+                                _ePs.FireEvent(interestEvent, loan, transaction);
+                                transaction.Commit();
+                            }
+                            catch (Exception)
+                            {
+                                transaction.Rollback();
+                                //throw;
+                            }
+                    }
+                }
+        }
+
+        private decimal GetDailyInterestForLoan(Loan loan, DateTime date)
+        {
+            if (date >= loan.LastInstallment.ExpectedDate) return 0;
+            var nextInstallment = loan.InstallmentList.First(installment => date < installment.ExpectedDate);
+            var nextDate = nextInstallment.ExpectedDate.AddDays(-1);
+            var previousDate = nextInstallment.Number > 1
+                                   ? loan.InstallmentList[nextInstallment.Number - 2].ExpectedDate
+                                   : loan.StartDate;
+            if ((date - previousDate).Days > 30) return 0;
+            var interest = date == DateTime.Today
+                               ? nextInstallment.InterestsRepayment
+                               : _loanManager.GetInstallmentInterest(loan.Id, nextInstallment.Number, date);
+            if (nextDate == date)
+                interest = interest - _loanManager.GetSumOfAccruedInterests(loan.Id, previousDate, date);
+>>>>>>> master
             else
                 interest = interest/30;
             return interest.Value;
@@ -2632,6 +2707,7 @@ namespace OpenCBS.Services
                                 ContracId = item.Key
                             }).ToList();
 
+<<<<<<< HEAD
                         var llgl = _loanManager.GetListOfTransitionToGoodLoan(date);
                         transitionEventList.AddRange(llgl.Select(item => new LoanTransitionEvent
                             {
@@ -2641,6 +2717,17 @@ namespace OpenCBS.Services
                                 Amount = item.Value,
                                 ContracId = item.Key
                             }));
+=======
+                        //var llgl = _loanManager.GetListOfTransitionToGoodLoan(date);
+                        //transitionEventList.AddRange(llgl.Select(item => new LoanTransitionEvent
+                        //    {
+                        //        Code = "LLGL",
+                        //        Date = date,
+                        //        User = User.CurrentUser,
+                        //        Amount = item.Value,
+                        //        ContracId = item.Key
+                        //    }));
+>>>>>>> master
 
                         foreach (var transitionEvent in transitionEventList)
                             em.AddLoanEvent(transitionEvent, transitionEvent.ContracId, transaction);

@@ -50,6 +50,7 @@ namespace OpenCBS.GUI
         public DashboardForm()
         {
             InitializeComponent();
+            SetUp();
         }
 
         private void OnLoad(object sender, EventArgs e)
@@ -84,6 +85,7 @@ namespace OpenCBS.GUI
                 }
             };
             Authorize();
+            InitFilter();
             RefreshDashboard();
         }
 
@@ -322,14 +324,29 @@ namespace OpenCBS.GUI
 
         private void RefreshDashboard()
         {
-            var us = ServicesProvider.GetInstance().GetUserServices();
-            var dashboard = us.GetDashboard();
+            _branchFilterComboBox.Enabled = false;
+            _userFilterComboBox.Enabled = false;
+            _loanProductFilterComboBox.Enabled = false;
+            _refreshButton.Enabled = false;
 
-            RefreshPortfolioPieChart(dashboard);
-            RefreshParPieChart(dashboard);
-            RefreshParTable(dashboard);
-            RefreshDisbursementsChart(dashboard);
-            RefreshOlbTrendChart(dashboard);
+            try
+            {
+                var us = ServicesProvider.GetInstance().GetUserServices();
+                var dashboard = us.GetDashboard(FilterBranchId, FilterUserId, FilterLoanProductId);
+
+                RefreshPortfolioPieChart(dashboard);
+                RefreshParPieChart(dashboard);
+                RefreshParTable(dashboard);
+                RefreshDisbursementsChart(dashboard);
+                RefreshOlbTrendChart(dashboard);
+            }
+            finally
+            {
+                _branchFilterComboBox.Enabled = true;
+                _userFilterComboBox.Enabled = true;
+                _loanProductFilterComboBox.Enabled = true;
+                _refreshButton.Enabled = true;
+            }
         }
 
         private void OnSearchClientClick(object sender, LinkLabelLinkClickedEventArgs e)
@@ -385,11 +402,6 @@ namespace OpenCBS.GUI
             auditTrailForm.Show();
         }
 
-        private void OnRefreshLinkLabelClick(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            RefreshDashboard();
-        }
-
         private void OnReportsClick(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
@@ -434,6 +446,68 @@ namespace OpenCBS.GUI
             {
                 Fail(ex.Message);
             }
+        }
+
+        private void InitFilter()
+        {
+            var allBranches = new Dictionary<int, string>
+            {
+                { 0, GetString("AllBranches") }
+            };
+            var branches = User.CurrentUser.Branches.ToDictionary(b => b.Id, b => b.Name);
+            allBranches = allBranches.Concat(branches).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+            _branchFilterComboBox.ValueMember = "Key";
+            _branchFilterComboBox.DisplayMember = "Value";
+            _branchFilterComboBox.DataSource = new BindingSource(allBranches, null);
+
+            var allUsers = new Dictionary<int, string>
+            {
+                { 0, GetString("AllUsers") }
+            };
+            var users = User.CurrentUser.Subordinates.ToDictionary(u => u.Id, u => u.Name);
+            allUsers = allUsers.Concat(users).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+            _userFilterComboBox.ValueMember = "Key";
+            _userFilterComboBox.DisplayMember = "Value";
+            _userFilterComboBox.DataSource = new BindingSource(allUsers, null);
+
+            var allLoanProducts = new Dictionary<int, string>
+            {
+                { 0, GetString("AllLoanProducts") }
+            };
+            var service = ServicesProvider.GetInstance().GetProductServices();
+            var loanProducts = service.FindAllPackages(false, OClientTypes.All).ToDictionary(lp => lp.Id, lp => lp.Name);
+            allLoanProducts = allLoanProducts.Concat(loanProducts).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+            _loanProductFilterComboBox.ValueMember = "Key";
+            _loanProductFilterComboBox.DisplayMember = "Value";
+            _loanProductFilterComboBox.DataSource = new BindingSource(allLoanProducts, null);
+        }
+
+        private int FilterBranchId
+        {
+            get { return (int) _branchFilterComboBox.SelectedValue; }
+        }
+
+        private int FilterUserId
+        {
+            get { return (int) _userFilterComboBox.SelectedValue; }
+        }
+
+        private int FilterLoanProductId
+        {
+            get { return (int) _loanProductFilterComboBox.SelectedValue; }
+        }
+
+        private void OpenUrl(string url)
+        {
+            System.Diagnostics.Process.Start(url);
+        }
+
+        private void SetUp()
+        {
+            _refreshButton.Click += (sender, e) => RefreshDashboard();
+            _servicesLinkLabel.LinkClicked += (sender, e) => OpenUrl("http://opencbs.com/our-services/");
+            _userGuideLinkLabel.LinkClicked += (sender, e) => OpenUrl("http://opencbs.com/helpcenter/userguide/");
+            _contactLinkLabel.LinkClicked += (sender, e) => OpenUrl("mailto://contact@opencbs.com?subject=User request");
         }
     }
 }

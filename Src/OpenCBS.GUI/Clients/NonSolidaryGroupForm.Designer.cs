@@ -63,6 +63,7 @@ namespace OpenCBS.GUI.Clients
             this.colStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colJoinDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colLeftDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colLoanCycle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panelMembersControls = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -336,6 +337,7 @@ namespace OpenCBS.GUI.Clients
             // 
             this.lvMembers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colName,
+            this.colLoanCycle,
             this.colPassport,
             this.colStatus,
             this.colJoinDate,
@@ -370,6 +372,10 @@ namespace OpenCBS.GUI.Clients
             // colLeftDate
             // 
             resources.ApplyResources(this.colLeftDate, "colLeftDate");
+            // 
+            // colLoanCycle
+            // 
+            resources.ApplyResources(this.colLoanCycle, "colLoanCycle");
             // 
             // panelMembersControls
             // 
@@ -879,5 +885,6 @@ namespace OpenCBS.GUI.Clients
         private System.Windows.Forms.TabPage tabPageCustomizableFields;
         private BrightIdeasSoftware.OLVColumn olvAttendeeLoanIdColumn;
         private PrintButton btnPrint;
+        private System.Windows.Forms.ColumnHeader colLoanCycle;
     }
 }

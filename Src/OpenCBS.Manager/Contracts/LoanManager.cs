@@ -2336,6 +2336,7 @@ namespace OpenCBS.Manager.Contracts
             }
         }
 
+<<<<<<< HEAD
         public decimal CalculatePenaltiesForDate(int contractId, DateTime date)
         {
             const string q = @"SELECT al.id
@@ -2385,6 +2386,8 @@ namespace OpenCBS.Manager.Contracts
             }
         }
 
+=======
+>>>>>>> master
         public Dictionary<int, DateTime> GetListOfLoansToAccruePenalty(DateTime launchDate)
         {
             const string q = @"SELECT al.id AS id,
@@ -2470,7 +2473,11 @@ namespace OpenCBS.Manager.Contracts
             const string q = @"SELECT al.id,
                             CASE
 								WHEN li.event_date IS NULL
+<<<<<<< HEAD
 								THEN c.[start_date]
+=======
+								THEN DATEADD(DD,-1,c.[start_date])
+>>>>>>> master
 								ELSE li.event_date
 							END AS event_date
                             FROM dbo.ActiveLoans(@date, 0) AS al
@@ -2501,6 +2508,24 @@ namespace OpenCBS.Manager.Contracts
             }
         }
 
+<<<<<<< HEAD
+=======
+        public decimal GetInstallmentInterest(int contractId, int installmentNumber, DateTime date)
+        {
+            const string q = @"SELECT interest FROM dbo.InstallmentSnapshot(@date) 
+                            WHERE contract_id=@contractId AND number=@installmentId";
+            using (var connection = GetConnection())
+            using (var c = new OpenCbsCommand(q, connection))
+            {
+                c.AddParam("date", date);
+                c.AddParam("contractId", contractId);
+                c.AddParam("installmentId", installmentNumber);
+                var result = c.ExecuteScalar();
+                return result != null ? Convert.ToDecimal(result) : 0;
+            }
+        }
+
+>>>>>>> master
         public decimal GetSumOfAccruedInterests(int contractId, DateTime from, DateTime to)
         {
             const string q = @"SELECT CASE
@@ -2512,7 +2537,11 @@ namespace OpenCBS.Manager.Contracts
                                 LEFT JOIN dbo.ContractEvents AS ce ON ce.id=ai.id
                                 WHERE ce.contract_id=@contractId 
                                 and ce.event_date<@to 
+<<<<<<< HEAD
                                 and ce.event_date>@from";
+=======
+                                and ce.event_date>=@from";
+>>>>>>> master
             using (var connection = GetConnection())
             using (var c = new OpenCbsCommand(q, connection))
             {
@@ -2529,9 +2558,17 @@ namespace OpenCBS.Manager.Contracts
 
         public Dictionary<int, decimal> GetListOfTransitionToLateLoan(DateTime launchDate)
         {
+<<<<<<< HEAD
             const string q = @"SELECT id, olb, late_days
                             FROM dbo.ActiveLoans(@date, 0)
                             WHERE late_days = 1";
+=======
+            const string q = @"SELECT al.id, ins.capital_repayment-ins.paid_capital installment_principal_due
+                            FROM dbo.ActiveLoans(@date, 0) al
+                            LEFT JOIN dbo.Installments ins ON ins.contract_id=al.id
+                            WHERE ins.expected_date=CAST(DATEADD(d,-1,@date) AS DATE)
+                            AND ins.capital_repayment>ins.paid_capital";
+>>>>>>> master
             using (var connection = GetConnection())
             using (var c = new OpenCbsCommand(q, connection))
             {
@@ -2540,12 +2577,17 @@ namespace OpenCBS.Manager.Contracts
                 {
                     var dict = new Dictionary<int, decimal>();
                     while (r.Read())
+<<<<<<< HEAD
                         dict.Add(r.GetInt("id"), r.GetDecimal("olb"));
+=======
+                        dict.Add(r.GetInt("id"), r.GetDecimal("installment_principal_due"));
+>>>>>>> master
                     return dict;
                 }
             }
         }
 
+<<<<<<< HEAD
         public Dictionary<int, decimal> GetListOfTransitionToGoodLoan(DateTime launchDate)
         {
             const string q = @"SELECT a1.id,a1.olb,a1.late_days
@@ -2565,6 +2607,27 @@ namespace OpenCBS.Manager.Contracts
                 }
             }
         }
+=======
+//        public Dictionary<int, decimal> GetListOfTransitionToGoodLoan(DateTime launchDate)
+//        {
+//            const string q = @"SELECT a1.id,a1.olb,a1.late_days
+//                            FROM dbo.ActiveLoans(@date, 0) a1
+//                            INNER JOIN dbo.ActiveLoans(DATEADD(dd,-1,@date), 0) a2 ON a2.id = a1.id
+//                            WHERE a1.late_days = 0 and a2.late_days>0";
+//            using (var connection = GetConnection())
+//            using (var c = new OpenCbsCommand(q, connection))
+//            {
+//                c.AddParam("date", launchDate);
+//                using (var r = c.ExecuteReader())
+//                {
+//                    var dict = new Dictionary<int, decimal>();
+//                    while (r.Read())
+//                        dict.Add(r.GetInt("id"), r.GetDecimal("olb"));
+//                    return dict;
+//                }
+//            }
+//        }
+>>>>>>> master
 
         public DateTime LastLoanTransitionEventDate()
         {
@@ -2578,6 +2641,9 @@ namespace OpenCBS.Manager.Contracts
                 return !r.Read() ? DateTime.Today.AddDays(-1) : r.GetDateTime("event_date");
             }
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
     }
 }

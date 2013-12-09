@@ -43,10 +43,21 @@ namespace OpenCBS.GUI
             this.portfolioPanel = new System.Windows.Forms.Panel();
             this.parPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this._filterPanel = new System.Windows.Forms.Panel();
+            this._refreshButton = new System.Windows.Forms.Button();
+            this._loanProductFilterComboBox = new System.Windows.Forms.ComboBox();
+            this._loanProductFilterLabel = new System.Windows.Forms.Label();
+            this._userFilterComboBox = new System.Windows.Forms.ComboBox();
+            this._userFilterLabel = new System.Windows.Forms.Label();
+            this._branchFilterComboBox = new System.Windows.Forms.ComboBox();
+            this._branchFilterLabel = new System.Windows.Forms.Label();
             this.topBarPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.refreshLinkLabel = new System.Windows.Forms.LinkLabel();
             this.smallLogoPictureBox = new System.Windows.Forms.PictureBox();
-            this.aboutLabel = new System.Windows.Forms.Label();
+            this._infoFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this._servicesLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.label4 = new System.Windows.Forms.Label();
+            this._userGuideLinkLabel = new System.Windows.Forms.LinkLabel();
             this.quickLinksPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.operateLabel = new System.Windows.Forms.Label();
@@ -68,6 +79,8 @@ namespace OpenCBS.GUI
             this.parAnalysisLink = new System.Windows.Forms.LinkLabel();
             this.delinquentLoansLink = new System.Windows.Forms.LinkLabel();
             this.disbursementsLink = new System.Windows.Forms.LinkLabel();
+            this.label5 = new System.Windows.Forms.Label();
+            this._contactLinkLabel = new System.Windows.Forms.LinkLabel();
             this.generalInfoPanel.SuspendLayout();
             this.infoPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -75,8 +88,10 @@ namespace OpenCBS.GUI
             this.riskTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.parListView)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            this._filterPanel.SuspendLayout();
             this.topBarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.smallLogoPictureBox)).BeginInit();
+            this._infoFlowLayoutPanel.SuspendLayout();
             this.quickLinksPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -95,6 +110,7 @@ namespace OpenCBS.GUI
             this.infoPanel.Controls.Add(this.label2);
             this.infoPanel.Controls.Add(this.riskTableLayoutPanel);
             this.infoPanel.Controls.Add(this.label1);
+            this.infoPanel.Controls.Add(this._filterPanel);
             this.infoPanel.Controls.Add(this.topBarPanel);
             resources.ApplyResources(this.infoPanel, "infoPanel");
             this.infoPanel.Name = "infoPanel";
@@ -193,22 +209,66 @@ namespace OpenCBS.GUI
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.label1.Name = "label1";
             // 
+            // _filterPanel
+            // 
+            this._filterPanel.Controls.Add(this._refreshButton);
+            this._filterPanel.Controls.Add(this._loanProductFilterComboBox);
+            this._filterPanel.Controls.Add(this._loanProductFilterLabel);
+            this._filterPanel.Controls.Add(this._userFilterComboBox);
+            this._filterPanel.Controls.Add(this._userFilterLabel);
+            this._filterPanel.Controls.Add(this._branchFilterComboBox);
+            this._filterPanel.Controls.Add(this._branchFilterLabel);
+            resources.ApplyResources(this._filterPanel, "_filterPanel");
+            this._filterPanel.Name = "_filterPanel";
+            // 
+            // _refreshButton
+            // 
+            resources.ApplyResources(this._refreshButton, "_refreshButton");
+            this._refreshButton.Name = "_refreshButton";
+            this._refreshButton.UseVisualStyleBackColor = true;
+            // 
+            // _loanProductFilterComboBox
+            // 
+            this._loanProductFilterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._loanProductFilterComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this._loanProductFilterComboBox, "_loanProductFilterComboBox");
+            this._loanProductFilterComboBox.Name = "_loanProductFilterComboBox";
+            // 
+            // _loanProductFilterLabel
+            // 
+            resources.ApplyResources(this._loanProductFilterLabel, "_loanProductFilterLabel");
+            this._loanProductFilterLabel.Name = "_loanProductFilterLabel";
+            // 
+            // _userFilterComboBox
+            // 
+            this._userFilterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._userFilterComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this._userFilterComboBox, "_userFilterComboBox");
+            this._userFilterComboBox.Name = "_userFilterComboBox";
+            // 
+            // _userFilterLabel
+            // 
+            resources.ApplyResources(this._userFilterLabel, "_userFilterLabel");
+            this._userFilterLabel.Name = "_userFilterLabel";
+            // 
+            // _branchFilterComboBox
+            // 
+            this._branchFilterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._branchFilterComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this._branchFilterComboBox, "_branchFilterComboBox");
+            this._branchFilterComboBox.Name = "_branchFilterComboBox";
+            // 
+            // _branchFilterLabel
+            // 
+            resources.ApplyResources(this._branchFilterLabel, "_branchFilterLabel");
+            this._branchFilterLabel.Name = "_branchFilterLabel";
+            // 
             // topBarPanel
             // 
             resources.ApplyResources(this.topBarPanel, "topBarPanel");
-            this.topBarPanel.Controls.Add(this.refreshLinkLabel, 2, 0);
             this.topBarPanel.Controls.Add(this.smallLogoPictureBox, 0, 0);
-            this.topBarPanel.Controls.Add(this.aboutLabel, 1, 0);
+            this.topBarPanel.Controls.Add(this._infoFlowLayoutPanel, 1, 0);
             this.topBarPanel.Name = "topBarPanel";
-            // 
-            // refreshLinkLabel
-            // 
-            this.refreshLinkLabel.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            resources.ApplyResources(this.refreshLinkLabel, "refreshLinkLabel");
-            this.refreshLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
-            this.refreshLinkLabel.Name = "refreshLinkLabel";
-            this.refreshLinkLabel.TabStop = true;
-            this.refreshLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnRefreshLinkLabelClick);
             // 
             // smallLogoPictureBox
             // 
@@ -217,10 +277,40 @@ namespace OpenCBS.GUI
             this.smallLogoPictureBox.Name = "smallLogoPictureBox";
             this.smallLogoPictureBox.TabStop = false;
             // 
-            // aboutLabel
+            // _infoFlowLayoutPanel
             // 
-            resources.ApplyResources(this.aboutLabel, "aboutLabel");
-            this.aboutLabel.Name = "aboutLabel";
+            this._infoFlowLayoutPanel.Controls.Add(this.label3);
+            this._infoFlowLayoutPanel.Controls.Add(this._servicesLinkLabel);
+            this._infoFlowLayoutPanel.Controls.Add(this.label4);
+            this._infoFlowLayoutPanel.Controls.Add(this._userGuideLinkLabel);
+            this._infoFlowLayoutPanel.Controls.Add(this.label5);
+            this._infoFlowLayoutPanel.Controls.Add(this._contactLinkLabel);
+            resources.ApplyResources(this._infoFlowLayoutPanel, "_infoFlowLayoutPanel");
+            this._infoFlowLayoutPanel.Name = "_infoFlowLayoutPanel";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // _servicesLinkLabel
+            // 
+            resources.ApplyResources(this._servicesLinkLabel, "_servicesLinkLabel");
+            this._servicesLinkLabel.Name = "_servicesLinkLabel";
+            this._servicesLinkLabel.TabStop = true;
+            this._servicesLinkLabel.Tag = "";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // _userGuideLinkLabel
+            // 
+            resources.ApplyResources(this._userGuideLinkLabel, "_userGuideLinkLabel");
+            this._userGuideLinkLabel.Name = "_userGuideLinkLabel";
+            this._userGuideLinkLabel.TabStop = true;
+            this._userGuideLinkLabel.Tag = "";
             // 
             // quickLinksPanel
             // 
@@ -395,8 +485,8 @@ namespace OpenCBS.GUI
             // activeLoansLink
             // 
             this.activeLoansLink.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            resources.ApplyResources(this.activeLoansLink, "activeLoansLink");
             this.activeLoansLink.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
+            resources.ApplyResources(this.activeLoansLink, "activeLoansLink");
             this.activeLoansLink.Name = "activeLoansLink";
             this.activeLoansLink.Tag = "Active_Loans.zip";
             this.activeLoansLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnReportsClick);
@@ -404,8 +494,8 @@ namespace OpenCBS.GUI
             // parAnalysisLink
             // 
             this.parAnalysisLink.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            resources.ApplyResources(this.parAnalysisLink, "parAnalysisLink");
             this.parAnalysisLink.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
+            resources.ApplyResources(this.parAnalysisLink, "parAnalysisLink");
             this.parAnalysisLink.Name = "parAnalysisLink";
             this.parAnalysisLink.Tag = "PAR_Analysis.zip";
             this.parAnalysisLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnReportsClick);
@@ -413,8 +503,8 @@ namespace OpenCBS.GUI
             // delinquentLoansLink
             // 
             this.delinquentLoansLink.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            resources.ApplyResources(this.delinquentLoansLink, "delinquentLoansLink");
             this.delinquentLoansLink.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
+            resources.ApplyResources(this.delinquentLoansLink, "delinquentLoansLink");
             this.delinquentLoansLink.Name = "delinquentLoansLink";
             this.delinquentLoansLink.Tag = "Delinquent_Loans.zip";
             this.delinquentLoansLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnReportsClick);
@@ -422,11 +512,22 @@ namespace OpenCBS.GUI
             // disbursementsLink
             // 
             this.disbursementsLink.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            resources.ApplyResources(this.disbursementsLink, "disbursementsLink");
             this.disbursementsLink.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
+            resources.ApplyResources(this.disbursementsLink, "disbursementsLink");
             this.disbursementsLink.Name = "disbursementsLink";
             this.disbursementsLink.Tag = "Disbursments.zip";
             this.disbursementsLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnReportsClick);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // _contactLinkLabel
+            // 
+            resources.ApplyResources(this._contactLinkLabel, "_contactLinkLabel");
+            this._contactLinkLabel.Name = "_contactLinkLabel";
+            this._contactLinkLabel.TabStop = true;
             // 
             // DashboardForm
             // 
@@ -446,9 +547,12 @@ namespace OpenCBS.GUI
             this.riskTableLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.parListView)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this._filterPanel.ResumeLayout(false);
+            this._filterPanel.PerformLayout();
             this.topBarPanel.ResumeLayout(false);
-            this.topBarPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.smallLogoPictureBox)).EndInit();
+            this._infoFlowLayoutPanel.ResumeLayout(false);
+            this._infoFlowLayoutPanel.PerformLayout();
             this.quickLinksPanel.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
@@ -492,11 +596,24 @@ namespace OpenCBS.GUI
         private System.Windows.Forms.LinkLabel auditTrailLabel;
         private System.Windows.Forms.LinkLabel activeLoansLink;
         private System.Windows.Forms.TableLayoutPanel topBarPanel;
-        private System.Windows.Forms.LinkLabel refreshLinkLabel;
         private System.Windows.Forms.PictureBox smallLogoPictureBox;
-        private System.Windows.Forms.Label aboutLabel;
         private System.Windows.Forms.LinkLabel parAnalysisLink;
         private System.Windows.Forms.LinkLabel delinquentLoansLink;
         private System.Windows.Forms.LinkLabel disbursementsLink;
+        private System.Windows.Forms.Panel _filterPanel;
+        private System.Windows.Forms.Label _branchFilterLabel;
+        private System.Windows.Forms.ComboBox _branchFilterComboBox;
+        private System.Windows.Forms.ComboBox _userFilterComboBox;
+        private System.Windows.Forms.Label _userFilterLabel;
+        private System.Windows.Forms.ComboBox _loanProductFilterComboBox;
+        private System.Windows.Forms.Label _loanProductFilterLabel;
+        private System.Windows.Forms.Button _refreshButton;
+        private System.Windows.Forms.FlowLayoutPanel _infoFlowLayoutPanel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.LinkLabel _servicesLinkLabel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.LinkLabel _userGuideLinkLabel;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.LinkLabel _contactLinkLabel;
     }
 }

@@ -508,6 +508,12 @@
     <Compile Include="Contracts\ContractCollateralForm.Designer.cs">
       <DependentUpon>ContractCollateralForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Contracts\LoanEntryFeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contracts\LoanEntryFeesForm.Designer.cs">
+      <DependentUpon>LoanEntryFeesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Contracts\ReschedulingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -691,6 +697,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Report Browser\ReportLoadingProgressForm.cs">
       <SubType>Form</SubType>
@@ -1129,6 +1140,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Accounting\AccountingJournals.resx">
       <DependentUpon>AccountingJournals.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Accounting\AccountingJournals.ru-RU.resx">
       <DependentUpon>AccountingJournals.cs</DependentUpon>
@@ -1764,6 +1776,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Contracts\ContractCollateralForm.pt.resx">
       <DependentUpon>ContractCollateralForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contracts\LoanEntryFeesForm.fr.resx">
+      <DependentUpon>LoanEntryFeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contracts\LoanEntryFeesForm.resx">
+      <DependentUpon>LoanEntryFeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contracts\LoanEntryFeesForm.ru-RU.resx">
+      <DependentUpon>LoanEntryFeesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contracts\ReschedulingForm.es-ES.resx">
       <DependentUpon>ReschedulingForm.cs</DependentUpon>
@@ -3063,6 +3084,10 @@
     <Content Include="Reports\Standard\Client_Information.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Reports\Consolidated\evolution_Clients.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -3782,11 +3807,7 @@ xcopy "$(SolutionDir)..\Sql\DropAndCreateView.sql" "$(TargetDir)Update" /y
 xcopy "$(SolutionDir)..\Sql\DropAndCreateFunctions.sql" "$(TargetDir)Update" /y
 xcopy "$(SolutionDir)..\Sql\DropAndCreateUDF.sql" "$(TargetDir)Update" /y
 xcopy "$(SolutionDir)..\Sql\AccountingRules.sql" "$(TargetDir)Update" /y
-xcopy "$(SolutionDir)..\Sql\Objects.xml" "$(TargetDir)Update" /y
-
-mkdir "C:\OpenCbsLibs"
-xcopy "$(TargetDir)OpenCBS.*.dll" "C:\OpenCbsLibs" /s /y
-xcopy "$(TargetDir)OpenCBS.*.pdb" "C:\OpenCbsLibs" /s /y</PostBuildEvent>
+xcopy "$(SolutionDir)..\Sql\Objects.xml" "$(TargetDir)Update" /y</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
