@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthService.cs" />
+    <Compile Include="Command\AddEntryFeeCommand.cs" />
     <Compile Include="Command\AddRoleCommand.cs" />
     <Compile Include="Command\AddUserCommand.cs" />
     <Compile Include="Command\ConfirmOperationCommand.cs" />
