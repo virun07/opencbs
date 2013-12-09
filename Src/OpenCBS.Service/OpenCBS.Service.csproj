@@ -54,6 +54,7 @@
     <Compile Include="Command\AddRoleCommand.cs" />
     <Compile Include="Command\AddUserCommand.cs" />
     <Compile Include="Command\ConfirmOperationCommand.cs" />
+    <Compile Include="Command\DeleteEntryFeeCommand.cs" />
     <Compile Include="Command\DeleteRoleCommand.cs" />
     <Compile Include="Command\DeleteUserCommand.cs" />
     <Compile Include="Command\EditEntryFeeCommand.cs" />
