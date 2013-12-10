@@ -64,6 +64,7 @@
     <Compile Include="Command\EditLoanProductCommand.cs" />
     <Compile Include="Command\EditRoleCommand.cs" />
     <Compile Include="Command\EditUserCommand.cs" />
+    <Compile Include="Command\SelectEntryFeeCommand.cs" />
     <Compile Include="Command\ShowCurrenciesCommand.cs" />
     <Compile Include="Command\ShowEntryFeesCommand.cs" />
     <Compile Include="Command\ShowLoanProductsCommand.cs" />

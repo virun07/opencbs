@@ -23,7 +23,7 @@ using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 
-namespace OpenCBS.GUI.Command
+namespace OpenCBS.Service.Command
 {
     public class SelectEntryFeeCommand : ICommand<SelectEntryFeeData>
     {

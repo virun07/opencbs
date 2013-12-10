@@ -470,8 +470,6 @@
     <Compile Include="Clients\NonSolidaryGroupForm.Designer.cs">
       <DependentUpon>NonSolidaryGroupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Command\ConfirmOperationCommand.cs" />
-    <Compile Include="Command\SelectEntryFeeCommand.cs" />
     <Compile Include="Configuration\AddBranchForm.cs">
       <SubType>Form</SubType>
     </Compile>
