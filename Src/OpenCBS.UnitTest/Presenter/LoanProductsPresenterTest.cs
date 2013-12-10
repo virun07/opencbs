@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using NSubstitute;
 using NUnit.Framework;
 using OpenCBS.DataContract;
+using OpenCBS.DataContract.AppEvent;
 using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Service;
@@ -188,6 +189,28 @@ namespace OpenCBS.UnitTest.Presenter
         {
             _presenter.Close();
             _appController.Received().Unsubscribe(_presenter);
+        }
+
+        [Test]
+        public void Handle_LoanProductSavedEvent()
+        {
+            _presenter.Handle(new LoanProductSavedEvent());
+            _view.Received().ShowLoanProducts(Arg.Any<IList<LoanProductDto>>());
+        }
+
+        [Test]
+        public void Handle_LoanProductDeletedEvent()
+        {
+            _presenter.Handle(new LoanProductDeletedEvent());
+            _view.Received().ShowLoanProducts(Arg.Any<IList<LoanProductDto>>());
+        }
+
+        [Test]
+        public void Handle_LanguageChangeEvent()
+        {
+            _presenter.Handle(new LanguageChangedEvent());
+            _view.Received().Translate();
+            _view.Received().ShowLoanProducts(Arg.Any<IList<LoanProductDto>>());
         }
     }
 }
