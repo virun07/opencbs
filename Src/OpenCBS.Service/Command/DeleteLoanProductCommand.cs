@@ -24,7 +24,7 @@ using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
 
-namespace OpenCBS.GUI.Command
+namespace OpenCBS.Service.Command
 {
     public class DeleteLoanProductCommand : ICommand<DeleteLoanProductData>
     {

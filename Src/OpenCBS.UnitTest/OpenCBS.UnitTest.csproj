@@ -55,6 +55,7 @@
     <Compile Include="Command\AddUserCommandTest.cs" />
     <Compile Include="Command\ChangeLanguageCommandTest.cs" />
     <Compile Include="Command\DeleteEntryFeeCommandTest.cs" />
+    <Compile Include="Command\DeleteLoanProductCommandTest.cs" />
     <Compile Include="Command\DeleteRoleCommandTest.cs" />
     <Compile Include="Command\DeleteUserCommandTest.cs" />
     <Compile Include="Command\EditEntryFeeCommandTest.cs" />
