@@ -48,6 +48,7 @@
     <Compile Include="CurrenciesPresenter.cs" />
     <Compile Include="EntryFeePresenter.cs" />
     <Compile Include="EntryFeesPresenter.cs" />
+    <Compile Include="LoanProductsPresenter.cs" />
     <Compile Include="LoginPresenter.cs" />
     <Compile Include="MainPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
