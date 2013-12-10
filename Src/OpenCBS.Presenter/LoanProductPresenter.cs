@@ -28,7 +28,7 @@ using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
 
-namespace OpenCBS.GUI.Presenter
+namespace OpenCBS.Presenter
 {
     public class LoanProductPresenter : ILoanProductPresenter, ILoanProductPresenterCallbacks,
         IEventHandler<EntryFeeSelectedEvent>
