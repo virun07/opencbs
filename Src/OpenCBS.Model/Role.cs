@@ -108,6 +108,34 @@ namespace OpenCBS.Model
                 "IEntryFeeService.FindAll",
                 "IEntryFeeService.Delete"
             });
+            Map.Add("LoanProduct.View", new HashSet<string>
+            {
+                "ILoanProductService.FindAll"
+            });
+            Map.Add("LoanProduct.Add", new HashSet<string>
+            {
+                "IEntryFeeService.FindAll",
+                "IEntryFeeService.FindById",
+                "ILoanProductService.GetReferenceData",
+                "ILoanProductService.FindAll",
+                "ILoanProductService.Validate",
+                "ILoanProductService.Add"
+            });
+            Map.Add("LoanProduct.Edit", new HashSet<string>
+            {
+                "IEntryFeeService.FindAll",
+                "IEntryFeeService.FindById",
+                "ILoanProductService.GetReferenceData",
+                "ILoanProductService.FindAll",
+                "ILoanProductService.Validate",
+                "ILoanProductService.FindById",
+                "ILoanProductService.Update"
+            });
+            Map.Add("LoanProduct.Delete", new HashSet<string>
+            {
+                "ILoanProductService.FindAll",
+                "ILoanProductService.Delete"
+            });
         }
 
         public string Name { get; set; }

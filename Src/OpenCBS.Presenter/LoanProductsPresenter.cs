@@ -35,12 +35,14 @@ namespace OpenCBS.Presenter
         private readonly ILoanProductsView _view;
         private readonly IApplicationController _appController;
         private readonly ILoanProductService _loanProductService;
+        private readonly IAuthService _authService;
 
-        public LoanProductsPresenter(ILoanProductsView view, IApplicationController appController, ILoanProductService loanProductService)
+        public LoanProductsPresenter(ILoanProductsView view, IApplicationController appController, ILoanProductService loanProductService, IAuthService authService)
         {
             _view = view;
             _appController = appController;
             _loanProductService = loanProductService;
+            _authService = authService;
         }
 
         public void Add()
@@ -82,6 +84,9 @@ namespace OpenCBS.Presenter
         {
             _view.Attach(this);
             ShowLoanProducts();
+            _view.AllowAdding = _authService.Can("LoanProduct.Add");
+            _view.AllowEditing = _authService.Can("LoanProduct.Edit");
+            _view.AllowDeleting = _authService.Can("LoanProduct.Delete");
             _view.Run();
         }
 

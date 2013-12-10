@@ -35,6 +35,7 @@ namespace OpenCBS.UnitTest.Presenter
         private ILoanProductsView _view;
         private ILoanProductService _loanProductService;
         private IApplicationController _appController;
+        private IAuthService _authService;
         private LoanProductsPresenter _presenter;
 
         [SetUp]
@@ -43,7 +44,8 @@ namespace OpenCBS.UnitTest.Presenter
             _view = Substitute.For<ILoanProductsView>();
             _loanProductService = Substitute.For<ILoanProductService>();
             _appController = Substitute.For<IApplicationController>();
-            _presenter = new LoanProductsPresenter(_view, _appController, _loanProductService);
+            _authService = Substitute.For<IAuthService>();
+            _presenter = new LoanProductsPresenter(_view, _appController, _loanProductService, _authService);
         }
 
         [Test]

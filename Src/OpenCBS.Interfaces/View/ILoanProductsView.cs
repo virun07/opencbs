@@ -32,5 +32,9 @@ namespace OpenCBS.Interface.View
         bool CanDelete { get; set; }
         int? SelectedLoanProductId { get; }
         bool ShowDeleted { get; }
+
+        bool AllowAdding { get; set; }
+        bool AllowEditing { get; set; }
+        bool AllowDeleting { get; set; }
     }
 }

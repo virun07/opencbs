@@ -75,6 +75,24 @@ namespace OpenCBS.GUI.View
             set { _deleteButton.Enabled = value; }
         }
 
+        public bool AllowAdding
+        {
+            get { return _addButton.Visible; }
+            set { _addButton.Visible = value; }
+        }
+
+        public bool AllowEditing
+        {
+            get { return _editButton.Visible; }
+            set { _editButton.Visible = value; }
+        }
+
+        public bool AllowDeleting
+        {
+            get { return _deleteButton.Visible; }
+            set { _deleteButton.Visible = value; }
+        }
+
         public int? SelectedLoanProductId
         {
             get
