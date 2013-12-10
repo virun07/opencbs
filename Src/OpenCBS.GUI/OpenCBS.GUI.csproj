@@ -753,8 +753,6 @@
     <Compile Include="DefaultRegistry.cs" />
     <Compile Include="EventAggregatorInterceptor.cs" />
     <Compile Include="EventPublisher.cs" />
-    <Compile Include="Presenter\ConfirmationPresenter.cs" />
-    <Compile Include="Presenter\SelectEntryFeePresenter.cs" />
     <Compile Include="View\BaseView.cs">
       <SubType>Form</SubType>
     </Compile>

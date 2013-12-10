@@ -17,23 +17,35 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Linq;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
 
-namespace OpenCBS.GUI.Presenter
+namespace OpenCBS.Presenter
 {
-    public class ConfirmationPresenter : IConfirmationPresenter, IConfirmationPresenterCallbacks
+    public class SelectEntryFeePresenter : ISelectEntryFeePresenter, ISelectEntryFeePresenterCallbacks
     {
-        private readonly IConfirmationView _view;
+        private readonly ISelectEntryFeeView _view;
+        private readonly IEntryFeeService _entryFeeService;
 
         private CommandResult _commandResult = CommandResult.Cancel;
-        
-        public ConfirmationPresenter(IConfirmationView view)
+
+        public SelectEntryFeePresenter(ISelectEntryFeeView view, IEntryFeeService entryFeeService)
         {
             _view = view;
+            _entryFeeService = entryFeeService;
         }
 
+        public Result<int> Get()
+        {
+            _view.Attach(this);
+            ShowEntryFees();
+            _view.Run();
+            return new Result<int>(_commandResult, _view.SelectedEntryFeeId ?? 0);
+        }
+        
         public void Ok()
         {
             _commandResult = CommandResult.Ok;
@@ -46,11 +58,15 @@ namespace OpenCBS.GUI.Presenter
             _view.Stop();
         }
 
-        public CommandResult Get(string message)
+        public void ChangeSelection()
         {
-            _view.Attach(this);
-            _view.Run(message);
-            return _commandResult;
+            _view.CanSelectEntryFee = _view.SelectedEntryFeeId.HasValue;
+        }
+
+        private void ShowEntryFees()
+        {
+            var entryFees = _entryFeeService.FindAll();
+            _view.ShowEntryFees(entryFees.Where(ef => !ef.Deleted).ToDictionary(ef => ef.Id, ef => ef.Name));
         }
     }
 }
