@@ -47,6 +47,7 @@ namespace OpenCBS.Interface.View
         string DateShiftPolicy { get; set; }
         string RoundingPolicy { get; set; }
 
+        int? CurrencyId { get; set; }
         decimal? AmountMin { get; set; }
         decimal? AmountMax { get; set; }
         decimal? InterestRateMin { get; set; }

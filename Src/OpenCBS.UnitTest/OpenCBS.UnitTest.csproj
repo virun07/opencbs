@@ -72,6 +72,7 @@
     <Compile Include="Presenter\CurrenciesPresenterTest.cs" />
     <Compile Include="Presenter\EntryFeePresenterTest.cs" />
     <Compile Include="Presenter\EntryFeesPresenterTest.cs" />
+    <Compile Include="Presenter\LoanProductPresenterTest.cs" />
     <Compile Include="Presenter\LoanProductsPresenterTest.cs" />
     <Compile Include="Presenter\LoginPresenterTest.cs" />
     <Compile Include="Presenter\MainPresenterTest.cs" />
@@ -86,6 +87,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OpenCBS.Common\OpenCBS.Common.csproj">
+      <Project>{fe9c7054-d939-4617-99cd-8a8f9ae77099}</Project>
+      <Name>OpenCBS.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCBS.DataContract\OpenCBS.DataContract.csproj">
       <Project>{e3b40bd9-946c-4b41-8501-50ac85df3cb0}</Project>
       <Name>OpenCBS.DataContract</Name>
