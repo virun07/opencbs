@@ -55,7 +55,7 @@ namespace OpenCBS.GUI.View
             Show();
         }
 
-        public void ShowLoanProducts(IEnumerable<LoanProductDto> loanProducts)
+        public void ShowLoanProducts(IList<LoanProductDto> loanProducts)
         {
             var selectedObject = _loanProductsListView.SelectedObject;
             _loanProductsListView.SetObjects(loanProducts);

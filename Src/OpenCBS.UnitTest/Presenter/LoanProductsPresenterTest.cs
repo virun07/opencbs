@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using NSubstitute;
 using NUnit.Framework;
 using OpenCBS.DataContract;
+using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
@@ -53,8 +54,140 @@ namespace OpenCBS.UnitTest.Presenter
         {
             _presenter.Run();
             _view.Received().Attach(_presenter);
-            _view.Received().ShowLoanProducts(Arg.Any<IEnumerable<LoanProductDto>>());
+            _view.Received().ShowLoanProducts(Arg.Any<IList<LoanProductDto>>());
             _view.Received().Run();
+        }
+
+        [Test]
+        public void Run_ChecksPermissions()
+        {
+            _presenter.Run();
+            _authService.Received().Can("LoanProduct.Add");
+            _authService.Received().Can("LoanProduct.Edit");
+            _authService.Received().Can("LoanProduct.Delete");
+        }
+
+        [Test]
+        public void Run_HasAddPermission_CanAdd()
+        {
+            _authService.Can("LoanProduct.Add").Returns(true);
+            _presenter.Run();
+            Assert.IsTrue(_view.AllowAdding);
+        }
+
+        [Test]
+        public void Run_HasEditPermission_CanEdit()
+        {
+            _authService.Can("LoanProduct.Edit").Returns(true);
+            _presenter.Run();
+            Assert.IsTrue(_view.AllowEditing);
+        }
+
+        [Test]
+        public void Run_HasDeletePermission_CanDelete()
+        {
+            _authService.Can("LoanProduct.Delete").Returns(true);
+            _presenter.Run();
+            Assert.IsTrue(_view.AllowDeleting);
+        }
+
+        [Test]
+        public void Refresh_ShowsLoanProducts()
+        {
+            _presenter.Refresh();
+            _loanProductService.Received().FindAll();
+        }
+
+        [Test]
+        public void Refresh_ShowDeletedIsFalse_ShowsOnlyNonDeletedLoanProducts()
+        {
+            var loanProducts = new List<LoanProductDto>
+            {
+                new LoanProductDto { Id = 1, Deleted = false },
+                new LoanProductDto { Id = 2, Deleted = true }
+            };
+            _loanProductService.FindAll().Returns(loanProducts);
+            _view.ShowDeleted.Returns(false);
+            _presenter.Refresh();
+            _view.Received().ShowLoanProducts(Arg.Is<IList<LoanProductDto>>(x => x.Count == 1));
+        }
+
+        [Test]
+        public void Refresh_ShowDeletedIsTrue_ShowsAll()
+        {
+            var loanProducts = new List<LoanProductDto>
+            {
+                new LoanProductDto { Id = 1, Deleted = false },
+                new LoanProductDto { Id = 2, Deleted = true }
+            };
+            _loanProductService.FindAll().Returns(loanProducts);
+            _view.ShowDeleted.Returns(true);
+            _presenter.Refresh();
+            _view.Received().ShowLoanProducts(Arg.Is<IList<LoanProductDto>>(x => x.Count == 2));
+        }
+
+        [Test]
+        public void Add_ExecutesCommand()
+        {
+            _presenter.Add();
+            _appController.Received().Execute(Arg.Any<AddLoanProductData>());
+        }
+
+        [Test]
+        public void Edit_IdIsNull_DoesNotExecuteCommand()
+        {
+            _view.SelectedLoanProductId.Returns(x => null);
+            _presenter.Edit();
+            _appController.DidNotReceive().Execute(Arg.Any<EditLoanProductData>());
+        }
+
+        [Test]
+        public void Edit_IdIsNotNull_ExecutesCommand()
+        {
+            _view.SelectedLoanProductId.Returns(1);
+            _presenter.Edit();
+            _appController.Received().Execute(Arg.Is<EditLoanProductData>(data => data.Id == 1));
+        }
+
+        [Test]
+        public void Delete_IdIsNull_DoesNotExecuteCommand()
+        {
+            _view.SelectedLoanProductId.Returns(x => null);
+            _presenter.Delete();
+            _appController.DidNotReceive().Execute(Arg.Any<DeleteLoanProductData>());
+        }
+
+        [Test]
+        public void Delete_IdIsNotNull_ExecutesCommand()
+        {
+            _view.SelectedLoanProductId.Returns(1);
+            _presenter.Delete();
+            _appController.Received().Execute(Arg.Is<DeleteLoanProductData>(data => data.Id == 1));
+        }
+
+        [Test]
+        public void ChangeSelection_IdIsNull_EditingAndDeletingDisabled()
+        {
+            _view.SelectedLoanProductId.Returns(x => null);
+            _presenter.ChangeSelection();
+            Assert.IsFalse(_view.CanEdit);
+            Assert.IsFalse(_view.CanDelete);
+        }
+
+        [Test]
+        public void ChangeSelection_IdIsNotNull_EditingAndDeletingEnabled()
+        {
+            _view.SelectedLoanProductId.Returns(1);
+            _presenter.ChangeSelection();
+            Assert.IsTrue(_view.CanEdit);
+            Assert.IsTrue(_view.CanDelete);
+        }
+
+        [Test]
+        public void Close_Unsubscribes()
+        {
+            _presenter.Close();
+            _appController.Received().Unsubscribe(_presenter);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace OpenCBS.Interface.View
     public interface ILoanProductsView : IView<ILoanProductsPresenterCallbacks>
     {
         void Run();
-        void ShowLoanProducts(IEnumerable<LoanProductDto> loanProducts);
+        void ShowLoanProducts(IList<LoanProductDto> loanProducts);
         void Translate();
         bool CanEdit { get; set; }
         bool CanDelete { get; set; }
