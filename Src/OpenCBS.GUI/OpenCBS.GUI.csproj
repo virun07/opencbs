@@ -754,7 +754,6 @@
     <Compile Include="EventAggregatorInterceptor.cs" />
     <Compile Include="EventPublisher.cs" />
     <Compile Include="Presenter\ConfirmationPresenter.cs" />
-    <Compile Include="Presenter\EntryFeePresenter.cs" />
     <Compile Include="Presenter\LoanProductPresenter.cs" />
     <Compile Include="Presenter\LoanProductsPresenter.cs" />
     <Compile Include="Presenter\SelectEntryFeePresenter.cs" />
