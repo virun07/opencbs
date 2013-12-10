@@ -753,7 +753,6 @@
     <Compile Include="ApplicationController.cs" />
     <Compile Include="BootStrapper.cs" />
     <Compile Include="Command\DeleteLoanProductCommand.cs" />
-    <Compile Include="Command\EditLoanProductCommand.cs" />
     <Compile Include="DefaultRegistry.cs" />
     <Compile Include="EventAggregatorInterceptor.cs" />
     <Compile Include="EventPublisher.cs" />
