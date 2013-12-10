@@ -72,6 +72,7 @@
     <Compile Include="Presenter\CurrenciesPresenterTest.cs" />
     <Compile Include="Presenter\EntryFeePresenterTest.cs" />
     <Compile Include="Presenter\EntryFeesPresenterTest.cs" />
+    <Compile Include="Presenter\LoanProductsPresenterTest.cs" />
     <Compile Include="Presenter\LoginPresenterTest.cs" />
     <Compile Include="Presenter\MainPresenterTest.cs" />
     <Compile Include="Presenter\RolePresenterTest.cs" />
