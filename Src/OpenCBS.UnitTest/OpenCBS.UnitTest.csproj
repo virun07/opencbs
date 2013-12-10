@@ -70,6 +70,7 @@
     <Compile Include="Command\ShowUsersCommandTest.cs" />
     <Compile Include="Model\RolePermissionTest.cs" />
     <Compile Include="Presenter\CurrenciesPresenterTest.cs" />
+    <Compile Include="Presenter\EntryFeePresenterTest.cs" />
     <Compile Include="Presenter\EntryFeesPresenterTest.cs" />
     <Compile Include="Presenter\LoginPresenterTest.cs" />
     <Compile Include="Presenter\MainPresenterTest.cs" />
