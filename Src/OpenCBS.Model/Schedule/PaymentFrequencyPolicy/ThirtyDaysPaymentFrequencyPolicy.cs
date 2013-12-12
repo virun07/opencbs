@@ -20,7 +20,7 @@
 using System;
 using OpenCBS.Model.Interface;
 
-namespace OpenCBS.Service
+namespace OpenCBS.Model.Schedule.PaymentFrequencyPolicy
 {
     public class ThirtyDaysPaymentFrequencyPolicy : IPaymentFrequencyPolicy
     {

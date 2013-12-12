@@ -72,6 +72,12 @@
     <Compile Include="Model\Schedule\DateShiftPolicy\BackwardDateShiftPolicyTest.cs" />
     <Compile Include="Model\Schedule\DateShiftPolicy\ForwardDateShiftPolicyTest.cs" />
     <Compile Include="Model\Schedule\DateShiftPolicy\NoDateShiftPolicyTest.cs" />
+    <Compile Include="Model\Schedule\PaymentFrequencyPolicy\BiweeklyPaymentFrequencyPolicyTest.cs" />
+    <Compile Include="Model\Schedule\PaymentFrequencyPolicy\Monthly30DayPaymentFrequencyPolicyTest.cs" />
+    <Compile Include="Model\Schedule\PaymentFrequencyPolicy\MonthlyPaymentFrequencyPolicyTest.cs" />
+    <Compile Include="Model\Schedule\PaymentFrequencyPolicy\ThirtyDaysPaymentFrequencyPolicyTest.cs" />
+    <Compile Include="Model\Schedule\PaymentFrequencyPolicy\WeeklyPaymentFrequencyPolicyTest.cs" />
+    <Compile Include="Model\Schedule\PaymentFrequencyPolicy\DailyPaymentFrequencyPolicyTest.cs" />
     <Compile Include="Model\Schedule\RoundingPolicyTest.cs" />
     <Compile Include="Model\Schedule\YearPolicyTest.cs" />
     <Compile Include="Presenter\CurrenciesPresenterTest.cs" />

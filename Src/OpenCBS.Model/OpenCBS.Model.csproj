@@ -55,6 +55,7 @@
     <Compile Include="Schedule\PaymentFrequencyPolicy\DailyPaymentFrequencyPolicy.cs" />
     <Compile Include="Schedule\PaymentFrequencyPolicy\Monthly30DayPaymentFrequencyPolicy.cs" />
     <Compile Include="Schedule\PaymentFrequencyPolicy\MonthlyPaymentFrequencyPolicy.cs" />
+    <Compile Include="Schedule\PaymentFrequencyPolicy\ThirtyDaysPaymentFrequencyPolicy.cs" />
     <Compile Include="Schedule\PaymentFrequencyPolicy\WeeklyPaymentFrequencyPolicy.cs" />
     <Compile Include="Schedule\RoundingPolicy\TwoDecimalsRoundingPolicy.cs" />
     <Compile Include="Schedule\RoundingPolicy\WholeRoundingPolicy.cs" />
