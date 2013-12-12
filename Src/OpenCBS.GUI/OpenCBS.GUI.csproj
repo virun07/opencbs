@@ -757,12 +757,6 @@
     <Compile Include="DefaultRegistry.cs" />
     <Compile Include="EventAggregatorInterceptor.cs" />
     <Compile Include="EventPublisher.cs" />
-    <Compile Include="View\BaseView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\BaseView.Designer.cs">
-      <DependentUpon>BaseView.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\LoginView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -774,9 +768,6 @@
     </Compile>
     <Compile Include="View\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\TopEdgePanel.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2386,9 +2377,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MultiLanguageForm.resx">
       <DependentUpon>MultiLanguageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\BaseView.resx">
-      <DependentUpon>BaseView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\FrmAddCollateralProduct.fr.resx">
       <DependentUpon>FrmAddCollateralProduct.cs</DependentUpon>
