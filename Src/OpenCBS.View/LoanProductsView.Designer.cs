@@ -1,4 +1,4 @@
-﻿namespace OpenCBS.GUI.View
+﻿namespace OpenCBS.View
 {
     partial class LoanProductsView
     {

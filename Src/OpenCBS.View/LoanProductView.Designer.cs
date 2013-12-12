@@ -1,6 +1,4 @@
-﻿using OpenCBS.GUI.NEW.View;
-
-namespace OpenCBS.GUI.View
+﻿namespace OpenCBS.View
 {
     partial class LoanProductView
     {
@@ -88,7 +86,7 @@ namespace OpenCBS.GUI.View
             this._lateFeeLateInterestRateLabel = new System.Windows.Forms.Label();
             this._lateFeeLatePrincipalRateLabel = new System.Windows.Forms.Label();
             this._penaltyGracePeriodLabel = new System.Windows.Forms.Label();
-            this._buttonsPanel = new OpenCBS.GUI.NEW.View.TopEdgePanel();
+            this._buttonsPanel = new OpenCBS.Controls.TopEdgePanel();
             this._cancelButton = new System.Windows.Forms.Button();
             this._okButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
@@ -789,7 +787,7 @@ namespace OpenCBS.GUI.View
         private System.Windows.Forms.Button _okButton;
         private System.Windows.Forms.Button _cancelButton;
         private System.Windows.Forms.ErrorProvider _errorProvider;
-        private TopEdgePanel _buttonsPanel;
+        private OpenCBS.Controls.TopEdgePanel _buttonsPanel;
         private Cyotek.Windows.Forms.TabList _tabList;
         private Cyotek.Windows.Forms.TabListPage _generalTabListPage;
         private Cyotek.Windows.Forms.TabListPage _scheduleTabListPage;

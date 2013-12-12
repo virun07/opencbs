@@ -24,17 +24,18 @@ using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
-namespace OpenCBS.GUI.View
+namespace OpenCBS.View
 {
-    public partial class CurrenciesView : BaseView, ICurrenciesView
+    public partial class EntryFeesView : CollectionView, IEntryFeesView
     {
-        private ICurrenciesPresenterCallbacks _presenterCallbacks;
+        private IEntryFeesPresenterCallbacks _presenterCallbacks;
 
-        public CurrenciesView(ITranslator translator)
+        public EntryFeesView(ITranslator translator)
             : base(translator)
         {
             InitializeComponent();
             MdiParent = Application.OpenForms[0];
+            Setup();
         }
 
         public void Run()
@@ -42,23 +43,22 @@ namespace OpenCBS.GUI.View
             Show();
         }
 
-        public void ShowCurrencies(IList<CurrencyDto> currencies)
-        {
-            var selectedObject = _currenciesListView.SelectedObject;
-            _currenciesListView.SetObjects(currencies);
-            _presenterCallbacks.ChangeSelection();
-            _currenciesListView.SelectedObject = selectedObject;
-        }
-
-        public void Attach(ICurrenciesPresenterCallbacks presenterCallbacks)
+        public void Attach(IEntryFeesPresenterCallbacks presenterCallbacks)
         {
             _addButton.Click += (sender, e) => presenterCallbacks.Add();
             _editButton.Click += (sender, e) => presenterCallbacks.Edit();
             _deleteButton.Click += (sender, e) => presenterCallbacks.Delete();
+            _entryFeesListView.SelectionChanged += (sender, e) => presenterCallbacks.ChangeSelection();
             _showDeletedCheckBox.CheckedChanged += (sender, e) => presenterCallbacks.Refresh();
-            _currenciesListView.SelectedIndexChanged += (sender, e) => presenterCallbacks.ChangeSelection();
-            FormClosing += (sender, e) => presenterCallbacks.Close();
             _presenterCallbacks = presenterCallbacks;
+        }
+
+        public void ShowEntryFees(IEnumerable<EntryFeeDto> entryFees)
+        {
+            var selectedObject = _entryFeesListView.SelectedObject;
+            _entryFeesListView.SetObjects(entryFees);
+            _presenterCallbacks.ChangeSelection();
+            _entryFeesListView.SelectedObject = selectedObject;
         }
 
         public bool AllowAdding
@@ -79,31 +79,46 @@ namespace OpenCBS.GUI.View
             set { _deleteButton.Visible = value; }
         }
 
-        public bool CanEdit
+        public bool EditEnabled
         {
             get { return _editButton.Enabled; }
             set { _editButton.Enabled = value; }
         }
 
-        public bool CanDelete
+        public bool DeleteEnabled
         {
             get { return _deleteButton.Enabled; }
             set { _deleteButton.Enabled = value; }
         }
 
-        public int? SelectedCurrencyId
+        public int? SelectedEntryFeeId
         {
             get
             {
-                var currencyDto = (CurrencyDto) _currenciesListView.SelectedObject;
-                if (currencyDto == null) return null;
-                return currencyDto.Id;
+                var entryFeeDto = (EntryFeeDto) _entryFeesListView.SelectedObject;
+                if (entryFeeDto == null) return null;
+                return entryFeeDto.Id;
             }
         }
 
         public bool ShowDeleted
         {
             get { return _showDeletedCheckBox.Checked; }
+        }
+
+        private void Setup()
+        {
+            _valueMinColumn.AspectToStringConverter =
+            _valueMaxColumn.AspectToStringConverter = v =>
+            {
+                var value = (decimal) v;
+                return string.Format("{0:N2}", value);
+            };
+            _rateAmountColumn.AspectToStringConverter = v =>
+            {
+                var rate = (bool) v;
+                return rate ? _("Rate") : _("Amount");
+            };
         }
     }
 }

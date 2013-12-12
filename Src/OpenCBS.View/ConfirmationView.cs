@@ -22,7 +22,7 @@ using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
-namespace OpenCBS.GUI.View
+namespace OpenCBS.View
 {
     public class ConfirmationView : IConfirmationView
     {
