@@ -149,6 +149,10 @@
     <OutputPath>bin\Test\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OpenCBS.View\OpenCBS.View.csproj">
+      <Project>{47293a0a-43f5-4330-bd58-568049c869c2}</Project>
+      <Name>OpenCBS.View</Name>
+    </ProjectReference>
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.1.1.0.118\lib\AutoMapper.dll</HintPath>
     </Reference>
@@ -772,12 +776,6 @@
     <Compile Include="View\CurrenciesView.Designer.cs">
       <DependentUpon>CurrenciesView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\RoleView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\RoleView.Designer.cs">
-      <DependentUpon>RoleView.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\EntryFeesView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -813,12 +811,6 @@
     </Compile>
     <Compile Include="View\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\RolesView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\RolesView.Designer.cs">
-      <DependentUpon>RolesView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SelectEntryFeeView.cs">
       <SubType>Form</SubType>
@@ -1231,18 +1223,6 @@
     </Compile>
     <Compile Include="UserControl\WriteOffOkCancelForm.Designer.cs">
       <DependentUpon>WriteOffOkCancelForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\UsersView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\UsersView.Designer.cs">
-      <DependentUpon>UsersView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\UserView.Designer.cs">
-      <DependentUpon>UserView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AboutForm.es-ES.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
@@ -2456,9 +2436,6 @@
     <EmbeddedResource Include="View\CurrenciesView.resx">
       <DependentUpon>CurrenciesView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\RoleView.resx">
-      <DependentUpon>RoleView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\EntryFeesView.resx">
       <DependentUpon>EntryFeesView.cs</DependentUpon>
     </EmbeddedResource>
@@ -3172,17 +3149,8 @@
       <DependentUpon>MainView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\RolesView.resx">
-      <DependentUpon>RolesView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\SelectEntryFeeView.resx">
       <DependentUpon>SelectEntryFeeView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\UsersView.resx">
-      <DependentUpon>UsersView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\UserView.resx">
-      <DependentUpon>UserView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="dump.bat">

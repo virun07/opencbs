@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{47293A0A-43F5-4330-BD58-568049C869C2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenCBS.View</RootNamespace>
+    <AssemblyName>OpenCBS.View</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Cyotek.Windows.Forms.TabList">
+      <HintPath>..\packages\CyotekTabList.1.0.1.0\lib\net35\Cyotek.Windows.Forms.TabList.dll</HintPath>
+    </Reference>
+    <Reference Include="ObjectListView">
+      <HintPath>..\..\Lib\ObjectListView.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseView.Designer.cs">
+      <DependentUpon>BaseView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CollectionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CollectionView.Designer.cs">
+      <DependentUpon>CollectionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RolesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RolesView.Designer.cs">
+      <DependentUpon>RolesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoleView.Designer.cs">
+      <DependentUpon>RoleView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsersView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsersView.Designer.cs">
+      <DependentUpon>UsersView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserView.Designer.cs">
+      <DependentUpon>UserView.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BaseView.resx">
+      <DependentUpon>BaseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RolesView.resx">
+      <DependentUpon>RolesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoleView.resx">
+      <DependentUpon>RoleView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersView.resx">
+      <DependentUpon>UsersView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserView.resx">
+      <DependentUpon>UserView.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenCBS.Controls\OpenCBS.Controls.csproj">
+      <Project>{0dfcb871-734c-434d-ae9e-35c378b36f9e}</Project>
+      <Name>OpenCBS.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.DataContract\OpenCBS.DataContract.csproj">
+      <Project>{e3b40bd9-946c-4b41-8501-50ac85df3cb0}</Project>
+      <Name>OpenCBS.DataContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Interfaces\OpenCBS.Interface.csproj">
+      <Project>{4d370e45-0fbb-4230-b408-94ffd7e0e997}</Project>
+      <Name>OpenCBS.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Presenter\OpenCBS.Presenter.csproj">
+      <Project>{e8a84301-0b7c-4f40-9213-7c10d64d1cc3}</Project>
+      <Name>OpenCBS.Presenter</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

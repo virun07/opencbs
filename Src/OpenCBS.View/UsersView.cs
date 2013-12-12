@@ -18,23 +18,25 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using OpenCBS.DataContract;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
-namespace OpenCBS.GUI.View
+namespace OpenCBS.View
 {
-    public partial class RolesView : CollectionView, IRolesView
+    public partial class UsersView : CollectionView, IUsersView
     {
-        private IRolesPresenterCallbacks _presenterCallbacks;
+        private IUsersPresenterCallbacks _presenterCallbacks;
 
-        public RolesView(ITranslator translator)
+        public UsersView(ITranslator translator)
             : base(translator)
         {
             InitializeComponent();
             MdiParent = Application.OpenForms[0];
+            Setup();
         }
 
         public void Run()
@@ -42,14 +44,25 @@ namespace OpenCBS.GUI.View
             Show();
         }
 
-        public void ShowRoles(IList<RoleDto> roles)
+        public void Attach(IUsersPresenterCallbacks presenterCallbacks)
         {
-            var selectedObject = _rolesListView.SelectedObject;
-            _rolesListView.SetObjects(roles);
-            _presenterCallbacks.ChangeSelection();
-            _rolesListView.SelectedObject = selectedObject;
+            _addButton.Click += (sender, e) => presenterCallbacks.Add();
+            _editButton.Click += (sender, e) => presenterCallbacks.Edit();
+            _deleteButton.Click += (sender, e) => presenterCallbacks.Delete();
+            _showDeletedCheckBox.CheckedChanged += (sender, e) => presenterCallbacks.Refresh();
+            _usersListView.SelectedIndexChanged += (sender, e) => presenterCallbacks.ChangeSelection();
+            FormClosing += (sender, e) => presenterCallbacks.Close();
+            _presenterCallbacks = presenterCallbacks;
         }
 
+        public void ShowUsers(IList<UserDto> users)
+        {
+            var selectedObject = _usersListView.SelectedObject;
+            _usersListView.SetObjects(users);
+            _presenterCallbacks.ChangeSelection();
+            _usersListView.SelectedObject = selectedObject;
+        }
+    
         public bool AllowAdding
         {
             get { return _addButton.Visible; }
@@ -80,13 +93,13 @@ namespace OpenCBS.GUI.View
             set { _deleteButton.Enabled = value; }
         }
 
-        public int? SelectedRoleId
+        public int? SelectedUserId
         {
             get
             {
-                var roleDto = (RoleDto) _rolesListView.SelectedObject;
-                if (roleDto == null) return null;
-                return roleDto.Id;
+                var userDto = (UserDto) _usersListView.SelectedObject;
+                if (userDto == null) return null;
+                return userDto.Id;
             }
         }
 
@@ -95,15 +108,20 @@ namespace OpenCBS.GUI.View
             get { return _showDeletedCheckBox.Checked; }
         }
 
-        public void Attach(IRolesPresenterCallbacks presenterCallbacks)
+        public IList<RoleDto> Roles { get; set; }
+
+        private void Setup()
         {
-            _addButton.Click += (sender, e) => presenterCallbacks.Add();
-            _editButton.Click += (sender, e) => presenterCallbacks.Edit();
-            _deleteButton.Click += (sender, e) => presenterCallbacks.Delete();
-            _rolesListView.SelectionChanged += (sender, e) => presenterCallbacks.ChangeSelection();
-            _showDeletedCheckBox.CheckedChanged += (sender, e) => presenterCallbacks.Refresh();
-            FormClosed += (sender, e) => presenterCallbacks.Close();
-            _presenterCallbacks = presenterCallbacks;
+            _rolesColumn.AspectToStringConverter = value =>
+            {
+                var roleIds = (IList<int>) value;
+                return string.Join(", ", Roles.Where(r => roleIds.Contains(r.Id)).Select(r => r.Name));
+            };
+            _isSuperuserColumn.AspectToStringConverter = value =>
+            {
+                var isSuperuser = (bool) value;
+                return isSuperuser ? "*" : string.Empty;
+            };
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace OpenCBS.GUI.View
+﻿namespace OpenCBS.View
 {
     partial class UserView
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._buttonsPanel = new OpenCBS.GUI.NEW.View.TopEdgePanel();
+            this._buttonsPanel = new OpenCBS.Controls.TopEdgePanel();
             this._cancelButton = new System.Windows.Forms.Button();
             this._okButton = new System.Windows.Forms.Button();
             this._generalTabListPage = new Cyotek.Windows.Forms.TabListPage();
@@ -238,7 +238,7 @@
 
         #endregion
 
-        private NEW.View.TopEdgePanel _buttonsPanel;
+        private OpenCBS.Controls.TopEdgePanel _buttonsPanel;
         private System.Windows.Forms.Button _cancelButton;
         private System.Windows.Forms.Button _okButton;
         private Cyotek.Windows.Forms.TabListPage _generalTabListPage;

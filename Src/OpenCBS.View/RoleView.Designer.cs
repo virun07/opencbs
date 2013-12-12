@@ -1,4 +1,6 @@
-﻿namespace OpenCBS.GUI.View
+﻿using OpenCBS.Controls;
+
+namespace OpenCBS.View
 {
     partial class RoleView
     {
@@ -29,7 +31,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this._buttonsPanel = new OpenCBS.GUI.NEW.View.TopEdgePanel();
+            this._buttonsPanel = new TopEdgePanel();
             this._cancelButton = new System.Windows.Forms.Button();
             this._okButton = new System.Windows.Forms.Button();
             this._nameTextBox = new System.Windows.Forms.TextBox();
@@ -126,7 +128,7 @@
 
         #endregion
 
-        private NEW.View.TopEdgePanel _buttonsPanel;
+        private OpenCBS.Controls.TopEdgePanel _buttonsPanel;
         private System.Windows.Forms.Button _cancelButton;
         private System.Windows.Forms.Button _okButton;
         private System.Windows.Forms.TextBox _nameTextBox;

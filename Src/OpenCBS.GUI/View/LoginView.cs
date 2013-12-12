@@ -29,7 +29,7 @@ using OpenCBS.Interface.View;
 
 namespace OpenCBS.GUI.View
 {
-    public partial class LoginView : BaseView, ILoginView
+    public partial class LoginView : OpenCBS.View.BaseView, ILoginView
     {
         private readonly LoaderControl _loader = new LoaderControl();
 

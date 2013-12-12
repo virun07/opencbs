@@ -75,6 +75,9 @@
     <Compile Include="SplitButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TopEdgePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="RangeControl.resx">

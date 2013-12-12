@@ -73,6 +73,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.UnitTest", "OpenCBS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.Presenter", "OpenCBS.Presenter\OpenCBS.Presenter.csproj", "{E8A84301-0B7C-4F40-9213-7C10D64D1CC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.View", "OpenCBS.View\OpenCBS.View.csproj", "{47293A0A-43F5-4330-BD58-568049C869C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -189,6 +191,10 @@ Global
 		{E8A84301-0B7C-4F40-9213-7C10D64D1CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8A84301-0B7C-4F40-9213-7C10D64D1CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8A84301-0B7C-4F40-9213-7C10D64D1CC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47293A0A-43F5-4330-BD58-568049C869C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47293A0A-43F5-4330-BD58-568049C869C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47293A0A-43F5-4330-BD58-568049C869C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47293A0A-43F5-4330-BD58-568049C869C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -203,9 +209,10 @@ Global
 		{D5DB6CD6-5A9E-40CA-BD7F-B4ACCFDC8F4F} = {326209A2-3FB1-4920-9D2D-186A0559C814}
 		{A3DDA0E3-1992-4F14-BF0D-0C68FBA9CDF2} = {326209A2-3FB1-4920-9D2D-186A0559C814}
 		{E8A84301-0B7C-4F40-9213-7C10D64D1CC3} = {326209A2-3FB1-4920-9D2D-186A0559C814}
+		{47293A0A-43F5-4330-BD58-568049C869C2} = {326209A2-3FB1-4920-9D2D-186A0559C814}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		GreenPepperConfigServerUrl = http://wiki.octopusnetwork.org
 		GreenPepperConfigXmlRpcHandler = greenpepper1
+		GreenPepperConfigServerUrl = http://wiki.octopusnetwork.org
 	EndGlobalSection
 EndGlobal

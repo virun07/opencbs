@@ -26,7 +26,7 @@ using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
 
-namespace OpenCBS.GUI.View
+namespace OpenCBS.View
 {
     public partial class UserView : BaseView, IUserView
     {
