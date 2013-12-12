@@ -73,6 +73,7 @@
     <Compile Include="Model\Schedule\DateShiftPolicy\ForwardDateShiftPolicyTest.cs" />
     <Compile Include="Model\Schedule\DateShiftPolicy\NoDateShiftPolicyTest.cs" />
     <Compile Include="Model\Schedule\RoundingPolicyTest.cs" />
+    <Compile Include="Model\Schedule\YearPolicyTest.cs" />
     <Compile Include="Presenter\CurrenciesPresenterTest.cs" />
     <Compile Include="Presenter\EntryFeePresenterTest.cs" />
     <Compile Include="Presenter\EntryFeesPresenterTest.cs" />
