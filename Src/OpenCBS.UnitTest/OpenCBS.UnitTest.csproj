@@ -69,6 +69,7 @@
     <Compile Include="Command\ShowRolesCommandTest.cs" />
     <Compile Include="Command\ShowUsersCommandTest.cs" />
     <Compile Include="Model\RolePermissionTest.cs" />
+    <Compile Include="Model\Schedule\DateShiftPolicy\BackwardDateShiftPolicyTest.cs" />
     <Compile Include="Presenter\CurrenciesPresenterTest.cs" />
     <Compile Include="Presenter\EntryFeePresenterTest.cs" />
     <Compile Include="Presenter\EntryFeesPresenterTest.cs" />
@@ -99,6 +100,10 @@
       <Project>{4d370e45-0fbb-4230-b408-94ffd7e0e997}</Project>
       <Name>OpenCBS.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Model.Interface\OpenCBS.Model.Interface.csproj">
+      <Project>{d5db6cd6-5a9e-40ca-bd7f-b4accfdc8f4f}</Project>
+      <Name>OpenCBS.Model.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Model\OpenCBS.Model.csproj">
       <Project>{db64ab0c-241b-423c-b5de-2df524386651}</Project>
       <Name>OpenCBS.Model</Name>
@@ -112,6 +117,7 @@
       <Name>OpenCBS.Service</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

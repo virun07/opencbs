@@ -38,7 +38,7 @@ namespace OpenCBS.Model.Schedule.DateShiftPolicy
 
             while (_nonWorkingDayPolicy.IsNonWorkingDay(date))
             {
-                date = date.AddDays(1);
+                date = date.AddDays(-1);
             }
             return date;
         }
