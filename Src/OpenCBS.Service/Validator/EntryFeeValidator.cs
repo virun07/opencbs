@@ -29,7 +29,8 @@ namespace OpenCBS.Service.Validator
             base.Validate(entity);
 
             FailIfNullOrEmpty("Name");
-            FailIfNotAlphanumOrUnderscore("Code");
+            if (!string.IsNullOrEmpty(entity.Code))
+                FailIfNotAlphanumOrUnderscore("Code");
             FailIfNullOrEmpty("Code");
             FailIfNullOrEmpty("ValueMax");
             FailIfNullOrEmpty("ValueMin");

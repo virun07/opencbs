@@ -92,6 +92,7 @@
     <Compile Include="Presenter\UserPresenterTest.cs" />
     <Compile Include="Presenter\UsersPresenterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validator\EntryFeeValidatorTest.cs" />
     <Compile Include="Validator\RoleValidatorTest.cs" />
     <Compile Include="Validator\UserValidatorTest.cs" />
   </ItemGroup>
