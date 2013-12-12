@@ -81,7 +81,7 @@ namespace OpenCBS.GUI.View
             // logoPicturebox
             // 
             this.logoPicturebox.BackColor = System.Drawing.Color.Transparent;
-            this.logoPicturebox.BackgroundImage = global::OpenCBS.GUI.Properties.Resources.LOGO;
+            this.logoPicturebox.BackgroundImage = global::OpenCBS.View.Properties.Resource.Logo;
             resources.ApplyResources(this.logoPicturebox, "logoPicturebox");
             this.logoPicturebox.Name = "logoPicturebox";
             this.logoPicturebox.TabStop = false;

@@ -757,12 +757,6 @@
     <Compile Include="DefaultRegistry.cs" />
     <Compile Include="EventAggregatorInterceptor.cs" />
     <Compile Include="EventPublisher.cs" />
-    <Compile Include="View\LoginView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\LoginView.Designer.cs">
-      <DependentUpon>LoginView.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3049,10 +3043,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\WriteOffOkCancelForm.ru-RU.resx">
       <DependentUpon>WriteOffOkCancelForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\LoginView.resx">
-      <DependentUpon>LoginView.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainView.es-ES.resx">
       <DependentUpon>MainView.cs</DependentUpon>
