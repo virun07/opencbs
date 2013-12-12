@@ -123,6 +123,50 @@ namespace OpenCBS.UnitTest.Model
             var role = GetRoleWithPermission("EntryFee.Delete");
             AssertMapsTo(role, new[] { "IEntryFeeService.FindAll", "IEntryFeeService.Delete" });
         }
+
+        [Test]
+        public void LoanProduct_View()
+        {
+            var role = GetRoleWithPermission("LoanProduct.View");
+            AssertMapsTo(role, new[] { "ILoanProductService.FindAll" });
+        }
+
+        [Test]
+        public void LoanProduct_Add()
+        {
+            var role = GetRoleWithPermission("LoanProduct.Add");
+            AssertMapsTo(role, new[]
+            {
+                "IEntryFeeService.FindAll",
+                "IEntryFeeService.FindById",
+                "ILoanProductService.GetReferenceData",
+                "ILoanProductService.FindAll",
+                "ILoanProductService.Validate",
+                "ILoanProductService.Add"
+            });
+        }
+
+        [Test]
+        public void LoanProduct_Edit()
+        {
+            var role = GetRoleWithPermission("LoanProduct.Edit");
+            AssertMapsTo(role, new[]
+            {
+                "IEntryFeeService.FindAll",
+                "IEntryFeeService.FindById",
+                "ILoanProductService.GetReferenceData",
+                "ILoanProductService.FindAll",
+                "ILoanProductService.Validate",
+                "ILoanProductService.Update"
+            });
+        }
+
+        [Test]
+        public void LoanProduct_Delete()
+        {
+            var role = GetRoleWithPermission("LoanProduct.Delete");
+            AssertMapsTo(role, new[] { "ILoanProductService.FindAll", "ILoanProductService.Delete" });
+        }
     }
 }
 // ReSharper restore InconsistentNaming
