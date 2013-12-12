@@ -59,7 +59,7 @@ namespace OpenCBS.UnitTest.Validator
         }
 
         [Test]
-        public void Validate_UserIsValid_ClassifiesAsValid()
+        public void Validate_EntryFeeIsValid_ClassifiesAsValid()
         {
             var entryFeeDto = new EntryFeeDto
             {

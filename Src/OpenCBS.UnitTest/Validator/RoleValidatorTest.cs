@@ -44,7 +44,7 @@ namespace OpenCBS.UnitTest.Validator
         }
 
         [Test]
-        public void Validate_UserIsValid_ClassifiesAsValid()
+        public void Validate_RoleIsValid_ClassifiesAsValid()
         {
             var roleDto = new RoleDto { Name = "Administrator" };
             _validator.Validate(roleDto);
