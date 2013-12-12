@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfirmationPresenter.cs" />
     <Compile Include="CurrenciesPresenter.cs" />
     <Compile Include="EntryFeePresenter.cs" />
     <Compile Include="EntryFeesPresenter.cs" />
