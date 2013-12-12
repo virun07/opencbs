@@ -27,38 +27,38 @@ using OpenCBS.Model.Schedule.DateShiftPolicy;
 namespace OpenCBS.UnitTest.Model.Schedule.DateShiftPolicy
 {
     [TestFixture]
-    public class BackwardDateShiftPolicyTest
+    public class ForwardDateShiftPolicyTest
     {
         [Test]
         [ExpectedException(typeof(NullReferenceException), ExpectedMessage = "Non-working day policy is null.")]
         public void ShiftDate_NonWorkingDayPolicyIsNull_ThrowsException()
         {
-            var dateShiftPolicy = new BackwardDateShiftPolicy(null);
+            var dateShiftPolicy = new ForwardDateShiftPolicy(null);
             dateShiftPolicy.ShiftDate(DateTime.Today);
         }
 
         [Test]
-        public void ShiftDate_SaturdayAndSundayAreWeekends_ReturnsFirday()
-        {
-            var friday = new DateTime(2013, 6, 7);
-            var saturday = new DateTime(2013, 6, 8);
-            var sunday = new DateTime(2013, 6, 9);
-            var weekendPolicy = Substitute.For<INonWorkingDayPolicy>();
-            weekendPolicy.IsNonWorkingDay(saturday).Returns(true);
-            weekendPolicy.IsNonWorkingDay(sunday).Returns(true);
-            var dateShiftPolicy = new BackwardDateShiftPolicy(weekendPolicy);
-            Assert.That(dateShiftPolicy.ShiftDate(sunday), Is.EqualTo(friday));
-        }
-
-        [Test]
-        public void ShiftDate_FirstOfJanuaryIsHoliday_ReturnsThirtyFirstOfDecember()
+        public void ShiftDate_FirstOfJanuaryIsHoliday_ReturnsSecondOfJanuary()
         {
             var holidayPolicy = Substitute.For<INonWorkingDayPolicy>();
             var firstOfJanuary = new DateTime(2013, 1, 1);
             holidayPolicy.IsNonWorkingDay(firstOfJanuary).Returns(true);
-            var dateShiftPolicy = new BackwardDateShiftPolicy(holidayPolicy);
-            var thirtyFirstOfDecember = new DateTime(2012, 12, 31);
-            Assert.That(dateShiftPolicy.ShiftDate(firstOfJanuary), Is.EqualTo(thirtyFirstOfDecember));
+            var dateShiftPolicy = new ForwardDateShiftPolicy(holidayPolicy);
+            var secondOfJanuary = new DateTime(2013, 1, 2);
+            Assert.That(dateShiftPolicy.ShiftDate(firstOfJanuary), Is.EqualTo(secondOfJanuary));
+        }
+
+        [Test]
+        public void ShiftDate_SaturdayAndSundayAreWeekends_ReturnsMonday()
+        {
+            var saturday = new DateTime(2013, 6, 8);
+            var sunday = new DateTime(2013, 6, 9);
+            var monday = new DateTime(2013, 6, 10);
+            var weekendPolicy = Substitute.For<INonWorkingDayPolicy>();
+            weekendPolicy.IsNonWorkingDay(saturday).Returns(true);
+            weekendPolicy.IsNonWorkingDay(sunday).Returns(true);
+            var dateShiftPolicy = new ForwardDateShiftPolicy(weekendPolicy);
+            Assert.That(dateShiftPolicy.ShiftDate(saturday), Is.EqualTo(monday));
         }
     }
 }
