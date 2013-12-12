@@ -44,5 +44,10 @@ namespace OpenCBS.DataContract
         {
             get { return _errors; }
         }
+
+        public int Count
+        {
+            get { return _errors.Count; }
+        }
     }
 }
