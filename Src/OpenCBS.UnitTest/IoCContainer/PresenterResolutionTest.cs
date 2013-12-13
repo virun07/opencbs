@@ -49,6 +49,13 @@ namespace OpenCBS.UnitTest.IoCContainer
             _container.Inject(Substitute.For<IUserView>());
             _container.Inject(Substitute.For<IUsersView>());
         }
+        
+        [Test]
+        public void GetInstance_ErrorPresenter_Resolves()
+        {
+            var presenter = _container.GetInstance<IErrorPresenter>();
+            Assert.IsInstanceOf<ErrorPresenter>(presenter);
+        }
 
         [Test]
         public void GetInstance_ConfirmationPresenter_Resolves()

@@ -19,6 +19,7 @@
 
 using System;
 using OpenCBS.Interface;
+using OpenCBS.Interface.Presenter;
 using StructureMap;
 
 namespace OpenCBS.Service.Shell
@@ -44,15 +45,13 @@ namespace OpenCBS.Service.Shell
             }
             catch (UnauthorizedAccessException error)
             {
-//                MessageBox.Show(
-//                    string.Format("Not authorized: {0}.", error.Message),
-//                    "Error", 
-//                    MessageBoxButtons.OK, 
-//                    MessageBoxIcon.Error);
+                var presenter = _container.GetInstance<IErrorPresenter>();
+                presenter.Run(string.Format("Not authorized: {0}", error.Message));
             }
             catch (Exception error)
             {
-//                MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var presenter = _container.GetInstance<IErrorPresenter>();
+                presenter.Run(error.Message);
             }
         }
 

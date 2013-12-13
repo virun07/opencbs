@@ -53,6 +53,9 @@
     <Compile Include="Presenter\IEntryFeePresenterCallbacks.cs" />
     <Compile Include="Presenter\IEntryFeesPresenter.cs" />
     <Compile Include="Presenter\IEntryFeesPresenterCallbacks.cs" />
+    <Compile Include="Presenter\IErrorPresenter.cs" />
+    <Compile Include="Presenter\IExoticSchedulesPresenter.cs" />
+    <Compile Include="Presenter\IExoticSchedulesPresenterCallbacks.cs" />
     <Compile Include="Presenter\ILoanProductPresenter.cs" />
     <Compile Include="Presenter\ILoanProductPresenterCallbacks.cs" />
     <Compile Include="Presenter\ILoanProductsPresenter.cs" />
@@ -98,6 +101,7 @@
     <Compile Include="View\ICurrenciesView.cs" />
     <Compile Include="View\IEntryFeesView.cs" />
     <Compile Include="View\IEntryFeeView.cs" />
+    <Compile Include="View\IErrorView.cs" />
     <Compile Include="View\ILoanProductsView.cs" />
     <Compile Include="View\ILoanProductView.cs" />
     <Compile Include="View\ILoginView.cs" />

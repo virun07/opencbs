@@ -68,6 +68,7 @@
     <Compile Include="CommandData\SelectEntryFeeData.cs" />
     <Compile Include="CommandData\ShowCurrenciesData.cs" />
     <Compile Include="CommandData\ShowEntryFeesData.cs" />
+    <Compile Include="CommandData\ShowExoticSchedulesData.cs" />
     <Compile Include="CommandData\ShowLoanProductsData.cs" />
     <Compile Include="CommandData\ShowRolesData.cs" />
     <Compile Include="CommandData\ShowUsersData.cs" />

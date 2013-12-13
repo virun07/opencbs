@@ -81,6 +81,7 @@
     <Compile Include="EntryFeeView.Designer.cs">
       <DependentUpon>EntryFeeView.cs</DependentUpon>
     </Compile>
+    <Compile Include="ErrorView.cs" />
     <Compile Include="LoanProductsView.cs">
       <SubType>Form</SubType>
     </Compile>

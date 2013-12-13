@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\ShowExoticSchedulesCommand.cs" />
     <Compile Include="Shell\JsonTranslator.cs" />
     <Compile Include="Shell\ApplicationController.cs" />
     <Compile Include="AuthService.cs" />
