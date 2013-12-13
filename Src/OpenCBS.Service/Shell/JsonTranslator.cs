@@ -24,7 +24,7 @@ using System.Reflection;
 using Newtonsoft.Json;
 using OpenCBS.Interface;
 
-namespace OpenCBS.GUI
+namespace OpenCBS.Service.Shell
 {
     public class JsonTranslator : ITranslator
     {

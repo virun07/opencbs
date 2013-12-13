@@ -741,7 +741,6 @@
       <DependentUpon>StringFieldPropertiesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="IMainViewTemp.cs" />
-    <Compile Include="JsonTranslator.cs" />
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -752,11 +751,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AppContext.cs" />
-    <Compile Include="ApplicationController.cs" />
     <Compile Include="BootStrapper.cs" />
-    <Compile Include="DefaultRegistry.cs" />
-    <Compile Include="EventAggregatorInterceptor.cs" />
-    <Compile Include="EventPublisher.cs" />
     <Compile Include="View\MainView.cs">
       <SubType>Form</SubType>
     </Compile>

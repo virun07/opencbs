@@ -22,7 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using OpenCBS.Interface;
 
-namespace OpenCBS.GUI
+namespace OpenCBS.Service.Shell
 {
     public class EventPublisher : IEventPublisher
     {

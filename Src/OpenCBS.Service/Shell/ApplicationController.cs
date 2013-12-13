@@ -18,11 +18,10 @@
 // Contact: contact@opencbs.com
 
 using System;
-using System.Windows.Forms;
 using OpenCBS.Interface;
 using StructureMap;
 
-namespace OpenCBS.GUI
+namespace OpenCBS.Service.Shell
 {
     public class ApplicationController : IApplicationController
     {
@@ -45,15 +44,15 @@ namespace OpenCBS.GUI
             }
             catch (UnauthorizedAccessException error)
             {
-                MessageBox.Show(
-                    string.Format("Not authorized: {0}.", error.Message),
-                    "Error", 
-                    MessageBoxButtons.OK, 
-                    MessageBoxIcon.Error);
+//                MessageBox.Show(
+//                    string.Format("Not authorized: {0}.", error.Message),
+//                    "Error", 
+//                    MessageBoxButtons.OK, 
+//                    MessageBoxIcon.Error);
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -19,6 +19,7 @@
 
 using System.Windows.Forms;
 using OpenCBS.Interface;
+using OpenCBS.Service.Shell;
 using StructureMap;
 
 namespace OpenCBS.GUI
@@ -44,6 +45,7 @@ namespace OpenCBS.GUI
                     scanner.LookForRegistries();
                 });
             });
+            _container.Inject<ApplicationContext>(new AppContext(_container));
             var translator = _container.TryGetInstance<ITranslator>();
             if (translator != null) translator.Reload();
             return _container.GetInstance<ApplicationContext>();

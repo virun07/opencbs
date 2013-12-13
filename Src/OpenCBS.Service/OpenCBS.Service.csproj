@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Omu.ValueInjecter">
       <HintPath>..\packages\valueinjecter.2.3.3\lib\net35\Omu.ValueInjecter.dll</HintPath>
     </Reference>
@@ -49,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Shell\JsonTranslator.cs" />
+    <Compile Include="Shell\ApplicationController.cs" />
     <Compile Include="AuthService.cs" />
     <Compile Include="Command\AddEntryFeeCommand.cs" />
     <Compile Include="Command\AddLoanProductCommand.cs" />
@@ -74,6 +79,9 @@
     <Compile Include="DatabaseService.cs" />
     <Compile Include="EmitProxy.cs" />
     <Compile Include="EntryFeeService.cs" />
+    <Compile Include="Shell\DefaultRegistry.cs" />
+    <Compile Include="Shell\EventAggregatorInterceptor.cs" />
+    <Compile Include="Shell\EventPublisher.cs" />
     <Compile Include="LoanProductService.cs" />
     <Compile Include="NonWorkingDayPolicy.cs" />
     <Compile Include="PolicyRegistry.cs" />

@@ -23,7 +23,7 @@ using OpenCBS.Interface;
 using StructureMap;
 using StructureMap.Interceptors;
 
-namespace OpenCBS.GUI
+namespace OpenCBS.Service.Shell
 {
     public class EventAggregatorInterceptor : TypeInterceptor
     {
