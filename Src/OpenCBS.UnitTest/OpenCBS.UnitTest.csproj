@@ -74,6 +74,7 @@
     <Compile Include="Command\ShowUsersCommandTest.cs" />
     <Compile Include="IoCContainer\CommandResolutionTest.cs" />
     <Compile Include="IoCContainer\PolicyFactoryTest.cs" />
+    <Compile Include="IoCContainer\RepositoryResolutionTest.cs" />
     <Compile Include="IoCContainer\ServiceResolutionTest.cs" />
     <Compile Include="IoCContainer\ShellResolutionTest.cs" />
     <Compile Include="IoCContainer\ValidatorResolutionTest.cs" />

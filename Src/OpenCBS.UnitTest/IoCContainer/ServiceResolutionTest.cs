@@ -59,7 +59,7 @@ namespace OpenCBS.UnitTest.IoCContainer
         }
 
         [Test]
-        public void GetInstance_EntryFeeService_Resolves()
+        public void GetInstance_EntryFeeService_ResolvesToSecuredProxy()
         {
             var service = _container.GetInstance<IEntryFeeService>();
             Assert.IsNotNull(service);
@@ -67,7 +67,7 @@ namespace OpenCBS.UnitTest.IoCContainer
         }
 
         [Test]
-        public void GetInstance_LoanProductService_Resolves()
+        public void GetInstance_LoanProductService_ResolvesToSecuredProxy()
         {
             var service = _container.GetInstance<ILoanProductService>();
             Assert.IsNotNull(service);
@@ -75,7 +75,7 @@ namespace OpenCBS.UnitTest.IoCContainer
         }
 
         [Test]
-        public void GetInstance_RoleService_Resolves()
+        public void GetInstance_RoleService_ResolvesToSecuredProxy()
         {
             var service = _container.GetInstance<IRoleService>();
             Assert.IsNotNull(service);
@@ -83,7 +83,7 @@ namespace OpenCBS.UnitTest.IoCContainer
         }
 
         [Test]
-        public void GetInstance_UserService_Resolves()
+        public void GetInstance_UserService_ResolvesToSecuredProxy()
         {
             var service = _container.GetInstance<IUserService>();
             Assert.IsNotNull(service);
