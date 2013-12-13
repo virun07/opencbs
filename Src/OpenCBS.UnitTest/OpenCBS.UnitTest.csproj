@@ -39,6 +39,10 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="StructureMap, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -68,6 +72,8 @@
     <Compile Include="Command\ShowLoanProductsCommandTest.cs" />
     <Compile Include="Command\ShowRolesCommandTest.cs" />
     <Compile Include="Command\ShowUsersCommandTest.cs" />
+    <Compile Include="IoCContainer\CommandResolutionTest.cs" />
+    <Compile Include="IoCContainer\ShellResolutionTest.cs" />
     <Compile Include="Model\RolePermissionTest.cs" />
     <Compile Include="Model\Schedule\DateShiftPolicy\BackwardDateShiftPolicyTest.cs" />
     <Compile Include="Model\Schedule\DateShiftPolicy\ForwardDateShiftPolicyTest.cs" />
@@ -122,6 +128,10 @@
       <Project>{db64ab0c-241b-423c-b5de-2df524386651}</Project>
       <Name>OpenCBS.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Persistence\OpenCBS.Persistence.csproj">
+      <Project>{4b943ef5-4293-4e1d-a6f4-9aa0a66b7dc9}</Project>
+      <Name>OpenCBS.Persistence</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Presenter\OpenCBS.Presenter.csproj">
       <Project>{e8a84301-0b7c-4f40-9213-7c10d64d1cc3}</Project>
       <Name>OpenCBS.Presenter</Name>
@@ -129,6 +139,10 @@
     <ProjectReference Include="..\OpenCBS.Service\OpenCBS.Service.csproj">
       <Project>{eb3c633e-d606-476e-aba1-55df197e6bad}</Project>
       <Name>OpenCBS.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.View\OpenCBS.View.csproj">
+      <Project>{47293a0a-43f5-4330-bd58-568049c869c2}</Project>
+      <Name>OpenCBS.View</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

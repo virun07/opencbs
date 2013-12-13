@@ -20,7 +20,7 @@
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Presenter;
 
-namespace OpenCBS.GUI.Command
+namespace OpenCBS.Service.Command
 {
     public abstract class ConfirmOperationCommand
     {
