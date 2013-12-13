@@ -73,7 +73,9 @@
     <Compile Include="Command\ShowRolesCommandTest.cs" />
     <Compile Include="Command\ShowUsersCommandTest.cs" />
     <Compile Include="IoCContainer\CommandResolutionTest.cs" />
+    <Compile Include="IoCContainer\ServiceResolutionTest.cs" />
     <Compile Include="IoCContainer\ShellResolutionTest.cs" />
+    <Compile Include="IoCContainer\ValidatorResolutionTest.cs" />
     <Compile Include="Model\RolePermissionTest.cs" />
     <Compile Include="Model\Schedule\DateShiftPolicy\BackwardDateShiftPolicyTest.cs" />
     <Compile Include="Model\Schedule\DateShiftPolicy\ForwardDateShiftPolicyTest.cs" />

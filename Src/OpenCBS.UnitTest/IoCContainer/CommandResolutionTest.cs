@@ -17,8 +17,6 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-// ReSharper disable InconsistentNaming
-
 using NSubstitute;
 using NUnit.Framework;
 using OpenCBS.DataContract.CommandData;
@@ -28,6 +26,7 @@ using OpenCBS.Service.Command;
 using OpenCBS.Service.Shell;
 using StructureMap;
 
+// ReSharper disable InconsistentNaming
 namespace OpenCBS.UnitTest.IoCContainer
 {
     [TestFixture]
