@@ -50,6 +50,7 @@
     <Compile Include="EntryFeePresenter.cs" />
     <Compile Include="EntryFeesPresenter.cs" />
     <Compile Include="ErrorPresenter.cs" />
+    <Compile Include="ExoticSchedulesPresenter.cs" />
     <Compile Include="LoanProductPresenter.cs" />
     <Compile Include="LoanProductsPresenter.cs" />
     <Compile Include="LoginPresenter.cs" />

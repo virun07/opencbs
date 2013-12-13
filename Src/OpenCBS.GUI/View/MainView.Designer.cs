@@ -162,6 +162,7 @@ namespace OpenCBS.GUI.View
             this.toolStripStatusLblBranchCode = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLblDB = new System.Windows.Forms.ToolStripStatusLabel();
             this.alertBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this._exoticSchedulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvAlerts)).BeginInit();
             this.tabFilter.SuspendLayout();
@@ -572,6 +573,7 @@ namespace OpenCBS.GUI.View
             this.toolStripMenuItemFundingLines,
             this.toolStripMenuItemInstallmentTypes,
             this._entryFeesMenuItem,
+            this._exoticSchedulesMenuItem,
             this.toolStripSeparatorConfig2,
             this.menuItemExchangeRate,
             this._currenciesMenuItem,
@@ -925,6 +927,11 @@ namespace OpenCBS.GUI.View
             // 
             this.alertBindingSource.DataSource = typeof(OpenCBS.CoreDomain.Alert);
             // 
+            // _exoticSchedulesMenuItem
+            // 
+            this._exoticSchedulesMenuItem.Name = "_exoticSchedulesMenuItem";
+            resources.ApplyResources(this._exoticSchedulesMenuItem, "_exoticSchedulesMenuItem");
+            // 
             // MainView
             // 
             resources.ApplyResources(this, "$this");
@@ -1024,6 +1031,7 @@ namespace OpenCBS.GUI.View
         private ToolStripMenuItem _portugueseMenuItem;
         private ToolStripMenuItem changePasswordToolStripMenuItem;
         private ToolStripMenuItem _entryFeesMenuItem;
+        private ToolStripMenuItem _exoticSchedulesMenuItem;
 
 
     }

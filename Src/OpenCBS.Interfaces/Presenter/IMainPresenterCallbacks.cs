@@ -26,6 +26,7 @@ namespace OpenCBS.Interface.Presenter
         void ShowLoanProducts();
         void ShowEntryFees();
         void ShowCurrencies();
+        void ShowExoticSchedules();
         void ChangeLanguage(string name);
     }
 }

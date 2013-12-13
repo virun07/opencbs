@@ -17,18 +17,32 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Windows.Forms;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.View;
 
-namespace OpenCBS.Interface.View
+namespace OpenCBS.View
 {
-    public interface IMainView : IView<IMainPresenterCallbacks>
+    public partial class ExoticSchedulesView : BaseView, IExoticSchedulesView
     {
-        void Run();
+        private IExoticSchedulesPresenterCallbacks _presenterCallbacks;
 
-        bool AllowUserManagement { get; set; }
-        bool AllowRoleManagement { get; set; }
-        bool AllowEntryFeeManagement { get; set; }
-        bool AllowLoanProductManagement { get; set; }
-        bool AllowExoticScheduleManagement { get; set; }
+        public ExoticSchedulesView(ITranslator translator)
+            : base(translator)
+        {
+            InitializeComponent();
+            MdiParent = Application.OpenForms[0];
+        }
+
+        public void Run()
+        {
+            Show();
+        }
+
+        public void Attach(IExoticSchedulesPresenterCallbacks presenterCallbacks)
+        {
+            _presenterCallbacks = presenterCallbacks;
+        }
     }
 }

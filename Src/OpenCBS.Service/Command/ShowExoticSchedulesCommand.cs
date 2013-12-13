@@ -19,13 +19,22 @@
 
 using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
+using OpenCBS.Interface.Presenter;
 
 namespace OpenCBS.Service.Command
 {
     public class ShowExoticSchedulesCommand : ICommand<ShowExoticSchedulesData>
     {
+        private readonly IExoticSchedulesPresenter _presenter;
+
+        public ShowExoticSchedulesCommand(IExoticSchedulesPresenter presenter)
+        {
+            _presenter = presenter;
+        }
+
         public void Execute(ShowExoticSchedulesData commandData)
         {
+            _presenter.Run();
         }
     }
 }

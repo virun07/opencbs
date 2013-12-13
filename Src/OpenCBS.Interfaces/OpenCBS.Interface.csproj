@@ -102,6 +102,7 @@
     <Compile Include="View\IEntryFeesView.cs" />
     <Compile Include="View\IEntryFeeView.cs" />
     <Compile Include="View\IErrorView.cs" />
+    <Compile Include="View\IExoticSchedulesView.cs" />
     <Compile Include="View\ILoanProductsView.cs" />
     <Compile Include="View\ILoanProductView.cs" />
     <Compile Include="View\ILoginView.cs" />

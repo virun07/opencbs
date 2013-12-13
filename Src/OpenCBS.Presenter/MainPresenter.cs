@@ -54,6 +54,11 @@ namespace OpenCBS.Presenter
             _appController.Execute(new ShowLoanProductsData());
         }
 
+        public void ShowExoticSchedules()
+        {
+            _appController.Execute(new ShowExoticSchedulesData());
+        }
+
         public void ShowEntryFees()
         {
             _appController.Execute(new ShowEntryFeesData());

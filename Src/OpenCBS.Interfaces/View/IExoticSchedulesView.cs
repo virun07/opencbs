@@ -21,14 +21,8 @@ using OpenCBS.Interface.Presenter;
 
 namespace OpenCBS.Interface.View
 {
-    public interface IMainView : IView<IMainPresenterCallbacks>
+    public interface IExoticSchedulesView : IView<IExoticSchedulesPresenterCallbacks>
     {
         void Run();
-
-        bool AllowUserManagement { get; set; }
-        bool AllowRoleManagement { get; set; }
-        bool AllowEntryFeeManagement { get; set; }
-        bool AllowLoanProductManagement { get; set; }
-        bool AllowExoticScheduleManagement { get; set; }
     }
 }

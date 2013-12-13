@@ -18,17 +18,52 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.View;
 
-namespace OpenCBS.Interface.View
+namespace OpenCBS.Presenter
 {
-    public interface IMainView : IView<IMainPresenterCallbacks>
+    public class ExoticSchedulesPresenter : IExoticSchedulesPresenter, IExoticSchedulesPresenterCallbacks
     {
-        void Run();
+        private readonly IExoticSchedulesView _view;
+        
+        public ExoticSchedulesPresenter(IExoticSchedulesView view)
+        {
+            _view = view;
+        }
 
-        bool AllowUserManagement { get; set; }
-        bool AllowRoleManagement { get; set; }
-        bool AllowEntryFeeManagement { get; set; }
-        bool AllowLoanProductManagement { get; set; }
-        bool AllowExoticScheduleManagement { get; set; }
+        public void Run()
+        {
+            _view.Attach(this);
+            _view.Run();
+        }
+
+        public void Add()
+        {
+        }
+
+        public void Edit()
+        {
+        }
+
+        public void Delete()
+        {
+        }
+
+        public void Refresh()
+        {
+        }
+
+        public void ChangeSelection()
+        {
+        }
+
+        public void Close()
+        {
+        }
+
+        public object View
+        {
+            get { return _view; }
+        }
     }
 }

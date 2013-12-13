@@ -1078,6 +1078,7 @@ namespace OpenCBS.GUI.View
             _usersMenuItem.Click += (sender, e) => presenterCallbacks.ShowUsers();
             _loanProductsMenuItem.Click += (sender, e) => presenterCallbacks.ShowLoanProducts();
             _entryFeesMenuItem.Click += (sender, e) => presenterCallbacks.ShowEntryFees();
+            _exoticSchedulesMenuItem.Click += (sender, e) => presenterCallbacks.ShowExoticSchedules();
             _currenciesMenuItem.Click += (sender, e) => presenterCallbacks.ShowCurrencies();
             _englishMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("en-US");
             _russianMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("ru-RU");
@@ -1108,6 +1109,12 @@ namespace OpenCBS.GUI.View
         {
             get { return _loanProductsMenuItem.Visible; }
             set { _loanProductsMenuItem.Visible = value; }
+        }
+
+        public bool AllowExoticScheduleManagement
+        {
+            get { return _exoticSchedulesMenuItem.Visible; }
+            set { _exoticSchedulesMenuItem.Visible = value; }
         }
     }
 }

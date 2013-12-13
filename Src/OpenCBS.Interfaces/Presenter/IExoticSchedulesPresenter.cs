@@ -19,7 +19,7 @@
 
 namespace OpenCBS.Interface.Presenter
 {
-    public interface IExoticSchedulesPresenter
+    public interface IExoticSchedulesPresenter : IPresenter
     {
         void Run();
     }
