@@ -44,6 +44,7 @@ namespace OpenCBS.Service.Shell
             For<ILoanProductService>().EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept)).Use<LoanProductService>();
             For<IUserService>().EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept)).Use<UserService>();
             For<IRoleService>().EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept)).Use<RoleService>();
+            For<IExoticScheduleService>().EnrichAllWith(x => x.Proxy(SecurityInterceptor.Intercept)).Use<ExoticScheduleService>();
             
             For<ITranslator>().Singleton().Use<JsonTranslator>();
 

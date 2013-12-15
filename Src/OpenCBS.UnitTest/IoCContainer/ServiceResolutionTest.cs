@@ -89,6 +89,14 @@ namespace OpenCBS.UnitTest.IoCContainer
             Assert.IsNotNull(service);
             Assert.AreEqual("IUserServiceProxy", service.GetType().Name);
         }
+
+        [Test]
+        public void GetInstance_ExoticScheduleService_ResolvesToSecuredProxy()
+        {
+            var service = _container.GetInstance<IExoticScheduleService>();
+            Assert.IsNotNull(service);
+            Assert.AreEqual("IExoticScheduleServiceProxy", service.GetType().Name);
+        }
     }
 }
 // ReSharper restore InconsistentNaming
