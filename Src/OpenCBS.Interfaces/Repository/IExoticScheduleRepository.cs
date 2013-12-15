@@ -17,15 +17,11 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-using OpenCBS.DataContract;
-using OpenCBS.Interface.Presenter;
+using OpenCBS.Model.Schedule;
 
-namespace OpenCBS.Interface.View
+namespace OpenCBS.Interface.Repository
 {
-    public interface IExoticSchedulesView : IView<IExoticSchedulesPresenterCallbacks>
+    public interface IExoticScheduleRepository : IRepository<ExoticSchedule>
     {
-        void Run();
-        void ShowExoticSchedules(IList<ExoticScheduleDto> schedules);
     }
 }

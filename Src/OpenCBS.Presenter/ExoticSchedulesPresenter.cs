@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
 
 namespace OpenCBS.Presenter
@@ -25,15 +26,18 @@ namespace OpenCBS.Presenter
     public class ExoticSchedulesPresenter : IExoticSchedulesPresenter, IExoticSchedulesPresenterCallbacks
     {
         private readonly IExoticSchedulesView _view;
+        private readonly IExoticScheduleService _service;
         
-        public ExoticSchedulesPresenter(IExoticSchedulesView view)
+        public ExoticSchedulesPresenter(IExoticSchedulesView view, IExoticScheduleService service)
         {
             _view = view;
+            _service = service;
         }
 
         public void Run()
         {
             _view.Attach(this);
+            ShowExoticSchedules();
             _view.Run();
         }
 
@@ -64,6 +68,12 @@ namespace OpenCBS.Presenter
         public object View
         {
             get { return _view; }
+        }
+
+        private void ShowExoticSchedules()
+        {
+            var schedules = _service.FindAll();
+            _view.ShowExoticSchedules(schedules);
         }
     }
 }

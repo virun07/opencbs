@@ -17,15 +17,26 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-using OpenCBS.DataContract;
+using NSubstitute;
+using NUnit.Framework;
+using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface.Presenter;
+using OpenCBS.Service.Command;
 
-namespace OpenCBS.Interface.View
+// ReSharper disable InconsistentNaming
+namespace OpenCBS.UnitTest.Command
 {
-    public interface IExoticSchedulesView : IView<IExoticSchedulesPresenterCallbacks>
+    [TestFixture]
+    public class ShowExoticSchedulesCommandTest
     {
-        void Run();
-        void ShowExoticSchedules(IList<ExoticScheduleDto> schedules);
+        [Test]
+        public void Execute_CallsRunOnPresenter()
+        {
+            var presenter = Substitute.For<IExoticSchedulesPresenter>();
+            var command = new ShowExoticSchedulesCommand(presenter);
+            command.Execute(new ShowExoticSchedulesData());
+            presenter.Received().Run();
+        }
     }
 }
+// ReSharper restore InconsistentNaming

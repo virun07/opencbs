@@ -69,6 +69,7 @@
     <Compile Include="Command\SelectEntryFeeCommandTest.cs" />
     <Compile Include="Command\ShowCurrenciesCommandTest.cs" />
     <Compile Include="Command\ShowEntryFeesCommandTest.cs" />
+    <Compile Include="Command\ShowExoticSchedulesCommandTest.cs" />
     <Compile Include="Command\ShowLoanProductsCommandTest.cs" />
     <Compile Include="Command\ShowRolesCommandTest.cs" />
     <Compile Include="Command\ShowUsersCommandTest.cs" />

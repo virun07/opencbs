@@ -80,6 +80,7 @@
     <Compile Include="Repository\ICurrencyRepository.cs" />
     <Compile Include="Repository\IDatabaseRepository.cs" />
     <Compile Include="Repository\IEntryFeeRepository.cs" />
+    <Compile Include="Repository\IExoticScheduleRepository.cs" />
     <Compile Include="Repository\ILoanProductRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IRoleRepository.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Service\ICurrencyService.cs" />
     <Compile Include="Service\IDatabaseService.cs" />
     <Compile Include="Service\IEntryFeeService.cs" />
+    <Compile Include="Service\IExoticScheduleService.cs" />
     <Compile Include="Service\ILoanProductService.cs" />
     <Compile Include="Service\IRoleService.cs" />
     <Compile Include="Service\IService.cs" />

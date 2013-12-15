@@ -57,6 +57,7 @@
     <Compile Include="CurrencyRepository.cs" />
     <Compile Include="DatabaseRepository.cs" />
     <Compile Include="EntryFeeRepository.cs" />
+    <Compile Include="ExoticScheduleRepository.cs" />
     <Compile Include="LoanProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DapperExtensions.cs" />

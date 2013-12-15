@@ -85,6 +85,13 @@ namespace OpenCBS.UnitTest.IoCContainer
             var repository = _container.GetInstance<IUserRepository>();
             Assert.IsInstanceOf<UserRepository>(repository);
         }
+
+        [Test]
+        public void GetInstance_ExoticScheduleRepository_Resolves()
+        {
+            var repository = _container.GetInstance<IExoticScheduleRepository>();
+            Assert.IsInstanceOf<ExoticScheduleRepository>(repository);
+        }
     }
 }
 // ReSharper restore InconsistentNaming

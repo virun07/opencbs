@@ -17,7 +17,9 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
 using System.Windows.Forms;
+using OpenCBS.DataContract;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.View;
@@ -43,6 +45,14 @@ namespace OpenCBS.View
         public void Attach(IExoticSchedulesPresenterCallbacks presenterCallbacks)
         {
             _presenterCallbacks = presenterCallbacks;
+        }
+
+        public void ShowExoticSchedules(IList<ExoticScheduleDto> schedules)
+        {
+            var selectedObject = _exoticSchedulesListView.SelectedObject;
+            _exoticSchedulesListView.SetObjects(schedules);
+            _presenterCallbacks.ChangeSelection();
+            _exoticSchedulesListView.SelectedObject = selectedObject;
         }
     }
 }
