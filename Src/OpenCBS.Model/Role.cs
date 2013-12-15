@@ -39,41 +39,41 @@ namespace OpenCBS.Model
             // So, along with IUserService.Add you need IRoleService.FindAll
             //
             // The Map below defines all such entries: screen permission -> list of service permissions
-            Map.Add("Role.View", new HashSet<string>
+            Map.Add("Security.ViewRole", new HashSet<string>
             {
                 "IRoleService.FindAll"
             });
-            Map.Add("Role.Add", new HashSet<string>
+            Map.Add("Security.AddRole", new HashSet<string>
             {
                 "IRoleService.FindAll",
                 "IRoleService.Validate",
                 "IRoleService.Add"
             });
-            Map.Add("Role.Edit", new HashSet<string>
+            Map.Add("Security.EditRole", new HashSet<string>
             {
                 "IRoleService.FindAll",
                 "IRoleService.Validate",
                 "IRoleService.FindById",
                 "IRoleService.Update"
             });
-            Map.Add("Role.Delete", new HashSet<string>
+            Map.Add("Security.DeleteRole", new HashSet<string>
             {
                 "IRoleService.FindAll",
                 "IRoleService.Delete"
             });
 
-            Map.Add("User.View", new HashSet<string>
+            Map.Add("Security.ViewUser", new HashSet<string>
             {
                 "IUserService.FindAll"
             });
-            Map.Add("User.Add", new HashSet<string>
+            Map.Add("Security.AddUser", new HashSet<string>
             {
                 "IRoleService.FindAll",
                 "IUserService.FindAll",
                 "IUserService.Validate",
                 "IUserService.Add"
             });
-            Map.Add("User.Edit", new HashSet<string>
+            Map.Add("Security.EditUser", new HashSet<string>
             {
                 "IRoleService.FindAll",
                 "IUserService.FindById",
@@ -81,7 +81,7 @@ namespace OpenCBS.Model
                 "IUserService.Validate",
                 "IUserService.Update"
             });
-            Map.Add("User.Delete", new HashSet<string>
+            Map.Add("Security.DeleteUser", new HashSet<string>
             {
                 "IUserService.FindAll",
                 "IUserService.Delete"

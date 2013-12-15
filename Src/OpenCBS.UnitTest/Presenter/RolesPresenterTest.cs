@@ -61,15 +61,15 @@ namespace OpenCBS.UnitTest.Presenter
         public void Run_ChecksPermissions()
         {
             _presenter.Run();
-            _authService.Received().Can("Role.Add");
-            _authService.Received().Can("Role.Edit");
-            _authService.Received().Can("Role.Delete");
+            _authService.Received().Can("Security.AddRole");
+            _authService.Received().Can("Security.EditRole");
+            _authService.Received().Can("Security.DeleteRole");
         }
 
         [Test]
         public void Run_HasAddPermission_CanAdd()
         {
-            _authService.Can("Role.Add").Returns(true);
+            _authService.Can("Security.AddRole").Returns(true);
             _presenter.Run();
             Assert.IsTrue(_rolesView.AllowAdding);
         }
@@ -77,7 +77,7 @@ namespace OpenCBS.UnitTest.Presenter
         [Test]
         public void Run_HasEditPermission_CanEdit()
         {
-            _authService.Can("Role.Edit").Returns(true);
+            _authService.Can("Security.EditRole").Returns(true);
             _presenter.Run();
             Assert.IsTrue(_rolesView.AllowEditing);
         }
@@ -85,7 +85,7 @@ namespace OpenCBS.UnitTest.Presenter
         [Test]
         public void Run_HasDeletePermission_CanDelete()
         {
-            _authService.Can("Role.Delete").Returns(true);
+            _authService.Can("Security.DeleteRole").Returns(true);
             _presenter.Run();
             Assert.IsTrue(_rolesView.AllowDeleting);
         }

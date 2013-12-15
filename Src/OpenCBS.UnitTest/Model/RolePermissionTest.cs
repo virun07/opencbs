@@ -43,56 +43,56 @@ namespace OpenCBS.UnitTest.Model
         [Test]
         public void Role_View()
         {
-            var role = GetRoleWithPermission("Role.View");
+            var role = GetRoleWithPermission("Security.ViewRole");
             AssertMapsTo(role, new[] { "IRoleService.FindAll" });
         }
 
         [Test]
         public void Role_Add()
         {
-            var role = GetRoleWithPermission("Role.Add");
+            var role = GetRoleWithPermission("Security.AddRole");
             AssertMapsTo(role, new[] { "IRoleService.FindAll", "IRoleService.Validate", "IRoleService.Add" });
         }
 
         [Test]
         public void Role_Edit()
         {
-            var role = GetRoleWithPermission("Role.Edit");
+            var role = GetRoleWithPermission("Security.EditRole");
             AssertMapsTo(role, new[] { "IRoleService.FindById", "IRoleService.FindAll", "IRoleService.Validate", "IRoleService.Update" });
         }
 
         [Test]
         public void Role_Delete()
         {
-            var role = GetRoleWithPermission("Role.Delete");
+            var role = GetRoleWithPermission("Security.DeleteRole");
             AssertMapsTo(role, new[] { "IRoleService.FindAll", "IRoleService.Delete" });
         }
 
         [Test]
         public void User_View()
         {
-            var role = GetRoleWithPermission("User.View");
+            var role = GetRoleWithPermission("Security.ViewUser");
             AssertMapsTo(role, new[] { "IUserService.FindAll" });
         }
 
         [Test]
         public void User_Add()
         {
-            var role = GetRoleWithPermission("User.Add");
+            var role = GetRoleWithPermission("Security.AddUser");
             AssertMapsTo(role, new[] { "IRoleService.FindAll", "IUserService.FindAll", "IUserService.Validate", "IUserService.Add" });
         }
 
         [Test]
         public void User_Edit()
         {
-            var role = GetRoleWithPermission("User.Edit");
+            var role = GetRoleWithPermission("Security.EditUser");
             AssertMapsTo(role, new[] { "IRoleService.FindAll", "IUserService.FindAll", "IUserService.FindById", "IUserService.Validate", "IUserService.Update" });
         }
 
         [Test]
         public void User_Delete()
         {
-            var role = GetRoleWithPermission("User.Delete");
+            var role = GetRoleWithPermission("Security.DeleteUser");
             AssertMapsTo(role, new[] { "IUserService.FindAll", "IUserService.Delete" });
         }
 

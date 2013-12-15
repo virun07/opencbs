@@ -77,12 +77,12 @@ namespace OpenCBS.UnitTest.Presenter
             {
                 Id = 1,
                 Name = "Test role",
-                Permissions = new List<string> { "User.View" }
+                Permissions = new List<string> { "Security.ViewUser" }
             };
             _presenter.Get(role);
             Assert.AreEqual(1, _roleView.Id);
             Assert.AreEqual("Test role", _roleView.RoleName);
-            Assert.That(_roleView.Permissions, Is.EquivalentTo(new List<string> { "User.View" }));
+            Assert.That(_roleView.Permissions, Is.EquivalentTo(new List<string> { "Security.ViewUser" }));
         }
 
         [Test]

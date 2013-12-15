@@ -63,15 +63,15 @@ namespace OpenCBS.UnitTest.Presenter
         public void Run_ChecksPermissions()
         {
             _presenter.Run();
-            _authService.Received().Can("User.Add");
-            _authService.Received().Can("User.Edit");
-            _authService.Received().Can("User.Delete");
+            _authService.Received().Can("Security.AddUser");
+            _authService.Received().Can("Security.EditUser");
+            _authService.Received().Can("Security.DeleteUser");
         }
 
         [Test]
         public void Run_HasAddPermission_CanAdd()
         {
-            _authService.Can("User.Add").Returns(true);
+            _authService.Can("Security.AddUser").Returns(true);
             _presenter.Run();
             Assert.IsTrue(_usersView.AllowAdding);
         }
@@ -79,7 +79,7 @@ namespace OpenCBS.UnitTest.Presenter
         [Test]
         public void Run_HasEditPermission_CanEdit()
         {
-            _authService.Can("User.Edit").Returns(true);
+            _authService.Can("Security.EditUser").Returns(true);
             _presenter.Run();
             Assert.IsTrue(_usersView.AllowEditing);
         }
@@ -87,7 +87,7 @@ namespace OpenCBS.UnitTest.Presenter
         [Test]
         public void Run_HasDeletePermission_CanDelete()
         {
-            _authService.Can("User.Delete").Returns(true);
+            _authService.Can("Security.DeleteUser").Returns(true);
             _presenter.Run();
             Assert.IsTrue(_usersView.AllowDeleting);
         }

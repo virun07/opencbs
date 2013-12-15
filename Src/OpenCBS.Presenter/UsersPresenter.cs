@@ -51,9 +51,9 @@ namespace OpenCBS.Presenter
         {
             _view.Attach(this);
             _view.Roles = _roleService.FindAll();
-            _view.AllowAdding = _authService.Can("User.Add");
-            _view.AllowEditing = _authService.Can("User.Edit");
-            _view.AllowDeleting = _authService.Can("User.Delete");
+            _view.AllowAdding = _authService.Can("Security.AddUser");
+            _view.AllowEditing = _authService.Can("Security.EditUser");
+            _view.AllowDeleting = _authService.Can("Security.DeleteUser");
             ShowUsers();
             _view.Run();
         }

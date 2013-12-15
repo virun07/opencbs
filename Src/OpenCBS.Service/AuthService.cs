@@ -62,15 +62,15 @@ namespace OpenCBS.Service
         {
             var result = new List<string>
             {
-                "Role.View",
-                "Role.Add",
-                "Role.Edit",
-                "Role.Delete",
+                "Security.ViewRole",
+                "Security.AddRole",
+                "Security.EditRole",
+                "Security.DeleteRole",
 
-                "User.View",
-                "User.Add",
-                "User.Edit",
-                "User.Delete",
+                "Security.ViewUser",
+                "Security.AddUser",
+                "Security.EditUser",
+                "Security.DeleteUser",
 
                 "EntryFee.View",
                 "EntryFee.Add",
