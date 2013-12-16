@@ -21,6 +21,7 @@ namespace OpenCBS.DataContract
 {
     public class ChangePasswordDto : DataTransferObject
     {
+        public bool RequireCurrentPassword { get; set; }
         public string CurrentPassword { get; set; }
         public string NewPassword { get; set; }
         public string NewPasswordConfirmation { get; set; }

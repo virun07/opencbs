@@ -29,6 +29,7 @@ namespace OpenCBS.Interface.View
         void ShowNotification(Notification notification);
 
         int Id { get; set; }
+        bool RequireCurrentPassword { get; set; }
         string CurrentPassword { get; }
         string NewPassword { get; }
         string NewPasswordConfirmation { get; }

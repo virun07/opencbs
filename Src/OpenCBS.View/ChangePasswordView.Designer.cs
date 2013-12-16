@@ -78,7 +78,7 @@
             this._currentPasswordTextBox.Name = "_currentPasswordTextBox";
             this._currentPasswordTextBox.PasswordChar = '*';
             this._currentPasswordTextBox.Size = new System.Drawing.Size(174, 23);
-            this._currentPasswordTextBox.TabIndex = 103;
+            this._currentPasswordTextBox.TabIndex = 2;
             this._currentPasswordTextBox.Tag = "CurrentPassword";
             // 
             // _currentPasswordLabel
@@ -87,7 +87,7 @@
             this._currentPasswordLabel.Location = new System.Drawing.Point(12, 23);
             this._currentPasswordLabel.Name = "_currentPasswordLabel";
             this._currentPasswordLabel.Size = new System.Drawing.Size(100, 15);
-            this._currentPasswordLabel.TabIndex = 102;
+            this._currentPasswordLabel.TabIndex = 1;
             this._currentPasswordLabel.Text = "Current password";
             // 
             // _newPasswordTextBox
@@ -96,7 +96,7 @@
             this._newPasswordTextBox.Name = "_newPasswordTextBox";
             this._newPasswordTextBox.PasswordChar = '*';
             this._newPasswordTextBox.Size = new System.Drawing.Size(174, 23);
-            this._newPasswordTextBox.TabIndex = 105;
+            this._newPasswordTextBox.TabIndex = 4;
             this._newPasswordTextBox.Tag = "NewPassword";
             // 
             // _newPasswordLabel
@@ -105,7 +105,7 @@
             this._newPasswordLabel.Location = new System.Drawing.Point(12, 52);
             this._newPasswordLabel.Name = "_newPasswordLabel";
             this._newPasswordLabel.Size = new System.Drawing.Size(84, 15);
-            this._newPasswordLabel.TabIndex = 104;
+            this._newPasswordLabel.TabIndex = 3;
             this._newPasswordLabel.Text = "New password";
             // 
             // _newPasswordConfirmationTextBox
@@ -114,7 +114,7 @@
             this._newPasswordConfirmationTextBox.Name = "_newPasswordConfirmationTextBox";
             this._newPasswordConfirmationTextBox.PasswordChar = '*';
             this._newPasswordConfirmationTextBox.Size = new System.Drawing.Size(174, 23);
-            this._newPasswordConfirmationTextBox.TabIndex = 107;
+            this._newPasswordConfirmationTextBox.TabIndex = 6;
             this._newPasswordConfirmationTextBox.Tag = "NewPasswordConfirmation";
             // 
             // _newPasswordConfirmationLabel
@@ -123,7 +123,7 @@
             this._newPasswordConfirmationLabel.Location = new System.Drawing.Point(12, 84);
             this._newPasswordConfirmationLabel.Name = "_newPasswordConfirmationLabel";
             this._newPasswordConfirmationLabel.Size = new System.Drawing.Size(164, 15);
-            this._newPasswordConfirmationLabel.TabIndex = 106;
+            this._newPasswordConfirmationLabel.TabIndex = 5;
             this._newPasswordConfirmationLabel.Text = "New password (confirmation)";
             // 
             // ChangePasswordView

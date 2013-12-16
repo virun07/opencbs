@@ -23,6 +23,7 @@ namespace OpenCBS.Interface.Presenter
     {
         void Add();
         void Edit();
+        void ChangePassword();
         void Delete();
         void Refresh();
         void ChangeSelection();

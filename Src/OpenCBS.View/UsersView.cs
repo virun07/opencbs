@@ -48,6 +48,7 @@ namespace OpenCBS.View
         {
             _addButton.Click += (sender, e) => presenterCallbacks.Add();
             _editButton.Click += (sender, e) => presenterCallbacks.Edit();
+            _changePasswordButton.Click += (sender, e) => presenterCallbacks.ChangePassword();
             _deleteButton.Click += (sender, e) => presenterCallbacks.Delete();
             _showDeletedCheckBox.CheckedChanged += (sender, e) => presenterCallbacks.Refresh();
             _usersListView.SelectedIndexChanged += (sender, e) => presenterCallbacks.ChangeSelection();
@@ -91,6 +92,12 @@ namespace OpenCBS.View
         {
             get { return _deleteButton.Enabled; }
             set { _deleteButton.Enabled = value; }
+        }
+
+        public bool CanChangePassword
+        {
+            get { return _changePasswordButton.Enabled; }
+            set { _changePasswordButton.Enabled = value; }
         }
 
         public int? SelectedUserId

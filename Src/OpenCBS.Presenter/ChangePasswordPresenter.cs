@@ -45,6 +45,7 @@ namespace OpenCBS.Presenter
         {
             _view.Attach(this);
             _view.Id = id;
+            _view.RequireCurrentPassword = id == UserDto.Current.Id;
             _view.Run();
             return new Result<ChangePasswordDto>(_commandResult, _commandResult == CommandResult.Ok ? GetDto() : null);
         }

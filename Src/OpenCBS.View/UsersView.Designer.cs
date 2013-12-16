@@ -39,6 +39,7 @@
             this._editButton = new System.Windows.Forms.Button();
             this._deleteButton = new System.Windows.Forms.Button();
             this._showDeletedCheckBox = new System.Windows.Forms.CheckBox();
+            this._changePasswordButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._usersListView)).BeginInit();
             this._buttonsPanel.SuspendLayout();
             this.SuspendLayout();
@@ -107,6 +108,7 @@
             // 
             this._buttonsPanel.Controls.Add(this._addButton);
             this._buttonsPanel.Controls.Add(this._editButton);
+            this._buttonsPanel.Controls.Add(this._changePasswordButton);
             this._buttonsPanel.Controls.Add(this._deleteButton);
             this._buttonsPanel.Controls.Add(this._showDeletedCheckBox);
             this._buttonsPanel.Dock = System.Windows.Forms.DockStyle.Right;
@@ -142,7 +144,7 @@
             // _deleteButton
             // 
             this._deleteButton.AutoSize = true;
-            this._deleteButton.Location = new System.Drawing.Point(3, 64);
+            this._deleteButton.Location = new System.Drawing.Point(3, 95);
             this._deleteButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._deleteButton.Name = "_deleteButton";
             this._deleteButton.Size = new System.Drawing.Size(164, 27);
@@ -153,13 +155,24 @@
             // _showDeletedCheckBox
             // 
             this._showDeletedCheckBox.AutoSize = true;
-            this._showDeletedCheckBox.Location = new System.Drawing.Point(3, 95);
+            this._showDeletedCheckBox.Location = new System.Drawing.Point(3, 126);
             this._showDeletedCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._showDeletedCheckBox.Name = "_showDeletedCheckBox";
             this._showDeletedCheckBox.Size = new System.Drawing.Size(97, 19);
             this._showDeletedCheckBox.TabIndex = 3;
             this._showDeletedCheckBox.Text = "Show deleted";
             this._showDeletedCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // _changePasswordButton
+            // 
+            this._changePasswordButton.AutoSize = true;
+            this._changePasswordButton.Location = new System.Drawing.Point(3, 64);
+            this._changePasswordButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._changePasswordButton.Name = "_changePasswordButton";
+            this._changePasswordButton.Size = new System.Drawing.Size(164, 27);
+            this._changePasswordButton.TabIndex = 4;
+            this._changePasswordButton.Text = "Change password";
+            this._changePasswordButton.UseVisualStyleBackColor = true;
             // 
             // UsersView
             // 
@@ -190,5 +203,6 @@
         private BrightIdeasSoftware.OLVColumn _rolesColumn;
         private BrightIdeasSoftware.OLVColumn _usernameColumn;
         private BrightIdeasSoftware.OLVColumn _isSuperuserColumn;
+        private System.Windows.Forms.Button _changePasswordButton;
     }
 }

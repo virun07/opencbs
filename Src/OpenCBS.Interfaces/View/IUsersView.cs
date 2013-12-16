@@ -17,6 +17,8 @@ namespace OpenCBS.Interface.View
 
         bool CanEdit { get; set; }
         bool CanDelete { get; set; }
+        bool CanChangePassword { get; set; }
+
         int? SelectedUserId { get; }
         bool ShowDeleted { get; }
         IList<RoleDto> Roles { get; set; }

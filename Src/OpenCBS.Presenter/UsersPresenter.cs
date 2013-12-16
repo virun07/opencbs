@@ -75,6 +75,13 @@ namespace OpenCBS.Presenter
             _appController.Execute(new EditUserData { Id = id.Value });
         }
 
+        public void ChangePassword()
+        {
+            var id = _view.SelectedUserId;
+            if (id == null) return;
+            _appController.Execute(new ChangePasswordData { UserId = id.Value });
+        }
+
         public void Delete()
         {
             var id = _view.SelectedUserId;
@@ -90,7 +97,7 @@ namespace OpenCBS.Presenter
         public void ChangeSelection()
         {
             var id = _view.SelectedUserId;
-            _view.CanEdit = _view.CanDelete = id != null;
+            _view.CanEdit = _view.CanChangePassword = _view.CanDelete = id != null;
         }
 
         public void Close()

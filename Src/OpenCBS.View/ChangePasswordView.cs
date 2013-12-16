@@ -41,6 +41,12 @@ namespace OpenCBS.View
 
         public int Id { get; set; }
 
+        public bool RequireCurrentPassword
+        {
+            get { return _currentPasswordTextBox.Enabled; }
+            set { _currentPasswordTextBox.Enabled = value; }
+        }
+
         public string CurrentPassword
         {
             get { return _currentPasswordTextBox.Text; }
