@@ -18,12 +18,27 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.DataContract;
+using OpenCBS.Interface.Repository;
+using OpenCBS.Interface.Validator;
 
-namespace OpenCBS.Interface.Service
+namespace OpenCBS.Service.Validator
 {
-    public interface IUserService : IService<UserDto>
+    public class ChangePasswordValidator : Validator<ChangePasswordDto>, IChangePasswordValidator
     {
-        void ValidateChangePassword(ChangePasswordDto dto);
-        void ChangePassword(int id, string password);
+        private readonly IUserRepository _userRepository;
+
+        public ChangePasswordValidator(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
+        public override void Validate(ChangePasswordDto entity)
+        {
+            base.Validate(entity);
+            Fail(!_userRepository.UserExists(entity.Id, entity.CurrentPassword), "CurrentPassword", "Invalid password.");
+            FailIfNullOrEmpty("CurrentPassword");
+            FailIfNullOrEmpty("NewPassword");
+            Fail(entity.NewPassword != entity.NewPasswordConfirmation, "NewPasswordConfirmation", "Passwords do not match.");
+        }
     }
 }

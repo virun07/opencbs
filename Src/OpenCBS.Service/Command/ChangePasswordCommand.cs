@@ -18,12 +18,31 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.DataContract;
+using OpenCBS.DataContract.CommandData;
+using OpenCBS.Interface;
+using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.Service;
 
-namespace OpenCBS.Interface.Service
+namespace OpenCBS.Service.Command
 {
-    public interface IUserService : IService<UserDto>
+    public class ChangePasswordCommand : ICommand<ChangePasswordData>
     {
-        void ValidateChangePassword(ChangePasswordDto dto);
-        void ChangePassword(int id, string password);
+        private readonly IChangePasswordPresenter _presenter;
+        private readonly IUserService _userService;
+
+        public ChangePasswordCommand(IChangePasswordPresenter presenter, IUserService userService)
+        {
+            _presenter = presenter;
+            _userService = userService;
+        }
+
+        public void Execute(ChangePasswordData commandData)
+        {
+            var result = _presenter.Get(commandData.UserId);
+            if (result.CommandResult == CommandResult.Ok)
+            {
+                _userService.ChangePassword(result.Data.Id, result.Data.NewPassword);
+            }
+        }
     }
 }

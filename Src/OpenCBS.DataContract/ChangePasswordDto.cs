@@ -16,14 +16,13 @@
 // 
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
-using OpenCBS.Model;
 
-namespace OpenCBS.Interface.Repository
+namespace OpenCBS.DataContract
 {
-    public interface IUserRepository : IRepository<User>
+    public class ChangePasswordDto : DataTransferObject
     {
-        User FindByUsernameAndPassword(string username, string password);
-        bool UserExists(int id, string password);
-        void ChangePassword(int id, string password);
+        public string CurrentPassword { get; set; }
+        public string NewPassword { get; set; }
+        public string NewPasswordConfirmation { get; set; }
     }
 }

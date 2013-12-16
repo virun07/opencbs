@@ -35,12 +35,14 @@ namespace OpenCBS.Service
         private readonly IUserRepository _userRepository;
         private readonly IRoleRepository _roleRepository;
         private readonly IUserValidator _userValidator;
+        private readonly IChangePasswordValidator _changePasswordValidator;
 
-        public UserService(IUserRepository userRepository, IRoleRepository roleRepository, IUserValidator userValidator)
+        public UserService(IUserRepository userRepository, IRoleRepository roleRepository, IUserValidator userValidator, IChangePasswordValidator changePasswordValidator)
         {
             _userRepository = userRepository;
             _roleRepository = roleRepository;
             _userValidator = userValidator;
+            _changePasswordValidator = changePasswordValidator;
         }
 
         public IList<UserDto> FindAll()
@@ -104,6 +106,16 @@ namespace OpenCBS.Service
                 throw new ArgumentException("Cannot delete superuser.");
 
             _userRepository.Remove(id);
+        }
+
+        public void ValidateChangePassword(ChangePasswordDto dto)
+        {
+            _changePasswordValidator.Validate(dto);
+        }
+
+        public void ChangePassword(int id, string password)
+        {
+            _userRepository.ChangePassword(id, password);
         }
 
         private static UserDto Map(User user)

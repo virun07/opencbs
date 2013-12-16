@@ -129,6 +129,13 @@ namespace OpenCBS.UnitTest.Presenter
         }
 
         [Test]
+        public void ChangePassword_ExecutesCommand()
+        {
+            _presenter.ChangePassword();
+            _appController.Received().Execute(Arg.Any<ChangePasswordData>());
+        }
+
+        [Test]
         public void Run_HasNoPermission_CannotManageStuff()
         {
             _authService.Can(Arg.Any<string>()).Returns(false);

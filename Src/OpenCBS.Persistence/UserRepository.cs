@@ -28,8 +28,27 @@ namespace OpenCBS.Persistence
 {
     public class UserRepository : Repository, IUserRepository
     {
-        public UserRepository(IConnectionStringProvider connectionStringProvider) : base(connectionStringProvider)
+        public UserRepository(IConnectionStringProvider connectionStringProvider)
+            : base(connectionStringProvider)
         {
+        }
+
+        public bool UserExists(int id, string password)
+        {
+            const string sql = @"select cast(count(*) as bit) from Users where id = @Id and user_pass = @Password";
+            using (var connection = GetConnection())
+            {
+                return connection.Query<bool>(sql, new { Id = id, Password = password }).Single();
+            }
+        }
+
+        public void ChangePassword(int id, string password)
+        {
+            const string sql = @"update Users set user_pass = @Password where id = @Id";
+            using (var connection = GetConnection())
+            {
+                connection.Execute(sql, new { Id = id, Password = password });
+            }
         }
 
         public User FindByUsernameAndPassword(string username, string password)

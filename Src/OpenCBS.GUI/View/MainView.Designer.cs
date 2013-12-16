@@ -123,6 +123,7 @@ namespace OpenCBS.GUI.View
             this.toolStripMenuItemFundingLines = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemInstallmentTypes = new System.Windows.Forms.ToolStripMenuItem();
             this._entryFeesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._exoticSchedulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorConfig2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemExchangeRate = new System.Windows.Forms.ToolStripMenuItem();
             this._currenciesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -148,7 +149,7 @@ namespace OpenCBS.GUI.View
             this._rolesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._usersMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miAuditTrail = new System.Windows.Forms.ToolStripMenuItem();
-            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._changePasswordMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProducts = new System.Windows.Forms.ToolStripMenuItem();
             this._loanProductsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savingProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -162,7 +163,6 @@ namespace OpenCBS.GUI.View
             this.toolStripStatusLblBranchCode = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLblDB = new System.Windows.Forms.ToolStripStatusLabel();
             this.alertBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this._exoticSchedulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvAlerts)).BeginInit();
             this.tabFilter.SuspendLayout();
@@ -635,6 +635,11 @@ namespace OpenCBS.GUI.View
             resources.ApplyResources(this._entryFeesMenuItem, "_entryFeesMenuItem");
             this._entryFeesMenuItem.Tag = "";
             // 
+            // _exoticSchedulesMenuItem
+            // 
+            this._exoticSchedulesMenuItem.Name = "_exoticSchedulesMenuItem";
+            resources.ApplyResources(this._exoticSchedulesMenuItem, "_exoticSchedulesMenuItem");
+            // 
             // toolStripSeparatorConfig2
             // 
             this.toolStripSeparatorConfig2.Name = "toolStripSeparatorConfig2";
@@ -794,7 +799,7 @@ namespace OpenCBS.GUI.View
             this._rolesMenuItem,
             this._usersMenuItem,
             this.miAuditTrail,
-            this.changePasswordToolStripMenuItem});
+            this._changePasswordMenuItem});
             this.mnuSecurity.Name = "mnuSecurity";
             resources.ApplyResources(this.mnuSecurity, "mnuSecurity");
             // 
@@ -817,11 +822,10 @@ namespace OpenCBS.GUI.View
             resources.ApplyResources(this.miAuditTrail, "miAuditTrail");
             this.miAuditTrail.Click += new System.EventHandler(this.eventsToolStripMenuItem_Click);
             // 
-            // changePasswordToolStripMenuItem
+            // _changePasswordMenuItem
             // 
-            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            resources.ApplyResources(this.changePasswordToolStripMenuItem, "changePasswordToolStripMenuItem");
-            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
+            this._changePasswordMenuItem.Name = "_changePasswordMenuItem";
+            resources.ApplyResources(this._changePasswordMenuItem, "_changePasswordMenuItem");
             // 
             // mnuProducts
             // 
@@ -927,11 +931,6 @@ namespace OpenCBS.GUI.View
             // 
             this.alertBindingSource.DataSource = typeof(OpenCBS.CoreDomain.Alert);
             // 
-            // _exoticSchedulesMenuItem
-            // 
-            this._exoticSchedulesMenuItem.Name = "_exoticSchedulesMenuItem";
-            resources.ApplyResources(this._exoticSchedulesMenuItem, "_exoticSchedulesMenuItem");
-            // 
             // MainView
             // 
             resources.ApplyResources(this, "$this");
@@ -1029,7 +1028,7 @@ namespace OpenCBS.GUI.View
         private ToolStripMenuItem _russianMenuItem;
         private ToolStripMenuItem _spanishMenuItem;
         private ToolStripMenuItem _portugueseMenuItem;
-        private ToolStripMenuItem changePasswordToolStripMenuItem;
+        private ToolStripMenuItem _changePasswordMenuItem;
         private ToolStripMenuItem _entryFeesMenuItem;
         private ToolStripMenuItem _exoticSchedulesMenuItem;
 

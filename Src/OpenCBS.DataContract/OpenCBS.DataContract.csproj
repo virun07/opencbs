@@ -51,12 +51,14 @@
     <Compile Include="AppEvent\RoleSavedEvent.cs" />
     <Compile Include="AppEvent\UserDeletedEvent.cs" />
     <Compile Include="AppEvent\UserSavedEvent.cs" />
+    <Compile Include="ChangePasswordDto.cs" />
     <Compile Include="CommandData\AddCurrencyData.cs" />
     <Compile Include="CommandData\AddEntryFeeData.cs" />
     <Compile Include="CommandData\AddLoanProductData.cs" />
     <Compile Include="CommandData\AddRoleData.cs" />
     <Compile Include="CommandData\AddUserData.cs" />
     <Compile Include="CommandData\ChangeLanguageData.cs" />
+    <Compile Include="CommandData\ChangePasswordData.cs" />
     <Compile Include="CommandData\DeleteEntryFeeData.cs" />
     <Compile Include="CommandData\DeleteLoanProductData.cs" />
     <Compile Include="CommandData\DeleteRoleData.cs" />

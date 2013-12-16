@@ -45,6 +45,8 @@
     <Compile Include="IEventPublisher.cs" />
     <Compile Include="ISettingsProvider.cs" />
     <Compile Include="ITranslator.cs" />
+    <Compile Include="Presenter\IChangePasswordPresenter.cs" />
+    <Compile Include="Presenter\IChangePasswordPresenterCallbacks.cs" />
     <Compile Include="Presenter\IConfirmationPresenter.cs" />
     <Compile Include="Presenter\IConfirmationPresenterCallbacks.cs" />
     <Compile Include="Presenter\ICurrenciesPresenter.cs" />
@@ -94,11 +96,13 @@
     <Compile Include="Service\IRoleService.cs" />
     <Compile Include="Service\IService.cs" />
     <Compile Include="Service\IUserService.cs" />
+    <Compile Include="Validator\IChangePasswordValidator.cs" />
     <Compile Include="Validator\IEntryFeeValidator.cs" />
     <Compile Include="Validator\ILoanProductValidator.cs" />
     <Compile Include="Validator\IRoleValidator.cs" />
     <Compile Include="Validator\IUserValidator.cs" />
     <Compile Include="Validator\IValidator.cs" />
+    <Compile Include="View\IChangePasswordView.cs" />
     <Compile Include="View\IConfirmationView.cs" />
     <Compile Include="View\ICurrenciesView.cs" />
     <Compile Include="View\IEntryFeesView.cs" />

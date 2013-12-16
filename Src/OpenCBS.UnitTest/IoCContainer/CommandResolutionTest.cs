@@ -182,6 +182,13 @@ namespace OpenCBS.UnitTest.IoCContainer
             var command = _container.GetInstance<ICommand<ShowUsersData>>();
             Assert.IsInstanceOf<ShowUsersCommand>(command);
         }
+
+        [Test]
+        public void GetInstance_ChangePasswordCommand_Resolves()
+        {
+            var command = _container.GetInstance<ICommand<ChangePasswordData>>();
+            Assert.IsInstanceOf<ChangePasswordCommand>(command);
+        }
     }
 }
 // ReSharper restore InconsistentNaming

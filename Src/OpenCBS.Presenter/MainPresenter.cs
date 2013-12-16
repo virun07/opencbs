@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using System.Linq;
+using OpenCBS.DataContract;
 using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
@@ -67,6 +68,11 @@ namespace OpenCBS.Presenter
         public void ShowCurrencies()
         {
             _appController.Execute(new ShowCurrenciesData());
+        }
+
+        public void ChangePassword()
+        {
+            _appController.Execute(new ChangePasswordData { UserId = UserDto.Current.Id });
         }
 
         public void ChangeLanguage(string name)

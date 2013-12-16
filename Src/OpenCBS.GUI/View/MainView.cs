@@ -948,15 +948,6 @@ namespace OpenCBS.GUI.View
             accountTrialBalance.Show();
         }
 
-        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            PasswordForm pswdForm = new PasswordForm(User.CurrentUser);
-            if (DialogResult.OK != pswdForm.ShowDialog()) return;
-            User.CurrentUser.Password = pswdForm.NewPassword;
-            ServicesProvider.GetInstance().GetUserServices().SaveUser(User.CurrentUser);
-            Notify("passwordChanged");
-        }
-
         private void manualEntriesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ManualEntries accountView = new ManualEntries { MdiParent = this };
@@ -1080,6 +1071,7 @@ namespace OpenCBS.GUI.View
             _entryFeesMenuItem.Click += (sender, e) => presenterCallbacks.ShowEntryFees();
             _exoticSchedulesMenuItem.Click += (sender, e) => presenterCallbacks.ShowExoticSchedules();
             _currenciesMenuItem.Click += (sender, e) => presenterCallbacks.ShowCurrencies();
+            _changePasswordMenuItem.Click += (sender, e) => presenterCallbacks.ChangePassword();
             _englishMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("en-US");
             _russianMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("ru-RU");
             _frenchMenuItem.Click += (sender, e) => presenterCallbacks.ChangeLanguage("fr");

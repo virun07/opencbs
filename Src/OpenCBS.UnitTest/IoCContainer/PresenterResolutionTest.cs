@@ -140,6 +140,13 @@ namespace OpenCBS.UnitTest.IoCContainer
             var presenter = _container.GetInstance<IUsersPresenter>();
             Assert.IsInstanceOf<UsersPresenter>(presenter);
         }
+
+        [Test]
+        public void GetInstance_ChangePasswordPresenter_Resolves()
+        {
+            var presenter = _container.GetInstance<IChangePasswordPresenter>();
+            Assert.IsInstanceOf<ChangePasswordPresenter>(presenter);
+        }
     }
 }
 // ReSharper restore InconsistentNaming

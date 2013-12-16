@@ -16,14 +16,21 @@
 // 
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
-using OpenCBS.Model;
 
-namespace OpenCBS.Interface.Repository
+using OpenCBS.DataContract;
+using OpenCBS.Interface.Presenter;
+
+namespace OpenCBS.Interface.View
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IChangePasswordView : IView<IChangePasswordPresenterCallbacks>
     {
-        User FindByUsernameAndPassword(string username, string password);
-        bool UserExists(int id, string password);
-        void ChangePassword(int id, string password);
+        void Run();
+        void Stop();
+        void ShowNotification(Notification notification);
+
+        int Id { get; set; }
+        string CurrentPassword { get; }
+        string NewPassword { get; }
+        string NewPasswordConfirmation { get; }
     }
 }
