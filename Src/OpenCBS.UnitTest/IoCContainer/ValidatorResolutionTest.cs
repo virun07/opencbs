@@ -64,6 +64,13 @@ namespace OpenCBS.UnitTest.IoCContainer
             var validator = _container.GetInstance<IUserValidator>();
             Assert.IsInstanceOf<UserValidator>(validator);
         }
+
+        [Test]
+        public void GetInstance_ChangePasswordValidator_Resolves()
+        {
+            var validator = _container.GetInstance<IChangePasswordValidator>();
+            Assert.IsInstanceOf<ChangePasswordValidator>(validator);
+        }
     }
 }
 // ReSharper restore InconsistentNaming

@@ -19,6 +19,7 @@
 
 using NSubstitute;
 using NUnit.Framework;
+using OpenCBS.DataContract;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
@@ -47,9 +48,39 @@ namespace OpenCBS.UnitTest.Presenter
         [Test]
         public void Get_RunsView()
         {
-            _presenter.Get(Arg.Any<int>());
+            _presenter.Get(1);
             _view.Received().Attach(_presenter);
             _view.Received().Run();
+        }
+
+        [Test]
+        public void Ok_InvalidInput_ShowsNotification()
+        {
+            _service
+                .When(x => x.ValidateChangePassword(Arg.Any<ChangePasswordDto>()))
+                .Do(x =>
+                {
+                    var notification = new Notification();
+                    notification.AddError(new Error());
+                    x.Arg<ChangePasswordDto>().Notification = notification;
+                });
+            _presenter.Ok();
+            _view.Received().ShowNotification(Arg.Any<Notification>());
+            _view.DidNotReceive().Stop();
+        }
+
+        [Test]
+        public void Ok_ValidInput_StopsView()
+        {
+            _service
+                .When(x => x.ValidateChangePassword(Arg.Any<ChangePasswordDto>()))
+                .Do(x =>
+                {
+                    x.Arg<ChangePasswordDto>().Notification = new Notification();
+                });
+            _presenter.Ok();
+            _view.DidNotReceive().ShowNotification(Arg.Any<Notification>());
+            _view.Received().Stop();
         }
 
         [Test]

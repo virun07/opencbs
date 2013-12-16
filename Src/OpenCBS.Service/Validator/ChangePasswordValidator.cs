@@ -35,8 +35,9 @@ namespace OpenCBS.Service.Validator
         public override void Validate(ChangePasswordDto entity)
         {
             base.Validate(entity);
-            Fail(!_userRepository.UserExists(entity.Id, entity.CurrentPassword), "CurrentPassword", "Invalid password.");
             FailIfNullOrEmpty("CurrentPassword");
+            if (!string.IsNullOrEmpty(entity.NewPassword))
+                Fail(!_userRepository.UserExists(entity.Id, entity.CurrentPassword), "CurrentPassword", "Invalid password.");
             FailIfNullOrEmpty("NewPassword");
             Fail(entity.NewPassword != entity.NewPasswordConfirmation, "NewPasswordConfirmation", "Passwords do not match.");
         }

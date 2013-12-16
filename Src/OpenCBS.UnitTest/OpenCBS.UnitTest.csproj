@@ -58,6 +58,7 @@
     <Compile Include="Command\AddRoleCommandTest.cs" />
     <Compile Include="Command\AddUserCommandTest.cs" />
     <Compile Include="Command\ChangeLanguageCommandTest.cs" />
+    <Compile Include="Command\ChangePasswordCommandTest.cs" />
     <Compile Include="Command\DeleteEntryFeeCommandTest.cs" />
     <Compile Include="Command\DeleteLoanProductCommandTest.cs" />
     <Compile Include="Command\DeleteRoleCommandTest.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Presenter\UsersPresenterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ExoticScheduleServiceTest.cs" />
+    <Compile Include="Validator\ChangePasswordValidatorTest.cs" />
     <Compile Include="Validator\LoanProductValidatorTest.cs" />
     <Compile Include="Validator\EntryFeeValidatorTest.cs" />
     <Compile Include="Validator\RoleValidatorTest.cs" />
