@@ -118,6 +118,11 @@ namespace OpenCBS.Service
             _userRepository.ChangePassword(id, password);
         }
 
+        public void ChangeMyPassword(string password)
+        {
+            _userRepository.ChangePassword(User.Current.Id, password);
+        }
+
         private static UserDto Map(User user)
         {
             var result = new UserDto();

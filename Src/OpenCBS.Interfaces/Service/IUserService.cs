@@ -25,5 +25,6 @@ namespace OpenCBS.Interface.Service
     {
         void ValidateChangePassword(ChangePasswordDto dto);
         void ChangePassword(int id, string password);
+        void ChangeMyPassword(string password);
     }
 }

@@ -13,6 +13,7 @@ namespace OpenCBS.Interface.View
 
         bool AllowAdding { get; set; }
         bool AllowEditing { get; set; }
+        bool AllowChangingPassword { get; set; }
         bool AllowDeleting { get; set; }
 
         bool CanEdit { get; set; }

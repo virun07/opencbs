@@ -26,6 +26,11 @@ namespace OpenCBS.Model
     public class Role : EntityBase
     {
         private static readonly IDictionary<string, HashSet<string>> Map = new Dictionary<string, HashSet<string>>();
+        private static readonly IList<string> AlwaysAccessible = new List<string>
+        {
+            "IUserService.ValidateChangePassword",
+            "IUserService.ChangeMyPassword"
+        };
 
         static Role()
         {
@@ -64,6 +69,7 @@ namespace OpenCBS.Model
 
             Map.Add("Security.ViewUser", new HashSet<string>
             {
+                "IRoleService.FindAll",
                 "IUserService.FindAll"
             });
             Map.Add("Security.AddUser", new HashSet<string>
@@ -80,6 +86,12 @@ namespace OpenCBS.Model
                 "IUserService.FindAll",
                 "IUserService.Validate",
                 "IUserService.Update"
+            });
+            Map.Add("Security.ChangeUserPassword", new HashSet<string>
+            {
+                "IUserService.FindAll",
+                "IUserService.ValidateChangePassword",
+                "IUserService.ChangePassword"
             });
             Map.Add("Security.DeleteUser", new HashSet<string>
             {
@@ -155,7 +167,7 @@ namespace OpenCBS.Model
             var list = Permissions.Where(p => Map.ContainsKey(p)).Select(p => Map[p]);
             var set = new HashSet<string>();
             foreach (var item in list) set.UnionWith(item);
-            return set.Contains(servicePermission);
+            return set.Contains(servicePermission) || AlwaysAccessible.Contains(servicePermission);
         }
     }
 }

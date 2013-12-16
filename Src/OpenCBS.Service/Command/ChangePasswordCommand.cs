@@ -41,7 +41,10 @@ namespace OpenCBS.Service.Command
             var result = _presenter.Get(commandData.UserId);
             if (result.CommandResult == CommandResult.Ok)
             {
-                _userService.ChangePassword(result.Data.Id, result.Data.NewPassword);
+                if (result.Data.Id == UserDto.Current.Id)
+                    _userService.ChangeMyPassword(result.Data.NewPassword);
+                else
+                    _userService.ChangePassword(result.Data.Id, result.Data.NewPassword);
             }
         }
     }

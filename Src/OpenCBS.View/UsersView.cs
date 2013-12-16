@@ -76,6 +76,12 @@ namespace OpenCBS.View
             set { _editButton.Visible = value; }
         }
 
+        public bool AllowChangingPassword
+        {
+            get { return _changePasswordButton.Visible; }
+            set { _changePasswordButton.Visible = value; }
+        }
+
         public bool AllowDeleting
         {
             get { return _deleteButton.Visible; }

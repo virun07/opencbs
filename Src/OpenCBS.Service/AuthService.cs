@@ -70,6 +70,7 @@ namespace OpenCBS.Service
                 "Security.ViewUser",
                 "Security.AddUser",
                 "Security.EditUser",
+                "Security.ChangeUserPassword",
                 "Security.DeleteUser",
 
                 "EntryFee.View",
