@@ -90,7 +90,6 @@ namespace OpenCBS.Model
             Map.Add("Security.ChangeUserPassword", new HashSet<string>
             {
                 "IUserService.FindAll",
-                "IUserService.ValidateChangePassword",
                 "IUserService.ChangePassword"
             });
             Map.Add("Security.DeleteUser", new HashSet<string>

@@ -90,6 +90,13 @@ namespace OpenCBS.UnitTest.Model
         }
 
         [Test]
+        public void User_ChangePassword()
+        {
+            var role = GetRoleWithPermission("Security.ChangeUserPassword");
+            AssertMapsTo(role, new[] { "IUserService.FindAll", "IUserService.ChangePassword" });
+        }
+
+        [Test]
         public void User_Delete()
         {
             var role = GetRoleWithPermission("Security.DeleteUser");
