@@ -59,9 +59,24 @@ namespace OpenCBS.UnitTest.Command
                 Id = 1,
                 NewPassword = "test"
             };
+            UserDto.Current = new UserDto { Id = 1 };
             _presenter.Get(Arg.Is<int>(id => id == 1)).Returns(new Result<PasswordDto>(CommandResult.Ok, dto));
             _command.Execute(new ChangePasswordData { UserId = 1 });
-            _userService.Received().ChangePassword(1, "test");
+            _userService.Received().ChangeMyPassword("test");
+        }
+
+        [Test]
+        public void Execute_CommandResultIsOkAndDifferentUser_ChangesPassword()
+        {
+            var dto = new PasswordDto
+            {
+                Id = 2,
+                NewPassword = "test"
+            };
+            UserDto.Current = new UserDto { Id = 1 };
+            _presenter.Get(Arg.Is<int>(id => id == 1)).Returns(new Result<PasswordDto>(CommandResult.Ok, dto));
+            _command.Execute(new ChangePasswordData { UserId = 1 });
+            _userService.Received().ChangePassword(2, "test");
         }
     }
 }

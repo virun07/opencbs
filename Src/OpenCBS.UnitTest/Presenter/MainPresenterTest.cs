@@ -19,6 +19,7 @@
 
 using NSubstitute;
 using NUnit.Framework;
+using OpenCBS.DataContract;
 using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Service;
@@ -57,20 +58,21 @@ namespace OpenCBS.UnitTest.Presenter
         public void Run_ChecksRolePermissions()
         {
             _presenter.Run();
-            _authService.Received().Can("Role.View");
-            _authService.Received().Can("Role.Add");
-            _authService.Received().Can("Role.Edit");
-            _authService.Received().Can("Role.Delete");
+            _authService.Received().Can("Security.ViewRole");
+            _authService.Received().Can("Security.AddRole");
+            _authService.Received().Can("Security.EditRole");
+            _authService.Received().Can("Security.DeleteRole");
         }
 
         [Test]
         public void Run_ChecksUserPermissions()
         {
             _presenter.Run();
-            _authService.Received().Can("User.View");
-            _authService.Received().Can("User.Add");
-            _authService.Received().Can("User.Edit");
-            _authService.Received().Can("User.Delete");
+            _authService.Received().Can("Security.ViewUser");
+            _authService.Received().Can("Security.AddUser");
+            _authService.Received().Can("Security.EditUser");
+            _authService.Received().Can("Security.ChangeUserPassword");
+            _authService.Received().Can("Security.DeleteUser");
         }
 
         [Test]
@@ -131,6 +133,7 @@ namespace OpenCBS.UnitTest.Presenter
         [Test]
         public void ChangePassword_ExecutesCommand()
         {
+            UserDto.Current = new UserDto { Id = 1 };
             _presenter.ChangePassword();
             _appController.Received().Execute(Arg.Any<ChangePasswordData>());
         }
@@ -160,8 +163,8 @@ namespace OpenCBS.UnitTest.Presenter
         [Test]
         public void Run_HasViewPermission_CanManageStuff()
         {
-            _authService.Can("Role.View").Returns(true);
-            _authService.Can("User.View").Returns(true);
+            _authService.Can("Security.ViewRole").Returns(true);
+            _authService.Can("Security.ViewUser").Returns(true);
             _authService.Can("EntryFee.View").Returns(true);
             _authService.Can("LoanProduct.View").Returns(true);
             _presenter.Run();
@@ -170,12 +173,12 @@ namespace OpenCBS.UnitTest.Presenter
             Assert.IsTrue(_mainView.AllowEntryFeeManagement);
             Assert.IsTrue(_mainView.AllowLoanProductManagement);
         }
-        
+
         [Test]
         public void Run_HasAddPermission_CanManageStuff()
         {
-            _authService.Can("Role.Add").Returns(true);
-            _authService.Can("User.Add").Returns(true);
+            _authService.Can("Security.AddRole").Returns(true);
+            _authService.Can("Security.AddUser").Returns(true);
             _authService.Can("EntryFee.View").Returns(true);
             _authService.Can("LoanProduct.View").Returns(true);
             _presenter.Run();
@@ -188,8 +191,8 @@ namespace OpenCBS.UnitTest.Presenter
         [Test]
         public void Run_HasEditPermission_CanManageStuff()
         {
-            _authService.Can("Role.Edit").Returns(true);
-            _authService.Can("User.Edit").Returns(true);
+            _authService.Can("Security.EditRole").Returns(true);
+            _authService.Can("Security.EditUser").Returns(true);
             _authService.Can("EntryFee.Edit").Returns(true);
             _authService.Can("LoanProduct.Edit").Returns(true);
             _presenter.Run();
@@ -202,8 +205,8 @@ namespace OpenCBS.UnitTest.Presenter
         [Test]
         public void Run_HasDeletePermission_CanManageStuff()
         {
-            _authService.Can("Role.Delete").Returns(true);
-            _authService.Can("User.Delete").Returns(true);
+            _authService.Can("Security.DeleteRole").Returns(true);
+            _authService.Can("Security.DeleteUser").Returns(true);
             _authService.Can("EntryFee.Delete").Returns(true);
             _authService.Can("LoanProduct.Delete").Returns(true);
             _presenter.Run();

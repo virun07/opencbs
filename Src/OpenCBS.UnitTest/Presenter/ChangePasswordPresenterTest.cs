@@ -48,6 +48,7 @@ namespace OpenCBS.UnitTest.Presenter
         [Test]
         public void Get_RunsView()
         {
+            UserDto.Current = new UserDto { Id = 1 };
             _presenter.Get(1);
             _view.Received().Attach(_presenter);
             _view.Received().Run();

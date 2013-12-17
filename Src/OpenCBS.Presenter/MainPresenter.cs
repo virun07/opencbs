@@ -102,8 +102,7 @@ namespace OpenCBS.Presenter
         {
             _view.AllowEntryFeeManagement = CanAny("EntryFee", "View, Add, Edit, Delete");
             _view.AllowLoanProductManagement = CanAny("LoanProduct", "View, Add, Edit, Delete");
-            _view.AllowRoleManagement = CanAny("Role", "View, Add, Edit, Delete");
-//            _view.AllowUserManagement = CanAny("User", "View, Add, Edit, Delete");
+            _view.AllowRoleManagement = CanAny("Security", "ViewRole, AddRole, EditRole, DeleteRole");
             _view.AllowUserManagement = CanAny("Security", "ViewUser, AddUser, EditUser, ChangeUserPassword, DeleteUser");
         }
     }
