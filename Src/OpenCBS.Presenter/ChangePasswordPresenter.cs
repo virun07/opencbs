@@ -41,13 +41,13 @@ namespace OpenCBS.Presenter
             _service = service;
         }
 
-        public Result<ChangePasswordDto> Get(int id)
+        public Result<PasswordDto> Get(int id)
         {
             _view.Attach(this);
             _view.Id = id;
             _view.RequireCurrentPassword = id == UserDto.Current.Id;
             _view.Run();
-            return new Result<ChangePasswordDto>(_commandResult, _commandResult == CommandResult.Ok ? GetDto() : null);
+            return new Result<PasswordDto>(_commandResult, _commandResult == CommandResult.Ok ? GetDto() : null);
         }
 
         public object View
@@ -81,9 +81,9 @@ namespace OpenCBS.Presenter
             _appController.Unsubscribe(this);
         }
 
-        private ChangePasswordDto GetDto()
+        private PasswordDto GetDto()
         {
-            var result = new ChangePasswordDto();
+            var result = new PasswordDto();
             result.InjectFrom(_view);
             return result;
         }

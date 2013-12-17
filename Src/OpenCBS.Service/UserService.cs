@@ -35,14 +35,14 @@ namespace OpenCBS.Service
         private readonly IUserRepository _userRepository;
         private readonly IRoleRepository _roleRepository;
         private readonly IUserValidator _userValidator;
-        private readonly IChangePasswordValidator _changePasswordValidator;
+        private readonly IPasswordValidator _passwordValidator;
 
-        public UserService(IUserRepository userRepository, IRoleRepository roleRepository, IUserValidator userValidator, IChangePasswordValidator changePasswordValidator)
+        public UserService(IUserRepository userRepository, IRoleRepository roleRepository, IUserValidator userValidator, IPasswordValidator passwordValidator)
         {
             _userRepository = userRepository;
             _roleRepository = roleRepository;
             _userValidator = userValidator;
-            _changePasswordValidator = changePasswordValidator;
+            _passwordValidator = passwordValidator;
         }
 
         public IList<UserDto> FindAll()
@@ -108,9 +108,9 @@ namespace OpenCBS.Service
             _userRepository.Remove(id);
         }
 
-        public void ValidateChangePassword(ChangePasswordDto dto)
+        public void ValidateChangePassword(PasswordDto dto)
         {
-            _changePasswordValidator.Validate(dto);
+            _passwordValidator.Validate(dto);
         }
 
         public void ChangePassword(int id, string password)

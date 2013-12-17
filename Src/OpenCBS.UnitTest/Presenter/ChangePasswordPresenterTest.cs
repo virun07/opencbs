@@ -57,12 +57,12 @@ namespace OpenCBS.UnitTest.Presenter
         public void Ok_InvalidInput_ShowsNotification()
         {
             _service
-                .When(x => x.ValidateChangePassword(Arg.Any<ChangePasswordDto>()))
+                .When(x => x.ValidateChangePassword(Arg.Any<PasswordDto>()))
                 .Do(x =>
                 {
                     var notification = new Notification();
                     notification.AddError(new Error());
-                    x.Arg<ChangePasswordDto>().Notification = notification;
+                    x.Arg<PasswordDto>().Notification = notification;
                 });
             _presenter.Ok();
             _view.Received().ShowNotification(Arg.Any<Notification>());
@@ -73,10 +73,10 @@ namespace OpenCBS.UnitTest.Presenter
         public void Ok_ValidInput_StopsView()
         {
             _service
-                .When(x => x.ValidateChangePassword(Arg.Any<ChangePasswordDto>()))
+                .When(x => x.ValidateChangePassword(Arg.Any<PasswordDto>()))
                 .Do(x =>
                 {
-                    x.Arg<ChangePasswordDto>().Notification = new Notification();
+                    x.Arg<PasswordDto>().Notification = new Notification();
                 });
             _presenter.Ok();
             _view.DidNotReceive().ShowNotification(Arg.Any<Notification>());

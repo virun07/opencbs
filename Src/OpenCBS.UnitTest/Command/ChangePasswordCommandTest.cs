@@ -46,7 +46,7 @@ namespace OpenCBS.UnitTest.Command
         [Test]
         public void Execute_CommandResultIsNotOk_DoesNotChangePassword()
         {
-            _presenter.Get(Arg.Any<int>()).Returns(new Result<ChangePasswordDto>(CommandResult.Cancel, null));
+            _presenter.Get(Arg.Any<int>()).Returns(new Result<PasswordDto>(CommandResult.Cancel, null));
             _command.Execute(new ChangePasswordData { UserId = 1 });
             _userService.DidNotReceive().ChangePassword(1, Arg.Any<string>());
         }
@@ -54,12 +54,12 @@ namespace OpenCBS.UnitTest.Command
         [Test]
         public void Execute_CommandResultIsOk_ChangesPassword()
         {
-            var dto = new ChangePasswordDto
+            var dto = new PasswordDto
             {
                 Id = 1,
                 NewPassword = "test"
             };
-            _presenter.Get(Arg.Is<int>(id => id == 1)).Returns(new Result<ChangePasswordDto>(CommandResult.Ok, dto));
+            _presenter.Get(Arg.Is<int>(id => id == 1)).Returns(new Result<PasswordDto>(CommandResult.Ok, dto));
             _command.Execute(new ChangePasswordData { UserId = 1 });
             _userService.Received().ChangePassword(1, "test");
         }

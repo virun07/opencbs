@@ -27,22 +27,22 @@ using OpenCBS.Service.Validator;
 namespace OpenCBS.UnitTest.Validator
 {
     [TestFixture]
-    public class ChangePasswordValidatorTest
+    public class PasswordValidatorTest
     {
         private IUserRepository _userRepository;
-        private ChangePasswordValidator _validator;
+        private PasswordValidator _validator;
 
         [SetUp]
         public void SetUp()
         {
             _userRepository = Substitute.For<IUserRepository>();
-            _validator = new ChangePasswordValidator(_userRepository);
+            _validator = new PasswordValidator(_userRepository);
         }
 
         [Test]
         public void Validate_Empty_ConsidersInvalid()
         {
-            var dto = new ChangePasswordDto { Id = 1 };
+            var dto = new PasswordDto { Id = 1, RequireCurrentPassword = true };
             _validator.Validate(dto);
             Assert.AreEqual(2, dto.Notification.Count);
         }
@@ -50,12 +50,13 @@ namespace OpenCBS.UnitTest.Validator
         [Test]
         public void Validate_InvalidPassword_ConsidersInvalid()
         {
-            var dto = new ChangePasswordDto
+            var dto = new PasswordDto
             {
                 Id = 1, 
                 CurrentPassword = "test", 
                 NewPassword = "new", 
-                NewPasswordConfirmation = "new"
+                NewPasswordConfirmation = "new",
+                RequireCurrentPassword = true
             };
             _userRepository.UserExists(1, "test").Returns(false);
             _validator.Validate(dto);
@@ -65,12 +66,13 @@ namespace OpenCBS.UnitTest.Validator
         [Test]
         public void Validate_PasswordsDoNotMatch_ConsidersInvalid()
         {
-            var dto = new ChangePasswordDto
+            var dto = new PasswordDto
             {
                 Id = 1,
                 CurrentPassword = "test",
                 NewPassword = "new",
-                NewPasswordConfirmation = ""
+                NewPasswordConfirmation = "",
+                RequireCurrentPassword = true
             };
             _userRepository.UserExists(1, "test").Returns(true);
             _validator.Validate(dto);
@@ -78,9 +80,40 @@ namespace OpenCBS.UnitTest.Validator
         }
 
         [Test]
+        public void Validate_RequiresCurrentPasswordAndPasswordIsEmpty_ConsidersInvalid()
+        {
+            var dto = new PasswordDto
+            {
+                Id = 1,
+                CurrentPassword = "",
+                NewPassword = "new",
+                NewPasswordConfirmation = "new",
+                RequireCurrentPassword = true
+            };
+            _validator.Validate(dto);
+            Assert.AreEqual(1, dto.Notification.Count);
+            _userRepository.DidNotReceive().UserExists(1, Arg.Any<string>());
+        }
+
+        [Test]
+        public void Validate_DoesNotRequireCurrentPasswordAndValid_ConsidersValid()
+        {
+            var dto = new PasswordDto
+            {
+                Id = 1,
+                CurrentPassword = "",
+                NewPassword = "new",
+                NewPasswordConfirmation = "new",
+                RequireCurrentPassword = false
+            };
+            _validator.Validate(dto);
+            Assert.AreEqual(0, dto.Notification.Count);
+        }
+
+        [Test]
         public void Validate_Valid_ConsidersValid()
         {
-            var dto = new ChangePasswordDto
+            var dto = new PasswordDto
             {
                 Id = 1,
                 CurrentPassword = "test",

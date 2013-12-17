@@ -23,6 +23,6 @@ namespace OpenCBS.Interface.Presenter
 {
     public interface IChangePasswordPresenter : IPresenter
     {
-        Result<ChangePasswordDto> Get(int id);
+        Result<PasswordDto> Get(int id);
     }
 }

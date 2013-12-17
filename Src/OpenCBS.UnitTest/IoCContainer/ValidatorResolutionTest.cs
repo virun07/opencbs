@@ -68,8 +68,8 @@ namespace OpenCBS.UnitTest.IoCContainer
         [Test]
         public void GetInstance_ChangePasswordValidator_Resolves()
         {
-            var validator = _container.GetInstance<IChangePasswordValidator>();
-            Assert.IsInstanceOf<ChangePasswordValidator>(validator);
+            var validator = _container.GetInstance<IPasswordValidator>();
+            Assert.IsInstanceOf<PasswordValidator>(validator);
         }
     }
 }

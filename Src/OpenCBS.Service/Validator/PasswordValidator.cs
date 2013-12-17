@@ -23,22 +23,22 @@ using OpenCBS.Interface.Validator;
 
 namespace OpenCBS.Service.Validator
 {
-    public class ChangePasswordValidator : Validator<ChangePasswordDto>, IChangePasswordValidator
+    public class PasswordValidator : Validator<PasswordDto>, IPasswordValidator
     {
         private readonly IUserRepository _userRepository;
 
-        public ChangePasswordValidator(IUserRepository userRepository)
+        public PasswordValidator(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
-        public override void Validate(ChangePasswordDto entity)
+        public override void Validate(PasswordDto entity)
         {
             base.Validate(entity);
             if (entity.RequireCurrentPassword)
             {
                 FailIfNullOrEmpty("CurrentPassword");
-                if (!string.IsNullOrEmpty(entity.NewPassword))
+                if (!string.IsNullOrEmpty(entity.CurrentPassword))
                     Fail(!_userRepository.UserExists(entity.Id, entity.CurrentPassword), "CurrentPassword",
                          "Invalid password.");
             }

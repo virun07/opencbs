@@ -107,7 +107,7 @@
     <Compile Include="Presenter\UsersPresenterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ExoticScheduleServiceTest.cs" />
-    <Compile Include="Validator\ChangePasswordValidatorTest.cs" />
+    <Compile Include="Validator\PasswordValidatorTest.cs" />
     <Compile Include="Validator\LoanProductValidatorTest.cs" />
     <Compile Include="Validator\EntryFeeValidatorTest.cs" />
     <Compile Include="Validator\RoleValidatorTest.cs" />

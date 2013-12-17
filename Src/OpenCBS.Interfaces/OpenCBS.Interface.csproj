@@ -96,7 +96,7 @@
     <Compile Include="Service\IRoleService.cs" />
     <Compile Include="Service\IService.cs" />
     <Compile Include="Service\IUserService.cs" />
-    <Compile Include="Validator\IChangePasswordValidator.cs" />
+    <Compile Include="Validator\IPasswordValidator.cs" />
     <Compile Include="Validator\IEntryFeeValidator.cs" />
     <Compile Include="Validator\ILoanProductValidator.cs" />
     <Compile Include="Validator\IRoleValidator.cs" />

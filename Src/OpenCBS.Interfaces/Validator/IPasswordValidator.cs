@@ -21,7 +21,7 @@ using OpenCBS.DataContract;
 
 namespace OpenCBS.Interface.Validator
 {
-    public interface IChangePasswordValidator : IValidator<ChangePasswordDto>
+    public interface IPasswordValidator : IValidator<PasswordDto>
     {
     }
 }
