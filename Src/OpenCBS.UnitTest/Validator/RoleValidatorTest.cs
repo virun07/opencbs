@@ -36,7 +36,7 @@ namespace OpenCBS.UnitTest.Validator
         }
 
         [Test]
-        public void Validate_RoleIsEmpty_ClassifiesAsInvalid()
+        public void Validate_RoleIsEmpty_ConsidersInvalid()
         {
             var roleDto = new RoleDto();
             _validator.Validate(roleDto);
@@ -44,7 +44,7 @@ namespace OpenCBS.UnitTest.Validator
         }
 
         [Test]
-        public void Validate_RoleIsValid_ClassifiesAsValid()
+        public void Validate_RoleIsValid_ConsidersValid()
         {
             var roleDto = new RoleDto { Name = "Administrator" };
             _validator.Validate(roleDto);

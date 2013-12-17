@@ -36,7 +36,7 @@ namespace OpenCBS.UnitTest.Validator
         }
 
         [Test]
-        public void Validate_EntryFeeIsEmpty_ClassifiesAsInvalid()
+        public void Validate_EntryFeeIsEmpty_ConsidersInvalid()
         {
             var entryFeeDto = new EntryFeeDto();
             _validator.Validate(entryFeeDto);
@@ -44,7 +44,7 @@ namespace OpenCBS.UnitTest.Validator
         }
 
         [Test]
-        public void Validate_CodeIsNotAlphanumeric_ClassifiesAsInvalid()
+        public void Validate_CodeIsNotAlphanumeric_ConsidersInvalid()
         {
             var entryFeeDto = new EntryFeeDto
             {
@@ -59,7 +59,7 @@ namespace OpenCBS.UnitTest.Validator
         }
 
         [Test]
-        public void Validate_EntryFeeIsValid_ClassifiesAsValid()
+        public void Validate_EntryFeeIsValid_ConsidersValid()
         {
             var entryFeeDto = new EntryFeeDto
             {

@@ -36,7 +36,7 @@ namespace OpenCBS.UnitTest.Validator
         }
 
         [Test]
-        public void Validate_LoanProudctIsEmpty_ClassifiesAsInvalid()
+        public void Validate_LoanProudctIsEmpty_ConsidersInvalid()
         {
             var loanProductDto = new LoanProductDto();
             _validator.Validate(loanProductDto);
@@ -44,7 +44,7 @@ namespace OpenCBS.UnitTest.Validator
         }
 
         [Test]
-        public void Validate_LoanProductIsValid_ClassifiesAsValid()
+        public void Validate_LoanProductIsValid_ConsidersValid()
         {
             var loanProductDto = new LoanProductDto
             {

@@ -36,7 +36,7 @@ namespace OpenCBS.UnitTest.Validator
         }
 
         [Test]
-        public void Validate_UserIsEmpty_ClassifiesAsInvalid()
+        public void Validate_UserIsEmpty_ConsidersInvalid()
         {
             var userDto = new UserDto();
             _validator.Validate(userDto);
@@ -44,7 +44,7 @@ namespace OpenCBS.UnitTest.Validator
         }
 
         [Test]
-        public void Validate_PasswordsDoNotMatch_ClassifiesAsInvalid()
+        public void Validate_PasswordsDoNotMatch_ConsidersInvalid()
         {
             var userDto = new UserDto
             {
@@ -59,7 +59,7 @@ namespace OpenCBS.UnitTest.Validator
         }
 
         [Test]
-        public void Validate_UserIsValid_ClassifiesAsValid()
+        public void Validate_UserIsValid_ConsidersValid()
         {
             var userDto = new UserDto
             {
