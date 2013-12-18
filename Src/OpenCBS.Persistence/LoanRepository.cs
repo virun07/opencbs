@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Dapper;
 using OpenCBS.Interface.Repository;
+using OpenCBS.Model;
 using OpenCBS.Model.Loan;
 
 namespace OpenCBS.Persistence
@@ -51,8 +52,25 @@ namespace OpenCBS.Persistence
             using (var connection = GetConnection())
             {
                 var sql = @"insert Loan (Code) values (@Code) select cast(scope_identity() as int)";
-                var id = connection.Query<int>(sql, new { Code = entity.Code }).Single();
-                return id;
+                var loanId = connection.Query<int>(sql, new { entity.Code }).Single();
+
+                foreach (var transaction in entity.Transactions)
+                {
+                    sql = @"
+                        insert [Transaction] (Code, Date, UserId, LoanId, Comment) 
+                        values (@Code, @Date, @UserId, @LoanId, @Comment) select cast(scope_identity() as int)
+                    ";
+                    var transactionId = connection.Query<int>(sql, new
+                    {
+                        transaction.Code,
+                        transaction.Date,
+                        UserId = User.Current.Id,
+                        LoanId = loanId,
+                        transaction.Comment
+                    }).Single();
+                }
+
+                return loanId;
             }
         }
 

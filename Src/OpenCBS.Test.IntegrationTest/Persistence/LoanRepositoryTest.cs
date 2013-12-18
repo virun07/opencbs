@@ -17,9 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using Dapper;
 using NUnit.Framework;
+using OpenCBS.Model;
 using OpenCBS.Model.Loan;
 using OpenCBS.Persistence;
 
@@ -36,6 +39,7 @@ namespace OpenCBS.Test.IntegrationTest.Persistence
         {
             base.TestFixtureSetUp();
             _repository = new LoanRepository(ConnectionStringProvider);
+            User.Current = new User { Id = 1 };
             CleanUp();
         }
 
@@ -49,12 +53,18 @@ namespace OpenCBS.Test.IntegrationTest.Persistence
         public void Add_AddsLoan()
         {
             var loan = new Loan { Code = "Test" };
+            var transaction = new Transaction { Code = "DISBURSEMENT", Date = DateTime.Now };
+            loan.Transactions = new List<Transaction> { transaction };
             loan.Id = _repository.Add(loan);
 
             using (var connection = GetConnection())
             {
-                const string sql = @"select count(*) from Loan where id = @Id";
+                var sql = @"select count(*) from Loan where id = @Id";
                 var count = connection.Query<int>(sql, new { loan.Id }).Single();
+                Assert.AreEqual(1, count);
+
+                sql = @"select count(*) from [Transaction] where LoanId = @LoanId";
+                count = connection.Query<int>(sql, new { LoanId = loan.Id }).Single();
                 Assert.AreEqual(1, count);
             }
         }
@@ -63,6 +73,7 @@ namespace OpenCBS.Test.IntegrationTest.Persistence
         {
             using (var connection = GetConnection())
             {
+                connection.Execute("delete [Transaction]");
                 connection.Execute(@"delete Loan");
             }
         }

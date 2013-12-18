@@ -26,9 +26,7 @@ namespace OpenCBS.Model.Loan
     {
         public string Code { get; set; }
         public DateTime Date { get; set; }
-        public int UserId { get; set; }
-        public int BranchId { get; set; }
-        public int LoanId { get; set; }
+        public string Comment { get; set; }
 
         public IList<LoanEvent> LoanEvents { get; set; } 
     }
