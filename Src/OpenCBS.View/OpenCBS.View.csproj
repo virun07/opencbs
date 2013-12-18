@@ -94,6 +94,12 @@
     <Compile Include="ExoticSchedulesView.Designer.cs">
       <DependentUpon>ExoticSchedulesView.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExoticScheduleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExoticScheduleView.Designer.cs">
+      <DependentUpon>ExoticScheduleView.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoanProductsView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExoticSchedulesView.resx">
       <DependentUpon>ExoticSchedulesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExoticScheduleView.resx">
+      <DependentUpon>ExoticScheduleView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoanProductsView.resx">
       <DependentUpon>LoanProductsView.cs</DependentUpon>

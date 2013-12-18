@@ -18,26 +18,17 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.DataContract;
-using OpenCBS.DataContract.CommandData;
-using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 
-namespace OpenCBS.Service.Command
+namespace OpenCBS.Interface.View
 {
-    public class AddExoticScheduleCommand : ICommand<AddExoticScheduleData>
+    public interface IExoticScheduleView : IView<IExoticSchedulePresenterCallbacks>
     {
-        private readonly IExoticSchedulePresenter _presenter;
+        void Run();
+        void Stop();
+        void ShowNotification(Notification notification);
 
-        public AddExoticScheduleCommand(IExoticSchedulePresenter presenter)
-        {
-            _presenter = presenter;
-        }
-
-        public void Execute(AddExoticScheduleData commandData)
-        {
-            var result = _presenter.Get(null);
-            if (result.CommandResult == CommandResult.Ok)
-            {}
-        }
+        int Id { get; set; }
+        string Name { get; set; }
     }
 }

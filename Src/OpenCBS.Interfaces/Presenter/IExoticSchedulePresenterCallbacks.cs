@@ -17,27 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using OpenCBS.DataContract;
-using OpenCBS.DataContract.CommandData;
-using OpenCBS.Interface;
-using OpenCBS.Interface.Presenter;
-
-namespace OpenCBS.Service.Command
+namespace OpenCBS.Interface.Presenter
 {
-    public class AddExoticScheduleCommand : ICommand<AddExoticScheduleData>
+    public interface IExoticSchedulePresenterCallbacks
     {
-        private readonly IExoticSchedulePresenter _presenter;
-
-        public AddExoticScheduleCommand(IExoticSchedulePresenter presenter)
-        {
-            _presenter = presenter;
-        }
-
-        public void Execute(AddExoticScheduleData commandData)
-        {
-            var result = _presenter.Get(null);
-            if (result.CommandResult == CommandResult.Ok)
-            {}
-        }
+        void Ok();
+        void Cancel();
+        void Close();
     }
 }
