@@ -29,7 +29,6 @@ namespace OpenCBS.Interface.View
         void StartDatabaseListRefresh();
         void StopDatabaseListRefresh();
         void ShowDatabases(IList<string> databases);
-        void ShowError(string message);
         string Username { get; }
         string Password { get; }
         string Database { get; set; }

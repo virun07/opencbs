@@ -28,12 +28,14 @@ namespace OpenCBS.Presenter
     public class LoginPresenter : ILoginPresenter, ILoginPresenterCallbacks
     {
         private readonly ILoginView _view;
+        private readonly IErrorView _errorView;
         private readonly IDatabaseService _databaseService;
         private readonly IAuthService _authService;
 
-        public LoginPresenter(ILoginView view, IDatabaseService databaseService, IAuthService authService)
+        public LoginPresenter(ILoginView view, IErrorView errorView, IDatabaseService databaseService, IAuthService authService)
         {
             _view = view;
+            _errorView = errorView;
             _databaseService = databaseService;
             _authService = authService;
         }
@@ -42,7 +44,7 @@ namespace OpenCBS.Presenter
         {
             var userDto = _authService.Login(_view.Username, _view.Password);
             if (userDto == null)
-                _view.ShowError("User not found.");
+                _errorView.Run("User not found.");
             else
             {
                 _view.Stop();
@@ -63,7 +65,7 @@ namespace OpenCBS.Presenter
                 _view.StopDatabaseListRefresh();
                 if (e.Error != null)
                 {
-                    _view.ShowError(e.Error.Message);
+                    _errorView.Run(e.Error.Message);
                     return;
                 }
                 _view.ShowDatabases((IList<string>) e.Result);

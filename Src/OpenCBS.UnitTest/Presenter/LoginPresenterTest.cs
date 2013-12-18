@@ -30,7 +30,8 @@ namespace OpenCBS.UnitTest.Presenter
     [TestFixture]
     public class LoginPresenterTest
     {
-        private ILoginView _loginView;
+        private ILoginView _view;
+        private IErrorView _errorView;
         private IAuthService _authService;
         private IDatabaseService _databaseService;
         private LoginPresenter _presenter;
@@ -38,10 +39,11 @@ namespace OpenCBS.UnitTest.Presenter
         [SetUp]
         public void SetUp()
         {
-            _loginView = Substitute.For<ILoginView>();
+            _view = Substitute.For<ILoginView>();
+            _errorView = Substitute.For<IErrorView>();
             _authService = Substitute.For<IAuthService>();
             _databaseService = Substitute.For<IDatabaseService>();
-            _presenter = new LoginPresenter(_loginView, _databaseService, _authService);
+            _presenter = new LoginPresenter(_view, _errorView, _databaseService, _authService);
         }
 
         [Test]
@@ -49,7 +51,7 @@ namespace OpenCBS.UnitTest.Presenter
         {
             _presenter.Run();
             
-            _loginView.Received().Attach(_presenter);
+            _view.Received().Attach(_presenter);
         }
 
         [Test]
@@ -59,17 +61,17 @@ namespace OpenCBS.UnitTest.Presenter
             
             _presenter.Run();
             
-            _loginView.Received().StartDatabaseListRefresh();
+            _view.Received().StartDatabaseListRefresh();
             _databaseService.Received().FindAll();
             System.Threading.Thread.Sleep(100);
-            _loginView.Received().StopDatabaseListRefresh();
+            _view.Received().StopDatabaseListRefresh();
         }
 
         [Test]
         public void Ok_RunsLoginOnAuthService()
         {
-            _loginView.Username.Returns("user");
-            _loginView.Password.Returns("password");
+            _view.Username.Returns("user");
+            _view.Password.Returns("password");
 
             _presenter.Ok();
 
@@ -79,13 +81,13 @@ namespace OpenCBS.UnitTest.Presenter
         [Test]
         public void Ok_ValidUser_Stops()
         {
-            _loginView.Username.Returns("user");
-            _loginView.Password.Returns("password");
+            _view.Username.Returns("user");
+            _view.Password.Returns("password");
             _authService.Login("user", "password").Returns(new UserDto());
 
             _presenter.Ok();
             
-            _loginView.Received().Stop();
+            _view.Received().Stop();
         }
 
         [Test]
@@ -95,7 +97,7 @@ namespace OpenCBS.UnitTest.Presenter
 
             _presenter.Ok();
 
-            _loginView.Received().ShowError("User not found.");
+            _errorView.Received().Run("User not found.");
         }
     }
 }

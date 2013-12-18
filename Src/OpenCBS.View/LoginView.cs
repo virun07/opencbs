@@ -86,12 +86,6 @@ namespace OpenCBS.GUI.View
             _databaseComboBox.DataSource = new BindingSource(dict, null);
         }
 
-        public void ShowError(string message)
-        {
-            MessageBox.Show(_(message), _("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            _usernameTextBox.Focus();
-        }
-
         public string Username
         {
             get { return _usernameTextBox.Text; }
