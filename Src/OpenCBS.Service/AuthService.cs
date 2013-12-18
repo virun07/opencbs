@@ -73,6 +73,11 @@ namespace OpenCBS.Service
                 "Security.ChangeUserPassword",
                 "Security.DeleteUser",
 
+                "Configuration.ViewExoticSchedule",
+                "Configuration.AddExoticSchedule",
+                "Configuration.EditExoticSchedule",
+                "Configuration.DeleteExoticSchedule",
+
                 "EntryFee.View",
                 "EntryFee.Add",
                 "EntryFee.Edit",

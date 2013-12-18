@@ -17,25 +17,10 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-using OpenCBS.DataContract;
-using OpenCBS.Interface.Presenter;
-
-namespace OpenCBS.Interface.View
+namespace OpenCBS.DataContract.CommandData
 {
-    public interface IExoticSchedulesView : IView<IExoticSchedulesPresenterCallbacks>
+    public class EditExoticScheduleData
     {
-        void Run();
-        void ShowExoticSchedules(IList<ExoticScheduleDto> schedules);
-
-        bool AllowAdding { get; set; }
-        bool AllowEditing { get; set; }
-        bool AllowDeleting { get; set; }
-
-        bool CanEdit { get; set; }
-        bool CanDelete { get; set; }
-
-        int? SelectedScheduleId { get; }
-        bool ShowDeleted { get; }
+        public int Id { get; set; }
     }
 }

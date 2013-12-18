@@ -17,6 +17,9 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Linq;
+using OpenCBS.DataContract.CommandData;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
@@ -27,42 +30,60 @@ namespace OpenCBS.Presenter
     {
         private readonly IExoticSchedulesView _view;
         private readonly IExoticScheduleService _service;
-        
-        public ExoticSchedulesPresenter(IExoticSchedulesView view, IExoticScheduleService service)
+        private readonly IAuthService _authService;
+        private readonly IApplicationController _appController;
+
+        public ExoticSchedulesPresenter(IExoticSchedulesView view, IExoticScheduleService service, IAuthService authService, IApplicationController appController)
         {
             _view = view;
             _service = service;
+            _authService = authService;
+            _appController = appController;
         }
 
         public void Run()
         {
             _view.Attach(this);
             ShowExoticSchedules();
+            _view.AllowAdding = _authService.Can("Configuration.AddExoticSchedule");
+            _view.AllowEditing = _authService.Can("Configuration.EditExoticSchedule");
+            _view.AllowDeleting = _authService.Can("Configuration.DeleteExoticSchedule");
             _view.Run();
         }
 
         public void Add()
         {
+            _appController.Execute(new AddExoticScheduleData());
         }
 
         public void Edit()
         {
+            var id = _view.SelectedScheduleId;
+            if (id == null) return;
+            _appController.Execute(new EditExoticScheduleData { Id = id.Value });
         }
 
         public void Delete()
         {
+            var id = _view.SelectedScheduleId;
+            if (id == null) return;
+            _appController.Execute(new DeleteExoticScheduleData { Id = id.Value });
         }
 
         public void Refresh()
         {
+            ShowExoticSchedules();
         }
 
         public void ChangeSelection()
         {
+            var id = _view.SelectedScheduleId;
+            _view.CanEdit = _view.CanDelete = id != null;
         }
 
         public void Close()
         {
+            _appController.Unsubscribe(this);
         }
 
         public object View
@@ -72,7 +93,9 @@ namespace OpenCBS.Presenter
 
         private void ShowExoticSchedules()
         {
-            var schedules = _service.FindAll();
+            var schedules = _view.ShowDeleted
+                                ? _service.FindAll()
+                                : _service.FindAll().Where(x => !x.Deleted).ToList().AsReadOnly();
             _view.ShowExoticSchedules(schedules);
         }
     }

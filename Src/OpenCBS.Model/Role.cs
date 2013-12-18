@@ -147,6 +147,10 @@ namespace OpenCBS.Model
                 "ILoanProductService.FindAll",
                 "ILoanProductService.Delete"
             });
+            Map.Add("Configuration.ViewExoticSchedule", new HashSet<string>
+            {
+                "IExoticScheduleService.FindAll"
+            });
         }
 
         public string Name { get; set; }

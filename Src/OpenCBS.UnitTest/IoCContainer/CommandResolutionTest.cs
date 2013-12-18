@@ -189,6 +189,27 @@ namespace OpenCBS.UnitTest.IoCContainer
             var command = _container.GetInstance<ICommand<ChangePasswordData>>();
             Assert.IsInstanceOf<ChangePasswordCommand>(command);
         }
+
+        [Test]
+        public void GetInstance_AddExoticScheduleCommnad_Resolves()
+        {
+            var command = _container.GetInstance<ICommand<AddExoticScheduleData>>();
+            Assert.IsInstanceOf<AddExoticScheduleCommand>(command);
+        }
+
+        [Test]
+        public void GetInstance_EditExoticScheduleCommand_Resolves()
+        {
+            var command = _container.GetInstance<ICommand<EditExoticScheduleData>>();
+            Assert.IsInstanceOf<EditExoticScheduleCommand>(command);
+        }
+
+        [Test]
+        public void GetInstance_DeleteExoticScheduleCommand_Resolves()
+        {
+            var command = _container.GetInstance<ICommand<DeleteExoticScheduleData>>();
+            Assert.IsInstanceOf<DeleteExoticScheduleCommand>(command);
+        }
     }
 }
 // ReSharper restore InconsistentNaming
