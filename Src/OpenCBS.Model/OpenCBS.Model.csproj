@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,8 +47,10 @@
     <Compile Include="Currency.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="EntryFee.cs" />
-    <Compile Include="Loan.cs" />
-    <Compile Include="LoanEvent.cs" />
+    <Compile Include="Loan\Loan.cs" />
+    <Compile Include="Loan\LoanDisbursementEvent.cs" />
+    <Compile Include="Loan\LoanEvent.cs" />
+    <Compile Include="Loan\LoanReschedulingEvent.cs" />
     <Compile Include="Schedule\AdjustmentPolicy.cs" />
     <Compile Include="Schedule\DateShiftPolicy\BackwardDateShiftPolicy.cs" />
     <Compile Include="Schedule\DateShiftPolicy\ForwardDateShiftPolicy.cs" />
@@ -73,7 +78,7 @@
     <Compile Include="Schedule\Installment.cs" />
     <Compile Include="Schedule\ScheduleBuilder.cs" />
     <Compile Include="Schedule\ScheduleConfiguration.cs" />
-    <Compile Include="Transaction.cs" />
+    <Compile Include="Loan\Transaction.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

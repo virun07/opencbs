@@ -17,15 +17,11 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using OpenCBS.Model.Loan;
 
-namespace OpenCBS.Model
+namespace OpenCBS.Interface.Repository
 {
-    public class Loan : EntityBase
+    public interface ILoanRepository : IRepository<Loan>
     {
-        public IList<Transaction> Transactions { get; set; } 
     }
 }

@@ -17,12 +17,28 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-namespace OpenCBS.Model
+using System.Data.SqlClient;
+using OpenCBS.Interface.Repository;
+using OpenCBS.Service;
+
+namespace OpenCBS.Test.IntegrationTest
 {
-    public class LoanEvent : EntityBase
+    public class TestConnectionStringProvider : IConnectionStringProvider
     {
-        public string Code { get; set; }
-        public int TransactionId { get; set; }
-        public decimal Amount { get; set; }
+        public string GetConnectionString()
+        {
+//            var settingsProvider = new SettingsProvider();
+
+            var connectionStringBuilder = new SqlConnectionStringBuilder
+            {
+                UserID = "sa", //settingsProvider.GetDatabaseUsername(),
+                Password = "opencbs", //settingsProvider.GetDatabasePassword(),
+                DataSource = @"localhost\sqlexpress", //settingsProvider.GetDatabaseServerName(),
+                PersistSecurityInfo = false,
+                InitialCatalog = "opencbs_test",
+                ConnectTimeout = 100
+            };
+            return connectionStringBuilder.ConnectionString;
+        }
     }
 }

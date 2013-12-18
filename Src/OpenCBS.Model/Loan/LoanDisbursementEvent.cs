@@ -17,19 +17,17 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
-using System.Collections.Generic;
-
-namespace OpenCBS.Model
+namespace OpenCBS.Model.Loan
 {
-    public class Transaction : EntityBase
+    public class LoanDisbursementEvent : LoanEvent
     {
-        public string Code { get; set; }
-        public DateTime Date { get; set; }
-        public int UserId { get; set; }
-        public int BranchId { get; set; }
-        public int LoanId { get; set; }
+        public override string Serialize()
+        {
+            return string.Empty;
+        }
 
-        public IList<LoanEvent> LoanEvents { get; set; } 
+        public override void Deserialize(string text)
+        {
+        }
     }
 }
