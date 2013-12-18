@@ -17,18 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-
 namespace OpenCBS.Model.Schedule
 {
-    public class ExoticSchedule : EntityBase
+    public class ExoticScheduleItem
     {
-        public ExoticSchedule()
-        {
-            Items = new List<ExoticScheduleItem>();
-        }
-
-        public string Name { get; set; }
-        public IList<ExoticScheduleItem> Items { get; set; }
+        public int Number { get; set; }
+        public decimal PrincipalPercentage { get; set; }
+        public decimal InterestPercentage { get; set; }
     }
 }

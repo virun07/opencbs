@@ -39,9 +39,14 @@
             this._deleteButton = new System.Windows.Forms.Button();
             this._moveUpButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this._itemsListView = new BrightIdeasSoftware.ObjectListView();
+            this._numberColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._principalPercentageColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._interestPercentageColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._buttonsPanel.SuspendLayout();
             this._propertiesPanel.SuspendLayout();
             this._scheduleButtonsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._itemsListView)).BeginInit();
             this.SuspendLayout();
             // 
             // _buttonsPanel
@@ -158,11 +163,58 @@
             this.button1.Text = "Move down";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // _itemsListView
+            // 
+            this._itemsListView.AllColumns.Add(this._numberColumn);
+            this._itemsListView.AllColumns.Add(this._principalPercentageColumn);
+            this._itemsListView.AllColumns.Add(this._interestPercentageColumn);
+            this._itemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this._numberColumn,
+            this._principalPercentageColumn,
+            this._interestPercentageColumn});
+            this._itemsListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._itemsListView.FullRowSelect = true;
+            this._itemsListView.GridLines = true;
+            this._itemsListView.HeaderWordWrap = true;
+            this._itemsListView.HideSelection = false;
+            this._itemsListView.Location = new System.Drawing.Point(0, 44);
+            this._itemsListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._itemsListView.MultiSelect = false;
+            this._itemsListView.Name = "_itemsListView";
+            this._itemsListView.ShowGroups = false;
+            this._itemsListView.Size = new System.Drawing.Size(411, 246);
+            this._itemsListView.TabIndex = 104;
+            this._itemsListView.UseCompatibleStateImageBehavior = false;
+            this._itemsListView.View = System.Windows.Forms.View.Details;
+            // 
+            // _numberColumn
+            // 
+            this._numberColumn.AspectName = "Number";
+            this._numberColumn.Text = "#";
+            this._numberColumn.Width = 50;
+            // 
+            // _principalPercentageColumn
+            // 
+            this._principalPercentageColumn.AspectName = "PrincipalPercentage";
+            this._principalPercentageColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this._principalPercentageColumn.Text = "Principal percentage";
+            this._principalPercentageColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this._principalPercentageColumn.Width = 140;
+            // 
+            // _interestPercentageColumn
+            // 
+            this._interestPercentageColumn.AspectName = "IntereestPercentage";
+            this._interestPercentageColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this._interestPercentageColumn.Text = "Interest percentage";
+            this._interestPercentageColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this._interestPercentageColumn.Width = 140;
+            // 
             // ExoticScheduleView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 343);
+            this.Controls.Add(this._itemsListView);
             this.Controls.Add(this._scheduleButtonsPanel);
             this.Controls.Add(this._propertiesPanel);
             this.Controls.Add(this._buttonsPanel);
@@ -170,11 +222,12 @@
             this.MinimizeBox = false;
             this.Name = "ExoticScheduleView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "S";
+            this.Text = "Exotic schedule";
             this._buttonsPanel.ResumeLayout(false);
             this._propertiesPanel.ResumeLayout(false);
             this._propertiesPanel.PerformLayout();
             this._scheduleButtonsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._itemsListView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -192,5 +245,9 @@
         private System.Windows.Forms.Button _deleteButton;
         private System.Windows.Forms.Button _moveUpButton;
         private System.Windows.Forms.Button button1;
+        private BrightIdeasSoftware.ObjectListView _itemsListView;
+        private BrightIdeasSoftware.OLVColumn _numberColumn;
+        private BrightIdeasSoftware.OLVColumn _principalPercentageColumn;
+        private BrightIdeasSoftware.OLVColumn _interestPercentageColumn;
     }
 }
