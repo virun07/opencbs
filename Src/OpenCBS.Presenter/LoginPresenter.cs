@@ -18,7 +18,7 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
-using System.ComponentModel;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
@@ -31,13 +31,15 @@ namespace OpenCBS.Presenter
         private readonly IErrorView _errorView;
         private readonly IDatabaseService _databaseService;
         private readonly IAuthService _authService;
+        private readonly IBackgroundTaskFactory _backgroundTaskFactory;
 
-        public LoginPresenter(ILoginView view, IErrorView errorView, IDatabaseService databaseService, IAuthService authService)
+        public LoginPresenter(ILoginView view, IErrorView errorView, IDatabaseService databaseService, IAuthService authService, IBackgroundTaskFactory backgroundTaskFactory)
         {
             _view = view;
             _errorView = errorView;
             _databaseService = databaseService;
             _authService = authService;
+            _backgroundTaskFactory = backgroundTaskFactory;
         }
 
         public void Ok()
@@ -55,23 +57,24 @@ namespace OpenCBS.Presenter
         {
             _view.Attach(this);
 
-            var worker = new BackgroundWorker();
-            worker.DoWork += (sender, e) =>
+            var task = _backgroundTaskFactory.GetTask();
+            IList<string> databases = new List<string>();
+            task.Action = () =>
             {
-                e.Result = _databaseService.FindAll();
+                databases = _databaseService.FindAll();
             };
-            worker.RunWorkerCompleted += (sender, e) =>
+            task.OnSuccess = () =>
             {
                 _view.StopDatabaseListRefresh();
-                if (e.Error != null)
-                {
-                    _errorView.Run(e.Error.Message);
-                    return;
-                }
-                _view.ShowDatabases((IList<string>) e.Result);
+                _view.ShowDatabases(databases);
+            };
+            task.OnError = error =>
+            {
+                _view.StopDatabaseListRefresh();
+                _errorView.Run(error.Message);
             };
             _view.StartDatabaseListRefresh();
-            worker.RunWorkerAsync();
+            task.Run();
         }
 
         public object View

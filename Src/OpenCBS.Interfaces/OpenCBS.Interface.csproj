@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IApplicationController.cs" />
+    <Compile Include="IBackgroundTask.cs" />
+    <Compile Include="IBackgroundTaskFactory.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IEventHandler.cs" />
     <Compile Include="IEventPublisher.cs" />

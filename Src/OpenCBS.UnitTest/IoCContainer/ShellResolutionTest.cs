@@ -56,6 +56,20 @@ namespace OpenCBS.UnitTest.IoCContainer
             var translator = _container.GetInstance<ITranslator>();
             Assert.IsInstanceOf<JsonTranslator>(translator);
         }
+
+        [Test]
+        public void GetInstance_BackgroundTaskFactory_Resolves()
+        {
+            var factory = _container.GetInstance<IBackgroundTaskFactory>();
+            Assert.IsInstanceOf<BackgroundTaskFactory>(factory);
+        }
+
+        [Test]
+        public void GetInstance_BackgroundTask_DoesNotResolve()
+        {
+            var task = _container.TryGetInstance<IBackgroundTask>();
+            Assert.IsNull(task);
+        }
     }
 }
 // ReSharper restore InconsistentNaming

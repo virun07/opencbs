@@ -55,6 +55,8 @@
     <Compile Include="Command\ChangePasswordCommand.cs" />
     <Compile Include="Command\ShowExoticSchedulesCommand.cs" />
     <Compile Include="ExoticScheduleService.cs" />
+    <Compile Include="Shell\BackgroundTask.cs" />
+    <Compile Include="Shell\BackgroundTaskFactory.cs" />
     <Compile Include="Shell\JsonTranslator.cs" />
     <Compile Include="Shell\ApplicationController.cs" />
     <Compile Include="AuthService.cs" />

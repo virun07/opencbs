@@ -17,9 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
+using System.Collections.Generic;
 using NSubstitute;
 using NUnit.Framework;
 using OpenCBS.DataContract;
+using OpenCBS.Interface;
 using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
 using OpenCBS.Presenter;
@@ -34,6 +37,7 @@ namespace OpenCBS.UnitTest.Presenter
         private IErrorView _errorView;
         private IAuthService _authService;
         private IDatabaseService _databaseService;
+        private IBackgroundTaskFactory _backgroundTaskFactory;
         private LoginPresenter _presenter;
 
         [SetUp]
@@ -43,7 +47,9 @@ namespace OpenCBS.UnitTest.Presenter
             _errorView = Substitute.For<IErrorView>();
             _authService = Substitute.For<IAuthService>();
             _databaseService = Substitute.For<IDatabaseService>();
-            _presenter = new LoginPresenter(_view, _errorView, _databaseService, _authService);
+            _backgroundTaskFactory = Substitute.For<IBackgroundTaskFactory>();
+            _backgroundTaskFactory.GetTask().Returns(new SyncBackgroundTask());
+            _presenter = new LoginPresenter(_view, _errorView, _databaseService, _authService, _backgroundTaskFactory);
         }
 
         [Test]
@@ -63,8 +69,23 @@ namespace OpenCBS.UnitTest.Presenter
             
             _view.Received().StartDatabaseListRefresh();
             _databaseService.Received().FindAll();
-            System.Threading.Thread.Sleep(100);
+            _view.Received().ShowDatabases(Arg.Any<IList<string>>());
             _view.Received().StopDatabaseListRefresh();
+        }
+
+        [Test]
+        public void Run_DatabaseDetectionFails_ShowsError()
+        {
+            _databaseService
+                .When(x => x.FindAll())
+                .Do(x =>
+                {
+                    throw new Exception("Cannot find databases.");
+                });
+            _presenter.Run();
+            _view.Received().StartDatabaseListRefresh();
+            _view.DidNotReceive().ShowDatabases(Arg.Any<IList<string>>());
+            _errorView.Received().Run("Cannot find databases.");
         }
 
         [Test]
