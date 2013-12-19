@@ -52,8 +52,10 @@ namespace OpenCBS.Test.IntegrationTest.Persistence
         [Test]
         public void Add_AddsLoan()
         {
-            var loan = new Loan { Code = "Test" };
-            var transaction = new Transaction { Code = "DISBURSEMENT", Date = DateTime.Now };
+            var loan = new Loan {Code = "Test"};
+            var transaction = new Transaction {Code = "DISBURSEMENT", Date = DateTime.Now};
+            var loanEvent = new LoanDisbursementEvent {Code = "DISBURSEMENT"};
+            transaction.LoanEvents = new List<LoanEvent> {loanEvent};
             loan.Transactions = new List<Transaction> { transaction };
             loan.Id = _repository.Add(loan);
 
@@ -66,6 +68,10 @@ namespace OpenCBS.Test.IntegrationTest.Persistence
                 sql = @"select count(*) from [Transaction] where LoanId = @LoanId";
                 count = connection.Query<int>(sql, new { LoanId = loan.Id }).Single();
                 Assert.AreEqual(1, count);
+
+                sql = @"select count(*) from LoanEvent where TransactionId in @TransactionIds";
+                count = connection.Query<int>(sql, new {TransactionIds = from item in loan.Transactions select item.Id}).Single();
+                Assert.AreEqual((from item in loan.Transactions select item.LoanEvents.Count).Sum(), count);
             }
         }
 
@@ -73,6 +79,7 @@ namespace OpenCBS.Test.IntegrationTest.Persistence
         {
             using (var connection = GetConnection())
             {
+                connection.Execute("delete LoanEvent");
                 connection.Execute("delete [Transaction]");
                 connection.Execute(@"delete Loan");
             }
