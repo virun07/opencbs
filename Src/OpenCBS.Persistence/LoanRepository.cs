@@ -28,6 +28,15 @@ namespace OpenCBS.Persistence
 {
     public class LoanRepository : Repository, ILoanRepository
     {
+        private class LoanEventRow
+        {
+            public int Id { get; set; }
+            public string Code { get; set; }
+            public decimal Amount { get; set; }
+            public int TransactionId { get; set; }
+            public string Extra { get; set; }
+        }
+
         public LoanRepository(IConnectionStringProvider connectionStringProvider)
             : base(connectionStringProvider)
         { }
@@ -39,7 +48,29 @@ namespace OpenCBS.Persistence
 
         public Loan FindById(int id)
         {
-            throw new System.NotImplementedException();
+            const string sql = @"select * from Loan where Id = @LoanId
+                select * from [Transaction] where LoanId = @LoanId
+                select * from LoanEvent where TransactionId in (select Id from [Transaction] where LoanId = @LoanId)";
+            using (var connection = GetConnection())
+            {
+                using (var multi = connection.QueryMultiple(sql, new { LoanId = id }))
+                {
+                    var result = multi.Read<Loan>().FirstOrDefault();
+                    if (result == null) return null;
+                    result.Transactions = multi.Read<Transaction>().ToList();
+                    var loanEventRows = multi.Read<LoanEventRow>().ToList();
+                    foreach (var loanEvent in loanEventRows)
+                    {
+                        result.Transactions[loanEvent.TransactionId].LoanEvents.Add(new LoanDisbursementEvent
+                        {
+                            Code = loanEvent.Code,
+                            Amount = loanEvent.Amount,
+                            Id = loanEvent.Id
+                        });
+                    }
+                    return result;
+                }
+            }
         }
 
         public void Update(Loan entity)
@@ -60,7 +91,7 @@ namespace OpenCBS.Persistence
                         insert [Transaction] (Code, Date, UserId, LoanId, Comment) 
                         values (@Code, @Date, @UserId, @LoanId, @Comment) select cast(scope_identity() as int)
                     ";
-                    var transactionId = connection.Query<int>(sql, new
+                    transaction.Id = connection.Query<int>(sql, new
                     {
                         transaction.Code,
                         transaction.Date,
@@ -68,6 +99,21 @@ namespace OpenCBS.Persistence
                         LoanId = loanId,
                         transaction.Comment
                     }).Single();
+
+                    foreach (var loanEvent in transaction.LoanEvents)
+                    {
+                        sql = @"
+                            insert LoanEvent (Code, Amount, TransactionId, Extra)
+                            values (@Code, @Amount, @TransactionId, @Extra) select cast(scope_identity() as int)
+                        ";
+                        loanEvent.Id = connection.Query<int>(sql, new
+                        {
+                            loanEvent.Code,
+                            loanEvent.Amount,
+                            TransactionId = transaction.Id,
+                            Extra = loanEvent.Serialize()
+                        }).Single();
+                    }
                 }
 
                 return loanId;

@@ -27,13 +27,13 @@ namespace OpenCBS.Test.IntegrationTest
     {
         public string GetConnectionString()
         {
-//            var settingsProvider = new SettingsProvider();
+            var settingsProvider = new SettingsProvider();
 
             var connectionStringBuilder = new SqlConnectionStringBuilder
             {
-                UserID = "sa", //settingsProvider.GetDatabaseUsername(),
-                Password = "opencbs", //settingsProvider.GetDatabasePassword(),
-                DataSource = @"localhost\sqlexpress", //settingsProvider.GetDatabaseServerName(),
+                UserID = settingsProvider.GetDatabaseUsername(),
+                Password = settingsProvider.GetDatabasePassword(),
+                DataSource = settingsProvider.GetDatabaseServerName(),
                 PersistSecurityInfo = false,
                 InitialCatalog = "opencbs_test",
                 ConnectTimeout = 100
