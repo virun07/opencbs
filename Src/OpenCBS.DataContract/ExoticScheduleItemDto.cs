@@ -17,13 +17,12 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System.Collections.Generic;
-
 namespace OpenCBS.DataContract
 {
-    public class ExoticScheduleDto : DataTransferObject
+    public class ExoticScheduleItemDto : DataTransferObject
     {
-        public string Name { get; set; }
-        public IList<ExoticScheduleItemDto> Items { get; set; }
+        public int Number { get; set; }
+        public decimal PrincipalPercentage { get; set; }
+        public decimal InterestPercentage { get; set; }
     }
 }

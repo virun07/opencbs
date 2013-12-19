@@ -17,16 +17,34 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using OpenCBS.DataContract;
 using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
+using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.Service;
 
 namespace OpenCBS.Service.Command
 {
     public class EditExoticScheduleCommand : ICommand<EditExoticScheduleData>
     {
+        private readonly IExoticSchedulePresenter _presenter;
+        private readonly IExoticScheduleService _service;
+        private readonly IApplicationController _appController;
+
+        public EditExoticScheduleCommand(IExoticSchedulePresenter presenter, IExoticScheduleService service,
+                                         IApplicationController appController)
+        {
+            _presenter = presenter;
+            _service = service;
+            _appController = appController;
+        }
+
         public void Execute(EditExoticScheduleData commandData)
         {
-            throw new System.NotImplementedException();
+            var dto = _service.FindById(commandData.Id);
+            var result = _presenter.Get(dto);
+            if (result.CommandResult == CommandResult.Ok)
+            {}
         }
     }
 }

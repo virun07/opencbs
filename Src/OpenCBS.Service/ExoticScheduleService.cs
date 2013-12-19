@@ -43,7 +43,8 @@ namespace OpenCBS.Service
 
         public ExoticScheduleDto FindById(int id)
         {
-            throw new System.NotImplementedException();
+            var result = _repository.FindById(id);
+            return result == null ? null : Map(result);
         }
 
         public void Validate(ExoticScheduleDto dto)
@@ -70,6 +71,9 @@ namespace OpenCBS.Service
         {
             var result = new ExoticScheduleDto();
             result.InjectFrom(schedule);
+            result.Items = schedule.Items
+                .Select(x => new ExoticScheduleItemDto().InjectFrom(x))
+                .Cast<ExoticScheduleItemDto>().ToList().AsReadOnly();
             return result;
         }
     }

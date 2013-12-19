@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using Omu.ValueInjecter;
 using OpenCBS.DataContract;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
@@ -40,6 +41,9 @@ namespace OpenCBS.Presenter
         public Result<ExoticScheduleDto> Get(ExoticScheduleDto dto)
         {
             _view.Attach(this);
+            dto = dto ?? new ExoticScheduleDto();
+            _view.InjectFrom(dto);
+            _view.ExoticScheduleName = dto.Name;
             _view.Run();
             return new Result<ExoticScheduleDto>(CommandResult.Cancel, null);
         }

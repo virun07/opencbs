@@ -203,7 +203,7 @@
             // 
             // _interestPercentageColumn
             // 
-            this._interestPercentageColumn.AspectName = "IntereestPercentage";
+            this._interestPercentageColumn.AspectName = "InterestPercentage";
             this._interestPercentageColumn.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._interestPercentageColumn.Text = "Interest percentage";
             this._interestPercentageColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;

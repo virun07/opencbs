@@ -56,6 +56,7 @@
     <Compile Include="Schedule\DateShiftPolicy\ForwardDateShiftPolicy.cs" />
     <Compile Include="Schedule\DateShiftPolicy\NoDateShiftPolicy.cs" />
     <Compile Include="Schedule\ExoticSchedule.cs" />
+    <Compile Include="Schedule\ExoticScheduleItem.cs" />
     <Compile Include="Schedule\LateFeePolicy\DefaultLateFeePolicy.cs" />
     <Compile Include="Schedule\PaymentFrequencyPolicy\BiweeklyPaymentFrequencyPolicy.cs" />
     <Compile Include="Schedule\PaymentFrequencyPolicy\DailyPaymentFrequencyPolicy.cs" />

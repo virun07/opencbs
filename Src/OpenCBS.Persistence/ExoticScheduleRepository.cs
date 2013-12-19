@@ -43,7 +43,25 @@ namespace OpenCBS.Persistence
 
         public ExoticSchedule FindById(int id)
         {
-            throw new NotImplementedException();
+            const string sql = @"
+                    select id Id, name Name, Deleted from Exotics where id = @Id
+                    select number Number, principal_coeff PrincipalPercentage, interest_coeff InterestPercentage
+                    from ExoticInstallments
+                    where exotic_id = @Id
+                ";
+            using (var connection = GetConnection())
+            using (var multi = connection.QueryMultiple(sql, new { Id = id }))
+            {
+                var result = multi.Read<ExoticSchedule>().Single();
+                result.Items = multi.Read<ExoticScheduleItem>().ToList().AsReadOnly();
+                result.Items = result.Items.Select(x => new ExoticScheduleItem
+                {
+                    Number = x.Number,
+                    PrincipalPercentage = x.PrincipalPercentage * 100,
+                    InterestPercentage = x.InterestPercentage * 100
+                }).ToList().AsReadOnly();
+                return result;
+            }
         }
 
         public void Update(ExoticSchedule entity)

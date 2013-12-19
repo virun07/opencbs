@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Presenter;
 
@@ -29,6 +30,7 @@ namespace OpenCBS.Interface.View
         void ShowNotification(Notification notification);
 
         int Id { get; set; }
-        string Name { get; set; }
+        string ExoticScheduleName { get; set; }
+        IList<ExoticScheduleItemDto> Items { get; set; }
     }
 }
