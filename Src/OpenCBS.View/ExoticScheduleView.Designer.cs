@@ -38,7 +38,7 @@
             this._addButton = new System.Windows.Forms.Button();
             this._deleteButton = new System.Windows.Forms.Button();
             this._moveUpButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this._moveDownButton = new System.Windows.Forms.Button();
             this._itemsListView = new BrightIdeasSoftware.ObjectListView();
             this._numberColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._principalPercentageColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -112,7 +112,7 @@
             this._scheduleButtonsPanel.Controls.Add(this._addButton);
             this._scheduleButtonsPanel.Controls.Add(this._deleteButton);
             this._scheduleButtonsPanel.Controls.Add(this._moveUpButton);
-            this._scheduleButtonsPanel.Controls.Add(this.button1);
+            this._scheduleButtonsPanel.Controls.Add(this._moveDownButton);
             this._scheduleButtonsPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this._scheduleButtonsPanel.Location = new System.Drawing.Point(411, 44);
             this._scheduleButtonsPanel.Name = "_scheduleButtonsPanel";
@@ -152,16 +152,16 @@
             this._moveUpButton.Text = "Move up";
             this._moveUpButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // _moveDownButton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(3, 111);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 28);
-            this.button1.TabIndex = 105;
-            this.button1.Text = "Move down";
-            this.button1.UseVisualStyleBackColor = true;
+            this._moveDownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._moveDownButton.Location = new System.Drawing.Point(3, 111);
+            this._moveDownButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this._moveDownButton.Name = "_moveDownButton";
+            this._moveDownButton.Size = new System.Drawing.Size(134, 28);
+            this._moveDownButton.TabIndex = 105;
+            this._moveDownButton.Text = "Move down";
+            this._moveDownButton.UseVisualStyleBackColor = true;
             // 
             // _itemsListView
             // 
@@ -244,7 +244,7 @@
         private System.Windows.Forms.Button _addButton;
         private System.Windows.Forms.Button _deleteButton;
         private System.Windows.Forms.Button _moveUpButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button _moveDownButton;
         private BrightIdeasSoftware.ObjectListView _itemsListView;
         private BrightIdeasSoftware.OLVColumn _numberColumn;
         private BrightIdeasSoftware.OLVColumn _principalPercentageColumn;

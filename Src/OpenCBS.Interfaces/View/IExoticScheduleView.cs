@@ -28,9 +28,16 @@ namespace OpenCBS.Interface.View
         void Run();
         void Stop();
         void ShowNotification(Notification notification);
+        void FocusItems();
 
         int Id { get; set; }
         string ExoticScheduleName { get; set; }
         IList<ExoticScheduleItemDto> Items { get; set; }
+
+        ExoticScheduleItemDto SelectedItem { get; }
+
+        bool CanMoveUp { get; set; }
+        bool CanMoveDown { get; set; }
+        bool CanDelete { get; set; }
     }
 }

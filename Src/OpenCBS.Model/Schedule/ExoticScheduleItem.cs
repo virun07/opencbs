@@ -19,7 +19,7 @@
 
 namespace OpenCBS.Model.Schedule
 {
-    public class ExoticScheduleItem
+    public class ExoticScheduleItem : EntityBase
     {
         public int Number { get; set; }
         public decimal PrincipalPercentage { get; set; }

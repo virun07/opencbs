@@ -45,6 +45,11 @@ namespace OpenCBS.View
             Close();
         }
 
+        public void FocusItems()
+        {
+            _itemsListView.Focus();
+        }
+
         public int Id { get; set; }
 
         public IList<ExoticScheduleItemDto> Items
@@ -55,7 +60,32 @@ namespace OpenCBS.View
                 var selectedObject = _itemsListView.SelectedObject;
                 _itemsListView.SetObjects(value);
                 _itemsListView.SelectedObject = selectedObject;
+                _itemsListView.EnsureModelVisible(selectedObject);
+                _presenterCallbacks.ChangeSelectedItem();
             }
+        }
+
+        public bool CanMoveUp
+        {
+            get { return _moveUpButton.Enabled; }
+            set { _moveUpButton.Enabled = value; }
+        }
+
+        public bool CanMoveDown
+        {
+            get { return _moveDownButton.Enabled; }
+            set { _moveDownButton.Enabled = value; }
+        }
+
+        public bool CanDelete
+        {
+            get { return _deleteButton.Enabled; }
+            set { _deleteButton.Enabled = value; }
+        }
+
+        public ExoticScheduleItemDto SelectedItem
+        {
+            get { return (ExoticScheduleItemDto) _itemsListView.SelectedObject;  }
         }
 
         public string ExoticScheduleName
@@ -70,6 +100,9 @@ namespace OpenCBS.View
             FormClosed += (sender, e) => presenterCallbacks.Close();
             _okButton.Click += (sender, e) => presenterCallbacks.Ok();
             _cancelButton.Click += (sender, e) => presenterCallbacks.Cancel();
+            _itemsListView.SelectedIndexChanged += (sender, e) => presenterCallbacks.ChangeSelectedItem();
+            _moveUpButton.Click += (sender, e) => _presenterCallbacks.MoveUp();
+            _moveDownButton.Click += (sender, e) => _presenterCallbacks.MoveDown();
         }
     }
 }

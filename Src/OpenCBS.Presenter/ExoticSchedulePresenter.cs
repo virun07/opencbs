@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Linq;
 using Omu.ValueInjecter;
 using OpenCBS.DataContract;
 using OpenCBS.Interface;
@@ -61,6 +62,49 @@ namespace OpenCBS.Presenter
         public void Close()
         {
             _appController.Unsubscribe(this);
+        }
+
+        public void ChangeSelectedItem()
+        {
+            var item = _view.SelectedItem;
+            if (item == null)
+            {
+                _view.CanMoveUp = _view.CanMoveDown = _view.CanDelete = false;
+                return;
+            }
+            _view.CanMoveUp = item.Number > 1;
+            _view.CanMoveDown = item.Number < _view.Items.Count;
+            _view.CanDelete = true;
+        }
+
+        public void MoveUp()
+        {
+            var item = _view.SelectedItem;
+            if (item == null || item.Number == 1) return;
+            var previousItem = _view.Items.SingleOrDefault(x => x.Number == item.Number - 1);
+            if (previousItem == null) return;
+
+            var temp = item.Number;
+            item.Number = previousItem.Number;
+            previousItem.Number = temp;
+
+            _view.Items = _view.Items.OrderBy(x => x.Number).ToList().AsReadOnly();
+            _view.FocusItems();
+        }
+
+        public void MoveDown()
+        {
+            var item = _view.SelectedItem;
+            if (item == null) return;
+            var nextItem = _view.Items.SingleOrDefault(x => x.Number == item.Number + 1);
+            if (nextItem == null) return;
+
+            var temp = item.Number;
+            item.Number = nextItem.Number;
+            nextItem.Number = temp;
+
+            _view.Items = _view.Items.OrderBy(x => x.Number).ToList().AsReadOnly();
+            _view.FocusItems();
         }
 
         public object View

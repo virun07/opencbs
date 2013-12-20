@@ -45,7 +45,7 @@ namespace OpenCBS.Persistence
         {
             const string sql = @"
                     select id Id, name Name, Deleted from Exotics where id = @Id
-                    select number Number, principal_coeff PrincipalPercentage, interest_coeff InterestPercentage
+                    select number Id, number Number, principal_coeff PrincipalPercentage, interest_coeff InterestPercentage
                     from ExoticInstallments
                     where exotic_id = @Id
                 ";
@@ -56,6 +56,7 @@ namespace OpenCBS.Persistence
                 result.Items = multi.Read<ExoticScheduleItem>().ToList().AsReadOnly();
                 result.Items = result.Items.Select(x => new ExoticScheduleItem
                 {
+                    Id = x.Id,
                     Number = x.Number,
                     PrincipalPercentage = x.PrincipalPercentage * 100,
                     InterestPercentage = x.InterestPercentage * 100
