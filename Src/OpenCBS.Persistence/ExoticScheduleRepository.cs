@@ -17,7 +17,6 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
@@ -112,7 +111,10 @@ namespace OpenCBS.Persistence
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            using (var connection = GetConnection())
+            {
+                connection.Execute(@"update Exotics set Deleted = 1 where id = @Id", new { Id = id });
+            }
         }
     }
 }

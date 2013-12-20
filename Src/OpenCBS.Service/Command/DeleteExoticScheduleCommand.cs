@@ -17,16 +17,37 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using OpenCBS.DataContract;
+using OpenCBS.DataContract.AppEvent;
 using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
+using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.Service;
 
 namespace OpenCBS.Service.Command
 {
     public class DeleteExoticScheduleCommand : ICommand<DeleteExoticScheduleData>
     {
+        private readonly IConfirmationPresenter _presenter;
+        private readonly IExoticScheduleService _service;
+        private readonly IApplicationController _appController;
+
+        public DeleteExoticScheduleCommand(IConfirmationPresenter presenter, IExoticScheduleService service,
+                                           IApplicationController appController)
+        {
+            _presenter = presenter;
+            _service = service;
+            _appController = appController;
+        }
+
         public void Execute(DeleteExoticScheduleData commandData)
         {
-            throw new System.NotImplementedException();
+            var result = _presenter.Get("Do you confirm the operation?");
+            if (result == CommandResult.Ok)
+            {
+                _service.Delete(commandData.Id);
+                _appController.Raise(new ExoticScheduleDeletedEvent { Id = commandData.Id });
+            }
         }
     }
 }

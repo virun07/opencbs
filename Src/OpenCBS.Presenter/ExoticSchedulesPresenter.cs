@@ -28,7 +28,8 @@ using OpenCBS.Interface.View;
 namespace OpenCBS.Presenter
 {
     public class ExoticSchedulesPresenter : IExoticSchedulesPresenter, IExoticSchedulesPresenterCallbacks,
-        IEventHandler<ExoticScheduleSavedEvent>
+        IEventHandler<ExoticScheduleSavedEvent>,
+        IEventHandler<ExoticScheduleDeletedEvent>
     {
         private readonly IExoticSchedulesView _view;
         private readonly IExoticScheduleService _service;
@@ -102,6 +103,11 @@ namespace OpenCBS.Presenter
         }
 
         public void Handle(ExoticScheduleSavedEvent eventData)
+        {
+            ShowExoticSchedules();
+        }
+
+        public void Handle(ExoticScheduleDeletedEvent eventData)
         {
             ShowExoticSchedules();
         }

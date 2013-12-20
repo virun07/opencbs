@@ -93,7 +93,7 @@ namespace OpenCBS.Service
 
         public void Delete(int id)
         {
-            throw new System.NotImplementedException();
+            _repository.Remove(id);
         }
 
         private static ExoticScheduleDto Map(ExoticSchedule schedule)

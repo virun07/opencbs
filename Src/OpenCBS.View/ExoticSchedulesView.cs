@@ -26,7 +26,7 @@ using OpenCBS.Interface.View;
 
 namespace OpenCBS.View
 {
-    public partial class ExoticSchedulesView : BaseView, IExoticSchedulesView
+    public partial class ExoticSchedulesView : CollectionView, IExoticSchedulesView
     {
         private IExoticSchedulesPresenterCallbacks _presenterCallbacks;
 
