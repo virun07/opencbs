@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.DataContract;
+using OpenCBS.DataContract.AppEvent;
 using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
@@ -44,7 +45,10 @@ namespace OpenCBS.Service.Command
             var dto = _service.FindById(commandData.Id);
             var result = _presenter.Get(dto);
             if (result.CommandResult == CommandResult.Ok)
-            {}
+            {
+                _service.Update(result.Data);
+                _appController.Raise(new ExoticScheduleSavedEvent { Id = result.Data.Id });
+            }
         }
     }
 }

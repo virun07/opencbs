@@ -19,6 +19,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 using Omu.ValueInjecter;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Repository;
@@ -57,12 +58,37 @@ namespace OpenCBS.Service
 
         public int Add(ExoticScheduleDto dto)
         {
-            throw new System.NotImplementedException();
+            _validator.Validate(dto);
+            ThrowIfInvalid(dto);
+
+            var exoticSchedule = new ExoticSchedule();
+            exoticSchedule.InjectFrom(dto);
+            exoticSchedule.Items = dto.Items.Select(x => new ExoticScheduleItem().InjectFrom(x)).Cast<ExoticScheduleItem>().ToList().AsReadOnly();
+
+            using (var scope = new TransactionScope())
+            {
+                var id = _repository.Add(exoticSchedule);
+                scope.Complete();
+                return id;
+            }
         }
 
         public void Update(ExoticScheduleDto dto)
         {
-            throw new System.NotImplementedException();
+            _validator.Validate(dto);
+            ThrowIfInvalid(dto);
+
+            var exoticSchedule = _repository.FindById(dto.Id);
+            ThrowIfNotFound(exoticSchedule);
+
+            exoticSchedule.InjectFrom(dto);
+            exoticSchedule.Items = dto.Items.Select(x => new ExoticScheduleItem().InjectFrom(x)).Cast<ExoticScheduleItem>().ToList().AsReadOnly();
+
+            using (var scope = new TransactionScope())
+            {
+                _repository.Update(exoticSchedule);
+                scope.Complete();
+            }
         }
 
         public void Delete(int id)

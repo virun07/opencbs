@@ -67,12 +67,47 @@ namespace OpenCBS.Persistence
 
         public void Update(ExoticSchedule entity)
         {
-            throw new NotImplementedException();
+            using (var connection = GetConnection())
+            {
+                var sql = @"update Exotics set name = @Name where id = @Id";
+                connection.Execute(sql, new { entity.Name, entity.Id });
+                sql = @"delete from ExoticInstallments where exotic_id = @Id";
+                connection.Execute(sql, new { entity.Id });
+                var items = entity.Items.Select(x => new
+                {
+                    x.Number,
+                    PrincipalPercentage = x.PrincipalPercentage / 100,
+                    InterestPercentage = x.InterestPercentage / 100,
+                    ExoticScheduleId = entity.Id
+                }).ToList().AsReadOnly();
+                sql = @"
+                    insert ExoticInstallments (number, principal_coeff, interest_coeff, exotic_id)
+                    values (@Number, @PrincipalPercentage, @InterestPercentage, @ExoticScheduleId)
+                ";
+                connection.Execute(sql, items);
+            }
         }
 
         public int Add(ExoticSchedule entity)
         {
-            throw new NotImplementedException();
+            using (var connection = GetConnection())
+            {
+                var sql = @"insert Exotics (name) values (@Name) select cast(scope_identity() as int)";
+                var id = connection.Query<int>(sql, new { entity.Name }).Single();
+                var items = entity.Items.Select(x => new
+                {
+                    x.Number,
+                    PrincipalPercentage = x.PrincipalPercentage / 100,
+                    InterestPercentage = x.InterestPercentage / 100,
+                    ExoticScheduleId = id
+                }).ToList().AsReadOnly();
+                sql = @"
+                    insert ExoticInstallments (number, principal_coeff, interest_coeff, exotic_id)
+                    values (@Number, @PrincipalPercentage, @InterestPercentage, @ExoticScheduleId)
+                ";
+                connection.Execute(sql, items);
+                return id;
+            }
         }
 
         public void Remove(int id)

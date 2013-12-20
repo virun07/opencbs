@@ -18,26 +18,35 @@
 // Contact: contact@opencbs.com
 
 using OpenCBS.DataContract;
+using OpenCBS.DataContract.AppEvent;
 using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.Service;
 
 namespace OpenCBS.Service.Command
 {
     public class AddExoticScheduleCommand : ICommand<AddExoticScheduleData>
     {
         private readonly IExoticSchedulePresenter _presenter;
+        private readonly IExoticScheduleService _service;
+        private readonly IApplicationController _appController;
 
-        public AddExoticScheduleCommand(IExoticSchedulePresenter presenter)
+        public AddExoticScheduleCommand(IExoticSchedulePresenter presenter, IExoticScheduleService service, IApplicationController appController)
         {
             _presenter = presenter;
+            _service = service;
+            _appController = appController;
         }
 
         public void Execute(AddExoticScheduleData commandData)
         {
             var result = _presenter.Get(null);
             if (result.CommandResult == CommandResult.Ok)
-            {}
+            {
+                var id = _service.Add(result.Data);
+                _appController.Raise(new ExoticScheduleSavedEvent { Id = id });
+            }
         }
     }
 }

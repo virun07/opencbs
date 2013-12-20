@@ -18,6 +18,7 @@
 // Contact: contact@opencbs.com
 
 using System.Linq;
+using OpenCBS.DataContract.AppEvent;
 using OpenCBS.DataContract.CommandData;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
@@ -26,7 +27,8 @@ using OpenCBS.Interface.View;
 
 namespace OpenCBS.Presenter
 {
-    public class ExoticSchedulesPresenter : IExoticSchedulesPresenter, IExoticSchedulesPresenterCallbacks
+    public class ExoticSchedulesPresenter : IExoticSchedulesPresenter, IExoticSchedulesPresenterCallbacks,
+        IEventHandler<ExoticScheduleSavedEvent>
     {
         private readonly IExoticSchedulesView _view;
         private readonly IExoticScheduleService _service;
@@ -97,6 +99,11 @@ namespace OpenCBS.Presenter
                                 ? _service.FindAll()
                                 : _service.FindAll().Where(x => !x.Deleted).ToList().AsReadOnly();
             _view.ShowExoticSchedules(schedules);
+        }
+
+        public void Handle(ExoticScheduleSavedEvent eventData)
+        {
+            ShowExoticSchedules();
         }
     }
 }
