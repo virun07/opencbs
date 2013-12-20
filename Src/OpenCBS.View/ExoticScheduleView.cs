@@ -18,6 +18,9 @@
 // Contact: contact@opencbs.com
 
 using System.Collections.Generic;
+using System.Drawing;
+using BrightIdeasSoftware;
+using OpenCBS.Controls;
 using OpenCBS.DataContract;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
@@ -33,6 +36,7 @@ namespace OpenCBS.View
             : base(translator)
         {
             InitializeComponent();
+            SetUp();
         }
 
         public void Run()
@@ -48,6 +52,23 @@ namespace OpenCBS.View
         public void FocusItems()
         {
             _itemsListView.Focus();
+        }
+
+        public void SetTotalPrincipal(decimal value)
+        {
+            _principalTotalLabel.Text = string.Format("{0:N2} %", value);
+            _principalTotalLabel.ForeColor = value != 100 ? Color.Red : SystemColors.ControlText;
+        }
+
+        public void SetTotalInterest(decimal value)
+        {
+            _interestTotalLabel.Text = string.Format("{0:N2} %", value);
+            _interestTotalLabel.ForeColor = value != 100 ? Color.Red : SystemColors.ControlText;
+        }
+
+        public void SetTotalNumber(int number)
+        {
+            _totalValueLabel.Text = string.Format("{0:D0}", number);
         }
 
         public int Id { get; set; }
@@ -85,7 +106,7 @@ namespace OpenCBS.View
 
         public ExoticScheduleItemDto SelectedItem
         {
-            get { return (ExoticScheduleItemDto) _itemsListView.SelectedObject;  }
+            get { return (ExoticScheduleItemDto) _itemsListView.SelectedObject; }
             set
             {
                 _itemsListView.SelectedObject = value;
@@ -110,6 +131,35 @@ namespace OpenCBS.View
             _moveDownButton.Click += (sender, e) => _presenterCallbacks.MoveDown();
             _addButton.Click += (sender, e) => _presenterCallbacks.Add();
             _deleteButton.Click += (sender, e) => _presenterCallbacks.Delete();
+        }
+
+        private void SetUp()
+        {
+            ObjectListView.EditorRegistry.Register(typeof(decimal), (model, column, value) =>
+            {
+                var control = new AmountTextBox { AllowDecimalSeparator = true };
+                return control;
+            });
+            _principalPercentageColumn.AspectPutter = PrincipalPercentageAspectPutter;
+            _interestPercentageColumn.AspectPutter = InterestPercentageAspectPutter;
+        }
+
+        private void PrincipalPercentageAspectPutter(object rowObject, object value)
+        {
+            var item = (ExoticScheduleItemDto) rowObject;
+            decimal percentage;
+            if (decimal.TryParse(value.ToString(), out percentage)) item.PrincipalPercentage = percentage;
+            _itemsListView.RefreshObject(rowObject);
+            _presenterCallbacks.UpdateTotals();
+        }
+
+        private void InterestPercentageAspectPutter(object rowObject, object value)
+        {
+            var item = (ExoticScheduleItemDto) rowObject;
+            decimal percentage;
+            if (decimal.TryParse(value.ToString(), out percentage)) item.InterestPercentage = percentage;
+            _itemsListView.RefreshObject(rowObject);
+            _presenterCallbacks.UpdateTotals();
         }
     }
 }

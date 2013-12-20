@@ -29,6 +29,9 @@ namespace OpenCBS.Interface.View
         void Stop();
         void ShowNotification(Notification notification);
         void FocusItems();
+        void SetTotalPrincipal(decimal value);
+        void SetTotalInterest(decimal value);
+        void SetTotalNumber(int number);
 
         int Id { get; set; }
         string ExoticScheduleName { get; set; }

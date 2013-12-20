@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Omu.ValueInjecter;
@@ -46,6 +47,7 @@ namespace OpenCBS.Presenter
             dto = dto ?? new ExoticScheduleDto();
             _view.InjectFrom(dto);
             _view.ExoticScheduleName = dto.Name;
+            UpdateTotals();
             _view.Run();
             return new Result<ExoticScheduleDto>(CommandResult.Cancel, null);
         }
@@ -124,6 +126,7 @@ namespace OpenCBS.Presenter
             _view.Items = items.AsReadOnly();
             _view.SelectedItem = item;
             _view.FocusItems();
+            UpdateTotals();
         }
 
         public void Delete()
@@ -141,6 +144,17 @@ namespace OpenCBS.Presenter
                 number++;
             }
             _view.Items = items.AsReadOnly();
+            UpdateTotals();
+        }
+
+        public void UpdateTotals()
+        {
+            var totalPrincipal = Math.Round(_view.Items.Sum(x => x.PrincipalPercentage), 2);
+            var totalInterest = Math.Round(_view.Items.Sum(x => x.InterestPercentage), 2);
+            var totalNumber = _view.Items.Count;
+            _view.SetTotalPrincipal(totalPrincipal);
+            _view.SetTotalInterest(totalInterest);
+            _view.SetTotalNumber(totalNumber);
         }
 
         public object View

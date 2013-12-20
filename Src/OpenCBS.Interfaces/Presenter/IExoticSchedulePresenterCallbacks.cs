@@ -29,5 +29,6 @@ namespace OpenCBS.Interface.Presenter
         void MoveDown();
         void Add();
         void Delete();
+        void UpdateTotals();
     }
 }

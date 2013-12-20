@@ -23,6 +23,11 @@ namespace OpenCBS.DataContract
 {
     public class ExoticScheduleDto : DataTransferObject
     {
+        public ExoticScheduleDto()
+        {
+            Items = new List<ExoticScheduleItemDto>();
+        }
+
         public string Name { get; set; }
         public IList<ExoticScheduleItemDto> Items { get; set; }
     }

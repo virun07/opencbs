@@ -31,6 +31,11 @@
             this._buttonsPanel = new OpenCBS.Controls.TopEdgePanel();
             this._cancelButton = new System.Windows.Forms.Button();
             this._okButton = new System.Windows.Forms.Button();
+            this._statusStrip = new System.Windows.Forms.StatusStrip();
+            this._principalLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this._principalTotalLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this._interestLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this._interestTotalLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this._propertiesPanel = new System.Windows.Forms.Panel();
             this._nameTextBox = new System.Windows.Forms.TextBox();
             this._nameLabel = new System.Windows.Forms.Label();
@@ -43,7 +48,10 @@
             this._numberColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._principalPercentageColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._interestPercentageColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._totalLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this._totalValueLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this._buttonsPanel.SuspendLayout();
+            this._statusStrip.SuspendLayout();
             this._propertiesPanel.SuspendLayout();
             this._scheduleButtonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._itemsListView)).BeginInit();
@@ -54,7 +62,7 @@
             this._buttonsPanel.Controls.Add(this._cancelButton);
             this._buttonsPanel.Controls.Add(this._okButton);
             this._buttonsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._buttonsPanel.Location = new System.Drawing.Point(0, 290);
+            this._buttonsPanel.Location = new System.Drawing.Point(0, 266);
             this._buttonsPanel.Name = "_buttonsPanel";
             this._buttonsPanel.Size = new System.Drawing.Size(552, 53);
             this._buttonsPanel.TabIndex = 101;
@@ -80,6 +88,60 @@
             this._okButton.TabIndex = 101;
             this._okButton.Text = "OK";
             this._okButton.UseVisualStyleBackColor = true;
+            // 
+            // _statusStrip
+            // 
+            this._statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._totalLabel,
+            this._totalValueLabel,
+            this._principalLabel,
+            this._principalTotalLabel,
+            this._interestLabel,
+            this._interestTotalLabel});
+            this._statusStrip.Location = new System.Drawing.Point(0, 319);
+            this._statusStrip.Name = "_statusStrip";
+            this._statusStrip.Size = new System.Drawing.Size(552, 24);
+            this._statusStrip.TabIndex = 103;
+            // 
+            // _principalLabel
+            // 
+            this._principalLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this._principalLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this._principalLabel.Name = "_principalLabel";
+            this._principalLabel.Size = new System.Drawing.Size(57, 19);
+            this._principalLabel.Text = "Principal";
+            // 
+            // _principalTotalLabel
+            // 
+            this._principalTotalLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this._principalTotalLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this._principalTotalLabel.Name = "_principalTotalLabel";
+            this._principalTotalLabel.Size = new System.Drawing.Size(16, 19);
+            this._principalTotalLabel.Text = "?";
+            // 
+            // _interestLabel
+            // 
+            this._interestLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this._interestLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this._interestLabel.Name = "_interestLabel";
+            this._interestLabel.Size = new System.Drawing.Size(50, 19);
+            this._interestLabel.Text = "Interest";
+            // 
+            // _interestTotalLabel
+            // 
+            this._interestTotalLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this._interestTotalLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this._interestTotalLabel.Name = "_interestTotalLabel";
+            this._interestTotalLabel.Size = new System.Drawing.Size(16, 19);
+            this._interestTotalLabel.Text = "?";
             // 
             // _propertiesPanel
             // 
@@ -116,7 +178,7 @@
             this._scheduleButtonsPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this._scheduleButtonsPanel.Location = new System.Drawing.Point(411, 44);
             this._scheduleButtonsPanel.Name = "_scheduleButtonsPanel";
-            this._scheduleButtonsPanel.Size = new System.Drawing.Size(141, 246);
+            this._scheduleButtonsPanel.Size = new System.Drawing.Size(141, 222);
             this._scheduleButtonsPanel.TabIndex = 103;
             // 
             // _addButton
@@ -168,6 +230,7 @@
             this._itemsListView.AllColumns.Add(this._numberColumn);
             this._itemsListView.AllColumns.Add(this._principalPercentageColumn);
             this._itemsListView.AllColumns.Add(this._interestPercentageColumn);
+            this._itemsListView.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.DoubleClick;
             this._itemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this._numberColumn,
             this._principalPercentageColumn,
@@ -182,7 +245,7 @@
             this._itemsListView.MultiSelect = false;
             this._itemsListView.Name = "_itemsListView";
             this._itemsListView.ShowGroups = false;
-            this._itemsListView.Size = new System.Drawing.Size(411, 246);
+            this._itemsListView.Size = new System.Drawing.Size(411, 222);
             this._itemsListView.TabIndex = 104;
             this._itemsListView.UseCompatibleStateImageBehavior = false;
             this._itemsListView.View = System.Windows.Forms.View.Details;
@@ -190,6 +253,7 @@
             // _numberColumn
             // 
             this._numberColumn.AspectName = "Number";
+            this._numberColumn.IsEditable = false;
             this._numberColumn.Text = "#";
             this._numberColumn.Width = 50;
             // 
@@ -209,6 +273,26 @@
             this._interestPercentageColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._interestPercentageColumn.Width = 140;
             // 
+            // _totalLabel
+            // 
+            this._totalLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this._totalLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this._totalLabel.Name = "_totalLabel";
+            this._totalLabel.Size = new System.Drawing.Size(18, 19);
+            this._totalLabel.Text = "#";
+            // 
+            // _totalValueLabel
+            // 
+            this._totalValueLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this._totalValueLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this._totalValueLabel.Name = "_totalValueLabel";
+            this._totalValueLabel.Size = new System.Drawing.Size(16, 19);
+            this._totalValueLabel.Text = "?";
+            // 
             // ExoticScheduleView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -218,17 +302,22 @@
             this.Controls.Add(this._scheduleButtonsPanel);
             this.Controls.Add(this._propertiesPanel);
             this.Controls.Add(this._buttonsPanel);
+            this.Controls.Add(this._statusStrip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ExoticScheduleView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Exotic schedule";
             this._buttonsPanel.ResumeLayout(false);
+            this._statusStrip.ResumeLayout(false);
+            this._statusStrip.PerformLayout();
             this._propertiesPanel.ResumeLayout(false);
             this._propertiesPanel.PerformLayout();
             this._scheduleButtonsPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._itemsListView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -249,5 +338,12 @@
         private BrightIdeasSoftware.OLVColumn _numberColumn;
         private BrightIdeasSoftware.OLVColumn _principalPercentageColumn;
         private BrightIdeasSoftware.OLVColumn _interestPercentageColumn;
+        private System.Windows.Forms.StatusStrip _statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel _principalLabel;
+        private System.Windows.Forms.ToolStripStatusLabel _principalTotalLabel;
+        private System.Windows.Forms.ToolStripStatusLabel _interestLabel;
+        private System.Windows.Forms.ToolStripStatusLabel _interestTotalLabel;
+        private System.Windows.Forms.ToolStripStatusLabel _totalLabel;
+        private System.Windows.Forms.ToolStripStatusLabel _totalValueLabel;
     }
 }
