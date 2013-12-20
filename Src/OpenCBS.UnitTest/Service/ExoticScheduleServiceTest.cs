@@ -23,6 +23,7 @@ using NSubstitute;
 using NUnit.Framework;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Repository;
+using OpenCBS.Interface.Validator;
 using OpenCBS.Model.Schedule;
 using OpenCBS.Service;
 
@@ -33,13 +34,15 @@ namespace OpenCBS.UnitTest.Service
     public class ExoticScheduleServiceTest
     {
         private IExoticScheduleRepository _repository;
+        private IExoticScheduleValidator _validator;
         private ExoticScheduleService _service;
 
         [SetUp]
         public void SetUp()
         {
             _repository = Substitute.For<IExoticScheduleRepository>();
-            _service = new ExoticScheduleService(_repository);
+            _validator = Substitute.For<IExoticScheduleValidator>();
+            _service = new ExoticScheduleService(_repository, _validator);
         }
 
         [Test]

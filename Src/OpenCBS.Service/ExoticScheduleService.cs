@@ -23,6 +23,7 @@ using Omu.ValueInjecter;
 using OpenCBS.DataContract;
 using OpenCBS.Interface.Repository;
 using OpenCBS.Interface.Service;
+using OpenCBS.Interface.Validator;
 using OpenCBS.Model.Schedule;
 
 namespace OpenCBS.Service
@@ -30,10 +31,12 @@ namespace OpenCBS.Service
     public class ExoticScheduleService : Service, IExoticScheduleService
     {
         private readonly IExoticScheduleRepository _repository;
+        private readonly IExoticScheduleValidator _validator;
 
-        public ExoticScheduleService(IExoticScheduleRepository repository)
+        public ExoticScheduleService(IExoticScheduleRepository repository, IExoticScheduleValidator validator)
         {
             _repository = repository;
+            _validator = validator;
         }
 
         public IList<ExoticScheduleDto> FindAll()
@@ -49,7 +52,7 @@ namespace OpenCBS.Service
 
         public void Validate(ExoticScheduleDto dto)
         {
-            throw new System.NotImplementedException();
+            _validator.Validate(dto);
         }
 
         public int Add(ExoticScheduleDto dto)

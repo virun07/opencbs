@@ -100,6 +100,7 @@
     <Compile Include="Service.cs" />
     <Compile Include="SettingsProvider.cs" />
     <Compile Include="UserService.cs" />
+    <Compile Include="Validator\ExoticScheduleValidator.cs" />
     <Compile Include="Validator\PasswordValidator.cs" />
     <Compile Include="Validator\EntryFeeValidator.cs" />
     <Compile Include="Validator\LoanProductValidator.cs" />

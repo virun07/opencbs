@@ -24,6 +24,7 @@ using Omu.ValueInjecter;
 using OpenCBS.DataContract;
 using OpenCBS.Interface;
 using OpenCBS.Interface.Presenter;
+using OpenCBS.Interface.Service;
 using OpenCBS.Interface.View;
 
 namespace OpenCBS.Presenter
@@ -32,13 +33,15 @@ namespace OpenCBS.Presenter
     {
         private readonly IExoticScheduleView _view;
         private readonly IApplicationController _appController;
+        private readonly IExoticScheduleService _service;
 
         private CommandResult _commandResult = CommandResult.Cancel;
 
-        public ExoticSchedulePresenter(IExoticScheduleView view, IApplicationController appController)
+        public ExoticSchedulePresenter(IExoticScheduleView view, IApplicationController appController, IExoticScheduleService service)
         {
             _view = view;
             _appController = appController;
+            _service = service;
         }
 
         public Result<ExoticScheduleDto> Get(ExoticScheduleDto dto)
@@ -49,11 +52,22 @@ namespace OpenCBS.Presenter
             _view.ExoticScheduleName = dto.Name;
             UpdateTotals();
             _view.Run();
-            return new Result<ExoticScheduleDto>(CommandResult.Cancel, null);
+            return new Result<ExoticScheduleDto>(_commandResult, _commandResult == CommandResult.Ok ? GetDto() : null);
         }
 
         public void Ok()
         {
+            var dto = GetDto();
+            _service.Validate(dto);
+            if (dto.Notification.HasErrors)
+            {
+                _view.ShowNotification(dto.Notification);
+            }
+            else
+            {
+                _commandResult = CommandResult.Ok;
+                _view.Stop();
+            }
         }
 
         public void Cancel()
@@ -160,6 +174,15 @@ namespace OpenCBS.Presenter
         public object View
         {
             get { return _view; }
+        }
+
+        private ExoticScheduleDto GetDto()
+        {
+            var result = new ExoticScheduleDto();
+            result.InjectFrom(_view);
+            result.Name = _view.ExoticScheduleName;
+            result.Items = _view.Items;
+            return result;
         }
     }
 }

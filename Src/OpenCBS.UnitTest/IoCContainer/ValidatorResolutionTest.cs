@@ -71,6 +71,13 @@ namespace OpenCBS.UnitTest.IoCContainer
             var validator = _container.GetInstance<IPasswordValidator>();
             Assert.IsInstanceOf<PasswordValidator>(validator);
         }
+
+        [Test]
+        public void GetInstance_ExoticScheduleValidator_Resolves()
+        {
+            var validator = _container.GetInstance<IExoticScheduleValidator>();
+            Assert.IsInstanceOf<ExoticScheduleValidator>(validator);
+        }
     }
 }
 // ReSharper restore InconsistentNaming

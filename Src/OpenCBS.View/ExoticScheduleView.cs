@@ -142,6 +142,7 @@ namespace OpenCBS.View
             });
             _principalPercentageColumn.AspectPutter = PrincipalPercentageAspectPutter;
             _interestPercentageColumn.AspectPutter = InterestPercentageAspectPutter;
+            _errorLabel.Text = string.Empty;
         }
 
         private void PrincipalPercentageAspectPutter(object rowObject, object value)

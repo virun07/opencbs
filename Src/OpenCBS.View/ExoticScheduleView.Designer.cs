@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             this._buttonsPanel = new OpenCBS.Controls.TopEdgePanel();
+            this._errorLabel = new System.Windows.Forms.Label();
             this._cancelButton = new System.Windows.Forms.Button();
             this._okButton = new System.Windows.Forms.Button();
             this._statusStrip = new System.Windows.Forms.StatusStrip();
+            this._totalLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this._totalValueLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this._principalLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this._principalTotalLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this._interestLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -48,8 +51,6 @@
             this._numberColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._principalPercentageColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._interestPercentageColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this._totalLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this._totalValueLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this._buttonsPanel.SuspendLayout();
             this._statusStrip.SuspendLayout();
             this._propertiesPanel.SuspendLayout();
@@ -59,6 +60,7 @@
             // 
             // _buttonsPanel
             // 
+            this._buttonsPanel.Controls.Add(this._errorLabel);
             this._buttonsPanel.Controls.Add(this._cancelButton);
             this._buttonsPanel.Controls.Add(this._okButton);
             this._buttonsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -66,6 +68,16 @@
             this._buttonsPanel.Name = "_buttonsPanel";
             this._buttonsPanel.Size = new System.Drawing.Size(552, 53);
             this._buttonsPanel.TabIndex = 101;
+            // 
+            // _errorLabel
+            // 
+            this._errorLabel.AutoSize = true;
+            this._errorLabel.Location = new System.Drawing.Point(3, 2);
+            this._errorLabel.Name = "_errorLabel";
+            this._errorLabel.Size = new System.Drawing.Size(124, 15);
+            this._errorLabel.TabIndex = 103;
+            this._errorLabel.Tag = "Items";
+            this._errorLabel.Text = "(anchor for error icon)";
             // 
             // _cancelButton
             // 
@@ -102,6 +114,26 @@
             this._statusStrip.Name = "_statusStrip";
             this._statusStrip.Size = new System.Drawing.Size(552, 24);
             this._statusStrip.TabIndex = 103;
+            // 
+            // _totalLabel
+            // 
+            this._totalLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this._totalLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this._totalLabel.Name = "_totalLabel";
+            this._totalLabel.Size = new System.Drawing.Size(18, 19);
+            this._totalLabel.Text = "#";
+            // 
+            // _totalValueLabel
+            // 
+            this._totalValueLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this._totalValueLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this._totalValueLabel.Name = "_totalValueLabel";
+            this._totalValueLabel.Size = new System.Drawing.Size(16, 19);
+            this._totalValueLabel.Text = "?";
             // 
             // _principalLabel
             // 
@@ -141,6 +173,7 @@
             this._interestTotalLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this._interestTotalLabel.Name = "_interestTotalLabel";
             this._interestTotalLabel.Size = new System.Drawing.Size(16, 19);
+            this._interestTotalLabel.Tag = "";
             this._interestTotalLabel.Text = "?";
             // 
             // _propertiesPanel
@@ -159,6 +192,7 @@
             this._nameTextBox.Name = "_nameTextBox";
             this._nameTextBox.Size = new System.Drawing.Size(191, 23);
             this._nameTextBox.TabIndex = 1;
+            this._nameTextBox.Tag = "Name";
             // 
             // _nameLabel
             // 
@@ -247,6 +281,7 @@
             this._itemsListView.ShowGroups = false;
             this._itemsListView.Size = new System.Drawing.Size(411, 222);
             this._itemsListView.TabIndex = 104;
+            this._itemsListView.Tag = "Items";
             this._itemsListView.UseCompatibleStateImageBehavior = false;
             this._itemsListView.View = System.Windows.Forms.View.Details;
             // 
@@ -273,26 +308,6 @@
             this._interestPercentageColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._interestPercentageColumn.Width = 140;
             // 
-            // _totalLabel
-            // 
-            this._totalLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this._totalLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this._totalLabel.Name = "_totalLabel";
-            this._totalLabel.Size = new System.Drawing.Size(18, 19);
-            this._totalLabel.Text = "#";
-            // 
-            // _totalValueLabel
-            // 
-            this._totalValueLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this._totalValueLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this._totalValueLabel.Name = "_totalValueLabel";
-            this._totalValueLabel.Size = new System.Drawing.Size(16, 19);
-            this._totalValueLabel.Text = "?";
-            // 
             // ExoticScheduleView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -310,6 +325,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Exotic schedule";
             this._buttonsPanel.ResumeLayout(false);
+            this._buttonsPanel.PerformLayout();
             this._statusStrip.ResumeLayout(false);
             this._statusStrip.PerformLayout();
             this._propertiesPanel.ResumeLayout(false);
@@ -345,5 +361,6 @@
         private System.Windows.Forms.ToolStripStatusLabel _interestTotalLabel;
         private System.Windows.Forms.ToolStripStatusLabel _totalLabel;
         private System.Windows.Forms.ToolStripStatusLabel _totalValueLabel;
+        private System.Windows.Forms.Label _errorLabel;
     }
 }
