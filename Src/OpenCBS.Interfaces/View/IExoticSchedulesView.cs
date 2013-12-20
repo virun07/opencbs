@@ -27,6 +27,7 @@ namespace OpenCBS.Interface.View
     {
         void Run();
         void ShowExoticSchedules(IList<ExoticScheduleDto> schedules);
+        void Translate();
 
         bool AllowAdding { get; set; }
         bool AllowEditing { get; set; }

@@ -50,6 +50,7 @@ namespace OpenCBS.View
             _deleteButton.Click += (sender, e) => presenterCallbacks.Delete();
             _entryFeesListView.SelectionChanged += (sender, e) => presenterCallbacks.ChangeSelection();
             _showDeletedCheckBox.CheckedChanged += (sender, e) => presenterCallbacks.Refresh();
+            FormClosed += (sender, e) => presenterCallbacks.Close();
             _presenterCallbacks = presenterCallbacks;
         }
 
