@@ -34,7 +34,7 @@ namespace OpenCBS.Interface.View
         string ExoticScheduleName { get; set; }
         IList<ExoticScheduleItemDto> Items { get; set; }
 
-        ExoticScheduleItemDto SelectedItem { get; }
+        ExoticScheduleItemDto SelectedItem { get; set; }
 
         bool CanMoveUp { get; set; }
         bool CanMoveDown { get; set; }

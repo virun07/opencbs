@@ -17,6 +17,7 @@
 // Website: http://www.opencbs.com
 // Contact: contact@opencbs.com
 
+using System.Collections.Generic;
 using System.Linq;
 using Omu.ValueInjecter;
 using OpenCBS.DataContract;
@@ -105,6 +106,41 @@ namespace OpenCBS.Presenter
 
             _view.Items = _view.Items.OrderBy(x => x.Number).ToList().AsReadOnly();
             _view.FocusItems();
+        }
+
+        public void Add()
+        {
+            var number = _view.Items.Count + 1;
+            var item = new ExoticScheduleItemDto
+            {
+                Id = number,
+                Number = number,
+                PrincipalPercentage = 0,
+                InterestPercentage = 0
+            };
+            var items = new List<ExoticScheduleItemDto>();
+            items.AddRange(_view.Items);
+            items.Add(item);
+            _view.Items = items.AsReadOnly();
+            _view.SelectedItem = item;
+            _view.FocusItems();
+        }
+
+        public void Delete()
+        {
+            var item = _view.SelectedItem;
+            if (item == null) return;
+            var items = new List<ExoticScheduleItemDto>();
+            items.AddRange(_view.Items);
+            items.Remove(item);
+
+            var number = 1;
+            foreach (var i in items)
+            {
+                i.Number = number;
+                number++;
+            }
+            _view.Items = items.AsReadOnly();
         }
 
         public object View

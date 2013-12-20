@@ -27,5 +27,7 @@ namespace OpenCBS.Interface.Presenter
         void ChangeSelectedItem();
         void MoveUp();
         void MoveDown();
+        void Add();
+        void Delete();
     }
 }

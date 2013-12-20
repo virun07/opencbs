@@ -86,6 +86,11 @@ namespace OpenCBS.View
         public ExoticScheduleItemDto SelectedItem
         {
             get { return (ExoticScheduleItemDto) _itemsListView.SelectedObject;  }
+            set
+            {
+                _itemsListView.SelectedObject = value;
+                _itemsListView.EnsureModelVisible(value);
+            }
         }
 
         public string ExoticScheduleName
@@ -103,6 +108,8 @@ namespace OpenCBS.View
             _itemsListView.SelectedIndexChanged += (sender, e) => presenterCallbacks.ChangeSelectedItem();
             _moveUpButton.Click += (sender, e) => _presenterCallbacks.MoveUp();
             _moveDownButton.Click += (sender, e) => _presenterCallbacks.MoveDown();
+            _addButton.Click += (sender, e) => _presenterCallbacks.Add();
+            _deleteButton.Click += (sender, e) => _presenterCallbacks.Delete();
         }
     }
 }
