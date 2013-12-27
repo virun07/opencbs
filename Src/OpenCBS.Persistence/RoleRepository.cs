@@ -27,6 +27,16 @@ namespace OpenCBS.Persistence
 {
     public class RoleRepository : Repository, IRoleRepository
     {
+        // ReSharper disable ClassNeverInstantiated.Local
+        // ReSharper disable UnusedAutoPropertyAccessor.Local
+        private class RolePermission
+        {
+            public int RoleId { get; set; }
+            public string Permission { get; set; }
+        }
+        // ReSharper restore UnusedAutoPropertyAccessor.Local
+        // ReSharper restore ClassNeverInstantiated.Local
+
         public RoleRepository(IConnectionStringProvider connectionStringProvider)
             : base(connectionStringProvider)
         {
@@ -34,19 +44,39 @@ namespace OpenCBS.Persistence
 
         public IList<Role> FindAll()
         {
+            const string sql = @"
+                select id Id, code Name, deleted Deleted from Roles
+                select RoleId, Permission from RolePermission
+            ";
             using (var connection = GetConnection())
+            using (var multi = connection.QueryMultiple(sql))
             {
-                const string sql = @"select id Id, code Name, deleted Deleted from Roles";
-                return connection.Query<Role>(sql).ToList().AsReadOnly();
+                var roles = multi.Read<Role>().ToList();
+                var map = multi.Read<RolePermission>().ToList();
+                foreach (var role in roles)
+                {
+                    role.Permissions = map.Where(x => x.RoleId == role.Id).Select(x => x.Permission).ToList().AsReadOnly();
+                }
+                return roles.AsReadOnly();
             }
         }
 
         public IList<Role> FindByIds(IList<int> ids)
         {
-            const string sql = @"select id Id, code Name, deleted Deleted from Roles where id in @Ids";
+            const string sql = @"
+                select id Id, code Name, deleted Deleted from Roles where id in @Ids
+                select RoleId, Permission from RolePermission where RoleId in @Ids
+            ";
             using (var connection = GetConnection())
+            using (var multi = connection.QueryMultiple(sql, new { Ids = ids }))
             {
-                return connection.Query<Role>(sql, new { Ids = ids }).ToList().AsReadOnly();
+                var roles = multi.Read<Role>().ToList();
+                var map = multi.Read<RolePermission>().ToList();
+                foreach (var role in roles)
+                {
+                    role.Permissions = map.Where(x => x.RoleId == role.Id).Select(x => x.Permission).ToList().AsReadOnly();
+                }
+                return roles.AsReadOnly();
             }
         }
 

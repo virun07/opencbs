@@ -36,6 +36,9 @@
     <Reference Include="Dapper">
       <HintPath>..\packages\Dapper.1.13\lib\net40\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="KellermanSoftware.Compare-NET-Objects">
+      <HintPath>..\packages\CompareNETObjects.1.7.4.0\lib\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
@@ -50,6 +53,8 @@
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
     <Compile Include="Persistence\LoanRepositoryTest.cs" />
+    <Compile Include="Persistence\RoleRepositoryTest.cs" />
+    <Compile Include="Persistence\UserRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestConnectionStringProvider.cs" />
     <Compile Include="TestSetup.cs" />
