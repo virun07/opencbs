@@ -19,11 +19,11 @@
 
 using System.Collections.ObjectModel;
 using System.Linq;
+using Dapper;
 using KellermanSoftware.CompareNetObjects;
 using NUnit.Framework;
 using OpenCBS.Model;
 using OpenCBS.Persistence;
-using Dapper;
 
 // ReSharper disable InconsistentNaming
 namespace OpenCBS.Test.IntegrationTest.Persistence
@@ -161,7 +161,7 @@ namespace OpenCBS.Test.IntegrationTest.Persistence
         }
 
         [Test]
-        public void Remove_MarksRoleAsDeleted()
+        public void Remove_MarksRoleAsDeletedInDatabase()
         {
             var role = new Role
             {

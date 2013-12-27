@@ -74,7 +74,7 @@ namespace OpenCBS.Persistence
             {
                 var user = multi.Read<User>().SingleOrDefault();
                 if (user == null) return null;
-                user.Roles = multi.Read<Role>().ToList();
+                user.Roles = multi.Read<Role>().ToList().AsReadOnly();
                 var permissions = multi.Read<int, string, Tuple<int, string>>(Tuple.Create, "*").ToList();
                 foreach (var role in user.Roles)
                 {
@@ -93,6 +93,7 @@ namespace OpenCBS.Persistence
 
                 select user_id, role_id from UserRole
                 select id Id, code Name from Roles
+                select RoleId, Permission from RolePermission
             ";
             using (var connection = GetConnection())
             using (var multi = connection.QueryMultiple(sql))
@@ -100,10 +101,15 @@ namespace OpenCBS.Persistence
                 var users = multi.Read<User>().ToList().AsReadOnly();
                 var map = multi.Read<int, int, Tuple<int, int>>(Tuple.Create, "*").ToList();
                 var roles = multi.Read<Role>().ToList().AsReadOnly();
+                var permissionMap = multi.Read<int, string, Tuple<int, string>>(Tuple.Create, "*").ToList();
                 foreach (var user in users)
                 {
                     var ids = map.Where(m => m.Item1 == user.Id).Select(m => m.Item2).ToList();
                     user.Roles = roles.Where(r => ids.Contains(r.Id)).ToList().AsReadOnly();
+                    foreach (var role in user.Roles)
+                    {
+                        role.Permissions = permissionMap.Where(x => x.Item1 == role.Id).Select(x => x.Item2).ToList().AsReadOnly();
+                    }
                 }
                 return users;
             }
@@ -132,7 +138,7 @@ namespace OpenCBS.Persistence
             {
                 var user = multi.Read<User>().SingleOrDefault();
                 if (user == null) return null;
-                user.Roles = multi.Read<Role>().ToList();
+                user.Roles = multi.Read<Role>().ToList().AsReadOnly();
                 var permissions = multi.Read<int, string, Tuple<int, string>>(Tuple.Create, "*").ToList();
                 foreach (var role in user.Roles)
                 {
