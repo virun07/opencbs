@@ -1602,7 +1602,7 @@ namespace OpenCBS.CoreDomain.Contracts.Loans
                       ref interestPrepayment, ref principalEvent, ref manualInterestEvent, ref paymentType);
 
             //this part of code to correct calculation of principal
-            OCurrency principalAmount = principalEvent;
+            /*OCurrency principalAmount = principalEvent;
             foreach (RepaymentEvent rPayment in Events.GetRepaymentEvents())
             {
                 if (!rPayment.Deleted)
@@ -1612,7 +1612,7 @@ namespace OpenCBS.CoreDomain.Contracts.Loans
                 {
                     principalEvent -= Math.Round(principalAmount.Value, 2) - Amount;
                 }
-            }
+            }*/
 
             // when we keep initial schedule and total payment
             if (AmountComparer.Compare(pAmountPaid, cCr.MaximumAmountAuthorizeToRepay, pNumber) == 0 && (pNumber != InstallmentList.Count) && AllInstallmentsRepaid)
