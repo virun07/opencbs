@@ -2897,6 +2897,36 @@ namespace OpenCBS.Services
             var paymentMethod =
                 ServicesProvider.GetInstance().GetPaymentMethodServices().GetPaymentMethodByName("Savings");
             var installment = config.Loan.GetFirstUnpaidInstallment() ?? config.Loan.InstallmentList.First();
+            if (!config.KeepExpectedInstallment)
+            {
+                var amount2 = config.Loan.CalculateOverduePrincipal(config.Date).Value +
+                              config.Loan.GetUnpaidInterest(config.Date).Value +
+                              config.Loan.GetUnpaidLatePenalties(config.Date) +
+                              config.Loan.InstallmentList.First(i => i.ExpectedDate >= config.Date)
+                                    .AmountHasToPayWithInterest.Value;
+                if (amount > amount2 && amount2 > 0)
+                {
+                    config.Loan = Repay(config.Loan,
+                                        config.Client,
+                                        installment.Number,
+                                        config.Date.Date,
+                                        amount2,
+                                        config.DisableFees,
+                                        config.ManualFeesAmount,
+                                        config.ManualCommission,
+                                        config.DisableInterests,
+                                        config.ManualInterestsAmount,
+                                        !config.KeepExpectedInstallment,
+                                        config.ProportionPayment,
+                                        paymentMethod,
+                                        config.Saving.Events.Last().Id.ToString(CultureInfo.InvariantCulture),
+                                        config.IsPending);
+                    installment = config.Loan.GetFirstUnpaidInstallment();
+                    amount -= amount2;
+                }
+                else
+                    config.KeepExpectedInstallment = true;
+            }
             return Repay(config.Loan,
                          config.Client,
                          installment.Number,
