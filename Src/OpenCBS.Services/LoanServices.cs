@@ -2818,9 +2818,9 @@ namespace OpenCBS.Services
 
         private decimal GetDailyInterestForLoan(Loan loan, DateTime date)
         {
-            if (date >= loan.LastInstallment.ExpectedDate) return 0;
-            var nextInstallment = loan.InstallmentList.First(installment => date < installment.ExpectedDate);
-            var nextDate = nextInstallment.ExpectedDate.AddDays(-1);
+            if (date > loan.LastInstallment.ExpectedDate) return 0;
+            var nextInstallment = loan.InstallmentList.First(installment => date <= installment.ExpectedDate);
+            var nextDate = nextInstallment.ExpectedDate;
             var previousDate = nextInstallment.Number > 1
                                    ? loan.InstallmentList[nextInstallment.Number - 2].ExpectedDate
                                    : loan.StartDate;
@@ -2883,7 +2883,7 @@ namespace OpenCBS.Services
         public Loan RepayLoanFromTransitAccount(RepaymentConfiguration config)
         {
             var currentUser = User.CurrentUser ?? ServicesProvider.GetInstance().GetUserServices().Find(1);
-            var balance = config.Saving.GetBalance().Value;
+            var balance = config.Saving.GetBalance(config.Date).Value;
             var amount = config.Loan.CalculateOverduePrincipal(config.Date).Value +
                          config.Loan.GetUnpaidInterest(config.Date).Value +
                          config.Loan.GetUnpaidLatePenalties(config.Date);
@@ -2899,11 +2899,14 @@ namespace OpenCBS.Services
             var installment = config.Loan.GetFirstUnpaidInstallment() ?? config.Loan.InstallmentList.First();
             if (!config.KeepExpectedInstallment)
             {
-                var amount2 = config.Loan.CalculateOverduePrincipal(config.Date).Value +
-                              config.Loan.GetUnpaidInterest(config.Date).Value +
-                              config.Loan.GetUnpaidLatePenalties(config.Date) +
-                              config.Loan.InstallmentList.First(i => i.ExpectedDate >= config.Date)
-                                    .AmountHasToPayWithInterest.Value;
+                var unpaidAmount = config.Loan.CalculateOverduePrincipal(config.Date).Value +
+                                   config.Loan.GetUnpaidInterest(config.Date).Value +
+                                   config.Loan.GetUnpaidLatePenalties(config.Date);
+                var amount2 = installment.ExpectedDate != config.Date
+                                  ? unpaidAmount +
+                                    config.Loan.InstallmentList.First(i => i.ExpectedDate >= config.Date)
+                                          .AmountHasToPayWithInterest.Value
+                                  : unpaidAmount;
                 if (amount > amount2 && amount2 > 0)
                 {
                     config.Loan = Repay(config.Loan,
@@ -2924,7 +2927,7 @@ namespace OpenCBS.Services
                     installment = config.Loan.GetFirstUnpaidInstallment();
                     amount -= amount2;
                 }
-                else
+                else if (amount <= amount2)
                     config.KeepExpectedInstallment = true;
             }
             return Repay(config.Loan,
