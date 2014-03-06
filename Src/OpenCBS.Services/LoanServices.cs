@@ -2884,9 +2884,11 @@ namespace OpenCBS.Services
         {
             var currentUser = User.CurrentUser ?? ServicesProvider.GetInstance().GetUserServices().Find(1);
             var balance = config.Saving.GetBalance(config.Date).Value;
-            var amount = config.Loan.CalculateOverduePrincipal(config.Date).Value +
-                         config.Loan.GetUnpaidInterest(config.Date).Value +
-                         config.Loan.GetUnpaidLatePenalties(config.Date);
+            var interest = config.DisableInterests
+                               ? config.ManualInterestsAmount.Value
+                               : config.Loan.GetUnpaidInterest(config.Date).Value;
+            var penalty = config.DisableFees ? config.ManualFeesAmount : config.Loan.GetUnpaidLatePenalties(config.Date);
+            var amount = config.Loan.CalculateOverduePrincipal(config.Date).Value + interest + penalty;
             if (amount > balance || !config.KeepExpectedInstallment)
                 amount = balance;
             if (amount <= 0) return config.Loan;

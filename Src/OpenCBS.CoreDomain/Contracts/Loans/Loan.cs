@@ -1882,8 +1882,13 @@ namespace OpenCBS.CoreDomain.Contracts.Loans
                     }
                     else
                     {
-                        penaltyAmount = paidInstallment.FeesUnpaid -
-                                                  (paidInstallment.FeesUnpaid - (paidInstallment.PaidFees - rpePenalty));
+                        if (ApplicationSettings.GetInstance(User.CurrentUser.Md5).UseDailyAccrualOfPenalty)
+                            penaltyAmount = paidInstallment.Number == cCr.PaidIstallments.First().Number
+                                                ? penaltiesEvent
+                                                : 0;
+                        else
+                            penaltyAmount = paidInstallment.FeesUnpaid -
+                                            (paidInstallment.FeesUnpaid - (paidInstallment.PaidFees - rpePenalty));
                     }
 
                     //just to be sure that we do not have negative in the base
