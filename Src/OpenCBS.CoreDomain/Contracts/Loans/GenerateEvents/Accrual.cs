@@ -132,9 +132,10 @@ namespace OpenCBS.CoreDomain.Contracts.Loans.GenerateEvents
                     else
                         days = (pDate - date).Days;
 
-                    amount += days >= pLoan.NumberOfDaysInTheInstallment(installment.Number, pDate)
-                                             ? installment.InterestsRepayment
-                                             : installment.InterestsRepayment * (double)days / (double) daysInInstallment;
+                    //amount += days >= pLoan.NumberOfDaysInTheInstallment(installment.Number, pDate)
+                    //                         ? installment.InterestsRepayment
+                    //                         : installment.InterestsRepayment * (double)days / (double) daysInInstallment;
+                    amount += installment.InterestsRepayment;
                     
                     if (installment.PaidInterests > amount)
                         amount = 0;

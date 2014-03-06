@@ -2928,6 +2928,9 @@ namespace OpenCBS.Services
                                         config.IsPending);
                     installment = config.Loan.GetFirstUnpaidInstallment();
                     amount -= amount2;
+                    config.ManualFeesAmount = 0;
+                    config.ManualInterestsAmount = 0;
+                    config.ManualCommission = 0;
                 }
                 else if (amount <= amount2)
                     config.KeepExpectedInstallment = true;
