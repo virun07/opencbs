@@ -64,9 +64,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\OpenCBS.GUI\bin\Debug\OpenCBS.Enums.dll</HintPath>
     </Reference>
-    <Reference Include="OpenCBS.Manager">
-      <HintPath>..\..\..\..\OpenCbsLibs\OpenCBS.Manager.dll</HintPath>
-    </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
     </Reference>
@@ -175,6 +172,10 @@
     <ProjectReference Include="..\OpenCBS.CoreDomain\OpenCBS.CoreDomain.csproj">
       <Project>{d539c388-3848-4a3e-ab87-42b8e329755a}</Project>
       <Name>OpenCBS.CoreDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Manager\OpenCBS.Manager.csproj">
+      <Project>{963a6b8b-779c-4052-b39a-8abbfbf16c1a}</Project>
+      <Name>OpenCBS.Manager</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Services\OpenCBS.Services.csproj">
       <Project>{a859d97a-51fb-4961-af07-5856640511af}</Project>
