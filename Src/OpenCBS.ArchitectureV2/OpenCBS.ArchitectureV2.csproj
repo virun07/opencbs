@@ -64,9 +64,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\OpenCBS.GUI\bin\Debug\OpenCBS.Enums.dll</HintPath>
     </Reference>
-    <Reference Include="OpenCBS.Manager, Version=14.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\OpenCBS.GUI\bin\Debug\OpenCBS.Manager.dll</HintPath>
+    <Reference Include="OpenCBS.Manager">
+      <HintPath>..\..\..\..\OpenCbsLibs\OpenCBS.Manager.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
@@ -189,9 +188,14 @@
   <ItemGroup>
     <None Include="Resources\Logo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Service\Scripts\NormalRepayment.py" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /i /y "$(ProjectDir)Service\Scripts" "C:\repos\opencbs\Src\OpenCBS.GUI\bin\Debug\Scripts"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
