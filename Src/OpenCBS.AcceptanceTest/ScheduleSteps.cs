@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using NUnit.Framework;
+using OpenCBS.ArchitectureV2.Service;
 using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Accounting;
 using OpenCBS.CoreDomain.Contracts.Loans;
@@ -168,8 +169,14 @@ namespace OpenCBS.AcceptanceTest
         {
             var date = DateTime.Parse(dateString, _cultureInfo, DateTimeStyles.AssumeLocal);
             var amount = Convert.ToDecimal(amountString, _cultureInfo);
-            var installment = _loan.GetFirstUnpaidInstallment();
-            _loan.Repay(installment.Number, date, amount, false, true);
+            var re = new RepaymentService();
+            _loan = re.Repay(new RepaymentConfiguration
+            {
+                Amount = amount,
+                Loan = _loan,
+                Date = date,
+                ScriptName = "NormalRepayment.py"
+            });
         }
 
         [When(@"I repay ([0-9,]+) on ([0-9]{2}\.[0-9]{2}\.[0-9]{4}) with no keep schedule")]
@@ -177,8 +184,14 @@ namespace OpenCBS.AcceptanceTest
         {
             var date = DateTime.Parse(dateString, _cultureInfo, DateTimeStyles.AssumeLocal);
             var amount = Convert.ToDecimal(amountString, _cultureInfo);
-            var installment = _loan.GetFirstUnpaidInstallment();
-            _loan.Repay(installment.Number, date, amount, false, false);
+            var re = new RepaymentService();
+            _loan = re.Repay(new RepaymentConfiguration
+            {
+                Amount = amount,
+                Loan = _loan,
+                Date = date,
+                ScriptName = "AnticipatedRepayment.py"
+            });
         }
         
         [Then(@"the schedule is")]
