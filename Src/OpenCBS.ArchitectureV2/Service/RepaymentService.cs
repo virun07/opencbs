@@ -15,15 +15,16 @@ namespace OpenCBS.ArchitectureV2.Service
 {
     public class RepaymentService : IRepaymentService
     {
-        public RepaymentConfiguration Repay(RepaymentConfiguration configuration)
+        public Loan Repay(RepaymentConfiguration configuration)
         {
-            var script = RunScript(configuration);
-            return (RepaymentConfiguration) script.GetVariable("configuration");
+            var script = RunScript(configuration.ScriptName);
+            script.Repay(configuration);
+            return configuration.Loan;
         }
 
         public Loan RepayAndSave(RepaymentConfiguration config)
         {
-            var script = RunScript(config);
+            var script = RunScript(config.ScriptName);
             var newConfig = ((RepaymentConfiguration) script.GetVariable("configuration"));
             var events = GenerateRepaymentEvents(config, newConfig);
             newConfig.Loan.Events.Add(events);
@@ -60,13 +61,11 @@ namespace OpenCBS.ArchitectureV2.Service
             return newConfig.Loan;
         }
 
-        private static ScriptScope RunScript(RepaymentConfiguration configuration)
+        private static dynamic RunScript(string scriptName)
         {
-            var engine = Python.CreateEngine();
-            var file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Scripts\\" + configuration.ScriptName);
-            var scope = engine.CreateScope();
-            scope.SetVariable("configuration", configuration);
-            return engine.ExecuteFile(file, scope);
+            ScriptEngine engine = Python.CreateEngine();
+            var file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Scripts\\" + scriptName);
+            return engine.ExecuteFile(file);
         }
 
         private static EventStock GenerateRepaymentEvents(RepaymentConfiguration oldConfig, RepaymentConfiguration newConfig)
