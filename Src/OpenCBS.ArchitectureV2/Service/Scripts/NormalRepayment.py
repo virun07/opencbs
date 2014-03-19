@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-#import configuration
 
 def RepayCommission(installment):
     global amount

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using IronPython.Hosting;
@@ -63,7 +64,11 @@ namespace OpenCBS.ArchitectureV2.Service
 
         private static dynamic RunScript(string scriptName)
         {
-            ScriptEngine engine = Python.CreateEngine();
+            var options = new Dictionary<string, object>();
+#if DEBUG
+            options["Debug"] = true;
+#endif
+            ScriptEngine engine = Python.CreateEngine(options);
             var file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Scripts\\" + scriptName);
             return engine.ExecuteFile(file);
         }
