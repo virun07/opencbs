@@ -95,6 +95,10 @@
       <Project>{8afc1e87-3856-4f05-8280-5360d33c200b}</Project>
       <Name>OpenCBS.Enums</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenCBS.Services\OpenCBS.Services.csproj">
+      <Project>{a859d97a-51fb-4961-af07-5856640511af}</Project>
+      <Name>OpenCBS.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Shared\OpenCBS.Shared.csproj">
       <Project>{b3288e21-e5a9-4620-bef3-afb0b207655c}</Project>
       <Name>OpenCBS.Shared</Name>

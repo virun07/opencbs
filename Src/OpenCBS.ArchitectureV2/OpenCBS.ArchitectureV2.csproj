@@ -190,6 +190,7 @@
     <None Include="Resources\Logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Service\Scripts\EarlyRepayment.py" />
     <Content Include="Service\Scripts\NormalRepayment.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -26,7 +26,8 @@ namespace OpenCBS.ArchitectureV2.Service
         public Loan RepayAndSave(RepaymentConfiguration config)
         {
             var script = RunScript(config.ScriptName);
-            var newConfig = ((RepaymentConfiguration) script.GetVariable("configuration"));
+            var newConfig = (RepaymentConfiguration) config.Clone();
+            script.Repay(newConfig);
             var events = GenerateRepaymentEvents(config, newConfig);
             newConfig.Loan.Events.Add(events);
             using (var sqlTransaction = DatabaseConnection.GetConnection().BeginTransaction())

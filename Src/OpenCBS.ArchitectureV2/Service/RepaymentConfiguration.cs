@@ -16,5 +16,9 @@ namespace OpenCBS.ArchitectureV2.Service
         public PaymentMethod PaymentMethod { get; set; }
         public string Comment { get; set; }
         public string ScriptName { get; set; }
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
 }

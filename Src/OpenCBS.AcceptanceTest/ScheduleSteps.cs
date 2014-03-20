@@ -10,6 +10,7 @@ using OpenCBS.CoreDomain.Products;
 using OpenCBS.Engine;
 using OpenCBS.Enums;
 using OpenCBS.Shared;
+using OpenCBS.Services;
 using OpenCBS.Shared.Settings;
 using TechTalk.SpecFlow;
 
@@ -109,19 +110,32 @@ namespace OpenCBS.AcceptanceTest
         public void WhenICreateALoan(Table table)
         {
             _loanProduct.RoundingType = ParseTableValue<ORoundingType>(table, "Rounding");
-            _loan = new Loan(
-                _loanProduct,
-                ParseTableValue<decimal>(table, "Amount"),
-                ParseTableValue<decimal>(table, "Interest rate"),
-                ParseTableValue<int>(table, "Installments"),
-                ParseTableValue<int>(table, "Grace period"),
-                ParseTableValue<DateTime>(table, "Start date"),
-                new User(),
-                Settings,
-                NonWorkingDays,
-                ProvisionTable.GetInstance(new User()),
-                ChartOfAccounts.GetInstance(new User())
-                ) {FirstInstallmentDate = ParseTableValue<DateTime>(table, "First installment date")};
+            //_loan = new Loan(
+            //    _loanProduct,
+            //    ParseTableValue<decimal>(table, "Amount"),
+            //    ParseTableValue<decimal>(table, "Interest rate"),
+            //    ParseTableValue<int>(table, "Installments"),
+            //    ParseTableValue<int>(table, "Grace period"),
+            //    ParseTableValue<DateTime>(table, "Start date"),
+            //    new User(),
+            //    Settings,
+            //    NonWorkingDays,
+            //    ProvisionTable.GetInstance(new User()),
+            //    ChartOfAccounts.GetInstance(new User())
+            //    ) {FirstInstallmentDate = ParseTableValue<DateTime>(table, "First installment date")};
+            _loan = new Loan(_loanProduct,
+                             ParseTableValue<decimal>(table, "Amount"),
+                             ParseTableValue<decimal>(table, "Interest rate"),
+                             ParseTableValue<int>(table, "Installments"),
+                             ParseTableValue<int>(table, "Grace period"),
+                             ParseTableValue<DateTime>(table, "Start date"),
+                             ParseTableValue<DateTime>(table, "First installment date"),
+                             new User(),
+                             Settings,
+                             NonWorkingDays,
+                             ProvisionTable.GetInstance(new User()),
+                             ChartOfAccounts.GetInstance(new User()));
+            //_loan.InstallmentList = ServicesProvider.GetInstance().GetContractServices().SimulateScheduleCreation(_loan);
         }
 
         private static T ParseTableValue<T>(Table table, string key, T defaultValue = default(T))
@@ -190,7 +204,7 @@ namespace OpenCBS.AcceptanceTest
                 Amount = amount,
                 Loan = _loan,
                 Date = date,
-                ScriptName = "AnticipatedRepayment.py"
+                ScriptName = "EarlyRepayment.py"
             });
         }
         
