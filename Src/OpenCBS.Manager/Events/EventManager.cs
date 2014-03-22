@@ -126,7 +126,7 @@ namespace OpenCBS.Manager.Events
                         ReschedulingOfALoanEvents.amount AS rle_amount, 
                         ReschedulingOfALoanEvents.nb_of_maturity AS rle_maturity, 
                         ReschedulingOfALoanEvents.preferred_first_installment_date AS rle_preferred_first_installment_date,
-     
+
                         RepaymentEvents.id AS rpe_id, 
                         RepaymentEvents.principal AS rpe_principal, 
                         RepaymentEvents.interests AS rpe_interests, 
@@ -273,7 +273,7 @@ namespace OpenCBS.Manager.Events
                     ReschedulingOfALoanEvents.amount AS rle_amount, 
                     ReschedulingOfALoanEvents.nb_of_maturity AS rle_maturity, 
                     ReschedulingOfALoanEvents.preferred_first_installment_date AS rle_preferred_first_installment_date, 
-
+    
                     RepaymentEvents.id AS rpe_id, 
                     RepaymentEvents.principal AS rpe_principal, 
                     RepaymentEvents.interests AS rpe_interests, 
