@@ -63,6 +63,11 @@
   <ItemGroup>
     <Compile Include="LoanProducts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repayment\Annuity\Annuity normal and late.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Annuity normal and late.feature</DependentUpon>
+    </Compile>
     <Compile Include="Repayment\Simple early repayment.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -73,6 +78,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Repayment\Annuity\Annuity normal and late.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Annuity normal and late.feature.cs</LastGenOutput>
+    </None>
     <None Include="Repayment\Simple early repayment.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Simple early repayment.feature.cs</LastGenOutput>
@@ -104,6 +113,7 @@
       <Name>OpenCBS.Shared</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
