@@ -4,7 +4,7 @@ using OpenCBS.CoreDomain.Contracts.Loans;
 
 namespace OpenCBS.ArchitectureV2.Service
 {
-    public class RepaymentConfiguration
+    public class RepaymentSettings
     {
         public Loan Loan { get; set; }
         public decimal Amount { get; set; }

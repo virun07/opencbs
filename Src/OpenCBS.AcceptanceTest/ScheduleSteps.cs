@@ -201,7 +201,7 @@ namespace OpenCBS.AcceptanceTest
             var re = new RepaymentService();
             _loan = re.Repay(new RepaymentConfiguration
             {
-                Amount = amount,
+                //Amount = amount,
                 Loan = _loan,
                 Date = date,
                 ScriptName = "EarlyRepayment.py"

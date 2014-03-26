@@ -16,19 +16,21 @@ namespace OpenCBS.ArchitectureV2.Service
 {
     public class RepaymentService : IRepaymentService
     {
-        public Loan Repay(RepaymentConfiguration configuration)
+        public RepaymentSettings Settings { get; set; }
+
+        public Loan Repay()
         {
-            var script = RunScript(configuration.ScriptName);
-            script.Repay(configuration);
-            return configuration.Loan;
+            var script = RunScript(Settings.ScriptName);
+            script.Repay(Settings);
+            return Settings.Loan;
         }
 
-        public Loan RepayAndSave(RepaymentConfiguration config)
+        public Loan RepayAndSave()
         {
-            var script = RunScript(config.ScriptName);
-            var newConfig = (RepaymentConfiguration) config.Clone();
+            var script = RunScript(Settings.ScriptName);
+            var newConfig = (RepaymentSettings)Settings.Clone();
             script.Repay(newConfig);
-            var events = GenerateRepaymentEvents(config, newConfig);
+            var events = GenerateRepaymentEvents(Settings, newConfig);
             newConfig.Loan.Events.Add(events);
             using (var sqlTransaction = DatabaseConnection.GetConnection().BeginTransaction())
             {
@@ -40,7 +42,7 @@ namespace OpenCBS.ArchitectureV2.Service
                                     .FireEvent(repayEvent, newConfig.Loan, sqlTransaction);
                     ServicesProvider.GetInstance()
                                     .GetContractServices()
-                                    .ArchiveInstallments(config.Loan, repayEvent, sqlTransaction);
+                                    .ArchiveInstallments(Settings.Loan, repayEvent, sqlTransaction);
                     foreach (var installment in newConfig.Loan.InstallmentList)
                     {
                         var instalmentManager = new InstallmentManager(User.CurrentUser);
@@ -50,7 +52,7 @@ namespace OpenCBS.ArchitectureV2.Service
                     if (newConfig.Loan.AllInstallmentsRepaid)
                         ServicesProvider.GetInstance()
                                         .GetEventProcessorServices()
-                                        .FireEvent(newConfig.Loan.GetCloseEvent(config.Date), newConfig.Loan, sqlTransaction);
+                                        .FireEvent(newConfig.Loan.GetCloseEvent(Settings.Date), newConfig.Loan, sqlTransaction);
                     //_loanManager.UpdateLoan(savedContract, sqlTransaction);
                     sqlTransaction.Commit();
                 }
@@ -74,7 +76,7 @@ namespace OpenCBS.ArchitectureV2.Service
             return engine.ExecuteFile(file);
         }
 
-        private static EventStock GenerateRepaymentEvents(RepaymentConfiguration oldConfig, RepaymentConfiguration newConfig)
+        private static EventStock GenerateRepaymentEvents(RepaymentSettings oldConfig, RepaymentSettings newConfig)
         {
             var events = new EventStock();
             foreach (var installment in oldConfig.Loan.InstallmentList)
